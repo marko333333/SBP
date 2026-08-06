@@ -38,7 +38,7 @@ namespace Gradjevinska_firma.Data
                 var cfg = OracleManagedDataClientConfiguration.Oracle10
                 .ShowSql()
                 .ConnectionString(c =>
-                    c.Is("Data Source=gislab-oracle.elfak.ni.ac.rs:1521/SBP_PDB;User Id=19107;Password=Kaca2003"));
+                    c.Is("Data Source=gislab-oracle.elfak.ni.ac.rs:1521/SBP_PDB;User Id=S19107;Password=Kaca2003"));
 
                 return Fluently.Configure()
                     .Database(cfg)
@@ -47,15 +47,8 @@ namespace Gradjevinska_firma.Data
             }
             catch (Exception ex)
             {
-                string poruka = ex.ToString();
-
-                if (ex.InnerException != null)
-                {
-                    poruka += "\n\nINNER EXCEPTION:\n";
-                    poruka += ex.InnerException.ToString();
-                }
-
-                MessageBox.Show(poruka);
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+                return null;
 
                 throw;
             }

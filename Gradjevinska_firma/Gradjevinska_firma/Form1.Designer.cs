@@ -35,12 +35,6 @@ namespace Gradjevinska_firma
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Text = "Form1";
-            using (var s = DataLayer.GetSession())
-            {
-                var osobe = s.Query<Osoba>().ToList();
-
-                MessageBox.Show($"Broj osoba: {osobe.Count}");
-            }
         }
 
         #endregion
