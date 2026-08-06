@@ -12,12 +12,12 @@ namespace Gradjevinska_firma.Entiteti
 
         public virtual long Jmbg { get; set; }
 
-        public virtual string Ime { get; set; } = string.Empty;
+        public virtual string Ime { get; set; }
 
-        public virtual string Prezime { get; set; } = string.Empty;
+        public virtual string Prezime { get; set; }
 
         public virtual DateTime DatumRodjenja { get; set; }
 
-        public virtual string Struka { get; set; } = string.Empty;
+        public virtual string Struka { get; set; }
     }
 }

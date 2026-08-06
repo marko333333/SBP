@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Gradjevinska_firma.Mapiranja
 {
-    internal class OsobaMap : ClassMap<Osoba>
+    public class OsobaMap : ClassMap<Osoba>
     {
         public OsobaMap()
         {
