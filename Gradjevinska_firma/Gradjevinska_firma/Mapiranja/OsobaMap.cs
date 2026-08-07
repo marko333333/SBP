@@ -21,6 +21,29 @@ namespace Gradjevinska_firma.Mapiranja
             Map(x => x.Prezime, "PREZIME");
             Map(x => x.DatumRodjenja, "DATUM_RODJENJA");
             Map(x => x.Struka, "STRUKA");
+
+            HasMany(x => x.Kontakti)
+                .KeyColumn("IDOSOBA")
+                .LazyLoad()
+                .Cascade.All()
+                .Inverse();
+
+            HasMany(x => x.Licence)
+                .KeyColumn("IDOSOBE")
+                .LazyLoad()
+                .Cascade.All()
+                .Inverse();
+
+            HasMany(x => x.Angazovanja)
+                .KeyColumn("IDOSOBA")
+                .LazyLoad()
+                .Cascade.All()
+                .Inverse();
+            HasMany(x => x.UgovorneStrane)
+                .KeyColumn("IDOSOBA")
+                .LazyLoad()
+                .Cascade.All()
+                .Inverse();
         }
     }
 }

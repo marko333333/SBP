@@ -27,6 +27,30 @@ namespace Gradjevinska_firma.Mapiranja
             Map(x => x.FlagP, "FLAGP");
             Map(x => x.FlagN, "FLAGN");
             Map(x => x.FlagAO, "FLAGAO");
+
+            HasMany(x => x.BezbednosneObuke)
+                .KeyColumn("IDOSOBA")
+                .LazyLoad()
+                .Cascade.All()
+                .Inverse();
+
+            HasMany(x => x.LekarskiPregledi)
+                .KeyColumn("IDOSOBA")
+                .LazyLoad()
+                .Cascade.All()
+                .Inverse();
+
+            HasMany(x => x.SertifikatiSpecOpreme)
+                .KeyColumn("IDOSOBA")
+                .LazyLoad()
+                .Cascade.All()
+                .Inverse();
+
+            HasMany(x => x.ZastitneOpreme)
+                .KeyColumn("IDOSOBA")
+                .LazyLoad()
+                .Cascade.All()
+                .Inverse();
         }
     }
 }
