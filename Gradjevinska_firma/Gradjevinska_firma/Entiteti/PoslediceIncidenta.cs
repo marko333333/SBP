@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Gradjevinska_firma.Entiteti
 {
+    //zar nismo rekli da ovo brisemo iz dijagrama, i da ostavljamo to kao atribute u BezbednosniIncident????
     public class PoslediceIncidenta
     {
         public virtual int ID { get; set; }
