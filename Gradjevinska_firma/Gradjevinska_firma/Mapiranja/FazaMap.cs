@@ -46,4 +46,5 @@ namespace Gradjevinska_firma.Mapiranja
                 .Inverse();
         }
     }
+
 }

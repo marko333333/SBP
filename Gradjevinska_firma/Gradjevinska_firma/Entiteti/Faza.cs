@@ -29,4 +29,5 @@ namespace Gradjevinska_firma.Entiteti
             Zadaci = new List<Zadatak>();
         }
     }
+    
 }
