@@ -12,7 +12,18 @@ namespace Gradjevinska_firma.Mapiranja
     {   
         public ProjekatMap() {
 
-            //dodaj vezano za mapiranje
+            Table("Projekat");
+
+            Id(x => x.ID).GeneratedBy.TriggerIdentity();
+
+            Map(x => x.Naziv, "NAZIV");
+            Map(x => x.Opis, "OPIS");
+            Map(x => x.Lokacija, "LOKACIJA");
+            Map(x => x.Datum_pocetka, "DATUMPOCETKA");
+            Map(x => x.Budzet, "BUDZET");
+            Map(x => x.Status, "STATUS");
+            Map(x => x.Planirani_Zavrsetak, "PLANIRANIZAVRSETAK");
+            Map(x => x.Stvarni_Zavrsetak, "STVARNIZAVRSETAK");
 
 
             HasMany(x => x.Ugovori)
@@ -21,6 +32,7 @@ namespace Gradjevinska_firma.Mapiranja
                 .Cascade.All()
                 .Inverse();
 
+            HasMany(x=>x.BezbednosniIncidenti).KeyColumn("IDBEZBEDNOSNOGINCIDENTA").LazyLoad().Cascade.All().Inverse();
         }
     }
 }

@@ -19,6 +19,7 @@ namespace Gradjevinska_firma.Entiteti
         public virtual IList<Licenca> Licence { get; set; }
         public virtual IList<Angazovan> Angazovanja { get; set; }
         public virtual IList<ImaUgovornuStranu> UgovorneStrane { get; set; }
+        public virtual IList<BezbednosniIncident> BezbednosniIncidenti { get; set; }
         public Osoba()
         {
             Kontakti = new List<Kontakt>();

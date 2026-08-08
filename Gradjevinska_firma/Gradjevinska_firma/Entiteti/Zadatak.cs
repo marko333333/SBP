@@ -28,6 +28,7 @@ namespace Gradjevinska_firma.Entiteti
         public virtual IList<Angazovan> Angazovani { get; set; }
         public virtual IList<Angazuje> AngazovanaOprema { get; set; }
 
+        public virtual IList<Koristi> Koristi { get; set; }
 
         public Zadatak() {
 
@@ -37,6 +38,7 @@ namespace Gradjevinska_firma.Entiteti
             KontroleKvaliteta = new List<KontrolaKvaliteta>();
             Angazovani = new List<Angazovan>();
             AngazovanaOprema = new List<Angazuje>();
+            Koristi = new List<Koristi>();
         }
     }
 }

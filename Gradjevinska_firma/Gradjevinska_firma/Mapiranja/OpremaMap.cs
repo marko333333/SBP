@@ -37,6 +37,8 @@ namespace Gradjevinska_firma.Mapiranja
                 .LazyLoad()
                 .Cascade.All()
                 .Inverse();
+
+            HasMany(x => x.NabavkaOprema).KeyColumn("IDOPREMA").LazyLoad().Cascade.All().Inverse();
         }
     }
 }

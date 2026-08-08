@@ -67,6 +67,8 @@ namespace Gradjevinska_firma.Mapiranja
                 .LazyLoad()
                 .Cascade.All()
                 .Inverse();
+
+            HasMany(x => x.Koristi).KeyColumn("IDZADATAK").LazyLoad().Cascade.All().Inverse();
         }
     }
 }

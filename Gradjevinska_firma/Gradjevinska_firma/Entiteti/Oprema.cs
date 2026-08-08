@@ -20,6 +20,7 @@ namespace Gradjevinska_firma.Entiteti
 
         public virtual IList<Ugovor> Ugovori { get; set; }
         public virtual IList<Angazuje> Angazovanja { get; set; }
+        public virtual IList<NabavkaOprema> NabavkaOprema { get; set; }
         public Oprema()
         {
             Ugovori = new List<Ugovor>();
