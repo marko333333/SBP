@@ -16,6 +16,7 @@ namespace Gradjevinska_firma.Entiteti
         public virtual required string JedinicaMere { get; set; }
         public virtual required string Sertifikat { get; set; }
         public virtual required string TipMaterijala { get; set; }
+
         public virtual IList<Ugovor> Ugovori { get; set; }
         public virtual IList<Koristi> Koristi { get; set; }
         public virtual IList<NabavkaMaterijal> NabavkaMaterijal { get; set; }
