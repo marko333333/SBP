@@ -11,7 +11,7 @@ namespace Gradjevinska_firma.Mapiranja
     {
         public InfrastrukturaMap()
         {
-            Table("Infrastruktura");
+            Table("INFRASTRUKTURA");
             KeyColumn("IDPROJEKTA");
 
             HasMany(x => x.Deonice).Table("Deonica").KeyColumn("IDPROJEKAT").Cascade.AllDeleteOrphan().Inverse().LazyLoad();

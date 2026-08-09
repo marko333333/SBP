@@ -11,7 +11,7 @@ namespace Gradjevinska_firma.Mapiranja
     {
         public IndustrijskiMap()
         {
-            Table("Industrijski");
+            Table("INDUSTRIJSKI");
             KeyColumn("IDPROJEKTA");
         }
     }

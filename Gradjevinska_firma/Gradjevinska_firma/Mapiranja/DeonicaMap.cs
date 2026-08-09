@@ -11,7 +11,7 @@ namespace Gradjevinska_firma.Mapiranja
     {
         public DeonicaMap()
         {
-            Table("Deonica");
+            Table("DEONICA");
 
             Id(x => x.Br_deonice, "BRDEONICE").GeneratedBy.TriggerIdentity();
             References(x => x.Infrastruktura, "IDPROJEKTA");

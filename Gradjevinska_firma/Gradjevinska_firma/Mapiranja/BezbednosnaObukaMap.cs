@@ -15,7 +15,7 @@ namespace Gradjevinska_firma.Mapiranja
             Table("BEZBEDNOSNA_OBUKA");
 
             CompositeId()
-                .KeyReference(x => x.FizickoLice, "ISOSOBA")
+                .KeyReference(x => x.FizickoLice, "IDOSOBA")
                 .KeyProperty(x => x.NazivObuke, "BEZBEDNOSNA_OBUKA");
 
             Map(x => x.Datum, "DATUM");

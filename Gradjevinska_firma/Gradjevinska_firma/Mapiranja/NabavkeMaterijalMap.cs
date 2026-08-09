@@ -11,16 +11,16 @@ namespace Gradjevinska_firma.Mapiranja
     {
         public NabavkeMaterijalMap()
         {
-            Table("NabavkaMaterijal");
+            Table("NABAVKAMATERIJAL");
 
             Id(x => x.ID).GeneratedBy.TriggerIdentity();
 
-            References(x => x.Nabavke, "IDNABAVKE");
+            References(x => x.Nabavke, "IDNABAVKA");
             References(x => x.Materijal, "IDMATERIJAL");
 
             Map(x => x.Kolicina, "KOLICINA");
             Map(x => x.Cena, "CENA");
-            Map(x => x.Status_isporuke, "STATUSISPORUKE");
+            Map(x => x.Status_isporuke, "STATUS_ISPORUKE");
         }
     }
 }

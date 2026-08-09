@@ -12,15 +12,15 @@ namespace Gradjevinska_firma.Mapiranja
     {
         public NabavkaOpremaMap()
         {
-            Table("NabavkaOprema");
+            Table("NABAVKAOPREMA");
 
             Id(x => x.ID, "ID").GeneratedBy.TriggerIdentity();
 
             Map(x => x.Kolicina, "KOLICINA");
             Map(x => x.Cena, "CENA");
-            Map(x => x.Status_isporuke, "STATUSISPORUKE");
+            Map(x => x.Status_isporuke, "STATUS_ISPORUKE");
 
-            References(x => x.Nabavka, "IDNABAVKE");
+            References(x => x.Nabavka, "IDNABAVKA");
             References(x => x.Oprema, "IDOPREMA");
 
         }

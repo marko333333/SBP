@@ -11,7 +11,7 @@ namespace Gradjevinska_firma.Mapiranja
     {
         public SanacijaMap()
         {
-            Table("Sanacija");
+            Table("SANACIJA");
             KeyColumn("IDPROJEKTA");
         }
     }

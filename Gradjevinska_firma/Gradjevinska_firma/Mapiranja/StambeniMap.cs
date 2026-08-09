@@ -11,7 +11,7 @@ namespace Gradjevinska_firma.Mapiranja
     {
         public StambeniMap()
         {
-            Table("Stambeni");
+            Table("STAMBENI");
             KeyColumn("IDPROJEKTA");
 
             HasMany(x => x.Objekti).Table("ObjekatStambeni").KeyColumn("IDPROJEKTA").Cascade.AllDeleteOrphan().Inverse().LazyLoad();

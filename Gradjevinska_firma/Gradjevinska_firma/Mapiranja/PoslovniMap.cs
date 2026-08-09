@@ -11,7 +11,7 @@ namespace Gradjevinska_firma.Mapiranja
     {
         public PoslovniMap()
         {
-            Table("Poslovni");
+            Table("POSLOVNI");
             KeyColumn("IDPROJEKTA");
 
             HasMany(x => x.Objekti).Table("ObjekatPoslovni").KeyColumn("IDPROJEKTA").Cascade.AllDeleteOrphan().Inverse().LazyLoad();

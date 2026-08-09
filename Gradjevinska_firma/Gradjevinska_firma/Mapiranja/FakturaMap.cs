@@ -12,18 +12,18 @@ namespace Gradjevinska_firma.Mapiranja
     {
         public FakturaMap() 
         {
-            Table("Faktura");
+            Table("FAKTURA");
 
             Id(x => x.Br_fakture, "Br_fakture").GeneratedBy.TriggerIdentity();
 
             Map(x => x.Iznos, "IZNOS");
             Map(x => x.Valuta, "VALUTA");
-            Map(x => x.statusPlacanja, "STATUSPLACANJA");
+            Map(x => x.statusPlacanja, "STATUS_PLACANJA");
             Map(x => x.Datum, "DATUM");
 
             References(x => x.IDProjekta).Column("IDPROJEKTA");
-            References(x => x.PravnoLiceIzdaje).Column("IDPRAVNOGLICAIZDAJE");
-            References(x => x.PravnoLicePrima).Column("IDPRAVNOGLICAPRIMA");
+            References(x => x.PravnoLiceIzdaje).Column("IDOSOBAIZDAJE");
+            References(x => x.PravnoLicePrima).Column("IDOSOBAPRIMA");
         }
     }
 

@@ -12,7 +12,7 @@ namespace Gradjevinska_firma.Mapiranja
     {
         public KoristiMap()
         {
-            Table("Koristi");
+            Table("KORISTI");
             Id(x => x.ID, "ID").GeneratedBy.TriggerIdentity();
 
             References(x => x.Zadatak, "IDZADATAK");

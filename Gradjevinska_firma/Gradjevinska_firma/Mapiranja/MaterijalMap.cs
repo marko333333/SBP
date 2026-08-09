@@ -21,9 +21,9 @@ namespace Gradjevinska_firma.Mapiranja
             Map(x => x.Naziv, "NAZIV");
             Map(x => x.Tip, "TIP");
             Map(x => x.Cena, "CENA");
-            Map(x => x.JedinicaMere, "JEDINICAMERE");
+            Map(x => x.JedinicaMere, "JEDINICA_MERE");
             Map(x => x.Sertifikat, "SERTIFIKAT");
-            Map(x => x.TipMaterijala, "TIPMATERIJALA");
+            Map(x => x.Proizvodjac, "PROIZVODJAC");
 
 
             HasMany(x => x.Ugovori)

@@ -11,12 +11,12 @@ namespace Gradjevinska_firma.Mapiranja
     {
         public ObjekatStambeniMap() 
         {
-            Table("ObjekatStambeni");
+            Table("OBJEKAT_STAMBENI");
 
-            Id(x => x.Br_objekta, "BROBJEKTA").GeneratedBy.TriggerIdentity();
+            Id(x => x.Br_objekta, "BR_OBJEKTA").GeneratedBy.TriggerIdentity();
 
             Map(x => x.Spratnost, "SPRATNOST");
-            Map(x => x.Br_jedinica, "BRJEDINICA");
+            Map(x => x.Br_jedinica, "BR_JEDINICA");
 
             References(x => x.Stambeni, "IDPROJEKTA");
         }

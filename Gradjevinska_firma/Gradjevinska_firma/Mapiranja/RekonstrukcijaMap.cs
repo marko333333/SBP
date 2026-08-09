@@ -11,7 +11,7 @@ namespace Gradjevinska_firma.Mapiranja
     {
         public RekonstrukcijaMap()
         {
-            Table("Rekonstrukcija");
+            Table("REKONSTRUKCIJA");
             KeyColumn("IDPROJEKTA");
         }
     }

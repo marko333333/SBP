@@ -11,13 +11,13 @@ namespace Gradjevinska_firma.Mapiranja
     {
         public NabavkeMap() 
         {
-            Table("Nabavke");
+            Table("NABAVKE");
 
-            Id(x => x.Br_nabavke, "BRNABAVKE").GeneratedBy.TriggerIdentity();
+            Id(x => x.Br_nabavke, "BR_NABAVKE").GeneratedBy.TriggerIdentity();
 
             Map(x => x.Datum, "DATUM");
 
-            References(x=>x.Projekat, "IDPROJEKAT");
+            References(x=>x.Projekat, "IDPROJEKTA");
 
             HasMany(x => x.NabavkaMaterijal).KeyColumn("IDNABAVKE").LazyLoad().Cascade.All().Inverse();
 

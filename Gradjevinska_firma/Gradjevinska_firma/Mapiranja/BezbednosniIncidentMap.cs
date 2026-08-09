@@ -11,7 +11,7 @@ namespace Gradjevinska_firma.Mapiranja
     {
         public BezbednosniIncidentMap() 
         {
-            Table("BezbednosiIncident");
+            Table("BEZBEDNOSNI_INCIDENT");
 
             DiscriminateSubClassesOnColumn("TIP_INCIDENTA");
 
