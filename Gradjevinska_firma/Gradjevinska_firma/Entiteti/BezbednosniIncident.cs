@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Gradjevinska_firma.Entiteti
 {
-    public class BezbednosniIncident
+    public abstract class BezbednosniIncident
     {
         public virtual int ID { get; set; }
         public virtual string Opis { get; set; }
@@ -17,7 +17,12 @@ namespace Gradjevinska_firma.Entiteti
         public virtual string Tip_incidenta { get; set; }
         public virtual Projekat Projekat { get; set; }
         public virtual Osoba Osoba { get; set; }
-        public virtual IList<PoslediceIncidenta> PoslediceIncidenta { get; set; }
-        public virtual IList<PreduzeteMereIncidenta> PreduzeteMereIncidenta { get; set; }
+        //public virtual IList<PoslediceIncidenta> PoslediceIncidenta { get; set; }
+        //public virtual IList<PreduzeteMereIncidenta> PreduzeteMereIncidenta { get; set; }
     }
+    public class PovredaNaRadu : BezbednosniIncident { }
+    public class KvarOpreme : BezbednosniIncident { }
+    public class NepostovanjeProcedura : BezbednosniIncident { }
+    public class OpasnaSituacija : BezbednosniIncident { }
+    public class EkoloskiIncident : BezbednosniIncident { }
 }

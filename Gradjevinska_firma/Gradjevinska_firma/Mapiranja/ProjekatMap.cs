@@ -35,4 +35,14 @@ namespace Gradjevinska_firma.Mapiranja
             HasMany(x=>x.BezbednosniIncidenti).KeyColumn("IDBEZBEDNOSNOGINCIDENTA").LazyLoad().Cascade.All().Inverse();
         }
     }
+
+    class SanacijaMap : SubclassMap<Sanacija>
+    {
+        public SanacijaMap()
+        {
+            Table("Sanacija");
+            KeyColumn("IDPROJEKTA");
+        }
+    }
+
 }

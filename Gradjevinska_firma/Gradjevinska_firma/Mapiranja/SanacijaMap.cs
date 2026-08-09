@@ -7,9 +7,9 @@ using FluentNHibernate.Mapping;
 using Gradjevinska_firma.Entiteti;
 namespace Gradjevinska_firma.Mapiranja
 {
-    public class SanacijaMap :SubclassMap<Sanacija>
+    public class SanacijaMap : SubclassMap<Sanacija>
     {
-      public SanacijaMap()
+        public SanacijaMap()
         {
             Table("Sanacija");
             KeyColumn("IDPROJEKTA");

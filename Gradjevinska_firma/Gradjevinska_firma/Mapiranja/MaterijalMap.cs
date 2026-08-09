@@ -14,6 +14,8 @@ namespace Gradjevinska_firma.Mapiranja
 
             Table("Materijal");
 
+            DiscriminateSubClassesOnColumn("TIP_MATERIJALA");
+
             Id(x => x.ID, "ID").GeneratedBy.TriggerIdentity();
 
             Map(x => x.Naziv, "NAZIV");
@@ -33,6 +35,41 @@ namespace Gradjevinska_firma.Mapiranja
             HasMany(x => x.Koristi).KeyColumn("IDMATERIJAL").LazyLoad().Cascade.All().Inverse();
 
             HasMany(x=>x.NabavkaMaterijal).KeyColumn("IDMATERIJAL").LazyLoad().Cascade.All().Inverse();
+        }
+    }
+    class ZastitniMap : SubclassMap<Zastitni>
+    {
+        public ZastitniMap()
+        {
+            DiscriminatorValue("ZASTITNI");
+        }
+    }
+    class MasinskiMap : SubclassMap<Masinski>
+    {
+        public MasinskiMap()
+        {
+            DiscriminatorValue("MASINSKI");
+        }
+    }
+    class GradjevinskiMap : SubclassMap<Gradjevinski>
+    {
+        public GradjevinskiMap()
+        {
+            DiscriminatorValue("GRADJEVINSKI");
+        }
+    }
+    class ElektroMap : SubclassMap<Elektro>
+    {
+        public ElektroMap()
+        {
+            DiscriminatorValue("ELEKTRO");
+        }
+    }
+    class ZavrsniMap : SubclassMap<Zavrsni>
+    {
+        public ZavrsniMap()
+        {
+            DiscriminatorValue("ZAVRSNI");
         }
     }
 }

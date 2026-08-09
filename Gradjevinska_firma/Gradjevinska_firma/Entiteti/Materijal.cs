@@ -23,7 +23,14 @@ namespace Gradjevinska_firma.Entiteti
         public Materijal()
         {
             Ugovori = new List<Ugovor>();
+            Koristi = new List<Koristi>();
+            NabavkaMaterijal = new List<NabavkaMaterijal>();
         }
 
     }
+        public class Zastitni : Materijal { }
+        public class Masinski : Materijal { }
+        public class Gradjevinski : Materijal { }
+        public class Elektro : Materijal { }
+        public class Zavrsni : Materijal { }
 }
