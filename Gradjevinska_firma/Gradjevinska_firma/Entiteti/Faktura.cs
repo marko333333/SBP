@@ -15,5 +15,8 @@ namespace Gradjevinska_firma.Entiteti
         public virtual DateTime? Datum { get; set; }
 
         public virtual Projekat? IDProjekta { get; set; }
+        public virtual PravnaLica PravnoLiceIzdaje { get; set; }
+        public virtual PravnaLica PravnoLicePrima { get; set; }
+
     }
 }

@@ -23,6 +23,18 @@ namespace Gradjevinska_firma.Mapiranja
             Map(x => x.FlagP, "FLAGP");
             Map(x => x.FlagD, "FLAGD");
             Map(x => x.FlagN, "FLAGN");
+
+            HasMany(x => x.IzdateFakture)
+           .KeyColumn("IDOSOBE_IZDAJE")
+           .Cascade.AllDeleteOrphan()
+           .Inverse()
+           .LazyLoad();
+
+            HasMany(x => x.PrimljeneFakture)
+                .KeyColumn("IDOSOBE_PRIMA")
+                .Cascade.AllDeleteOrphan()
+                .Inverse()
+                .LazyLoad();
         }
     }
 }

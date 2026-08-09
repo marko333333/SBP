@@ -22,6 +22,8 @@ namespace Gradjevinska_firma.Mapiranja
             Map(x => x.Datum, "DATUM");
 
             References(x => x.IDProjekta).Column("IDPROJEKTA");
+            References(x => x.PravnoLiceIzdaje).Column("IDPRAVNOGLICAIZDAJE");
+            References(x => x.PravnoLicePrima).Column("IDPRAVNOGLICAPRIMA");
         }
     }
 
