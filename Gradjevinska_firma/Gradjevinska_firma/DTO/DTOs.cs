@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,7 +11,7 @@ namespace Gradjevinska_firma.DTO
 
     #region Osoba
 
-    /* public class OsobaBasic
+     public class OsobaBasic
      {
          public int Id;
          public long Jmbg;
@@ -22,7 +23,7 @@ namespace Gradjevinska_firma.DTO
          public virtual IList<LicencaBasic> Licence { get; set; }
          public virtual IList<AngazovanBasic> Angazovanja { get; set; }
          public virtual IList<ImaUgovornuStranuBasic> UgovorneStrane { get; set; }
-         public virtual IList<BezbednosniIncident> BezbednosniIncidenti { get; set; }
+         public virtual IList<BezbednosniIncidentBasic> BezbednosniIncidenti { get; set; }
 
          public OsobaBasic()
          {
@@ -30,6 +31,7 @@ namespace Gradjevinska_firma.DTO
              Licence = new List<LicencaBasic>();
              Angazovanja = new List<AngazovanBasic>();
              UgovorneStrane = new List<ImaUgovornuStranuBasic>();
+            BezbednosniIncidenti = new List<BezbednosniIncidentBasic>();
          }
 
          public OsobaBasic(int id, long jmbg, string ime,
@@ -43,7 +45,7 @@ namespace Gradjevinska_firma.DTO
              Struka = struka;
          }
      }
-    */
+    
     public class OsobaPregled
     {
         public int Id;
@@ -71,7 +73,7 @@ namespace Gradjevinska_firma.DTO
     }
 
     #region FizickoLice
-/*
+
     public class FizickoLiceBasic : OsobaBasic
     {
         public bool FlagBK;
@@ -113,7 +115,7 @@ namespace Gradjevinska_firma.DTO
             FlagAO = flagAO;
         }
     }
-*/
+
     public class FizickoLicePregled : OsobaPregled
     {
         public bool FlagBK;
@@ -151,7 +153,7 @@ namespace Gradjevinska_firma.DTO
 
     #region PravnaLica
 
-    /*
+    
     public class PravnaLicaBasic : OsobaBasic
     {
         public bool FlagPB;
@@ -161,8 +163,12 @@ namespace Gradjevinska_firma.DTO
         public bool FlagD;
         public bool FlagN;
 
+        public virtual IList<FakturaBasic> IzdateFakture { get; set; }
+        public virtual IList<FakturaBasic> PrimljeneFakture { get; set; }
         public PravnaLicaBasic()
         {
+            IzdateFakture = new List<FakturaBasic>();
+            PrimljeneFakture = new List<FakturaBasic>();
         }
 
         public PravnaLicaBasic(int id,long jmbg,string ime,string prezime,DateTime datumRodjenja,string struka,bool flagPB,bool flagInve,bool flagIzv,bool flagP,bool flagD,bool flagN)
@@ -176,7 +182,7 @@ namespace Gradjevinska_firma.DTO
             FlagN = flagN;
         }
     }
-    */
+    
     public class PravnaLicaPregled : OsobaPregled
     {
         public bool FlagPB;
@@ -205,7 +211,6 @@ namespace Gradjevinska_firma.DTO
 
     #endregion
     
-    /*
     //proveri
     #region Kontakt
     public class KontaktBasic
@@ -223,13 +228,15 @@ namespace Gradjevinska_firma.DTO
     }
     public class KontaktPregled
     {
+        public int Id;
         public int IdOsoba;
         public string Broj;
 
         public KontaktPregled() { }
 
-        public KontaktPregled(int osoba, string broj)
+        public KontaktPregled(int id,int osoba, string broj)
         {
+            Id = id;
             IdOsoba = osoba;
             Broj = broj;
         }
@@ -240,24 +247,28 @@ namespace Gradjevinska_firma.DTO
 
     public class LicencaBasic
     {
+        public int Id;
         public int IdOsoba;
         public string NazivLicence;
 
         public LicencaBasic() { }
-        public LicencaBasic(int osoba, string nazivLicence)
+        public LicencaBasic(int id,int osoba, string nazivLicence)
         {
+            Id = Id;
             IdOsoba = osoba;
             NazivLicence = nazivLicence;
         }
     }
     public class LicencaPregled
     {
+        public int Id;
         public int IdOsoba;
         public string NazivLicence;
 
         public LicencaPregled() { }
-        public LicencaPregled(int osoba, string nazivLicence)
+        public LicencaPregled(int id,int osoba, string nazivLicence)
         {
+            Id = id;
             IdOsoba = osoba;
             NazivLicence = nazivLicence;
         }
@@ -631,14 +642,16 @@ namespace Gradjevinska_firma.DTO
 
     public class BezbednosnaObukaBasic
     {
+        public int Id;
         public int IdFizickoLice;
         public string NazivObuke;
         public DateTime Datum;
         public BezbednosnaObukaBasic()
         {
         }
-        public BezbednosnaObukaBasic(int idfizickoLice,string nazivObuke,DateTime datum)
+        public BezbednosnaObukaBasic(int id,int idfizickoLice,string nazivObuke,DateTime datum)
         {
+            Id = id;
             IdFizickoLice = idfizickoLice;
             NazivObuke = nazivObuke;
             Datum = datum;
@@ -646,6 +659,7 @@ namespace Gradjevinska_firma.DTO
     }
     public class BezbednosnaObukaPregled
     {
+        public int Id;
         public int IdFizickoLice;
         public string NazivObuke;
         public DateTime Datum;
@@ -654,8 +668,9 @@ namespace Gradjevinska_firma.DTO
         {
         }
 
-        public BezbednosnaObukaPregled(int idfizickoLice,string nazivObuke,DateTime datum)
+        public BezbednosnaObukaPregled(int id,int idfizickoLice,string nazivObuke,DateTime datum)
         {
+            Id = id;
             IdFizickoLice = idfizickoLice;
             NazivObuke = nazivObuke;
             Datum = datum;
@@ -667,14 +682,16 @@ namespace Gradjevinska_firma.DTO
 
     public class LekarskiPregledBasic
     {
+        public int Id;
         public int IdFizickoLice;
         public string Rezultat;
         public DateTime Datum;
         public LekarskiPregledBasic()
         {
         }
-        public LekarskiPregledBasic(int idfizickoLice,string rezultat,DateTime datum)
+        public LekarskiPregledBasic(int id,int idfizickoLice,string rezultat,DateTime datum)
         {
+            Id = id;
             IdFizickoLice = idfizickoLice;
             Rezultat = rezultat;
             Datum = datum;
@@ -683,6 +700,7 @@ namespace Gradjevinska_firma.DTO
 
     public class LekarskiPregledPregled
     {
+        public int Id;
         public int IdFizickoLice;
         public string Rezultat;
         public DateTime Datum;
@@ -691,7 +709,7 @@ namespace Gradjevinska_firma.DTO
         {
         }
 
-        public LekarskiPregledPregled(int idfizickoLice,string rezultat,DateTime datum)
+        public LekarskiPregledPregled(int id,int idfizickoLice,string rezultat,DateTime datum)
         {
             IdFizickoLice = idfizickoLice;
             Rezultat = rezultat;
@@ -873,6 +891,7 @@ namespace Gradjevinska_firma.DTO
 
     public class StavkaKontroleBasic
     {
+        public int Id;
         public KontrolaKvalitetaBasic Kontrola;
         public int RedniBrojStavke;
         public string Uzorci;
@@ -885,8 +904,9 @@ namespace Gradjevinska_firma.DTO
         {
         }
 
-        public StavkaKontroleBasic(KontrolaKvalitetaBasic kontrola,int redniBrojStavke,string uzorci,string labNalazi,string rezultatiIspitivanja,string korektivneMere,DateTime? rokZaOtklanjanje)
+        public StavkaKontroleBasic(int id,KontrolaKvalitetaBasic kontrola,int redniBrojStavke,string uzorci,string labNalazi,string rezultatiIspitivanja,string korektivneMere,DateTime? rokZaOtklanjanje)
         {
+            Id = id;
             Kontrola = kontrola;
             RedniBrojStavke = redniBrojStavke;
             Uzorci = uzorci;
@@ -898,7 +918,8 @@ namespace Gradjevinska_firma.DTO
     }
 
     public class StavkaKontrolePregled
-    {
+    {   
+        public int Id;
         public KontrolaKvalitetaPregled Kontrola;
         public int RedniBrojStavke;
         public string Uzorci;
@@ -911,8 +932,9 @@ namespace Gradjevinska_firma.DTO
         {
         }
 
-        public StavkaKontrolePregled(KontrolaKvalitetaPregled kontrola,int redniBrojStavke,string uzorci,string labNalazi,string rezultatiIspitivanja,string korektivneMere,DateTime? rokZaOtklanjanje)
-        {
+        public StavkaKontrolePregled(int id, KontrolaKvalitetaPregled kontrola,int redniBrojStavke,string uzorci,string labNalazi,string rezultatiIspitivanja,string korektivneMere,DateTime? rokZaOtklanjanje)
+        {   
+            Id = id;
             Kontrola = kontrola;
             RedniBrojStavke = redniBrojStavke;
             Uzorci = uzorci;
@@ -986,6 +1008,7 @@ namespace Gradjevinska_firma.DTO
 
     public class PosebnaKlauzulaBasic
     {
+        public int Id;
         public int IdUgovor;
         public string TekstKlauzule;
 
@@ -993,8 +1016,9 @@ namespace Gradjevinska_firma.DTO
         {
         }
 
-        public PosebnaKlauzulaBasic(int idUgovor, string tekstKlauzule)
+        public PosebnaKlauzulaBasic(int id,int idUgovor, string tekstKlauzule)
         {
+            Id = id;
             IdUgovor = idUgovor;
             TekstKlauzule = tekstKlauzule;
         }
@@ -1002,6 +1026,7 @@ namespace Gradjevinska_firma.DTO
 
     public class PosebnaKlauzulaPregled
     {
+        public int Id;
         public int IdUgovor;
         public string TekstKlauzule;
 
@@ -1009,8 +1034,9 @@ namespace Gradjevinska_firma.DTO
         {
         }
 
-        public PosebnaKlauzulaPregled(int idUgovor, string tekstKlauzule)
+        public PosebnaKlauzulaPregled(int id,int idUgovor, string tekstKlauzule)
         {
+            Id = id;
             IdUgovor = idUgovor;
             TekstKlauzule = tekstKlauzule;
         }
@@ -1065,6 +1091,7 @@ namespace Gradjevinska_firma.DTO
     #region SertifikatSpecOpreme
     public class SertifikatSpecOpremeBasic
     {
+        public int Id;
         public int IdFizickoLice;
         public string Sertifikat;
 
@@ -1072,8 +1099,9 @@ namespace Gradjevinska_firma.DTO
         {
 
         }
-        public SertifikatSpecOpremeBasic(int idFizickoLice, string sertifikat)
+        public SertifikatSpecOpremeBasic(int id,int idFizickoLice, string sertifikat)
         {
+            Id = id;
             IdFizickoLice = idFizickoLice;
             Sertifikat = sertifikat;
         }
@@ -1081,6 +1109,7 @@ namespace Gradjevinska_firma.DTO
 
     public class SertifikatSpecOpremePregled
     {
+        public int Id;
         public int IdFizickoLice;
         public string Sertifikat;
 
@@ -1088,8 +1117,9 @@ namespace Gradjevinska_firma.DTO
         {
 
         }
-        public SertifikatSpecOpremePregled(int idFizickoLice, string sertifikat)
+        public SertifikatSpecOpremePregled(int id,int idFizickoLice, string sertifikat)
         {
+            Id = Id;
             IdFizickoLice = idFizickoLice;
             Sertifikat = sertifikat;
         }
@@ -1102,6 +1132,7 @@ namespace Gradjevinska_firma.DTO
 
     public class ZastitnaOpremaBasic
     {
+        public int Id;
         public int IdFizickoLice;
         public string NazivOpreme;
 
@@ -1109,8 +1140,9 @@ namespace Gradjevinska_firma.DTO
         {
 
         }
-        public ZastitnaOpremaBasic(int idFizickoLice, string nazivOpreme)
+        public ZastitnaOpremaBasic(int id,int idFizickoLice, string nazivOpreme)
         {
+            Id = Id;
             IdFizickoLice = idFizickoLice;
             NazivOpreme = nazivOpreme;
         }
@@ -1118,6 +1150,7 @@ namespace Gradjevinska_firma.DTO
 
     public class ZastitnaOpremaPregled
     {
+        public int Id;
         public int IdFizickoLice;
         public string NazivOpreme;
 
@@ -1125,14 +1158,15 @@ namespace Gradjevinska_firma.DTO
         {
 
         }
-        public ZastitnaOpremaPregled(int idFizickoLice, string nazivOpreme)
+        public ZastitnaOpremaPregled(int id,int idFizickoLice, string nazivOpreme)
         {
+            Id = id;
             IdFizickoLice = idFizickoLice;
             NazivOpreme = nazivOpreme;
         }
     }
 
     #endregion
-    */
+    
 }
     
