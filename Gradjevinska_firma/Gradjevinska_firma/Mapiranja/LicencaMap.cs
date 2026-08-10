@@ -13,10 +13,13 @@ namespace Gradjevinska_firma.Mapiranja
         public LicencaMap() {
 
             Table("LICENCA");
-            CompositeId()
-                .KeyReference(x => x.Osoba, "IDOSOBE")
-                .KeyProperty(x => x.NazivLicence, "LICENCA");
-        
+
+            Id(x => x.Id, "ID").GeneratedBy.TriggerIdentity();
+
+            References(x => x.Osoba, "IDOSOBE");
+
+            Map(x => x.NazivLicence, "LICENCA");
+
         }
 
     }

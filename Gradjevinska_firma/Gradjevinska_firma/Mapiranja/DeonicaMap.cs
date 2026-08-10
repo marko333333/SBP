@@ -13,7 +13,10 @@ namespace Gradjevinska_firma.Mapiranja
         {
             Table("DEONICA");
 
-            Id(x => x.Br_deonice, "BRDEONICE").GeneratedBy.TriggerIdentity();
+            Id(x => x.Id, "ID").GeneratedBy.TriggerIdentity();
+
+            Map(x => x.Br_deonice, "BRDEONICE");
+
             References(x => x.Infrastruktura, "IDPROJEKTA");
         }
     }

@@ -13,8 +13,9 @@ namespace Gradjevinska_firma.Mapiranja
         {
             Table("OBJEKAT_POSLOVNI");
 
-            Id(x => x.Br_objekta, "BR_OBJEKTA").GeneratedBy.TriggerIdentity();
+            Id(x => x.Id, "ID").GeneratedBy.TriggerIdentity();
 
+            Map(x => x.Br_objekta, "BR_OBJEKTA");
             Map(x => x.Spratnost, "SPRATNOST");
             Map(x => x.Br_jedinica, "BR_JEDINICA");
 

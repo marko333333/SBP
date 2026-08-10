@@ -8,7 +8,7 @@ namespace Gradjevinska_firma.Entiteti
 {
     public class Nabavke
     {
-        public virtual int Br_nabavke { get; set; }
+        public virtual int Br_nabavke { get; protected set; }
         public virtual DateTime Datum { get; set; }
         public virtual Projekat Projekat { get; set; }
         public virtual IList<NabavkaMaterijal> NabavkaMaterijal { get; set; }

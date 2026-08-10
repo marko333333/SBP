@@ -7,40 +7,43 @@ using System.Threading.Tasks;
 
 namespace Gradjevinska_firma.DTO
 {
+
     #region Osoba
 
-    public class OsobaBasic
-    {
-        public int Id;
-        public long Jmbg;
-        public string Ime;
-        public string Prezime;
-        public DateTime DatumRodjenja;
-        public string Struka;
-        public virtual IList<KontaktBasic> Kontakti { get; set; }
-        public virtual IList<LicencaBasic> Licence { get; set; }
-        public virtual IList<AngazovanBasic> Angazovanja { get; set; }
-        public virtual IList<ImaUgovornuStranuBasic> UgovorneStrane { get; set; }
+    /* public class OsobaBasic
+     {
+         public int Id;
+         public long Jmbg;
+         public string Ime;
+         public string Prezime;
+         public DateTime DatumRodjenja;
+         public string Struka;
+         public virtual IList<KontaktBasic> Kontakti { get; set; }
+         public virtual IList<LicencaBasic> Licence { get; set; }
+         public virtual IList<AngazovanBasic> Angazovanja { get; set; }
+         public virtual IList<ImaUgovornuStranuBasic> UgovorneStrane { get; set; }
+         public virtual IList<BezbednosniIncident> BezbednosniIncidenti { get; set; }
 
-        public OsobaBasic()
-        {
-            Kontakti = new List<KontaktBasic>();
-            Licence = new List<LicencaBasic>();
-            Angazovanja = new List<AngazovanBasic>();
-            UgovorneStrane = new List<ImaUgovornuStranuBasic>();
-        }
+         public OsobaBasic()
+         {
+             Kontakti = new List<KontaktBasic>();
+             Licence = new List<LicencaBasic>();
+             Angazovanja = new List<AngazovanBasic>();
+             UgovorneStrane = new List<ImaUgovornuStranuBasic>();
+         }
 
-        public OsobaBasic(int id, long jmbg, string ime,
-            string prezime, DateTime datumRodjenja, string struka) : this()
-        {
-            Id = id;
-            Jmbg = jmbg;
-            Ime = ime;
-            Prezime = prezime;
-            DatumRodjenja = datumRodjenja;
-            Struka = struka;
-        }
-    }
+         public OsobaBasic(int id, long jmbg, string ime,
+             string prezime, DateTime datumRodjenja, string struka) : this()
+         {
+             Id = id;
+             Jmbg = jmbg;
+             Ime = ime;
+             Prezime = prezime;
+             DatumRodjenja = datumRodjenja;
+             Struka = struka;
+         }
+     }
+    */
     public class OsobaPregled
     {
         public int Id;
@@ -68,7 +71,7 @@ namespace Gradjevinska_firma.DTO
     }
 
     #region FizickoLice
-
+/*
     public class FizickoLiceBasic : OsobaBasic
     {
         public bool FlagBK;
@@ -110,7 +113,7 @@ namespace Gradjevinska_firma.DTO
             FlagAO = flagAO;
         }
     }
-
+*/
     public class FizickoLicePregled : OsobaPregled
     {
         public bool FlagBK;
@@ -147,6 +150,8 @@ namespace Gradjevinska_firma.DTO
     #endregion
 
     #region PravnaLica
+
+    /*
     public class PravnaLicaBasic : OsobaBasic
     {
         public bool FlagPB;
@@ -171,7 +176,7 @@ namespace Gradjevinska_firma.DTO
             FlagN = flagN;
         }
     }
-
+    */
     public class PravnaLicaPregled : OsobaPregled
     {
         public bool FlagPB;
@@ -199,7 +204,8 @@ namespace Gradjevinska_firma.DTO
     #endregion
 
     #endregion
-
+    
+    /*
     //proveri
     #region Kontakt
     public class KontaktBasic
@@ -459,7 +465,7 @@ namespace Gradjevinska_firma.DTO
             UgovorneStrane = new List<ImaUgovornuStranuBasic>();
             PosebneKlauzule = new List<PosebnaKlauzulaBasic>();
         }
-        public UgovorBasic(int id, DateTime datumPotpisivanja, decimal vrednost, string predmetUgovora, string valuta, DateTime rok, Materijal materijal, Projekat projekat, Oprema oprema, IList<ImaUgovornuStranuBasic> ugovorneStrane, IList<PosebnaKlauzulaBasic> posebneKlauzule)
+        public UgovorBasic(int id, DateTime datumPotpisivanja, decimal vrednost, string predmetUgovora, string valuta, DateTime rok, MaterijalBasic materijal, ProjekatBasic projekat, OpremaBasic oprema)
         {
             Id = id;
             DatumPotpisivanja = datumPotpisivanja;
@@ -488,7 +494,7 @@ namespace Gradjevinska_firma.DTO
         public UgovorPregled()
         {
         }
-        public UgovorPregled(int id, DateTime datumPotpisivanja, decimal vrednost, string predmetUgovora, string valuta, DateTime rok, Materijal materijal, Projekat projekat, Oprema oprema, IList<ImaUgovornuStranuBasic> ugovorneStrane, IList<PosebnaKlauzulaBasic> posebneKlauzule)
+        public UgovorPregled(int id, DateTime datumPotpisivanja, decimal vrednost, string predmetUgovora, string valuta, DateTime rok, MaterijalPregled materijal, ProjekatPregled projekat, OpremaPregled oprema)
         {
             Id = id;
             DatumPotpisivanja = datumPotpisivanja;
@@ -1127,4 +1133,6 @@ namespace Gradjevinska_firma.DTO
     }
 
     #endregion
+    */
 }
+    

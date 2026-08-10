@@ -47,7 +47,10 @@ namespace Gradjevinska_firma.Data
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex + Environment.NewLine +
+        Environment.NewLine +
+        "INNER EXCEPTION:" + Environment.NewLine +
+        ex.InnerException?.ToString());
                 return null;
 
                 throw;

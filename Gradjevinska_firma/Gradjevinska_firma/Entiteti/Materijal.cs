@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Gradjevinska_firma.Entiteti
 {
-    public class Materijal
+    public abstract class Materijal
     {
         public virtual int ID { get; set; }
         public virtual string? Naziv { get; set; }

@@ -13,7 +13,7 @@ namespace Gradjevinska_firma.Mapiranja
     {
         public PravnaLicaMap()
         {
-            Table("PRAVNA_LICA");
+            Table("PRAVNALICA");
 
             KeyColumn("IDOSOBA");
 
@@ -25,13 +25,13 @@ namespace Gradjevinska_firma.Mapiranja
             Map(x => x.FlagN, "FLAGN");
 
             HasMany(x => x.IzdateFakture)
-           .KeyColumn("IDOSOBE_IZDAJE")
+           .KeyColumn("IDOSOBAIZDAJE")
            .Cascade.AllDeleteOrphan()
            .Inverse()
            .LazyLoad();
 
             HasMany(x => x.PrimljeneFakture)
-                .KeyColumn("IDOSOBE_PRIMA")
+                .KeyColumn("IDOSOBAPRIMA")
                 .Cascade.AllDeleteOrphan()
                 .Inverse()
                 .LazyLoad();
