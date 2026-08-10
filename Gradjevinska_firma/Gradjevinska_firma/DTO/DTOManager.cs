@@ -27,14 +27,41 @@ namespace Gradjevinska_firma.DTO
                         o.Id, o.Jmbg, o.Ime, o.Prezime, o.DatumRodjenja, o.Struka));
                 }
                 s.Close();
-                
+
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.ToString());
             }
             return osobe;
         }
-        #endregion
 
+        public static OsobaBasic vratiOsobu(int id)
+        {
+            OsobaBasic osoba = new OsobaBasic();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Osoba o = s.Load<Osoba>(id);
+
+                osoba = new OsobaBasic(
+                    o.Id,
+                    o.Jmbg,
+                    o.Ime,
+                    o.Prezime,
+                    o.DatumRodjenja,
+                    o.Struka);
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return osoba;
+        }
+        #endregion
     }
 }
