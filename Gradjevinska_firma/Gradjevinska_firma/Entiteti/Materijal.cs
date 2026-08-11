@@ -10,7 +10,6 @@ namespace Gradjevinska_firma.Entiteti
     {
         public virtual int ID { get; set; }
         public virtual string Naziv { get; set; }
-        public virtual string Tip { get; set; }
         public virtual int Cena { get; set; }
         public virtual string Proizvodjac { get; set; }
         public virtual string JedinicaMere { get; set; }

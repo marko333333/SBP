@@ -19,7 +19,6 @@ namespace Gradjevinska_firma.Mapiranja
             Id(x => x.ID, "ID").GeneratedBy.TriggerIdentity();
 
             Map(x => x.Naziv, "NAZIV");
-            Map(x => x.Tip, "TIP");
             Map(x => x.Cena, "CENA");
             Map(x => x.JedinicaMere, "JEDINICA_MERE");
             Map(x => x.Sertifikat, "SERTIFIKAT");

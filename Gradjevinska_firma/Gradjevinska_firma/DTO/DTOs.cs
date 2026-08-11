@@ -1229,39 +1229,226 @@ namespace Gradjevinska_firma.DTO
     #endregion
 
     #region Faktura
-
-    public class FakturaBasic()
+    public class FakturaBasic
     {
+        public int Br_fakture;
+        public int Iznos;
+        public string Valuta;
+        public bool StatusPlacanja;
+        public DateTime Datum;
+        public ProjekatBasic Projekat;
+        public PravnaLicaBasic PravnoLiceIzdaje;
+        public PravnaLicaBasic PravnoLicePrima;
 
+        public FakturaBasic() { }
+
+        public FakturaBasic(int br_fakture, int iznos, string valuta, bool statusPlacanja, DateTime datum, ProjekatBasic projekat, PravnaLicaBasic pravnoLiceIzdaje, PravnaLicaBasic pravnoLicePrima)
+        {
+            Br_fakture = br_fakture;
+            Iznos = iznos;
+            Valuta = valuta;
+            StatusPlacanja = statusPlacanja;
+            Datum = datum;
+            Projekat = projekat;
+            PravnoLiceIzdaje = pravnoLiceIzdaje;
+            PravnoLicePrima = pravnoLicePrima;
+        }
     }
 
+    public class FakturaPregled
+    {
+        public int Br_fakture;
+        public int Iznos;
+        public string Valuta;
+        public bool StatusPlacanja;
+        public DateTime Datum;
+        public ProjekatPregled Projekat;
+        public PravnaLicaPregled PravnoLiceIzdaje;
+        public PravnaLicaPregled PravnoLicePrima;
+
+        public FakturaPregled() { }
+
+        public FakturaPregled(int br_fakture, int iznos, string valuta, bool statusPlacanja, DateTime datum, ProjekatPregled projekat, PravnaLicaPregled pravnoLiceIzdaje, PravnaLicaPregled pravnoLicePrima)
+        {
+            Br_fakture = br_fakture;
+            Iznos = iznos;
+            Valuta = valuta;
+            StatusPlacanja = statusPlacanja;
+            Datum = datum;
+            Projekat = projekat;
+            PravnoLiceIzdaje = pravnoLiceIzdaje;
+            PravnoLicePrima = pravnoLicePrima;
+        }
+    }
     #endregion
 
     #region Projekat
-
-    public class ProjekatBasic()
+    public class ProjekatBasic
     {
+        public int ID;
+        public string Naziv;
+        public string Opis;
+        public string Lokacija;
+        public DateTime Datum_pocetka;
+        public int Budzet;
+        public bool Status;
+        public DateTime Planirani_zavrsetak;
+        public DateTime Stvarni_zavrsetak;
+        public virtual IList<UgovorBasic> Ugovori { get; set; }
+        public virtual IList<BezbednosnaObukaBasic> BezbednosniIncidenti { get; set; }
 
+        public ProjekatBasic() 
+        {
+            Ugovori = new List<UgovorBasic>();
+            BezbednosniIncidenti = new List<BezbednosnaObukaBasic>();
+        }
+
+        public ProjekatBasic(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int budzet, bool status, DateTime planirani_zavrsetak, DateTime stvarni_zavrsetak)
+        {
+            ID = iD;
+            Naziv = naziv;
+            Opis = opis;
+            Lokacija = lokacija;
+            Datum_pocetka = datum_pocetka;
+            Budzet = budzet;
+            Status = status;
+            Planirani_zavrsetak = planirani_zavrsetak;
+            Stvarni_zavrsetak = stvarni_zavrsetak;
+        }
     }
-
-    public class ProjekatPregled()
+    public class ProjekatPregled
     {
+        public int ID;
+        public string Naziv;
+        public string Opis;
+        public string Lokacija;
+        public DateTime Datum_pocetka;
+        public int Budzet;
+        public bool Status;
+        public DateTime Planirani_zavrsetak;
+        public DateTime Stvarni_zavrsetak;
 
+        public ProjekatPregled() { }
+
+        public ProjekatPregled(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int budzet, bool status, DateTime planirani_zavrsetak, DateTime stvarni_zavrsetak)
+        {
+            ID = iD;
+            Naziv = naziv;
+            Opis = opis;
+            Lokacija = lokacija;
+            Datum_pocetka = datum_pocetka;
+            Budzet = budzet;
+            Status = status;
+            Planirani_zavrsetak = planirani_zavrsetak;
+            Stvarni_zavrsetak = stvarni_zavrsetak;
+        }
     }
 
     #endregion
 
     #region Materijal
 
-    public class MaterijalBasic()
+    public class MaterijalBasic
     {
+        public int ID;
+        public string Naziv;
+        public string Tip;
+        public int Cena;
+        public string Proizvodjac;
+        public string JedinicaMere;
+        public string Sertifikat;
+        public string TipMaterijala;
+        public virtual IList<UgovorBasic> Ugovori { get; set; }
+        public virtual IList<KoristiBasic> Koristi { get; set; }
+        public virtual IList<NabavkaMaterijalBasic> NabavkaMaterijal { get; set; }
 
+        public MaterijalBasic()
+        {
+            Ugovori = new List<UgovorBasic>();
+            Koristi = new List<KoristiBasic>();
+            NabavkaMaterijal = new List<NabavkaMaterijalBasic>();
+        }
+
+        public MaterijalBasic(int iD, string naziv, string tip, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala)
+        {
+            ID = iD;
+            Naziv = naziv;
+            Tip = tip;
+            Cena = cena;
+            Proizvodjac = proizvodjac;
+            JedinicaMere = jedinicaMere;
+            Sertifikat = sertifikat;
+            TipMaterijala = tipMaterijala;
+        }
     }
-    public class MaterijalPregled()
+    public class MaterijalPregled
     {
+        public int ID;
+        public string Naziv;
+        public string Tip;
+        public int Cena;
+        public string Proizvodjac;
+        public string JedinicaMere;
+        public string Sertifikat;
+        public string TipMaterijala;
 
+        public MaterijalPregled() { }
+        public MaterijalPregled(int iD, string naziv, string tip, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala)
+        {
+            ID = iD;
+            Naziv = naziv;
+            Tip = tip;
+            Cena = cena;
+            Proizvodjac = proizvodjac;
+            JedinicaMere = jedinicaMere;
+            Sertifikat = sertifikat;
+            TipMaterijala = tipMaterijala;
+        }
     }
 
-    #endregion 
+    #endregion
+
+    #region Koristi
+    public class KoristiBasic
+    {
+        public int ID;
+        public int Kolicina;
+        public ZadatakBasic Zadatak;
+        public MaterijalBasic Materijal;
+
+        public KoristiBasic() { }
+
+        public KoristiBasic(int iD, int kolicina, ZadatakBasic zadatak, MaterijalBasic materijal)
+        {
+            ID = iD;
+            Kolicina = kolicina;
+            Zadatak = zadatak;
+            Materijal = materijal;
+        }
+    }
+
+    public class KoristiPregled
+    {
+        public int ID;
+        public int Kolicina;
+        public ZadatakPregled Zadatak;
+        public MaterijalPregled Materijal;
+
+        public KoristiPregled() { }
+
+        public KoristiPregled(int iD, int kolicina, ZadatakPregled zadatak, MaterijalPregled materijal)
+        {
+            ID = iD;
+            Kolicina = kolicina;
+            Zadatak = zadatak;
+            Materijal = materijal;
+        }
+    }
+
+    #endregion
+
+    #region NabavkaMaterijal
+    public class NabavkaMaterijalBasic() { }
+    #endregion
 }
 
