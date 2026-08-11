@@ -1994,5 +1994,84 @@ namespace Gradjevinska_firma.DTO
     }
     #endregion
 
-    
+    #region Mehanizacija
+    public class MehanizacijaBasic : OpremaBasic
+    {
+        public string TipMehanizacije;
+        public MehanizacijaBasic() { }
+        public MehanizacijaBasic(int id, string naziv, string tip, DateTime datumUvoza, string proizvodjac, DateTime datumNabavke, string rasponOdrzavanja, string lokacija, string status)
+            : base(id, naziv, tip, datumUvoza, proizvodjac,datumNabavke, rasponOdrzavanja, lokacija, status) 
+        {
+            this.TipMehanizacije = tip;
+        }
+    }
+    public class GradjevinskaMasinaBasic : OpremaBasic
+    {
+        public GradjevinskaMasinaBasic() { }
+        public GradjevinskaMasinaBasic(int id, string naziv, string tip, DateTime datumUvoza, string proizvodjac, DateTime datumNabavke, string rasponOdrzavanja, string lokacija, string status) : base(id, naziv, tip, datumUvoza, proizvodjac, datumNabavke, rasponOdrzavanja, lokacija, status)
+        {
+        }
+    }
+    public class TransportnoSredstvoBasic : OpremaBasic
+    {
+        public TransportnoSredstvoBasic() { }
+        public TransportnoSredstvoBasic(int id, string naziv, string tip, DateTime datumUvoza, string proizvodjac, DateTime datumNabavke, string rasponOdrzavanja, string lokacija, string status) : base(id, naziv, tip, datumUvoza, proizvodjac, datumNabavke, rasponOdrzavanja, lokacija, status)
+        {
+        }
+    }
+    public class AlatBasic : OpremaBasic
+    {
+        public AlatBasic() { }
+        public AlatBasic(int id, string naziv, string tip, DateTime datumUvoza, string proizvodjac, DateTime datumNabavke, string rasponOdrzavanja, string lokacija, string status) : base(id, naziv, tip, datumUvoza, proizvodjac, datumNabavke, rasponOdrzavanja, lokacija, status)
+        {
+        }
+    }
+    public class SpecijalizovanaOpremaBasic : OpremaBasic
+    {
+        public SpecijalizovanaOpremaBasic() { }
+        public SpecijalizovanaOpremaBasic(int id, string naziv, string tip, DateTime datumUvoza, string proizvodjac, DateTime datumNabavke, string rasponOdrzavanja, string lokacija, string status) : base(id, naziv, tip, datumUvoza, proizvodjac, datumNabavke, rasponOdrzavanja, lokacija, status)
+        {
+        }
+    }
+
+    public class MehanizacijaPregled : OpremaPregled
+    {
+        public string TipMehanizacije;
+        public MehanizacijaPregled() { }
+        public MehanizacijaPregled(int id, string naziv, string tip, DateTime datumUvoza, string proizvodjac, DateTime datumNabavke, string rasponOdrzavanja, string lokacija, string status)
+            : base(id, naziv, tip, datumUvoza, proizvodjac, datumNabavke, rasponOdrzavanja, lokacija, status)
+        {
+            this.TipMehanizacije = tip;
+        }
+    }
+    public class GradjevinskaMasinaPregled : OpremaPregled
+    {
+        public GradjevinskaMasinaPregled() { }
+        public GradjevinskaMasinaPregled(int id, string naziv, string tip, DateTime datumUvoza, string proizvodjac, DateTime datumNabavke, string rasponOdrzavanja, string lokacija, string status) : base(id, naziv, tip, datumUvoza, proizvodjac, datumNabavke, rasponOdrzavanja, lokacija, status)
+        {
+        }
+    }
+    public class TransportnoSredstvoPregled : OpremaPregled
+    {
+        public TransportnoSredstvoPregled() { }
+        public TransportnoSredstvoPregled(int id, string naziv, string tip, DateTime datumUvoza, string proizvodjac, DateTime datumNabavke, string rasponOdrzavanja, string lokacija, string status) : base(id, naziv, tip, datumUvoza, proizvodjac, datumNabavke, rasponOdrzavanja, lokacija, status)
+        {
+        }
+    }
+    public class AlatPregled : OpremaPregled
+    {
+        public AlatPregled() { }
+        public AlatPregled(int id, string naziv, string tip, DateTime datumUvoza, string proizvodjac, DateTime datumNabavke, string rasponOdrzavanja, string lokacija, string status) : base(id, naziv, tip, datumUvoza, proizvodjac, datumNabavke, rasponOdrzavanja, lokacija, status)
+        {
+        }
+    }
+    public class SpecijalizovanaOpremaPregled : OpremaPregled
+    {
+        public SpecijalizovanaOpremaPregled() { }
+        public SpecijalizovanaOpremaPregled(int id, string naziv, string tip, DateTime datumUvoza, string proizvodjac, DateTime datumNabavke, string rasponOdrzavanja, string lokacija, string status) : base(id, naziv, tip, datumUvoza, proizvodjac, datumNabavke, rasponOdrzavanja, lokacija, status)
+        {
+        }
+    }
+    #endregion
+
 }
