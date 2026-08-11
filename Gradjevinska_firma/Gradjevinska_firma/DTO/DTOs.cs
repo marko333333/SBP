@@ -1199,6 +1199,41 @@ namespace Gradjevinska_firma.DTO
         }
     }
 
+    public class PovredaNaRaduBasic : BezbednosniIncidentBasic
+    {
+        public PovredaNaRaduBasic() { }
+        public PovredaNaRaduBasic(int iD, string opis, DateTime datum, string lokacija, string preduzete_mere, string posledice, string tip_incidenta, ProjekatBasic projekat, OsobaBasic osoba) : base(iD, opis, datum, lokacija, preduzete_mere, posledice, tip_incidenta, projekat, osoba)
+        {
+        }
+    }
+    public class KvarOpremeBasic : BezbednosniIncidentBasic
+    {
+        public KvarOpremeBasic() { }
+        public KvarOpremeBasic(int iD, string opis, DateTime datum, string lokacija, string preduzete_mere, string posledice, string tip_incidenta, ProjekatBasic projekat, OsobaBasic osoba) : base(iD, opis, datum, lokacija, preduzete_mere, posledice, tip_incidenta, projekat, osoba)
+        {
+        }
+    }
+    public class NepostovanjeProceduraBasic : BezbednosniIncidentBasic
+    {
+        public NepostovanjeProceduraBasic() { }
+        public NepostovanjeProceduraBasic(int iD, string opis, DateTime datum, string lokacija, string preduzete_mere, string posledice, string tip_incidenta, ProjekatBasic projekat, OsobaBasic osoba) : base(iD, opis, datum, lokacija, preduzete_mere, posledice, tip_incidenta, projekat, osoba)
+        {
+        }
+    }
+    public class OpasnaSituacijaBasic : BezbednosniIncidentBasic
+    {
+        public OpasnaSituacijaBasic() { }
+        public OpasnaSituacijaBasic(int iD, string opis, DateTime datum, string lokacija, string preduzete_mere, string posledice, string tip_incidenta, ProjekatBasic projekat, OsobaBasic osoba) : base(iD, opis, datum, lokacija, preduzete_mere, posledice, tip_incidenta, projekat, osoba)
+        {
+        }
+    }
+    public class EkoloskiIncidentBasic : BezbednosniIncidentBasic
+    {
+        public EkoloskiIncidentBasic() { }
+        public EkoloskiIncidentBasic(int iD, string opis, DateTime datum, string lokacija, string preduzete_mere, string posledice, string tip_incidenta, ProjekatBasic projekat, OsobaBasic osoba) : base(iD, opis, datum, lokacija, preduzete_mere, posledice, tip_incidenta, projekat, osoba)
+        {
+        }
+    }
     public class BezbednosniIncidentPregled
     {
         public int ID;
@@ -1224,6 +1259,42 @@ namespace Gradjevinska_firma.DTO
             Tip_incidenta = tip_incidenta;
             Projekat = projekat;
             Osoba = osoba;
+        }
+    }
+
+    public class PovredaNaRaduPregled : BezbednosniIncidentPregled
+    {
+        public PovredaNaRaduPregled() { }
+        public PovredaNaRaduPregled(int iD, string opis, DateTime datum, string lokacija, string preduzete_mere, string posledice, string tip_incidenta, ProjekatPregled projekat, OsobaPregled osoba) : base(iD, opis, datum, lokacija, preduzete_mere, posledice, tip_incidenta, projekat, osoba)
+        {
+        }
+    }
+    public class KvarOpremePregled : BezbednosniIncidentPregled
+    {
+        public KvarOpremePregled() { }
+        public KvarOpremePregled(int iD, string opis, DateTime datum, string lokacija, string preduzete_mere, string posledice, string tip_incidenta, ProjekatPregled projekat, OsobaPregled osoba) : base(iD, opis, datum, lokacija, preduzete_mere, posledice, tip_incidenta, projekat, osoba)
+        {
+        }
+    }
+    public class NepostovanjeProceduraPregled : BezbednosniIncidentPregled
+    {
+        public NepostovanjeProceduraPregled() { }
+        public NepostovanjeProceduraPregled(int iD, string opis, DateTime datum, string lokacija, string preduzete_mere, string posledice, string tip_incidenta, ProjekatPregled projekat, OsobaPregled osoba) : base(iD, opis, datum, lokacija, preduzete_mere, posledice, tip_incidenta, projekat, osoba)
+        {
+        }
+    }
+    public class OpasnaSituacijaPregled : BezbednosniIncidentPregled
+    {
+        public OpasnaSituacijaPregled() { }
+        public OpasnaSituacijaPregled(int iD, string opis, DateTime datum, string lokacija, string preduzete_mere, string posledice, string tip_incidenta, ProjekatPregled projekat, OsobaPregled osoba) : base(iD, opis, datum, lokacija, preduzete_mere, posledice, tip_incidenta, projekat, osoba)
+        {
+        }
+    }
+    public class EkoloskiIncidentPregled : BezbednosniIncidentPregled
+    {
+        public EkoloskiIncidentPregled() { }
+        public EkoloskiIncidentPregled(int iD, string opis, DateTime datum, string lokacija, string preduzete_mere, string posledice, string tip_incidenta, ProjekatPregled projekat, OsobaPregled osoba) : base(iD, opis, datum, lokacija, preduzete_mere, posledice, tip_incidenta, projekat, osoba)
+        {
         }
     }
     #endregion
@@ -1851,5 +1922,6 @@ namespace Gradjevinska_firma.DTO
         }
     }
     #endregion
-}
 
+    
+}
