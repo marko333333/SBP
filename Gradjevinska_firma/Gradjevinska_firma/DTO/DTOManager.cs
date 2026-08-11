@@ -62,6 +62,78 @@ namespace Gradjevinska_firma.DTO
             return osoba;
         }
 
+        public static void dodajOsobu(OsobaBasic osoba)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Osoba o = new Osoba();
+
+                o.Jmbg = osoba.Jmbg;
+                o.Ime = osoba.Ime;
+                o.Prezime = osoba.Prezime;
+                o.DatumRodjenja = osoba.DatumRodjenja;
+                o.Struka = osoba.Struka;
+
+                s.Save(o);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void obrisiOsobu(int id)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Osoba o = s.Load<Osoba>(id);
+
+                s.Delete(o);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static OsobaBasic azurirajOsobu(OsobaBasic o)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Osoba osoba = s.Load<Osoba>(o.Id);
+                osoba.Jmbg = o.Jmbg;
+                osoba.Ime = o.Ime;
+                osoba.Prezime = o.Prezime;
+                osoba.DatumRodjenja = o.DatumRodjenja;
+                osoba.Struka = o.Struka;
+
+                s.Update(osoba);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return o;
+        }
+
+        #region FizickaLica
+
         public static List<FizickoLicePregled> vratiSvaFizickaLica()
         {
             List<FizickoLicePregled> lica = new List<FizickoLicePregled>();
@@ -77,9 +149,8 @@ namespace Gradjevinska_firma.DTO
                 foreach (FizickoLice f in svaLica)
                 {
                     lica.Add(new FizickoLicePregled(
-                        f.Id,f.Jmbg,f.Ime,f.Prezime,f.DatumRodjenja,f.Struka,f.FlagBK,f.FlagR,f.Kvalifikacija,f.FlagI,f.OblastRada,f.Odgovornosti,f.FlagA,f.FlagP,f.FlagN,f.FlagAO));
+                        f.Id, f.Jmbg, f.Ime, f.Prezime, f.DatumRodjenja, f.Struka, f.FlagBK, f.FlagR, f.Kvalifikacija, f.FlagI, f.OblastRada, f.Odgovornosti, f.FlagA, f.FlagP, f.FlagN, f.FlagAO));
                 }
-
                 s.Close();
             }
             catch (Exception ex)
@@ -89,6 +160,77 @@ namespace Gradjevinska_firma.DTO
 
             return lica;
         }
+        public static FizickoLiceBasic vratiFizickoLice(int id)
+        {
+            FizickoLiceBasic lice = null;
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                FizickoLice f = s.Get<FizickoLice>(id);
+                if (f != null)
+                {
+                    lice = new FizickoLiceBasic(
+                        f.Id, f.Jmbg, f.Ime, f.Prezime, f.DatumRodjenja, f.Struka, f.FlagBK, f.FlagR, f.Kvalifikacija, f.FlagI, f.OblastRada, f.Odgovornosti, f.FlagA, f.FlagP, f.FlagN, f.FlagAO);
+                    lice.Kontakti = vratiKontakteOsobe(id);
+                    lice.Licence = vratiLicenceOsobe(id);
+                    lice.BezbednosneObuke=vratiBezbednosneObukeOsobe(id);
+                    lice.LekarskiPregledi=vratiLekarskePregledeOsobe(id);
+                    lice.ZastitneOpreme=vratiZastitneOpremeOsobe(id) ;
+                    lice.SertifikatiSpecOpreme = vratiSertifikateSpecOpremeOsobe(id);
+
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return lice;
+        }
+
+        public static void dodajFizickoLice(FizickoLiceBasic lice)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                FizickoLice f = new FizickoLice();
+
+                f.Jmbg = lice.Jmbg;
+                f.Ime = lice.Ime;
+                f.Prezime = lice.Prezime;
+                f.DatumRodjenja = lice.DatumRodjenja;
+                f.Struka = lice.Struka;
+
+                f.FlagBK = lice.FlagBK;
+                f.FlagR = lice.FlagR;
+                f.Kvalifikacija = lice.Kvalifikacija;
+                f.FlagI = lice.FlagI;
+                f.OblastRada = lice.OblastRada;
+                f.Odgovornosti = lice.Odgovornosti;
+                f.FlagA = lice.FlagA;
+                f.FlagP = lice.FlagP;
+                f.FlagN = lice.FlagN;
+                f.FlagAO = lice.FlagAO;
+
+                s.Save(f);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        #endregion
+
+        #region PravnaLica
 
         public static List<PravnaLicaPregled> vratiSvaPravnaLica()
         {
@@ -105,7 +247,7 @@ namespace Gradjevinska_firma.DTO
                 foreach (PravnaLica p in svaLica)
                 {
                     lica.Add(new PravnaLicaPregled(
-                        p.Id,p.Jmbg,p.Ime,p.Prezime,p.DatumRodjenja,p.Struka,p.FlagPB,p.FlagInve,p.FlagIzv,p.FlagP,p.FlagD,p.FlagN));
+                        p.Id, p.Jmbg, p.Ime, p.Prezime, p.DatumRodjenja, p.Struka, p.FlagPB, p.FlagInve, p.FlagIzv, p.FlagP, p.FlagD, p.FlagN));
                 }
 
                 s.Close();
@@ -117,20 +259,22 @@ namespace Gradjevinska_firma.DTO
 
             return lica;
         }
-
-        public static FizickoLiceBasic vratiFizickoLice(int id)
+        public static PravnaLicaBasic vratiPravnoLice(int id)
         {
-            FizickoLiceBasic lice = null;
+            PravnaLicaBasic lice = null;
 
             try
             {
                 ISession s = DataLayer.GetSession();
 
-                FizickoLice f = s.Load<FizickoLice>(id);
-
-                lice = new FizickoLiceBasic(
-                    f.Id,f.Jmbg,f.Ime,f.Prezime,f.DatumRodjenja,f.Struka,f.FlagBK,f.FlagR,f.Kvalifikacija,f.FlagI,f.OblastRada,f.Odgovornosti,f.FlagA,f.FlagP,f.FlagN,f.FlagAO);
-
+                PravnaLica p = s.Get<PravnaLica>(id);
+                if (p != null)
+                {
+                    lice = new PravnaLicaBasic(
+                        p.Id, p.Jmbg, p.Ime, p.Prezime, p.DatumRodjenja, p.Struka, p.FlagPB, p.FlagInve, p.FlagIzv, p.FlagP, p.FlagD, p.FlagN);
+                    lice.Kontakti = vratiKontakteOsobe(id);
+                    lice.Licence = vratiLicenceOsobe(id);
+                }
                 s.Close();
             }
             catch (Exception ex)
@@ -140,6 +284,41 @@ namespace Gradjevinska_firma.DTO
 
             return lice;
         }
+
+        public static void dodajPravnoLice(PravnaLicaBasic pravno)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                PravnaLica p = new PravnaLica();
+
+                p.Jmbg = pravno.Jmbg;
+                p.Ime = pravno.Ime;
+                p.Prezime = pravno.Prezime;
+                p.DatumRodjenja = pravno.DatumRodjenja;
+                p.Struka = pravno.Struka;
+
+                p.FlagPB = pravno.FlagPB;
+                p.FlagInve = pravno.FlagInve;
+                p.FlagIzv = pravno.FlagIzv;
+                p.FlagP = pravno.FlagP;
+                p.FlagD = pravno.FlagD;
+                p.FlagN = pravno.FlagN;
+
+                s.Save(p);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        #endregion
+
         #endregion
 
         #region Kontakti
