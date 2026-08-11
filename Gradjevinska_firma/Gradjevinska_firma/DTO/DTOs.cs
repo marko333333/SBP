@@ -1584,5 +1584,272 @@ namespace Gradjevinska_firma.DTO
         }
     }
     #endregion
+
+    #region Deonica
+    public class DeonicaBasic
+    {
+        public int ID;
+        public int Br_deonice;
+        public InfrastrukturaBasic Infrastruktura;
+
+        public DeonicaBasic() { }
+
+        public DeonicaBasic(int iD, int br_deonice, InfrastrukturaBasic infrastruktura)
+        {
+            ID = iD;
+            Br_deonice = br_deonice;
+            Infrastruktura = infrastruktura;
+        }
+    }
+
+    public class DeonicaPregled
+    {
+        public int ID;
+        public int Br_deonice;
+        public InfrastrukturaPregled Infrastruktura;
+
+        public DeonicaPregled() { }
+
+        public DeonicaPregled(int iD, int br_deonice, InfrastrukturaPregled infrastruktura)
+        {
+            ID = iD;
+            Br_deonice = br_deonice;
+            Infrastruktura = infrastruktura;
+        }
+    }
+
+    #endregion
+
+    #region Infrastruktura
+    public class InfrastrukturaBasic : ProjekatBasic
+    {
+        public virtual IList<DeonicaBasic> Deonice { get; set; }
+
+        public InfrastrukturaBasic() 
+        {
+            Deonice = new List<DeonicaBasic>();
+        }
+
+        public InfrastrukturaBasic(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int budzet, bool status, DateTime planiran_zavrsetak, DateTime stvarni_zavrsetak)
+            :base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak)
+        {
+
+        }
+    }
+
+    public class InfrastrukturaPregled : ProjekatPregled
+    {
+        public virtual IList<DeonicaPregled> Deonice { get; set; }
+
+        public InfrastrukturaPregled() 
+        {
+            Deonice = new List<DeonicaPregled>();
+        }
+
+        public InfrastrukturaPregled(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int budzet, bool status, DateTime planiran_zavrsetak, DateTime stvarni_zavrsetak)
+            : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak)
+        {
+
+        }
+    }
+
+    #endregion
+
+    #region Industrijski
+
+    public class IndustrijskiBasic : ProjekatBasic
+    {
+        public IndustrijskiBasic() { }
+        public IndustrijskiBasic(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int budzet, bool status, DateTime planiran_zavrsetak, DateTime stvarni_zavrsetak)
+            : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak) { }
+    }
+
+    public class IndustrijskiPregled : ProjekatPregled
+    {
+        public IndustrijskiPregled() { }
+        public IndustrijskiPregled(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int budzet, bool status, DateTime planiran_zavrsetak, DateTime stvarni_zavrsetak)
+            : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak) { }
+    }
+
+    #endregion
+
+    #region Sanacija
+
+    public class SanacijaBasic : ProjekatBasic
+    {
+        public SanacijaBasic() { }
+        public SanacijaBasic(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int budzet, bool status, DateTime planiran_zavrsetak, DateTime stvarni_zavrsetak)
+            : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak) { }
+    }
+
+    public class SanacijaPregled : ProjekatPregled
+    {
+        public SanacijaPregled() { }
+        public SanacijaPregled(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int budzet, bool status, DateTime planiran_zavrsetak, DateTime stvarni_zavrsetak)
+            : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak) { }
+    }
+
+    #endregion
+
+    #region Rekonstrukcija
+
+    public class RekonstrukcijaBasic : ProjekatBasic 
+    {
+        public RekonstrukcijaBasic() { }
+        public RekonstrukcijaBasic(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int budzet, bool status, DateTime planiran_zavrsetak, DateTime stvarni_zavrsetak)
+            : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak) { }
+    }
+
+    public class RekonstrukcijaPregled : ProjekatPregled
+    {
+        public RekonstrukcijaPregled() { }
+        public RekonstrukcijaPregled(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int budzet, bool status, DateTime planiran_zavrsetak, DateTime stvarni_zavrsetak)
+            : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak) { }
+    }
+
+    #endregion
+
+    #region Poslovni
+
+    public class PoslovniBasic : ProjekatBasic 
+    {
+        public virtual IList<ObjekatPoslovniBasic> Objekti { get; set; }
+        public PoslovniBasic() 
+        {
+            Objekti = new List<ObjekatPoslovniBasic>();
+        }
+        public PoslovniBasic(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int budzet, bool status, DateTime planiran_zavrsetak, DateTime stvarni_zavrsetak)
+            : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak) { }
+    }
+
+    public class PoslovniPregled : ProjekatPregled 
+    {
+        public virtual IList<ObjekatPoslovniPregled> Objekti { get; set; }
+        public PoslovniPregled()
+        {
+            Objekti = new List<ObjekatPoslovniPregled>();
+        }
+        public PoslovniPregled(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int budzet, bool status, DateTime planiran_zavrsetak, DateTime stvarni_zavrsetak)
+            : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak) { }
+    }
+    #endregion
+
+    #region ObjekatPoslovni
+    public class ObjekatPoslovniBasic 
+    {
+        public int ID;
+        public int Br_objekta;
+        public int Spratnost;
+        public int Br_jedinica;
+        public PoslovniBasic Poslovni;
+
+        public ObjekatPoslovniBasic() { }
+        public ObjekatPoslovniBasic(int iD, int br_objekta, int spratnost, int br_jedinica, PoslovniBasic poslovni)
+        {
+            ID = iD;
+            Br_objekta = br_objekta;
+            Spratnost = spratnost;
+            Br_jedinica = br_jedinica;
+            Poslovni = poslovni;
+        }
+    }
+
+    public class ObjekatPoslovniPregled 
+    {
+        public int ID;
+        public int Br_objekta;
+        public int Spratnost;
+        public int Br_jedinica;
+        public PoslovniPregled Poslovni;
+
+        public ObjekatPoslovniPregled() { }
+
+        public ObjekatPoslovniPregled(int iD, int br_objekta, int spratnost, int br_jedinica, PoslovniPregled poslovni)
+        {
+            ID = iD;
+            Br_objekta = br_objekta;
+            Spratnost = spratnost;
+            Br_jedinica = br_jedinica;
+            Poslovni = poslovni;
+        }
+    }
+
+    #endregion
+
+    #region Stambeni
+
+    public class StambeniBasic : ProjekatBasic
+    {
+        public virtual IList<ObjekatStambeniBasic> Objekti { get; set; }
+        public StambeniBasic()
+        {
+            Objekti = new List<ObjekatStambeniBasic>();
+        }
+        public StambeniBasic(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int budzet, bool status, DateTime planiran_zavrsetak, DateTime stvarni_zavrsetak)
+            : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak)
+        {
+
+        }
+    }
+
+    public class StambeniPregled : ProjekatPregled
+    {
+        public virtual IList<ObjekatStambeniPregled> Objekti { get; set; }
+        public StambeniPregled()
+        {
+            Objekti = new List<ObjekatStambeniPregled>();
+        }
+        public StambeniPregled(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int budzet, bool status, DateTime planiran_zavrsetak, DateTime stvarni_zavrsetak)
+            : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak)
+        {
+
+        }
+    }
+    #endregion
+
+    #region ObjekatStambeni
+     //public virtual int Id { get; protected set; }
+     //   public virtual int Br_objekta { get; set; }
+     //   public virtual int Spratnost { get; set; }
+     //   public virtual int Br_jedinica { get; set; }
+     //   public virtual Stambeni Stambeni { get; set; }
+    public class ObjekatStambeniBasic 
+    {
+        public int ID;
+        public int Br_objekta;
+        public int Spratnost;
+        public int Br_jedinica;
+        public StambeniBasic Stambeni;
+
+        public ObjekatStambeniBasic() { }
+        public ObjekatStambeniBasic(int iD, int br_objekta, int spratnost, int br_jedinica, StambeniBasic stambeni)
+        {
+            ID = iD;
+            Br_objekta = br_objekta;
+            Spratnost = spratnost;
+            Br_jedinica = br_jedinica;
+            Stambeni = stambeni;
+        }
+    }
+
+    public class ObjekatStambeniPregled 
+    {
+        public int ID;
+        public int Br_objekta;
+        public int Spratnost;
+        public int Br_jedinica;
+        public StambeniPregled Stambeni;
+
+        public ObjekatStambeniPregled() { }
+        public ObjekatStambeniPregled(int iD, int br_objekta, int spratnost, int br_jedinica, StambeniPregled stambeni)
+        {
+            ID = iD;
+            Br_objekta = br_objekta;
+            Spratnost = spratnost;
+            Br_jedinica = br_jedinica;
+            Stambeni = stambeni;
+        }
+    }
+    #endregion
 }
 
