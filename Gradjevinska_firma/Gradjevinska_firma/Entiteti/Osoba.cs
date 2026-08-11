@@ -26,7 +26,7 @@ namespace Gradjevinska_firma.Entiteti
             Licence = new List<Licenca>();
             Angazovanja = new List<Angazovan>();
             UgovorneStrane = new List<ImaUgovornuStranu>();
-
+            BezbednosniIncidenti=new List<BezbednosniIncident>();
         }
     }
 }

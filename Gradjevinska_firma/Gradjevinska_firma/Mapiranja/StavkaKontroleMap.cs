@@ -14,10 +14,11 @@ namespace Gradjevinska_firma.Mapiranja
         {
             Table("STAVKA_KONTROLE");
 
-            CompositeId()
-                .KeyReference(x => x.Kontrola, "IDKONTROLE")
-                .KeyProperty(x => x.RedniBrojStavke, "REDNI_BROJ_STAVKE");
+            Id(x => x.Id, "ID").GeneratedBy.TriggerIdentity();
 
+            References(x => x.Kontrola, "IDKONTROLE");
+
+            Map(x => x.RedniBrojStavke, "REDNI_BROJ_STAVKE");
             Map(x => x.Uzorci, "UZORCI");
             Map(x => x.LabNalazi, "LAB_NALAZI");
             Map(x => x.RezultatiIspitivanja, "REZULTATI_ISPITIVANJA");

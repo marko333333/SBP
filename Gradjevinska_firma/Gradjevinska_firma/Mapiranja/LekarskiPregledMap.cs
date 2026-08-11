@@ -15,9 +15,11 @@ namespace Gradjevinska_firma.Mapiranja
 
             Table("LEK_PREGLED");
 
-            CompositeId()
-                .KeyReference(x => x.FizickoLice, "IDOSOBA")
-                .KeyProperty(x => x.Rezultat, "REZULTAT");
+            Id(x => x.Id, "ID").GeneratedBy.TriggerIdentity();
+
+            References(x => x.FizickoLice, "IDOSOBA");
+
+            Map(x => x.Rezultat, "REZULTAT");
 
             Map(x => x.Datum, "DATUM");
         }

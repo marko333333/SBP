@@ -14,9 +14,11 @@ namespace Gradjevinska_firma.Mapiranja
         {
             Table("ZASTITNA_OPREMA");
 
-            CompositeId()
-                .KeyReference(x => x.FizickoLice, "IDOSOBA")
-                .KeyProperty(x => x.NazivOpreme, "ZASTITNA_OPREMA");
+            Id(x => x.Id, "ID").GeneratedBy.TriggerIdentity();
+
+            Map(x => x.NazivOpreme, "ZASTITNA_OPREMA");
+
+            References(x => x.FizickoLice, "IDOSOBA");
         }
     }
 }

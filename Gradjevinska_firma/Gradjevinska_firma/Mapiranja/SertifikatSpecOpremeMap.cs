@@ -14,10 +14,12 @@ namespace Gradjevinska_firma.Mapiranja
         {
             Table("SERTIFIKAT_SPEC_OPREME");
 
-            CompositeId()
-                .KeyReference(x => x.FizickoLice, "IDOSOBA")
-                .KeyProperty(x => x.Sertifikat, "SERTIFIKAT_SPEC_OPREME");
-            
+            Id(x => x.Id, "ID").GeneratedBy.TriggerIdentity();
+
+            Map(x => x.Sertifikat, "SERTIFIKAT_SPEC_OPREME");
+
+            References(x => x.FizickoLice, "IDOSOBA");
+
         }
     }
 }

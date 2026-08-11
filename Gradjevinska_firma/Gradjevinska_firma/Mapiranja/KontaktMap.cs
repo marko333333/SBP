@@ -14,9 +14,12 @@ namespace Gradjevinska_firma.Mapiranja
         {
             Table("KONTAKT");
 
-            CompositeId()
-                .KeyReference(x => x.Osoba, "IDOSOBA")
-                .KeyProperty(x => x.Broj, "KONTAKT");
+            Id(x => x.Id, "ID").GeneratedBy.TriggerIdentity();
+
+            References(x => x.Osoba, "IDOSOBA");
+
+            Map(x => x.Broj, "KONTAKT");
+
         }
     }
 }

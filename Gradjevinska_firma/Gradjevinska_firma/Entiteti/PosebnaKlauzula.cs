@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace Gradjevinska_firma.Entiteti
 {
     public class PosebnaKlauzula
-    {
+    {   
+        public virtual int Id { get ; protected set; }
         public virtual string TekstKlauzule { get; set; }
         public virtual Ugovor Ugovor { get; set; }
 

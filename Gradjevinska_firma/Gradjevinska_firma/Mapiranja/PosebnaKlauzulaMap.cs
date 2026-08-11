@@ -14,9 +14,11 @@ namespace Gradjevinska_firma.Mapiranja
         {
             Table("POSEBNA_KLAUZULA");
 
-            CompositeId()
-                .KeyProperty(x => x.TekstKlauzule, "POSEBNA_KLAUZULA")
-                .KeyReference(x => x.Ugovor, "IDUGOVOR");
+            Id(x => x.Id, "ID").GeneratedBy.TriggerIdentity();
+
+            Map(x => x.TekstKlauzule, "POSEBNA_KLAUZULA");
+
+            References(x => x.Ugovor, "IDUGOVOR");
         }
     }
 }

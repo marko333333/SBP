@@ -8,7 +8,7 @@ namespace Gradjevinska_firma.Entiteti
 {
     public class NabavkaMaterijal
     {
-        public virtual int ID { get; set; }
+        public virtual int ID { get; protected set; }
         public virtual int Kolicina { get; set; }
         public virtual int Cena { get; set; }
         public virtual bool Status_isporuke { get; set; }

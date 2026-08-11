@@ -14,8 +14,28 @@ namespace Gradjevinska_firma.Entiteti
         public virtual DateTime? DatumDo { get; set; }
         public virtual int BrojSati { get; set; }
 
-        public Angazuje()
+        public override bool Equals(object obj)
         {
+            if (Object.ReferenceEquals(this, obj))
+                return true;
+
+            if (obj.GetType() != typeof(Angazuje))
+                return false;
+
+            Angazuje recievedObject = (Angazuje)obj;
+
+            if ((Zadatak.Id == recievedObject.Zadatak.Id) &&
+                (Oprema.Id == recievedObject.Oprema.Id))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }
