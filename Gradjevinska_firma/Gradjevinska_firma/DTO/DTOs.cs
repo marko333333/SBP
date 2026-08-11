@@ -1172,11 +1172,60 @@ namespace Gradjevinska_firma.DTO
 
     #region BezbednosniIncident
 
-    public class BezbednosniIncidentBasic()
+    public class BezbednosniIncidentBasic
     {
+        public int ID;
+        public string Opis;
+        public DateTime Datum;
+        public string Lokacija;
+        public string Preduzete_mere;
+        public string Posledice;
+        public string Tip_incidenta;
+        public ProjekatBasic Projekat;
+        public OsobaBasic Osoba;
 
+        public BezbednosniIncidentBasic() { }
+        public BezbednosniIncidentBasic(int iD, string opis, DateTime datum, string lokacija, string preduzete_mere, string posledice, string tip_incidenta, ProjekatBasic projekat, OsobaBasic osoba)
+        {
+            ID = iD;
+            Opis = opis;
+            Datum = datum;
+            Lokacija = lokacija;
+            Preduzete_mere = preduzete_mere;
+            Posledice = posledice;
+            Tip_incidenta = tip_incidenta;
+            Projekat = projekat;
+            Osoba = osoba;
+        }
     }
 
+    public class BezbednosniIncidentPregled
+    {
+        public int ID;
+        public string Opis;
+        public DateTime Datum;
+        public string Lokacija;
+        public string Preduzete_mere;
+        public string Posledice;
+        public string Tip_incidenta;
+        public ProjekatPregled Projekat;
+        public OsobaPregled Osoba;
+
+        public BezbednosniIncidentPregled() { }
+
+        public BezbednosniIncidentPregled(int iD, string opis, DateTime datum, string lokacija, string preduzete_mere, string posledice, string tip_incidenta, ProjekatPregled projekat, OsobaPregled osoba)
+        {
+            ID = iD;
+            Opis = opis;
+            Datum = datum;
+            Lokacija = lokacija;
+            Preduzete_mere = preduzete_mere;
+            Posledice = posledice;
+            Tip_incidenta = tip_incidenta;
+            Projekat = projekat;
+            Osoba = osoba;
+        }
+    }
     #endregion
 
     #region Faktura
