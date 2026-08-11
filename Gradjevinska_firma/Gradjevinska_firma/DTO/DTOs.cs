@@ -644,16 +644,14 @@ namespace Gradjevinska_firma.DTO
 
     public class BezbednosnaObukaBasic
     {
-        public int Id;
         public int IdFizickoLice;
         public string NazivObuke;
         public DateTime Datum;
         public BezbednosnaObukaBasic()
         {
         }
-        public BezbednosnaObukaBasic(int id,int idfizickoLice,string nazivObuke,DateTime datum)
+        public BezbednosnaObukaBasic(int idfizickoLice,string nazivObuke,DateTime datum)
         {
-            Id = id;
             IdFizickoLice = idfizickoLice;
             NazivObuke = nazivObuke;
             Datum = datum;
@@ -1144,7 +1142,7 @@ namespace Gradjevinska_firma.DTO
         }
         public ZastitnaOpremaBasic(int id,int idFizickoLice, string nazivOpreme)
         {
-            Id = Id;
+            Id = id;
             IdFizickoLice = idFizickoLice;
             NazivOpreme = nazivOpreme;
         }
@@ -1366,12 +1364,12 @@ namespace Gradjevinska_firma.DTO
         public DateTime Planirani_zavrsetak;
         public DateTime Stvarni_zavrsetak;
         public virtual IList<UgovorBasic> Ugovori { get; set; }
-        public virtual IList<BezbednosnaObukaBasic> BezbednosniIncidenti { get; set; }
+        public virtual IList<BezbednosniIncidentBasic> BezbednosniIncidenti { get; set; }
 
         public ProjekatBasic() 
         {
             Ugovori = new List<UgovorBasic>();
-            BezbednosniIncidenti = new List<BezbednosnaObukaBasic>();
+            BezbednosniIncidenti = new List<BezbednosniIncidentBasic>();
         }
 
         public ProjekatBasic(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int budzet, bool status, DateTime planirani_zavrsetak, DateTime stvarni_zavrsetak)
