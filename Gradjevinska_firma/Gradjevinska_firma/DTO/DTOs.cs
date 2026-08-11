@@ -1121,7 +1121,7 @@ namespace Gradjevinska_firma.DTO
         }
         public SertifikatSpecOpremePregled(int id,int idFizickoLice, string sertifikat)
         {
-            Id = Id;
+            Id = id;
             IdFizickoLice = idFizickoLice;
             Sertifikat = sertifikat;
         }
