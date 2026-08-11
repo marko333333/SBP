@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 using Gradjevinska_firma.Entiteti;
 
 namespace Gradjevinska_firma.DTO
-{
+{   
+    //dodaj kolekciju za BezbednosniIncident u Osoba
     public class DTOManager
     {
         #region Osobe
@@ -47,12 +48,10 @@ namespace Gradjevinska_firma.DTO
                 Osoba o = s.Load<Osoba>(id);
 
                 osoba = new OsobaBasic(
-                    o.Id,
-                    o.Jmbg,
-                    o.Ime,
-                    o.Prezime,
-                    o.DatumRodjenja,
-                    o.Struka);
+                    o.Id,o.Jmbg,o.Ime,o.Prezime,o.DatumRodjenja,o.Struka);
+                
+                osoba.Kontakti = vratiKontakteOsobe(id);
+                osoba.Licence=vratiLicenceOsobe(id);
 
                 s.Close();
             }
@@ -62,6 +61,294 @@ namespace Gradjevinska_firma.DTO
             }
             return osoba;
         }
+
+        public static List<FizickoLicePregled> vratiSvaFizickaLica()
+        {
+            List<FizickoLicePregled> lica = new List<FizickoLicePregled>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<FizickoLice> svaLica =
+                    from f in s.Query<FizickoLice>()
+                    select f;
+
+                foreach (FizickoLice f in svaLica)
+                {
+                    lica.Add(new FizickoLicePregled(
+                        f.Id,f.Jmbg,f.Ime,f.Prezime,f.DatumRodjenja,f.Struka,f.FlagBK,f.FlagR,f.Kvalifikacija,f.FlagI,f.OblastRada,f.Odgovornosti,f.FlagA,f.FlagP,f.FlagN,f.FlagAO));
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return lica;
+        }
+
+        public static List<PravnaLicaPregled> vratiSvaPravnaLica()
+        {
+            List<PravnaLicaPregled> lica = new List<PravnaLicaPregled>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<PravnaLica> svaLica =
+                    from p in s.Query<PravnaLica>()
+                    select p;
+
+                foreach (PravnaLica p in svaLica)
+                {
+                    lica.Add(new PravnaLicaPregled(
+                        p.Id,p.Jmbg,p.Ime,p.Prezime,p.DatumRodjenja,p.Struka,p.FlagPB,p.FlagInve,p.FlagIzv,p.FlagP,p.FlagD,p.FlagN));
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return lica;
+        }
+
+        public static FizickoLiceBasic vratiFizickoLice(int id)
+        {
+            FizickoLiceBasic lice = null;
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                FizickoLice f = s.Load<FizickoLice>(id);
+
+                lice = new FizickoLiceBasic(
+                    f.Id,f.Jmbg,f.Ime,f.Prezime,f.DatumRodjenja,f.Struka,f.FlagBK,f.FlagR,f.Kvalifikacija,f.FlagI,f.OblastRada,f.Odgovornosti,f.FlagA,f.FlagP,f.FlagN,f.FlagAO);
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return lice;
+        }
+        #endregion
+
+        #region Kontakti
+
+        public static List<KontaktBasic> vratiKontakteOsobe(int idOsobe)
+        {
+            List<KontaktBasic> kontakti = new List<KontaktBasic>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Kontakt> sviKontakti =
+                    from k in s.Query<Kontakt>()
+                    where k.Osoba.Id == idOsobe
+                    select k;
+
+                foreach (Kontakt k in sviKontakti)
+                {
+                    kontakti.Add(new KontaktBasic(k.Id, k.Osoba.Id, k.Broj));
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return kontakti;
+        }
+
+        #endregion
+
+        #region Licence
+
+        public static List<LicencaBasic> vratiLicenceOsobe(int idOsobe)
+        {
+            List<LicencaBasic> licence = new List<LicencaBasic>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Licenca> sveLicence =
+                    from l in s.Query<Licenca>()
+                    where l.Osoba.Id == idOsobe
+                    select l;
+
+                foreach (Licenca l in sveLicence)
+                {
+                    licence.Add(
+                        new LicencaBasic(
+                            l.Id,
+                            l.Osoba.Id,
+                            l.NazivLicence));
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return licence;
+        }
+
+        #endregion
+
+        #region BezbednosnaObuka
+
+        public static List<BezbednosnaObukaBasic> vratiBezbednosneObukeOsobe(int idOsobe)
+        {
+            List<BezbednosnaObukaBasic> obuke = new List<BezbednosnaObukaBasic>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<BezbednosnaObuka> sveObuke =
+                    from b in s.Query<BezbednosnaObuka>()
+                    where b.FizickoLice.Id == idOsobe
+                    select b;
+
+                foreach (BezbednosnaObuka b in sveObuke)
+                {
+                    obuke.Add(new BezbednosnaObukaBasic(
+                        b.FizickoLice.Id,
+                        b.NazivObuke,
+                        b.Datum));
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return obuke;
+        }
+
+        #endregion
+
+        #region LekPregled
+
+        public static List<LekarskiPregledBasic> vratiLekarskePregledeOsobe(int idOsobe)
+        {
+            List<LekarskiPregledBasic> pregledi = new List<LekarskiPregledBasic>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<LekarskiPregled> sviPregledi =
+                    from p in s.Query<LekarskiPregled>()
+                    where p.FizickoLice.Id == idOsobe
+                    select p;
+
+                foreach (LekarskiPregled p in sviPregledi)
+                {
+                    pregledi.Add(new LekarskiPregledBasic(
+                        p.Id,
+                        p.FizickoLice.Id,
+                        p.Rezultat,
+                        p.Datum));
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return pregledi;
+        }
+        #endregion
+
+        #region SertifikatSpecOpreme
+
+        public static List<SertifikatSpecOpremeBasic> vratiSertifikateSpecOpremeOsobe(int idOsobe)
+        {
+            List<SertifikatSpecOpremeBasic> sertifikati =
+                new List<SertifikatSpecOpremeBasic>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<SertifikatSpecOpreme> sviSertifikati =
+                    from ss in s.Query<SertifikatSpecOpreme>()
+                    where ss.FizickoLice.Id == idOsobe
+                    select ss;
+
+                foreach (SertifikatSpecOpreme ss in sviSertifikati)
+                {
+                    sertifikati.Add(new SertifikatSpecOpremeBasic(
+                        ss.Id,
+                        ss.FizickoLice.Id,
+                        ss.Sertifikat));
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return sertifikati;
+        }
+
+        #endregion
+
+        #region ZastitnaOprema
+
+        public static List<ZastitnaOpremaBasic> vratiZastitneOpremeOsobe(int idOsobe)
+        {
+            List<ZastitnaOpremaBasic> opreme =
+                new List<ZastitnaOpremaBasic>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<ZastitnaOprema> sveOpreme =
+                    from zo in s.Query<ZastitnaOprema>()
+                    where zo.FizickoLice.Id == idOsobe
+                    select zo;
+
+                foreach (ZastitnaOprema zo in sveOpreme)
+                {
+                    opreme.Add(new ZastitnaOpremaBasic(
+                        zo.Id,
+                        zo.FizickoLice.Id,
+                        zo.NazivOpreme));
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return opreme;
+        }
+
         #endregion
     }
 }

@@ -22,7 +22,52 @@ namespace Gradjevinska_firma.Forme
         {
 
         }
-        public void popuniPodacima()
+        public void popuniFizickaLica()
+        {
+            this.fizickaLica.Items.Clear();
+
+            List<FizickoLicePregled> osobe = DTOManager.vratiSvaFizickaLica();
+
+            foreach (FizickoLicePregled o in osobe)
+            {
+                ListViewItem item = new ListViewItem(new string[]
+                {
+            o.Id.ToString(),
+            o.Jmbg.ToString(),
+            o.Ime,
+            o.Prezime,
+            o.Struka
+                });
+
+                this.fizickaLica.Items.Add(item);
+            }
+
+            this.fizickaLica.Refresh();
+        }
+        public void popuniPravnaLica()
+        {
+            this.pravnaLica.Items.Clear();
+
+            List<PravnaLicaPregled> osobe = DTOManager.vratiSvaPravnaLica();
+
+            foreach (PravnaLicaPregled o in osobe)
+            {
+                ListViewItem item = new ListViewItem(new string[]
+                {
+            o.Id.ToString(),
+            o.Jmbg.ToString(),
+            o.Ime,
+            o.Prezime,
+            o.Struka
+                });
+
+                this.pravnaLica.Items.Add(item);
+            }
+
+            this.pravnaLica.Refresh();
+        }
+
+        public void popuniZaposlene()
         {
             String pom;
             this.zaposleni.Items.Clear();
@@ -30,7 +75,7 @@ namespace Gradjevinska_firma.Forme
 
             foreach (OsobaPregled o in osobe)
             {
-                ListViewItem item = new ListViewItem(new string[] { o.Id.ToString(),o.Jmbg.ToString(),o.Ime,o.Prezime,o.DatumRodjenja.ToShortDateString(),o.Struka });
+                ListViewItem item = new ListViewItem(new string[] { o.Id.ToString(), o.Jmbg.ToString(), o.Ime, o.Prezime, o.DatumRodjenja.ToShortDateString(), o.Struka });
                 this.zaposleni.Items.Add(item);
 
             }
@@ -40,7 +85,48 @@ namespace Gradjevinska_firma.Forme
 
         private void ZaposleniForma_Load(object sender, EventArgs e)
         {
-            popuniPodacima();
+            popuniZaposlene();
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 0)
+            {
+                popuniZaposlene();
+            }
+            else if (tabControl1.SelectedIndex == 1)
+            {
+                popuniFizickaLica();
+            }
+            else if (tabControl1.SelectedIndex == 2)
+            {
+                popuniPravnaLica();
+            }
+        }
+
+        private void btDetaljiOosbe_Click(object sender, EventArgs e)
+        {
+            ListView tabela = null;
+
+            if (tabControl1.SelectedIndex == 0)
+                tabela = zaposleni;
+            else if (tabControl1.SelectedIndex == 1)
+                tabela = fizickaLica;
+            else if (tabControl1.SelectedIndex == 2)
+                tabela = pravnaLica;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati osobu iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+
+            DetaljiOsobeForma forma = new DetaljiOsobeForma(id);
+            forma.ShowDialog();
         }
     }
 }

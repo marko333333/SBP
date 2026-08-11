@@ -215,13 +215,15 @@ namespace Gradjevinska_firma.DTO
     #region Kontakt
     public class KontaktBasic
     {
+        public int Id;
         public int IdOsoba;
         public string Broj;
 
         public KontaktBasic() { }
 
-        public KontaktBasic(int osoba, string broj)
-        {   
+        public KontaktBasic(int id,int osoba, string broj)
+        {
+            Id = id;
             IdOsoba = osoba;
             Broj = broj;
         }
@@ -254,7 +256,7 @@ namespace Gradjevinska_firma.DTO
         public LicencaBasic() { }
         public LicencaBasic(int id,int osoba, string nazivLicence)
         {
-            Id = Id;
+            Id = id;
             IdOsoba = osoba;
             NazivLicence = nazivLicence;
         }
@@ -1167,6 +1169,50 @@ namespace Gradjevinska_firma.DTO
     }
 
     #endregion
-    
+
+    #region BezbednosniIncident
+
+    public class BezbednosniIncidentBasic()
+    {
+
+    }
+
+    #endregion
+
+    #region Faktura
+
+    public class FakturaBasic()
+    {
+
+    }
+
+    #endregion
+
+    #region Projekat
+
+    public class ProjekatBasic()
+    {
+
+    }
+
+    public class ProjekatPregled()
+    {
+
+    }
+
+    #endregion
+
+    #region Materijal
+
+    public class MaterijalBasic()
+    {
+
+    }
+    public class MaterijalPregled()
+    {
+
+    }
+
+    #endregion 
 }
-    
+
