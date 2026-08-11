@@ -9,13 +9,13 @@ namespace Gradjevinska_firma.Entiteti
     public class Materijal
     {
         public virtual int ID { get; set; }
-        public virtual string? Naziv { get; set; }
-        public virtual string? Tip { get; set; }
+        public virtual string Naziv { get; set; }
+        public virtual string Tip { get; set; }
         public virtual int Cena { get; set; }
-        public virtual required string Proizvodjac { get; set; }
-        public virtual required string JedinicaMere { get; set; }
-        public virtual required string Sertifikat { get; set; }
-        public virtual required string TipMaterijala { get; set; }
+        public virtual string Proizvodjac { get; set; }
+        public virtual string JedinicaMere { get; set; }
+        public virtual string Sertifikat { get; set; }
+        public virtual string TipMaterijala { get; set; }
 
         public virtual IList<Ugovor> Ugovori { get; set; }
         public virtual IList<Koristi> Koristi { get; set; }

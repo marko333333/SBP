@@ -12,7 +12,7 @@ namespace Gradjevinska_firma.Mapiranja
     {   
         public MaterijalMap() {
 
-            Table("Materijal");
+            Table("MATERIJAL");
 
             DiscriminateSubClassesOnColumn("TIP_MATERIJALA");
 
