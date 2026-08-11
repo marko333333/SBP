@@ -1448,7 +1448,141 @@ namespace Gradjevinska_firma.DTO
     #endregion
 
     #region NabavkaMaterijal
-    public class NabavkaMaterijalBasic() { }
+    public class NabavkaMaterijalBasic
+    {
+        public int ID;
+        public int Kolicina;
+        public int Cena;
+        public bool Status_isporuke;
+        public MaterijalBasic Materijal;
+        public NabavkeBasic Nabavke;
+
+        public NabavkaMaterijalBasic() { }
+        public NabavkaMaterijalBasic(int iD, int kolicina, int cena, bool status_isporuke, MaterijalBasic materijal, NabavkeBasic nabavke)
+        {
+            ID = iD;
+            Kolicina = kolicina;
+            Cena = cena;
+            Status_isporuke = status_isporuke;
+            Materijal = materijal;
+            Nabavke = nabavke;
+        }
+    }
+
+    public class NabavkaMaterijalPregled
+    {
+        public int ID;
+        public int Kolicina;
+        public int Cena;
+        public bool Status_isporuke;
+        public MaterijalBasic Materijal;
+        public NabavkeBasic Nabavke;
+
+        public NabavkaMaterijalPregled() { }
+
+        public NabavkaMaterijalPregled(int iD, int kolicina, int cena, bool status_isporuke, MaterijalBasic materijal, NabavkeBasic nabavke)
+        {
+            ID = iD;
+            Kolicina = kolicina;
+            Cena = cena;
+            Status_isporuke = status_isporuke;
+            Materijal = materijal;
+            Nabavke = nabavke;
+        }
+    }
+
+    #endregion
+
+    #region Nabavke
+    public class NabavkeBasic 
+    {
+        public int Br_nabavke;
+        public DateTime Datum;
+        public ProjekatBasic Projekat;
+        public virtual IList<NabavkaMaterijalBasic> NabavkaMaterijal { get; set; }
+        public virtual IList<NabavkaOpremaBasic> NabavkaOprema { get; set; }
+
+        public NabavkeBasic() 
+        {
+            NabavkaMaterijal = new List<NabavkaMaterijalBasic>();
+            NabavkaOprema = new List<NabavkaOpremaBasic>();    
+        }
+
+        public NabavkeBasic(int br_nabavke, DateTime datum, ProjekatBasic projekat)
+        {
+            Br_nabavke = br_nabavke;
+            Datum = datum;
+            Projekat = projekat;
+        }
+    }
+
+    public class NabavkePregled 
+    {
+        public int Br_nabavke;
+        public DateTime Datum;
+        public ProjekatBasic Projekat;
+
+        public NabavkePregled() { }
+        public NabavkePregled(int br_nabavke, DateTime datum, ProjekatBasic projekat)
+        {
+            Br_nabavke = br_nabavke;
+            Datum = datum;
+            Projekat = projekat;
+        }
+    }
+    #endregion
+
+    #region NabavkaOprema
+
+     //public virtual int ID { get; protected set; }
+     //   public virtual int Kolicina { get; set; }
+     //   public virtual int Cena { get; set; }
+     //   public virtual bool Status_isporuke { get; set; }
+
+     //   public virtual Oprema Oprema { get; set; }
+     //   public virtual Nabavke Nabavka { get; set; }
+    public class NabavkaOpremaBasic 
+    {
+        public int ID;
+        public int Kolicina;
+        public int Cena;
+        public bool Status_isporuke;
+        public OpremaBasic Oprema;
+        public NabavkeBasic Nabavka;
+
+        public NabavkaOpremaBasic() { }
+
+        public NabavkaOpremaBasic(int iD, int kolicina, int cena, bool status_isporuke, OpremaBasic oprema, NabavkeBasic nabavka)
+        {
+            ID = iD;
+            Kolicina = kolicina;
+            Cena = cena;
+            Status_isporuke = status_isporuke;
+            Oprema = oprema;
+            Nabavka = nabavka;
+        }
+    }
+
+    public class NabavkaOpremaPregled 
+    {
+        public int ID;
+        public int Kolicina;
+        public int Cena;
+        public bool Status_isporuke;
+        public OpremaPregled Oprema;
+        public NabavkePregled Nabavka;
+
+        public NabavkaOpremaPregled() { }
+        public NabavkaOpremaPregled(int iD, int kolicina, int cena, bool status_isporuke, OpremaPregled oprema, NabavkePregled nabavka)
+        {
+            ID = iD;
+            Kolicina = kolicina;
+            Cena = cena;
+            Status_isporuke = status_isporuke;
+            Oprema = oprema;
+            Nabavka = nabavka;
+        }
+    }
     #endregion
 }
 
