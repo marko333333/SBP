@@ -1452,6 +1452,43 @@ namespace Gradjevinska_firma.DTO
             TipMaterijala = tipMaterijala;
         }
     }
+
+    public class ZastitniBasic : MaterijalBasic
+    {
+        public ZastitniBasic() { }
+        public ZastitniBasic(int iD, string naziv, string tip, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala) : base(iD, naziv, tip, cena, proizvodjac, jedinicaMere, sertifikat, tipMaterijala)
+        {
+        }
+    }
+    public class MasinskiBasic : MaterijalBasic
+    {
+        public MasinskiBasic() { }
+        public MasinskiBasic(int iD, string naziv, string tip, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala) : base(iD, naziv, tip, cena, proizvodjac, jedinicaMere, sertifikat, tipMaterijala)
+        {
+        }
+    }
+    public class GradjevinskiBasic : MaterijalBasic
+    {
+        public GradjevinskiBasic() { }
+        public GradjevinskiBasic(int iD, string naziv, string tip, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala) : base(iD, naziv, tip, cena, proizvodjac, jedinicaMere, sertifikat, tipMaterijala)
+        {
+        }
+    }
+    public class ElektroBasic : MaterijalBasic
+    {
+        public ElektroBasic() { }
+        public ElektroBasic(int iD, string naziv, string tip, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala) : base(iD, naziv, tip, cena, proizvodjac, jedinicaMere, sertifikat, tipMaterijala)
+        {
+        }
+    }
+    public class ZavrsniBasic : MaterijalBasic
+    {
+        public ZavrsniBasic() { }
+        public ZavrsniBasic(int iD, string naziv, string tip, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala) : base(iD, naziv, tip, cena, proizvodjac, jedinicaMere, sertifikat, tipMaterijala)
+        {
+        }
+    }
+
     public class MaterijalPregled
     {
         public int ID;
@@ -1476,7 +1513,41 @@ namespace Gradjevinska_firma.DTO
             TipMaterijala = tipMaterijala;
         }
     }
-
+    public class ZastitniPregled : MaterijalPregled
+    {
+        public ZastitniPregled() { }
+        public ZastitniPregled(int iD, string naziv, string tip, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala) : base(iD, naziv, tip, cena, proizvodjac, jedinicaMere, sertifikat, tipMaterijala)
+        {
+        }
+    }
+    public class MasinskiPregled : MaterijalPregled
+    {
+        public MasinskiPregled() { }
+        public MasinskiPregled(int iD, string naziv, string tip, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala) : base(iD, naziv, tip, cena, proizvodjac, jedinicaMere, sertifikat, tipMaterijala)
+        {
+        }
+    }
+    public class GradjevinskiPregled : MaterijalPregled
+    {
+        public GradjevinskiPregled(){ }
+        public GradjevinskiPregled(int iD, string naziv, string tip, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala) : base(iD, naziv, tip, cena, proizvodjac, jedinicaMere, sertifikat, tipMaterijala)
+        {
+        }
+    }
+    public class ElektroPregled : MaterijalPregled
+    {
+        public ElektroPregled(){ }
+        public ElektroPregled(int iD, string naziv, string tip, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala) : base(iD, naziv, tip, cena, proizvodjac, jedinicaMere, sertifikat, tipMaterijala)
+        {
+        }
+    }
+    public class ZavrsniPregled : MaterijalPregled
+    {
+        public ZavrsniPregled(){ }
+        public ZavrsniPregled(int iD, string naziv, string tip, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala) : base(iD, naziv, tip, cena, proizvodjac, jedinicaMere, sertifikat, tipMaterijala)
+        {
+        }
+    }
     #endregion
 
     #region Koristi
