@@ -32,11 +32,11 @@ namespace Gradjevinska_firma.Forme
             {
                 ListViewItem item = new ListViewItem(new string[]
                 {
-            o.Id.ToString(),
-            o.Jmbg.ToString(),
-            o.Ime,
-            o.Prezime,
-            o.Struka
+                    o.Id.ToString(),
+                    o.Jmbg.ToString(),
+                    o.Ime,
+                    o.Prezime,
+                    o.Struka
                 });
 
                 this.fizickaLica.Items.Add(item);
@@ -54,11 +54,11 @@ namespace Gradjevinska_firma.Forme
             {
                 ListViewItem item = new ListViewItem(new string[]
                 {
-            o.Id.ToString(),
-            o.Jmbg.ToString(),
-            o.Ime,
-            o.Prezime,
-            o.Struka
+                    o.Id.ToString(),
+                    o.Jmbg.ToString(),
+                    o.Ime,
+                    o.Prezime,
+                    o.Struka
                 });
 
                 this.pravnaLica.Items.Add(item);
@@ -126,6 +126,13 @@ namespace Gradjevinska_firma.Forme
             );
 
             DetaljiOsobeForma forma = new DetaljiOsobeForma(id);
+            forma.ShowDialog();
+        }
+
+        private void bt_dodaj_Click(object sender, EventArgs e)
+        {
+
+            DodajOsobu forma = new DodajOsobu();
             forma.ShowDialog();
         }
     }
