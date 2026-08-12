@@ -659,7 +659,6 @@ namespace Gradjevinska_firma.DTO
     }
     public class BezbednosnaObukaPregled
     {
-        public int Id;
         public int IdFizickoLice;
         public string NazivObuke;
         public DateTime Datum;
@@ -668,9 +667,9 @@ namespace Gradjevinska_firma.DTO
         {
         }
 
-        public BezbednosnaObukaPregled(int id,int idfizickoLice,string nazivObuke,DateTime datum)
+        public BezbednosnaObukaPregled(int idfizickoLice,string nazivObuke,DateTime datum)
         {
-            Id = id;
+           
             IdFizickoLice = idfizickoLice;
             NazivObuke = nazivObuke;
             Datum = datum;

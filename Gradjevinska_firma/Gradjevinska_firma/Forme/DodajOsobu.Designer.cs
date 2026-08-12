@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            dtpDatumRodjenja = new DateTimePicker();
+            gbPravnoLice = new GroupBox();
+            cbNadzorniOrgan = new CheckBox();
             gbFizickoLice = new GroupBox();
             tbOdgovornosti = new TextBox();
             tbKvalifikacija = new TextBox();
@@ -43,8 +46,6 @@
             lbK = new Label();
             lbOR = new Label();
             cbBK = new CheckBox();
-            gbPravnoLice = new GroupBox();
-            cbNadzorniOrgan = new CheckBox();
             cbDobavljaci = new CheckBox();
             cbPodizvodjac = new CheckBox();
             cbIzvodjac = new CheckBox();
@@ -62,10 +63,9 @@
             lb2 = new Label();
             lb4 = new Label();
             lb3 = new Label();
-            dtpDatumRodjenja = new DateTimePicker();
             groupBox1.SuspendLayout();
-            gbFizickoLice.SuspendLayout();
             gbPravnoLice.SuspendLayout();
+            gbFizickoLice.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
@@ -93,6 +93,39 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Osoba";
             // 
+            // dtpDatumRodjenja
+            // 
+            dtpDatumRodjenja.Location = new Point(150, 169);
+            dtpDatumRodjenja.Name = "dtpDatumRodjenja";
+            dtpDatumRodjenja.Size = new Size(200, 27);
+            dtpDatumRodjenja.TabIndex = 30;
+            // 
+            // gbPravnoLice
+            // 
+            gbPravnoLice.Controls.Add(cbNadzorniOrgan);
+            gbPravnoLice.Controls.Add(cbDobavljaci);
+            gbPravnoLice.Controls.Add(cbPodizvodjac);
+            gbPravnoLice.Controls.Add(cbIzvodjac);
+            gbPravnoLice.Controls.Add(cbInvenstitor);
+            gbPravnoLice.Controls.Add(cbPB);
+            gbPravnoLice.Location = new Point(356, 12);
+            gbPravnoLice.Name = "gbPravnoLice";
+            gbPravnoLice.Size = new Size(432, 359);
+            gbPravnoLice.TabIndex = 28;
+            gbPravnoLice.TabStop = false;
+            gbPravnoLice.Text = "Pravno lice";
+            gbPravnoLice.Enter += gbPravnoLice_Enter;
+            // 
+            // cbNadzorniOrgan
+            // 
+            cbNadzorniOrgan.AutoSize = true;
+            cbNadzorniOrgan.Location = new Point(22, 187);
+            cbNadzorniOrgan.Name = "cbNadzorniOrgan";
+            cbNadzorniOrgan.Size = new Size(137, 24);
+            cbNadzorniOrgan.TabIndex = 8;
+            cbNadzorniOrgan.Text = "Nadzorni Organ";
+            cbNadzorniOrgan.UseVisualStyleBackColor = true;
+            // 
             // gbFizickoLice
             // 
             gbFizickoLice.Controls.Add(tbOdgovornosti);
@@ -108,9 +141,9 @@
             gbFizickoLice.Controls.Add(lbK);
             gbFizickoLice.Controls.Add(lbOR);
             gbFizickoLice.Controls.Add(cbBK);
-            gbFizickoLice.Location = new Point(356, 12);
+            gbFizickoLice.Location = new Point(356, 9);
             gbFizickoLice.Name = "gbFizickoLice";
-            gbFizickoLice.Size = new Size(375, 365);
+            gbFizickoLice.Size = new Size(438, 362);
             gbFizickoLice.TabIndex = 29;
             gbFizickoLice.TabStop = false;
             gbFizickoLice.Text = "Fizicko lice";
@@ -234,32 +267,6 @@
             cbBK.TabIndex = 0;
             cbBK.Text = "Bezbednosni koordinator";
             cbBK.UseVisualStyleBackColor = true;
-            // 
-            // gbPravnoLice
-            // 
-            gbPravnoLice.Controls.Add(cbNadzorniOrgan);
-            gbPravnoLice.Controls.Add(cbDobavljaci);
-            gbPravnoLice.Controls.Add(cbPodizvodjac);
-            gbPravnoLice.Controls.Add(cbIzvodjac);
-            gbPravnoLice.Controls.Add(cbInvenstitor);
-            gbPravnoLice.Controls.Add(cbPB);
-            gbPravnoLice.Location = new Point(356, 12);
-            gbPravnoLice.Name = "gbPravnoLice";
-            gbPravnoLice.Size = new Size(256, 272);
-            gbPravnoLice.TabIndex = 28;
-            gbPravnoLice.TabStop = false;
-            gbPravnoLice.Text = "Pravno lice";
-            gbPravnoLice.Enter += gbPravnoLice_Enter;
-            // 
-            // cbNadzorniOrgan
-            // 
-            cbNadzorniOrgan.AutoSize = true;
-            cbNadzorniOrgan.Location = new Point(22, 187);
-            cbNadzorniOrgan.Name = "cbNadzorniOrgan";
-            cbNadzorniOrgan.Size = new Size(137, 24);
-            cbNadzorniOrgan.TabIndex = 8;
-            cbNadzorniOrgan.Text = "Nadzorni Organ";
-            cbNadzorniOrgan.UseVisualStyleBackColor = true;
             // 
             // cbDobavljaci
             // 
@@ -418,13 +425,6 @@
             lb3.TabIndex = 12;
             lb3.Text = "Prezime:";
             // 
-            // dtpDatumRodjenja
-            // 
-            dtpDatumRodjenja.Location = new Point(150, 169);
-            dtpDatumRodjenja.Name = "dtpDatumRodjenja";
-            dtpDatumRodjenja.Size = new Size(200, 27);
-            dtpDatumRodjenja.TabIndex = 30;
-            // 
             // DodajOsobu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -436,10 +436,10 @@
             Load += DodajOsobu_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            gbFizickoLice.ResumeLayout(false);
-            gbFizickoLice.PerformLayout();
             gbPravnoLice.ResumeLayout(false);
             gbPravnoLice.PerformLayout();
+            gbFizickoLice.ResumeLayout(false);
+            gbFizickoLice.PerformLayout();
             ResumeLayout(false);
         }
 

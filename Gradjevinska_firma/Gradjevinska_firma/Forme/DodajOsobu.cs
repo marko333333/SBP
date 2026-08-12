@@ -86,6 +86,7 @@ namespace Gradjevinska_firma.Forme
                    cbAO.Checked);
 
                 DTOManager.dodajFizickoLice(fizicko);
+                MessageBox.Show("Uspesno dodavanje.");
             }
             else if (rbPravnoLice.Checked)
             {
@@ -104,6 +105,7 @@ namespace Gradjevinska_firma.Forme
                    cbNO.Checked);
 
                 DTOManager.dodajPravnoLice(pravno);
+                MessageBox.Show("Uspesno dodavanje.");
             }
             else
             {

@@ -7,7 +7,25 @@
     <Compile Update="Forme\DetaljiOsobeForma.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\DodajKontaktForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\DodajLekPregledForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\DodajLicencuForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\DodajObukuForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\DodajOsobu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\DodajSertifikatSpecOpremeForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\DodajZastitnuOpremuForma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\ZaposleniForma.cs">

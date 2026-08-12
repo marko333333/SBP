@@ -63,27 +63,45 @@
             lbOR = new Label();
             cbBK = new CheckBox();
             tabPage3 = new TabPage();
+            btObrisiKontakt = new Button();
+            btIzmeniKontakt = new Button();
+            btDodajKontakt = new Button();
             kontakti = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             tabPage4 = new TabPage();
+            btObrisiLicencu = new Button();
+            btIzmeniLicencu = new Button();
+            btDodajLicencu = new Button();
             licence = new ListView();
             columnHeader3 = new ColumnHeader();
             columnHeader4 = new ColumnHeader();
             tabPage5 = new TabPage();
+            btObrisiObuku = new Button();
+            btIzmeniObuku = new Button();
+            btDodajObuku = new Button();
             bezObuke = new ListView();
             columnHeader5 = new ColumnHeader();
             columnHeader6 = new ColumnHeader();
             tabPage6 = new TabPage();
+            btObrisiLekPregled = new Button();
+            btIzmeniLekPregled = new Button();
+            btDodajLekPregled = new Button();
             lekpregledi = new ListView();
             columnHeader7 = new ColumnHeader();
             columnHeader8 = new ColumnHeader();
             columnHeader11 = new ColumnHeader();
             tabPage7 = new TabPage();
+            btObrisiZasOpremu = new Button();
+            btIzmeniZasOpremu = new Button();
+            btDodajZasOpremu = new Button();
             zastitnaoprema = new ListView();
             columnHeader9 = new ColumnHeader();
             columnHeader10 = new ColumnHeader();
             tabPage8 = new TabPage();
+            btObrisiSertifikat = new Button();
+            btIzmeniSertifkat = new Button();
+            btDodajSertifikat = new Button();
             sertifikatiSpec = new ListView();
             columnHeader12 = new ColumnHeader();
             columnHeader13 = new ColumnHeader();
@@ -464,6 +482,9 @@
             // 
             // tabPage3
             // 
+            tabPage3.Controls.Add(btObrisiKontakt);
+            tabPage3.Controls.Add(btIzmeniKontakt);
+            tabPage3.Controls.Add(btDodajKontakt);
             tabPage3.Controls.Add(kontakti);
             tabPage3.Location = new Point(4, 29);
             tabPage3.Name = "tabPage3";
@@ -472,15 +493,42 @@
             tabPage3.Text = "Kontakti";
             tabPage3.UseVisualStyleBackColor = true;
             // 
+            // btObrisiKontakt
+            // 
+            btObrisiKontakt.Location = new Point(576, 158);
+            btObrisiKontakt.Name = "btObrisiKontakt";
+            btObrisiKontakt.Size = new Size(140, 45);
+            btObrisiKontakt.TabIndex = 3;
+            btObrisiKontakt.Text = "Obrisi kontakt";
+            btObrisiKontakt.UseVisualStyleBackColor = true;
+            // 
+            // btIzmeniKontakt
+            // 
+            btIzmeniKontakt.Location = new Point(576, 89);
+            btIzmeniKontakt.Name = "btIzmeniKontakt";
+            btIzmeniKontakt.Size = new Size(140, 45);
+            btIzmeniKontakt.TabIndex = 2;
+            btIzmeniKontakt.Text = "Izmeni kontakt";
+            btIzmeniKontakt.UseVisualStyleBackColor = true;
+            // 
+            // btDodajKontakt
+            // 
+            btDodajKontakt.Location = new Point(576, 19);
+            btDodajKontakt.Name = "btDodajKontakt";
+            btDodajKontakt.Size = new Size(140, 45);
+            btDodajKontakt.TabIndex = 1;
+            btDodajKontakt.Text = "Dodaj kontakt";
+            btDodajKontakt.UseVisualStyleBackColor = true;
+            btDodajKontakt.Click += btDodajKontakt_Click;
+            // 
             // kontakti
             // 
             kontakti.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2 });
-            kontakti.Dock = DockStyle.Fill;
             kontakti.FullRowSelect = true;
             kontakti.GridLines = true;
             kontakti.Location = new Point(0, 0);
             kontakti.Name = "kontakti";
-            kontakti.Size = new Size(780, 417);
+            kontakti.Size = new Size(538, 417);
             kontakti.TabIndex = 0;
             kontakti.UseCompatibleStateImageBehavior = false;
             kontakti.View = View.Details;
@@ -497,6 +545,9 @@
             // 
             // tabPage4
             // 
+            tabPage4.Controls.Add(btObrisiLicencu);
+            tabPage4.Controls.Add(btIzmeniLicencu);
+            tabPage4.Controls.Add(btDodajLicencu);
             tabPage4.Controls.Add(licence);
             tabPage4.Location = new Point(4, 29);
             tabPage4.Name = "tabPage4";
@@ -506,15 +557,42 @@
             tabPage4.UseVisualStyleBackColor = true;
             tabPage4.Click += tabPage4_Click;
             // 
+            // btObrisiLicencu
+            // 
+            btObrisiLicencu.Location = new Point(540, 155);
+            btObrisiLicencu.Name = "btObrisiLicencu";
+            btObrisiLicencu.Size = new Size(140, 45);
+            btObrisiLicencu.TabIndex = 6;
+            btObrisiLicencu.Text = "Obrisi licencu";
+            btObrisiLicencu.UseVisualStyleBackColor = true;
+            // 
+            // btIzmeniLicencu
+            // 
+            btIzmeniLicencu.Location = new Point(540, 86);
+            btIzmeniLicencu.Name = "btIzmeniLicencu";
+            btIzmeniLicencu.Size = new Size(140, 45);
+            btIzmeniLicencu.TabIndex = 5;
+            btIzmeniLicencu.Text = "Izmeni licencu";
+            btIzmeniLicencu.UseVisualStyleBackColor = true;
+            // 
+            // btDodajLicencu
+            // 
+            btDodajLicencu.Location = new Point(540, 16);
+            btDodajLicencu.Name = "btDodajLicencu";
+            btDodajLicencu.Size = new Size(140, 45);
+            btDodajLicencu.TabIndex = 4;
+            btDodajLicencu.Text = "Dodaj licencu";
+            btDodajLicencu.UseVisualStyleBackColor = true;
+            btDodajLicencu.Click += btDodajLicencu_Click;
+            // 
             // licence
             // 
             licence.Columns.AddRange(new ColumnHeader[] { columnHeader3, columnHeader4 });
-            licence.Dock = DockStyle.Fill;
             licence.FullRowSelect = true;
             licence.GridLines = true;
             licence.Location = new Point(0, 0);
             licence.Name = "licence";
-            licence.Size = new Size(780, 417);
+            licence.Size = new Size(462, 417);
             licence.TabIndex = 0;
             licence.UseCompatibleStateImageBehavior = false;
             licence.View = View.Details;
@@ -531,6 +609,9 @@
             // 
             // tabPage5
             // 
+            tabPage5.Controls.Add(btObrisiObuku);
+            tabPage5.Controls.Add(btIzmeniObuku);
+            tabPage5.Controls.Add(btDodajObuku);
             tabPage5.Controls.Add(bezObuke);
             tabPage5.Location = new Point(4, 29);
             tabPage5.Name = "tabPage5";
@@ -539,15 +620,42 @@
             tabPage5.Text = "Bezbednosne obuke";
             tabPage5.UseVisualStyleBackColor = true;
             // 
+            // btObrisiObuku
+            // 
+            btObrisiObuku.Location = new Point(545, 200);
+            btObrisiObuku.Name = "btObrisiObuku";
+            btObrisiObuku.Size = new Size(140, 72);
+            btObrisiObuku.TabIndex = 9;
+            btObrisiObuku.Text = "Obrisi obuku";
+            btObrisiObuku.UseVisualStyleBackColor = true;
+            // 
+            // btIzmeniObuku
+            // 
+            btIzmeniObuku.Location = new Point(545, 107);
+            btIzmeniObuku.Name = "btIzmeniObuku";
+            btIzmeniObuku.Size = new Size(140, 61);
+            btIzmeniObuku.TabIndex = 8;
+            btIzmeniObuku.Text = "Izmeni obuku";
+            btIzmeniObuku.UseVisualStyleBackColor = true;
+            // 
+            // btDodajObuku
+            // 
+            btDodajObuku.Location = new Point(545, 19);
+            btDodajObuku.Name = "btDodajObuku";
+            btDodajObuku.Size = new Size(140, 57);
+            btDodajObuku.TabIndex = 7;
+            btDodajObuku.Text = "Dodaj obuku";
+            btDodajObuku.UseVisualStyleBackColor = true;
+            btDodajObuku.Click += btDodajObuku_Click;
+            // 
             // bezObuke
             // 
             bezObuke.Columns.AddRange(new ColumnHeader[] { columnHeader5, columnHeader6 });
-            bezObuke.Dock = DockStyle.Fill;
             bezObuke.FullRowSelect = true;
             bezObuke.GridLines = true;
             bezObuke.Location = new Point(0, 0);
             bezObuke.Name = "bezObuke";
-            bezObuke.Size = new Size(780, 417);
+            bezObuke.Size = new Size(475, 417);
             bezObuke.TabIndex = 0;
             bezObuke.UseCompatibleStateImageBehavior = false;
             bezObuke.View = View.Details;
@@ -565,6 +673,9 @@
             // 
             // tabPage6
             // 
+            tabPage6.Controls.Add(btObrisiLekPregled);
+            tabPage6.Controls.Add(btIzmeniLekPregled);
+            tabPage6.Controls.Add(btDodajLekPregled);
             tabPage6.Controls.Add(lekpregledi);
             tabPage6.Location = new Point(4, 29);
             tabPage6.Name = "tabPage6";
@@ -574,15 +685,42 @@
             tabPage6.Text = "Lekarski pregledi";
             tabPage6.UseVisualStyleBackColor = true;
             // 
+            // btObrisiLekPregled
+            // 
+            btObrisiLekPregled.Location = new Point(560, 200);
+            btObrisiLekPregled.Name = "btObrisiLekPregled";
+            btObrisiLekPregled.Size = new Size(140, 72);
+            btObrisiLekPregled.TabIndex = 9;
+            btObrisiLekPregled.Text = "Obrisi lekarski pregled";
+            btObrisiLekPregled.UseVisualStyleBackColor = true;
+            // 
+            // btIzmeniLekPregled
+            // 
+            btIzmeniLekPregled.Location = new Point(560, 107);
+            btIzmeniLekPregled.Name = "btIzmeniLekPregled";
+            btIzmeniLekPregled.Size = new Size(140, 61);
+            btIzmeniLekPregled.TabIndex = 8;
+            btIzmeniLekPregled.Text = "Izmeni lekarski pregled";
+            btIzmeniLekPregled.UseVisualStyleBackColor = true;
+            // 
+            // btDodajLekPregled
+            // 
+            btDodajLekPregled.Location = new Point(560, 19);
+            btDodajLekPregled.Name = "btDodajLekPregled";
+            btDodajLekPregled.Size = new Size(140, 57);
+            btDodajLekPregled.TabIndex = 7;
+            btDodajLekPregled.Text = "Dodaj lekarski pregled";
+            btDodajLekPregled.UseVisualStyleBackColor = true;
+            btDodajLekPregled.Click += btDodajLekPregled_Click;
+            // 
             // lekpregledi
             // 
             lekpregledi.Columns.AddRange(new ColumnHeader[] { columnHeader7, columnHeader8, columnHeader11 });
-            lekpregledi.Dock = DockStyle.Fill;
             lekpregledi.FullRowSelect = true;
             lekpregledi.GridLines = true;
             lekpregledi.Location = new Point(3, 3);
             lekpregledi.Name = "lekpregledi";
-            lekpregledi.Size = new Size(774, 411);
+            lekpregledi.Size = new Size(474, 411);
             lekpregledi.TabIndex = 0;
             lekpregledi.UseCompatibleStateImageBehavior = false;
             lekpregledi.View = View.Details;
@@ -605,6 +743,9 @@
             // 
             // tabPage7
             // 
+            tabPage7.Controls.Add(btObrisiZasOpremu);
+            tabPage7.Controls.Add(btIzmeniZasOpremu);
+            tabPage7.Controls.Add(btDodajZasOpremu);
             tabPage7.Controls.Add(zastitnaoprema);
             tabPage7.Location = new Point(4, 29);
             tabPage7.Name = "tabPage7";
@@ -614,15 +755,42 @@
             tabPage7.Text = "Zastitna oprema";
             tabPage7.UseVisualStyleBackColor = true;
             // 
+            // btObrisiZasOpremu
+            // 
+            btObrisiZasOpremu.Location = new Point(591, 196);
+            btObrisiZasOpremu.Name = "btObrisiZasOpremu";
+            btObrisiZasOpremu.Size = new Size(140, 72);
+            btObrisiZasOpremu.TabIndex = 6;
+            btObrisiZasOpremu.Text = "Obrisi zastitnu opremu";
+            btObrisiZasOpremu.UseVisualStyleBackColor = true;
+            // 
+            // btIzmeniZasOpremu
+            // 
+            btIzmeniZasOpremu.Location = new Point(591, 103);
+            btIzmeniZasOpremu.Name = "btIzmeniZasOpremu";
+            btIzmeniZasOpremu.Size = new Size(140, 61);
+            btIzmeniZasOpremu.TabIndex = 5;
+            btIzmeniZasOpremu.Text = "Izmeni zastitnu opremu";
+            btIzmeniZasOpremu.UseVisualStyleBackColor = true;
+            // 
+            // btDodajZasOpremu
+            // 
+            btDodajZasOpremu.Location = new Point(591, 15);
+            btDodajZasOpremu.Name = "btDodajZasOpremu";
+            btDodajZasOpremu.Size = new Size(140, 57);
+            btDodajZasOpremu.TabIndex = 4;
+            btDodajZasOpremu.Text = "Dodaj zastitnu opremu";
+            btDodajZasOpremu.UseVisualStyleBackColor = true;
+            btDodajZasOpremu.Click += btDodajZasOpremu_Click;
+            // 
             // zastitnaoprema
             // 
             zastitnaoprema.Columns.AddRange(new ColumnHeader[] { columnHeader9, columnHeader10 });
-            zastitnaoprema.Dock = DockStyle.Fill;
             zastitnaoprema.FullRowSelect = true;
             zastitnaoprema.GridLines = true;
             zastitnaoprema.Location = new Point(3, 3);
             zastitnaoprema.Name = "zastitnaoprema";
-            zastitnaoprema.Size = new Size(774, 411);
+            zastitnaoprema.Size = new Size(533, 411);
             zastitnaoprema.TabIndex = 0;
             zastitnaoprema.UseCompatibleStateImageBehavior = false;
             zastitnaoprema.View = View.Details;
@@ -639,6 +807,9 @@
             // 
             // tabPage8
             // 
+            tabPage8.Controls.Add(btObrisiSertifikat);
+            tabPage8.Controls.Add(btIzmeniSertifkat);
+            tabPage8.Controls.Add(btDodajSertifikat);
             tabPage8.Controls.Add(sertifikatiSpec);
             tabPage8.Location = new Point(4, 29);
             tabPage8.Name = "tabPage8";
@@ -648,15 +819,42 @@
             tabPage8.Text = "Sertifikat specijalne opreme";
             tabPage8.UseVisualStyleBackColor = true;
             // 
+            // btObrisiSertifikat
+            // 
+            btObrisiSertifikat.Location = new Point(582, 200);
+            btObrisiSertifikat.Name = "btObrisiSertifikat";
+            btObrisiSertifikat.Size = new Size(140, 72);
+            btObrisiSertifikat.TabIndex = 9;
+            btObrisiSertifikat.Text = "Obrisi sertifikat";
+            btObrisiSertifikat.UseVisualStyleBackColor = true;
+            // 
+            // btIzmeniSertifkat
+            // 
+            btIzmeniSertifkat.Location = new Point(582, 107);
+            btIzmeniSertifkat.Name = "btIzmeniSertifkat";
+            btIzmeniSertifkat.Size = new Size(140, 61);
+            btIzmeniSertifkat.TabIndex = 8;
+            btIzmeniSertifkat.Text = "Izmeni sertifikat";
+            btIzmeniSertifkat.UseVisualStyleBackColor = true;
+            // 
+            // btDodajSertifikat
+            // 
+            btDodajSertifikat.Location = new Point(582, 19);
+            btDodajSertifikat.Name = "btDodajSertifikat";
+            btDodajSertifikat.Size = new Size(140, 57);
+            btDodajSertifikat.TabIndex = 7;
+            btDodajSertifikat.Text = "Dodaj sertifikat";
+            btDodajSertifikat.UseVisualStyleBackColor = true;
+            btDodajSertifikat.Click += btDodajSertifikat_Click;
+            // 
             // sertifikatiSpec
             // 
             sertifikatiSpec.Columns.AddRange(new ColumnHeader[] { columnHeader12, columnHeader13 });
-            sertifikatiSpec.Dock = DockStyle.Fill;
             sertifikatiSpec.FullRowSelect = true;
             sertifikatiSpec.GridLines = true;
             sertifikatiSpec.Location = new Point(3, 3);
             sertifikatiSpec.Name = "sertifikatiSpec";
-            sertifikatiSpec.Size = new Size(774, 411);
+            sertifikatiSpec.Size = new Size(519, 411);
             sertifikatiSpec.TabIndex = 0;
             sertifikatiSpec.UseCompatibleStateImageBehavior = false;
             sertifikatiSpec.View = View.Details;
@@ -765,5 +963,23 @@
         private ListView sertifikatiSpec;
         private ColumnHeader columnHeader12;
         private ColumnHeader columnHeader13;
+        private Button btObrisiKontakt;
+        private Button btIzmeniKontakt;
+        private Button btDodajKontakt;
+        private Button btObrisiLicencu;
+        private Button btIzmeniLicencu;
+        private Button btDodajLicencu;
+        private Button btObrisiZasOpremu;
+        private Button btIzmeniZasOpremu;
+        private Button btDodajZasOpremu;
+        private Button btObrisiObuku;
+        private Button btIzmeniObuku;
+        private Button btDodajObuku;
+        private Button btObrisiLekPregled;
+        private Button btIzmeniLekPregled;
+        private Button btDodajLekPregled;
+        private Button btObrisiSertifikat;
+        private Button btIzmeniSertifkat;
+        private Button btDodajSertifikat;
     }
 }

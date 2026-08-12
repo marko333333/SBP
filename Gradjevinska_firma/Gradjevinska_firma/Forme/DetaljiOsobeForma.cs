@@ -24,7 +24,7 @@ namespace Gradjevinska_firma.Forme
 
         private void DetaljiOsobeForma_Load(object sender, EventArgs e)
         {
-            
+
             gbFizickoLice.Enabled = false;
             gbPravnoLice.Enabled = false;
             tabControl1.TabPages.Remove(tabPage5);
@@ -142,25 +142,25 @@ namespace Gradjevinska_firma.Forme
             else if (tabControl1.SelectedIndex == 4)
             {
                 FizickoLiceBasic fizicko = DTOManager.vratiFizickoLice(idOsobe);
-                if(fizicko!=null)
+                if (fizicko != null)
                     popuniBezbednosneObuke(fizicko);
             }
             else if (tabControl1.SelectedIndex == 5)
             {
                 FizickoLiceBasic fizicko = DTOManager.vratiFizickoLice(idOsobe);
-                if(fizicko!=null)
+                if (fizicko != null)
                     popuniLekPregled(fizicko);
             }
             else if (tabControl1.SelectedIndex == 6)
             {
                 FizickoLiceBasic fizicko = DTOManager.vratiFizickoLice(idOsobe);
-                if(fizicko!=null)
+                if (fizicko != null)
                     popuniZastitnaOprema(fizicko);
             }
             else if (tabControl1.SelectedIndex == 7)
             {
                 FizickoLiceBasic fizicko = DTOManager.vratiFizickoLice(idOsobe);
-                if(fizicko!=null)
+                if (fizicko != null)
                     popuniSertifikatSpec(fizicko);
             }
 
@@ -251,7 +251,7 @@ namespace Gradjevinska_firma.Forme
                     {
                    zo.Id.ToString(),
                    zo.NazivOpreme
-                   
+
                     });
 
                 zastitnaoprema.Items.Add(item);
@@ -281,6 +281,42 @@ namespace Gradjevinska_firma.Forme
         private void tabPage4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btDodajKontakt_Click(object sender, EventArgs e)
+        {
+            DodajKontaktForma forma = new DodajKontaktForma(idOsobe);
+            forma.ShowDialog();
+        }
+
+        private void btDodajLicencu_Click(object sender, EventArgs e)
+        {
+            DodajLicencuForma forma = new DodajLicencuForma(idOsobe);
+            forma.ShowDialog();
+        }
+
+        private void btDodajObuku_Click(object sender, EventArgs e)
+        {
+            DodajObukuForma forma = new DodajObukuForma(idOsobe);
+            forma.ShowDialog();
+        }
+
+        private void btDodajLekPregled_Click(object sender, EventArgs e)
+        {
+            DodajLekPregledForma forma = new DodajLekPregledForma(idOsobe);
+            forma.ShowDialog();
+        }
+
+        private void btDodajZasOpremu_Click(object sender, EventArgs e)
+        {
+            DodajZastitnuOpremuForma forma = new DodajZastitnuOpremuForma(idOsobe);
+            forma.ShowDialog();
+        }
+
+        private void btDodajSertifikat_Click(object sender, EventArgs e)
+        {
+            DodajSertifikatSpecOpremeForma forma = new DodajSertifikatSpecOpremeForma(idOsobe);
+            forma.ShowDialog();
         }
     }
 }

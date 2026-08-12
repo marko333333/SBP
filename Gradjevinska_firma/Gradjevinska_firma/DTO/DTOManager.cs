@@ -62,31 +62,6 @@ namespace Gradjevinska_firma.DTO
             return osoba;
         }
 
-        public static void dodajOsobu(OsobaBasic osoba)
-        {
-            try
-            {
-                ISession s = DataLayer.GetSession();
-
-                Osoba o = new Osoba();
-
-                o.Jmbg = osoba.Jmbg;
-                o.Ime = osoba.Ime;
-                o.Prezime = osoba.Prezime;
-                o.DatumRodjenja = osoba.DatumRodjenja;
-                o.Struka = osoba.Struka;
-
-                s.Save(o);
-                s.Flush();
-
-                s.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-
         public static void obrisiOsobu(int id)
         {
             try
@@ -351,6 +326,76 @@ namespace Gradjevinska_firma.DTO
             return kontakti;
         }
 
+        public static void dodajKontakt(KontaktBasic k)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Osoba osoba = s.Get<Osoba>(k.IdOsoba);
+
+                if (osoba == null)
+                {
+                    MessageBox.Show("Osoba ne postoji.");
+                    return;
+                }
+
+                Kontakt kontakt = new Kontakt();
+
+                kontakt.Osoba = osoba;
+                kontakt.Broj = k.Broj;
+
+                s.Save(kontakt);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void izmeniKontakt(KontaktBasic k)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Kontakt kontakt = s.Load<Kontakt>(k.Id);
+
+                kontakt.Broj=k.Broj;
+
+                s.Update(kontakt);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void obrisiKontakt(KontaktBasic k)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Kontakt kontakt = s.Load<Kontakt>(k.Id);
+
+                s.Delete(kontakt);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         #endregion
 
         #region Licence
@@ -387,7 +432,79 @@ namespace Gradjevinska_firma.DTO
             return licence;
         }
 
+        public static void dodajLicencu(LicencaBasic l)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Osoba osoba = s.Get<Osoba>(l.IdOsoba);
+
+                if (osoba == null)
+                {
+                    MessageBox.Show("Osoba ne postoji.");
+                    return;
+                }
+
+                Licenca licenca = new Licenca();
+
+                licenca.Osoba = osoba;
+                licenca.NazivLicence = l.NazivLicence;
+
+                s.Save(licenca);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void izmeniLicencu(LicencaBasic l)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Licenca licenca = s.Load<Licenca>(l.Id);
+
+                licenca.NazivLicence = l.NazivLicence;
+
+                s.Update(licenca);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void obrisiLicencu(LicencaBasic l)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Licenca licenca = s.Load<Licenca>(l.Id);
+
+                s.Delete(licenca);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         #endregion
+
+        //brisanje i izmena bezbednosne obuke!!!!!
 
         #region BezbednosnaObuka
 
@@ -422,6 +539,80 @@ namespace Gradjevinska_firma.DTO
             return obuke;
         }
 
+        public static void dodajBezbednosnuObuku(BezbednosnaObukaBasic bezObuka)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                FizickoLice lice = s.Get<FizickoLice>(bezObuka.IdFizickoLice);
+
+                if (lice == null)
+                {
+                    MessageBox.Show("Fizicko lice ne postoji.");
+                    return;
+                }
+
+                BezbednosnaObuka obuka = new BezbednosnaObuka();
+
+                obuka.FizickoLice = lice;
+                obuka.NazivObuke = bezObuka.NazivObuke;
+                obuka.Datum = bezObuka.Datum;
+
+                s.Save(obuka);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+
+            }
+        }
+
+        public static void izmeniBezbednosnuObuku(BezbednosnaObukaBasic bo)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                //ovo mora da se prepravi
+                BezbednosnaObuka bezobuka = s.Load<BezbednosnaObuka>(bo.Id);
+
+                bezobuka.NazivObuke = bo.NazivObuke;
+                bezobuka.Datum = bo.Datum;
+
+                s.Update(bezobuka);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void obrisiBezbednosnuObuku(BezbednosnaObukaBasic bo)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                //ovo mora da se prepravi
+                BezbednosnaObuka bezobuka = s.Load<BezbednosnaObuka>(bo.Id);
+
+                s.Delete(bezobuka);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
         #endregion
 
         #region LekPregled
@@ -456,6 +647,81 @@ namespace Gradjevinska_firma.DTO
             }
             return pregledi;
         }
+
+        public static void dodajLekPregled(LekarskiPregledBasic lp)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                FizickoLice fizicko = s.Get<FizickoLice>(lp.IdFizickoLice);
+
+                if (fizicko == null)
+                {
+                    MessageBox.Show("Fizicko lice ne postoji.");
+                    return;
+                }
+
+                LekarskiPregled lekpregled = new LekarskiPregled();
+
+                
+                lekpregled.FizickoLice = fizicko;
+                lekpregled.Rezultat = lp.Rezultat;
+                lekpregled.Datum = lp.Datum;
+
+                s.Save(lekpregled);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void izmeniLekPregled(LekarskiPregledBasic lp)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                LekarskiPregled lekpregled = s.Load<LekarskiPregled>(lp.Id);
+
+                lekpregled.Rezultat = lp.Rezultat;
+                lekpregled.Datum = lp.Datum;
+
+                s.Update(lekpregled);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void obrisiLekPregled(LekarskiPregledBasic lp)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                LekarskiPregled lekpregled = s.Load<LekarskiPregled>(lp.Id);
+
+
+                s.Delete(lekpregled);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         #endregion
 
         #region SertifikatSpecOpreme
@@ -492,6 +758,77 @@ namespace Gradjevinska_firma.DTO
             return sertifikati;
         }
 
+        public static void dodajSertifikatSpecOpreme(SertifikatSpecOpremeBasic sso)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                FizickoLice fizicko = s.Get<FizickoLice>(sso.IdFizickoLice);
+
+                if (fizicko == null)
+                {
+                    MessageBox.Show("Fizicko lice ne postoji.");
+                    return;
+                }
+
+                SertifikatSpecOpreme sertifikatspec = new SertifikatSpecOpreme();
+
+
+                sertifikatspec.FizickoLice = fizicko;
+                sertifikatspec.Sertifikat = sso.Sertifikat;
+
+                s.Save(sertifikatspec);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void izmeniSertifikatSpecOpreme(SertifikatSpecOpremeBasic sso)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                SertifikatSpecOpreme sertifikatSpec = s.Load<SertifikatSpecOpreme>(sso.Id);
+
+                sertifikatSpec.Sertifikat = sso.Sertifikat;
+
+                s.Update(sertifikatSpec);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void obrisiSertifikatSpecOpreme(int id)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                SertifikatSpecOpreme sertifikatSpec = s.Load<SertifikatSpecOpreme>(id);
+
+                s.Delete(sertifikatSpec);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         #endregion
 
         #region ZastitnaOprema
@@ -526,6 +863,77 @@ namespace Gradjevinska_firma.DTO
             }
 
             return opreme;
+        }
+
+        public static void dodajZastitnuOpremu(ZastitnaOpremaBasic zo)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                FizickoLice fizicko = s.Get<FizickoLice>(zo.IdFizickoLice);
+
+                if (fizicko == null)
+                {
+                    MessageBox.Show("Fizicko lice ne postoji.");
+                    return;
+                }
+
+                ZastitnaOprema zastitnaOprema = new ZastitnaOprema();
+
+
+                zastitnaOprema.FizickoLice = fizicko;
+                zastitnaOprema.NazivOpreme = zo.NazivOpreme;
+
+                s.Save(zastitnaOprema);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void izmeniZastitnuOpremu(ZastitnaOpremaBasic zo)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                ZastitnaOprema zastitnaOprema = s.Load<ZastitnaOprema>(zo.Id);
+
+                zastitnaOprema.NazivOpreme = zo.NazivOpreme;
+
+                s.Update(zastitnaOprema);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void obrisiZastitnuOpremu(int id)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                ZastitnaOprema zastitnaOprema = s.Load<ZastitnaOprema>(id);
+
+                s.Delete(zastitnaOprema);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         #endregion

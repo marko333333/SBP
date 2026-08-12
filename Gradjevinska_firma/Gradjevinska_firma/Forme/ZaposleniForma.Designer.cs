@@ -69,6 +69,7 @@
             bt_dodaj.TabIndex = 1;
             bt_dodaj.Text = "Dodaj osobu";
             bt_dodaj.UseVisualStyleBackColor = true;
+            bt_dodaj.Click += bt_dodaj_Click_1;
             // 
             // bt_izmeni
             // 

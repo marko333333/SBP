@@ -129,9 +129,9 @@ namespace Gradjevinska_firma.Forme
             forma.ShowDialog();
         }
 
-        private void bt_dodaj_Click(object sender, EventArgs e)
-        {
 
+        private void bt_dodaj_Click_1(object sender, EventArgs e)
+        {
             DodajOsobu forma = new DodajOsobu();
             forma.ShowDialog();
         }

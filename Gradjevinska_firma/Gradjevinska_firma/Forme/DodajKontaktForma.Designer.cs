@@ -1,0 +1,98 @@
+﻿namespace Gradjevinska_firma.Forme
+{
+    partial class DodajKontaktForma
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            groupBox1 = new GroupBox();
+            btDodajKontakt = new Button();
+            tbKontakt = new TextBox();
+            label1 = new Label();
+            groupBox1.SuspendLayout();
+            SuspendLayout();
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(btDodajKontakt);
+            groupBox1.Controls.Add(tbKontakt);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Dock = DockStyle.Fill;
+            groupBox1.Location = new Point(0, 0);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(580, 194);
+            groupBox1.TabIndex = 0;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Kontakt";
+            // 
+            // btDodajKontakt
+            // 
+            btDodajKontakt.Location = new Point(137, 103);
+            btDodajKontakt.Name = "btDodajKontakt";
+            btDodajKontakt.Size = new Size(94, 29);
+            btDodajKontakt.TabIndex = 2;
+            btDodajKontakt.Text = "Dodaj";
+            btDodajKontakt.UseVisualStyleBackColor = true;
+            btDodajKontakt.Click += btDodajKontakt_Click;
+            // 
+            // tbKontakt
+            // 
+            tbKontakt.Location = new Point(89, 34);
+            tbKontakt.Name = "tbKontakt";
+            tbKontakt.Size = new Size(179, 27);
+            tbKontakt.TabIndex = 1;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(20, 37);
+            label1.Name = "label1";
+            label1.Size = new Size(63, 20);
+            label1.TabIndex = 0;
+            label1.Text = "Kontakt:";
+            // 
+            // DodajKontaktForma
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(580, 194);
+            Controls.Add(groupBox1);
+            Name = "DodajKontaktForma";
+            Text = "DodajKontaktForma";
+            Load += DodajKontaktForma_Load;
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            ResumeLayout(false);
+        }
+
+        #endregion
+
+        private GroupBox groupBox1;
+        private TextBox tbKontakt;
+        private Label label1;
+        private Button btDodajKontakt;
+    }
+}
