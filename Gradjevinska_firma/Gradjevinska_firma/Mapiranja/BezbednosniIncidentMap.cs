@@ -35,35 +35,35 @@ namespace Gradjevinska_firma.Mapiranja
     {
         public PovredaNaRaduMap()
         {
-            DiscriminatorValue("POVREDANARADU");
+            DiscriminatorValue("Povreda na radu");
         }
     }
     class KvarOpremeMap : SubclassMap<KvarOpreme>
     {
         public KvarOpremeMap()
         {
-            DiscriminatorValue("KVAROPREME");
+            DiscriminatorValue("Kvar opreme");
         }
     }
     class NepostovanjeProceduraMap : SubclassMap<NepostovanjeProcedura>
     {
         public NepostovanjeProceduraMap()
         {
-            DiscriminatorValue("NEPOSTOVANJEPROCEDURA");
+            DiscriminatorValue("Nepostovanje procedura");
         }
     }
     class OpasnaSituacijaMap : SubclassMap<OpasnaSituacija>
     {
         public OpasnaSituacijaMap()
         {
-            DiscriminatorValue("OPASNASITUACIJA");
+            DiscriminatorValue("Opasna situacija");
         }
     }
     class EkoloskiIncidentMap : SubclassMap<EkoloskiIncident>
     {
         public EkoloskiIncidentMap()
         {
-            DiscriminatorValue("EKOLOSKIINCIDENT");
+            DiscriminatorValue("Ekoloski incident");
         }
     }
 }

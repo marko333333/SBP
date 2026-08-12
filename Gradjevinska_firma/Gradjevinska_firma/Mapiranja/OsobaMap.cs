@@ -45,7 +45,7 @@ namespace Gradjevinska_firma.Mapiranja
                 .Cascade.All()
                 .Inverse();
             
-            HasMany(x => x.BezbednosniIncidenti).KeyColumn("IDBEZBEDNOSNOGINCIDENTA").LazyLoad().Cascade.All().Inverse();
+            HasMany(x => x.BezbednosniIncidenti).KeyColumn("IDOSOBE").LazyLoad().Cascade.All().Inverse();
         }
     }
 }
