@@ -28,6 +28,27 @@
     <Compile Update="Forme\DodajZastitnuOpremuForma.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\IzmeniKontaktForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\IzmeniLekPregledForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\IzmeniLicencuForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\IzmeniObukuForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\IzmeniOsobuForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\IzmeniSertifikatSpecOpremeFormacs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\IzmeniZastitnuOpremuForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\ZaposleniForma.cs">
       <SubType>Form</SubType>
     </Compile>

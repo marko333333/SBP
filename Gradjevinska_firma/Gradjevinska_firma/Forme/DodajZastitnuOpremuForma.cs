@@ -31,7 +31,11 @@ namespace Gradjevinska_firma.Forme
                 0, idOsobe, tbZastitnaOprema.Text);
 
             DTOManager.dodajZastitnuOpremu(zastitnaOprema);
+
             MessageBox.Show("Uspesno dodavanje.");
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

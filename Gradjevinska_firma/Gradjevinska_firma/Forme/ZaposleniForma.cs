@@ -132,8 +132,91 @@ namespace Gradjevinska_firma.Forme
 
         private void bt_dodaj_Click_1(object sender, EventArgs e)
         {
-            DodajOsobu forma = new DodajOsobu();
-            forma.ShowDialog();
+            using (DodajOsobu forma = new DodajOsobu())
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    popuniZaposlene();
+                }
+            }
+        }
+
+        private void bt_izmeni_Click(object sender, EventArgs e)
+        {
+            ListView tabela = null;
+
+            if (tabControl1.SelectedIndex == 0)
+                tabela = zaposleni;
+            else if (tabControl1.SelectedIndex == 1)
+                tabela = fizickaLica;
+            else if (tabControl1.SelectedIndex == 2)
+                tabela = pravnaLica;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati osobu iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+
+            using (IzmeniOsobuForma forma = new IzmeniOsobuForma(id))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    if (tabControl1.SelectedIndex == 0)
+                        popuniZaposlene();
+                    else if (tabControl1.SelectedIndex == 1)
+                        popuniFizickaLica();
+                    else if (tabControl1.SelectedIndex == 2)
+                        popuniPravnaLica();
+                }
+            }
+        }
+
+        private void bt_obrisi_Click(object sender, EventArgs e)
+        {
+            ListView tabela = null;
+
+            if (tabControl1.SelectedIndex == 0)
+                tabela = zaposleni;
+            else if (tabControl1.SelectedIndex == 1)
+                tabela = fizickaLica;
+            else if (tabControl1.SelectedIndex == 2)
+                tabela = pravnaLica;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati osobu iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+            string poruka = "Da li zelite da obrisete izabranu osobu?";
+            string title = "Pitanje";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(poruka, title, buttons);
+
+            if (result == DialogResult.OK)
+            {
+                DTOManager.obrisiOsobu(id);
+                MessageBox.Show("Brisanje osobe je uspesno obavljeno!");
+                if (tabControl1.SelectedIndex == 0)
+                    popuniZaposlene();
+                else if (tabControl1.SelectedIndex == 1)
+                    popuniFizickaLica();
+                else if (tabControl1.SelectedIndex == 2)
+                    popuniPravnaLica();
+
+            }
+            else
+            {
+
+            }   
         }
     }
 }

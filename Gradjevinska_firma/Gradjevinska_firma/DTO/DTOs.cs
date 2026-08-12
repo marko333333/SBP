@@ -644,14 +644,16 @@ namespace Gradjevinska_firma.DTO
 
     public class BezbednosnaObukaBasic
     {
+        public int Id;
         public int IdFizickoLice;
         public string NazivObuke;
         public DateTime Datum;
         public BezbednosnaObukaBasic()
         {
         }
-        public BezbednosnaObukaBasic(int idfizickoLice,string nazivObuke,DateTime datum)
+        public BezbednosnaObukaBasic(int id,int idfizickoLice,string nazivObuke,DateTime datum)
         {
+            Id = id;
             IdFizickoLice = idfizickoLice;
             NazivObuke = nazivObuke;
             Datum = datum;
@@ -659,6 +661,7 @@ namespace Gradjevinska_firma.DTO
     }
     public class BezbednosnaObukaPregled
     {
+        public int Id;
         public int IdFizickoLice;
         public string NazivObuke;
         public DateTime Datum;
@@ -667,9 +670,9 @@ namespace Gradjevinska_firma.DTO
         {
         }
 
-        public BezbednosnaObukaPregled(int idfizickoLice,string nazivObuke,DateTime datum)
+        public BezbednosnaObukaPregled(int id,int idfizickoLice,string nazivObuke,DateTime datum)
         {
-           
+            Id = id;
             IdFizickoLice = idfizickoLice;
             NazivObuke = nazivObuke;
             Datum = datum;

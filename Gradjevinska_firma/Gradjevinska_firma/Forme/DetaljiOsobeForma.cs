@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.Entiteti;
 using NHibernate.Cfg.MappingSchema;
 using System;
 using System.Collections.Generic;
@@ -211,8 +212,9 @@ namespace Gradjevinska_firma.Forme
                 ListViewItem item = new ListViewItem(
                     new string[]
                     {
-                b.Datum.ToShortDateString(),
-                b.NazivObuke
+                        b.Id.ToString(),
+                        b.Datum.ToShortDateString(),
+                        b.NazivObuke
                     });
 
                 bezObuke.Items.Add(item);
@@ -285,38 +287,386 @@ namespace Gradjevinska_firma.Forme
 
         private void btDodajKontakt_Click(object sender, EventArgs e)
         {
-            DodajKontaktForma forma = new DodajKontaktForma(idOsobe);
-            forma.ShowDialog();
+            using (DodajKontaktForma forma = new DodajKontaktForma(idOsobe))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    OsobaBasic osoba = DTOManager.vratiOsobu(idOsobe);
+                    popuniKontakte(osoba);
+                }
+            }
         }
 
         private void btDodajLicencu_Click(object sender, EventArgs e)
         {
-            DodajLicencuForma forma = new DodajLicencuForma(idOsobe);
-            forma.ShowDialog();
+            using (DodajLicencuForma forma = new DodajLicencuForma(idOsobe))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    OsobaBasic osoba = DTOManager.vratiOsobu(idOsobe);
+                    popuniLicence(osoba);
+                }
+            }
         }
 
         private void btDodajObuku_Click(object sender, EventArgs e)
         {
-            DodajObukuForma forma = new DodajObukuForma(idOsobe);
-            forma.ShowDialog();
+            using (DodajObukuForma forma = new DodajObukuForma(idOsobe))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    FizickoLiceBasic osoba = DTOManager.vratiFizickoLice(idOsobe);
+                    popuniBezbednosneObuke(osoba);
+                }
+            }
         }
 
         private void btDodajLekPregled_Click(object sender, EventArgs e)
         {
-            DodajLekPregledForma forma = new DodajLekPregledForma(idOsobe);
-            forma.ShowDialog();
+            using (DodajLekPregledForma forma = new DodajLekPregledForma(idOsobe))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    FizickoLiceBasic osoba = DTOManager.vratiFizickoLice(idOsobe);
+                    popuniLekPregled(osoba);
+                }
+            }
         }
 
         private void btDodajZasOpremu_Click(object sender, EventArgs e)
         {
-            DodajZastitnuOpremuForma forma = new DodajZastitnuOpremuForma(idOsobe);
-            forma.ShowDialog();
+            using (DodajZastitnuOpremuForma forma = new DodajZastitnuOpremuForma(idOsobe))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    FizickoLiceBasic osoba = DTOManager.vratiFizickoLice(idOsobe);
+                    popuniZastitnaOprema(osoba);
+                }
+            }
         }
 
         private void btDodajSertifikat_Click(object sender, EventArgs e)
         {
-            DodajSertifikatSpecOpremeForma forma = new DodajSertifikatSpecOpremeForma(idOsobe);
-            forma.ShowDialog();
+            using (DodajSertifikatSpecOpremeForma forma = new DodajSertifikatSpecOpremeForma(idOsobe))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    FizickoLiceBasic osoba = DTOManager.vratiFizickoLice(idOsobe);
+                    popuniSertifikatSpec(osoba);
+                }
+            }
+        }
+
+        private void btIzmeniKontakt_Click(object sender, EventArgs e)
+        {
+            ListView tabela = kontakti;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati kontakt iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+
+            using (IzmeniKontaktForma forma = new IzmeniKontaktForma(id, idOsobe))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    OsobaBasic osoba = DTOManager.vratiOsobu(idOsobe);
+                    popuniKontakte(osoba);
+                }
+            }
+        }
+
+        private void btIzmeniLicencu_Click(object sender, EventArgs e)
+        {
+            ListView tabela = licence;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati licencu iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+
+            using (IzmeniLicencuForma forma = new IzmeniLicencuForma(id, idOsobe))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    OsobaBasic osoba = DTOManager.vratiOsobu(idOsobe);
+                    popuniLicence(osoba);
+                }
+            }
+        }
+
+        private void btIzmeniObuku_Click(object sender, EventArgs e)
+        {
+            ListView tabela = bezObuke;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati obuku iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+
+            using (IzmeniObukuForma forma = new IzmeniObukuForma(id, idOsobe))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    FizickoLiceBasic osoba = DTOManager.vratiFizickoLice(idOsobe);
+                    popuniBezbednosneObuke(osoba);
+                }
+            }
+        }
+
+        private void btIzmeniLekPregled_Click(object sender, EventArgs e)
+        {
+            ListView tabela = lekpregledi;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati lekarski pregled iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+
+            using (IzmeniLekPregledForma forma = new IzmeniLekPregledForma(id, idOsobe))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    FizickoLiceBasic osoba = DTOManager.vratiFizickoLice(idOsobe);
+                    popuniLekPregled(osoba);
+                }
+            }
+        }
+
+        private void btIzmeniZasOpremu_Click(object sender, EventArgs e)
+        {
+            ListView tabela = zastitnaoprema;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati zastitnu opremu iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+
+            using (IzmeniZastitnuOpremuForma forma = new IzmeniZastitnuOpremuForma(id, idOsobe))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    FizickoLiceBasic osoba = DTOManager.vratiFizickoLice(idOsobe);
+                    popuniZastitnaOprema(osoba);
+                }
+            }
+        }
+
+        private void btIzmeniSertifkat_Click(object sender, EventArgs e)
+        {
+            ListView tabela = sertifikatiSpec;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati sertifikat iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+
+            using (IzmeniSertifikatSpecOpremeFormacs forma = new IzmeniSertifikatSpecOpremeFormacs(id, idOsobe))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    FizickoLiceBasic osoba = DTOManager.vratiFizickoLice(idOsobe);
+                    popuniSertifikatSpec(osoba);
+                }
+            }
+        }
+
+        private void btObrisiKontakt_Click(object sender, EventArgs e)
+        {
+            if (kontakti.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite kontakt kog zelite da obrisete!");
+                return;
+            }
+
+            int idKontakt = Int32.Parse(kontakti.SelectedItems[0].SubItems[0].Text);
+            string poruka = "Da li zelite da obrisete izabrani kontakt?";
+            string title = "Pitanje";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(poruka, title, buttons);
+
+            if (result == DialogResult.OK)
+            {
+                
+                DTOManager.obrisiKontakt(idKontakt);
+                MessageBox.Show("Brisanje kontakta je uspesno obavljeno!");
+                OsobaBasic osoba = DTOManager.vratiOsobu(idOsobe);
+                popuniKontakte(osoba);
+            }
+            else
+            {
+
+            }
+        }
+
+        private void btObrisiLicencu_Click(object sender, EventArgs e)
+        {
+            if (licence.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite licencu koju zelite da obrisete!");
+                return;
+            }
+
+            int idLicenca = Int32.Parse(licence.SelectedItems[0].SubItems[0].Text);
+            string poruka = "Da li zelite da obrisete izabranu licencu?";
+            string title = "Pitanje";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(poruka, title, buttons);
+
+            if (result == DialogResult.OK)
+            {
+                
+                DTOManager.obrisiLicencu(idLicenca);
+                MessageBox.Show("Brisanje licence je uspesno obavljeno!");
+                OsobaBasic osoba = DTOManager.vratiOsobu(idOsobe);
+                popuniLicence(osoba);
+            }
+            else
+            {
+
+            }
+        }
+
+        private void btObrisiObuku_Click(object sender, EventArgs e)
+        {
+            if (bezObuke.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite obuku koju zelite da obrisete!");
+                return;
+            }
+
+            int idObuke = Int32.Parse(bezObuke.SelectedItems[0].SubItems[0].Text);
+            string poruka = "Da li zelite da obrisete izabranu obuku?";
+            string title = "Pitanje";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(poruka, title, buttons);
+
+            if (result == DialogResult.OK)
+            {
+
+                DTOManager.obrisiBezbednosnuObuku(idObuke);
+                MessageBox.Show("Brisanje obuke je uspesno obavljeno!");
+                FizickoLiceBasic osoba = DTOManager.vratiFizickoLice(idOsobe);
+                popuniBezbednosneObuke(osoba);
+            }
+            else
+            {
+
+            }
+        }
+
+        private void btObrisiLekPregled_Click(object sender, EventArgs e)
+        {
+            if (lekpregledi.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite lekarski pregled koji zelite da obrisete!");
+                return;
+            }
+
+            int idLekPregled = Int32.Parse(lekpregledi.SelectedItems[0].SubItems[0].Text);
+            string poruka = "Da li zelite da obrisete izabrani lekarski pregled?";
+            string title = "Pitanje";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(poruka, title, buttons);
+
+            if (result == DialogResult.OK)
+            {
+
+                DTOManager.obrisiLekPregled(idLekPregled);
+                MessageBox.Show("Brisanje lekarskog pregleda je uspesno obavljeno!");
+                FizickoLiceBasic osoba = DTOManager.vratiFizickoLice(idOsobe);
+                popuniLekPregled(osoba);
+            }
+            else
+            {
+
+            }
+        }
+
+        private void btObrisiZasOpremu_Click(object sender, EventArgs e)
+        {
+            if (zastitnaoprema.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite zastitnu opremu koju zelite da obrisete!");
+                return;
+            }
+
+            int idZastitnaOprema = Int32.Parse(zastitnaoprema.SelectedItems[0].SubItems[0].Text);
+            string poruka = "Da li zelite da obrisete izabranu zastitnu opremu?";
+            string title = "Pitanje";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(poruka, title, buttons);
+
+            if (result == DialogResult.OK)
+            {
+
+                DTOManager.obrisiZastitnuOpremu(idZastitnaOprema);
+                MessageBox.Show("Brisanje zastitne opreme je uspesno obavljeno!");
+                FizickoLiceBasic osoba = DTOManager.vratiFizickoLice(idOsobe);
+                popuniZastitnaOprema(osoba);
+            }
+            else
+            {
+
+            }
+        }
+
+        private void btObrisiSertifikat_Click(object sender, EventArgs e)
+        {
+            if (sertifikatiSpec.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite sertifikat koji zelite da obrisete!");
+                return;
+            }
+
+            int idSertifikatSpec = Int32.Parse(sertifikatiSpec.SelectedItems[0].SubItems[0].Text);
+            string poruka = "Da li zelite da obrisete izabrani sertifikat?";
+            string title = "Pitanje";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(poruka, title, buttons);
+
+            if (result == DialogResult.OK)
+            {
+
+                DTOManager.obrisiSertifikatSpecOpreme(idSertifikatSpec);
+                MessageBox.Show("Brisanje sertifikata je uspesno obavljeno!");
+                FizickoLiceBasic osoba = DTOManager.vratiFizickoLice(idOsobe);
+                popuniSertifikatSpec(osoba);
+            }
+            else
+            {
+
+            }
         }
     }
 }

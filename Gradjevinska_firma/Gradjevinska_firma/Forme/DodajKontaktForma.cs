@@ -25,10 +25,13 @@ namespace Gradjevinska_firma.Forme
             KontaktBasic kontakt = new KontaktBasic(
                     0,idOsobe,tbKontakt.Text);
 
-   
             DTOManager.dodajKontakt(kontakt);
+
             MessageBox.Show("Uspesno dodavanje.");
-            
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+
         }
 
         private void DodajKontaktForma_Load(object sender, EventArgs e)

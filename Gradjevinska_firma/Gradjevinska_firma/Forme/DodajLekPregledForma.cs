@@ -31,7 +31,11 @@ namespace Gradjevinska_firma.Forme
                 0,idOsobe,tbLekPregled.Text,dtpDatum.Value);
 
             DTOManager.dodajLekPregled(lekPregled);
+
             MessageBox.Show("Uspesno dodavanje.");
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

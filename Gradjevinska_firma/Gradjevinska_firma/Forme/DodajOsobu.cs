@@ -105,7 +105,11 @@ namespace Gradjevinska_firma.Forme
                    cbNO.Checked);
 
                 DTOManager.dodajPravnoLice(pravno);
+
                 MessageBox.Show("Uspesno dodavanje.");
+
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
             else
             {

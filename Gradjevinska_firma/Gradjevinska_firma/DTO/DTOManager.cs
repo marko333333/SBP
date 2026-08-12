@@ -81,31 +81,7 @@ namespace Gradjevinska_firma.DTO
             }
         }
 
-        public static OsobaBasic azurirajOsobu(OsobaBasic o)
-        {
-            try
-            {
-                ISession s = DataLayer.GetSession();
-
-                Osoba osoba = s.Load<Osoba>(o.Id);
-                osoba.Jmbg = o.Jmbg;
-                osoba.Ime = o.Ime;
-                osoba.Prezime = o.Prezime;
-                osoba.DatumRodjenja = o.DatumRodjenja;
-                osoba.Struka = o.Struka;
-
-                s.Update(osoba);
-                s.Flush();
-
-                s.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-
-            return o;
-        }
+ 
 
         #region FizickaLica
 
@@ -203,6 +179,41 @@ namespace Gradjevinska_firma.DTO
             }
         }
 
+        public static void izmeniFizickoLice(FizickoLiceBasic fizicko)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                FizickoLice f = s.Load<FizickoLice>(fizicko.Id);
+
+                f.Jmbg = fizicko.Jmbg;
+                f.Ime = fizicko.Ime;
+                f.Prezime = fizicko.Prezime;
+                f.DatumRodjenja = fizicko.DatumRodjenja;
+                f.Struka = fizicko.Struka;
+
+                f.FlagBK = fizicko.FlagBK;
+                f.FlagR = fizicko.FlagR;
+                f.Kvalifikacija = fizicko.Kvalifikacija;
+                f.FlagI = fizicko.FlagI;
+                f.OblastRada = fizicko.OblastRada;
+                f.Odgovornosti = fizicko.Odgovornosti;
+                f.FlagA = fizicko.FlagA;
+                f.FlagP = fizicko.FlagP;
+                f.FlagN = fizicko.FlagN;
+                f.FlagAO = fizicko.FlagAO;
+
+                s.Update(f);
+                s.Flush();
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         #endregion
 
         #region PravnaLica
@@ -236,7 +247,7 @@ namespace Gradjevinska_firma.DTO
         }
         public static PravnaLicaBasic vratiPravnoLice(int id)
         {
-            PravnaLicaBasic lice = null;
+            PravnaLicaBasic lice = new PravnaLicaBasic();
 
             try
             {
@@ -292,6 +303,37 @@ namespace Gradjevinska_firma.DTO
             }
         }
 
+        public static void izmeniPravnoLice(PravnaLicaBasic pravno)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                PravnaLica p = s.Load<PravnaLica>(pravno.Id);
+
+                p.Jmbg = pravno.Jmbg;
+                p.Ime = pravno.Ime;
+                p.Prezime = pravno.Prezime;
+                p.DatumRodjenja = pravno.DatumRodjenja;
+                p.Struka = pravno.Struka;
+
+                p.FlagPB = pravno.FlagPB;
+                p.FlagInve = pravno.FlagInve;
+                p.FlagIzv = pravno.FlagIzv;
+                p.FlagP = pravno.FlagP;
+                p.FlagD = pravno.FlagD;
+                p.FlagN = pravno.FlagN;
+
+                s.Update(p);
+                s.Flush();
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         #endregion
 
         #endregion
@@ -325,7 +367,28 @@ namespace Gradjevinska_firma.DTO
 
             return kontakti;
         }
+        public static KontaktBasic vratiKontakt(int id)
+        {
+            KontaktBasic kontakt = new KontaktBasic();
 
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Kontakt k = s.Load<Kontakt>(id);
+
+                kontakt = new KontaktBasic(
+                        k.Id,k.Osoba.Id,k.Broj);
+              
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return kontakt;
+        }
         public static void dodajKontakt(KontaktBasic k)
         {
             try
@@ -377,13 +440,13 @@ namespace Gradjevinska_firma.DTO
             }
         }
 
-        public static void obrisiKontakt(KontaktBasic k)
+        public static void obrisiKontakt(int id)
         {
             try
             {
                 ISession s = DataLayer.GetSession();
 
-                Kontakt kontakt = s.Load<Kontakt>(k.Id);
+                Kontakt kontakt = s.Load<Kontakt>(id);
 
                 s.Delete(kontakt);
                 s.Flush();
@@ -432,6 +495,28 @@ namespace Gradjevinska_firma.DTO
             return licence;
         }
 
+        public static LicencaBasic vratiLicencu(int id)
+        {
+            LicencaBasic licenca=new LicencaBasic();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Licenca l = s.Load<Licenca>(id);
+
+                licenca = new LicencaBasic(
+                        l.Id, l.Osoba.Id, l.NazivLicence);
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return licenca;
+        }
         public static void dodajLicencu(LicencaBasic l)
         {
             try
@@ -483,13 +568,13 @@ namespace Gradjevinska_firma.DTO
             }
         }
 
-        public static void obrisiLicencu(LicencaBasic l)
+        public static void obrisiLicencu(int id)
         {
             try
             {
                 ISession s = DataLayer.GetSession();
 
-                Licenca licenca = s.Load<Licenca>(l.Id);
+                Licenca licenca = s.Load<Licenca>(id);
 
                 s.Delete(licenca);
                 s.Flush();
@@ -504,7 +589,6 @@ namespace Gradjevinska_firma.DTO
 
         #endregion
 
-        //brisanje i izmena bezbednosne obuke!!!!!
 
         #region BezbednosnaObuka
 
@@ -524,6 +608,7 @@ namespace Gradjevinska_firma.DTO
                 foreach (BezbednosnaObuka b in sveObuke)
                 {
                     obuke.Add(new BezbednosnaObukaBasic(
+                        b.Id,
                         b.FizickoLice.Id,
                         b.NazivObuke,
                         b.Datum));
@@ -537,6 +622,29 @@ namespace Gradjevinska_firma.DTO
             }
 
             return obuke;
+        }
+
+        public static BezbednosnaObukaBasic vratiObuku(int id)
+        {
+            BezbednosnaObukaBasic obuka = new BezbednosnaObukaBasic();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                BezbednosnaObuka b = s.Load<BezbednosnaObuka>(id);
+
+                obuka = new BezbednosnaObukaBasic(
+                        b.Id,b.FizickoLice.Id,b.NazivObuke,b.Datum);
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return obuka;
         }
 
         public static void dodajBezbednosnuObuku(BezbednosnaObukaBasic bezObuka)
@@ -577,7 +685,6 @@ namespace Gradjevinska_firma.DTO
             {
                 ISession s = DataLayer.GetSession();
 
-                //ovo mora da se prepravi
                 BezbednosnaObuka bezobuka = s.Load<BezbednosnaObuka>(bo.Id);
 
                 bezobuka.NazivObuke = bo.NazivObuke;
@@ -594,14 +701,13 @@ namespace Gradjevinska_firma.DTO
             }
         }
 
-        public static void obrisiBezbednosnuObuku(BezbednosnaObukaBasic bo)
+        public static void obrisiBezbednosnuObuku(int id)
         {
             try
             {
                 ISession s = DataLayer.GetSession();
 
-                //ovo mora da se prepravi
-                BezbednosnaObuka bezobuka = s.Load<BezbednosnaObuka>(bo.Id);
+                BezbednosnaObuka bezobuka = s.Load<BezbednosnaObuka>(id);
 
                 s.Delete(bezobuka);
                 s.Flush();
@@ -646,6 +752,29 @@ namespace Gradjevinska_firma.DTO
                 MessageBox.Show(ex.ToString());
             }
             return pregledi;
+        }
+
+        public static LekarskiPregledBasic vratiLekPregled(int id)
+        {
+            LekarskiPregledBasic lekpregled = new LekarskiPregledBasic();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                LekarskiPregled lp = s.Load<LekarskiPregled>(id);
+
+                lekpregled = new LekarskiPregledBasic(
+                        lp.Id,lp.FizickoLice.Id,lp.Rezultat,lp.Datum);
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return lekpregled;
         }
 
         public static void dodajLekPregled(LekarskiPregledBasic lp)
@@ -702,13 +831,13 @@ namespace Gradjevinska_firma.DTO
             }
         }
 
-        public static void obrisiLekPregled(LekarskiPregledBasic lp)
+        public static void obrisiLekPregled(int id)
         {
             try
             {
                 ISession s = DataLayer.GetSession();
 
-                LekarskiPregled lekpregled = s.Load<LekarskiPregled>(lp.Id);
+                LekarskiPregled lekpregled = s.Load<LekarskiPregled>(id);
 
 
                 s.Delete(lekpregled);
@@ -756,6 +885,29 @@ namespace Gradjevinska_firma.DTO
             }
 
             return sertifikati;
+        }
+
+        public static SertifikatSpecOpremeBasic vratiSertifikat(int id)
+        {
+            SertifikatSpecOpremeBasic sertifkatspec = new SertifikatSpecOpremeBasic();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                SertifikatSpecOpreme sso = s.Load<SertifikatSpecOpreme>(id);
+
+                sertifkatspec = new SertifikatSpecOpremeBasic(
+                        sso.Id,sso.FizickoLice.Id,sso.Sertifikat);
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return sertifkatspec;
         }
 
         public static void dodajSertifikatSpecOpreme(SertifikatSpecOpremeBasic sso)
@@ -863,6 +1015,29 @@ namespace Gradjevinska_firma.DTO
             }
 
             return opreme;
+        }
+
+        public static ZastitnaOpremaBasic vratiZastitnuOpremu(int id)
+        {
+            ZastitnaOpremaBasic zastitnaOprema = new ZastitnaOpremaBasic();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                ZastitnaOprema zo = s.Load<ZastitnaOprema>(id);
+
+                zastitnaOprema = new ZastitnaOpremaBasic(
+                        zo.Id,zo.FizickoLice.Id,zo.NazivOpreme);
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return zastitnaOprema;
         }
 
         public static void dodajZastitnuOpremu(ZastitnaOpremaBasic zo)

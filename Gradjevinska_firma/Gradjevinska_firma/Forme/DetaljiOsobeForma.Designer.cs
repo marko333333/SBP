@@ -81,6 +81,7 @@
             btIzmeniObuku = new Button();
             btDodajObuku = new Button();
             bezObuke = new ListView();
+            columnHeader14 = new ColumnHeader();
             columnHeader5 = new ColumnHeader();
             columnHeader6 = new ColumnHeader();
             tabPage6 = new TabPage();
@@ -501,6 +502,7 @@
             btObrisiKontakt.TabIndex = 3;
             btObrisiKontakt.Text = "Obrisi kontakt";
             btObrisiKontakt.UseVisualStyleBackColor = true;
+            btObrisiKontakt.Click += btObrisiKontakt_Click;
             // 
             // btIzmeniKontakt
             // 
@@ -510,6 +512,7 @@
             btIzmeniKontakt.TabIndex = 2;
             btIzmeniKontakt.Text = "Izmeni kontakt";
             btIzmeniKontakt.UseVisualStyleBackColor = true;
+            btIzmeniKontakt.Click += btIzmeniKontakt_Click;
             // 
             // btDodajKontakt
             // 
@@ -565,6 +568,7 @@
             btObrisiLicencu.TabIndex = 6;
             btObrisiLicencu.Text = "Obrisi licencu";
             btObrisiLicencu.UseVisualStyleBackColor = true;
+            btObrisiLicencu.Click += btObrisiLicencu_Click;
             // 
             // btIzmeniLicencu
             // 
@@ -574,6 +578,7 @@
             btIzmeniLicencu.TabIndex = 5;
             btIzmeniLicencu.Text = "Izmeni licencu";
             btIzmeniLicencu.UseVisualStyleBackColor = true;
+            btIzmeniLicencu.Click += btIzmeniLicencu_Click;
             // 
             // btDodajLicencu
             // 
@@ -628,6 +633,7 @@
             btObrisiObuku.TabIndex = 9;
             btObrisiObuku.Text = "Obrisi obuku";
             btObrisiObuku.UseVisualStyleBackColor = true;
+            btObrisiObuku.Click += btObrisiObuku_Click;
             // 
             // btIzmeniObuku
             // 
@@ -637,6 +643,7 @@
             btIzmeniObuku.TabIndex = 8;
             btIzmeniObuku.Text = "Izmeni obuku";
             btIzmeniObuku.UseVisualStyleBackColor = true;
+            btIzmeniObuku.Click += btIzmeniObuku_Click;
             // 
             // btDodajObuku
             // 
@@ -650,7 +657,7 @@
             // 
             // bezObuke
             // 
-            bezObuke.Columns.AddRange(new ColumnHeader[] { columnHeader5, columnHeader6 });
+            bezObuke.Columns.AddRange(new ColumnHeader[] { columnHeader14, columnHeader5, columnHeader6 });
             bezObuke.FullRowSelect = true;
             bezObuke.GridLines = true;
             bezObuke.Location = new Point(0, 0);
@@ -660,9 +667,14 @@
             bezObuke.UseCompatibleStateImageBehavior = false;
             bezObuke.View = View.Details;
             // 
+            // columnHeader14
+            // 
+            columnHeader14.Text = "Id";
+            // 
             // columnHeader5
             // 
             columnHeader5.Text = "Datum";
+            columnHeader5.TextAlign = HorizontalAlignment.Center;
             columnHeader5.Width = 150;
             // 
             // columnHeader6
@@ -693,6 +705,7 @@
             btObrisiLekPregled.TabIndex = 9;
             btObrisiLekPregled.Text = "Obrisi lekarski pregled";
             btObrisiLekPregled.UseVisualStyleBackColor = true;
+            btObrisiLekPregled.Click += btObrisiLekPregled_Click;
             // 
             // btIzmeniLekPregled
             // 
@@ -702,6 +715,7 @@
             btIzmeniLekPregled.TabIndex = 8;
             btIzmeniLekPregled.Text = "Izmeni lekarski pregled";
             btIzmeniLekPregled.UseVisualStyleBackColor = true;
+            btIzmeniLekPregled.Click += btIzmeniLekPregled_Click;
             // 
             // btDodajLekPregled
             // 
@@ -763,6 +777,7 @@
             btObrisiZasOpremu.TabIndex = 6;
             btObrisiZasOpremu.Text = "Obrisi zastitnu opremu";
             btObrisiZasOpremu.UseVisualStyleBackColor = true;
+            btObrisiZasOpremu.Click += btObrisiZasOpremu_Click;
             // 
             // btIzmeniZasOpremu
             // 
@@ -772,6 +787,7 @@
             btIzmeniZasOpremu.TabIndex = 5;
             btIzmeniZasOpremu.Text = "Izmeni zastitnu opremu";
             btIzmeniZasOpremu.UseVisualStyleBackColor = true;
+            btIzmeniZasOpremu.Click += btIzmeniZasOpremu_Click;
             // 
             // btDodajZasOpremu
             // 
@@ -827,6 +843,7 @@
             btObrisiSertifikat.TabIndex = 9;
             btObrisiSertifikat.Text = "Obrisi sertifikat";
             btObrisiSertifikat.UseVisualStyleBackColor = true;
+            btObrisiSertifikat.Click += btObrisiSertifikat_Click;
             // 
             // btIzmeniSertifkat
             // 
@@ -836,6 +853,7 @@
             btIzmeniSertifkat.TabIndex = 8;
             btIzmeniSertifkat.Text = "Izmeni sertifikat";
             btIzmeniSertifkat.UseVisualStyleBackColor = true;
+            btIzmeniSertifkat.Click += btIzmeniSertifkat_Click;
             // 
             // btDodajSertifikat
             // 
@@ -981,5 +999,6 @@
         private Button btObrisiSertifikat;
         private Button btIzmeniSertifkat;
         private Button btDodajSertifikat;
+        private ColumnHeader columnHeader14;
     }
 }

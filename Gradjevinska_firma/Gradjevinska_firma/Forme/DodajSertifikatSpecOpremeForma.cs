@@ -31,7 +31,11 @@ namespace Gradjevinska_firma.Forme
                 0, idOsobe, tbSertifikatSpec.Text);
 
             DTOManager.dodajSertifikatSpecOpreme(sertifikatspec);
+
             MessageBox.Show("Uspesno dodavanje.");
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

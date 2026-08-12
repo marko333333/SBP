@@ -32,7 +32,11 @@ namespace Gradjevinska_firma.Forme
                     0, idOsobe, tbLicenca.Text);
 
             DTOManager.dodajLicencu(licenca);
+
             MessageBox.Show("Uspesno dodavanje.");
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

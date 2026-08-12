@@ -79,6 +79,7 @@
             bt_izmeni.TabIndex = 2;
             bt_izmeni.Text = "Izmeni osobu";
             bt_izmeni.UseVisualStyleBackColor = true;
+            bt_izmeni.Click += bt_izmeni_Click;
             // 
             // bt_obrisi
             // 
@@ -88,6 +89,7 @@
             bt_obrisi.TabIndex = 3;
             bt_obrisi.Text = "Obrisi osobu";
             bt_obrisi.UseVisualStyleBackColor = true;
+            bt_obrisi.Click += bt_obrisi_Click;
             // 
             // tabControl1
             // 

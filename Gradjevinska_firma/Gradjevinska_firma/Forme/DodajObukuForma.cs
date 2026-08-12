@@ -28,10 +28,14 @@ namespace Gradjevinska_firma.Forme
         private void btDodaj_Click(object sender, EventArgs e)
         {
             BezbednosnaObukaBasic obuka=new BezbednosnaObukaBasic(
-                idOsobe,tbObuka.Text,dtpDatum.Value);
+                0,idOsobe,tbObuka.Text,dtpDatum.Value);
 
             DTOManager.dodajBezbednosnuObuku(obuka);
+
             MessageBox.Show("Uspesno dodavanje.");
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }
