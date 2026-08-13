@@ -725,7 +725,6 @@ namespace Gradjevinska_firma.DTO
     public class FazaBasic
     {
         public string Naziv;
-        public string TipFaze;
         public DateTime? DatumOd;
         public DateTime? DatumDo;
         public string Status;
@@ -744,10 +743,9 @@ namespace Gradjevinska_firma.DTO
             Zadaci = new List<ZadatakBasic>();
         }
 
-        public FazaBasic(string naziv,string tipFaze,DateTime? datumOd,DateTime? datumDo,string status,int? budzet,ProjekatBasic projekat,FizickoLiceBasic fizickoLice,FazaBasic nadFaza)
+        public FazaBasic(string naziv,DateTime? datumOd,DateTime? datumDo,string status,int? budzet,ProjekatBasic projekat,FizickoLiceBasic fizickoLice,FazaBasic nadFaza)
         {
             Naziv = naziv;
-            TipFaze = tipFaze;
             DatumOd = datumOd;
             DatumDo = datumDo;
             Status = status;
@@ -761,7 +759,6 @@ namespace Gradjevinska_firma.DTO
     public class FazaPregled
     {
         public string Naziv;
-        public string TipFaze;
         public DateTime? DatumOd;
         public DateTime? DatumDo;
         public string Status;
@@ -775,10 +772,9 @@ namespace Gradjevinska_firma.DTO
         {
         }
 
-        public FazaPregled(string naziv,string tipFaze,DateTime? datumOd,DateTime? datumDo,string status,int? budzet,ProjekatPregled projekat,FizickoLicePregled fizickoLice,FazaPregled nadFaza)
+        public FazaPregled(string naziv,DateTime? datumOd,DateTime? datumDo,string status,int? budzet,ProjekatPregled projekat,FizickoLicePregled fizickoLice,FazaPregled nadFaza)
         {
             Naziv = naziv;
-            TipFaze = tipFaze;
             DatumOd = datumOd;
             DatumDo = datumDo;
             Status = status;

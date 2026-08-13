@@ -18,7 +18,6 @@ namespace Gradjevinska_firma.Mapiranja
                 .GeneratedBy.TriggerIdentity();
 
             Map(x => x.Naziv, "NAZIV");
-            Map(x => x.TipFaze, "TIP_FAZE");
             Map(x => x.DatumOd, "DATUM_OD");
             Map(x => x.DatumDo, "DATUM_DO");
             Map(x => x.Status, "STATUS");
