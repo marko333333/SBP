@@ -1271,9 +1271,271 @@ namespace Gradjevinska_firma.DTO
 
         #region Poslovni
 
+        public static List<PoslovniPregled> vratiSvePoslovne()
+        {
+            List<PoslovniPregled> posl = new List<PoslovniPregled>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Poslovni> sviPoslovni =
+                    from p in s.Query<Poslovni>()
+                    select p;
+
+                foreach (Poslovni p in sviPoslovni)
+                {
+                    posl.Add(new PoslovniPregled(p.ID,p.Naziv,p.Opis,p.Lokacija,p.Datum_pocetka,p.Budzet,p.Status,p.Planirani_Zavrsetak,p.Stvarni_Zavrsetak));
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return posl;
+        }
+
+        public static PoslovniBasic vratiPoslovni(int id)
+        {
+            PoslovniBasic posl = new PoslovniBasic();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Poslovni p = s.Get<Poslovni>(id);
+                if (p != null)
+                {
+                    posl = new PoslovniBasic(p.ID,p.Naziv,p.Opis,p.Lokacija,p.Datum_pocetka,p.Budzet,p.Status,p.Planirani_Zavrsetak,p.Stvarni_Zavrsetak);
+
+                    posl.Objekti = vratiObjektePoslovne(id);
+                }
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return posl;
+        }
+
+        #region ObjekatPoslovni
+
+        public static List<ObjekatPoslovniBasic> vratiObjektePoslovne(int idProjekta)
+        {
+            List<ObjekatPoslovniBasic> obj = new List<ObjekatPoslovniBasic>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<ObjekatPoslovni> sviPoslovni =
+                         from p in s.Query<ObjekatPoslovni>()
+                         where p.Poslovni.ID == idProjekta
+                         select p;
+
+                foreach (ObjekatPoslovni p in sviPoslovni)
+                {
+                    PoslovniBasic poslovni = new PoslovniBasic(
+                        p.Poslovni.ID,
+                        p.Poslovni.Naziv,
+                        p.Poslovni.Opis,
+                        p.Poslovni.Lokacija,
+                        p.Poslovni.Datum_pocetka,
+                        p.Poslovni.Budzet,
+                        p.Poslovni.Status,
+                        p.Poslovni.Planirani_Zavrsetak,
+                        p.Poslovni.Stvarni_Zavrsetak
+                    );
+
+                    obj.Add(new ObjekatPoslovniBasic(p.Id,p.Br_objekta,p.Spratnost,p.Br_jedinica, poslovni));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return obj;
+        }
+
+        public static void dodajObjekatPoslovni(ObjekatPoslovniBasic p)//proveri
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Poslovni objP = s.Get<Poslovni>(p.Poslovni.ID);
+
+                if(p == null || p.Poslovni == null)
+                {
+                    MessageBox.Show("Podaci nisu ispravni.");
+                    return;
+                }
+
+                if (objP == null)
+                {
+                    MessageBox.Show("ObjekatPoslovni ne postoji.");
+                    return;
+                }
+
+                ObjekatPoslovni objPoslovni = new ObjekatPoslovni();
+
+                objPoslovni.Br_objekta = p.Br_objekta;
+                objPoslovni.Spratnost = p.Spratnost;
+                objPoslovni.Br_jedinica = p.Br_jedinica;
+                objPoslovni.Poslovni = objP;
+
+                s.Save(objPoslovni);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        #endregion
+
         #endregion
 
         #region Stambeni
+
+        public static List<StambeniPregled> vratiSveStambene()
+        {
+            List<StambeniPregled> stam = new List<StambeniPregled>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Stambeni> sviStambeni =
+                    from st in s.Query<Stambeni>()
+                    select st;
+
+                foreach (Stambeni st in sviStambeni)
+                {
+                    stam.Add(new StambeniPregled(st.ID,st.Naziv,st.Opis, st.Lokacija, st.Datum_pocetka, st.Budzet, st.Status, st.Planirani_Zavrsetak, st.Stvarni_Zavrsetak));
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return stam;
+        }
+
+        public static StambeniBasic vratiStambeni(int id)
+        {
+            StambeniBasic stam = new StambeniBasic();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Stambeni st = s.Get<Stambeni>(id);
+                if (st != null)
+                {
+                    stam = new StambeniBasic(st.ID,st.Naziv, st.Opis, st.Lokacija, st.Datum_pocetka, st.Budzet, st.Status, st.Planirani_Zavrsetak, st.Stvarni_Zavrsetak);
+
+                    stam.Objekti = vratiObjekteStambene(id);
+                }
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return stam;
+        }
+
+        #region ObjekatStambeni
+
+        public static List<ObjekatStambeniBasic> vratiObjekteStambene(int idProjekta)
+        {
+            List<ObjekatStambeniBasic> obj = new List<ObjekatStambeniBasic>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<ObjekatStambeni> sviStambeni =
+                         from ss in s.Query<ObjekatStambeni>()
+                         where ss.Stambeni.ID == idProjekta
+                         select ss;
+
+                foreach (ObjekatStambeni ss in sviStambeni)
+                {
+                    StambeniBasic stambeni = new StambeniBasic(
+                        ss.Stambeni.ID,
+                        ss.Stambeni.Naziv,
+                        ss.Stambeni.Opis,
+                        ss.Stambeni.Lokacija,
+                        ss.Stambeni.Datum_pocetka,
+                        ss.Stambeni.Budzet,
+                        ss.Stambeni.Status,
+                        ss.Stambeni.Planirani_Zavrsetak,
+                        ss.Stambeni.Stvarni_Zavrsetak
+                    );
+
+                    obj.Add(new ObjekatStambeniBasic(ss.Id,ss.Br_objekta, ss.Spratnost, ss.Br_jedinica, stambeni));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return obj;
+        }
+
+        public static void dodajObjekatStambeni(ObjekatStambeniBasic os)//proveri
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Stambeni objS = s.Get<Stambeni>(os.Stambeni.ID);
+
+                if (os == null || os.Stambeni == null)
+                {
+                    MessageBox.Show("Podaci nisu ispravni.");
+                    return;
+                }
+
+                if (objS == null)
+                {
+                    MessageBox.Show("ObjekatPoslovni ne postoji.");
+                    return;
+                }
+
+                ObjekatStambeni objStambeni = new ObjekatStambeni();
+
+                objStambeni.Br_objekta = os.Br_objekta;
+                objStambeni.Spratnost = os.Spratnost;
+                objStambeni.Br_jedinica = os.Br_jedinica;
+                objStambeni.Stambeni = objS;
+
+                s.Save(objStambeni);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        #endregion
 
         #endregion
 
@@ -1455,7 +1717,7 @@ namespace Gradjevinska_firma.DTO
             return deonice;
         }
 
-        public static void dodajDeonicu(DeonicaBasic d)
+        public static void dodajDeonicu(DeonicaBasic d)//proveri
         {
             try
             {
@@ -1486,5 +1748,6 @@ namespace Gradjevinska_firma.DTO
         }
 
         #endregion
+
     }
 }
