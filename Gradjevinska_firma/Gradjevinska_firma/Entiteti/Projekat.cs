@@ -9,9 +9,9 @@ namespace Gradjevinska_firma.Entiteti
     public class Projekat
     {   
         public virtual int ID { get; set; }
-        public virtual required string Naziv { get; set; }
-        public virtual required string Opis { get; set; }
-        public virtual required string Lokacija { get; set; }
+        public virtual string Naziv { get; set; }
+        public virtual string Opis { get; set; }
+        public virtual string Lokacija { get; set; }
         public virtual DateTime Datum_pocetka { get; set; }
         public virtual int Budzet { get; set; }
         public virtual bool Status { get; set; }

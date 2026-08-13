@@ -12,23 +12,7 @@ namespace Gradjevinska_firma.DTO
     //dodaj kolekciju za BezbednosniIncident u Osoba
     public class DTOManager
     {
-        #region PomocneFje
-        private static MaterijalPregled MapMaterijalPregled(Materijal m)
-        {
-            return new MaterijalPregled(m.ID, m.Naziv, m.Cena, m.Proizvodjac, m.JedinicaMere, m.Sertifikat, m.TipMaterijala);
-        }
 
-        private static ProjekatPregled MapProjekatPregled(Projekat p)
-        {
-            return new ProjekatPregled(p.ID, p.Naziv, p.Opis, p.Lokacija, p.Datum_pocetka, p.Budzet, p.Status, p.Planirani_Zavrsetak, p.Stvarni_Zavrsetak);
-        }
-
-        private static OpremaPregled MapOpremaPregled(Oprema o)
-        {
-            return new OpremaPregled(o.Id, o.Naziv, o.Tip, o.DatumUvoza, o.Proizvodjac, o.DatumNabavke, o.RasponOdrzavanja, o.Lokacija, o.Status);
-        }
-
-        #endregion
         #region Osobe
 
         public static List<OsobaPregled> vratiSveOsobe()
@@ -1177,6 +1161,130 @@ namespace Gradjevinska_firma.DTO
             return projekat;
         }
 
+        public static void obrisiProjekat(int id)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Projekat p = s.Load<Projekat>(id);
+
+                s.Delete(p);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        #region Infrastruktura
+
+        public static List<InfrastrukturaPregled> vratiSveInfrasrukture()
+        {
+            List<InfrastrukturaPregled> infrastrukture = new List<InfrastrukturaPregled>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Infrastruktura> sveInfrastrukture =
+                    from i in s.Query<Infrastruktura>()
+                    select i;
+
+                foreach (Infrastruktura i in sveInfrastrukture)
+                {
+                    infrastrukture.Add(new InfrastrukturaPregled(i.ID,i.Naziv,i.Opis, i.Lokacija, i.Datum_pocetka, i.Budzet, i.Status, i.Planirani_Zavrsetak, i.Stvarni_Zavrsetak));
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return infrastrukture;
+        }
+
+        public static InfrastrukturaBasic vratiInfrastrukturu(int id)
+        {
+            InfrastrukturaBasic infra = new InfrastrukturaBasic();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Infrastruktura i = s.Get<Infrastruktura>(id);
+                if (i != null)
+                {
+                    infra = new InfrastrukturaBasic(i.ID, i.Naziv, i.Opis, i.Lokacija, i.Datum_pocetka, i.Budzet, i.Status, i.Planirani_Zavrsetak, i.Stvarni_Zavrsetak);
+
+                    infra.Deonice = vratiDeoniceInfrastrukture(id);
+                }
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return infra;
+        }
+
+        public static void dodajInfrastrukturu(InfrastrukturaBasic infra)//Deonice se dodaju odvojeno iako Entitet ima listu Deonica
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Infrastruktura i = new Infrastruktura();
+
+                i.Naziv = infra.Naziv;
+                i.Opis = infra.Opis;
+                i.Lokacija = infra.Lokacija;
+                i.Datum_pocetka = infra.Datum_pocetka;
+                i.Budzet = infra.Budzet;
+                i.Status = infra.Status;
+                i.Planirani_Zavrsetak = infra.Planirani_zavrsetak;
+                i.Stvarni_Zavrsetak = infra.Stvarni_zavrsetak;
+
+
+                s.Save(i);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        #endregion
+
+        #region Industrijski
+
+        #endregion
+
+        #region Poslovni
+
+        #endregion
+
+        #region Stambeni
+
+        #endregion
+
+        #region Sanacija
+
+        #endregion
+
+        #region Rekonstrukcija
+
+        #endregion
+
         #endregion
 
         #region Ugovor
@@ -1203,7 +1311,7 @@ namespace Gradjevinska_firma.DTO
                         u.Materijal.Proizvodjac,
                         u.Materijal.JedinicaMere,
                         u.Materijal.Sertifikat,
-                        u.Materijal.TipMaterijala
+                        u.Materijal.Tip
                        
              );
 
@@ -1271,9 +1379,29 @@ namespace Gradjevinska_firma.DTO
                          where i.Projekat.ID == idProjekta
                          select i;
 
-                foreach(BezbednosniIncident i in  sviIncidenti)
+                foreach(BezbednosniIncident i in sviIncidenti)
                 {
+                    ProjekatBasic projekat = new ProjekatBasic(
+                        i.Projekat.ID,
+                        i.Projekat.Naziv,
+                        i.Projekat.Opis,
+                        i.Projekat.Lokacija,
+                        i.Projekat.Datum_pocetka,
+                        i.Projekat.Budzet,
+                        i.Projekat.Status,
+                        i.Projekat.Planirani_Zavrsetak,
+                        i.Projekat.Stvarni_Zavrsetak
+                    );
+                    OsobaBasic osoba = new OsobaBasic(
+                        i.Osoba.Id,
+                        i.Osoba.Jmbg,
+                        i.Osoba.Ime,
+                        i.Osoba.Prezime,
+                        i.Osoba.DatumRodjenja,
+                        i.Osoba.Struka
+                        );
 
+                    incidenti.Add(new BezbednosniIncidentBasic(i.ID,i.Opis,i.Datum,i.Lokacija,i.Preduzete_mere,i.Posledice,i.Tip_incidenta, projekat, osoba));
                 }
             }
             catch (Exception ex)
@@ -1281,6 +1409,80 @@ namespace Gradjevinska_firma.DTO
                 MessageBox.Show(ex.ToString());
             }
             return incidenti;
+        }
+
+        #endregion
+
+        #region Deonice
+
+        public static List<DeonicaBasic> vratiDeoniceInfrastrukture(int idProjekta)
+        {
+            List<DeonicaBasic> deonice = new List<DeonicaBasic>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Deonica> sveDeonice =
+                    from d in s.Query<Deonica>()
+                    where d.Infrastruktura.ID == idProjekta
+                    select d;
+
+                foreach (Deonica d in sveDeonice)
+                {
+                    InfrastrukturaBasic infra = new InfrastrukturaBasic(
+                        d.Infrastruktura.ID,
+                        d.Infrastruktura.Naziv,
+                        d.Infrastruktura.Opis,
+                        d.Infrastruktura.Lokacija,
+                        d.Infrastruktura.Datum_pocetka,
+                        d.Infrastruktura.Budzet,
+                        d.Infrastruktura.Status,
+                        d.Infrastruktura.Planirani_Zavrsetak,
+                        d.Infrastruktura.Stvarni_Zavrsetak
+                        );
+
+                    deonice.Add(new DeonicaBasic(d.Id,d.Br_deonice, infra));
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return deonice;
+        }
+
+        public static void dodajDeonicu(DeonicaBasic d)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Infrastruktura infra = s.Get<Infrastruktura>(d.Infrastruktura.ID);
+
+                if (infra == null)
+                {
+                    MessageBox.Show("Infrastuktura ne postoji.");
+                    return;
+                }
+
+                Deonica deonica = new Deonica();
+
+                deonica.Br_deonice = d.Br_deonice;
+                deonica.Infrastruktura = infra;
+
+                s.Save(deonica);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         #endregion
