@@ -1255,5 +1255,34 @@ namespace Gradjevinska_firma.DTO
         }
 
         #endregion
+
+        #region BezbednosniIncident
+
+        public static List<BezbednosniIncidentBasic> vratiBezbednosniIncidenteProjekta(int idProjekta)
+        {
+            List<BezbednosniIncidentBasic> incidenti = new List<BezbednosniIncidentBasic>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<BezbednosniIncident> sviIncidenti =
+                         from i in s.Query<BezbednosniIncident>()
+                         where i.Projekat.ID == idProjekta
+                         select i;
+
+                foreach(BezbednosniIncident i in  sviIncidenti)
+                {
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return incidenti;
+        }
+
+        #endregion
     }
 }
