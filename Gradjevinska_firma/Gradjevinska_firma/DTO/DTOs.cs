@@ -1423,7 +1423,6 @@ namespace Gradjevinska_firma.DTO
     {
         public int ID;
         public string Naziv;
-        public string Tip;
         public int Cena;
         public string Proizvodjac;
         public string JedinicaMere;
@@ -1440,11 +1439,10 @@ namespace Gradjevinska_firma.DTO
             NabavkaMaterijal = new List<NabavkaMaterijalBasic>();
         }
 
-        public MaterijalBasic(int iD, string naziv, string tip, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala)
+        public MaterijalBasic(int iD, string naziv, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala)
         {
             ID = iD;
             Naziv = naziv;
-            Tip = tip;
             Cena = cena;
             Proizvodjac = proizvodjac;
             JedinicaMere = jedinicaMere;
@@ -1456,35 +1454,35 @@ namespace Gradjevinska_firma.DTO
     public class ZastitniBasic : MaterijalBasic
     {
         public ZastitniBasic() { }
-        public ZastitniBasic(int iD, string naziv, string tip, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala) : base(iD, naziv, tip, cena, proizvodjac, jedinicaMere, sertifikat, tipMaterijala)
+        public ZastitniBasic(int iD, string naziv, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala) : base(iD, naziv, cena, proizvodjac, jedinicaMere, sertifikat, tipMaterijala)
         {
         }
     }
     public class MasinskiBasic : MaterijalBasic
     {
         public MasinskiBasic() { }
-        public MasinskiBasic(int iD, string naziv, string tip, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala) : base(iD, naziv, tip, cena, proizvodjac, jedinicaMere, sertifikat, tipMaterijala)
+        public MasinskiBasic(int iD, string naziv, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala) : base(iD, naziv, cena, proizvodjac, jedinicaMere, sertifikat, tipMaterijala)
         {
         }
     }
     public class GradjevinskiBasic : MaterijalBasic
     {
         public GradjevinskiBasic() { }
-        public GradjevinskiBasic(int iD, string naziv, string tip, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala) : base(iD, naziv, tip, cena, proizvodjac, jedinicaMere, sertifikat, tipMaterijala)
+        public GradjevinskiBasic(int iD, string naziv, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala) : base(iD, naziv, cena, proizvodjac, jedinicaMere, sertifikat, tipMaterijala)
         {
         }
     }
     public class ElektroBasic : MaterijalBasic
     {
         public ElektroBasic() { }
-        public ElektroBasic(int iD, string naziv, string tip, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala) : base(iD, naziv, tip, cena, proizvodjac, jedinicaMere, sertifikat, tipMaterijala)
+        public ElektroBasic(int iD, string naziv, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala) : base(iD, naziv, cena, proizvodjac, jedinicaMere, sertifikat, tipMaterijala)
         {
         }
     }
     public class ZavrsniBasic : MaterijalBasic
     {
         public ZavrsniBasic() { }
-        public ZavrsniBasic(int iD, string naziv, string tip, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala) : base(iD, naziv, tip, cena, proizvodjac, jedinicaMere, sertifikat, tipMaterijala)
+        public ZavrsniBasic(int iD, string naziv, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala) : base(iD, naziv, cena, proizvodjac, jedinicaMere, sertifikat, tipMaterijala)
         {
         }
     }
@@ -1493,7 +1491,6 @@ namespace Gradjevinska_firma.DTO
     {
         public int ID;
         public string Naziv;
-        public string Tip;
         public int Cena;
         public string Proizvodjac;
         public string JedinicaMere;
@@ -1501,11 +1498,10 @@ namespace Gradjevinska_firma.DTO
         public string TipMaterijala;
 
         public MaterijalPregled() { }
-        public MaterijalPregled(int iD, string naziv, string tip, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala)
+        public MaterijalPregled(int iD, string naziv, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala)
         {
             ID = iD;
             Naziv = naziv;
-            Tip = tip;
             Cena = cena;
             Proizvodjac = proizvodjac;
             JedinicaMere = jedinicaMere;
@@ -1516,35 +1512,35 @@ namespace Gradjevinska_firma.DTO
     public class ZastitniPregled : MaterijalPregled
     {
         public ZastitniPregled() { }
-        public ZastitniPregled(int iD, string naziv, string tip, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala) : base(iD, naziv, tip, cena, proizvodjac, jedinicaMere, sertifikat, tipMaterijala)
+        public ZastitniPregled(int iD, string naziv, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala) : base(iD, naziv, cena, proizvodjac, jedinicaMere, sertifikat, tipMaterijala)
         {
         }
     }
     public class MasinskiPregled : MaterijalPregled
     {
         public MasinskiPregled() { }
-        public MasinskiPregled(int iD, string naziv, string tip, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala) : base(iD, naziv, tip, cena, proizvodjac, jedinicaMere, sertifikat, tipMaterijala)
+        public MasinskiPregled(int iD, string naziv, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala) : base(iD, naziv, cena, proizvodjac, jedinicaMere, sertifikat, tipMaterijala)
         {
         }
     }
     public class GradjevinskiPregled : MaterijalPregled
     {
         public GradjevinskiPregled(){ }
-        public GradjevinskiPregled(int iD, string naziv, string tip, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala) : base(iD, naziv, tip, cena, proizvodjac, jedinicaMere, sertifikat, tipMaterijala)
+        public GradjevinskiPregled(int iD, string naziv, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala) : base(iD, naziv, cena, proizvodjac, jedinicaMere, sertifikat, tipMaterijala)
         {
         }
     }
     public class ElektroPregled : MaterijalPregled
     {
         public ElektroPregled(){ }
-        public ElektroPregled(int iD, string naziv, string tip, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala) : base(iD, naziv, tip, cena, proizvodjac, jedinicaMere, sertifikat, tipMaterijala)
+        public ElektroPregled(int iD, string naziv, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala) : base(iD, naziv, cena, proizvodjac, jedinicaMere, sertifikat, tipMaterijala)
         {
         }
     }
     public class ZavrsniPregled : MaterijalPregled
     {
         public ZavrsniPregled(){ }
-        public ZavrsniPregled(int iD, string naziv, string tip, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala) : base(iD, naziv, tip, cena, proizvodjac, jedinicaMere, sertifikat, tipMaterijala)
+        public ZavrsniPregled(int iD, string naziv, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tipMaterijala) : base(iD, naziv, cena, proizvodjac, jedinicaMere, sertifikat, tipMaterijala)
         {
         }
     }

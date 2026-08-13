@@ -12,6 +12,23 @@ namespace Gradjevinska_firma.DTO
     //dodaj kolekciju za BezbednosniIncident u Osoba
     public class DTOManager
     {
+        #region PomocneFje
+        private static MaterijalPregled MapMaterijalPregled(Materijal m)
+        {
+            return new MaterijalPregled(m.ID, m.Naziv, m.Cena, m.Proizvodjac, m.JedinicaMere, m.Sertifikat, m.TipMaterijala);
+        }
+
+        private static ProjekatPregled MapProjekatPregled(Projekat p)
+        {
+            return new ProjekatPregled(p.ID, p.Naziv, p.Opis, p.Lokacija, p.Datum_pocetka, p.Budzet, p.Status, p.Planirani_Zavrsetak, p.Stvarni_Zavrsetak);
+        }
+
+        private static OpremaPregled MapOpremaPregled(Oprema o)
+        {
+            return new OpremaPregled(o.Id, o.Naziv, o.Tip, o.DatumUvoza, o.Proizvodjac, o.DatumNabavke, o.RasponOdrzavanja, o.Lokacija, o.Status);
+        }
+
+        #endregion
         #region Osobe
 
         public static List<OsobaPregled> vratiSveOsobe()
@@ -1109,6 +1126,132 @@ namespace Gradjevinska_firma.DTO
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        #endregion
+
+        #region Projekat
+
+        public static List<ProjekatPregled> vratiSveProjekte()
+        {
+            List<ProjekatPregled> projekti = new List<ProjekatPregled>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                IEnumerable<Projekat> sviProjekti = from p in s.Query<Projekat>() select p;
+                foreach (Projekat p in sviProjekti)
+                {
+                    projekti.Add(new ProjekatPregled(p.ID, p.Naziv, p.Opis, p.Lokacija, p.Datum_pocetka, p.Budzet, p.Status, p.Planirani_Zavrsetak, p.Stvarni_Zavrsetak));
+                }
+                s.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return projekti;
+        }
+
+        public static ProjekatBasic vratiProjekat(int id)
+        {
+            ProjekatBasic projekat = new ProjekatBasic();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Projekat p = s.Load<Projekat>(id);
+
+                projekat = new ProjekatBasic(p.ID, p.Naziv, p.Opis, p.Lokacija, p.Datum_pocetka, p.Budzet, p.Status, p.Planirani_Zavrsetak, p.Stvarni_Zavrsetak);
+
+                projekat.Ugovori = vratiUgovoreProjekta(id);
+                projekat.BezbednosniIncidenti = vratiBezbednosniIncidenteProjekta(id);
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return projekat;
+        }
+
+        #endregion
+
+        #region Ugovor
+
+        public static List<UgovorBasic> vratiUgovoreProjekta(int idProjekta)
+        {
+            List<UgovorBasic> ugovori = new List<UgovorBasic>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Ugovor> sviUgovori =
+                    from u in s.Query<Ugovor>()
+                    where u.Projekat.ID == idProjekta
+                    select u;
+
+                foreach (Ugovor u in sviUgovori)
+                {
+                    MaterijalBasic materijal = new MaterijalBasic(
+                        u.Materijal.ID,
+                        u.Materijal.Naziv,
+                        u.Materijal.Cena,
+                        u.Materijal.Proizvodjac,
+                        u.Materijal.JedinicaMere,
+                        u.Materijal.Sertifikat,
+                        u.Materijal.TipMaterijala
+                       
+             );
+
+                    ProjekatBasic projekat = new ProjekatBasic(
+                        u.Projekat.ID,
+                        u.Projekat.Naziv,
+                        u.Projekat.Opis,
+                        u.Projekat.Lokacija,
+                        u.Projekat.Datum_pocetka,
+                        u.Projekat.Budzet,
+                        u.Projekat.Status,
+                        u.Projekat.Planirani_Zavrsetak,
+                        u.Projekat.Stvarni_Zavrsetak
+                    );
+
+                    OpremaBasic oprema = new OpremaBasic(
+                        u.Oprema.Id,
+                        u.Oprema.Naziv,
+                        u.Oprema.Tip,
+                        u.Oprema.DatumUvoza,
+                        u.Oprema.Proizvodjac,
+                        u.Oprema.DatumNabavke,
+                        u.Oprema.RasponOdrzavanja,
+                        u.Oprema.Lokacija,
+                        u.Oprema.Status
+                    );
+
+                    ugovori.Add(new UgovorBasic(
+                        u.Id,
+                        u.DatumPotpisivanja,
+                        u.Vrednost,
+                        u.PredmetUgovora,
+                        u.Valuta,
+                        u.Rok,
+                        materijal,
+                        projekat,
+                        oprema
+                    ));
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return ugovori;
         }
 
         #endregion
