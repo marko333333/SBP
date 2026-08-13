@@ -1,6 +1,6 @@
 ﻿namespace Gradjevinska_firma.Forme
 {
-    partial class DodajPodzadatakForma
+    partial class IzmeniPodzadatakForma
     {
         /// <summary>
         /// Required designer variable.
@@ -28,37 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             groupBox1 = new GroupBox();
-            btDodaj = new Button();
+            btIzmeni = new Button();
             cbNaziv = new ComboBox();
             label1 = new Label();
-            zadatakBasicBindingSource = new BindingSource(components);
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)zadatakBasicBindingSource).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(btDodaj);
+            groupBox1.Controls.Add(btIzmeni);
             groupBox1.Controls.Add(cbNaziv);
             groupBox1.Controls.Add(label1);
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(405, 206);
-            groupBox1.TabIndex = 0;
+            groupBox1.Size = new Size(425, 203);
+            groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Dodaj podzadatak";
+            groupBox1.Text = "Izmeni podzadatak";
             // 
-            // btDodaj
+            // btIzmeni
             // 
-            btDodaj.Location = new Point(124, 134);
-            btDodaj.Name = "btDodaj";
-            btDodaj.Size = new Size(94, 29);
-            btDodaj.TabIndex = 2;
-            btDodaj.Text = "Dodaj";
-            btDodaj.UseVisualStyleBackColor = true;
+            btIzmeni.Location = new Point(124, 134);
+            btIzmeni.Name = "btIzmeni";
+            btIzmeni.Size = new Size(94, 29);
+            btIzmeni.TabIndex = 2;
+            btIzmeni.Text = "Izmeni";
+            btIzmeni.UseVisualStyleBackColor = true;
             // 
             // cbNaziv
             // 
@@ -77,31 +74,25 @@
             label1.TabIndex = 0;
             label1.Text = "Naziv:";
             // 
-            // zadatakBasicBindingSource
-            // 
-            zadatakBasicBindingSource.DataSource = typeof(DTO.ZadatakBasic);
-            // 
-            // DodajPodzadatakForma
+            // IzmeniPodzadatakForma
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(405, 206);
+            ClientSize = new Size(425, 203);
             Controls.Add(groupBox1);
-            Name = "DodajPodzadatakForma";
-            Text = "DodajPodzadatakForma";
-            Load += DodajPodzadatakForma_Load;
+            Name = "IzmeniPodzadatakForma";
+            Text = "IzmeniPodzadatakForma";
+            Load += IzmeniPodzadatakForma_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)zadatakBasicBindingSource).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private GroupBox groupBox1;
+        private Button btIzmeni;
         private ComboBox cbNaziv;
         private Label label1;
-        private Button btDodaj;
-        private BindingSource zadatakBasicBindingSource;
     }
 }

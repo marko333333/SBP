@@ -158,6 +158,7 @@
             bt_izmeni.TabIndex = 6;
             bt_izmeni.Text = "Izmeni zadatak";
             bt_izmeni.UseVisualStyleBackColor = true;
+            bt_izmeni.Click += bt_izmeni_Click;
             // 
             // bt_dodaj
             // 
@@ -167,6 +168,7 @@
             bt_dodaj.TabIndex = 5;
             bt_dodaj.Text = "Dodaj zadatak";
             bt_dodaj.UseVisualStyleBackColor = true;
+            bt_dodaj.Click += bt_dodaj_Click;
             // 
             // ZadaciForma
             // 

@@ -36,10 +36,10 @@ namespace Gradjevinska_firma.Forme
                     z.Id.ToString(),z.Naziv,z.Opis,
                     z.Faza != null ? z.Faza.Naziv : "",
                     roditelj,z.ProcenjeniTrosak.ToString(),
-                    z.PlaniraniPocetak.HasValue? z.PlaniraniPocetak.Value.ToShortDateString(): "",
-                    z.StvarniPocetak.HasValue? z.StvarniPocetak.Value.ToShortDateString(): "",
-                    z.PlaniraniZavrsetak.HasValue? z.PlaniraniZavrsetak.Value.ToShortDateString(): "",
-                    z.StvarniZavrsetak.HasValue? z.StvarniZavrsetak.Value.ToShortDateString(): "",
+                    z.PlaniraniPocetak.HasValue ? z.PlaniraniPocetak.Value.ToShortDateString(): "",
+                    z.StvarniPocetak.HasValue ? z.StvarniPocetak.Value.ToShortDateString(): "",
+                    z.PlaniraniZavrsetak.HasValue ? z.PlaniraniZavrsetak.Value.ToShortDateString(): "",
+                    z.StvarniZavrsetak.HasValue ? z.StvarniZavrsetak.Value.ToShortDateString(): "",
                     z.Prioritet.ToString(),z.Status
                 });
 
@@ -58,11 +58,11 @@ namespace Gradjevinska_firma.Forme
         private void btDetaljiOosbe_Click(object sender, EventArgs e)
         {
             ListView tabela = zadaci;
-            
+
 
             if (tabela.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Potrebno je odabrati osobu iz tabele.");
+                MessageBox.Show("Potrebno je odabrati zadatak iz tabele.");
                 return;
             }
 
@@ -72,6 +72,40 @@ namespace Gradjevinska_firma.Forme
 
             DetaljiZadaciForma forma = new DetaljiZadaciForma(id);
             forma.ShowDialog();
+        }
+
+        private void bt_dodaj_Click(object sender, EventArgs e)
+        {
+            using (DodajZadatakForma forma = new DodajZadatakForma())
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    popuniPodacima();
+                }
+            }
+        }
+
+        private void bt_izmeni_Click(object sender, EventArgs e)
+        {
+            ListView tabela = zadaci;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati zadatak iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+
+            using (IzmeniZadatakForma forma = new IzmeniZadatakForma(id))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    popuniPodacima();
+                }
+            }
         }
     }
 }

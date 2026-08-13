@@ -411,6 +411,7 @@
             btIzmeni.TabIndex = 8;
             btIzmeni.Text = "Izmeni podzadatak";
             btIzmeni.UseVisualStyleBackColor = true;
+            btIzmeni.Click += btIzmeni_Click;
             // 
             // btDodaj
             // 
@@ -420,6 +421,7 @@
             btDodaj.TabIndex = 7;
             btDodaj.Text = "Dodaj podzadatak";
             btDodaj.UseVisualStyleBackColor = true;
+            btDodaj.Click += btDodaj_Click;
             // 
             // groupBox2
             // 
@@ -491,6 +493,7 @@
             // columnHeader3
             // 
             columnHeader3.Text = "Broj naloga";
+            columnHeader3.Width = 100;
             // 
             // columnHeader4
             // 
@@ -519,6 +522,7 @@
             btIzmeniRadniNalog.TabIndex = 5;
             btIzmeniRadniNalog.Text = "Izmeni radni nalog";
             btIzmeniRadniNalog.UseVisualStyleBackColor = true;
+            btIzmeniRadniNalog.Click += btIzmeniRadniNalog_Click;
             // 
             // btDodajRadniNalog
             // 
@@ -528,6 +532,7 @@
             btDodajRadniNalog.TabIndex = 4;
             btDodajRadniNalog.Text = "Dodaj radni nalog";
             btDodajRadniNalog.UseVisualStyleBackColor = true;
+            btDodajRadniNalog.Click += btDodajRadniNalog_Click;
             // 
             // tabPage5
             // 
@@ -569,6 +574,7 @@
             btIzmeniNapredak.TabIndex = 8;
             btIzmeniNapredak.Text = "Izmeni napredak";
             btIzmeniNapredak.UseVisualStyleBackColor = true;
+            btIzmeniNapredak.Click += btIzmeniNapredak_Click;
             // 
             // btDodajNapredak
             // 
@@ -578,6 +584,7 @@
             btDodajNapredak.TabIndex = 7;
             btDodajNapredak.Text = "Dodaj napredak";
             btDodajNapredak.UseVisualStyleBackColor = true;
+            btDodajNapredak.Click += btDodajNapredak_Click;
             // 
             // napreci
             // 
@@ -666,6 +673,7 @@
             btIzmeniKontrolu.TabIndex = 8;
             btIzmeniKontrolu.Text = "Izmeni kontrolu kvaliteta";
             btIzmeniKontrolu.UseVisualStyleBackColor = true;
+            btIzmeniKontrolu.Click += btIzmeniKontrolu_Click;
             // 
             // btDodajKontrolu
             // 
@@ -675,6 +683,7 @@
             btDodajKontrolu.TabIndex = 7;
             btDodajKontrolu.Text = "Dodaj kontrolu kvaliteta";
             btDodajKontrolu.UseVisualStyleBackColor = true;
+            btDodajKontrolu.Click += btDodajKontrolu_Click;
             // 
             // kontrolaKvaliteta
             // 

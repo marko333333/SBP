@@ -82,7 +82,7 @@ namespace Gradjevinska_firma.Forme
             {
                 ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
                 popuniPodzadacima(zadatak);
-                
+
             }
             else if (tabControl1.SelectedIndex == 2)
             {
@@ -186,6 +186,150 @@ namespace Gradjevinska_firma.Forme
             }
             kontrolaKvaliteta.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             this.kontrolaKvaliteta.Refresh();
+        }
+
+        private void btDodaj_Click(object sender, EventArgs e)
+        {
+            using (DodajPodzadatakForma forma = new DodajPodzadatakForma(idZadatka))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                    popuniPodzadacima(zadatak);
+                }
+            }
+        }
+
+        private void btDodajRadniNalog_Click(object sender, EventArgs e)
+        {
+            using (DodajRadniNalogForma forma = new DodajRadniNalogForma(idZadatka))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                    popuniRadneNaloge(zadatak);
+                }
+            }
+        }
+
+        private void btDodajNapredak_Click(object sender, EventArgs e)
+        {
+            using (DodajNapredakForma forma = new DodajNapredakForma(idZadatka))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                    popuniNapretke(zadatak);
+                }
+            }
+        }
+
+        private void btDodajKontrolu_Click(object sender, EventArgs e)
+        {
+            using (DodajKontroluKvalitetaForma forma = new DodajKontroluKvalitetaForma(idZadatka))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                    popuniKontroluKvaliteta(zadatak);
+                }
+            }
+        }
+
+        private void btIzmeni_Click(object sender, EventArgs e)
+        {
+            ListView tabela = podzadaci;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati podzadatak iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+
+            using (IzmeniPodzadatakForma forma = new IzmeniPodzadatakForma(id, idZadatka))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                    popuniPodzadacima(zadatak);
+                }
+            }
+        }
+
+        private void btIzmeniRadniNalog_Click(object sender, EventArgs e)
+        {
+            ListView tabela = radniNalozi;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati radni nalog iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+
+            using (IzmeniRadniNalogForma forma = new IzmeniRadniNalogForma(id, idZadatka))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                    popuniRadneNaloge(zadatak);
+                }
+            }
+        }
+
+        private void btIzmeniNapredak_Click(object sender, EventArgs e)
+        {
+            ListView tabela = napreci;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati napredak iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+
+            using (IzmeniNapredakForma forma = new IzmeniNapredakForma(id, idZadatka))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                    popuniNapretke(zadatak);
+                }
+            }
+        }
+
+        private void btIzmeniKontrolu_Click(object sender, EventArgs e)
+        {
+            ListView tabela = kontrolaKvaliteta;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati kontrolu kvaliteta iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+
+            using (IzmeniKontroluForma forma = new IzmeniKontroluForma(id, idZadatka))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                    popuniKontroluKvaliteta(zadatak);
+                }
+            }
         }
     }
 }

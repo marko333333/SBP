@@ -13,10 +13,16 @@
     <Compile Update="Forme\DodajKontaktForma.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\DodajKontroluKvalitetaForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\DodajLekPregledForma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\DodajLicencuForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\DodajNapredakForma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\DodajObukuForma.cs">
@@ -28,7 +34,16 @@
     <Compile Update="Forme\DodajPodzadatakForma.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\DodajRadniNalogForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\DodajSertifikatSpecOpremeForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\DodajStavkuForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\DodajZadatakForma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\DodajZastitnuOpremuForma.cs">
@@ -37,10 +52,16 @@
     <Compile Update="Forme\IzmeniKontaktForma.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\IzmeniKontroluForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\IzmeniLekPregledForma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\IzmeniLicencuForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\IzmeniNapredakForma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\IzmeniObukuForma.cs">
@@ -49,10 +70,22 @@
     <Compile Update="Forme\IzmeniOsobuForma.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\IzmeniPodzadatakForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\IzmeniRadniNalogForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\IzmeniSertifikatSpecOpremeFormacs.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\IzmeniZadatakForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\IzmeniZastitnuOpremuForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\StavkeKontroleForma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\ZadaciForma.cs">

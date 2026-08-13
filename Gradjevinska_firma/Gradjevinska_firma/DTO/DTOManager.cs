@@ -396,13 +396,7 @@ namespace Gradjevinska_firma.DTO
             {
                 ISession s = DataLayer.GetSession();
 
-                Osoba osoba = s.Get<Osoba>(k.IdOsoba);
-
-                if (osoba == null)
-                {
-                    MessageBox.Show("Osoba ne postoji.");
-                    return;
-                }
+                Osoba osoba = s.Load<Osoba>(k.IdOsoba);
 
                 Kontakt kontakt = new Kontakt();
 
@@ -2077,6 +2071,108 @@ namespace Gradjevinska_firma.DTO
                 return podzadaci;
             }
 
+        public static void dodajZadatak(ZadatakBasic zadatak)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Faza faza = s.Load<Faza>(zadatak.Faza.Naziv);
+
+                Zadatak roditelj = null;
+
+                if (zadatak.Roditelj != null)
+                {
+                    roditelj = s.Load<Zadatak>(zadatak.Roditelj.Id);
+                }
+
+                Zadatak z = new Zadatak();
+
+                z.Naziv = zadatak.Naziv;
+                z.Opis = zadatak.Opis;
+                z.ProcenjeniTrosak = zadatak.ProcenjeniTrosak;
+                z.PlaniraniZavrsetak = zadatak.PlaniraniZavrsetak;
+                z.StvarniZavrsetak = zadatak.StvarniZavrsetak;
+                z.PlaniraniPocetak = zadatak.PlaniraniPocetak;
+                z.StvarniPocetak = zadatak.StvarniPocetak;
+                z.Prioritet = zadatak.Prioritet;
+                z.Status = zadatak.Status;
+
+                z.Faza = faza;
+                z.Roditelj = roditelj;
+
+                s.Save(z);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        //proveri
+        public static void izmeniZadatak(ZadatakBasic zadatak)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Faza faza = s.Load<Faza>(zadatak.Faza.Naziv);
+
+                Zadatak roditelj = null;
+
+                if (zadatak.Roditelj != null)
+                {
+                    roditelj = s.Load<Zadatak>(zadatak.Roditelj.Id);
+                }
+
+                Zadatak z = s.Load<Zadatak>(zadatak.Id);
+
+                z.Naziv = zadatak.Naziv;
+                z.Opis = zadatak.Opis;
+                z.ProcenjeniTrosak = zadatak.ProcenjeniTrosak;
+                z.PlaniraniZavrsetak = zadatak.PlaniraniZavrsetak;
+                z.StvarniZavrsetak = zadatak.StvarniZavrsetak;
+                z.PlaniraniPocetak = zadatak.PlaniraniPocetak;
+                z.StvarniPocetak = zadatak.StvarniPocetak;
+                z.Prioritet = zadatak.Prioritet;
+                z.Status = zadatak.Status;
+
+                z.Faza = faza;
+                z.Roditelj = roditelj;
+
+                s.Update(zadatak);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void obrisiZadatak(int id)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Zadatak zadatak = s.Load<Zadatak>(id);
+
+                s.Delete(zadatak);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         #endregion
 
         #region RadniNalozi
@@ -2267,6 +2363,69 @@ namespace Gradjevinska_firma.DTO
                 MessageBox.Show(ex.ToString());
             }
             return kontrolaKvaliteta;
+        }
+
+        #endregion
+
+        #region Faza
+
+        public static List<FazaPregled> vratiSveFaze()
+        {
+            List<FazaPregled> faze = new List<FazaPregled>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Faza> sveFaze =
+                    from f in s.Query<Faza>()
+                    select f;
+
+                foreach (Faza f in sveFaze)
+                {
+                    ProjekatPregled projekat = null;
+
+                    if (f.Projekat != null)
+                    {
+                        projekat = new ProjekatPregled();
+                        projekat.ID = f.Projekat.ID;
+                        projekat.Naziv = f.Projekat.Naziv;
+                    }
+
+                    FizickoLicePregled fizickoLice = null;
+
+                    if (f.FizickoLice != null)
+                    {
+                        fizickoLice = new FizickoLicePregled();
+                        fizickoLice.Id = f.FizickoLice.Id;
+                        fizickoLice.Ime = f.FizickoLice.Ime;
+                        fizickoLice.Prezime = f.FizickoLice.Prezime;
+                    }
+
+                    FazaPregled nadFaza = null;
+
+                    if (f.NadFaza != null)
+                    {
+                        nadFaza = new FazaPregled();
+                        nadFaza.Id = f.NadFaza.Id;
+                        nadFaza.Naziv = f.NadFaza.Naziv;
+                    }
+
+                    FazaPregled faza = new FazaPregled(
+                        f.Id,f.Naziv,f.DatumOd,f.DatumDo,f.Status,f.Budzet,projekat,fizickoLice,nadFaza
+                    );
+
+                    faze.Add(faza);
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return faze;
         }
 
         #endregion

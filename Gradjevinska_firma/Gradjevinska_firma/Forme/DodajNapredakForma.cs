@@ -10,16 +10,16 @@ using System.Windows.Forms;
 
 namespace Gradjevinska_firma.Forme
 {
-    public partial class DodajPodzadatakForma : Form
+    public partial class DodajNapredakForma : Form
     {
         private int idZadatka;
-        public DodajPodzadatakForma(int id)
+        public DodajNapredakForma(int id)
         {
             InitializeComponent();
             idZadatka = id;
         }
 
-        private void DodajPodzadatakForma_Load(object sender, EventArgs e)
+        private void DodajNapredakForma_Load(object sender, EventArgs e)
         {
 
         }
