@@ -33,6 +33,8 @@
             bt1 = new Button();
             pictureBox1 = new PictureBox();
             bt2 = new Button();
+            button1 = new Button();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -50,7 +52,7 @@
             // bt1
             // 
             bt1.Font = new Font("Lucida Bright", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            bt1.Location = new Point(477, 179);
+            bt1.Location = new Point(477, 128);
             bt1.Name = "bt1";
             bt1.Size = new Size(209, 56);
             bt1.TabIndex = 1;
@@ -70,7 +72,7 @@
             // bt2
             // 
             bt2.Font = new Font("Lucida Bright", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            bt2.Location = new Point(477, 280);
+            bt2.Location = new Point(477, 208);
             bt2.Name = "bt2";
             bt2.Size = new Size(209, 56);
             bt2.TabIndex = 3;
@@ -78,11 +80,34 @@
             bt2.UseVisualStyleBackColor = true;
             bt2.Click += bt2_Click;
             // 
+            // button1
+            // 
+            button1.Font = new Font("Lucida Bright", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.Location = new Point(477, 292);
+            button1.Name = "button1";
+            button1.Size = new Size(209, 56);
+            button1.TabIndex = 4;
+            button1.Text = "Zadaci";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // button2
+            // 
+            button2.Font = new Font("Lucida Bright", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button2.Location = new Point(477, 376);
+            button2.Name = "button2";
+            button2.Size = new Size(209, 56);
+            button2.TabIndex = 5;
+            button2.Text = "Ugovori";
+            button2.UseVisualStyleBackColor = true;
+            // 
             // PocetnaStranica
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(783, 576);
+            Controls.Add(button2);
+            Controls.Add(button1);
             Controls.Add(bt2);
             Controls.Add(pictureBox1);
             Controls.Add(bt1);
@@ -101,5 +126,7 @@
         private Button bt1;
         private PictureBox pictureBox1;
         private Button bt2;
+        private Button button1;
+        private Button button2;
     }
 }

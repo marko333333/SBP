@@ -724,6 +724,7 @@ namespace Gradjevinska_firma.DTO
 
     public class FazaBasic
     {
+        public int Id;
         public string Naziv;
         public DateTime? DatumOd;
         public DateTime? DatumDo;
@@ -743,8 +744,10 @@ namespace Gradjevinska_firma.DTO
             Zadaci = new List<ZadatakBasic>();
         }
 
-        public FazaBasic(string naziv,DateTime? datumOd,DateTime? datumDo,string status,int? budzet,ProjekatBasic projekat,FizickoLiceBasic fizickoLice,FazaBasic nadFaza)
+
+        public FazaBasic(int id,string naziv,DateTime? datumOd,DateTime? datumDo,string status,int? budzet,ProjekatBasic projekat,FizickoLiceBasic fizickoLice,FazaBasic nadFaza)
         {
+            Id = id;
             Naziv = naziv;
             DatumOd = datumOd;
             DatumDo = datumDo;
@@ -758,6 +761,7 @@ namespace Gradjevinska_firma.DTO
 
     public class FazaPregled
     {
+        public int Id;
         public string Naziv;
         public DateTime? DatumOd;
         public DateTime? DatumDo;
@@ -772,8 +776,9 @@ namespace Gradjevinska_firma.DTO
         {
         }
 
-        public FazaPregled(string naziv,DateTime? datumOd,DateTime? datumDo,string status,int? budzet,ProjekatPregled projekat,FizickoLicePregled fizickoLice,FazaPregled nadFaza)
+        public FazaPregled(int id,string naziv,DateTime? datumOd,DateTime? datumDo,string status,int? budzet,ProjekatPregled projekat,FizickoLicePregled fizickoLice,FazaPregled nadFaza)
         {
+            Id = id;
             Naziv = naziv;
             DatumOd = datumOd;
             DatumDo = datumDo;
@@ -830,7 +835,7 @@ namespace Gradjevinska_firma.DTO
         public string Zapisnik;
         public bool ZabranaNastavkaRadova;
         public string RazlogZabrane;
-        public string DatumOtklanjanjaZabrane;
+        public DateTime? DatumOtklanjanjaZabrane;
 
         public ZadatakBasic Zadatak;
 
@@ -841,7 +846,7 @@ namespace Gradjevinska_firma.DTO
             StavkeKontrole = new List<StavkaKontroleBasic>();
         }
 
-        public KontrolaKvalitetaBasic(int id,DateTime? datumInspekcije,string primedbeNadzora,string zapisnik,bool zabranaNastavkaRadova,string razlogZabrane,string datumOtklanjanjaZabrane,ZadatakBasic zadatak)
+        public KontrolaKvalitetaBasic(int id,DateTime? datumInspekcije,string primedbeNadzora,string zapisnik,bool zabranaNastavkaRadova,string razlogZabrane,DateTime? datumOtklanjanjaZabrane,ZadatakBasic zadatak)
         {
             Id = id;
             DatumInspekcije = datumInspekcije;
@@ -862,7 +867,7 @@ namespace Gradjevinska_firma.DTO
         public string Zapisnik;
         public bool ZabranaNastavkaRadova;
         public string RazlogZabrane;
-        public string DatumOtklanjanjaZabrane;
+        public DateTime? DatumOtklanjanjaZabrane;
 
         public ZadatakPregled Zadatak;
 
@@ -870,7 +875,7 @@ namespace Gradjevinska_firma.DTO
         {
         }
 
-        public KontrolaKvalitetaPregled(int id,DateTime? datumInspekcije,string primedbeNadzora,string zapisnik,bool zabranaNastavkaRadova,string razlogZabrane,string datumOtklanjanjaZabrane,ZadatakPregled zadatak)
+        public KontrolaKvalitetaPregled(int id,DateTime? datumInspekcije,string primedbeNadzora,string zapisnik,bool zabranaNastavkaRadova,string razlogZabrane,DateTime? datumOtklanjanjaZabrane,ZadatakPregled zadatak)
         {
             Id = id;
             DatumInspekcije = datumInspekcije;

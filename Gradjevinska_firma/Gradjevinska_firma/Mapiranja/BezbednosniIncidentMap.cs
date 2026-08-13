@@ -25,10 +25,6 @@ namespace Gradjevinska_firma.Mapiranja
 
             References(x => x.Projekat).Column("IDPROJEKTA");
             References(x => x.Osoba).Column("IDOSOBE");
-
-            //HasMany(x => x.PoslediceIncidenta).KeyColumn("IDBEZBEDNOSNOGINCIDENTA").Cascade.AllDeleteOrphan().Inverse().LazyLoad();
-
-            //HasMany(x=>x.PreduzeteMereIncidenta).KeyColumn("IDBEZBEDNOSNOGINCIDENTA").Cascade.AllDeleteOrphan().Inverse().LazyLoad();//deleteorphan jer All nema smisla, ne postoji preduzeta mera bez incidenta
         }
     }
     class PovredaNaRaduMap:SubclassMap<PovredaNaRadu> 

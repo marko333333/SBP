@@ -17,8 +17,6 @@ namespace Gradjevinska_firma.Entiteti
         public virtual string Tip_incidenta { get; set; }
         public virtual Projekat Projekat { get; set; }
         public virtual Osoba Osoba { get; set; }
-        //public virtual IList<PoslediceIncidenta> PoslediceIncidenta { get; set; }
-        //public virtual IList<PreduzeteMereIncidenta> PreduzeteMereIncidenta { get; set; }
     }
     public class PovredaNaRadu : BezbednosniIncident { }
     public class KvarOpreme : BezbednosniIncident { }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Gradjevinska_firma.Entiteti;
 
 namespace Gradjevinska_firma.DTO
-{   
+{
     //dodaj kolekciju za BezbednosniIncident u Osoba
     public class DTOManager
     {
@@ -49,10 +49,10 @@ namespace Gradjevinska_firma.DTO
                 Osoba o = s.Load<Osoba>(id);
 
                 osoba = new OsobaBasic(
-                    o.Id,o.Jmbg,o.Ime,o.Prezime,o.DatumRodjenja,o.Struka);
-                
+                    o.Id, o.Jmbg, o.Ime, o.Prezime, o.DatumRodjenja, o.Struka);
+
                 osoba.Kontakti = vratiKontakteOsobe(id);
-                osoba.Licence=vratiLicenceOsobe(id);
+                osoba.Licence = vratiLicenceOsobe(id);
 
                 s.Close();
             }
@@ -82,7 +82,7 @@ namespace Gradjevinska_firma.DTO
             }
         }
 
- 
+
 
         #region FizickaLica
 
@@ -127,9 +127,9 @@ namespace Gradjevinska_firma.DTO
                         f.Id, f.Jmbg, f.Ime, f.Prezime, f.DatumRodjenja, f.Struka, f.FlagBK, f.FlagR, f.Kvalifikacija, f.FlagI, f.OblastRada, f.Odgovornosti, f.FlagA, f.FlagP, f.FlagN, f.FlagAO);
                     lice.Kontakti = vratiKontakteOsobe(id);
                     lice.Licence = vratiLicenceOsobe(id);
-                    lice.BezbednosneObuke=vratiBezbednosneObukeOsobe(id);
-                    lice.LekarskiPregledi=vratiLekarskePregledeOsobe(id);
-                    lice.ZastitneOpreme=vratiZastitneOpremeOsobe(id) ;
+                    lice.BezbednosneObuke = vratiBezbednosneObukeOsobe(id);
+                    lice.LekarskiPregledi = vratiLekarskePregledeOsobe(id);
+                    lice.ZastitneOpreme = vratiZastitneOpremeOsobe(id);
                     lice.SertifikatiSpecOpreme = vratiSertifikateSpecOpremeOsobe(id);
 
                 }
@@ -379,8 +379,8 @@ namespace Gradjevinska_firma.DTO
                 Kontakt k = s.Load<Kontakt>(id);
 
                 kontakt = new KontaktBasic(
-                        k.Id,k.Osoba.Id,k.Broj);
-              
+                        k.Id, k.Osoba.Id, k.Broj);
+
                 s.Close();
             }
             catch (Exception ex)
@@ -428,7 +428,7 @@ namespace Gradjevinska_firma.DTO
 
                 Kontakt kontakt = s.Load<Kontakt>(k.Id);
 
-                kontakt.Broj=k.Broj;
+                kontakt.Broj = k.Broj;
 
                 s.Update(kontakt);
                 s.Flush();
@@ -498,7 +498,7 @@ namespace Gradjevinska_firma.DTO
 
         public static LicencaBasic vratiLicencu(int id)
         {
-            LicencaBasic licenca=new LicencaBasic();
+            LicencaBasic licenca = new LicencaBasic();
 
             try
             {
@@ -590,7 +590,6 @@ namespace Gradjevinska_firma.DTO
 
         #endregion
 
-
         #region BezbednosnaObuka
 
         public static List<BezbednosnaObukaBasic> vratiBezbednosneObukeOsobe(int idOsobe)
@@ -636,7 +635,7 @@ namespace Gradjevinska_firma.DTO
                 BezbednosnaObuka b = s.Load<BezbednosnaObuka>(id);
 
                 obuka = new BezbednosnaObukaBasic(
-                        b.Id,b.FizickoLice.Id,b.NazivObuke,b.Datum);
+                        b.Id, b.FizickoLice.Id, b.NazivObuke, b.Datum);
 
                 s.Close();
             }
@@ -766,7 +765,7 @@ namespace Gradjevinska_firma.DTO
                 LekarskiPregled lp = s.Load<LekarskiPregled>(id);
 
                 lekpregled = new LekarskiPregledBasic(
-                        lp.Id,lp.FizickoLice.Id,lp.Rezultat,lp.Datum);
+                        lp.Id, lp.FizickoLice.Id, lp.Rezultat, lp.Datum);
 
                 s.Close();
             }
@@ -794,7 +793,7 @@ namespace Gradjevinska_firma.DTO
 
                 LekarskiPregled lekpregled = new LekarskiPregled();
 
-                
+
                 lekpregled.FizickoLice = fizicko;
                 lekpregled.Rezultat = lp.Rezultat;
                 lekpregled.Datum = lp.Datum;
@@ -899,7 +898,7 @@ namespace Gradjevinska_firma.DTO
                 SertifikatSpecOpreme sso = s.Load<SertifikatSpecOpreme>(id);
 
                 sertifkatspec = new SertifikatSpecOpremeBasic(
-                        sso.Id,sso.FizickoLice.Id,sso.Sertifikat);
+                        sso.Id, sso.FizickoLice.Id, sso.Sertifikat);
 
                 s.Close();
             }
@@ -1029,7 +1028,7 @@ namespace Gradjevinska_firma.DTO
                 ZastitnaOprema zo = s.Load<ZastitnaOprema>(id);
 
                 zastitnaOprema = new ZastitnaOpremaBasic(
-                        zo.Id,zo.FizickoLice.Id,zo.NazivOpreme);
+                        zo.Id, zo.FizickoLice.Id, zo.NazivOpreme);
 
                 s.Close();
             }
@@ -1179,6 +1178,7 @@ namespace Gradjevinska_firma.DTO
                 MessageBox.Show(ex.ToString());
             }
         }
+        
 
         #region Infrastruktura
 
@@ -1452,7 +1452,7 @@ namespace Gradjevinska_firma.DTO
 
                 Poslovni objP = s.Get<Poslovni>(p.Poslovni.ID);
 
-                if(p == null || p.Poslovni == null)
+                if (p == null || p.Poslovni == null)
                 {
                     MessageBox.Show("Podaci nisu ispravni.");
                     return;
@@ -1473,7 +1473,6 @@ namespace Gradjevinska_firma.DTO
 
                 s.Save(objPoslovni);
                 s.Flush();
-
                 s.Close();
             }
             catch (Exception ex)
@@ -1481,9 +1480,6 @@ namespace Gradjevinska_firma.DTO
                 MessageBox.Show(ex.ToString());
             }
         }
-
-        #endregion
-
         #endregion
 
         #region Stambeni
@@ -1491,18 +1487,16 @@ namespace Gradjevinska_firma.DTO
         public static List<StambeniPregled> vratiSveStambene()
         {
             List<StambeniPregled> stam = new List<StambeniPregled>();
-
             try
             {
                 ISession s = DataLayer.GetSession();
-
                 IEnumerable<Stambeni> sviStambeni =
-                    from st in s.Query<Stambeni>()
-                    select st;
+                   from st in s.Query<Stambeni>()
+                   select st;
 
                 foreach (Stambeni st in sviStambeni)
                 {
-                    stam.Add(new StambeniPregled(st.ID,st.Naziv,st.Opis, st.Lokacija, st.Datum_pocetka, st.Budzet, st.Status, st.Planirani_Zavrsetak, st.Stvarni_Zavrsetak));
+                    stam.Add(new StambeniPregled(st.ID, st.Naziv, st.Opis, st.Lokacija, st.Datum_pocetka, st.Budzet, st.Status, st.Planirani_Zavrsetak, st.Stvarni_Zavrsetak));
                 }
 
                 s.Close();
@@ -1511,7 +1505,6 @@ namespace Gradjevinska_firma.DTO
             {
                 MessageBox.Show(ex.ToString());
             }
-
             return stam;
         }
 
@@ -1526,7 +1519,7 @@ namespace Gradjevinska_firma.DTO
                 Stambeni st = s.Get<Stambeni>(id);
                 if (st != null)
                 {
-                    stam = new StambeniBasic(st.ID,st.Naziv, st.Opis, st.Lokacija, st.Datum_pocetka, st.Budzet, st.Status, st.Planirani_Zavrsetak, st.Stvarni_Zavrsetak);
+                    stam = new StambeniBasic(st.ID, st.Naziv, st.Opis, st.Lokacija, st.Datum_pocetka, st.Budzet, st.Status, st.Planirani_Zavrsetak, st.Stvarni_Zavrsetak);
 
                     stam.Objekti = vratiObjekteStambene(id);
                 }
@@ -1536,7 +1529,6 @@ namespace Gradjevinska_firma.DTO
             {
                 MessageBox.Show(ex.ToString());
             }
-
             return stam;
         }
 
@@ -1606,9 +1598,9 @@ namespace Gradjevinska_firma.DTO
                 ISession s = DataLayer.GetSession();
 
                 IEnumerable<ObjekatStambeni> sviStambeni =
-                         from ss in s.Query<ObjekatStambeni>()
-                         where ss.Stambeni.ID == idProjekta
-                         select ss;
+                        from ss in s.Query<ObjekatStambeni>()
+                        where ss.Stambeni.ID == idProjekta
+                        select ss;
 
                 foreach (ObjekatStambeni ss in sviStambeni)
                 {
@@ -1624,7 +1616,7 @@ namespace Gradjevinska_firma.DTO
                         ss.Stambeni.Stvarni_Zavrsetak
                     );
 
-                    obj.Add(new ObjekatStambeniBasic(ss.Id,ss.Br_objekta, ss.Spratnost, ss.Br_jedinica, stambeni));
+                    obj.Add(new ObjekatStambeniBasic(ss.Id, ss.Br_objekta, ss.Spratnost, ss.Br_jedinica, stambeni));
                 }
             }
             catch (Exception ex)
@@ -1686,6 +1678,8 @@ namespace Gradjevinska_firma.DTO
 
         #endregion
 
+        #endregion
+
         #region Ugovor
 
         public static List<UgovorBasic> vratiUgovoreProjekta(int idProjekta)
@@ -1711,7 +1705,7 @@ namespace Gradjevinska_firma.DTO
                         u.Materijal.JedinicaMere,
                         u.Materijal.Sertifikat,
                         u.Materijal.Tip
-                       
+
              );
 
                     ProjekatBasic projekat = new ProjekatBasic(
@@ -1757,7 +1751,6 @@ namespace Gradjevinska_firma.DTO
             {
                 MessageBox.Show(ex.ToString());
             }
-
             return ugovori;
         }
 
@@ -1773,12 +1766,13 @@ namespace Gradjevinska_firma.DTO
             {
                 ISession s = DataLayer.GetSession();
 
+
                 IEnumerable<BezbednosniIncident> sviIncidenti =
                          from i in s.Query<BezbednosniIncident>()
                          where i.Projekat.ID == idProjekta
                          select i;
 
-                foreach(BezbednosniIncident i in sviIncidenti)
+                foreach (BezbednosniIncident i in sviIncidenti)
                 {
                     ProjekatBasic projekat = new ProjekatBasic(
                         i.Projekat.ID,
@@ -1800,7 +1794,7 @@ namespace Gradjevinska_firma.DTO
                         i.Osoba.Struka
                         );
 
-                    incidenti.Add(new BezbednosniIncidentBasic(i.ID,i.Opis,i.Datum,i.Lokacija,i.Preduzete_mere,i.Posledice,i.Tip_incidenta, projekat, osoba));
+                    incidenti.Add(new BezbednosniIncidentBasic(i.ID, i.Opis, i.Datum, i.Lokacija, i.Preduzete_mere, i.Posledice, i.Tip_incidenta, projekat, osoba));
                 }
             }
             catch (Exception ex)
@@ -1841,7 +1835,8 @@ namespace Gradjevinska_firma.DTO
                         d.Infrastruktura.Stvarni_Zavrsetak
                         );
 
-                    deonice.Add(new DeonicaBasic(d.Id,d.Br_deonice, infra));
+                    deonice.Add(new DeonicaBasic(d.Id, d.Br_deonice, infra));
+
                 }
 
                 s.Close();
@@ -1857,6 +1852,7 @@ namespace Gradjevinska_firma.DTO
         public static DeonicaBasic vratiDeonicu(int id)
         {
             DeonicaBasic deonica = new DeonicaBasic();
+
 
             try
             {
@@ -1874,7 +1870,7 @@ namespace Gradjevinska_firma.DTO
                     d.Infrastruktura.Status,
                     d.Infrastruktura.Planirani_Zavrsetak,
                     d.Infrastruktura.Stvarni_Zavrsetak
-                    ); 
+                    );
 
                 deonica = new DeonicaBasic(d.Id, d.Br_deonice, infra);
 
@@ -1960,5 +1956,321 @@ namespace Gradjevinska_firma.DTO
 
         #endregion
 
+        #region Zadaci
+
+        public static List<ZadatakPregled> vratiSveZadatke()
+        {
+            List<ZadatakPregled> zadaci = new List<ZadatakPregled>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IList<Zadatak> sviZadaci = s.Query<Zadatak>().ToList();
+
+                foreach (Zadatak z in sviZadaci)
+                {
+                    FazaPregled faza = null;
+
+                    if (z.Faza != null)
+                    {
+                        faza = new FazaPregled();
+                        faza.Naziv = z.Faza.Naziv;
+                    }
+
+                    ZadatakPregled roditelj = null;
+
+                    if (z.Roditelj != null)
+                    {
+                        roditelj = new ZadatakPregled();
+                        roditelj.Id = z.Roditelj.Id;
+                        roditelj.Naziv = z.Roditelj.Naziv;
+                    }
+
+                    ZadatakPregled zp = new ZadatakPregled(
+                        z.Id,z.Naziv,z.Opis,z.ProcenjeniTrosak,z.PlaniraniZavrsetak,z.StvarniZavrsetak,z.PlaniraniPocetak,z.StvarniPocetak,z.Prioritet,z.Status,faza,roditelj
+                    );
+                    zadaci.Add(zp);
+                }
+             s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return zadaci;
+        }
+
+        public static ZadatakBasic vratiZadatak(int id)
+        {
+            ZadatakBasic zadatak = new ZadatakBasic();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Zadatak z = s.Load<Zadatak>(id);
+
+
+                FazaBasic faza = null;
+
+                if (z.Faza != null)
+                {
+                    faza = new FazaBasic();
+                    faza.Naziv = z.Faza.Naziv;
+                }
+
+                ZadatakBasic roditelj = null;
+
+                if (z.Roditelj != null)
+                {
+                    roditelj = new ZadatakBasic();
+                    roditelj.Id = z.Roditelj.Id;
+                    roditelj.Naziv = z.Roditelj.Naziv;
+                }
+
+                zadatak = new ZadatakBasic(
+                   z.Id,z.Naziv,z.Opis,z.ProcenjeniTrosak,z.PlaniraniZavrsetak,z.StvarniZavrsetak,z.PlaniraniPocetak,z.StvarniPocetak,z.Prioritet,z.Status,faza,roditelj);
+
+                zadatak.Podzadaci = vratiSvePodzadatke(id);
+                zadatak.RadniNalozi = vratiRadneNaloge(id);
+                zadatak.Napreci = vratiNapretke(id);
+                zadatak.KontroleKvaliteta = vratiKontroleKvaliteta(id);
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return zadatak;
+        }
+
+        public static List<ZadatakBasic> vratiSvePodzadatke(int idZadatka)
+            {
+                List<ZadatakBasic> podzadaci =
+                    new List<ZadatakBasic>();
+
+                try
+                {
+                    ISession s = DataLayer.GetSession();
+
+                    IEnumerable<Zadatak> sviPodzadaci =
+                        from z in s.Query<Zadatak>()
+                        where z.Roditelj.Id == idZadatka
+                        select z;
+
+                    foreach (Zadatak z in sviPodzadaci)
+                    {
+                        podzadaci.Add(new ZadatakBasic(
+                           z.Id, z.Naziv, z.Opis, z.ProcenjeniTrosak, z.PlaniraniZavrsetak, z.StvarniZavrsetak, z.PlaniraniPocetak, z.StvarniPocetak, z.Prioritet, z.Status, null, null));
+                    }
+
+                    s.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+
+                return podzadaci;
+            }
+
+        #endregion
+
+        #region RadniNalozi
+
+        public static List<RadniNalogBasic> vratiRadneNaloge(int idZadatka)
+        {
+            List<RadniNalogBasic> radniNalozi =
+                new List<RadniNalogBasic>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<RadniNalog> sviRadniNalozi =
+                    from rn in s.Query<RadniNalog>()
+                    where rn.Zadatak.Id == idZadatka
+                    select rn;
+
+                foreach (RadniNalog rn in sviRadniNalozi)
+                {
+                    radniNalozi.Add(new RadniNalogBasic(
+                      rn.BrojNaloga, null, rn.Status, rn.DatumIzdavanja));
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return radniNalozi;
+        }
+
+        public static RadniNalogBasic vratiRadniNalog(int id)
+        {
+            RadniNalogBasic radniNalog = new RadniNalogBasic();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                RadniNalog rn = s.Load<RadniNalog>(id);
+
+                ZadatakBasic zadatak = null;
+
+                if (rn.Zadatak != null)
+                {
+                    zadatak = new ZadatakBasic();
+                    zadatak.Id = rn.Zadatak.Id;
+                    zadatak.Naziv = rn.Zadatak.Naziv;
+                }
+
+                radniNalog = new RadniNalogBasic(
+                   rn.BrojNaloga, zadatak, rn.Status, rn.DatumIzdavanja);
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return radniNalog;
+        }
+
+        #endregion
+
+        #region Napreci
+
+        public static List<NapredakBasic> vratiNapretke(int idZadatka)
+        {
+            List<NapredakBasic> napreci =
+                new List<NapredakBasic>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Napredak> sviNapreci =
+                    from n in s.Query<Napredak>()
+                    where n.Zadatak.Id == idZadatka
+                    select n;
+
+                foreach (Napredak n in sviNapreci)
+                {
+                    napreci.Add(new NapredakBasic(
+                        n.Id, n.Datum,null, n.DnevniIzvestaj, n.ProcenatRealizacije, n.PrimedbaNadzora, n.KorektivnaMera));
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return napreci;
+        }
+
+        public static NapredakBasic vratiNapredak(int id)
+        {
+            NapredakBasic napredak = new NapredakBasic();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Napredak n = s.Load<Napredak   >(id);
+
+                ZadatakBasic zadatak = null;
+
+                if (n.Zadatak != null)
+                {
+                    zadatak = new ZadatakBasic();
+                    zadatak.Id = n.Zadatak.Id;
+                    zadatak.Naziv = n.Zadatak.Naziv;
+                }
+
+                napredak = new NapredakBasic(
+                   n.Id,n.Datum,zadatak,n.DnevniIzvestaj,n.ProcenatRealizacije,n.PrimedbaNadzora,n.KorektivnaMera);
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return napredak;
+        }
+
+        #endregion
+
+        #region KontroleKvaliteta
+
+
+        public static List<KontrolaKvalitetaBasic> vratiKontroleKvaliteta(int idZadatka)
+        {
+            List<KontrolaKvalitetaBasic> kontrole =
+                new List<KontrolaKvalitetaBasic>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<KontrolaKvaliteta> sveKontrole =
+                    from kk in s.Query<KontrolaKvaliteta>()
+                    where kk.Zadatak.Id == idZadatka
+                    select kk;
+
+                foreach (KontrolaKvaliteta kk in sveKontrole)
+                {
+                    kontrole.Add(new KontrolaKvalitetaBasic(
+                         kk.Id, kk.DatumInspekcije, kk.PrimedbeNadzora, kk.Zapisnik, kk.ZabranaNastavkaRadova, kk.RazlogZabrane, kk.DatumOtklanjanjaZabrane,null));
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return kontrole;
+        }
+
+        public static KontrolaKvalitetaBasic vratiKontroluKvaliteta(int id)
+        {
+            KontrolaKvalitetaBasic kontrolaKvaliteta = new KontrolaKvalitetaBasic();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                KontrolaKvaliteta n = s.Load<KontrolaKvaliteta>(id);
+
+                ZadatakBasic zadatak = null;
+
+                if (n.Zadatak != null)
+                {
+                    zadatak = new ZadatakBasic();
+                    zadatak.Id = n.Zadatak.Id;
+                    zadatak.Naziv = n.Zadatak.Naziv;
+                }
+
+                kontrolaKvaliteta = new KontrolaKvalitetaBasic(
+                   n.Id,n.DatumInspekcije,n.PrimedbeNadzora,n.Zapisnik,n.ZabranaNastavkaRadova,n.RazlogZabrane,n.DatumOtklanjanjaZabrane,zadatak);
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return kontrolaKvaliteta;
+        }
+
+        #endregion
     }
+
+
 }

@@ -7,6 +7,9 @@
     <Compile Update="Forme\DetaljiOsobeForma.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\DetaljiZadaciForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\DodajKontaktForma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -20,6 +23,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\DodajOsobu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\DodajPodzadatakForma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\DodajSertifikatSpecOpremeForma.cs">
@@ -47,6 +53,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\IzmeniZastitnuOpremuForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\ZadaciForma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\ZaposleniForma.cs">

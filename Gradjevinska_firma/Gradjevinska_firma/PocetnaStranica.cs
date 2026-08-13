@@ -31,7 +31,13 @@ namespace Gradjevinska_firma
 
         private void bt2_Click(object sender, EventArgs e)
         {
-            ZaposleniForma forma =new ZaposleniForma();
+            ZaposleniForma forma = new ZaposleniForma();
+            forma.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ZadaciForma forma = new ZadaciForma();
             forma.ShowDialog();
         }
     }
