@@ -1263,6 +1263,33 @@ namespace Gradjevinska_firma.DTO
             }
         }
 
+        public static void izmeniInfrastrukturu(InfrastrukturaBasic infra)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Infrastruktura i = s.Load<Infrastruktura>(infra.ID);
+
+                i.Naziv = infra.Naziv;
+                i.Opis = infra.Opis;
+                i.Lokacija = infra.Lokacija;
+                i.Datum_pocetka = infra.Datum_pocetka;
+                i.Budzet = infra.Budzet;
+                i.Status = infra.Status;
+                i.Planirani_Zavrsetak = infra.Planirani_zavrsetak;
+                i.Stvarni_Zavrsetak = infra.Stvarni_zavrsetak;
+
+                s.Update(i);
+                s.Flush();
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         #endregion
 
         #region Industrijski
@@ -1321,6 +1348,61 @@ namespace Gradjevinska_firma.DTO
             }
 
             return posl;
+        }
+
+        public static void dodajPoslovni(PoslovniBasic posl)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Poslovni p = new Poslovni();
+
+                p.Naziv = posl.Naziv;
+                p.Opis = posl.Opis;
+                p.Lokacija = posl.Lokacija;
+                p.Datum_pocetka = posl.Datum_pocetka;
+                p.Budzet = posl.Budzet;
+                p.Status = posl.Status;
+                p.Planirani_Zavrsetak = posl.Planirani_zavrsetak;
+                p.Stvarni_Zavrsetak = posl.Stvarni_zavrsetak;
+
+                s.Save(p);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void izmeniPoslovni(PoslovniBasic posl)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Poslovni p = s.Load<Poslovni>(posl.ID);
+
+                p.Naziv = posl.Naziv;
+                p.Opis = posl.Opis;
+                p.Lokacija = posl.Lokacija;
+                p.Datum_pocetka = posl.Datum_pocetka;
+                p.Budzet = posl.Budzet;
+                p.Status = posl.Status;
+                p.Planirani_Zavrsetak = posl.Planirani_zavrsetak;
+                p.Stvarni_Zavrsetak = posl.Stvarni_zavrsetak;
+
+                s.Update(p);
+                s.Flush();
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         #region ObjekatPoslovni
@@ -1456,6 +1538,61 @@ namespace Gradjevinska_firma.DTO
             }
 
             return stam;
+        }
+
+        public static void dodajStambeni(StambeniBasic stam)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Stambeni st = new Stambeni();
+
+                st.Naziv = stam.Naziv;
+                st.Opis = stam.Opis;
+                st.Lokacija = stam.Lokacija;
+                st.Datum_pocetka = stam.Datum_pocetka;
+                st.Budzet = stam.Budzet;
+                st.Status = stam.Status;
+                st.Planirani_Zavrsetak = stam.Planirani_zavrsetak;
+                st.Stvarni_Zavrsetak = stam.Stvarni_zavrsetak;
+
+                s.Save(st);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void izmeniStambeni(StambeniBasic stam)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Stambeni st = s.Load<Stambeni>(stam.ID);
+
+                st.Naziv = stam.Naziv;
+                st.Opis = stam.Opis;
+                st.Lokacija = stam.Lokacija;
+                st.Datum_pocetka = stam.Datum_pocetka;
+                st.Budzet = stam.Budzet;
+                st.Status = stam.Status;
+                st.Planirani_Zavrsetak = stam.Planirani_zavrsetak;
+                st.Stvarni_Zavrsetak = stam.Stvarni_zavrsetak;
+
+                s.Update(st);
+                s.Flush();
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         #region ObjekatStambeni
@@ -1717,6 +1854,40 @@ namespace Gradjevinska_firma.DTO
             return deonice;
         }
 
+        public static DeonicaBasic vratiDeonicu(int id)
+        {
+            DeonicaBasic deonica = new DeonicaBasic();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Deonica d = s.Load<Deonica>(id);
+
+                InfrastrukturaBasic infra = new InfrastrukturaBasic(
+                    d.Infrastruktura.ID,
+                    d.Infrastruktura.Naziv,
+                    d.Infrastruktura.Opis,
+                    d.Infrastruktura.Lokacija,
+                    d.Infrastruktura.Datum_pocetka,
+                    d.Infrastruktura.Budzet,
+                    d.Infrastruktura.Status,
+                    d.Infrastruktura.Planirani_Zavrsetak,
+                    d.Infrastruktura.Stvarni_Zavrsetak
+                    ); 
+
+                deonica = new DeonicaBasic(d.Id, d.Br_deonice, infra);
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return deonica;
+        }
+
         public static void dodajDeonicu(DeonicaBasic d)//proveri
         {
             try
@@ -1737,6 +1908,46 @@ namespace Gradjevinska_firma.DTO
                 deonica.Infrastruktura = infra;
 
                 s.Save(deonica);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void izmeniDeonicu(DeonicaBasic d)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Deonica deonica = s.Load<Deonica>(d.ID);
+
+                deonica.Br_deonice = d.Br_deonice;
+
+                s.Update(deonica);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void obrisiDeonicu(int id)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Deonica deonica = s.Load<Deonica>(id);
+
+                s.Delete(deonica);
                 s.Flush();
 
                 s.Close();
