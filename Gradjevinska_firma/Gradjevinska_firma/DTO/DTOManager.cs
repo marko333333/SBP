@@ -1289,6 +1289,106 @@ namespace Gradjevinska_firma.DTO
 
         #region Industrijski
 
+        public static List<IndustrijskiPregled> vratiSveIndustrijske()
+        {
+            List<IndustrijskiPregled> ind = new List<IndustrijskiPregled>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                IEnumerable<Industrijski> sviIndustrijski =
+                   from inds in s.Query<Industrijski>()
+                   select inds;
+
+                foreach (Industrijski inds in sviIndustrijski)
+                {
+                    ind.Add(new IndustrijskiPregled(inds.ID, inds.Naziv, inds.Opis, inds.Lokacija, inds.Datum_pocetka, inds.Budzet, inds.Status, inds.Planirani_Zavrsetak, inds.Stvarni_Zavrsetak));
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return ind;
+        }
+        public static IndustrijskiBasic vratiIndustrijski(int id)
+        {
+            IndustrijskiBasic ind = new IndustrijskiBasic();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Industrijski inds = s.Get<Industrijski>(id);
+                if (inds != null)
+                {
+                    ind = new IndustrijskiBasic(inds.ID, inds.Naziv, inds.Opis, inds.Lokacija, inds.Datum_pocetka, inds.Budzet, inds.Status, inds.Planirani_Zavrsetak, inds.Stvarni_Zavrsetak);
+                }
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return ind;
+        }
+
+        public static void dodajIndustrijski(IndustrijskiBasic ind)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Industrijski inds = new Industrijski();
+
+                inds.Naziv = ind.Naziv;
+                inds.Opis = ind.Opis;
+                inds.Lokacija = ind.Lokacija;
+                inds.Datum_pocetka = ind.Datum_pocetka;
+                inds.Budzet = ind.Budzet;
+                inds.Status = ind.Status;
+                inds.Planirani_Zavrsetak = ind.Planirani_zavrsetak;
+                inds.Stvarni_Zavrsetak = ind.Stvarni_zavrsetak;
+
+                s.Save(inds);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void izmeniIndustrijski(IndustrijskiBasic ind)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Industrijski inds = s.Load<Industrijski>(ind.ID);
+
+                inds.Naziv = ind.Naziv;
+                inds.Opis = ind.Opis;
+                inds.Lokacija = ind.Lokacija;
+                inds.Datum_pocetka = ind.Datum_pocetka;
+                inds.Budzet = ind.Budzet;
+                inds.Status = ind.Status;
+                inds.Planirani_Zavrsetak = ind.Planirani_zavrsetak;
+                inds.Stvarni_Zavrsetak = ind.Stvarni_zavrsetak;
+
+                s.Update(inds);
+                s.Flush();
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         #endregion
 
         #region Poslovni
