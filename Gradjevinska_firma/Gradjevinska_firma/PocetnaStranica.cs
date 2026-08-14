@@ -46,5 +46,11 @@ namespace Gradjevinska_firma
             ProjekatForma forma = new ProjekatForma();
             forma.ShowDialog();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ProjekatForma forma = new ProjekatForma();
+            forma.ShowDialog();
+        }
     }
 }
