@@ -14,11 +14,14 @@ namespace Gradjevinska_firma.Mapiranja
         {
             Table("IMAUGOVORNUSTRANU");
 
-            CompositeId()
-                .KeyReference(x => x.Osoba, "IDOSOBA")
-                .KeyReference(x => x.Ugovor, "IDUGOVOR");
+            Id(x => x.Id, "ID").GeneratedBy.TriggerIdentity();
+
+            References(x => x.Osoba, "IDOSOBA");
+
+            References(x => x.Ugovor, "IDUGOVOR");
 
             Map(x => x.Uloga, "ULOGA");
+
         }
 
     }
