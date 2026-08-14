@@ -118,6 +118,7 @@
             bt_izmeni.TabIndex = 10;
             bt_izmeni.Text = "Izmeni stavku";
             bt_izmeni.UseVisualStyleBackColor = true;
+            bt_izmeni.Click += bt_izmeni_Click;
             // 
             // bt_dodaj
             // 

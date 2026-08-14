@@ -29,9 +29,10 @@ namespace Gradjevinska_firma.Forme
             dtpStvarniP.Checked = false;
             dtpStvarniZ.Checked = false;
 
-            popuniPodacima();
             popuniFaze();
             popuniNadzadatke();
+            popuniPodacima();
+
 
 
         }
@@ -135,10 +136,14 @@ namespace Gradjevinska_firma.Forme
 
             foreach (ZadatakPregled z in zadaci)
             {
+                if (z.Id == idZadatka)
+                    continue;
+
                 cbNadzadatak.Items.Add(z);
             }
 
             cbNadzadatak.DisplayMember = "Naziv";
+            cbNadzadatak.SelectedIndex = 0;
 
         }
 

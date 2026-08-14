@@ -340,7 +340,7 @@ namespace Gradjevinska_firma.Forme
                 tabela.SelectedItems[0].SubItems[0].Text
             );
 
-            using (StavkeKontroleForma forma = new StavkeKontroleForma(id, idZadatka))
+            using (StavkeKontroleForma forma = new StavkeKontroleForma(id))
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
@@ -443,6 +443,30 @@ namespace Gradjevinska_firma.Forme
             else
             {
 
+            }
+        }
+
+        private void btFotografije_Click(object sender, EventArgs e)
+        {
+            ListView tabela = napreci;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati napredak iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+
+            using (FotografijeForma forma = new FotografijeForma(id))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                    popuniNapretke(zadatak);
+                }
             }
         }
     }

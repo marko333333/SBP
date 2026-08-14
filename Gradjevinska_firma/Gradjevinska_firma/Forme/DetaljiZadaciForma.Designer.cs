@@ -557,6 +557,7 @@
             btFotografije.TabIndex = 10;
             btFotografije.Text = "Fotografije";
             btFotografije.UseVisualStyleBackColor = true;
+            btFotografije.Click += btFotografije_Click;
             // 
             // btObrisiNapredak
             // 

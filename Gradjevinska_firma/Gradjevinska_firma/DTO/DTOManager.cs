@@ -2619,7 +2619,7 @@ namespace Gradjevinska_firma.DTO
             {
                 ISession s = DataLayer.GetSession();
 
-                RadniNalog radniNalog = s.Load<RadniNalog>(rn.Zadatak.Id);
+                RadniNalog radniNalog = s.Load<RadniNalog>(rn.BrNaloga);
 
                 radniNalog.Status=rn.Status;
                 radniNalog.DatumIzdavanja = rn.DatumIzdavanja;
@@ -2751,7 +2751,7 @@ namespace Gradjevinska_firma.DTO
             {
                 ISession s = DataLayer.GetSession();
 
-                Napredak napredak = s.Load<Napredak>(n.Zadatak.Id);
+                Napredak napredak = s.Load<Napredak>(n.Id);
 
                 napredak.Datum = n.Datum;
                 napredak.DnevniIzvestaj = n.DnevniIzvestaj;
@@ -2889,7 +2889,7 @@ namespace Gradjevinska_firma.DTO
             {
                 ISession s = DataLayer.GetSession();
 
-                KontrolaKvaliteta kontrola = s.Load<KontrolaKvaliteta>(k.Zadatak.Id);
+                KontrolaKvaliteta kontrola = s.Load<KontrolaKvaliteta>(k.Id);
 
                 kontrola.DatumInspekcije = k.DatumInspekcije;
                 kontrola.PrimedbeNadzora = k.PrimedbeNadzora;

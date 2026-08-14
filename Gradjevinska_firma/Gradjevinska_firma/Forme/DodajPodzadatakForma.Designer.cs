@@ -46,7 +46,7 @@
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(405, 206);
+            groupBox1.Size = new Size(498, 206);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Dodaj podzadatak";
@@ -85,7 +85,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(405, 206);
+            ClientSize = new Size(498, 206);
             Controls.Add(groupBox1);
             Name = "DodajPodzadatakForma";
             Text = "DodajPodzadatakForma";

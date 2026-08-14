@@ -1,6 +1,6 @@
 ﻿namespace Gradjevinska_firma.Forme
 {
-    partial class DodajStavkuForma
+    partial class IzmeniStavkuForma
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            dtpRok = new DateTimePicker();
             tbKorektivneMere = new TextBox();
             tbRezultatIspit = new TextBox();
             tbLabNalaz = new TextBox();
@@ -40,7 +41,6 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            dtpRok = new DateTimePicker();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -62,9 +62,16 @@
             groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(800, 450);
-            groupBox1.TabIndex = 0;
+            groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Dodaj stavku";
+            groupBox1.Text = "Izmeni stavku";
+            // 
+            // dtpRok
+            // 
+            dtpRok.Location = new Point(242, 258);
+            dtpRok.Name = "dtpRok";
+            dtpRok.Size = new Size(250, 27);
+            dtpRok.TabIndex = 11;
             // 
             // tbKorektivneMere
             // 
@@ -155,23 +162,15 @@
             label1.TabIndex = 0;
             label1.Text = "Redni broj stavke:";
             // 
-            // dtpRok
-            // 
-            dtpRok.Location = new Point(242, 258);
-            dtpRok.Name = "dtpRok";
-            dtpRok.Size = new Size(250, 27);
-            dtpRok.TabIndex = 11;
-            dtpRok.ValueChanged += dateTimePicker1_ValueChanged;
-            // 
-            // DodajStavkuForma
+            // IzmeniStavkuForma
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(groupBox1);
-            Name = "DodajStavkuForma";
-            Text = "DodajStavkuForma";
-            Load += DodajStavkuForma_Load;
+            Name = "IzmeniStavkuForma";
+            Text = "IzmeniStavkuForma";
+            Load += IzmeniStavkuForma_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
@@ -180,17 +179,17 @@
         #endregion
 
         private GroupBox groupBox1;
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label label6;
-        private Label label5;
-        private Label label4;
+        private DateTimePicker dtpRok;
         private TextBox tbKorektivneMere;
         private TextBox tbRezultatIspit;
         private TextBox tbLabNalaz;
         private TextBox tbUzorci;
         private TextBox tbRbStavke;
-        private DateTimePicker dtpRok;
+        private Label label6;
+        private Label label5;
+        private Label label4;
+        private Label label3;
+        private Label label2;
+        private Label label1;
     }
 }

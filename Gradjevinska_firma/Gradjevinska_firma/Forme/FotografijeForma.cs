@@ -10,21 +10,16 @@ using System.Windows.Forms;
 
 namespace Gradjevinska_firma.Forme
 {
-    public partial class DodajStavkuForma : Form
+    public partial class FotografijeForma : Form
     {
-        private int idKontrole;
-        public DodajStavkuForma(int id)
+        private int idNapredak;
+        public FotografijeForma(int id)
         {
             InitializeComponent();
-            idKontrole = id;
+            idNapredak = id;
         }
 
-        private void DodajStavkuForma_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        private void FotografijeForma_Load(object sender, EventArgs e)
         {
 
         }

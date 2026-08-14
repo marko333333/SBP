@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.ManagedDataAccess.Types;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,21 +11,18 @@ using System.Windows.Forms;
 
 namespace Gradjevinska_firma.Forme
 {
-    public partial class DodajStavkuForma : Form
+    public partial class IzmeniStavkuForma : Form
     {
+        private int idStavke;
         private int idKontrole;
-        public DodajStavkuForma(int id)
+        public IzmeniStavkuForma(int id,int idkontrola)
         {
             InitializeComponent();
-            idKontrole = id;
+            idStavke = id;
+            idKontrole = idkontrola;
         }
 
-        private void DodajStavkuForma_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        private void IzmeniStavkuForma_Load(object sender, EventArgs e)
         {
 
         }
