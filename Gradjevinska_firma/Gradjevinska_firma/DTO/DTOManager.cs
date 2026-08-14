@@ -1582,6 +1582,7 @@ namespace Gradjevinska_firma.DTO
             }
         }
 
+
         #region ObjekatStambeni
 
         public static List<ObjekatStambeniBasic> vratiObjekteStambene(int idProjekta)
@@ -1664,6 +1665,106 @@ namespace Gradjevinska_firma.DTO
         #endregion
 
         #region Sanacija
+
+        public static List<SanacijaPregled> vratiSveSanacije()
+        {
+            List<SanacijaPregled> sanac = new List<SanacijaPregled>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                IEnumerable<Sanacija> sveSanacije =
+                   from sa in s.Query<Sanacija>()
+                   select sa;
+
+                foreach (Sanacija sa in sveSanacije)
+                {
+                    sanac.Add(new SanacijaPregled(sa.ID, sa.Naziv, sa.Opis, sa.Lokacija, sa.Datum_pocetka, sa.Budzet, sa.Status, sa.Planirani_Zavrsetak, sa.Stvarni_Zavrsetak));
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return sanac;
+        }
+        public static SanacijaBasic vratiSanaciju(int id)
+        {
+            SanacijaBasic sanac = new SanacijaBasic();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Sanacija sa = s.Get<Sanacija>(id);
+                if (sa != null)
+                {
+                    sanac = new SanacijaBasic(sa.ID, sa.Naziv, sa.Opis, sa.Lokacija, sa.Datum_pocetka, sa.Budzet, sa.Status, sa.Planirani_Zavrsetak, sa.Stvarni_Zavrsetak);
+                }
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return sanac;
+        }
+
+        public static void dodajSanaciju(SanacijaBasic sanac)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Sanacija sa = new Sanacija();
+
+                sa.Naziv = sanac.Naziv;
+                sa.Opis = sanac.Opis;
+                sa.Lokacija = sanac.Lokacija;
+                sa.Datum_pocetka = sanac.Datum_pocetka;
+                sa.Budzet = sanac.Budzet;
+                sa.Status = sanac.Status;
+                sa.Planirani_Zavrsetak = sanac.Planirani_zavrsetak;
+                sa.Stvarni_Zavrsetak = sanac.Stvarni_zavrsetak;
+
+                s.Save(sa);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void izmeniSanaciju(SanacijaBasic sanac)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Sanacija sa = s.Load<Sanacija>(sanac.ID);
+
+                sa.Naziv = sanac.Naziv;
+                sa.Opis = sanac.Opis;
+                sa.Lokacija = sanac.Lokacija;
+                sa.Datum_pocetka = sanac.Datum_pocetka;
+                sa.Budzet = sanac.Budzet;
+                sa.Status = sanac.Status;
+                sa.Planirani_Zavrsetak = sanac.Planirani_zavrsetak;
+                sa.Stvarni_Zavrsetak = sanac.Stvarni_zavrsetak;
+
+                s.Update(sa);
+                s.Flush();
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
 
         #endregion
 
