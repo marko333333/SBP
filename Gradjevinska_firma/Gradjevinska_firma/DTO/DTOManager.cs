@@ -9,7 +9,7 @@ using Gradjevinska_firma.Entiteti;
 
 namespace Gradjevinska_firma.DTO
 {
-    //dodaj kolekciju za BezbednosniIncident u Osoba
+    //dodaj kolekciju za BezbednosniIncident u Osoba//dodato
     public class DTOManager
     {
 
@@ -53,6 +53,7 @@ namespace Gradjevinska_firma.DTO
 
                 osoba.Kontakti = vratiKontakteOsobe(id);
                 osoba.Licence = vratiLicenceOsobe(id);
+                osoba.BezbednosniIncidenti = vratiBezbednosniIncidentOsobe(id);
 
                 s.Close();
             }
@@ -1795,6 +1796,55 @@ namespace Gradjevinska_firma.DTO
             {
                 MessageBox.Show(ex.ToString());
             }
+            return incidenti;
+        }
+
+        public static List<BezbednosniIncidentBasic> vratiBezbednosniIncidentOsobe(int idOsobe)
+        {
+            List<BezbednosniIncidentBasic> incidenti = new List<BezbednosniIncidentBasic>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<BezbednosniIncident> sviIncidenti =
+                    from i in s.Query<BezbednosniIncident>()
+                    where i.Osoba.Id == idOsobe
+                    select i;
+
+                foreach (BezbednosniIncident i in sviIncidenti)
+                {
+                    ProjekatBasic proj = new ProjekatBasic(
+                        i.Projekat.ID,
+                        i.Projekat.Naziv,
+                        i.Projekat.Opis,
+                        i.Projekat.Lokacija,
+                        i.Projekat.Datum_pocetka,
+                        i.Projekat.Budzet,
+                        i.Projekat.Status,
+                        i.Projekat.Planirani_Zavrsetak,
+                        i.Projekat.Stvarni_Zavrsetak
+                    );
+                    OsobaBasic osob = new OsobaBasic(
+                        i.Osoba.Id,
+                        i.Osoba.Jmbg,
+                        i.Osoba.Ime,
+                        i.Osoba.Prezime,
+                        i.Osoba.DatumRodjenja,
+                        i.Osoba.Struka
+                        );
+
+
+                    incidenti.Add(new BezbednosniIncidentBasic(i.ID, i.Opis, i.Datum, i.Lokacija, i.Preduzete_mere, i.Posledice, i.Tip_incidenta, proj, osob));
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
             return incidenti;
         }
 
