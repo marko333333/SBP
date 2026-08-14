@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.Entiteti;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,7 +23,22 @@ namespace Gradjevinska_firma.Forme
 
         private void DodajRadniNalogForma_Load(object sender, EventArgs e)
         {
+            cbStatus.SelectedIndex = 0;
+        }
 
+        private void btDodaj_Click(object sender, EventArgs e)
+        {
+
+            ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+            RadniNalogBasic radniNalog = new RadniNalogBasic(
+                0, zadatak, cbStatus.SelectedItem.ToString(), dtpDatumIzdavanja.Value);
+
+            DTOManager.dodajRadniNalog(radniNalog);
+
+            MessageBox.Show("Uspesno dodavanje.");
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

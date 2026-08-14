@@ -27,6 +27,13 @@ namespace Gradjevinska_firma.Forme
 
         private void btDodaj_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(tbLekPregled.Text))
+            {
+                MessageBox.Show("Unesite rezultat lekarskog pregleda");
+                tbLekPregled.Focus();
+                return;
+            }
+
             LekarskiPregledBasic lekPregled = new LekarskiPregledBasic(
                 0,idOsobe,tbLekPregled.Text,dtpDatum.Value);
 

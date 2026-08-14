@@ -65,6 +65,7 @@
             // cbStatus
             // 
             cbStatus.FormattingEnabled = true;
+            cbStatus.Items.AddRange(new object[] { "Izdat", "U radu", "Zavrsen", "Storniran" });
             cbStatus.Location = new Point(89, 57);
             cbStatus.Name = "cbStatus";
             cbStatus.Size = new Size(151, 28);
@@ -78,6 +79,7 @@
             btDodaj.TabIndex = 5;
             btDodaj.Text = "Dodaj";
             btDodaj.UseVisualStyleBackColor = true;
+            btDodaj.Click += btDodaj_Click;
             // 
             // groupBox1
             // 

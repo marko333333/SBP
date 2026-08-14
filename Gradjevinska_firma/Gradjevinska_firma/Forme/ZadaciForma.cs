@@ -107,5 +107,36 @@ namespace Gradjevinska_firma.Forme
                 }
             }
         }
+
+        private void bt_obrisi_Click(object sender, EventArgs e)
+        {
+            ListView tabela = zadaci;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati zadatak iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+            string poruka = "Da li zelite da obrisete izabrani zadatak?";
+            string title = "Pitanje";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(poruka, title, buttons);
+
+            if (result == DialogResult.OK)
+            {
+                DTOManager.obrisiZadatak(id);
+                MessageBox.Show("Brisanje zadatka je uspesno obavljeno!");
+                popuniPodacima();
+
+            }
+            else
+            {
+
+            }
+        }
     }
 }

@@ -131,6 +131,7 @@
             btDodaj.TabIndex = 10;
             btDodaj.Text = "Dodaj";
             btDodaj.UseVisualStyleBackColor = true;
+            btDodaj.Click += btDodaj_Click;
             // 
             // groupBox1
             // 

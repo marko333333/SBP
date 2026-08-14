@@ -1969,6 +1969,7 @@ namespace Gradjevinska_firma.DTO
                     if (z.Faza != null)
                     {
                         faza = new FazaPregled();
+                        faza.Id = z.Faza.Id;
                         faza.Naziv = z.Faza.Naziv;
                     }
 
@@ -2012,6 +2013,7 @@ namespace Gradjevinska_firma.DTO
                 if (z.Faza != null)
                 {
                     faza = new FazaBasic();
+                    faza.Id = z.Faza.Id;
                     faza.Naziv = z.Faza.Naziv;
                 }
 
@@ -2077,13 +2079,13 @@ namespace Gradjevinska_firma.DTO
             {
                 ISession s = DataLayer.GetSession();
 
-                Faza faza = s.Load<Faza>(zadatak.Faza.Naziv);
+                Faza faza = s.Load<Faza>(zadatak.Faza.Id);
 
-                Zadatak roditelj = null;
+                Zadatak nadzadatak = null;
 
                 if (zadatak.Roditelj != null)
                 {
-                    roditelj = s.Load<Zadatak>(zadatak.Roditelj.Id);
+                    nadzadatak = s.Load<Zadatak>(zadatak.Roditelj.Id);
                 }
 
                 Zadatak z = new Zadatak();
@@ -2099,7 +2101,7 @@ namespace Gradjevinska_firma.DTO
                 z.Status = zadatak.Status;
 
                 z.Faza = faza;
-                z.Roditelj = roditelj;
+                z.Roditelj = nadzadatak;
 
                 s.Save(z);
                 s.Flush();
@@ -2112,14 +2114,15 @@ namespace Gradjevinska_firma.DTO
             }
         }
 
-        //proveri
         public static void izmeniZadatak(ZadatakBasic zadatak)
         {
             try
             {
                 ISession s = DataLayer.GetSession();
 
-                Faza faza = s.Load<Faza>(zadatak.Faza.Naziv);
+                Zadatak z = s.Load<Zadatak>(zadatak.Id);
+
+                Faza faza = s.Load<Faza>(zadatak.Faza.Id);
 
                 Zadatak roditelj = null;
 
@@ -2127,8 +2130,6 @@ namespace Gradjevinska_firma.DTO
                 {
                     roditelj = s.Load<Zadatak>(zadatak.Roditelj.Id);
                 }
-
-                Zadatak z = s.Load<Zadatak>(zadatak.Id);
 
                 z.Naziv = zadatak.Naziv;
                 z.Opis = zadatak.Opis;
@@ -2143,7 +2144,7 @@ namespace Gradjevinska_firma.DTO
                 z.Faza = faza;
                 z.Roditelj = roditelj;
 
-                s.Update(zadatak);
+                s.Update(z);
                 s.Flush();
 
                 s.Close();
@@ -2236,6 +2237,72 @@ namespace Gradjevinska_firma.DTO
             return radniNalog;
         }
 
+        public static void dodajRadniNalog(RadniNalogBasic radniNalog)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Zadatak zadatak = s.Load<Zadatak>(radniNalog.Zadatak.Id);
+
+                RadniNalog rn=new RadniNalog();
+
+                rn.DatumIzdavanja = radniNalog.DatumIzdavanja;
+                rn.Status = radniNalog.Status;
+                rn.Zadatak = zadatak;
+
+                s.Save(rn);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void izmeniRadniNalog(RadniNalogBasic rn)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                RadniNalog radniNalog = s.Load<RadniNalog>(rn.Zadatak.Id);
+
+                radniNalog.Status=rn.Status;
+                radniNalog.DatumIzdavanja = rn.DatumIzdavanja;
+
+                s.Update(radniNalog);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void obrisiRadniNalog(int id)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                RadniNalog radniNalog = s.Load<RadniNalog>(id);
+
+                s.Delete(radniNalog);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         #endregion
 
         #region Napreci
@@ -2297,6 +2364,78 @@ namespace Gradjevinska_firma.DTO
                 MessageBox.Show(ex.ToString());
             }
             return napredak;
+        }
+
+        public static void dodajNapredak(NapredakBasic napredak)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Zadatak zadatak = s.Load<Zadatak>(napredak.Zadatak.Id);
+
+                Napredak n = new Napredak();
+
+                n.Datum = napredak.Datum;
+                n.DnevniIzvestaj = napredak.DnevniIzvestaj;
+                n.ProcenatRealizacije = napredak.ProcenatRealizacije;
+                n.PrimedbaNadzora = napredak.PrimedbaNadzora;
+                n.KorektivnaMera = napredak.KorektivnaMera;
+                n.Zadatak = zadatak;
+
+                s.Save(n);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void izmeniNapredak(NapredakBasic n)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Napredak napredak = s.Load<Napredak>(n.Zadatak.Id);
+
+                napredak.Datum = n.Datum;
+                napredak.DnevniIzvestaj = n.DnevniIzvestaj;
+                napredak.ProcenatRealizacije = n.ProcenatRealizacije;
+                napredak.PrimedbaNadzora = n.PrimedbaNadzora;
+                napredak.KorektivnaMera = n.KorektivnaMera;
+
+                s.Update(napredak);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void obrisiNapredak(int id)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Napredak napredak = s.Load<Napredak>(id);
+
+                s.Delete(napredak);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         #endregion
@@ -2362,6 +2501,80 @@ namespace Gradjevinska_firma.DTO
                 MessageBox.Show(ex.ToString());
             }
             return kontrolaKvaliteta;
+        }
+
+        public static void dodajKontrolu(KontrolaKvalitetaBasic kontrola)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Zadatak zadatak = s.Load<Zadatak>(kontrola.Zadatak.Id);
+
+                KontrolaKvaliteta k = new KontrolaKvaliteta();
+
+                k.DatumInspekcije = kontrola.DatumInspekcije;
+                k.PrimedbeNadzora = kontrola.PrimedbeNadzora;
+                k.Zapisnik = kontrola.Zapisnik;
+                k.ZabranaNastavkaRadova = kontrola.ZabranaNastavkaRadova;
+                k.RazlogZabrane = kontrola.RazlogZabrane;
+                k.DatumOtklanjanjaZabrane = kontrola.DatumOtklanjanjaZabrane;
+                k.Zadatak = zadatak;
+
+                s.Save(k);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void izmeniKontrolu(KontrolaKvalitetaBasic k)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                KontrolaKvaliteta kontrola = s.Load<KontrolaKvaliteta>(k.Zadatak.Id);
+
+                kontrola.DatumInspekcije = k.DatumInspekcije;
+                kontrola.PrimedbeNadzora = k.PrimedbeNadzora;
+                kontrola.Zapisnik = k.Zapisnik;
+                kontrola.ZabranaNastavkaRadova = k.ZabranaNastavkaRadova;
+                kontrola.RazlogZabrane = k.RazlogZabrane;
+                kontrola.DatumOtklanjanjaZabrane = k.DatumOtklanjanjaZabrane;
+
+                s.Update(kontrola);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void obrisiKontrolu(int id)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                KontrolaKvaliteta kontrola = s.Load<KontrolaKvaliteta>(id);
+
+                s.Delete(kontrola);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         #endregion

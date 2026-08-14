@@ -44,9 +44,9 @@ namespace Gradjevinska_firma.Forme
                 lbNadzadatak.Text = "";
             else
                 lbNadzadatak.Text = zadatak.Roditelj.Naziv;
-            
+
             lbPlaniraniPocetak.Text = zadatak.PlaniraniPocetak.ToShortDateString();
-            
+
             lbPlaniraniZavrsetak.Text = zadatak.PlaniraniZavrsetak.ToShortDateString();
 
             if (zadatak.StvarniPocetak.HasValue)
@@ -347,6 +347,102 @@ namespace Gradjevinska_firma.Forme
                     ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
                     popuniKontroluKvaliteta(zadatak);
                 }
+            }
+        }
+
+        private void btObrisiRadniNalog_Click(object sender, EventArgs e)
+        {
+            ListView tabela = radniNalozi;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati radni nalog iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+            string poruka = "Da li zelite da obrisete izabrani radni nalog?";
+            string title = "Pitanje";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(poruka, title, buttons);
+
+            if (result == DialogResult.OK)
+            {
+                DTOManager.obrisiRadniNalog(id);
+                MessageBox.Show("Brisanje radni naloga je uspesno obavljeno!");
+                ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                popuniRadneNaloge(zadatak);
+
+            }
+            else
+            {
+
+            }
+        }
+
+        private void btObrisiNapredak_Click(object sender, EventArgs e)
+        {
+            ListView tabela = napreci;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati napredak iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+            string poruka = "Da li zelite da obrisete izabrani napredak?";
+            string title = "Pitanje";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(poruka, title, buttons);
+
+            if (result == DialogResult.OK)
+            {
+                DTOManager.obrisiNapredak(id);
+                MessageBox.Show("Brisanje napretka je uspesno obavljeno!");
+                ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                popuniNapretke(zadatak);
+
+            }
+            else
+            {
+
+            }
+        }
+
+        private void btObrisiKontrolu_Click(object sender, EventArgs e)
+        {
+            ListView tabela = kontrolaKvaliteta;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati kontrolu iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+            string poruka = "Da li zelite da obrisete izabranu kontrolu?";
+            string title = "Pitanje";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(poruka, title, buttons);
+
+            if (result == DialogResult.OK)
+            {
+                DTOManager.obrisiKontrolu(id);
+                MessageBox.Show("Brisanje kontrole je uspesno obavljeno!");
+                ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                popuniKontroluKvaliteta(zadatak);
+
+            }
+            else
+            {
+
             }
         }
     }

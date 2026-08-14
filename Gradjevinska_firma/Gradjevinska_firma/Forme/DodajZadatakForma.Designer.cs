@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            lbProjekat = new Label();
+            label7 = new Label();
             btDodaj = new Button();
             prioritet = new NumericUpDown();
             cbNadzadatak = new ComboBox();
@@ -58,6 +60,8 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(lbProjekat);
+            groupBox1.Controls.Add(label7);
             groupBox1.Controls.Add(btDodaj);
             groupBox1.Controls.Add(prioritet);
             groupBox1.Controls.Add(cbNadzadatak);
@@ -89,6 +93,24 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Dodaj zadatak";
             // 
+            // lbProjekat
+            // 
+            lbProjekat.AutoSize = true;
+            lbProjekat.Location = new Point(314, 215);
+            lbProjekat.Name = "lbProjekat";
+            lbProjekat.Size = new Size(50, 20);
+            lbProjekat.TabIndex = 58;
+            lbProjekat.Text = "label8";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(242, 215);
+            label7.Name = "label7";
+            label7.Size = new Size(66, 20);
+            label7.TabIndex = 57;
+            label7.Text = "Projekat:";
+            // 
             // btDodaj
             // 
             btDodaj.Location = new Point(615, 304);
@@ -107,7 +129,7 @@
             prioritet.Name = "prioritet";
             prioritet.Size = new Size(150, 27);
             prioritet.TabIndex = 55;
-            prioritet.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            prioritet.Value = new decimal(new int[] { 3, 0, 0, 0 });
             // 
             // cbNadzadatak
             // 
@@ -124,6 +146,7 @@
             cbFaza.Name = "cbFaza";
             cbFaza.Size = new Size(151, 28);
             cbFaza.TabIndex = 53;
+            cbFaza.SelectedIndexChanged += cbFaza_SelectedIndexChanged;
             // 
             // cbStatus
             // 
@@ -323,5 +346,7 @@
         private ComboBox cbNadzadatak;
         private ComboBox cbFaza;
         private Button btDodaj;
+        private Label lbProjekat;
+        private Label label7;
     }
 }

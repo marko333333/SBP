@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.Entiteti;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,7 +23,33 @@ namespace Gradjevinska_firma.Forme
 
         private void DodajKontroluKvalitetaForma_Load(object sender, EventArgs e)
         {
+            dtpDatumOtklananja.ShowCheckBox = true;
 
+            dtpDatumOtklananja.Checked = false;
+
+
+        }
+
+        private void btDodaj_Click(object sender, EventArgs e)
+        {
+
+            ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+
+            DateTime? datumOtklananja = null;
+
+            if (dtpDatumOtklananja.Checked == true) {
+                datumOtklananja = dtpDatumOtklananja.Value;
+            }
+
+            KontrolaKvalitetaBasic kontrola = new KontrolaKvalitetaBasic(
+                0,dtpDatumInspekcije.Value,tbPrimedba.Text,tbZapisnik.Text,cbZabrana.Checked,tbRazlogZabrane.Text,datumOtklananja,zadatak);
+
+            DTOManager.dodajKontrolu(kontrola);
+
+            MessageBox.Show("Uspesno dodavanje.");
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

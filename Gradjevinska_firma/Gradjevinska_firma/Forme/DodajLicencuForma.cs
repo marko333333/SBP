@@ -28,6 +28,13 @@ namespace Gradjevinska_firma.Forme
 
         private void btDodajLicencu_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(tbLicenca.Text))
+            {
+                MessageBox.Show("Unesite licencu");
+                tbLicenca.Focus();
+                return;
+            }
+
             LicencaBasic licenca = new LicencaBasic(
                     0, idOsobe, tbLicenca.Text);
 

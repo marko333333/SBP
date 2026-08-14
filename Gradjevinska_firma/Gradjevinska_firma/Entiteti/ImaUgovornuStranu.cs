@@ -8,7 +8,7 @@ namespace Gradjevinska_firma.Entiteti
 {
     public class ImaUgovornuStranu
     {   
-        public int Id { get;protected set; }
+        public virtual int Id { get;protected set; }
         public virtual Osoba Osoba { get; set; }
         public virtual Ugovor Ugovor { get; set; }
         public virtual string Uloga { get; set; }

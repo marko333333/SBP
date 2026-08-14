@@ -149,6 +149,7 @@
             bt_obrisi.TabIndex = 7;
             bt_obrisi.Text = "Obrisi zadatak";
             bt_obrisi.UseVisualStyleBackColor = true;
+            bt_obrisi.Click += bt_obrisi_Click;
             // 
             // bt_izmeni
             // 

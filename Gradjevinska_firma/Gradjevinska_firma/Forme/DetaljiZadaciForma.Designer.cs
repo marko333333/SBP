@@ -513,6 +513,7 @@
             btObrisiRadniNalog.TabIndex = 6;
             btObrisiRadniNalog.Text = "Obrisi radni nalog";
             btObrisiRadniNalog.UseVisualStyleBackColor = true;
+            btObrisiRadniNalog.Click += btObrisiRadniNalog_Click;
             // 
             // btIzmeniRadniNalog
             // 
@@ -565,6 +566,7 @@
             btObrisiNapredak.TabIndex = 9;
             btObrisiNapredak.Text = "Obrisi napredak";
             btObrisiNapredak.UseVisualStyleBackColor = true;
+            btObrisiNapredak.Click += btObrisiNapredak_Click;
             // 
             // btIzmeniNapredak
             // 
@@ -665,6 +667,7 @@
             btObrisiKontrolu.TabIndex = 9;
             btObrisiKontrolu.Text = "Obrisi kontrolu kvaliteta";
             btObrisiKontrolu.UseVisualStyleBackColor = true;
+            btObrisiKontrolu.Click += btObrisiKontrolu_Click;
             // 
             // btIzmeniKontrolu
             // 

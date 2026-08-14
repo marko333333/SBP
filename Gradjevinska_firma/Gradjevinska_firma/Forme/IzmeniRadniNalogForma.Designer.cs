@@ -55,6 +55,7 @@
             // cbStatus
             // 
             cbStatus.FormattingEnabled = true;
+            cbStatus.Items.AddRange(new object[] { "Izdat", "U radu", "Zavrsen", "Storniran" });
             cbStatus.Location = new Point(89, 57);
             cbStatus.Name = "cbStatus";
             cbStatus.Size = new Size(151, 28);
@@ -68,6 +69,7 @@
             btIzmeni.TabIndex = 5;
             btIzmeni.Text = "Izmeni";
             btIzmeni.UseVisualStyleBackColor = true;
+            btIzmeni.Click += btIzmeni_Click;
             // 
             // label2
             // 

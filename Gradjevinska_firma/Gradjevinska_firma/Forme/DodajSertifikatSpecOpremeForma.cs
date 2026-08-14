@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,6 +28,13 @@ namespace Gradjevinska_firma.Forme
 
         private void btDodaj_Click_1(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(tbSertifikatSpec.Text))
+            {
+                MessageBox.Show("Unesite sertifikat");
+                tbSertifikatSpec.Focus();
+                return;
+            }
+
             SertifikatSpecOpremeBasic sertifikatspec = new SertifikatSpecOpremeBasic(
                 0, idOsobe, tbSertifikatSpec.Text);
 

@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,6 +28,12 @@ namespace Gradjevinska_firma.Forme
 
         private void btDodaj_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(tbObuka.Text))
+            {
+                MessageBox.Show("Unesite obuku");
+                tbObuka.Focus();
+                return;
+            }
             BezbednosnaObukaBasic obuka=new BezbednosnaObukaBasic(
                 0,idOsobe,tbObuka.Text,dtpDatum.Value);
 

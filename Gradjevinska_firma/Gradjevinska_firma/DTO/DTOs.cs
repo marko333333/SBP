@@ -365,7 +365,12 @@ namespace Gradjevinska_firma.DTO
             Faza = faza;
             NadZadatak = zadatak;
         }
+        public override string ToString()
+        {
+            return Naziv;
+        }
     }
+  
 
     #endregion
 
@@ -791,6 +796,10 @@ namespace Gradjevinska_firma.DTO
             Projekat = projekat;
             FizickoLice = fizickoLice;
             NadFaza = nadFaza;
+        }
+        public override string ToString()
+        {
+            return Naziv;
         }
     }
 

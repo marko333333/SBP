@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,6 +28,8 @@ namespace Gradjevinska_firma.Forme
 
             dtpStvarniP.Checked = false;
             dtpStvarniZ.Checked = false;
+
+            cbStatus.SelectedIndex = 0;
         }
         private void popuniFaze()
         {
@@ -40,6 +43,8 @@ namespace Gradjevinska_firma.Forme
             }
 
             cbFaza.DisplayMember = "Naziv";
+
+            cbFaza.SelectedIndex = 0;
 
         }
         private void popuniNadzadatke()
@@ -75,14 +80,24 @@ namespace Gradjevinska_firma.Forme
                 return;
             }
 
-            FazaBasic faza = (FazaBasic)cbFaza.SelectedItem;
+            FazaPregled izabranaFaza =(FazaPregled)cbFaza.SelectedItem;
+
+            FazaBasic faza = new FazaBasic();
+            faza.Id = izabranaFaza.Id;
+            faza.Naziv = izabranaFaza.Naziv;
+
 
             ZadatakBasic roditelj = null;
 
             if (cbNadzadatak.SelectedIndex != 0)
             {
-                roditelj = (ZadatakBasic)cbNadzadatak.SelectedItem;
+                ZadatakPregled izabraniRoditelj =(ZadatakPregled)cbNadzadatak.SelectedItem;
+
+                roditelj = new ZadatakBasic();
+                roditelj.Id = izabraniRoditelj.Id;
+                roditelj.Naziv = izabraniRoditelj.Naziv;
             }
+
 
             DateTime? stvarniPocetak = null;
             DateTime? stvarniZavrsetak = null;
@@ -93,9 +108,21 @@ namespace Gradjevinska_firma.Forme
             if (dtpStvarniZ.Checked)
                 stvarniZavrsetak = dtpStvarniZ.Value;
 
+
             ZadatakBasic zadatak = new ZadatakBasic(
-                0, tbNaziv.Text, tbOpis.Text, decimal.Parse(tbTrosak.Text), dtpPlaniraniZ.Value, stvarniZavrsetak, dtpPlaniraniP.Value, stvarniZavrsetak, (int)prioritet.Value, 
-                cbStatus.SelectedItem.ToString(), faza, roditelj);
+                0,
+                tbNaziv.Text,
+                tbOpis.Text,
+                decimal.Parse(tbTrosak.Text),
+                dtpPlaniraniZ.Value,
+                stvarniZavrsetak,
+                dtpPlaniraniP.Value,
+                stvarniPocetak,
+                (int)prioritet.Value,
+                cbStatus.SelectedItem.ToString(),
+                faza,
+                roditelj
+            );
 
             DTOManager.dodajZadatak(zadatak);
 
@@ -103,6 +130,22 @@ namespace Gradjevinska_firma.Forme
 
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void cbFaza_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbFaza.SelectedItem == null)
+            {
+                lbProjekat.Text = "";
+                return;
+            }
+
+            FazaPregled faza = (FazaPregled)cbFaza.SelectedItem;
+
+            if (faza.Projekat != null)
+            {
+                lbProjekat.Text = faza.Projekat.Naziv;
+            }
         }
     }
 }

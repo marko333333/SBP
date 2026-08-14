@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,6 +28,12 @@ namespace Gradjevinska_firma.Forme
 
         private void btDodaj_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(tbZastitnaOprema.Text))
+            {
+                MessageBox.Show("Unesite zastitnu opremu");
+                tbZastitnaOprema.Focus();
+                return;
+            }
             ZastitnaOpremaBasic zastitnaOprema = new ZastitnaOpremaBasic(
                 0, idOsobe, tbZastitnaOprema.Text);
 

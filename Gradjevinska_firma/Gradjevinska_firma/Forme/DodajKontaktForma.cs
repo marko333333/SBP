@@ -22,6 +22,14 @@ namespace Gradjevinska_firma.Forme
 
         private void btDodajKontakt_Click(object sender, EventArgs e)
         {
+
+            if (string.IsNullOrWhiteSpace(tbKontakt.Text))
+            {
+                MessageBox.Show("Polje za kontakt ne sme biti prazno!");
+                tbKontakt.Focus();
+                return;
+            }
+
             KontaktBasic kontakt = new KontaktBasic(
                     0,idOsobe,tbKontakt.Text);
 

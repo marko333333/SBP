@@ -81,6 +81,7 @@
             btIzmeni.TabIndex = 10;
             btIzmeni.Text = "Izmeni";
             btIzmeni.UseVisualStyleBackColor = true;
+            btIzmeni.Click += btIzmeni_Click;
             // 
             // label2
             // 

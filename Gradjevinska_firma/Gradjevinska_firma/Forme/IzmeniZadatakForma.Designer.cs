@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            lbProjekat = new Label();
             btIzmeni = new Button();
+            label7 = new Label();
             prioritet = new NumericUpDown();
             cbNadzadatak = new ComboBox();
             cbFaza = new ComboBox();
@@ -58,7 +60,9 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(lbProjekat);
             groupBox1.Controls.Add(btIzmeni);
+            groupBox1.Controls.Add(label7);
             groupBox1.Controls.Add(prioritet);
             groupBox1.Controls.Add(cbNadzadatak);
             groupBox1.Controls.Add(cbFaza);
@@ -89,6 +93,15 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Izmeni zadatak";
             // 
+            // lbProjekat
+            // 
+            lbProjekat.AutoSize = true;
+            lbProjekat.Location = new Point(316, 215);
+            lbProjekat.Name = "lbProjekat";
+            lbProjekat.Size = new Size(50, 20);
+            lbProjekat.TabIndex = 60;
+            lbProjekat.Text = "label8";
+            // 
             // btIzmeni
             // 
             btIzmeni.Location = new Point(615, 304);
@@ -97,6 +110,16 @@
             btIzmeni.TabIndex = 56;
             btIzmeni.Text = "Izmeni";
             btIzmeni.UseVisualStyleBackColor = true;
+            btIzmeni.Click += btIzmeni_Click;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(244, 215);
+            label7.Name = "label7";
+            label7.Size = new Size(66, 20);
+            label7.TabIndex = 59;
+            label7.Text = "Projekat:";
             // 
             // prioritet
             // 
@@ -123,10 +146,12 @@
             cbFaza.Name = "cbFaza";
             cbFaza.Size = new Size(151, 28);
             cbFaza.TabIndex = 53;
+            cbFaza.SelectedIndexChanged += cbFaza_SelectedIndexChanged;
             // 
             // cbStatus
             // 
             cbStatus.FormattingEnabled = true;
+            cbStatus.Items.AddRange(new object[] { "Planiran", "U toku", "Zavrsen", "Otkazan" });
             cbStatus.Location = new Point(86, 176);
             cbStatus.Name = "cbStatus";
             cbStatus.Size = new Size(151, 28);
@@ -321,5 +346,7 @@
         private Label label3;
         private Label label2;
         private Label label1;
+        private Label lbProjekat;
+        private Label label7;
     }
 }
