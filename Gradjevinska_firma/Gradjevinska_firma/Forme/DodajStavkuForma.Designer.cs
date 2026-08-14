@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            dtpRok = new DateTimePicker();
             tbKorektivneMere = new TextBox();
             tbRezultatIspit = new TextBox();
             tbLabNalaz = new TextBox();
@@ -40,12 +41,13 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            dtpRok = new DateTimePicker();
+            btDodaj = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btDodaj);
             groupBox1.Controls.Add(dtpRok);
             groupBox1.Controls.Add(tbKorektivneMere);
             groupBox1.Controls.Add(tbRezultatIspit);
@@ -61,10 +63,18 @@
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(800, 450);
+            groupBox1.Size = new Size(800, 387);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Dodaj stavku";
+            // 
+            // dtpRok
+            // 
+            dtpRok.Location = new Point(242, 258);
+            dtpRok.Name = "dtpRok";
+            dtpRok.Size = new Size(250, 27);
+            dtpRok.TabIndex = 11;
+            dtpRok.ValueChanged += dateTimePicker1_ValueChanged;
             // 
             // tbKorektivneMere
             // 
@@ -155,19 +165,21 @@
             label1.TabIndex = 0;
             label1.Text = "Redni broj stavke:";
             // 
-            // dtpRok
+            // btDodaj
             // 
-            dtpRok.Location = new Point(242, 258);
-            dtpRok.Name = "dtpRok";
-            dtpRok.Size = new Size(250, 27);
-            dtpRok.TabIndex = 11;
-            dtpRok.ValueChanged += dateTimePicker1_ValueChanged;
+            btDodaj.Location = new Point(226, 325);
+            btDodaj.Name = "btDodaj";
+            btDodaj.Size = new Size(94, 29);
+            btDodaj.TabIndex = 12;
+            btDodaj.Text = "Dodaj";
+            btDodaj.UseVisualStyleBackColor = true;
+            btDodaj.Click += btDodaj_Click;
             // 
             // DodajStavkuForma
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 387);
             Controls.Add(groupBox1);
             Name = "DodajStavkuForma";
             Text = "DodajStavkuForma";
@@ -192,5 +204,6 @@
         private TextBox tbUzorci;
         private TextBox tbRbStavke;
         private DateTimePicker dtpRok;
+        private Button btDodaj;
     }
 }

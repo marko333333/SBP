@@ -109,6 +109,7 @@
             bt_obrisi.TabIndex = 11;
             bt_obrisi.Text = "Obrisi stavku";
             bt_obrisi.UseVisualStyleBackColor = true;
+            bt_obrisi.Click += bt_obrisi_Click;
             // 
             // bt_izmeni
             // 

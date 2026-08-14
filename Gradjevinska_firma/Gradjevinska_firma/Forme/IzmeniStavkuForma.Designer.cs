@@ -41,11 +41,13 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
+            btIzmeni = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btIzmeni);
             groupBox1.Controls.Add(dtpRok);
             groupBox1.Controls.Add(tbKorektivneMere);
             groupBox1.Controls.Add(tbRezultatIspit);
@@ -162,6 +164,16 @@
             label1.TabIndex = 0;
             label1.Text = "Redni broj stavke:";
             // 
+            // btIzmeni
+            // 
+            btIzmeni.Location = new Point(254, 340);
+            btIzmeni.Name = "btIzmeni";
+            btIzmeni.Size = new Size(94, 29);
+            btIzmeni.TabIndex = 12;
+            btIzmeni.Text = "Izmeni";
+            btIzmeni.UseVisualStyleBackColor = true;
+            btIzmeni.Click += btIzmeni_Click;
+            // 
             // IzmeniStavkuForma
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -191,5 +203,6 @@
         private Label label3;
         private Label label2;
         private Label label1;
+        private Button btIzmeni;
     }
 }

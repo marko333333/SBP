@@ -51,6 +51,12 @@ namespace Gradjevinska_firma.Mapiranja
                 .LazyLoad()
                 .Cascade.All()
                 .Inverse();
+
+            HasMany(x => x.Faze)
+                .KeyColumn("IDFIZICKO_LICE")
+                .LazyLoad()
+                .Cascade.All()
+                .Inverse();
         }
     }
 }

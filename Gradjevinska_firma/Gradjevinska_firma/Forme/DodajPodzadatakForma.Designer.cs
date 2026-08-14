@@ -59,6 +59,7 @@
             btDodaj.TabIndex = 2;
             btDodaj.Text = "Dodaj";
             btDodaj.UseVisualStyleBackColor = true;
+            btDodaj.Click += btDodaj_Click;
             // 
             // cbNaziv
             // 

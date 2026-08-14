@@ -12,9 +12,16 @@ namespace Gradjevinska_firma.Forme
 {
     public partial class DodajFotografijuForma : Form
     {
-        public DodajFotografijuForma()
+        private int idNapredak;
+        public DodajFotografijuForma(int id)
         {
             InitializeComponent();
+            idNapredak = id;
+        }
+
+        private void DodajFotografijuForma_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

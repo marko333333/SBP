@@ -37,7 +37,7 @@ namespace Gradjevinska_firma.Forme
                     i.Budzet.ToString(),
                     i.Status,
                     i.Planirani_zavrsetak.ToShortDateString(),
-                    i.Stvarni_zavrsetak.ToShortDateString()
+                    i.Stvarni_zavrsetak.HasValue ? i.Stvarni_zavrsetak.Value.ToShortDateString(): "",
                 });
 
                 projekti.Items.Add(item);

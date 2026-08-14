@@ -28,51 +28,43 @@ namespace Gradjevinska_firma.Forme
 
         private void StavkeKontroleForma_Load(object sender, EventArgs e)
         {
-
+            KontrolaKvalitetaBasic kontrola=DTOManager.vratiKontroluKvaliteta(idKontrole);
+            popuniPodacima(kontrola);
         }
 
-        private void popuniPodacima()
+        private void popuniPodacima(KontrolaKvalitetaBasic kontrola)
         {
-           /* stavke.Items.Clear();
+            stavke.Items.Clear();
 
-            List<StavkaKontrolePregled> lista = DTOManager.vratiSveStavke();
-
-            foreach (ZadatakPregled z in lista)
+            foreach (StavkaKontroleBasic k in kontrola.StavkeKontrole)
             {
-                string roditelj = "";
-
-                if (z.NadZadatak != null)
-                    roditelj = z.NadZadatak.Naziv;
-
-                ListViewItem item = new ListViewItem(new string[]
-                {
-                    z.Id.ToString(),z.Naziv,z.Opis,
-                    z.Faza != null ? z.Faza.Naziv : "",
-                    roditelj,z.ProcenjeniTrosak.ToString(),
-                    z.PlaniraniPocetak.ToShortDateString(),
-                    z.StvarniPocetak.HasValue ? z.StvarniPocetak.Value.ToShortDateString(): "",
-                    z.PlaniraniZavrsetak.ToShortDateString(),
-                    z.StvarniZavrsetak.HasValue ? z.StvarniZavrsetak.Value.ToShortDateString(): "",
-                    z.Prioritet.ToString(),z.Status
-                });
+                ListViewItem item = new ListViewItem(
+                    new string[]
+                    {
+                        k.Id.ToString(),
+                        k.RedniBrojStavke.ToString(),
+                        k.Uzorci,
+                        k.LabNalazi,
+                        k.RezultatiIspitivanja,
+                        k.KorektivneMere,
+                        k.RokZaOtklanjanje.HasValue ? k.RokZaOtklanjanje.Value.ToShortDateString(): "",
+                    });
 
                 stavke.Items.Add(item);
             }
-
             stavke.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.stavke.Refresh();
 
-            stavke.Refresh();
-           */
         }
 
         private void bt_dodaj_Click(object sender, EventArgs e)
         {
-            using (DodajStavkuForma forma = new DodajStavkuForma(idStavke))
+            using (DodajStavkuForma forma = new DodajStavkuForma(idKontrole))
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
                     KontrolaKvalitetaBasic kontrola = DTOManager.vratiKontroluKvaliteta(idKontrole);
-                    //popuniKontroluKvaliteta(zadatak);
+                    popuniPodacima(kontrola);
                 }
             }
         }
@@ -96,8 +88,40 @@ namespace Gradjevinska_firma.Forme
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
                     KontrolaKvalitetaBasic kontrola = DTOManager.vratiKontroluKvaliteta(idKontrole);
-                    //popuniKontroluKvaliteta(zadatak);
+                    popuniPodacima(kontrola);
                 }
+            }
+        }
+
+        private void bt_obrisi_Click(object sender, EventArgs e)
+        {
+            ListView tabela = stavke;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati stavku iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+            string poruka = "Da li zelite da obrisete izabranu stavku?";
+            string title = "Pitanje";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(poruka, title, buttons);
+
+            if (result == DialogResult.OK)
+            {
+                DTOManager.obrisiStavku(id);
+                MessageBox.Show("Brisanje stavke je uspesno obavljeno!");
+                KontrolaKvalitetaBasic kontrola = DTOManager.vratiKontroluKvaliteta(idKontrole);
+                popuniPodacima(kontrola);
+
+            }
+            else
+            {
+
             }
         }
     }

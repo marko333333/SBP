@@ -30,11 +30,11 @@
         {
             groupBox1 = new GroupBox();
             fotografije = new ListView();
+            columnHeader1 = new ColumnHeader();
             pbFotografija = new PictureBox();
             btDodaj = new Button();
             btIzmeni = new Button();
             btObrisi = new Button();
-            columnHeader1 = new ColumnHeader();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbFotografija).BeginInit();
             SuspendLayout();
@@ -62,6 +62,10 @@
             fotografije.UseCompatibleStateImageBehavior = false;
             fotografije.View = View.Details;
             // 
+            // columnHeader1
+            // 
+            columnHeader1.Text = "Fotografija";
+            // 
             // pbFotografija
             // 
             pbFotografija.Location = new Point(541, 23);
@@ -78,6 +82,7 @@
             btDodaj.TabIndex = 2;
             btDodaj.Text = "Dodaj fotografiju";
             btDodaj.UseVisualStyleBackColor = true;
+            btDodaj.Click += btDodaj_Click;
             // 
             // btIzmeni
             // 
@@ -87,6 +92,7 @@
             btIzmeni.TabIndex = 3;
             btIzmeni.Text = "Izmeni fotografiju";
             btIzmeni.UseVisualStyleBackColor = true;
+            btIzmeni.Click += btIzmeni_Click;
             // 
             // btObrisi
             // 
@@ -96,10 +102,6 @@
             btObrisi.TabIndex = 4;
             btObrisi.Text = "Obrisi fotografiju";
             btObrisi.UseVisualStyleBackColor = true;
-            // 
-            // columnHeader1
-            // 
-            columnHeader1.Text = "Fotografija";
             // 
             // FotografijeForma
             // 

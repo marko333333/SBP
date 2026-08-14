@@ -13,6 +13,9 @@
     <Compile Update="Forme\DetaljiZadaciForma.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\DodajFotografijuForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\DodajIndustrijskiForma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,10 +58,16 @@
     <Compile Update="Forme\DodajZastitnuOpremuForma.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\FotografijeForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\IndustrijskiForma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\InfrastrukturaForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\IzmeniFotografijuForma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\IzmeniIndustrijskiForma.cs">
@@ -92,6 +101,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\IzmeniSertifikatSpecOpremeFormacs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\IzmeniStavkuForma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\IzmeniZadatakForma.cs">

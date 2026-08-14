@@ -12,9 +12,18 @@ namespace Gradjevinska_firma.Forme
 {
     public partial class IzmeniFotografijuForma : Form
     {
-        public IzmeniFotografijuForma()
+        private int idFotografija;
+        private int idNapredak;
+        public IzmeniFotografijuForma(int id,int idnapredak)
         {
             InitializeComponent();
+            idFotografija = id;
+            idNapredak = idnapredak;
+        }
+
+        private void btIzmeni_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
