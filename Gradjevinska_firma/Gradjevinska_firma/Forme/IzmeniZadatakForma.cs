@@ -31,8 +31,8 @@ namespace Gradjevinska_firma.Forme
             cbStatus.Text = zadatak.Status;
             cbFaza.Text = zadatak.Faza.Naziv;
             cbNadzadatak.Text = zadatak.Roditelj.Naziv;
-            dtpPlaniraniP.Text = zadatak.PlaniraniPocetak.Value.ToShortDateString();
-            dtpPlaniraniZ.Text = zadatak.PlaniraniZavrsetak.Value.ToShortDateString();
+            dtpPlaniraniP.Text = zadatak.PlaniraniPocetak.ToShortDateString();
+            dtpPlaniraniZ.Text = zadatak.PlaniraniZavrsetak.ToShortDateString();
             //dodaj za ostalo ali razmisli o null vrednostima i da li dtp moze da ima null vrednosti
         }
     }

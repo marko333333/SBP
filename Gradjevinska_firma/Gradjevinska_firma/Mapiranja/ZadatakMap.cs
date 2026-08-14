@@ -18,7 +18,7 @@ namespace Gradjevinska_firma.Mapiranja
                 .GeneratedBy.TriggerIdentity();
             Map(x => x.Naziv, "NAZIV");
             Map(x => x.Opis, "OPIS");
-            Map(x => x.ProcenjeniTrosak, "PROCENJENI_TROOSAK");
+            Map(x => x.ProcenjeniTrosak, "PROCENJENI_TROSAK");
             Map(x => x.PlaniraniZavrsetak, "PLANIRANI_ZAVRSETAK");
             Map(x => x.StvarniZavrsetak, "STVARNI_ZAVRSETAK");
             Map(x => x.PlaniraniPocetak, "PLANIRANI_POCETAK");

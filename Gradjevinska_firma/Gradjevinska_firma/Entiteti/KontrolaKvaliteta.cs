@@ -9,7 +9,7 @@ namespace Gradjevinska_firma.Entiteti
     public class KontrolaKvaliteta
     {
         public virtual int Id { get; protected set; }
-        public virtual DateTime? DatumInspekcije { get; set; }
+        public virtual DateTime DatumInspekcije { get; set; }
         public virtual string PrimedbeNadzora { get; set; }
         public virtual string Zapisnik { get; set; }
         public virtual bool ZabranaNastavkaRadova { get; set; }

@@ -2303,7 +2303,6 @@ namespace Gradjevinska_firma.DTO
 
         #region KontroleKvaliteta
 
-
         public static List<KontrolaKvalitetaBasic> vratiKontroleKvaliteta(int idZadatka)
         {
             List<KontrolaKvalitetaBasic> kontrole =

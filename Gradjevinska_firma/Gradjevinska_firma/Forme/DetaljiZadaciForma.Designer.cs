@@ -655,6 +655,7 @@
             btStavkaKontrole.TabIndex = 10;
             btStavkaKontrole.Text = "Stavka kontrole";
             btStavkaKontrole.UseVisualStyleBackColor = true;
+            btStavkaKontrole.Click += btStavkaKontrole_Click;
             // 
             // btObrisiKontrolu
             // 

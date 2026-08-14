@@ -12,9 +12,16 @@ namespace Gradjevinska_firma.Forme
 {
     public partial class DodajStavkuForma : Form
     {
-        public DodajStavkuForma()
+        private int idKontrole;
+        public DodajStavkuForma(int id)
         {
             InitializeComponent();
+            idKontrole = id;
+        }
+
+        private void DodajStavkuForma_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

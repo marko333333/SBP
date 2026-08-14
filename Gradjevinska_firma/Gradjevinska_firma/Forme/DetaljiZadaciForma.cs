@@ -44,17 +44,10 @@ namespace Gradjevinska_firma.Forme
                 lbNadzadatak.Text = "";
             else
                 lbNadzadatak.Text = zadatak.Roditelj.Naziv;
-
-
-            if (zadatak.PlaniraniPocetak.HasValue)
-                lbPlaniraniPocetak.Text = zadatak.PlaniraniPocetak.Value.ToShortDateString();
-            else
-                lbPlaniraniPocetak.Text = "";
-
-            if (zadatak.PlaniraniZavrsetak.HasValue)
-                lbPlaniraniZavrsetak.Text = zadatak.PlaniraniZavrsetak.Value.ToShortDateString();
-            else
-                lbPlaniraniZavrsetak.Text = "";
+            
+            lbPlaniraniPocetak.Text = zadatak.PlaniraniPocetak.ToShortDateString();
+            
+            lbPlaniraniZavrsetak.Text = zadatak.PlaniraniZavrsetak.ToShortDateString();
 
             if (zadatak.StvarniPocetak.HasValue)
                 lbStvarniPocetak.Text = zadatak.StvarniPocetak.Value.ToShortDateString();
@@ -132,7 +125,7 @@ namespace Gradjevinska_firma.Forme
                     {
                         r.BrNaloga.ToString(),
                         r.Status,
-                        r.DatumIzdavanja.HasValue ? r.DatumIzdavanja.Value.ToShortDateString() : ""
+                        r.DatumIzdavanja.ToShortDateString()
                     });
 
                 radniNalozi.Items.Add(item);
@@ -174,12 +167,13 @@ namespace Gradjevinska_firma.Forme
                     new string[]
                     {
                         n.Id.ToString(),
-                        n.DatumInspekcije.HasValue ? n.DatumInspekcije.Value.ToShortDateString() : "",
+                        n.DatumInspekcije.ToShortDateString(),
                         n.PrimedbeNadzora,
                         n.Zapisnik,
                         n.ZabranaNastavkaRadova.ToString(),
                         n.RazlogZabrane,
                         n.DatumOtklanjanjaZabrane.HasValue ? n.DatumOtklanjanjaZabrane.Value.ToShortDateString() : ""
+
                     });
 
                 kontrolaKvaliteta.Items.Add(item);
@@ -323,6 +317,30 @@ namespace Gradjevinska_firma.Forme
             );
 
             using (IzmeniKontroluForma forma = new IzmeniKontroluForma(id, idZadatka))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                    popuniKontroluKvaliteta(zadatak);
+                }
+            }
+        }
+
+        private void btStavkaKontrole_Click(object sender, EventArgs e)
+        {
+            ListView tabela = kontrolaKvaliteta;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati kontrolu kvaliteta iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+
+            using (StavkeKontroleForma forma = new StavkeKontroleForma(id, idZadatka))
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {

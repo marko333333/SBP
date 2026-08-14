@@ -36,9 +36,9 @@ namespace Gradjevinska_firma.Forme
                     z.Id.ToString(),z.Naziv,z.Opis,
                     z.Faza != null ? z.Faza.Naziv : "",
                     roditelj,z.ProcenjeniTrosak.ToString(),
-                    z.PlaniraniPocetak.HasValue ? z.PlaniraniPocetak.Value.ToShortDateString(): "",
+                    z.PlaniraniPocetak.ToShortDateString(),
                     z.StvarniPocetak.HasValue ? z.StvarniPocetak.Value.ToShortDateString(): "",
-                    z.PlaniraniZavrsetak.HasValue ? z.PlaniraniZavrsetak.Value.ToShortDateString(): "",
+                    z.PlaniraniZavrsetak.ToShortDateString(),
                     z.StvarniZavrsetak.HasValue ? z.StvarniZavrsetak.Value.ToShortDateString(): "",
                     z.Prioritet.ToString(),z.Status
                 });
