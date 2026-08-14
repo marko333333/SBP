@@ -419,6 +419,7 @@ namespace Gradjevinska_firma.DTO
     #region ImaUgovornuStranu
     public class ImaUgovornuStranuBasic
     {
+        public int Id;
         public OsobaBasic Osoba;
         public UgovorBasic Ugovor;
         public string Uloga;
@@ -428,8 +429,9 @@ namespace Gradjevinska_firma.DTO
 
         }
 
-        public ImaUgovornuStranuBasic(OsobaBasic osoba, UgovorBasic ugovor, string uloga)
+        public ImaUgovornuStranuBasic(int id,OsobaBasic osoba, UgovorBasic ugovor, string uloga)
         {
+            Id = id;
             Osoba = osoba;
             Ugovor = ugovor;
             Uloga = uloga;
@@ -438,6 +440,7 @@ namespace Gradjevinska_firma.DTO
 
     public class ImaUgovornuStranuPregled
     {
+        public int Id;
         public OsobaPregled Osoba;
         public UgovorPregled Ugovor;
         public string Uloga;
@@ -447,8 +450,9 @@ namespace Gradjevinska_firma.DTO
 
         }
 
-        public ImaUgovornuStranuPregled(OsobaPregled osoba, UgovorPregled ugovor, string uloga)
-        {
+        public ImaUgovornuStranuPregled(int id,OsobaPregled osoba, UgovorPregled ugovor, string uloga)
+        {   
+            Id = id;
             Osoba = osoba;
             Ugovor = ugovor;
             Uloga = uloga;
