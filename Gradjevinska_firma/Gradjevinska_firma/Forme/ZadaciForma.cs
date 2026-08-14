@@ -138,5 +138,10 @@ namespace Gradjevinska_firma.Forme
 
             }
         }
+
+        private void zadaci_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

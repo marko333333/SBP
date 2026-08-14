@@ -53,8 +53,10 @@
             // 
             groupBox1.Controls.Add(zadaci);
             groupBox1.Location = new Point(3, 0);
+            groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(530, 387);
+            groupBox1.Padding = new Padding(3, 2, 3, 2);
+            groupBox1.Size = new Size(464, 290);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Zadaci";
@@ -65,12 +67,14 @@
             zadaci.Dock = DockStyle.Fill;
             zadaci.FullRowSelect = true;
             zadaci.GridLines = true;
-            zadaci.Location = new Point(3, 23);
+            zadaci.Location = new Point(3, 18);
+            zadaci.Margin = new Padding(3, 2, 3, 2);
             zadaci.Name = "zadaci";
-            zadaci.Size = new Size(524, 361);
+            zadaci.Size = new Size(458, 270);
             zadaci.TabIndex = 0;
             zadaci.UseCompatibleStateImageBehavior = false;
             zadaci.View = View.Details;
+            zadaci.SelectedIndexChanged += zadaci_SelectedIndexChanged;
             // 
             // columnHeader1
             // 
@@ -133,9 +137,10 @@
             // 
             // btDetaljiOosbe
             // 
-            btDetaljiOosbe.Location = new Point(584, 258);
+            btDetaljiOosbe.Location = new Point(511, 194);
+            btDetaljiOosbe.Margin = new Padding(3, 2, 3, 2);
             btDetaljiOosbe.Name = "btDetaljiOosbe";
-            btDetaljiOosbe.Size = new Size(118, 52);
+            btDetaljiOosbe.Size = new Size(103, 39);
             btDetaljiOosbe.TabIndex = 8;
             btDetaljiOosbe.Text = "Detalji zadatka";
             btDetaljiOosbe.UseVisualStyleBackColor = true;
@@ -143,9 +148,10 @@
             // 
             // bt_obrisi
             // 
-            bt_obrisi.Location = new Point(584, 180);
+            bt_obrisi.Location = new Point(511, 135);
+            bt_obrisi.Margin = new Padding(3, 2, 3, 2);
             bt_obrisi.Name = "bt_obrisi";
-            bt_obrisi.Size = new Size(118, 52);
+            bt_obrisi.Size = new Size(103, 39);
             bt_obrisi.TabIndex = 7;
             bt_obrisi.Text = "Obrisi zadatak";
             bt_obrisi.UseVisualStyleBackColor = true;
@@ -153,9 +159,10 @@
             // 
             // bt_izmeni
             // 
-            bt_izmeni.Location = new Point(584, 100);
+            bt_izmeni.Location = new Point(511, 75);
+            bt_izmeni.Margin = new Padding(3, 2, 3, 2);
             bt_izmeni.Name = "bt_izmeni";
-            bt_izmeni.Size = new Size(118, 52);
+            bt_izmeni.Size = new Size(103, 39);
             bt_izmeni.TabIndex = 6;
             bt_izmeni.Text = "Izmeni zadatak";
             bt_izmeni.UseVisualStyleBackColor = true;
@@ -163,9 +170,10 @@
             // 
             // bt_dodaj
             // 
-            bt_dodaj.Location = new Point(584, 23);
+            bt_dodaj.Location = new Point(511, 17);
+            bt_dodaj.Margin = new Padding(3, 2, 3, 2);
             bt_dodaj.Name = "bt_dodaj";
-            bt_dodaj.Size = new Size(118, 52);
+            bt_dodaj.Size = new Size(103, 39);
             bt_dodaj.TabIndex = 5;
             bt_dodaj.Text = "Dodaj zadatak";
             bt_dodaj.UseVisualStyleBackColor = true;
@@ -173,14 +181,15 @@
             // 
             // ZadaciForma
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(755, 382);
+            ClientSize = new Size(661, 286);
             Controls.Add(btDetaljiOosbe);
             Controls.Add(bt_obrisi);
             Controls.Add(bt_izmeni);
             Controls.Add(bt_dodaj);
             Controls.Add(groupBox1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "ZadaciForma";
             Text = "ZadaciForma";
             Load += ZadaciForma_Load;

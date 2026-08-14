@@ -4,10 +4,16 @@
     <Compile Update="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\DetaljiIndustrijskiForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\DetaljiOsobeForma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\DetaljiZadaciForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\DodajIndustrijskiForma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\DodajKontaktForma.cs">
@@ -49,6 +55,15 @@
     <Compile Update="Forme\DodajZastitnuOpremuForma.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\IndustrijskiForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\InfrastrukturaForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\IzmeniIndustrijskiForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\IzmeniKontaktForma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +98,21 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\IzmeniZastitnuOpremuForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\PoslovniForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\ProjekatForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\RekonstrukcijaForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\SanacijaForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\StambeniForma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\StavkeKontroleForma.cs">
