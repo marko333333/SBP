@@ -1770,6 +1770,106 @@ namespace Gradjevinska_firma.DTO
 
         #region Rekonstrukcija
 
+        public static List<RekonstrukcijaPregled> vratiSveRekonstrukcije()
+        {
+            List<RekonstrukcijaPregled> rek = new List<RekonstrukcijaPregled>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                IEnumerable<Rekonstrukcija> sveRekonstrukcije =
+                   from re in s.Query<Rekonstrukcija>()
+                   select re;
+
+                foreach (Rekonstrukcija re in sveRekonstrukcije)
+                {
+                    rek.Add(new RekonstrukcijaPregled(re.ID, re.Naziv, re.Opis, re.Lokacija, re.Datum_pocetka, re.Budzet, re.Status, re.Planirani_Zavrsetak, re.Stvarni_Zavrsetak));
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return rek;
+        }
+        public static RekonstrukcijaBasic vratiRekonstrukciju(int id)
+        {
+            RekonstrukcijaBasic rek = new RekonstrukcijaBasic();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Rekonstrukcija re = s.Get<Rekonstrukcija>(id);
+                if (re != null)
+                {
+                    rek = new RekonstrukcijaBasic(re.ID, re.Naziv, re.Opis, re.Lokacija, re.Datum_pocetka, re.Budzet, re.Status, re.Planirani_Zavrsetak, re.Stvarni_Zavrsetak);
+                }
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return rek;
+        }
+
+        public static void dodajRekonstrukciju(RekonstrukcijaBasic rek)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Rekonstrukcija re = new Rekonstrukcija();
+
+                re.Naziv = rek.Naziv;
+                re.Opis = rek.Opis;
+                re.Lokacija = rek.Lokacija;
+                re.Datum_pocetka = rek.Datum_pocetka;
+                re.Budzet = rek.Budzet;
+                re.Status = rek.Status;
+                re.Planirani_Zavrsetak = rek.Planirani_zavrsetak;
+                re.Stvarni_Zavrsetak = rek.Stvarni_zavrsetak;
+
+                s.Save(re);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void izmeniRekonstrukciju(RekonstrukcijaBasic rek)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Rekonstrukcija re = s.Load<Rekonstrukcija>(rek.ID);
+
+                re.Naziv = rek.Naziv;
+                re.Opis = rek.Opis;
+                re.Lokacija = rek.Lokacija;
+                re.Datum_pocetka = rek.Datum_pocetka;
+                re.Budzet = rek.Budzet;
+                re.Status = rek.Status;
+                re.Planirani_Zavrsetak = rek.Planirani_zavrsetak;
+                re.Stvarni_Zavrsetak = rek.Stvarni_zavrsetak;
+
+                s.Update(re);
+                s.Flush();
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         #endregion
 
         #endregion
