@@ -24,12 +24,16 @@ namespace Gradjevinska_firma.Entiteti
         public virtual IList<SertifikatSpecOpreme> SertifikatiSpecOpreme { get; set; }
         public virtual IList<ZastitnaOprema> ZastitneOpreme { get; set; }
 
+        //faze za koje je odgoovran
+        public virtual IList<Faza> Faze {  get; set; }
+
         public FizickoLice()
         {
             BezbednosneObuke = new List<BezbednosnaObuka>();
             LekarskiPregledi=new List<LekarskiPregled>();
             SertifikatiSpecOpreme=new List<SertifikatSpecOpreme>();
             ZastitneOpreme=new List<ZastitnaOprema>();
+            Faze=new List<Faza>();
         }
     }
 }

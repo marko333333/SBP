@@ -13,7 +13,7 @@ namespace Gradjevinska_firma.Entiteti
         public virtual DateTime DatumOd { get; set; }
         public virtual DateTime? DatumDo { get; set; }
         public virtual string Status { get; set; }
-        public virtual int Budzet { get; set; }
+        public virtual int? Budzet { get; set; }
         public virtual Projekat Projekat { get; set; }
         public virtual FizickoLice FizickoLice { get; set; }
         public virtual Faza NadFaza { get; set; }

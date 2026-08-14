@@ -13,18 +13,26 @@ namespace Gradjevinska_firma.Entiteti
         public virtual string Opis { get; set; }
         public virtual string Lokacija { get; set; }
         public virtual DateTime Datum_pocetka { get; set; }
-        public virtual int Budzet { get; set; }
+        public virtual int? Budzet { get; set; }
         public virtual string Status { get; set; }
         public virtual DateTime Planirani_Zavrsetak { get; set; }
-        public virtual DateTime Stvarni_Zavrsetak { get; set; }
+        public virtual DateTime? Stvarni_Zavrsetak { get; set; }
 
         public virtual IList<Ugovor> Ugovori { get; set; }
         public virtual IList<BezbednosniIncident> BezbednosniIncidenti { get; set; }
+
+        //nije bila dodata kolekcija Faktura!!!!!!!!!!!!!
+        public virtual IList<Faktura> Fakture {  get; set; }
+
+        //nema i za Faze
+        public virtual IList<Faza> Faze { get; set; }
 
         public Projekat()
         {
             Ugovori = new List<Ugovor>();
             BezbednosniIncidenti = new List<BezbednosniIncident>();
+            Fakture=new List<Faktura>();
+            Faze=new List<Faza>();
         }
     }
 }
