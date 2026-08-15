@@ -70,8 +70,11 @@ namespace Gradjevinska_firma.Forme
                 tabela.SelectedItems[0].SubItems[0].Text
             );
 
-            DetaljiZadaciForma forma = new DetaljiZadaciForma(id);
-            forma.ShowDialog();
+            using (DetaljiZadaciForma forma = new DetaljiZadaciForma(id))
+            {
+                forma.ShowDialog();
+                popuniPodacima();
+            }
         }
 
         private void bt_dodaj_Click(object sender, EventArgs e)

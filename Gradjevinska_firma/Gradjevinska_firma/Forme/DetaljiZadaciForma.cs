@@ -232,26 +232,7 @@ namespace Gradjevinska_firma.Forme
 
         private void btIzmeni_Click(object sender, EventArgs e)
         {
-            ListView tabela = podzadaci;
-
-            if (tabela.SelectedItems.Count == 0)
-            {
-                MessageBox.Show("Potrebno je odabrati podzadatak iz tabele.");
-                return;
-            }
-
-            int id = int.Parse(
-                tabela.SelectedItems[0].SubItems[0].Text
-            );
-
-            using (IzmeniPodzadatakForma forma = new IzmeniPodzadatakForma(id, idZadatka))
-            {
-                if (forma.ShowDialog() == DialogResult.OK)
-                {
-                    ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
-                    popuniPodzadacima(zadatak);
-                }
-            }
+            
         }
 
         private void btIzmeniRadniNalog_Click(object sender, EventArgs e)
@@ -467,6 +448,38 @@ namespace Gradjevinska_firma.Forme
                     ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
                     popuniNapretke(zadatak);
                 }
+            }
+        }
+
+        private void btObrisi_Click(object sender, EventArgs e)
+        {
+            ListView tabela = podzadaci;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati podzadatak iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+            string poruka = "Da li zelite da obrisete izabrani podzadatak?";
+            string title = "Pitanje";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(poruka, title, buttons);
+
+            if (result == DialogResult.OK)
+            {
+                DTOManager.obrisiPodzadatak(id);
+                MessageBox.Show("Brisanje podzadatka je uspesno obavljeno!");
+                ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                popuniPodzadacima(zadatak);
+
+            }
+            else
+            {
+
             }
         }
     }

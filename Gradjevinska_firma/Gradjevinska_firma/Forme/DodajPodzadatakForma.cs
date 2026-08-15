@@ -64,6 +64,7 @@ namespace Gradjevinska_firma.Forme
 
             MessageBox.Show("Podzadatak je uspesno dodat.");
 
+            popuniPodzadatke();
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

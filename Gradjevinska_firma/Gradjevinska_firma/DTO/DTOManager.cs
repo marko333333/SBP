@@ -2549,22 +2549,15 @@ namespace Gradjevinska_firma.DTO
             }
         }
 
-        public static void izmeniPodzadatak(int idPodzadatka, int? idNovogRoditelja)
+        public static void obrisiPodzadatak(int idPodzadatka)
         {
             try
             {
                 ISession s = DataLayer.GetSession();
 
-                Zadatak podzadatak = s.Load<Zadatak>(idPodzadatka);
+                Zadatak podzadatak =s.Load<Zadatak>(idPodzadatka);
 
-                Zadatak noviRoditelj = null;
-
-                if (idNovogRoditelja.HasValue)
-                {
-                    noviRoditelj = s.Load<Zadatak>(idNovogRoditelja.Value);
-                }
-
-                podzadatak.Roditelj = noviRoditelj;
+                podzadatak.Roditelj = null;
 
                 s.Update(podzadatak);
                 s.Flush();
@@ -2760,6 +2753,9 @@ namespace Gradjevinska_firma.DTO
 
                 napredak = new NapredakBasic(
                    n.Id,n.Datum,zadatak,n.DnevniIzvestaj,n.ProcenatRealizacije,n.PrimedbaNadzora,n.KorektivnaMera);
+                
+                napredak.Fotografije=vratiFotografije(id);
+                
                 s.Close();
             }
             catch (Exception ex)
@@ -3179,6 +3175,42 @@ namespace Gradjevinska_firma.DTO
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        #endregion
+
+        #region Fotografije
+
+        public static List<FotografijaBasic> vratiFotografije(int idNapredak)
+        {
+            List<FotografijaBasic> fotografije =new List<FotografijaBasic>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Fotografija> slike =
+                    from f in s.Query<Fotografija>()
+                    where f.Napredak.Id == idNapredak
+                    select f;
+
+                foreach (Fotografija f in slike)
+                {
+                    fotografije.Add(new FotografijaBasic(
+                            f.Napredak.Id,
+                            f.Putanja
+                        )
+                    );
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return fotografije;
         }
 
         #endregion

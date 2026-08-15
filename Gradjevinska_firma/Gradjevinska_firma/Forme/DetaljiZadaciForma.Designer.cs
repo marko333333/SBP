@@ -55,7 +55,6 @@
             lbStatus = new Label();
             tabPage2 = new TabPage();
             btObrisi = new Button();
-            btIzmeni = new Button();
             btDodaj = new Button();
             groupBox2 = new GroupBox();
             podzadaci = new ListView();
@@ -383,7 +382,6 @@
             // tabPage2
             // 
             tabPage2.Controls.Add(btObrisi);
-            tabPage2.Controls.Add(btIzmeni);
             tabPage2.Controls.Add(btDodaj);
             tabPage2.Controls.Add(groupBox2);
             tabPage2.Location = new Point(4, 29);
@@ -396,22 +394,13 @@
             // 
             // btObrisi
             // 
-            btObrisi.Location = new Point(605, 207);
+            btObrisi.Location = new Point(605, 133);
             btObrisi.Name = "btObrisi";
             btObrisi.Size = new Size(140, 45);
             btObrisi.TabIndex = 9;
             btObrisi.Text = "Obrisi podzadatak";
             btObrisi.UseVisualStyleBackColor = true;
-            // 
-            // btIzmeni
-            // 
-            btIzmeni.Location = new Point(605, 121);
-            btIzmeni.Name = "btIzmeni";
-            btIzmeni.Size = new Size(140, 63);
-            btIzmeni.TabIndex = 8;
-            btIzmeni.Text = "Izmeni podzadatak";
-            btIzmeni.UseVisualStyleBackColor = true;
-            btIzmeni.Click += btIzmeni_Click;
+            btObrisi.Click += btObrisi_Click;
             // 
             // btDodaj
             // 
@@ -955,7 +944,6 @@
         private Label lbFaza;
         private Label label6;
         private Button btObrisi;
-        private Button btIzmeni;
         private Button btDodaj;
         private GroupBox groupBox2;
         private ListView podzadaci;

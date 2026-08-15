@@ -22,7 +22,29 @@ namespace Gradjevinska_firma.Forme
 
         private void FotografijeForma_Load(object sender, EventArgs e)
         {
+            NapredakBasic napredak = DTOManager.vratiNapredak(idNapredak);
+            popuniPodacima(napredak);
 
+            pbFotografija.SizeMode = PictureBoxSizeMode.Zoom;
+        }
+
+        private void popuniPodacima(NapredakBasic napredak)
+        {
+            fotografije.Items.Clear();
+
+            foreach (FotografijaBasic f in napredak.Fotografije)
+            {
+                ListViewItem item = new ListViewItem(
+                    new string[]
+                    {
+                        f.Putanja
+
+                    });
+
+                fotografije.Items.Add(item);
+            }
+            fotografije.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.fotografije.Refresh();
         }
 
         private void btDodaj_Click(object sender, EventArgs e)
@@ -32,7 +54,7 @@ namespace Gradjevinska_firma.Forme
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
                     NapredakBasic napredak = DTOManager.vratiNapredak(idNapredak);
-                    //popuniKontroluKvaliteta(zadatak);
+                    popuniPodacima(napredak);
                 }
             }
         }
@@ -55,10 +77,35 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    NapredakBasic napredak=DTOManager.vratiNapredak(idNapredak);
-                    //popuniKontroluKvaliteta(zadatak);
+                    NapredakBasic napredak = DTOManager.vratiNapredak(idNapredak);
+                    popuniPodacima(napredak);
                 }
             }
+        }
+
+        private void fotografije_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (fotografije.SelectedItems.Count == 0)
+                return;
+
+            string putanja =fotografije.SelectedItems[0].SubItems[0].Text;
+
+            if (!File.Exists(putanja))
+            {
+                MessageBox.Show("Fotografija nije pronađena:");
+
+                pbFotografija.Image = null;
+                return;
+            }
+
+            if (pbFotografija.Image != null)
+            {
+                pbFotografija.Image.Dispose();
+                pbFotografija.Image = null;
+            }
+
+            pbFotografija.Image = Image.FromFile(putanja);
+            pbFotografija.SizeMode = PictureBoxSizeMode.Zoom;
         }
     }
 }

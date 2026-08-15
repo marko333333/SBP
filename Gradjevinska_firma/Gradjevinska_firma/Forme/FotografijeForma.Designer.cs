@@ -61,6 +61,7 @@
             fotografije.TabIndex = 0;
             fotografije.UseCompatibleStateImageBehavior = false;
             fotografije.View = View.Details;
+            fotografije.SelectedIndexChanged += fotografije_SelectedIndexChanged;
             // 
             // columnHeader1
             // 
