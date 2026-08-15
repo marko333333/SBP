@@ -80,7 +80,7 @@ namespace Gradjevinska_firma.Forme
                 return;
             }
 
-            FazaPregled izabranaFaza =(FazaPregled)cbFaza.SelectedItem;
+            FazaPregled izabranaFaza = (FazaPregled)cbFaza.SelectedItem;
 
             FazaBasic faza = new FazaBasic();
             faza.Id = izabranaFaza.Id;
@@ -91,7 +91,7 @@ namespace Gradjevinska_firma.Forme
 
             if (cbNadzadatak.SelectedIndex != 0)
             {
-                ZadatakPregled izabraniRoditelj =(ZadatakPregled)cbNadzadatak.SelectedItem;
+                ZadatakPregled izabraniRoditelj = (ZadatakPregled)cbNadzadatak.SelectedItem;
 
                 roditelj = new ZadatakBasic();
                 roditelj.Id = izabraniRoditelj.Id;
@@ -146,6 +146,16 @@ namespace Gradjevinska_firma.Forme
             {
                 lbProjekat.Text = faza.Projekat.Naziv;
             }
+        }
+
+        private void tbNaziv_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
