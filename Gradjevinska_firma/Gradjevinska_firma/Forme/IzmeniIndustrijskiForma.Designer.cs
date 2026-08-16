@@ -100,6 +100,7 @@
             Izmeni_button.TabIndex = 17;
             Izmeni_button.Text = "Izmeni";
             Izmeni_button.UseVisualStyleBackColor = true;
+            Izmeni_button.Click += Izmeni_button_Click;
             // 
             // tbNaziv
             // 
@@ -223,6 +224,7 @@
             Controls.Add(groupBox1);
             Name = "IzmeniIndustrijskiForma";
             Text = "IzmeniIndustrijskiForma";
+            Load += IzmeniIndustrijskiForma_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)nudBudzet).EndInit();

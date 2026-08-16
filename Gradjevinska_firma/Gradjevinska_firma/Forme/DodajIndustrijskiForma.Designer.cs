@@ -79,7 +79,7 @@
             // cbStatus
             // 
             cbStatus.FormattingEnabled = true;
-            cbStatus.Items.AddRange(new object[] { "U toku", "Zavrsen", "Planiran", "Otkazan" });
+            cbStatus.Items.AddRange(new object[] { "Aktivan", "Zavrsen", "Planiran", "Otkazan", "Pauziran" });
             cbStatus.Location = new Point(69, 140);
             cbStatus.Name = "cbStatus";
             cbStatus.Size = new Size(121, 23);
