@@ -283,7 +283,6 @@
             // 
             // Ugovori
             // 
-            Ugovori.CheckBoxes = true;
             Ugovori.Columns.AddRange(new ColumnHeader[] { Datum_potpisivanja, ID, Vrednost, Predmet_ugovora, Valuta, Rok });
             Ugovori.GridLines = true;
             Ugovori.Location = new Point(3, 19);
