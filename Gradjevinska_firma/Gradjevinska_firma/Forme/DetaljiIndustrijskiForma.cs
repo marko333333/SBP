@@ -81,8 +81,8 @@ namespace Gradjevinska_firma.Forme
                 ListViewItem item = new ListViewItem(
                     new string[]
                     {
-                        u.Id.ToString(),
                         u.DatumPotpisivanja.ToShortDateString(),
+                        u.Id.ToString(),
                         u.Vrednost.ToString(),
                         u.PredmetUgovora,
                         u.Valuta,
