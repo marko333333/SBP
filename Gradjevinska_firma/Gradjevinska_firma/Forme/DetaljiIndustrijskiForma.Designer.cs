@@ -55,7 +55,7 @@
             Valuta = new ColumnHeader();
             Rok = new ColumnHeader();
             tabPage3 = new TabPage();
-            listView2 = new ListView();
+            Incidenti = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
@@ -325,7 +325,7 @@
             // 
             // tabPage3
             // 
-            tabPage3.Controls.Add(listView2);
+            tabPage3.Controls.Add(Incidenti);
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
             tabPage3.Size = new Size(833, 228);
@@ -333,15 +333,15 @@
             tabPage3.Text = "Bezbednosni Incidenti";
             tabPage3.UseVisualStyleBackColor = true;
             // 
-            // listView2
+            // Incidenti
             // 
-            listView2.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6, columnHeader7 });
-            listView2.Location = new Point(3, 12);
-            listView2.Name = "listView2";
-            listView2.Size = new Size(507, 216);
-            listView2.TabIndex = 0;
-            listView2.UseCompatibleStateImageBehavior = false;
-            listView2.View = View.Details;
+            Incidenti.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6, columnHeader7 });
+            Incidenti.Location = new Point(3, 12);
+            Incidenti.Name = "Incidenti";
+            Incidenti.Size = new Size(507, 216);
+            Incidenti.TabIndex = 0;
+            Incidenti.UseCompatibleStateImageBehavior = false;
+            Incidenti.View = View.Details;
             // 
             // columnHeader1
             // 
@@ -512,7 +512,7 @@
         private ColumnHeader Predmet_ugovora;
         private ColumnHeader Valuta;
         private ColumnHeader Rok;
-        private ListView listView2;
+        private ListView Incidenti;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;

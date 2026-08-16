@@ -60,6 +60,11 @@ namespace Gradjevinska_firma.Forme
                 popuniPodacimaUgovora(ugovori);
 
             }
+            else if (tabControl1.SelectedIndex == 2) 
+            {
+                List<BezbednosniIncidentBasic> bezbednosniIncidenti = DTOManager.vratiBezbednosniIncidenteProjekta(IdIndustrijski);
+                popuniPodacimaBezbednosnihIncidenta(bezbednosniIncidenti);
+            }
         }
 
         private void popuniPodacimaUgovora(List<UgovorBasic> ugovori)
@@ -84,6 +89,30 @@ namespace Gradjevinska_firma.Forme
             }
             Ugovori.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             this.Ugovori.Refresh();
+        }
+        private void popuniPodacimaBezbednosnihIncidenta(List<BezbednosniIncidentBasic> incidenti)
+        {
+            Incidenti.Items.Clear();
+
+            foreach(BezbednosniIncidentBasic inc in incidenti)
+            {
+                ListViewItem item = new ListViewItem(
+                     new string[]
+                     {
+                        inc.ID.ToString(),
+                        inc.Opis,
+                        inc.Datum.ToShortDateString(),
+                        inc.Lokacija,
+                        inc.Preduzete_mere,
+                        inc.Posledice,
+                        inc.Tip_incidenta
+
+                     });
+
+                Incidenti.Items.Add(item);
+            }
+            Incidenti.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.Incidenti.Refresh();
         }
     }
 }
