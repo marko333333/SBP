@@ -18,5 +18,10 @@ namespace Gradjevinska_firma.Forme
             InitializeComponent();
             IdIndustrijski = id;
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
