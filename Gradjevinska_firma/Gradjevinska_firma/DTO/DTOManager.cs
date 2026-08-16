@@ -3257,6 +3257,90 @@ namespace Gradjevinska_firma.DTO
         }
 
         #endregion
+
+        #region Faktura
+
+        public static List<FakturaBasic> vratiFaktureProjekta(int idProjekta)
+        {
+            List<FakturaBasic> fakture = new List<FakturaBasic>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Faktura> sveFakture =
+                    from f in s.Query<Faktura>()
+                    where f.IDProjekta.ID == idProjekta
+                    select f;
+
+                foreach (Faktura f in sveFakture)
+                {
+                    ProjekatBasic projekat = null;
+                    if (f.IDProjekta != null)
+                    {
+                        projekat = new ProjekatBasic(
+                            f.IDProjekta.ID,
+                            f.IDProjekta.Naziv,
+                            f.IDProjekta.Opis,
+                            f.IDProjekta.Lokacija,
+                            f.IDProjekta.Datum_pocetka,
+                            f.IDProjekta.Budzet,
+                            f.IDProjekta.Status,
+                            f.IDProjekta.Planirani_Zavrsetak,
+                            f.IDProjekta.Stvarni_Zavrsetak
+                        );
+                    }
+                    PravnaLicaBasic pravnoLiceIzdaje = null;
+                    if(f.PravnoLiceIzdaje != null)
+                    {
+                        pravnoLiceIzdaje = new PravnaLicaBasic(
+                            f.PravnoLiceIzdaje.Id,
+                            f.PravnoLiceIzdaje.Jmbg,
+                            f.PravnoLiceIzdaje.Ime,
+                            f.PravnoLiceIzdaje.Prezime,
+                            f.PravnoLiceIzdaje.DatumRodjenja,
+                            f.PravnoLiceIzdaje.Struka,
+                            f.PravnoLiceIzdaje.FlagPB,
+                            f.PravnoLiceIzdaje.FlagInve,
+                            f.PravnoLiceIzdaje.FlagIzv,
+                            f.PravnoLiceIzdaje.FlagP,
+                            f.PravnoLiceIzdaje.FlagD,
+                            f.PravnoLiceIzdaje.FlagN
+                        );
+                    }
+                    PravnaLicaBasic pravnoLicePrima = null;
+                    if(f.PravnoLicePrima != null)
+                    {
+                        pravnoLiceIzdaje = new PravnaLicaBasic(
+                            f.PravnoLiceIzdaje.Id,
+                            f.PravnoLiceIzdaje.Jmbg,
+                            f.PravnoLiceIzdaje.Ime,
+                            f.PravnoLiceIzdaje.Prezime,
+                            f.PravnoLiceIzdaje.DatumRodjenja,
+                            f.PravnoLiceIzdaje.Struka,
+                            f.PravnoLiceIzdaje.FlagPB,
+                            f.PravnoLiceIzdaje.FlagInve,
+                            f.PravnoLiceIzdaje.FlagIzv,
+                            f.PravnoLiceIzdaje.FlagP,
+                            f.PravnoLiceIzdaje.FlagD,
+                            f.PravnoLiceIzdaje.FlagN
+                        );
+                    }
+
+                    fakture.Add(new FakturaBasic(f.Br_fakture, f.Iznos, f.Valuta, f.statusPlacanja, f.Datum, projekat, pravnoLiceIzdaje, pravnoLicePrima));
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return fakture;
+        }
+
+        #endregion
     }
 
 

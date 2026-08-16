@@ -64,7 +64,7 @@
             columnHeader6 = new ColumnHeader();
             columnHeader7 = new ColumnHeader();
             tabPage4 = new TabPage();
-            listView3 = new ListView();
+            Fakture = new ListView();
             columnHeader8 = new ColumnHeader();
             columnHeader9 = new ColumnHeader();
             columnHeader10 = new ColumnHeader();
@@ -376,7 +376,7 @@
             // 
             // tabPage4
             // 
-            tabPage4.Controls.Add(listView3);
+            tabPage4.Controls.Add(Fakture);
             tabPage4.Location = new Point(4, 24);
             tabPage4.Name = "tabPage4";
             tabPage4.Size = new Size(833, 228);
@@ -384,15 +384,15 @@
             tabPage4.Text = "Faktura";
             tabPage4.UseVisualStyleBackColor = true;
             // 
-            // listView3
+            // Fakture
             // 
-            listView3.Columns.AddRange(new ColumnHeader[] { columnHeader8, columnHeader9, columnHeader10, columnHeader11, columnHeader12 });
-            listView3.Location = new Point(3, 13);
-            listView3.Name = "listView3";
-            listView3.Size = new Size(377, 212);
-            listView3.TabIndex = 0;
-            listView3.UseCompatibleStateImageBehavior = false;
-            listView3.View = View.Details;
+            Fakture.Columns.AddRange(new ColumnHeader[] { columnHeader8, columnHeader9, columnHeader10, columnHeader11, columnHeader12 });
+            Fakture.Location = new Point(3, 13);
+            Fakture.Name = "Fakture";
+            Fakture.Size = new Size(377, 212);
+            Fakture.TabIndex = 0;
+            Fakture.UseCompatibleStateImageBehavior = false;
+            Fakture.View = View.Details;
             // 
             // columnHeader8
             // 
@@ -520,7 +520,7 @@
         private ColumnHeader columnHeader5;
         private ColumnHeader columnHeader6;
         private ColumnHeader columnHeader7;
-        private ListView listView3;
+        private ListView Fakture;
         private ColumnHeader columnHeader8;
         private ColumnHeader columnHeader9;
         private ColumnHeader columnHeader10;

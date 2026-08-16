@@ -65,6 +65,11 @@ namespace Gradjevinska_firma.Forme
                 List<BezbednosniIncidentBasic> bezbednosniIncidenti = DTOManager.vratiBezbednosniIncidenteProjekta(IdIndustrijski);
                 popuniPodacimaBezbednosnihIncidenta(bezbednosniIncidenti);
             }
+            else if(tabControl1.SelectedIndex == 3)
+            {
+                List<FakturaBasic> fakture = DTOManager.vratiFaktureProjekta(IdIndustrijski);
+                popuniPodacimaFakture(fakture);
+            }
         }
 
         private void popuniPodacimaUgovora(List<UgovorBasic> ugovori)
@@ -113,6 +118,29 @@ namespace Gradjevinska_firma.Forme
             }
             Incidenti.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             this.Incidenti.Refresh();
+        }
+
+        private void popuniPodacimaFakture(List<FakturaBasic> fakture)
+        {
+            Fakture.Items.Clear();
+
+            foreach (FakturaBasic f in fakture)
+            {
+                ListViewItem item = new ListViewItem(
+                     new string[]
+                     {
+                        f.Br_fakture.ToString(),
+                        f.Iznos.ToString(),
+                        f.Valuta,
+                        f.StatusPlacanja.ToString(),
+                        f.Datum.ToShortDateString()
+
+                     });
+
+                Fakture.Items.Add(item);
+            }
+            Fakture.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.Fakture.Refresh();
         }
     }
 }
