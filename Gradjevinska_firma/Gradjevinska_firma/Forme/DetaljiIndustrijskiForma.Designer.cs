@@ -57,9 +57,33 @@
             Predmet_ugovora = new ColumnHeader();
             Valuta = new ColumnHeader();
             Rok = new ColumnHeader();
+            listView2 = new ListView();
+            columnHeader1 = new ColumnHeader();
+            columnHeader2 = new ColumnHeader();
+            columnHeader3 = new ColumnHeader();
+            columnHeader4 = new ColumnHeader();
+            columnHeader5 = new ColumnHeader();
+            columnHeader6 = new ColumnHeader();
+            columnHeader7 = new ColumnHeader();
+            listView3 = new ListView();
+            columnHeader8 = new ColumnHeader();
+            columnHeader9 = new ColumnHeader();
+            columnHeader10 = new ColumnHeader();
+            columnHeader11 = new ColumnHeader();
+            columnHeader12 = new ColumnHeader();
+            listView4 = new ListView();
+            columnHeader13 = new ColumnHeader();
+            columnHeader14 = new ColumnHeader();
+            columnHeader15 = new ColumnHeader();
+            columnHeader16 = new ColumnHeader();
+            columnHeader17 = new ColumnHeader();
+            columnHeader18 = new ColumnHeader();
             tabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
             tabPage1.SuspendLayout();
+            tabPage3.SuspendLayout();
+            tabPage4.SuspendLayout();
+            tabPage5.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -114,6 +138,7 @@
             // 
             // tabPage3
             // 
+            tabPage3.Controls.Add(listView2);
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
             tabPage3.Size = new Size(833, 228);
@@ -123,15 +148,17 @@
             // 
             // tabPage4
             // 
+            tabPage4.Controls.Add(listView3);
             tabPage4.Location = new Point(4, 24);
             tabPage4.Name = "tabPage4";
-            tabPage4.Size = new Size(833, 72);
+            tabPage4.Size = new Size(833, 228);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Faktura";
             tabPage4.UseVisualStyleBackColor = true;
             // 
             // tabPage5
             // 
+            tabPage5.Controls.Add(listView4);
             tabPage5.Location = new Point(4, 24);
             tabPage5.Name = "tabPage5";
             tabPage5.Size = new Size(833, 228);
@@ -325,6 +352,116 @@
             Rok.Text = "Rok";
             Rok.Width = 120;
             // 
+            // listView2
+            // 
+            listView2.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6, columnHeader7 });
+            listView2.Location = new Point(3, 12);
+            listView2.Name = "listView2";
+            listView2.Size = new Size(507, 216);
+            listView2.TabIndex = 0;
+            listView2.UseCompatibleStateImageBehavior = false;
+            listView2.View = View.Details;
+            // 
+            // columnHeader1
+            // 
+            columnHeader1.Text = "ID";
+            // 
+            // columnHeader2
+            // 
+            columnHeader2.Text = "Opis";
+            // 
+            // columnHeader3
+            // 
+            columnHeader3.Text = "Datum";
+            // 
+            // columnHeader4
+            // 
+            columnHeader4.Text = "Lokacija";
+            // 
+            // columnHeader5
+            // 
+            columnHeader5.Text = "Preduzete_mere";
+            columnHeader5.Width = 100;
+            // 
+            // columnHeader6
+            // 
+            columnHeader6.Text = "Posledice";
+            columnHeader6.Width = 70;
+            // 
+            // columnHeader7
+            // 
+            columnHeader7.Text = "Tip_incidenta";
+            columnHeader7.Width = 90;
+            // 
+            // listView3
+            // 
+            listView3.Columns.AddRange(new ColumnHeader[] { columnHeader8, columnHeader9, columnHeader10, columnHeader11, columnHeader12 });
+            listView3.Location = new Point(3, 13);
+            listView3.Name = "listView3";
+            listView3.Size = new Size(377, 212);
+            listView3.TabIndex = 0;
+            listView3.UseCompatibleStateImageBehavior = false;
+            listView3.View = View.Details;
+            // 
+            // columnHeader8
+            // 
+            columnHeader8.Text = "Br_fakture";
+            columnHeader8.Width = 65;
+            // 
+            // columnHeader9
+            // 
+            columnHeader9.Text = "Iznos";
+            // 
+            // columnHeader10
+            // 
+            columnHeader10.Text = "Valuta";
+            // 
+            // columnHeader11
+            // 
+            columnHeader11.Text = "Status_placanja";
+            columnHeader11.Width = 105;
+            // 
+            // columnHeader12
+            // 
+            columnHeader12.Text = "Datum";
+            columnHeader12.Width = 80;
+            // 
+            // listView4
+            // 
+            listView4.Columns.AddRange(new ColumnHeader[] { columnHeader13, columnHeader14, columnHeader15, columnHeader16, columnHeader17, columnHeader18 });
+            listView4.Location = new Point(3, 17);
+            listView4.Name = "listView4";
+            listView4.Size = new Size(406, 208);
+            listView4.TabIndex = 0;
+            listView4.UseCompatibleStateImageBehavior = false;
+            listView4.View = View.Details;
+            // 
+            // columnHeader13
+            // 
+            columnHeader13.Text = "ID";
+            // 
+            // columnHeader14
+            // 
+            columnHeader14.Text = "Naziv";
+            // 
+            // columnHeader15
+            // 
+            columnHeader15.Text = "Datum_od";
+            columnHeader15.Width = 80;
+            // 
+            // columnHeader16
+            // 
+            columnHeader16.Text = "Datum_do";
+            columnHeader16.Width = 80;
+            // 
+            // columnHeader17
+            // 
+            columnHeader17.Text = "Status";
+            // 
+            // columnHeader18
+            // 
+            columnHeader18.Text = "Budzet";
+            // 
             // DetaljiIndustrijskiForma
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -337,6 +474,9 @@
             tabPage2.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
+            tabPage3.ResumeLayout(false);
+            tabPage4.ResumeLayout(false);
+            tabPage5.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -370,5 +510,26 @@
         private ColumnHeader Predmet_ugovora;
         private ColumnHeader Valuta;
         private ColumnHeader Rok;
+        private ListView listView2;
+        private ColumnHeader columnHeader1;
+        private ColumnHeader columnHeader2;
+        private ColumnHeader columnHeader3;
+        private ColumnHeader columnHeader4;
+        private ColumnHeader columnHeader5;
+        private ColumnHeader columnHeader6;
+        private ColumnHeader columnHeader7;
+        private ListView listView3;
+        private ColumnHeader columnHeader8;
+        private ColumnHeader columnHeader9;
+        private ColumnHeader columnHeader10;
+        private ColumnHeader columnHeader11;
+        private ColumnHeader columnHeader12;
+        private ListView listView4;
+        private ColumnHeader columnHeader13;
+        private ColumnHeader columnHeader14;
+        private ColumnHeader columnHeader15;
+        private ColumnHeader columnHeader16;
+        private ColumnHeader columnHeader17;
+        private ColumnHeader columnHeader18;
     }
 }
