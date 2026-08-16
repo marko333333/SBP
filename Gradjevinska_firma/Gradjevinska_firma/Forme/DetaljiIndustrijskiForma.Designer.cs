@@ -29,34 +29,32 @@
         private void InitializeComponent()
         {
             tabControl1 = new TabControl();
-            tabPage2 = new TabPage();
             tabPage1 = new TabPage();
-            tabPage3 = new TabPage();
-            tabPage4 = new TabPage();
-            tabPage5 = new TabPage();
             label2 = new Label();
-            label5 = new Label();
+            lbStvarniZavrsetak = new Label();
             label6 = new Label();
-            label7 = new Label();
+            lbPlaniraniZavrsetak = new Label();
             label8 = new Label();
             label9 = new Label();
-            label10 = new Label();
+            lbDatumPocetka = new Label();
             label11 = new Label();
             label12 = new Label();
-            label13 = new Label();
+            lbNaziv = new Label();
             label14 = new Label();
-            label15 = new Label();
-            label16 = new Label();
+            lbLokacija = new Label();
+            lbOpis = new Label();
             label17 = new Label();
-            label18 = new Label();
-            label19 = new Label();
-            listView1 = new ListView();
+            lbBudzet = new Label();
+            lbStatus = new Label();
+            tabPage2 = new TabPage();
+            Ugovori = new ListView();
             Datum_potpisivanja = new ColumnHeader();
             ID = new ColumnHeader();
             Vrednost = new ColumnHeader();
             Predmet_ugovora = new ColumnHeader();
             Valuta = new ColumnHeader();
             Rok = new ColumnHeader();
+            tabPage3 = new TabPage();
             listView2 = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
@@ -65,12 +63,14 @@
             columnHeader5 = new ColumnHeader();
             columnHeader6 = new ColumnHeader();
             columnHeader7 = new ColumnHeader();
+            tabPage4 = new TabPage();
             listView3 = new ListView();
             columnHeader8 = new ColumnHeader();
             columnHeader9 = new ColumnHeader();
             columnHeader10 = new ColumnHeader();
             columnHeader11 = new ColumnHeader();
             columnHeader12 = new ColumnHeader();
+            tabPage5 = new TabPage();
             listView4 = new ListView();
             columnHeader13 = new ColumnHeader();
             columnHeader14 = new ColumnHeader();
@@ -79,8 +79,8 @@
             columnHeader17 = new ColumnHeader();
             columnHeader18 = new ColumnHeader();
             tabControl1.SuspendLayout();
-            tabPage2.SuspendLayout();
             tabPage1.SuspendLayout();
+            tabPage2.SuspendLayout();
             tabPage3.SuspendLayout();
             tabPage4.SuspendLayout();
             tabPage5.SuspendLayout();
@@ -98,36 +98,26 @@
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(841, 256);
             tabControl1.TabIndex = 20;
-            // 
-            // tabPage2
-            // 
-            tabPage2.Controls.Add(listView1);
-            tabPage2.Location = new Point(4, 24);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(833, 228);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "Ugovori";
-            tabPage2.UseVisualStyleBackColor = true;
+            tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
             // 
             // tabPage1
             // 
             tabPage1.Controls.Add(label2);
-            tabPage1.Controls.Add(label5);
+            tabPage1.Controls.Add(lbStvarniZavrsetak);
             tabPage1.Controls.Add(label6);
-            tabPage1.Controls.Add(label7);
+            tabPage1.Controls.Add(lbPlaniraniZavrsetak);
             tabPage1.Controls.Add(label8);
             tabPage1.Controls.Add(label9);
-            tabPage1.Controls.Add(label10);
+            tabPage1.Controls.Add(lbDatumPocetka);
             tabPage1.Controls.Add(label11);
             tabPage1.Controls.Add(label12);
-            tabPage1.Controls.Add(label13);
+            tabPage1.Controls.Add(lbNaziv);
             tabPage1.Controls.Add(label14);
-            tabPage1.Controls.Add(label15);
-            tabPage1.Controls.Add(label16);
+            tabPage1.Controls.Add(lbLokacija);
+            tabPage1.Controls.Add(lbOpis);
             tabPage1.Controls.Add(label17);
-            tabPage1.Controls.Add(label18);
-            tabPage1.Controls.Add(label19);
+            tabPage1.Controls.Add(lbBudzet);
+            tabPage1.Controls.Add(lbStatus);
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
@@ -135,36 +125,6 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Osnovni podaci";
             tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            tabPage3.Controls.Add(listView2);
-            tabPage3.Location = new Point(4, 24);
-            tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(833, 228);
-            tabPage3.TabIndex = 2;
-            tabPage3.Text = "Bezbednosni Incidenti";
-            tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // tabPage4
-            // 
-            tabPage4.Controls.Add(listView3);
-            tabPage4.Location = new Point(4, 24);
-            tabPage4.Name = "tabPage4";
-            tabPage4.Size = new Size(833, 228);
-            tabPage4.TabIndex = 3;
-            tabPage4.Text = "Faktura";
-            tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // tabPage5
-            // 
-            tabPage5.Controls.Add(listView4);
-            tabPage5.Location = new Point(4, 24);
-            tabPage5.Name = "tabPage5";
-            tabPage5.Size = new Size(833, 228);
-            tabPage5.TabIndex = 4;
-            tabPage5.Text = "Faza";
-            tabPage5.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -175,14 +135,14 @@
             label2.TabIndex = 18;
             label2.Text = "Naziv:";
             // 
-            // label5
+            // lbStvarniZavrsetak
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(558, 74);
-            label5.Name = "label5";
-            label5.Size = new Size(38, 15);
-            label5.TabIndex = 33;
-            label5.Text = "label1";
+            lbStvarniZavrsetak.AutoSize = true;
+            lbStvarniZavrsetak.Location = new Point(558, 74);
+            lbStvarniZavrsetak.Name = "lbStvarniZavrsetak";
+            lbStvarniZavrsetak.Size = new Size(38, 15);
+            lbStvarniZavrsetak.TabIndex = 33;
+            lbStvarniZavrsetak.Text = "label1";
             // 
             // label6
             // 
@@ -193,14 +153,14 @@
             label6.TabIndex = 20;
             label6.Text = "Lokacija:";
             // 
-            // label7
+            // lbPlaniraniZavrsetak
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(558, 41);
-            label7.Name = "label7";
-            label7.Size = new Size(38, 15);
-            label7.TabIndex = 32;
-            label7.Text = "label1";
+            lbPlaniraniZavrsetak.AutoSize = true;
+            lbPlaniraniZavrsetak.Location = new Point(558, 41);
+            lbPlaniraniZavrsetak.Name = "lbPlaniraniZavrsetak";
+            lbPlaniraniZavrsetak.Size = new Size(38, 15);
+            lbPlaniraniZavrsetak.TabIndex = 32;
+            lbPlaniraniZavrsetak.Text = "label1";
             // 
             // label8
             // 
@@ -220,14 +180,14 @@
             label9.TabIndex = 19;
             label9.Text = "Opis:";
             // 
-            // label10
+            // lbDatumPocetka
             // 
-            label10.AutoSize = true;
-            label10.Location = new Point(558, 6);
-            label10.Name = "label10";
-            label10.Size = new Size(38, 15);
-            label10.TabIndex = 31;
-            label10.Text = "label1";
+            lbDatumPocetka.AutoSize = true;
+            lbDatumPocetka.Location = new Point(558, 6);
+            lbDatumPocetka.Name = "lbDatumPocetka";
+            lbDatumPocetka.Size = new Size(38, 15);
+            lbDatumPocetka.TabIndex = 31;
+            lbDatumPocetka.Text = "label1";
             // 
             // label11
             // 
@@ -247,14 +207,14 @@
             label12.TabIndex = 30;
             label12.Text = "Stvarni zavrsetak:";
             // 
-            // label13
+            // lbNaziv
             // 
-            label13.AutoSize = true;
-            label13.Location = new Point(75, 15);
-            label13.Name = "label13";
-            label13.Size = new Size(38, 15);
-            label13.TabIndex = 23;
-            label13.Text = "label1";
+            lbNaziv.AutoSize = true;
+            lbNaziv.Location = new Point(75, 15);
+            lbNaziv.Name = "lbNaziv";
+            lbNaziv.Size = new Size(38, 15);
+            lbNaziv.TabIndex = 23;
+            lbNaziv.Text = "label1";
             // 
             // label14
             // 
@@ -265,23 +225,23 @@
             label14.TabIndex = 29;
             label14.Text = "Planirani zavrsetak:";
             // 
-            // label15
+            // lbLokacija
             // 
-            label15.AutoSize = true;
-            label15.Location = new Point(75, 65);
-            label15.Name = "label15";
-            label15.Size = new Size(38, 15);
-            label15.TabIndex = 24;
-            label15.Text = "label1";
+            lbLokacija.AutoSize = true;
+            lbLokacija.Location = new Point(75, 65);
+            lbLokacija.Name = "lbLokacija";
+            lbLokacija.Size = new Size(38, 15);
+            lbLokacija.TabIndex = 24;
+            lbLokacija.Text = "label1";
             // 
-            // label16
+            // lbOpis
             // 
-            label16.AutoSize = true;
-            label16.Location = new Point(75, 41);
-            label16.Name = "label16";
-            label16.Size = new Size(38, 15);
-            label16.TabIndex = 25;
-            label16.Text = "label1";
+            lbOpis.AutoSize = true;
+            lbOpis.Location = new Point(75, 41);
+            lbOpis.Name = "lbOpis";
+            lbOpis.Size = new Size(38, 15);
+            lbOpis.TabIndex = 25;
+            lbOpis.Text = "label1";
             // 
             // label17
             // 
@@ -292,35 +252,46 @@
             label17.TabIndex = 28;
             label17.Text = "Datum pocetka:";
             // 
-            // label18
+            // lbBudzet
             // 
-            label18.AutoSize = true;
-            label18.Location = new Point(75, 91);
-            label18.Name = "label18";
-            label18.Size = new Size(38, 15);
-            label18.TabIndex = 26;
-            label18.Text = "label1";
+            lbBudzet.AutoSize = true;
+            lbBudzet.Location = new Point(75, 91);
+            lbBudzet.Name = "lbBudzet";
+            lbBudzet.Size = new Size(38, 15);
+            lbBudzet.TabIndex = 26;
+            lbBudzet.Text = "label1";
             // 
-            // label19
+            // lbStatus
             // 
-            label19.AutoSize = true;
-            label19.Location = new Point(75, 120);
-            label19.Name = "label19";
-            label19.Size = new Size(38, 15);
-            label19.TabIndex = 27;
-            label19.Text = "label1";
+            lbStatus.AutoSize = true;
+            lbStatus.Location = new Point(75, 120);
+            lbStatus.Name = "lbStatus";
+            lbStatus.Size = new Size(38, 15);
+            lbStatus.TabIndex = 27;
+            lbStatus.Text = "label1";
             // 
-            // listView1
+            // tabPage2
             // 
-            listView1.CheckBoxes = true;
-            listView1.Columns.AddRange(new ColumnHeader[] { Datum_potpisivanja, ID, Vrednost, Predmet_ugovora, Valuta, Rok });
-            listView1.GridLines = true;
-            listView1.Location = new Point(3, 19);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(528, 203);
-            listView1.TabIndex = 0;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            tabPage2.Controls.Add(Ugovori);
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(833, 228);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Ugovori";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // Ugovori
+            // 
+            Ugovori.CheckBoxes = true;
+            Ugovori.Columns.AddRange(new ColumnHeader[] { Datum_potpisivanja, ID, Vrednost, Predmet_ugovora, Valuta, Rok });
+            Ugovori.GridLines = true;
+            Ugovori.Location = new Point(3, 19);
+            Ugovori.Name = "Ugovori";
+            Ugovori.Size = new Size(528, 203);
+            Ugovori.TabIndex = 0;
+            Ugovori.UseCompatibleStateImageBehavior = false;
+            Ugovori.View = View.Details;
             // 
             // Datum_potpisivanja
             // 
@@ -351,6 +322,16 @@
             // 
             Rok.Text = "Rok";
             Rok.Width = 120;
+            // 
+            // tabPage3
+            // 
+            tabPage3.Controls.Add(listView2);
+            tabPage3.Location = new Point(4, 24);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Size = new Size(833, 228);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "Bezbednosni Incidenti";
+            tabPage3.UseVisualStyleBackColor = true;
             // 
             // listView2
             // 
@@ -393,6 +374,16 @@
             columnHeader7.Text = "Tip_incidenta";
             columnHeader7.Width = 90;
             // 
+            // tabPage4
+            // 
+            tabPage4.Controls.Add(listView3);
+            tabPage4.Location = new Point(4, 24);
+            tabPage4.Name = "tabPage4";
+            tabPage4.Size = new Size(833, 228);
+            tabPage4.TabIndex = 3;
+            tabPage4.Text = "Faktura";
+            tabPage4.UseVisualStyleBackColor = true;
+            // 
             // listView3
             // 
             listView3.Columns.AddRange(new ColumnHeader[] { columnHeader8, columnHeader9, columnHeader10, columnHeader11, columnHeader12 });
@@ -425,6 +416,16 @@
             // 
             columnHeader12.Text = "Datum";
             columnHeader12.Width = 80;
+            // 
+            // tabPage5
+            // 
+            tabPage5.Controls.Add(listView4);
+            tabPage5.Location = new Point(4, 24);
+            tabPage5.Name = "tabPage5";
+            tabPage5.Size = new Size(833, 228);
+            tabPage5.TabIndex = 4;
+            tabPage5.Text = "Faza";
+            tabPage5.UseVisualStyleBackColor = true;
             // 
             // listView4
             // 
@@ -470,10 +471,11 @@
             Controls.Add(tabControl1);
             Name = "DetaljiIndustrijskiForma";
             Text = "DetaljiIndustrijskiForma";
+            Load += DetaljiIndustrijskiForma_Load;
             tabControl1.ResumeLayout(false);
-            tabPage2.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
+            tabPage2.ResumeLayout(false);
             tabPage3.ResumeLayout(false);
             tabPage4.ResumeLayout(false);
             tabPage5.ResumeLayout(false);
@@ -488,22 +490,22 @@
         private TabPage tabPage4;
         private TabPage tabPage5;
         private Label label2;
-        private Label label5;
+        private Label lbStvarniZavrsetak;
         private Label label6;
-        private Label label7;
+        private Label lbPlaniraniZavrsetak;
         private Label label8;
         private Label label9;
-        private Label label10;
+        private Label lbDatumPocetka;
         private Label label11;
         private Label label12;
-        private Label label13;
+        private Label lbNaziv;
         private Label label14;
-        private Label label15;
-        private Label label16;
+        private Label lbLokacija;
+        private Label lbOpis;
         private Label label17;
-        private Label label18;
-        private Label label19;
-        private ListView listView1;
+        private Label lbBudzet;
+        private Label lbStatus;
+        private ListView Ugovori;
         private ColumnHeader Datum_potpisivanja;
         private ColumnHeader ID;
         private ColumnHeader Vrednost;

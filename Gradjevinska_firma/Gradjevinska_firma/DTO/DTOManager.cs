@@ -1994,40 +1994,54 @@ namespace Gradjevinska_firma.DTO
 
                 foreach (Ugovor u in sviUgovori)
                 {
-                    MaterijalBasic materijal = new MaterijalBasic(
-                        u.Materijal.ID,
-                        u.Materijal.Naziv,
-                        u.Materijal.Cena,
-                        u.Materijal.Proizvodjac,
-                        u.Materijal.JedinicaMere,
-                        u.Materijal.Sertifikat,
-                        u.Materijal.Tip
+                    MaterijalBasic materijal = null;
+                    if(u.Materijal != null)
+                    {
+                        materijal = new MaterijalBasic(
+                            u.Materijal.ID,
+                            u.Materijal.Naziv,
+                            u.Materijal.Cena,
+                            u.Materijal.Proizvodjac,
+                            u.Materijal.JedinicaMere,
+                            u.Materijal.Sertifikat,
+                            u.Materijal.Tip
 
-             );
+                        );
 
-                    ProjekatBasic projekat = new ProjekatBasic(
-                        u.Projekat.ID,
-                        u.Projekat.Naziv,
-                        u.Projekat.Opis,
-                        u.Projekat.Lokacija,
-                        u.Projekat.Datum_pocetka,
-                        u.Projekat.Budzet,
-                        u.Projekat.Status,
-                        u.Projekat.Planirani_Zavrsetak,
-                        u.Projekat.Stvarni_Zavrsetak
-                    );
+                    }
+                    ProjekatBasic projekat = null;
+                    if(u.Projekat != null)
+                    {
+                        projekat = new ProjekatBasic(
+                            u.Projekat.ID,
+                            u.Projekat.Naziv,
+                            u.Projekat.Opis,
+                            u.Projekat.Lokacija,
+                            u.Projekat.Datum_pocetka,
+                            u.Projekat.Budzet,
+                            u.Projekat.Status,
+                            u.Projekat.Planirani_Zavrsetak,
+                            u.Projekat.Stvarni_Zavrsetak
+                        );
 
-                    OpremaBasic oprema = new OpremaBasic(
-                        u.Oprema.Id,
-                        u.Oprema.Naziv,
-                        u.Oprema.Tip,
-                        u.Oprema.DatumUvoza,
-                        u.Oprema.Proizvodjac,
-                        u.Oprema.DatumNabavke,
-                        u.Oprema.RasponOdrzavanja,
-                        u.Oprema.Lokacija,
-                        u.Oprema.Status
-                    );
+                    }
+                    OpremaBasic oprema = null;
+                    if (u.Oprema != null) 
+                    {
+                        oprema = new OpremaBasic(
+                            u.Oprema.Id,
+                            u.Oprema.Naziv,
+                            u.Oprema.Tip,
+                            u.Oprema.DatumUvoza,
+                            u.Oprema.Proizvodjac,
+                            u.Oprema.DatumNabavke,
+                            u.Oprema.RasponOdrzavanja,
+                            u.Oprema.Lokacija,
+                            u.Oprema.Status
+
+                        );
+
+                    }
 
                     ugovori.Add(new UgovorBasic(
                         u.Id,
@@ -2049,6 +2063,35 @@ namespace Gradjevinska_firma.DTO
                 MessageBox.Show(ex.ToString());
             }
             return ugovori;
+        }
+
+        public static UgovorBasic vratiUgovor(int id)
+        {
+            UgovorBasic ugovor = new UgovorBasic();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Ugovor u = s.Load<Ugovor>(id);
+
+                MaterijalBasic materijal = new MaterijalBasic(u.Materijal.ID, u.Materijal.Naziv, u.Materijal.Cena, u.Materijal.Proizvodjac, u.Materijal.JedinicaMere, u.Materijal.Sertifikat, u.Materijal.Tip);
+                ProjekatBasic projekat = new ProjekatBasic(u.Projekat.ID, u.Projekat.Naziv, u.Projekat.Opis, u.Projekat.Lokacija, u.Projekat.Datum_pocetka, u.Projekat.Budzet, u.Projekat.Status, u.Projekat.Planirani_Zavrsetak, u.Projekat.Stvarni_Zavrsetak);
+                OpremaBasic oprema = new OpremaBasic(u.Oprema.Id,u.Oprema.Naziv, u.Oprema.Tip, u.Oprema.DatumUvoza, u.Oprema.Proizvodjac, u.Oprema.DatumNabavke, u.Oprema.RasponOdrzavanja, u.Oprema.Lokacija, u.Oprema.Status);
+
+                ugovor = new UgovorBasic(u.Id,u.DatumPotpisivanja, u.Vrednost, u.PredmetUgovora, u.Valuta, u.Rok, materijal, projekat, oprema);
+
+                //ugovor.Materijal = vratiKontakteOsobe(id);
+                //ugovor.Projekat = vratiLicenceOsobe(id);
+                //ugovor.Oprema = vratiBezbednosniIncidentOsobe(id);
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return ugovor;
         }
 
         #endregion

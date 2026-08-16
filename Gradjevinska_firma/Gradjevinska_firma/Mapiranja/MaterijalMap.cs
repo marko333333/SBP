@@ -14,7 +14,7 @@ namespace Gradjevinska_firma.Mapiranja
 
             Table("MATERIJAL");
 
-            DiscriminateSubClassesOnColumn("TIP_MATERIJALA");
+            DiscriminateSubClassesOnColumn("TIP");
 
             Id(x => x.ID, "ID").GeneratedBy.TriggerIdentity();
 
@@ -23,7 +23,7 @@ namespace Gradjevinska_firma.Mapiranja
             Map(x => x.JedinicaMere, "JEDINICA_MERE");
             Map(x => x.Sertifikat, "SERTIFIKAT");
             Map(x => x.Proizvodjac, "PROIZVODJAC");
-            Map(x => x.Tip, "TIP");
+            //Map(x => x.Tip, "TIP");
 
 
             HasMany(x => x.Ugovori)
@@ -41,35 +41,35 @@ namespace Gradjevinska_firma.Mapiranja
     {
         public ZastitniMap()
         {
-            DiscriminatorValue("ZASTITNI");
+            DiscriminatorValue("Zastitni");
         }
     }
     class MasinskiMap : SubclassMap<Masinski>
     {
         public MasinskiMap()
         {
-            DiscriminatorValue("MASINSKI");
+            DiscriminatorValue("Masinski");
         }
     }
     class GradjevinskiMap : SubclassMap<Gradjevinski>
     {
         public GradjevinskiMap()
         {
-            DiscriminatorValue("GRADJEVINSKI");
+            DiscriminatorValue("Gradjevinski");
         }
     }
     class ElektroMap : SubclassMap<Elektro>
     {
         public ElektroMap()
         {
-            DiscriminatorValue("ELEKTRO");
+            DiscriminatorValue("Elektro");
         }
     }
     class ZavrsniMap : SubclassMap<Zavrsni>
     {
         public ZavrsniMap()
         {
-            DiscriminatorValue("ZAVRSNI");
+            DiscriminatorValue("Zavrsni");
         }
     }
 }

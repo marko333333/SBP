@@ -32,11 +32,11 @@ namespace Gradjevinska_firma.Forme
                 return;
             }
 
-            DateTime? stvarniZavrsetak = null;
+            //DateTime? stvarniZavrsetak = null;
 
 
-            if (dtpStvarniZavrsetak.Checked)
-                stvarniZavrsetak = dtpStvarniZavrsetak.Value;
+            //if (dtpStvarniZavrsetak.Checked)
+            //    stvarniZavrsetak = dtpStvarniZavrsetak.Value;
 
 
             IndustrijskiBasic industrijski = new IndustrijskiBasic(
@@ -48,7 +48,7 @@ namespace Gradjevinska_firma.Forme
                (int)nudBudzet.Value,
                cbStatus.SelectedItem.ToString(),//ako pravi problem dodaj required string
                dtpPlaniraniZavrsetak.Value,
-               stvarniZavrsetak
+               dtpStvarniZavrsetak.Value
            );
 
             DTOManager.dodajIndustrijski(industrijski);

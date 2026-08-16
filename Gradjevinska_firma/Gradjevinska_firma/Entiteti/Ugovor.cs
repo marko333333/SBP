@@ -16,7 +16,7 @@ namespace Gradjevinska_firma.Entiteti
         public virtual DateTime Rok { get; set; }
        public virtual Materijal Materijal { get; set; }
        public virtual Projekat Projekat { get; set; }
-        public virtual Oprema Oprema { get; set; }
+       public virtual Oprema Oprema { get; set; }
 
         public virtual IList<ImaUgovornuStranu> UgovorneStrane { get; set; }
         public virtual IList<PosebnaKlauzula> PosebneKlauzule { get; set; }

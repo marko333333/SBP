@@ -31,10 +31,10 @@ namespace Gradjevinska_firma.Forme
         private void Izmeni_button_Click(object sender, EventArgs e)
         {
 
-            DateTime? stvarniZavrsetak = null;
+            //DateTime stvarniZavrsetak = null;
 
-            if (dtpStvarniZavrsetak.Checked)
-                stvarniZavrsetak = dtpStvarniZavrsetak.Value;
+            //if (dtpStvarniZavrsetak.Checked)
+            //    stvarniZavrsetak = dtpStvarniZavrsetak.Value;
 
             IndustrijskiBasic industrijski = new IndustrijskiBasic(
                IdIndustrijski,
@@ -45,7 +45,8 @@ namespace Gradjevinska_firma.Forme
                (int)nudBudzet.Value,
                cbStatus.SelectedItem.ToString(),
                dtpPlaniraniZavrsetak.Value,
-               stvarniZavrsetak
+               dtpStvarniZavrsetak.Value
+               //stvarniZavrsetak
            );
 
             DTOManager.izmeniIndustrijski(industrijski);
