@@ -71,7 +71,7 @@
             columnHeader11 = new ColumnHeader();
             columnHeader12 = new ColumnHeader();
             tabPage5 = new TabPage();
-            listView4 = new ListView();
+            Faze = new ListView();
             columnHeader13 = new ColumnHeader();
             columnHeader14 = new ColumnHeader();
             columnHeader15 = new ColumnHeader();
@@ -418,7 +418,7 @@
             // 
             // tabPage5
             // 
-            tabPage5.Controls.Add(listView4);
+            tabPage5.Controls.Add(Faze);
             tabPage5.Location = new Point(4, 24);
             tabPage5.Name = "tabPage5";
             tabPage5.Size = new Size(833, 228);
@@ -426,15 +426,15 @@
             tabPage5.Text = "Faza";
             tabPage5.UseVisualStyleBackColor = true;
             // 
-            // listView4
+            // Faze
             // 
-            listView4.Columns.AddRange(new ColumnHeader[] { columnHeader13, columnHeader14, columnHeader15, columnHeader16, columnHeader17, columnHeader18 });
-            listView4.Location = new Point(3, 17);
-            listView4.Name = "listView4";
-            listView4.Size = new Size(406, 208);
-            listView4.TabIndex = 0;
-            listView4.UseCompatibleStateImageBehavior = false;
-            listView4.View = View.Details;
+            Faze.Columns.AddRange(new ColumnHeader[] { columnHeader13, columnHeader14, columnHeader15, columnHeader16, columnHeader17, columnHeader18 });
+            Faze.Location = new Point(3, 17);
+            Faze.Name = "Faze";
+            Faze.Size = new Size(406, 208);
+            Faze.TabIndex = 0;
+            Faze.UseCompatibleStateImageBehavior = false;
+            Faze.View = View.Details;
             // 
             // columnHeader13
             // 
@@ -525,7 +525,7 @@
         private ColumnHeader columnHeader10;
         private ColumnHeader columnHeader11;
         private ColumnHeader columnHeader12;
-        private ListView listView4;
+        private ListView Faze;
         private ColumnHeader columnHeader13;
         private ColumnHeader columnHeader14;
         private ColumnHeader columnHeader15;

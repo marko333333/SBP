@@ -3084,6 +3084,100 @@ namespace Gradjevinska_firma.DTO
             return faze;
         }
 
+        public static List<FazaBasic> vratiFazeProjekta(int idProjekta)
+        {
+            List<FazaBasic> faze = new List<FazaBasic>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Faza> sveFaze =
+                    from f in s.Query<Faza>()
+                    where f.Projekat.ID == idProjekta
+                    select f;
+
+                foreach (Faza f in sveFaze)
+                {
+                  
+                    ProjekatBasic projekat = null;
+                    if (f.Projekat != null)
+                    {
+                        projekat = new ProjekatBasic(
+                            f.Projekat.ID,
+                            f.Projekat.Naziv,
+                            f.Projekat.Opis,
+                            f.Projekat.Lokacija,
+                            f.Projekat.Datum_pocetka,
+                            f.Projekat.Budzet,
+                            f.Projekat.Status,
+                            f.Projekat.Planirani_Zavrsetak,
+                            f.Projekat.Stvarni_Zavrsetak
+                        );
+
+                    }
+                    FizickoLiceBasic fizickoLice = null;
+                    if(f.FizickoLice != null)
+                    {
+                        fizickoLice = new FizickoLiceBasic(
+                        f.FizickoLice.Id,
+                        f.FizickoLice.Jmbg,
+                        f.FizickoLice.Ime,
+                        f.FizickoLice.Prezime,
+                        f.FizickoLice.DatumRodjenja,
+                        f.FizickoLice.Struka,
+                        f.FizickoLice.FlagBK,
+                        f.FizickoLice.FlagR,
+                        f.FizickoLice.Kvalifikacija,
+                        f.FizickoLice.FlagI,
+                        f.FizickoLice.OblastRada,
+                        f.FizickoLice.Odgovornosti,
+                        f.FizickoLice.FlagA,
+                        f.FizickoLice.FlagP,
+                        f.FizickoLice.FlagN,
+                        f.FizickoLice.FlagAO
+                        );
+
+                    }
+
+                    FazaBasic nadFaza = null;
+                    if(f.NadFaza != null)
+                    {
+                        nadFaza = new FazaBasic(
+                            f.NadFaza.Id,
+                            f.NadFaza.Naziv,
+                            f.NadFaza.DatumOd,
+                            f.NadFaza.DatumDo,
+                            f.NadFaza.Status,
+                            f.NadFaza.Budzet,
+                            projekat,
+                            fizickoLice,
+                            nadFaza//mozda pravi problem
+                            );
+                    }
+
+                    faze.Add(new FazaBasic(
+                        f.Id,
+                        f.Naziv,
+                        f.DatumOd,
+                        f.DatumDo,
+                        f.Status,
+                        f.Budzet,
+                        projekat,
+                        fizickoLice,
+                        nadFaza
+                    ));
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return faze;
+        }
+
         #endregion
 
         #region StavkaKontrole

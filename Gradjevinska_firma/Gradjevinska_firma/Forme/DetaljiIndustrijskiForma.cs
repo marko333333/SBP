@@ -70,6 +70,11 @@ namespace Gradjevinska_firma.Forme
                 List<FakturaBasic> fakture = DTOManager.vratiFaktureProjekta(IdIndustrijski);
                 popuniPodacimaFakture(fakture);
             }
+            else if(tabControl1.SelectedIndex == 4)
+            {
+                List<FazaBasic> faze = DTOManager.vratiFazeProjekta(IdIndustrijski);
+                popuniPodacimaFaza(faze);
+            }
         }
 
         private void popuniPodacimaUgovora(List<UgovorBasic> ugovori)
@@ -142,5 +147,28 @@ namespace Gradjevinska_firma.Forme
             Fakture.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             this.Fakture.Refresh();
         }
+
+        private void popuniPodacimaFaza(List<FazaBasic> faze)
+        {
+            Faze.Items.Clear();
+
+            foreach(FazaBasic f in faze)
+            {
+                ListViewItem item = new ListViewItem(
+                     new string[]
+                     {
+                        f.Id.ToString(),
+                        f.Naziv,
+                        f.DatumOd.ToShortDateString(),
+                        f.DatumDo.HasValue ? f.DatumDo.Value.ToShortDateString() : "",
+                        f.Status,
+                        f.Budzet.ToString()
+                     });
+                Faze.Items.Add(item);
+            }
+            Faze.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.Faze.Refresh();
+        }
     }
+
 }
