@@ -45,7 +45,11 @@ namespace Gradjevinska_firma.Forme
             lbStatus.Text = projekat.Status;
             lbDatumPocetka.Text = projekat.Datum_pocetka.ToShortDateString();
             lbPlaniraniZavrsetak.Text = projekat.Planirani_zavrsetak.ToShortDateString();
-            lbStvarniZavrsetak.Text = projekat.Stvarni_zavrsetak.ToShortDateString();
+
+            if (projekat.Stvarni_zavrsetak.HasValue)
+                lbStvarniZavrsetak.Text = projekat.Stvarni_zavrsetak.Value.ToShortDateString();
+            else
+                lbStvarniZavrsetak.Text = "";
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)

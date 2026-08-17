@@ -1,5 +1,6 @@
 ﻿using Gradjevinska_firma.DTO;
 using Gradjevinska_firma.Entiteti;
+using Gradjevinska_firma.Mapiranja;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -60,38 +61,32 @@ namespace Gradjevinska_firma.Forme
                 lbStvarniZavrsetak.Text = "";
         }
 
-        private void label6_Click(object sender, EventArgs e)
+        private void popuniKoristi(ZadatakBasic zadatak)
         {
+            koriscenje.Items.Clear();
 
-        }
+            foreach (KoristiBasic k in zadatak.Koristi)
+            {
+                string materijal = "";
+                if (k.Materijal != null)
+                {
+                    materijal = k.Materijal.Naziv;
+                }
 
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (tabControl1.SelectedIndex == 0)
-            {
-                popuniPodacima();
-            }
-            else if (tabControl1.SelectedIndex == 1)
-            {
-                ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
-                popuniPodzadacima(zadatak);
+                ListViewItem item =
+                    new ListViewItem(new string[]
+                    {
+                       k.ID.ToString(),
+                       materijal,
+                       k.Kolicina.ToString()
 
+                    });
+                koriscenje.Items.Add(item);
             }
-            else if (tabControl1.SelectedIndex == 2)
-            {
-                ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
-                popuniRadneNaloge(zadatak);
-            }
-            else if (tabControl1.SelectedIndex == 3)
-            {
-                ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
-                popuniNapretke(zadatak);
-            }
-            else if (tabControl1.SelectedIndex == 4)
-            {
-                ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
-                popuniKontroluKvaliteta(zadatak);
-            }
+
+            koriscenje.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+
+            koriscenje.Refresh();
         }
 
         private void popuniPodzadacima(ZadatakBasic zadatak)
@@ -112,8 +107,6 @@ namespace Gradjevinska_firma.Forme
             podzadaci.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             this.podzadaci.Refresh();
         }
-
-
         private void popuniRadneNaloge(ZadatakBasic zadatak)
         {
             radniNalozi.Items.Clear();
@@ -133,7 +126,6 @@ namespace Gradjevinska_firma.Forme
             radniNalozi.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             this.radniNalozi.Refresh();
         }
-
         private void popuniNapretke(ZadatakBasic zadatak)
         {
             napreci.Items.Clear();
@@ -156,7 +148,6 @@ namespace Gradjevinska_firma.Forme
             napreci.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             this.napreci.Refresh();
         }
-
         private void popuniKontroluKvaliteta(ZadatakBasic zadatak)
         {
             kontrolaKvaliteta.Items.Clear();
@@ -181,7 +172,104 @@ namespace Gradjevinska_firma.Forme
             kontrolaKvaliteta.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             this.kontrolaKvaliteta.Refresh();
         }
+        private void popuniAngazuj(ZadatakBasic zadatak)
+        {
+            angazujeOpremu.Items.Clear();
 
+            foreach (AngazujeBasic a in zadatak.AngazovanaOprema)
+            {
+                string oprema = "";
+                if (a.Oprema != null)
+                {
+                    oprema = a.Oprema.Naziv;
+                }
+
+                ListViewItem item =
+                    new ListViewItem(new string[]
+                    {
+                       oprema,
+                        a.DatumOd.ToShortDateString(),
+                        a.DatumDo.HasValue ? a.DatumDo.Value.ToShortDateString() : "",
+                        a.BrojSati.ToString()
+                    });
+                item.Tag = a;
+                angazujeOpremu.Items.Add(item);
+            }
+
+            angazujeOpremu.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+
+            angazujeOpremu.Refresh();
+        }
+        private void popuniAngazovanja(ZadatakBasic zadatak)
+        {
+            angazovaneOsobe.Items.Clear();
+
+            foreach (AngazovanBasic a in zadatak.Angazovani)
+            {
+                string osoba = "";
+                string idOsobe = "";
+                if (a.Osoba != null)
+                {
+                    osoba = a.Osoba.Ime + " " + a.Osoba.Prezime;
+                }
+
+                ListViewItem item =
+                    new ListViewItem(new string[]
+                    {
+                        osoba,
+                        a.DatumOd.ToShortDateString(),
+                        a.DatumDo.HasValue ? a.DatumDo.Value.ToShortDateString() : "",
+                        a.StatusAngazovanja
+                    });
+                item.Tag = a;
+                angazovaneOsobe.Items.Add(item);
+            }
+
+            angazovaneOsobe.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+
+            angazovaneOsobe.Refresh();
+        }
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+            if (tabControl1.SelectedIndex == 0)
+            {
+                popuniPodacima();
+            }
+            else if (tabControl1.SelectedIndex == 1)
+            {
+                popuniPodzadacima(zadatak);
+            }
+            else if (tabControl1.SelectedIndex == 2)
+            {
+                popuniRadneNaloge(zadatak);
+            }
+            else if (tabControl1.SelectedIndex == 3)
+            {
+                popuniNapretke(zadatak);
+            }
+            else if (tabControl1.SelectedIndex == 4)
+            {
+                popuniKontroluKvaliteta(zadatak);
+            }
+            else if (tabControl1.SelectedIndex == 5)
+            {
+                popuniAngazovanja(zadatak);
+            }
+            else if (tabControl1.SelectedIndex == 6)
+            {
+                popuniAngazuj(zadatak);
+            }
+            else if (tabControl1.SelectedIndex == 7)
+            {
+                popuniKoristi(zadatak);
+            }
+        }
         private void btDodaj_Click(object sender, EventArgs e)
         {
             using (DodajPodzadatakForma forma = new DodajPodzadatakForma(idZadatka))
@@ -232,7 +320,7 @@ namespace Gradjevinska_firma.Forme
 
         private void btIzmeni_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btIzmeniRadniNalog_Click(object sender, EventArgs e)
@@ -480,6 +568,164 @@ namespace Gradjevinska_firma.Forme
             else
             {
 
+            }
+        }
+
+        private void btDodajAngazovanje_Click(object sender, EventArgs e)
+        {
+            using (DodajAngazovanForma forma = new DodajAngazovanForma(idZadatka))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                    popuniAngazovanja(zadatak);
+                }
+            }
+        }
+
+        private void btObrisiAngazovanje_Click(object sender, EventArgs e)
+        {
+            ListView tabela = angazovaneOsobe;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati angazovanje iz tabele.");
+                return;
+            }
+
+            ListViewItem item = angazovaneOsobe.SelectedItems[0];
+
+            AngazovanBasic angazovanje = (AngazovanBasic)item.Tag;
+
+            int idOsobe = angazovanje.Osoba.Id;
+
+            string poruka = "Da li zelite da obrisete izabrano angazovanje?";
+            string title = "Pitanje";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(poruka, title, buttons);
+
+            if (result == DialogResult.OK)
+            {
+                DTOManager.obrisiAngazovanje(idZadatka, idOsobe);
+                MessageBox.Show("Brisanje angazovanja je uspesno obavljeno!");
+                ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                popuniAngazovanja(zadatak);
+
+            }
+            else
+            {
+
+            }
+        }
+
+        private void btIzmeniAngazovanje_Click(object sender, EventArgs e)
+        {
+            ListView tabela = angazovaneOsobe;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati angazovanje iz tabele.");
+                return;
+            }
+
+            ListViewItem item = angazovaneOsobe.SelectedItems[0];
+
+            AngazovanBasic angazovanje = (AngazovanBasic)item.Tag;
+
+            int idOsobe = angazovanje.Osoba.Id;
+
+            using (IzmeniAngazovanjeForma forma = new IzmeniAngazovanjeForma(idOsobe, idZadatka))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                    popuniAngazovanja(zadatak);
+                }
+            }
+        }
+
+        private void btDodajAngazuj_Click(object sender, EventArgs e)
+        {
+            using (AngazujOpremu forma = new AngazujOpremu(idZadatka))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                    popuniAngazovanja(zadatak);
+                }
+            }
+        }
+
+        private void btIzmeniAngazuj_Click(object sender, EventArgs e)
+        {
+            ListView tabela = angazujeOpremu;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati opremu iz tabele.");
+                return;
+            }
+
+            ListViewItem item = angazujeOpremu.SelectedItems[0];
+
+            AngazujeBasic angazovanje = (AngazujeBasic)item.Tag;
+
+            int idOprema = angazovanje.Oprema.Id;
+
+            using (IzmeniAngazujForma forma = new IzmeniAngazujForma(idOprema, idZadatka))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                    popuniAngazuj(zadatak);
+                }
+            }
+        }
+
+        private void btObrisiAngazuj_Click(object sender, EventArgs e)
+        {
+            ListView tabela = angazujeOpremu;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati opremu iz tabele.");
+                return;
+            }
+
+            ListViewItem item = angazujeOpremu.SelectedItems[0];
+
+            AngazujeBasic angazuje = (AngazujeBasic)item.Tag;
+
+            int idOprema = angazuje.Oprema.Id;
+
+            string poruka = "Da li zelite da obrisete izabranu opremu?";
+            string title = "Pitanje";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(poruka, title, buttons);
+
+            if (result == DialogResult.OK)
+            {
+                DTOManager.obrisiAngazuje(idZadatka, idOprema);
+                MessageBox.Show("Brisanje opreme je uspesno obavljeno!");
+                ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                popuniAngazuj(zadatak);
+
+            }
+            else
+            {
+
+            }
+        }
+
+        private void btKoristiMaterijal_Click(object sender, EventArgs e)
+        {
+            using (DodajKoristiMaterijalForma forma = new DodajKoristiMaterijalForma(idZadatka))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                    popuniKoristi(zadatak);
+                }
             }
         }
     }

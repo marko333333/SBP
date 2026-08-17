@@ -10,16 +10,4 @@ namespace Gradjevinska_firma.Entiteti
     {
         public virtual string TipMehanizacije { get; set; }
     }
-    public class GradjevinskaMasina : Mehanizacija
-    {
-    }
-    public class TransportnoSredstvo : Mehanizacija
-    {
-    }
-    public class Alat : Mehanizacija
-    {
-    }
-    public class SpecijalizovanaOprema : Mehanizacija
-    {
-    }
 }

@@ -35,6 +35,8 @@
             bt2 = new Button();
             button1 = new Button();
             button2 = new Button();
+            btOprema = new Button();
+            btMaterijal = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -52,7 +54,7 @@
             // bt1
             // 
             bt1.Font = new Font("Lucida Bright", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            bt1.Location = new Point(477, 128);
+            bt1.Location = new Point(477, 113);
             bt1.Name = "bt1";
             bt1.Size = new Size(209, 56);
             bt1.TabIndex = 1;
@@ -73,7 +75,7 @@
             // bt2
             // 
             bt2.Font = new Font("Lucida Bright", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            bt2.Location = new Point(477, 208);
+            bt2.Location = new Point(477, 186);
             bt2.Name = "bt2";
             bt2.Size = new Size(209, 56);
             bt2.TabIndex = 3;
@@ -84,7 +86,7 @@
             // button1
             // 
             button1.Font = new Font("Lucida Bright", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(477, 292);
+            button1.Location = new Point(477, 257);
             button1.Name = "button1";
             button1.Size = new Size(209, 56);
             button1.TabIndex = 4;
@@ -95,7 +97,7 @@
             // button2
             // 
             button2.Font = new Font("Lucida Bright", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(477, 376);
+            button2.Location = new Point(477, 335);
             button2.Name = "button2";
             button2.Size = new Size(209, 56);
             button2.TabIndex = 5;
@@ -103,11 +105,35 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
+            // btOprema
+            // 
+            btOprema.Font = new Font("Lucida Bright", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btOprema.Location = new Point(477, 413);
+            btOprema.Name = "btOprema";
+            btOprema.Size = new Size(209, 56);
+            btOprema.TabIndex = 6;
+            btOprema.Text = "Oprema";
+            btOprema.UseVisualStyleBackColor = true;
+            btOprema.Click += btOprema_Click;
+            // 
+            // btMaterijal
+            // 
+            btMaterijal.Font = new Font("Lucida Bright", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btMaterijal.Location = new Point(477, 495);
+            btMaterijal.Name = "btMaterijal";
+            btMaterijal.Size = new Size(209, 56);
+            btMaterijal.TabIndex = 7;
+            btMaterijal.Text = "Materijali";
+            btMaterijal.UseVisualStyleBackColor = true;
+            btMaterijal.Click += btMaterijal_Click;
+            // 
             // PocetnaStranica
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(783, 576);
+            Controls.Add(btMaterijal);
+            Controls.Add(btOprema);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(bt2);
@@ -130,5 +156,7 @@
         private Button bt2;
         private Button button1;
         private Button button2;
+        private Button btOprema;
+        private Button btMaterijal;
     }
 }

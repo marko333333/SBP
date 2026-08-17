@@ -10,18 +10,16 @@ using System.Windows.Forms;
 
 namespace Gradjevinska_firma.Forme
 {
-    public partial class IzmeniFotografijuForma : Form
+    public partial class NabavkaOpremuForma : Form
     {
-        private int idFotografija;
-        private int idNapredak;
-        public IzmeniFotografijuForma(int id,int idnapredak)
+        private int idOprema;
+        public NabavkaOpremuForma(int id)
         {
             InitializeComponent();
-            idFotografija = id;
-            idNapredak = idnapredak;
+            idOprema = id;
         }
 
-        private void btIzmeni_Click(object sender, EventArgs e)
+        private void NabavkaOpremuForma_Load(object sender, EventArgs e)
         {
 
         }

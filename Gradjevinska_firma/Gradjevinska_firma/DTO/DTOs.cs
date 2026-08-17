@@ -14,7 +14,7 @@ namespace Gradjevinska_firma.DTO
      public class OsobaBasic
      {
          public int Id;
-         public long Jmbg;
+         public string Jmbg;
          public string Ime;
          public string Prezime;
          public DateTime DatumRodjenja;
@@ -34,8 +34,7 @@ namespace Gradjevinska_firma.DTO
             BezbednosniIncidenti = new List<BezbednosniIncidentBasic>();
          }
 
-         public OsobaBasic(int id, long jmbg, string ime,
-             string prezime, DateTime datumRodjenja, string struka) : this()
+         public OsobaBasic(int id, string jmbg, string ime,string prezime, DateTime datumRodjenja, string struka) : this()
          {
              Id = id;
              Jmbg = jmbg;
@@ -49,7 +48,7 @@ namespace Gradjevinska_firma.DTO
     public class OsobaPregled
     {
         public int Id;
-        public long Jmbg;
+        public string Jmbg;
         public string Ime;
         public string Prezime;
         public DateTime DatumRodjenja;
@@ -60,8 +59,7 @@ namespace Gradjevinska_firma.DTO
 
         }
 
-        public OsobaPregled(int id, long jmbg, string ime,
-            string prezime, DateTime datumRodjenja, string struka)
+        public OsobaPregled(int id, string jmbg, string ime,string prezime, DateTime datumRodjenja, string struka)
         {
             Id = id;
             Jmbg = jmbg;
@@ -69,6 +67,10 @@ namespace Gradjevinska_firma.DTO
             Prezime = prezime;
             DatumRodjenja = datumRodjenja;
             Struka = struka;
+        }
+        public override string ToString()
+        {
+            return Ime + " " + Prezime;
         }
     }
 
@@ -102,7 +104,7 @@ namespace Gradjevinska_firma.DTO
         }
 
         public FizickoLiceBasic(
-            int id,long jmbg,string ime,string prezime,DateTime datumRodjenja,string struka,bool flagBK,bool flagR, string kvalifikacija,bool flagI,string oblastRada,string odgovornosti,bool flagA,bool flagP,bool flagN,bool flagAO)
+            int id,string jmbg,string ime,string prezime,DateTime datumRodjenja,string struka,bool flagBK,bool flagR, string kvalifikacija,bool flagI,string oblastRada,string odgovornosti,bool flagA,bool flagP,bool flagN,bool flagAO)
             : base(id, jmbg, ime, prezime, datumRodjenja, struka)
         {
             FlagBK = flagBK;
@@ -136,7 +138,7 @@ namespace Gradjevinska_firma.DTO
         }
 
         public FizickoLicePregled(
-            int id, long jmbg, string ime, string prezime, DateTime datumRodjenja, string struka, bool flagBK, bool flagR, string kvalifikacija, bool flagI, string oblastRada, string odgovornosti, bool flagA, bool flagP, bool flagN, bool flagAO)
+            int id, string jmbg, string ime, string prezime, DateTime datumRodjenja, string struka, bool flagBK, bool flagR, string kvalifikacija, bool flagI, string oblastRada, string odgovornosti, bool flagA, bool flagP, bool flagN, bool flagAO)
             : base(id, jmbg, ime, prezime, datumRodjenja, struka)
         {
             FlagBK = flagBK;
@@ -173,7 +175,7 @@ namespace Gradjevinska_firma.DTO
             PrimljeneFakture = new List<FakturaBasic>();
         }
 
-        public PravnaLicaBasic(int id,long jmbg,string ime,string prezime,DateTime datumRodjenja,string struka,bool flagPB,bool flagInve,bool flagIzv,bool flagP,bool flagD,bool flagN)
+        public PravnaLicaBasic(int id,string jmbg,string ime,string prezime,DateTime datumRodjenja,string struka,bool flagPB,bool flagInve,bool flagIzv,bool flagP,bool flagD,bool flagN)
             : base(id, jmbg, ime, prezime, datumRodjenja, struka)
         {
             FlagPB = flagPB;
@@ -198,7 +200,7 @@ namespace Gradjevinska_firma.DTO
         {
         }
 
-        public PravnaLicaPregled(int id, long jmbg, string ime, string prezime, DateTime datumRodjenja, string struka, bool flagPB, bool flagInve, bool flagIzv, bool flagP, bool flagD, bool flagN)
+        public PravnaLicaPregled(int id, string jmbg, string ime, string prezime, DateTime datumRodjenja, string struka, bool flagPB, bool flagInve, bool flagIzv, bool flagP, bool flagD, bool flagN)
             : base(id, jmbg, ime, prezime, datumRodjenja, struka)
         {
             FlagPB = flagPB;
@@ -303,7 +305,7 @@ namespace Gradjevinska_firma.DTO
         public virtual IList<KontrolaKvalitetaBasic> KontroleKvaliteta { get; set; }
         public virtual IList<AngazovanBasic> Angazovani { get; set; }
         public virtual IList<AngazujeBasic> AngazovanaOprema { get; set; }
-
+        public virtual IList<KoristiBasic> Koristi { get; set; }
 
         public ZadatakBasic()
         {
@@ -314,6 +316,7 @@ namespace Gradjevinska_firma.DTO
             KontroleKvaliteta = new List<KontrolaKvalitetaBasic>();
             Angazovani = new List<AngazovanBasic>();
             AngazovanaOprema = new List<AngazujeBasic>();
+            Koristi=new List<KoristiBasic>();
         }
 
         public ZadatakBasic(int id, string naziv, string opis, decimal procenjeniTrosak, DateTime planiraniZavrsetak, DateTime? stvarniZavrsetak, DateTime planiraniPocetak, DateTime? stvarniPocetak, int prioritet, string status, FazaBasic faza, ZadatakBasic roditelj)
@@ -541,7 +544,7 @@ namespace Gradjevinska_firma.DTO
         public ZadatakBasic Zadatak;
         public OpremaBasic Oprema;
 
-        public DateTime? DatumOd;
+        public DateTime DatumOd;
         public DateTime? DatumDo;
         public int BrojSati;
 
@@ -549,7 +552,7 @@ namespace Gradjevinska_firma.DTO
         {
         }
 
-        public AngazujeBasic(ZadatakBasic zadatak,OpremaBasic oprema,DateTime? datumOd,DateTime? datumDo,int brojSati)
+        public AngazujeBasic(ZadatakBasic zadatak,OpremaBasic oprema,DateTime datumOd,DateTime? datumDo,int brojSati)
         {
             Zadatak = zadatak;
             Oprema = oprema;
@@ -563,7 +566,7 @@ namespace Gradjevinska_firma.DTO
         public ZadatakPregled  Zadatak;
         public OpremaPregled Oprema;
 
-        public DateTime? DatumOd;
+        public DateTime DatumOd;
         public DateTime? DatumDo;
         public int BrojSati;
 
@@ -571,7 +574,7 @@ namespace Gradjevinska_firma.DTO
         {
         }
 
-        public AngazujePregled(ZadatakPregled zadatak, OpremaPregled oprema, DateTime? datumOd, DateTime? datumDo, int brojSati)
+        public AngazujePregled(ZadatakPregled zadatak, OpremaPregled oprema, DateTime datumOd, DateTime? datumDo, int brojSati)
         {
             Zadatak = zadatak;
             Oprema = oprema;
@@ -579,6 +582,7 @@ namespace Gradjevinska_firma.DTO
             DatumDo = datumDo;
             BrojSati = brojSati;
         }
+
     }
     #endregion
 
@@ -596,13 +600,15 @@ namespace Gradjevinska_firma.DTO
         public string Lokacija;
         public string Status;
 
-        public IList<UgovorBasic> Ugovori;
-        public IList<AngazujeBasic> Angazovanja;
+        public IList<UgovorBasic> Ugovori { get; set; }
+        public IList<AngazujeBasic> Angazovanja { get; set; }
+        public IList<NabavkaOpremaBasic> NabavkaOprema { get; set; }
 
         public OpremaBasic()
         {
             Ugovori = new List<UgovorBasic>();
             Angazovanja = new List<AngazujeBasic>();
+            NabavkaOprema = new List<NabavkaOpremaBasic>();
         }
 
         public OpremaBasic(int id,string naziv,string tip,DateTime datumUvoza,string proizvodjac,DateTime datumNabavke,string rasponOdrzavanja,string lokacija,string status) : this()
@@ -646,6 +652,10 @@ namespace Gradjevinska_firma.DTO
             RasponOdrzavanja = rasponOdrzavanja;
             Lokacija = lokacija;
             Status = status;
+        }
+        public override string ToString()
+        {
+            return Naziv;
         }
     }
 
@@ -1380,7 +1390,7 @@ namespace Gradjevinska_firma.DTO
         public int? Budzet;
         public string Status;
         public DateTime Planirani_zavrsetak;
-        public DateTime Stvarni_zavrsetak;
+        public DateTime? Stvarni_zavrsetak;
         public virtual IList<UgovorBasic> Ugovori { get; set; }
         public virtual IList<BezbednosniIncidentBasic> BezbednosniIncidenti { get; set; }
         public virtual IList<FakturaBasic> Fakture { get; set; }
@@ -1394,7 +1404,7 @@ namespace Gradjevinska_firma.DTO
             Faze=new List<FazaBasic>();
         }
 
-        public ProjekatBasic(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planirani_zavrsetak, DateTime stvarni_zavrsetak)
+        public ProjekatBasic(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planirani_zavrsetak, DateTime? stvarni_zavrsetak)
         {
             ID = iD;
             Naziv = naziv;
@@ -1417,11 +1427,11 @@ namespace Gradjevinska_firma.DTO
         public int? Budzet;
         public string Status;
         public DateTime Planirani_zavrsetak;
-        public DateTime Stvarni_zavrsetak;
+        public DateTime? Stvarni_zavrsetak;
 
         public ProjekatPregled() { }
 
-        public ProjekatPregled(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planirani_zavrsetak, DateTime stvarni_zavrsetak)
+        public ProjekatPregled(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planirani_zavrsetak, DateTime? stvarni_zavrsetak)
         {
             ID = iD;
             Naziv = naziv;
@@ -1527,6 +1537,10 @@ namespace Gradjevinska_firma.DTO
             JedinicaMere = jedinicaMere;
             Sertifikat = sertifikat;
             Tip = tip;
+        }
+        public override string ToString()
+        {
+            return Naziv;
         }
     }
     public class ZastitniPregled : MaterijalPregled
@@ -1788,7 +1802,7 @@ namespace Gradjevinska_firma.DTO
             Deonice = new List<DeonicaBasic>();
         }
 
-        public InfrastrukturaBasic(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime stvarni_zavrsetak)
+        public InfrastrukturaBasic(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
             :base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak)
         {
 
@@ -1804,7 +1818,7 @@ namespace Gradjevinska_firma.DTO
             Deonice = new List<DeonicaPregled>();
         }
 
-        public InfrastrukturaPregled(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime stvarni_zavrsetak)
+        public InfrastrukturaPregled(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
             : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak)
         {
 
@@ -1818,14 +1832,14 @@ namespace Gradjevinska_firma.DTO
     public class IndustrijskiBasic : ProjekatBasic
     {
         public IndustrijskiBasic() { }
-        public IndustrijskiBasic(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime stvarni_zavrsetak)
+        public IndustrijskiBasic(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
             : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak) { }
     }
 
     public class IndustrijskiPregled : ProjekatPregled
     {
         public IndustrijskiPregled() { }
-        public IndustrijskiPregled(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime stvarni_zavrsetak)
+        public IndustrijskiPregled(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
             : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak) { }
     }
 
@@ -1836,14 +1850,14 @@ namespace Gradjevinska_firma.DTO
     public class SanacijaBasic : ProjekatBasic
     {
         public SanacijaBasic() { }
-        public SanacijaBasic(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime stvarni_zavrsetak)
+        public SanacijaBasic(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
             : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak) { }
     }
 
     public class SanacijaPregled : ProjekatPregled
     {
         public SanacijaPregled() { }
-        public SanacijaPregled(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime stvarni_zavrsetak)
+        public SanacijaPregled(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
             : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak) { }
     }
 
@@ -1854,14 +1868,14 @@ namespace Gradjevinska_firma.DTO
     public class RekonstrukcijaBasic : ProjekatBasic 
     {
         public RekonstrukcijaBasic() { }
-        public RekonstrukcijaBasic(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime stvarni_zavrsetak)
+        public RekonstrukcijaBasic(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
             : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak) { }
     }
 
     public class RekonstrukcijaPregled : ProjekatPregled
     {
         public RekonstrukcijaPregled() { }
-        public RekonstrukcijaPregled(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime stvarni_zavrsetak)
+        public RekonstrukcijaPregled(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
             : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak) { }
     }
 
@@ -1876,7 +1890,7 @@ namespace Gradjevinska_firma.DTO
         {
             Objekti = new List<ObjekatPoslovniBasic>();
         }
-        public PoslovniBasic(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime stvarni_zavrsetak)
+        public PoslovniBasic(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
             : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak) { }
     }
 
@@ -1887,7 +1901,7 @@ namespace Gradjevinska_firma.DTO
         {
             Objekti = new List<ObjekatPoslovniPregled>();
         }
-        public PoslovniPregled(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime stvarni_zavrsetak)
+        public PoslovniPregled(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
             : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak) { }
     }
     #endregion
@@ -1943,7 +1957,7 @@ namespace Gradjevinska_firma.DTO
         {
             Objekti = new List<ObjekatStambeniBasic>();
         }
-        public StambeniBasic(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime stvarni_zavrsetak)
+        public StambeniBasic(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
             : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak)
         {
 
@@ -1957,7 +1971,7 @@ namespace Gradjevinska_firma.DTO
         {
             Objekti = new List<ObjekatStambeniPregled>();
         }
-        public StambeniPregled(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime stvarni_zavrsetak)
+        public StambeniPregled(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
             : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak)
         {
 
@@ -2021,34 +2035,6 @@ namespace Gradjevinska_firma.DTO
             this.TipMehanizacije = tip;
         }
     }
-    public class GradjevinskaMasinaBasic : OpremaBasic
-    {
-        public GradjevinskaMasinaBasic() { }
-        public GradjevinskaMasinaBasic(int id, string naziv, string tip, DateTime datumUvoza, string proizvodjac, DateTime datumNabavke, string rasponOdrzavanja, string lokacija, string status) : base(id, naziv, tip, datumUvoza, proizvodjac, datumNabavke, rasponOdrzavanja, lokacija, status)
-        {
-        }
-    }
-    public class TransportnoSredstvoBasic : OpremaBasic
-    {
-        public TransportnoSredstvoBasic() { }
-        public TransportnoSredstvoBasic(int id, string naziv, string tip, DateTime datumUvoza, string proizvodjac, DateTime datumNabavke, string rasponOdrzavanja, string lokacija, string status) : base(id, naziv, tip, datumUvoza, proizvodjac, datumNabavke, rasponOdrzavanja, lokacija, status)
-        {
-        }
-    }
-    public class AlatBasic : OpremaBasic
-    {
-        public AlatBasic() { }
-        public AlatBasic(int id, string naziv, string tip, DateTime datumUvoza, string proizvodjac, DateTime datumNabavke, string rasponOdrzavanja, string lokacija, string status) : base(id, naziv, tip, datumUvoza, proizvodjac, datumNabavke, rasponOdrzavanja, lokacija, status)
-        {
-        }
-    }
-    public class SpecijalizovanaOpremaBasic : OpremaBasic
-    {
-        public SpecijalizovanaOpremaBasic() { }
-        public SpecijalizovanaOpremaBasic(int id, string naziv, string tip, DateTime datumUvoza, string proizvodjac, DateTime datumNabavke, string rasponOdrzavanja, string lokacija, string status) : base(id, naziv, tip, datumUvoza, proizvodjac, datumNabavke, rasponOdrzavanja, lokacija, status)
-        {
-        }
-    }
 
     public class MehanizacijaPregled : OpremaPregled
     {
@@ -2058,34 +2044,6 @@ namespace Gradjevinska_firma.DTO
             : base(id, naziv, tip, datumUvoza, proizvodjac, datumNabavke, rasponOdrzavanja, lokacija, status)
         {
             this.TipMehanizacije = tip;
-        }
-    }
-    public class GradjevinskaMasinaPregled : OpremaPregled
-    {
-        public GradjevinskaMasinaPregled() { }
-        public GradjevinskaMasinaPregled(int id, string naziv, string tip, DateTime datumUvoza, string proizvodjac, DateTime datumNabavke, string rasponOdrzavanja, string lokacija, string status) : base(id, naziv, tip, datumUvoza, proizvodjac, datumNabavke, rasponOdrzavanja, lokacija, status)
-        {
-        }
-    }
-    public class TransportnoSredstvoPregled : OpremaPregled
-    {
-        public TransportnoSredstvoPregled() { }
-        public TransportnoSredstvoPregled(int id, string naziv, string tip, DateTime datumUvoza, string proizvodjac, DateTime datumNabavke, string rasponOdrzavanja, string lokacija, string status) : base(id, naziv, tip, datumUvoza, proizvodjac, datumNabavke, rasponOdrzavanja, lokacija, status)
-        {
-        }
-    }
-    public class AlatPregled : OpremaPregled
-    {
-        public AlatPregled() { }
-        public AlatPregled(int id, string naziv, string tip, DateTime datumUvoza, string proizvodjac, DateTime datumNabavke, string rasponOdrzavanja, string lokacija, string status) : base(id, naziv, tip, datumUvoza, proizvodjac, datumNabavke, rasponOdrzavanja, lokacija, status)
-        {
-        }
-    }
-    public class SpecijalizovanaOpremaPregled : OpremaPregled
-    {
-        public SpecijalizovanaOpremaPregled() { }
-        public SpecijalizovanaOpremaPregled(int id, string naziv, string tip, DateTime datumUvoza, string proizvodjac, DateTime datumNabavke, string rasponOdrzavanja, string lokacija, string status) : base(id, naziv, tip, datumUvoza, proizvodjac, datumNabavke, rasponOdrzavanja, lokacija, status)
-        {
         }
     }
     #endregion

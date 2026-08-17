@@ -9,7 +9,7 @@ namespace Gradjevinska_firma.Entiteti
     public class Osoba
     {
         public virtual int Id { get; protected set; }
-        public virtual long Jmbg { get; set; }
+        public virtual string Jmbg { get; set; }
         public virtual string Ime { get; set; }
         public virtual string Prezime { get; set; }
         public virtual DateTime DatumRodjenja { get; set; }

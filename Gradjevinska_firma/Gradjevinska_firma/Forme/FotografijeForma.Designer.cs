@@ -33,7 +33,6 @@
             columnHeader1 = new ColumnHeader();
             pbFotografija = new PictureBox();
             btDodaj = new Button();
-            btIzmeni = new Button();
             btObrisi = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbFotografija).BeginInit();
@@ -77,7 +76,7 @@
             // 
             // btDodaj
             // 
-            btDodaj.Location = new Point(552, 338);
+            btDodaj.Location = new Point(605, 338);
             btDodaj.Name = "btDodaj";
             btDodaj.Size = new Size(114, 64);
             btDodaj.TabIndex = 2;
@@ -85,24 +84,15 @@
             btDodaj.UseVisualStyleBackColor = true;
             btDodaj.Click += btDodaj_Click;
             // 
-            // btIzmeni
-            // 
-            btIzmeni.Location = new Point(694, 338);
-            btIzmeni.Name = "btIzmeni";
-            btIzmeni.Size = new Size(114, 64);
-            btIzmeni.TabIndex = 3;
-            btIzmeni.Text = "Izmeni fotografiju";
-            btIzmeni.UseVisualStyleBackColor = true;
-            btIzmeni.Click += btIzmeni_Click;
-            // 
             // btObrisi
             // 
-            btObrisi.Location = new Point(828, 338);
+            btObrisi.Location = new Point(791, 338);
             btObrisi.Name = "btObrisi";
             btObrisi.Size = new Size(114, 64);
             btObrisi.TabIndex = 4;
             btObrisi.Text = "Obrisi fotografiju";
             btObrisi.UseVisualStyleBackColor = true;
+            btObrisi.Click += btObrisi_Click;
             // 
             // FotografijeForma
             // 
@@ -110,7 +100,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(970, 528);
             Controls.Add(btObrisi);
-            Controls.Add(btIzmeni);
             Controls.Add(btDodaj);
             Controls.Add(pbFotografija);
             Controls.Add(groupBox1);
@@ -128,7 +117,6 @@
         private ListView fotografije;
         private PictureBox pbFotografija;
         private Button btDodaj;
-        private Button btIzmeni;
         private Button btObrisi;
         private ColumnHeader columnHeader1;
     }

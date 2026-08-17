@@ -14,7 +14,7 @@ namespace Gradjevinska_firma.Entiteti
         public virtual string Proizvodjac { get; set; }
         public virtual string JedinicaMere { get; set; }
         public virtual string Sertifikat { get; set; }
-        public virtual string Tip { get; set; }//mozda treba da se obrise
+        public virtual string Tip { get; set; }
 
         public virtual IList<Ugovor> Ugovori { get; set; }
         public virtual IList<Koristi> Koristi { get; set; }

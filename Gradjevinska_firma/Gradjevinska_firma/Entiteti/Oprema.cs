@@ -25,6 +25,7 @@ namespace Gradjevinska_firma.Entiteti
         {
             Ugovori = new List<Ugovor>();
             Angazovanja = new List<Angazuje>();
+            NabavkaOprema=new List<NabavkaOprema>();
         }
     }
 }

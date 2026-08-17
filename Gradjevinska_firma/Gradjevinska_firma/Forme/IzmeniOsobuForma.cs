@@ -97,7 +97,7 @@ namespace Gradjevinska_firma.Forme
             {
                 FizickoLiceBasic fizicko = new FizickoLiceBasic(
                    idOsobe,
-                  long.Parse(tbJmbg.Text),
+                  tbJmbg.Text,
                   tbIme.Text,
                   tbPrezime.Text,
                   dtpDatumRodjenja.Value,
@@ -123,7 +123,7 @@ namespace Gradjevinska_firma.Forme
             {
                 PravnaLicaBasic pravno = new PravnaLicaBasic(
                     idOsobe,
-                   long.Parse(tbJmbg.Text),
+                   tbJmbg.Text,
                    tbIme.Text,
                    tbPrezime.Text,
                    dtpDatumRodjenja.Value,

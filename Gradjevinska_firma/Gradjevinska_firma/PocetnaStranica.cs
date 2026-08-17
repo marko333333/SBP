@@ -49,7 +49,19 @@ namespace Gradjevinska_firma
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ProjekatForma forma = new ProjekatForma();
+            UgovoriForma forma = new UgovoriForma();
+            forma.ShowDialog();
+        }
+
+        private void btOprema_Click(object sender, EventArgs e)
+        {
+            OpremaForma forma = new OpremaForma();
+            forma.ShowDialog();
+        }
+
+        private void btMaterijal_Click(object sender, EventArgs e)
+        {
+            MaterijaliForma forma = new MaterijaliForma();
             forma.ShowDialog();
         }
     }

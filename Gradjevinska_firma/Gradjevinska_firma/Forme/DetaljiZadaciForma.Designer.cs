@@ -95,19 +95,32 @@
             columnHeader21 = new ColumnHeader();
             columnHeader22 = new ColumnHeader();
             tabPage7 = new TabPage();
-            btObrisiZasOpremu = new Button();
-            btIzmeniZasOpremu = new Button();
-            btDodajZasOpremu = new Button();
-            zastitnaoprema = new ListView();
-            columnHeader9 = new ColumnHeader();
+            btObrisiAngazovanje = new Button();
+            btIzmeniAngazovanje = new Button();
+            btDodajAngazovanje = new Button();
+            angazovaneOsobe = new ListView();
             columnHeader10 = new ColumnHeader();
+            columnHeader24 = new ColumnHeader();
+            columnHeader25 = new ColumnHeader();
+            columnHeader26 = new ColumnHeader();
             tabPage8 = new TabPage();
-            btObrisiSertifikat = new Button();
-            btIzmeniSertifkat = new Button();
-            btDodajSertifikat = new Button();
-            sertifikatiSpec = new ListView();
+            btObrisiAngazuj = new Button();
+            btIzmeniAngazuj = new Button();
+            btDodajAngazuj = new Button();
+            angazujeOpremu = new ListView();
             columnHeader12 = new ColumnHeader();
             columnHeader13 = new ColumnHeader();
+            columnHeader9 = new ColumnHeader();
+            columnHeader23 = new ColumnHeader();
+            tabPage3 = new TabPage();
+            btObrisiKoriscenje = new Button();
+            btIzmeniKoriscenje = new Button();
+            btKoristiMaterijal = new Button();
+            groupBox4 = new GroupBox();
+            koriscenje = new ListView();
+            columnHeader27 = new ColumnHeader();
+            columnHeader28 = new ColumnHeader();
+            columnHeader29 = new ColumnHeader();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -119,6 +132,8 @@
             tabPage6.SuspendLayout();
             tabPage7.SuspendLayout();
             tabPage8.SuspendLayout();
+            tabPage3.SuspendLayout();
+            groupBox4.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -130,22 +145,21 @@
             tabControl1.Controls.Add(tabPage6);
             tabControl1.Controls.Add(tabPage7);
             tabControl1.Controls.Add(tabPage8);
-            tabControl1.Location = new Point(5, 0);
-            tabControl1.Margin = new Padding(3, 2, 3, 2);
+            tabControl1.Controls.Add(tabPage3);
+            tabControl1.Location = new Point(6, 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(690, 338);
+            tabControl1.Size = new Size(789, 451);
             tabControl1.TabIndex = 1;
             tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
             // 
             // tabPage1
             // 
             tabPage1.Controls.Add(groupBox1);
-            tabPage1.Location = new Point(4, 24);
-            tabPage1.Margin = new Padding(3, 2, 3, 2);
+            tabPage1.Location = new Point(4, 29);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3, 2, 3, 2);
-            tabPage1.Size = new Size(682, 310);
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(781, 418);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Osnovni podaci";
             tabPage1.UseVisualStyleBackColor = true;
@@ -175,11 +189,9 @@
             groupBox1.Controls.Add(lbPrioritet);
             groupBox1.Controls.Add(lbStatus);
             groupBox1.Dock = DockStyle.Fill;
-            groupBox1.Location = new Point(3, 2);
-            groupBox1.Margin = new Padding(3, 2, 3, 2);
+            groupBox1.Location = new Point(3, 3);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(3, 2, 3, 2);
-            groupBox1.Size = new Size(676, 306);
+            groupBox1.Size = new Size(775, 412);
             groupBox1.TabIndex = 18;
             groupBox1.TabStop = false;
             groupBox1.Text = "Osnovni podaci";
@@ -187,90 +199,90 @@
             // lbNadzadatak
             // 
             lbNadzadatak.AutoSize = true;
-            lbNadzadatak.Location = new Point(103, 188);
+            lbNadzadatak.Location = new Point(118, 251);
             lbNadzadatak.Name = "lbNadzadatak";
-            lbNadzadatak.Size = new Size(38, 15);
+            lbNadzadatak.Size = new Size(50, 20);
             lbNadzadatak.TabIndex = 21;
             lbNadzadatak.Text = "label1";
             // 
             // lbFaza
             // 
             lbFaza.AutoSize = true;
-            lbFaza.Location = new Point(59, 160);
+            lbFaza.Location = new Point(67, 213);
             lbFaza.Name = "lbFaza";
-            lbFaza.Size = new Size(38, 15);
+            lbFaza.Size = new Size(50, 20);
             lbFaza.TabIndex = 20;
             lbFaza.Text = "label1";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(18, 188);
+            label6.Location = new Point(21, 251);
             label6.Name = "label6";
-            label6.Size = new Size(72, 15);
+            label6.Size = new Size(92, 20);
             label6.TabIndex = 19;
             label6.Text = "Nadzadatak:";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(18, 160);
+            label5.Location = new Point(21, 213);
             label5.Name = "label5";
-            label5.Size = new Size(33, 15);
+            label5.Size = new Size(41, 20);
             label5.TabIndex = 18;
             label5.Text = "Faza:";
             // 
             // lb1
             // 
             lb1.AutoSize = true;
-            lb1.Location = new Point(18, 28);
+            lb1.Location = new Point(21, 37);
             lb1.Name = "lb1";
-            lb1.Size = new Size(39, 15);
+            lb1.Size = new Size(49, 20);
             lb1.TabIndex = 0;
             lb1.Text = "Naziv:";
             // 
             // lbStvarniZavrsetak
             // 
             lbStvarniZavrsetak.AutoSize = true;
-            lbStvarniZavrsetak.Location = new Point(552, 104);
+            lbStvarniZavrsetak.Location = new Point(631, 139);
             lbStvarniZavrsetak.Name = "lbStvarniZavrsetak";
-            lbStvarniZavrsetak.Size = new Size(38, 15);
+            lbStvarniZavrsetak.Size = new Size(50, 20);
             lbStvarniZavrsetak.TabIndex = 17;
             lbStvarniZavrsetak.Text = "label1";
             // 
             // lb3
             // 
             lb3.AutoSize = true;
-            lb3.Location = new Point(18, 78);
+            lb3.Location = new Point(21, 104);
             lb3.Name = "lb3";
-            lb3.Size = new Size(44, 15);
+            lb3.Size = new Size(54, 20);
             lb3.TabIndex = 2;
             lb3.Text = "Trosak:";
             // 
             // lbPlaniraniZavrsetak
             // 
             lbPlaniraniZavrsetak.AutoSize = true;
-            lbPlaniraniZavrsetak.Location = new Point(563, 78);
+            lbPlaniraniZavrsetak.Location = new Point(643, 104);
             lbPlaniraniZavrsetak.Name = "lbPlaniraniZavrsetak";
-            lbPlaniraniZavrsetak.Size = new Size(38, 15);
+            lbPlaniraniZavrsetak.Size = new Size(50, 20);
             lbPlaniraniZavrsetak.TabIndex = 16;
             lbPlaniraniZavrsetak.Text = "label1";
             // 
             // lb4
             // 
             lb4.AutoSize = true;
-            lb4.Location = new Point(18, 104);
+            lb4.Location = new Point(21, 139);
             lb4.Name = "lb4";
-            lb4.Size = new Size(52, 15);
+            lb4.Size = new Size(65, 20);
             lb4.TabIndex = 3;
             lb4.Text = "Prioritet:";
             // 
             // lbStvarniPocetak
             // 
             lbStvarniPocetak.AutoSize = true;
-            lbStvarniPocetak.Location = new Point(545, 54);
+            lbStvarniPocetak.Location = new Point(623, 72);
             lbStvarniPocetak.Name = "lbStvarniPocetak";
-            lbStvarniPocetak.Size = new Size(38, 15);
+            lbStvarniPocetak.Size = new Size(50, 20);
             lbStvarniPocetak.TabIndex = 15;
             lbStvarniPocetak.Text = "label1";
             lbStvarniPocetak.Click += label6_Click;
@@ -278,108 +290,108 @@
             // lb2
             // 
             lb2.AutoSize = true;
-            lb2.Location = new Point(18, 54);
+            lb2.Location = new Point(21, 72);
             lb2.Name = "lb2";
-            lb2.Size = new Size(34, 15);
+            lb2.Size = new Size(42, 20);
             lb2.TabIndex = 1;
             lb2.Text = "Opis:";
             // 
             // lbPlaniraniPocetak
             // 
             lbPlaniraniPocetak.AutoSize = true;
-            lbPlaniraniPocetak.Location = new Point(556, 28);
+            lbPlaniraniPocetak.Location = new Point(635, 37);
             lbPlaniraniPocetak.Name = "lbPlaniraniPocetak";
-            lbPlaniraniPocetak.Size = new Size(38, 15);
+            lbPlaniraniPocetak.Size = new Size(50, 20);
             lbPlaniraniPocetak.TabIndex = 14;
             lbPlaniraniPocetak.Text = "label1";
             // 
             // lb5
             // 
             lb5.AutoSize = true;
-            lb5.Location = new Point(18, 133);
+            lb5.Location = new Point(21, 177);
             lb5.Name = "lb5";
-            lb5.Size = new Size(42, 15);
+            lb5.Size = new Size(52, 20);
             lb5.TabIndex = 4;
             lb5.Text = "Status:";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(440, 104);
+            label4.Location = new Point(503, 139);
             label4.Name = "label4";
-            label4.Size = new Size(97, 15);
+            label4.Size = new Size(122, 20);
             label4.TabIndex = 13;
             label4.Text = "Stvarni zavrsetak:";
             // 
             // lbNaziv
             // 
             lbNaziv.AutoSize = true;
-            lbNaziv.Location = new Point(65, 28);
+            lbNaziv.Location = new Point(74, 37);
             lbNaziv.Name = "lbNaziv";
-            lbNaziv.Size = new Size(38, 15);
+            lbNaziv.Size = new Size(50, 20);
             lbNaziv.TabIndex = 5;
             lbNaziv.Text = "label1";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(440, 78);
+            label3.Location = new Point(503, 104);
             label3.Name = "label3";
-            label3.Size = new Size(107, 15);
+            label3.Size = new Size(134, 20);
             label3.TabIndex = 12;
             label3.Text = "Planirani zavrsetak:";
             // 
             // lbTrosak
             // 
             lbTrosak.AutoSize = true;
-            lbTrosak.Location = new Point(70, 78);
+            lbTrosak.Location = new Point(80, 104);
             lbTrosak.Name = "lbTrosak";
-            lbTrosak.Size = new Size(38, 15);
+            lbTrosak.Size = new Size(50, 20);
             lbTrosak.TabIndex = 6;
             lbTrosak.Text = "label1";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(440, 54);
+            label2.Location = new Point(503, 72);
             label2.Name = "label2";
-            label2.Size = new Size(91, 15);
+            label2.Size = new Size(114, 20);
             label2.TabIndex = 11;
             label2.Text = "Stvarni pocetak:";
             // 
             // lbOpis
             // 
             lbOpis.AutoSize = true;
-            lbOpis.Location = new Point(66, 54);
+            lbOpis.Location = new Point(75, 72);
             lbOpis.Name = "lbOpis";
-            lbOpis.Size = new Size(38, 15);
+            lbOpis.Size = new Size(50, 20);
             lbOpis.TabIndex = 7;
             lbOpis.Text = "label1";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(440, 28);
+            label1.Location = new Point(503, 37);
             label1.Name = "label1";
-            label1.Size = new Size(101, 15);
+            label1.Size = new Size(126, 20);
             label1.TabIndex = 10;
             label1.Text = "Planirani pocetak:";
             // 
             // lbPrioritet
             // 
             lbPrioritet.AutoSize = true;
-            lbPrioritet.Location = new Point(80, 104);
+            lbPrioritet.Location = new Point(91, 139);
             lbPrioritet.Name = "lbPrioritet";
-            lbPrioritet.Size = new Size(38, 15);
+            lbPrioritet.Size = new Size(50, 20);
             lbPrioritet.TabIndex = 8;
             lbPrioritet.Text = "label1";
             // 
             // lbStatus
             // 
             lbStatus.AutoSize = true;
-            lbStatus.Location = new Point(68, 133);
+            lbStatus.Location = new Point(78, 177);
             lbStatus.Name = "lbStatus";
-            lbStatus.Size = new Size(38, 15);
+            lbStatus.Size = new Size(50, 20);
             lbStatus.TabIndex = 9;
             lbStatus.Text = "label1";
             // 
@@ -388,21 +400,19 @@
             tabPage2.Controls.Add(btObrisi);
             tabPage2.Controls.Add(btDodaj);
             tabPage2.Controls.Add(groupBox2);
-            tabPage2.Location = new Point(4, 24);
-            tabPage2.Margin = new Padding(3, 2, 3, 2);
+            tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3, 2, 3, 2);
-            tabPage2.Size = new Size(682, 310);
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(781, 418);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Podzadaci";
             tabPage2.UseVisualStyleBackColor = true;
             // 
             // btObrisi
             // 
-            btObrisi.Location = new Point(529, 100);
-            btObrisi.Margin = new Padding(3, 2, 3, 2);
+            btObrisi.Location = new Point(605, 133);
             btObrisi.Name = "btObrisi";
-            btObrisi.Size = new Size(122, 34);
+            btObrisi.Size = new Size(139, 45);
             btObrisi.TabIndex = 9;
             btObrisi.Text = "Obrisi podzadatak";
             btObrisi.UseVisualStyleBackColor = true;
@@ -410,10 +420,9 @@
             // 
             // btDodaj
             // 
-            btDodaj.Location = new Point(529, 26);
-            btDodaj.Margin = new Padding(3, 2, 3, 2);
+            btDodaj.Location = new Point(605, 35);
             btDodaj.Name = "btDodaj";
-            btDodaj.Size = new Size(122, 48);
+            btDodaj.Size = new Size(139, 64);
             btDodaj.TabIndex = 7;
             btDodaj.Text = "Dodaj podzadatak";
             btDodaj.UseVisualStyleBackColor = true;
@@ -423,10 +432,8 @@
             // 
             groupBox2.Controls.Add(podzadaci);
             groupBox2.Location = new Point(2, 0);
-            groupBox2.Margin = new Padding(3, 2, 3, 2);
             groupBox2.Name = "groupBox2";
-            groupBox2.Padding = new Padding(3, 2, 3, 2);
-            groupBox2.Size = new Size(499, 308);
+            groupBox2.Size = new Size(570, 411);
             groupBox2.TabIndex = 0;
             groupBox2.TabStop = false;
             groupBox2.Text = "Podzadaci";
@@ -437,10 +444,9 @@
             podzadaci.Dock = DockStyle.Fill;
             podzadaci.FullRowSelect = true;
             podzadaci.GridLines = true;
-            podzadaci.Location = new Point(3, 18);
-            podzadaci.Margin = new Padding(3, 2, 3, 2);
+            podzadaci.Location = new Point(3, 23);
             podzadaci.Name = "podzadaci";
-            podzadaci.Size = new Size(493, 288);
+            podzadaci.Size = new Size(564, 385);
             podzadaci.TabIndex = 0;
             podzadaci.UseCompatibleStateImageBehavior = false;
             podzadaci.View = View.Details;
@@ -459,10 +465,9 @@
             tabPage4.Controls.Add(btObrisiRadniNalog);
             tabPage4.Controls.Add(btIzmeniRadniNalog);
             tabPage4.Controls.Add(btDodajRadniNalog);
-            tabPage4.Location = new Point(4, 24);
-            tabPage4.Margin = new Padding(3, 2, 3, 2);
+            tabPage4.Location = new Point(4, 29);
             tabPage4.Name = "tabPage4";
-            tabPage4.Size = new Size(682, 310);
+            tabPage4.Size = new Size(781, 418);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Radni nalozi";
             tabPage4.UseVisualStyleBackColor = true;
@@ -470,11 +475,9 @@
             // groupBox3
             // 
             groupBox3.Controls.Add(radniNalozi);
-            groupBox3.Location = new Point(3, 2);
-            groupBox3.Margin = new Padding(3, 2, 3, 2);
+            groupBox3.Location = new Point(3, 3);
             groupBox3.Name = "groupBox3";
-            groupBox3.Padding = new Padding(3, 2, 3, 2);
-            groupBox3.Size = new Size(475, 314);
+            groupBox3.Size = new Size(543, 419);
             groupBox3.TabIndex = 7;
             groupBox3.TabStop = false;
             groupBox3.Text = "Radni nalozi";
@@ -485,10 +488,9 @@
             radniNalozi.Dock = DockStyle.Fill;
             radniNalozi.FullRowSelect = true;
             radniNalozi.GridLines = true;
-            radniNalozi.Location = new Point(3, 18);
-            radniNalozi.Margin = new Padding(3, 2, 3, 2);
+            radniNalozi.Location = new Point(3, 23);
             radniNalozi.Name = "radniNalozi";
-            radniNalozi.Size = new Size(469, 294);
+            radniNalozi.Size = new Size(537, 393);
             radniNalozi.TabIndex = 0;
             radniNalozi.UseCompatibleStateImageBehavior = false;
             radniNalozi.View = View.Details;
@@ -510,10 +512,9 @@
             // 
             // btObrisiRadniNalog
             // 
-            btObrisiRadniNalog.Location = new Point(512, 162);
-            btObrisiRadniNalog.Margin = new Padding(3, 2, 3, 2);
+            btObrisiRadniNalog.Location = new Point(585, 216);
             btObrisiRadniNalog.Name = "btObrisiRadniNalog";
-            btObrisiRadniNalog.Size = new Size(122, 34);
+            btObrisiRadniNalog.Size = new Size(139, 45);
             btObrisiRadniNalog.TabIndex = 6;
             btObrisiRadniNalog.Text = "Obrisi radni nalog";
             btObrisiRadniNalog.UseVisualStyleBackColor = true;
@@ -521,10 +522,9 @@
             // 
             // btIzmeniRadniNalog
             // 
-            btIzmeniRadniNalog.Location = new Point(512, 95);
-            btIzmeniRadniNalog.Margin = new Padding(3, 2, 3, 2);
+            btIzmeniRadniNalog.Location = new Point(585, 127);
             btIzmeniRadniNalog.Name = "btIzmeniRadniNalog";
-            btIzmeniRadniNalog.Size = new Size(122, 41);
+            btIzmeniRadniNalog.Size = new Size(139, 55);
             btIzmeniRadniNalog.TabIndex = 5;
             btIzmeniRadniNalog.Text = "Izmeni radni nalog";
             btIzmeniRadniNalog.UseVisualStyleBackColor = true;
@@ -532,10 +532,9 @@
             // 
             // btDodajRadniNalog
             // 
-            btDodajRadniNalog.Location = new Point(512, 43);
-            btDodajRadniNalog.Margin = new Padding(3, 2, 3, 2);
+            btDodajRadniNalog.Location = new Point(585, 57);
             btDodajRadniNalog.Name = "btDodajRadniNalog";
-            btDodajRadniNalog.Size = new Size(122, 34);
+            btDodajRadniNalog.Size = new Size(139, 45);
             btDodajRadniNalog.TabIndex = 4;
             btDodajRadniNalog.Text = "Dodaj radni nalog";
             btDodajRadniNalog.UseVisualStyleBackColor = true;
@@ -548,20 +547,18 @@
             tabPage5.Controls.Add(btIzmeniNapredak);
             tabPage5.Controls.Add(btDodajNapredak);
             tabPage5.Controls.Add(napreci);
-            tabPage5.Location = new Point(4, 24);
-            tabPage5.Margin = new Padding(3, 2, 3, 2);
+            tabPage5.Location = new Point(4, 29);
             tabPage5.Name = "tabPage5";
-            tabPage5.Size = new Size(682, 310);
+            tabPage5.Size = new Size(781, 418);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Napreci";
             tabPage5.UseVisualStyleBackColor = true;
             // 
             // btFotografije
             // 
-            btFotografije.Location = new Point(477, 230);
-            btFotografije.Margin = new Padding(3, 2, 3, 2);
+            btFotografije.Location = new Point(545, 307);
             btFotografije.Name = "btFotografije";
-            btFotografije.Size = new Size(122, 54);
+            btFotografije.Size = new Size(139, 72);
             btFotografije.TabIndex = 10;
             btFotografije.Text = "Fotografije";
             btFotografije.UseVisualStyleBackColor = true;
@@ -569,10 +566,9 @@
             // 
             // btObrisiNapredak
             // 
-            btObrisiNapredak.Location = new Point(477, 150);
-            btObrisiNapredak.Margin = new Padding(3, 2, 3, 2);
+            btObrisiNapredak.Location = new Point(545, 200);
             btObrisiNapredak.Name = "btObrisiNapredak";
-            btObrisiNapredak.Size = new Size(122, 54);
+            btObrisiNapredak.Size = new Size(139, 72);
             btObrisiNapredak.TabIndex = 9;
             btObrisiNapredak.Text = "Obrisi napredak";
             btObrisiNapredak.UseVisualStyleBackColor = true;
@@ -580,10 +576,9 @@
             // 
             // btIzmeniNapredak
             // 
-            btIzmeniNapredak.Location = new Point(477, 80);
-            btIzmeniNapredak.Margin = new Padding(3, 2, 3, 2);
+            btIzmeniNapredak.Location = new Point(545, 107);
             btIzmeniNapredak.Name = "btIzmeniNapredak";
-            btIzmeniNapredak.Size = new Size(122, 46);
+            btIzmeniNapredak.Size = new Size(139, 61);
             btIzmeniNapredak.TabIndex = 8;
             btIzmeniNapredak.Text = "Izmeni napredak";
             btIzmeniNapredak.UseVisualStyleBackColor = true;
@@ -591,10 +586,9 @@
             // 
             // btDodajNapredak
             // 
-            btDodajNapredak.Location = new Point(477, 14);
-            btDodajNapredak.Margin = new Padding(3, 2, 3, 2);
+            btDodajNapredak.Location = new Point(545, 19);
             btDodajNapredak.Name = "btDodajNapredak";
-            btDodajNapredak.Size = new Size(122, 43);
+            btDodajNapredak.Size = new Size(139, 57);
             btDodajNapredak.TabIndex = 7;
             btDodajNapredak.Text = "Dodaj napredak";
             btDodajNapredak.UseVisualStyleBackColor = true;
@@ -605,10 +599,9 @@
             napreci.Columns.AddRange(new ColumnHeader[] { columnHeader14, columnHeader5, columnHeader6, columnHeader16, columnHeader17, columnHeader18 });
             napreci.FullRowSelect = true;
             napreci.GridLines = true;
-            napreci.Location = new Point(2, 2);
-            napreci.Margin = new Padding(3, 2, 3, 2);
+            napreci.Location = new Point(2, 3);
             napreci.Name = "napreci";
-            napreci.Size = new Size(416, 314);
+            napreci.Size = new Size(475, 417);
             napreci.TabIndex = 0;
             napreci.UseCompatibleStateImageBehavior = false;
             napreci.View = View.Details;
@@ -654,21 +647,19 @@
             tabPage6.Controls.Add(btIzmeniKontrolu);
             tabPage6.Controls.Add(btDodajKontrolu);
             tabPage6.Controls.Add(kontrolaKvaliteta);
-            tabPage6.Location = new Point(4, 24);
-            tabPage6.Margin = new Padding(3, 2, 3, 2);
+            tabPage6.Location = new Point(4, 29);
             tabPage6.Name = "tabPage6";
-            tabPage6.Padding = new Padding(3, 2, 3, 2);
-            tabPage6.Size = new Size(682, 310);
+            tabPage6.Padding = new Padding(3);
+            tabPage6.Size = new Size(781, 418);
             tabPage6.TabIndex = 5;
             tabPage6.Text = "Kontrola kvaliteta";
             tabPage6.UseVisualStyleBackColor = true;
             // 
             // btStavkaKontrole
             // 
-            btStavkaKontrole.Location = new Point(490, 220);
-            btStavkaKontrole.Margin = new Padding(3, 2, 3, 2);
+            btStavkaKontrole.Location = new Point(560, 293);
             btStavkaKontrole.Name = "btStavkaKontrole";
-            btStavkaKontrole.Size = new Size(122, 54);
+            btStavkaKontrole.Size = new Size(139, 72);
             btStavkaKontrole.TabIndex = 10;
             btStavkaKontrole.Text = "Stavka kontrole";
             btStavkaKontrole.UseVisualStyleBackColor = true;
@@ -676,10 +667,9 @@
             // 
             // btObrisiKontrolu
             // 
-            btObrisiKontrolu.Location = new Point(490, 150);
-            btObrisiKontrolu.Margin = new Padding(3, 2, 3, 2);
+            btObrisiKontrolu.Location = new Point(560, 200);
             btObrisiKontrolu.Name = "btObrisiKontrolu";
-            btObrisiKontrolu.Size = new Size(122, 54);
+            btObrisiKontrolu.Size = new Size(139, 72);
             btObrisiKontrolu.TabIndex = 9;
             btObrisiKontrolu.Text = "Obrisi kontrolu kvaliteta";
             btObrisiKontrolu.UseVisualStyleBackColor = true;
@@ -687,10 +677,9 @@
             // 
             // btIzmeniKontrolu
             // 
-            btIzmeniKontrolu.Location = new Point(490, 80);
-            btIzmeniKontrolu.Margin = new Padding(3, 2, 3, 2);
+            btIzmeniKontrolu.Location = new Point(560, 107);
             btIzmeniKontrolu.Name = "btIzmeniKontrolu";
-            btIzmeniKontrolu.Size = new Size(122, 46);
+            btIzmeniKontrolu.Size = new Size(139, 61);
             btIzmeniKontrolu.TabIndex = 8;
             btIzmeniKontrolu.Text = "Izmeni kontrolu kvaliteta";
             btIzmeniKontrolu.UseVisualStyleBackColor = true;
@@ -698,10 +687,9 @@
             // 
             // btDodajKontrolu
             // 
-            btDodajKontrolu.Location = new Point(490, 14);
-            btDodajKontrolu.Margin = new Padding(3, 2, 3, 2);
+            btDodajKontrolu.Location = new Point(560, 19);
             btDodajKontrolu.Name = "btDodajKontrolu";
-            btDodajKontrolu.Size = new Size(122, 43);
+            btDodajKontrolu.Size = new Size(139, 57);
             btDodajKontrolu.TabIndex = 7;
             btDodajKontrolu.Text = "Dodaj kontrolu kvaliteta";
             btDodajKontrolu.UseVisualStyleBackColor = true;
@@ -712,10 +700,9 @@
             kontrolaKvaliteta.Columns.AddRange(new ColumnHeader[] { columnHeader7, columnHeader8, columnHeader11, columnHeader19, columnHeader20, columnHeader21, columnHeader22 });
             kontrolaKvaliteta.FullRowSelect = true;
             kontrolaKvaliteta.GridLines = true;
-            kontrolaKvaliteta.Location = new Point(3, 2);
-            kontrolaKvaliteta.Margin = new Padding(3, 2, 3, 2);
+            kontrolaKvaliteta.Location = new Point(3, 3);
             kontrolaKvaliteta.Name = "kontrolaKvaliteta";
-            kontrolaKvaliteta.Size = new Size(415, 309);
+            kontrolaKvaliteta.Size = new Size(474, 411);
             kontrolaKvaliteta.TabIndex = 0;
             kontrolaKvaliteta.UseCompatibleStateImageBehavior = false;
             kontrolaKvaliteta.View = View.Details;
@@ -762,147 +749,242 @@
             // 
             // tabPage7
             // 
-            tabPage7.Controls.Add(btObrisiZasOpremu);
-            tabPage7.Controls.Add(btIzmeniZasOpremu);
-            tabPage7.Controls.Add(btDodajZasOpremu);
-            tabPage7.Controls.Add(zastitnaoprema);
-            tabPage7.Location = new Point(4, 24);
-            tabPage7.Margin = new Padding(3, 2, 3, 2);
+            tabPage7.Controls.Add(btObrisiAngazovanje);
+            tabPage7.Controls.Add(btIzmeniAngazovanje);
+            tabPage7.Controls.Add(btDodajAngazovanje);
+            tabPage7.Controls.Add(angazovaneOsobe);
+            tabPage7.Location = new Point(4, 29);
             tabPage7.Name = "tabPage7";
-            tabPage7.Padding = new Padding(3, 2, 3, 2);
-            tabPage7.Size = new Size(682, 310);
+            tabPage7.Padding = new Padding(3);
+            tabPage7.Size = new Size(781, 418);
             tabPage7.TabIndex = 6;
-            tabPage7.Text = "Osobe";
+            tabPage7.Text = "Angazovane osobe";
             tabPage7.UseVisualStyleBackColor = true;
             // 
-            // btObrisiZasOpremu
+            // btObrisiAngazovanje
             // 
-            btObrisiZasOpremu.Location = new Point(517, 147);
-            btObrisiZasOpremu.Margin = new Padding(3, 2, 3, 2);
-            btObrisiZasOpremu.Name = "btObrisiZasOpremu";
-            btObrisiZasOpremu.Size = new Size(122, 54);
-            btObrisiZasOpremu.TabIndex = 6;
-            btObrisiZasOpremu.Text = "Obrisi zastitnu opremu";
-            btObrisiZasOpremu.UseVisualStyleBackColor = true;
+            btObrisiAngazovanje.Location = new Point(591, 196);
+            btObrisiAngazovanje.Name = "btObrisiAngazovanje";
+            btObrisiAngazovanje.Size = new Size(139, 72);
+            btObrisiAngazovanje.TabIndex = 6;
+            btObrisiAngazovanje.Text = "Obrisi angazovanje";
+            btObrisiAngazovanje.UseVisualStyleBackColor = true;
+            btObrisiAngazovanje.Click += btObrisiAngazovanje_Click;
             // 
-            // btIzmeniZasOpremu
+            // btIzmeniAngazovanje
             // 
-            btIzmeniZasOpremu.Location = new Point(517, 77);
-            btIzmeniZasOpremu.Margin = new Padding(3, 2, 3, 2);
-            btIzmeniZasOpremu.Name = "btIzmeniZasOpremu";
-            btIzmeniZasOpremu.Size = new Size(122, 46);
-            btIzmeniZasOpremu.TabIndex = 5;
-            btIzmeniZasOpremu.Text = "Izmeni zastitnu opremu";
-            btIzmeniZasOpremu.UseVisualStyleBackColor = true;
+            btIzmeniAngazovanje.Location = new Point(591, 103);
+            btIzmeniAngazovanje.Name = "btIzmeniAngazovanje";
+            btIzmeniAngazovanje.Size = new Size(139, 61);
+            btIzmeniAngazovanje.TabIndex = 5;
+            btIzmeniAngazovanje.Text = "Izmeni angazovanje";
+            btIzmeniAngazovanje.UseVisualStyleBackColor = true;
+            btIzmeniAngazovanje.Click += btIzmeniAngazovanje_Click;
             // 
-            // btDodajZasOpremu
+            // btDodajAngazovanje
             // 
-            btDodajZasOpremu.Location = new Point(517, 11);
-            btDodajZasOpremu.Margin = new Padding(3, 2, 3, 2);
-            btDodajZasOpremu.Name = "btDodajZasOpremu";
-            btDodajZasOpremu.Size = new Size(122, 43);
-            btDodajZasOpremu.TabIndex = 4;
-            btDodajZasOpremu.Text = "Dodaj zastitnu opremu";
-            btDodajZasOpremu.UseVisualStyleBackColor = true;
+            btDodajAngazovanje.Location = new Point(591, 15);
+            btDodajAngazovanje.Name = "btDodajAngazovanje";
+            btDodajAngazovanje.Size = new Size(139, 57);
+            btDodajAngazovanje.TabIndex = 4;
+            btDodajAngazovanje.Text = "Dodaj angazovanje";
+            btDodajAngazovanje.UseVisualStyleBackColor = true;
+            btDodajAngazovanje.Click += btDodajAngazovanje_Click;
             // 
-            // zastitnaoprema
+            // angazovaneOsobe
             // 
-            zastitnaoprema.Columns.AddRange(new ColumnHeader[] { columnHeader9, columnHeader10 });
-            zastitnaoprema.FullRowSelect = true;
-            zastitnaoprema.GridLines = true;
-            zastitnaoprema.Location = new Point(3, 2);
-            zastitnaoprema.Margin = new Padding(3, 2, 3, 2);
-            zastitnaoprema.Name = "zastitnaoprema";
-            zastitnaoprema.Size = new Size(467, 309);
-            zastitnaoprema.TabIndex = 0;
-            zastitnaoprema.UseCompatibleStateImageBehavior = false;
-            zastitnaoprema.View = View.Details;
-            // 
-            // columnHeader9
-            // 
-            columnHeader9.Text = "Id";
+            angazovaneOsobe.Columns.AddRange(new ColumnHeader[] { columnHeader10, columnHeader24, columnHeader25, columnHeader26 });
+            angazovaneOsobe.FullRowSelect = true;
+            angazovaneOsobe.GridLines = true;
+            angazovaneOsobe.Location = new Point(3, 3);
+            angazovaneOsobe.Name = "angazovaneOsobe";
+            angazovaneOsobe.Size = new Size(533, 411);
+            angazovaneOsobe.TabIndex = 0;
+            angazovaneOsobe.UseCompatibleStateImageBehavior = false;
+            angazovaneOsobe.View = View.Details;
             // 
             // columnHeader10
             // 
-            columnHeader10.Text = "Zastitna oprema";
+            columnHeader10.Text = "Osoba";
             columnHeader10.TextAlign = HorizontalAlignment.Center;
             columnHeader10.Width = 150;
             // 
+            // columnHeader24
+            // 
+            columnHeader24.Text = "Datum od";
+            columnHeader24.TextAlign = HorizontalAlignment.Center;
+            // 
+            // columnHeader25
+            // 
+            columnHeader25.Text = "Datum do";
+            columnHeader25.TextAlign = HorizontalAlignment.Center;
+            // 
+            // columnHeader26
+            // 
+            columnHeader26.Text = "Status";
+            columnHeader26.TextAlign = HorizontalAlignment.Center;
+            // 
             // tabPage8
             // 
-            tabPage8.Controls.Add(btObrisiSertifikat);
-            tabPage8.Controls.Add(btIzmeniSertifkat);
-            tabPage8.Controls.Add(btDodajSertifikat);
-            tabPage8.Controls.Add(sertifikatiSpec);
-            tabPage8.Location = new Point(4, 24);
-            tabPage8.Margin = new Padding(3, 2, 3, 2);
+            tabPage8.Controls.Add(btObrisiAngazuj);
+            tabPage8.Controls.Add(btIzmeniAngazuj);
+            tabPage8.Controls.Add(btDodajAngazuj);
+            tabPage8.Controls.Add(angazujeOpremu);
+            tabPage8.Location = new Point(4, 29);
             tabPage8.Name = "tabPage8";
-            tabPage8.Padding = new Padding(3, 2, 3, 2);
-            tabPage8.Size = new Size(682, 310);
+            tabPage8.Padding = new Padding(3);
+            tabPage8.Size = new Size(781, 418);
             tabPage8.TabIndex = 7;
-            tabPage8.Text = "Oprema";
+            tabPage8.Text = "Angazovana oprema";
             tabPage8.UseVisualStyleBackColor = true;
             // 
-            // btObrisiSertifikat
+            // btObrisiAngazuj
             // 
-            btObrisiSertifikat.Location = new Point(509, 150);
-            btObrisiSertifikat.Margin = new Padding(3, 2, 3, 2);
-            btObrisiSertifikat.Name = "btObrisiSertifikat";
-            btObrisiSertifikat.Size = new Size(122, 54);
-            btObrisiSertifikat.TabIndex = 9;
-            btObrisiSertifikat.Text = "Obrisi sertifikat";
-            btObrisiSertifikat.UseVisualStyleBackColor = true;
+            btObrisiAngazuj.Location = new Point(582, 200);
+            btObrisiAngazuj.Name = "btObrisiAngazuj";
+            btObrisiAngazuj.Size = new Size(139, 72);
+            btObrisiAngazuj.TabIndex = 9;
+            btObrisiAngazuj.Text = "Obrisi angazovanje";
+            btObrisiAngazuj.UseVisualStyleBackColor = true;
+            btObrisiAngazuj.Click += btObrisiAngazuj_Click;
             // 
-            // btIzmeniSertifkat
+            // btIzmeniAngazuj
             // 
-            btIzmeniSertifkat.Location = new Point(509, 80);
-            btIzmeniSertifkat.Margin = new Padding(3, 2, 3, 2);
-            btIzmeniSertifkat.Name = "btIzmeniSertifkat";
-            btIzmeniSertifkat.Size = new Size(122, 46);
-            btIzmeniSertifkat.TabIndex = 8;
-            btIzmeniSertifkat.Text = "Izmeni sertifikat";
-            btIzmeniSertifkat.UseVisualStyleBackColor = true;
+            btIzmeniAngazuj.Location = new Point(582, 107);
+            btIzmeniAngazuj.Name = "btIzmeniAngazuj";
+            btIzmeniAngazuj.Size = new Size(139, 61);
+            btIzmeniAngazuj.TabIndex = 8;
+            btIzmeniAngazuj.Text = "Izmeni angazovanje";
+            btIzmeniAngazuj.UseVisualStyleBackColor = true;
+            btIzmeniAngazuj.Click += btIzmeniAngazuj_Click;
             // 
-            // btDodajSertifikat
+            // btDodajAngazuj
             // 
-            btDodajSertifikat.Location = new Point(509, 14);
-            btDodajSertifikat.Margin = new Padding(3, 2, 3, 2);
-            btDodajSertifikat.Name = "btDodajSertifikat";
-            btDodajSertifikat.Size = new Size(122, 43);
-            btDodajSertifikat.TabIndex = 7;
-            btDodajSertifikat.Text = "Dodaj sertifikat";
-            btDodajSertifikat.UseVisualStyleBackColor = true;
+            btDodajAngazuj.Location = new Point(582, 19);
+            btDodajAngazuj.Name = "btDodajAngazuj";
+            btDodajAngazuj.Size = new Size(139, 57);
+            btDodajAngazuj.TabIndex = 7;
+            btDodajAngazuj.Text = "Angazuj opremu";
+            btDodajAngazuj.UseVisualStyleBackColor = true;
+            btDodajAngazuj.Click += btDodajAngazuj_Click;
             // 
-            // sertifikatiSpec
+            // angazujeOpremu
             // 
-            sertifikatiSpec.Columns.AddRange(new ColumnHeader[] { columnHeader12, columnHeader13 });
-            sertifikatiSpec.FullRowSelect = true;
-            sertifikatiSpec.GridLines = true;
-            sertifikatiSpec.Location = new Point(3, 2);
-            sertifikatiSpec.Margin = new Padding(3, 2, 3, 2);
-            sertifikatiSpec.Name = "sertifikatiSpec";
-            sertifikatiSpec.Size = new Size(455, 309);
-            sertifikatiSpec.TabIndex = 0;
-            sertifikatiSpec.UseCompatibleStateImageBehavior = false;
-            sertifikatiSpec.View = View.Details;
+            angazujeOpremu.Columns.AddRange(new ColumnHeader[] { columnHeader12, columnHeader13, columnHeader9, columnHeader23 });
+            angazujeOpremu.FullRowSelect = true;
+            angazujeOpremu.GridLines = true;
+            angazujeOpremu.Location = new Point(3, 3);
+            angazujeOpremu.Name = "angazujeOpremu";
+            angazujeOpremu.Size = new Size(519, 411);
+            angazujeOpremu.TabIndex = 0;
+            angazujeOpremu.UseCompatibleStateImageBehavior = false;
+            angazujeOpremu.View = View.Details;
             // 
             // columnHeader12
             // 
-            columnHeader12.Text = "Id";
+            columnHeader12.Text = "Oprema";
             // 
             // columnHeader13
             // 
-            columnHeader13.Text = "Sertifikat";
+            columnHeader13.Text = "Datum od";
             columnHeader13.TextAlign = HorizontalAlignment.Center;
             columnHeader13.Width = 150;
             // 
+            // columnHeader9
+            // 
+            columnHeader9.Text = "Datum do";
+            columnHeader9.TextAlign = HorizontalAlignment.Center;
+            // 
+            // columnHeader23
+            // 
+            columnHeader23.Text = "Broj sati";
+            columnHeader23.TextAlign = HorizontalAlignment.Center;
+            // 
+            // tabPage3
+            // 
+            tabPage3.Controls.Add(btObrisiKoriscenje);
+            tabPage3.Controls.Add(btIzmeniKoriscenje);
+            tabPage3.Controls.Add(btKoristiMaterijal);
+            tabPage3.Controls.Add(groupBox4);
+            tabPage3.Location = new Point(4, 29);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Padding = new Padding(3);
+            tabPage3.Size = new Size(781, 418);
+            tabPage3.TabIndex = 8;
+            tabPage3.Text = "Korisceni materijali";
+            tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // btObrisiKoriscenje
+            // 
+            btObrisiKoriscenje.Location = new Point(612, 214);
+            btObrisiKoriscenje.Name = "btObrisiKoriscenje";
+            btObrisiKoriscenje.Size = new Size(139, 72);
+            btObrisiKoriscenje.TabIndex = 12;
+            btObrisiKoriscenje.Text = "Obrisi koriscenje";
+            btObrisiKoriscenje.UseVisualStyleBackColor = true;
+            // 
+            // btIzmeniKoriscenje
+            // 
+            btIzmeniKoriscenje.Location = new Point(612, 121);
+            btIzmeniKoriscenje.Name = "btIzmeniKoriscenje";
+            btIzmeniKoriscenje.Size = new Size(139, 61);
+            btIzmeniKoriscenje.TabIndex = 11;
+            btIzmeniKoriscenje.Text = "Izmeni koriscenje";
+            btIzmeniKoriscenje.UseVisualStyleBackColor = true;
+            // 
+            // btKoristiMaterijal
+            // 
+            btKoristiMaterijal.Location = new Point(612, 33);
+            btKoristiMaterijal.Name = "btKoristiMaterijal";
+            btKoristiMaterijal.Size = new Size(139, 57);
+            btKoristiMaterijal.TabIndex = 10;
+            btKoristiMaterijal.Text = "Dodaj koriscenje";
+            btKoristiMaterijal.UseVisualStyleBackColor = true;
+            btKoristiMaterijal.Click += btKoristiMaterijal_Click;
+            // 
+            // groupBox4
+            // 
+            groupBox4.Controls.Add(koriscenje);
+            groupBox4.Location = new Point(0, 0);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(578, 418);
+            groupBox4.TabIndex = 0;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Koristi";
+            // 
+            // koriscenje
+            // 
+            koriscenje.Columns.AddRange(new ColumnHeader[] { columnHeader27, columnHeader28, columnHeader29 });
+            koriscenje.Dock = DockStyle.Fill;
+            koriscenje.FullRowSelect = true;
+            koriscenje.GridLines = true;
+            koriscenje.Location = new Point(3, 23);
+            koriscenje.Name = "koriscenje";
+            koriscenje.Size = new Size(572, 392);
+            koriscenje.TabIndex = 0;
+            koriscenje.UseCompatibleStateImageBehavior = false;
+            koriscenje.View = View.Details;
+            // 
+            // columnHeader27
+            // 
+            columnHeader27.Text = "Id";
+            // 
+            // columnHeader28
+            // 
+            columnHeader28.Text = "Materijal";
+            columnHeader28.TextAlign = HorizontalAlignment.Center;
+            // 
+            // columnHeader29
+            // 
+            columnHeader29.Text = "Kolicina";
+            columnHeader29.TextAlign = HorizontalAlignment.Center;
+            // 
             // DetaljiZadaciForma
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(700, 338);
+            ClientSize = new Size(800, 451);
             Controls.Add(tabControl1);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "DetaljiZadaciForma";
             Text = "DetaljiZadaciForma";
             Load += DetaljiZadaciForma_Load;
@@ -918,6 +1000,8 @@
             tabPage6.ResumeLayout(false);
             tabPage7.ResumeLayout(false);
             tabPage8.ResumeLayout(false);
+            tabPage3.ResumeLayout(false);
+            groupBox4.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -957,17 +1041,16 @@
         private ColumnHeader columnHeader8;
         private ColumnHeader columnHeader11;
         private TabPage tabPage7;
-        private Button btObrisiZasOpremu;
-        private Button btIzmeniZasOpremu;
-        private Button btDodajZasOpremu;
-        private ListView zastitnaoprema;
-        private ColumnHeader columnHeader9;
+        private Button btObrisiAngazovanje;
+        private Button btIzmeniAngazovanje;
+        private Button btDodajAngazovanje;
+        private ListView angazovaneOsobe;
         private ColumnHeader columnHeader10;
         private TabPage tabPage8;
-        private Button btObrisiSertifikat;
-        private Button btIzmeniSertifkat;
-        private Button btDodajSertifikat;
-        private ListView sertifikatiSpec;
+        private Button btObrisiAngazuj;
+        private Button btIzmeniAngazuj;
+        private Button btDodajAngazuj;
+        private ListView angazujeOpremu;
         private ColumnHeader columnHeader12;
         private ColumnHeader columnHeader13;
         private Label label4;
@@ -1003,5 +1086,19 @@
         private ColumnHeader columnHeader21;
         private Button btStavkaKontrole;
         private ColumnHeader columnHeader22;
+        private ColumnHeader columnHeader24;
+        private ColumnHeader columnHeader25;
+        private ColumnHeader columnHeader26;
+        private ColumnHeader columnHeader9;
+        private ColumnHeader columnHeader23;
+        private TabPage tabPage3;
+        private Button btObrisiKoriscenje;
+        private Button btIzmeniKoriscenje;
+        private Button btKoristiMaterijal;
+        private GroupBox groupBox4;
+        private ListView koriscenje;
+        private ColumnHeader columnHeader27;
+        private ColumnHeader columnHeader28;
+        private ColumnHeader columnHeader29;
     }
 }

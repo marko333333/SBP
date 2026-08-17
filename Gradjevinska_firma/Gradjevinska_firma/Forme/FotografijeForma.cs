@@ -40,7 +40,7 @@ namespace Gradjevinska_firma.Forme
                         f.Putanja
 
                     });
-
+                item.Tag = f;
                 fotografije.Items.Add(item);
             }
             fotografije.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
@@ -61,26 +61,6 @@ namespace Gradjevinska_firma.Forme
 
         private void btIzmeni_Click(object sender, EventArgs e)
         {
-            ListView tabela = fotografije;
-
-            if (tabela.SelectedItems.Count == 0)
-            {
-                MessageBox.Show("Potrebno je odabrati fotografiju iz tabele.");
-                return;
-            }
-
-            int id = int.Parse(
-                tabela.SelectedItems[0].SubItems[0].Text
-            );
-
-            using (IzmeniFotografijuForma forma = new IzmeniFotografijuForma(id, idNapredak))
-            {
-                if (forma.ShowDialog() == DialogResult.OK)
-                {
-                    NapredakBasic napredak = DTOManager.vratiNapredak(idNapredak);
-                    popuniPodacima(napredak);
-                }
-            }
         }
 
         private void fotografije_SelectedIndexChanged(object sender, EventArgs e)
@@ -88,7 +68,7 @@ namespace Gradjevinska_firma.Forme
             if (fotografije.SelectedItems.Count == 0)
                 return;
 
-            string putanja =fotografije.SelectedItems[0].SubItems[0].Text;
+            string putanja = fotografije.SelectedItems[0].SubItems[0].Text;
 
             if (!File.Exists(putanja))
             {
@@ -106,6 +86,35 @@ namespace Gradjevinska_firma.Forme
 
             pbFotografija.Image = Image.FromFile(putanja);
             pbFotografija.SizeMode = PictureBoxSizeMode.Zoom;
+        }
+
+        private void btObrisi_Click(object sender, EventArgs e)
+        {
+            ListView tabela = fotografije;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati fotografiju iz tabele.");
+                return;
+            }
+
+            FotografijaBasic f =(FotografijaBasic)fotografije.SelectedItems[0].Tag;
+
+            string poruka = "Da li zelite da obrisete izabranu fotografiju?";
+            string title = "Pitanje";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(poruka, title, buttons);
+
+            if (result == DialogResult.OK)
+            {
+                DTOManager.obrisiFotografiju(f.IdNapredak, f.Putanja);
+                MessageBox.Show("Brisanje fotografije je uspesno obavljeno!");
+                pbFotografija.Image = null;
+                NapredakBasic napredak = DTOManager.vratiNapredak(idNapredak);
+                popuniPodacima(napredak);
+
+            }
+            
         }
     }
 }
