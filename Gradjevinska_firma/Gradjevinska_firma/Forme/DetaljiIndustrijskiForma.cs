@@ -178,7 +178,7 @@ namespace Gradjevinska_firma.Forme
         //BezbednosiIncidenti
         private void btnDodaj_Click(object sender, EventArgs e)
         {
-            using (DodajBezbednosniIncidentForma forma = new DodajBezbednosniIncidentForma())
+            using (DodajBezbednosniIncidentForma forma = new DodajBezbednosniIncidentForma(IdIndustrijski))//proveri mozda nije Idindustrijski
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {

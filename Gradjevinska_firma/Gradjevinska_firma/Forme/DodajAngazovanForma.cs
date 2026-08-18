@@ -55,7 +55,7 @@ namespace Gradjevinska_firma.Forme
                 {
                     cbOsoba.Items.Add(o);
                 }
-                
+
             }
 
         }
@@ -74,7 +74,7 @@ namespace Gradjevinska_firma.Forme
                 return;
             }
 
-            OsobaPregled izabranaOsoba =(OsobaPregled)cbOsoba.SelectedItem;
+            OsobaPregled izabranaOsoba = (OsobaPregled)cbOsoba.SelectedItem;
 
             OsobaBasic osoba = new OsobaBasic();
 
@@ -82,7 +82,7 @@ namespace Gradjevinska_firma.Forme
             osoba.Ime = izabranaOsoba.Ime;
             osoba.Prezime = izabranaOsoba.Prezime;
 
-            ZadatakBasic zadatak =DTOManager.vratiZadatak(idZadatka);
+            ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
 
             DateTime? datumDo = null;
 
@@ -92,7 +92,7 @@ namespace Gradjevinska_firma.Forme
             }
 
             AngazovanBasic angazovan = new AngazovanBasic(
-                zadatak,osoba,dtpDatumOd.Value,datumDo,cbStatus.SelectedItem.ToString()
+                zadatak, osoba, dtpDatumOd.Value, datumDo, cbStatus.SelectedItem.ToString()
             );
 
             DTOManager.dodajAngazovanje(angazovan);
@@ -101,6 +101,11 @@ namespace Gradjevinska_firma.Forme
 
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void cbOsoba_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

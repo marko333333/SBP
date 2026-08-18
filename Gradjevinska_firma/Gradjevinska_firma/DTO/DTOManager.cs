@@ -37,7 +37,7 @@ namespace Gradjevinska_firma.DTO
             }
             return osobe;
         }
-
+          
         public static OsobaBasic vratiOsobu(int id)
         {
             OsobaBasic osoba = new OsobaBasic();
@@ -81,6 +81,45 @@ namespace Gradjevinska_firma.DTO
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        public static List<OsobaPregled> vratiOsobeNaProjektu(int idProjekta)
+        {
+            List<OsobaPregled> osobe = new List<OsobaPregled>();
+
+            ProjekatBasic projekat = vratiProjekat(idProjekta);
+
+            if (projekat == null)
+                return osobe;
+
+            foreach (FazaBasic faza in projekat.Faze)
+            {
+                foreach (ZadatakBasic zadatak in faza.Zadaci)
+                {
+                    foreach (AngazovanBasic angazovan in zadatak.Angazovani)
+                    {
+                        OsobaBasic osoba = angazovan.Osoba;
+
+                        if (osoba == null)
+                            continue;
+
+                        // Provera da osoba vec nije dodata
+                        if (!osobe.Any(o => o.Id == osoba.Id))
+                        {
+                            osobe.Add(new OsobaPregled(
+                                osoba.Id,
+                                osoba.Jmbg,
+                                osoba.Ime,
+                                osoba.Prezime,
+                                osoba.DatumRodjenja,
+                                osoba.Struka
+                            ));
+                        }
+                    }
+                }
+            }
+
+            return osobe;
         }
 
 
@@ -1111,6 +1150,7 @@ namespace Gradjevinska_firma.DTO
 
                 projekat.Ugovori = vratiUgovoreProjekta(id);
                 projekat.BezbednosniIncidenti = vratiBezbednosniIncidenteProjekta(id);
+                projekat.Faze = vratiFazeProjekta(id);
 
                 s.Close();
             }
@@ -2167,6 +2207,58 @@ namespace Gradjevinska_firma.DTO
                 BezbednosniIncident inci = s.Load<BezbednosniIncident>(id);
 
                 s.Delete(inci);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void dodajBezbednosniIncident(BezbednosniIncidentBasic d, string tipIncidenta)//proveri
+        {
+            try
+            {
+                 ISession s = DataLayer.GetSession();
+
+                Osoba osoba = s.Get<Osoba>(d.Osoba.Id);
+
+                if (osoba == null)
+                {
+                    MessageBox.Show("Osoba ne postoji.");
+                    return;
+                }
+
+                Projekat projekat = s.Get<Projekat>(d.Projekat.ID);
+                if(projekat == null)
+                {
+                    MessageBox.Show("Projekat ne postoji.");
+                    return;
+                }
+
+
+                BezbednosniIncident incident = tipIncidenta switch
+                {
+                    "PovredaNaRadu" => new PovredaNaRadu(),
+                    "KvarOpreme" => new KvarOpreme(),
+                    "NepostovanjeProcedura" => new NepostovanjeProcedura(),
+                    "OpasnaSituacija" => new OpasnaSituacija(),
+                    "EkoloskiIncident" => new EkoloskiIncident(),
+                    _ => throw new ArgumentException("Nepoznat tip incidenta.")
+                };
+
+                incident.Opis = d.Opis;
+                incident.Datum = d.Datum;
+                incident.Lokacija = d.Lokacija;
+                incident.Preduzete_mere = d.Preduzete_mere;
+                incident.Posledice = d.Posledice;
+                incident.Tip_incidenta = d.Tip_incidenta;
+                incident.Osoba = osoba;
+                incident.Projekat = projekat;
+
+                s.Save(incident);
                 s.Flush();
 
                 s.Close();

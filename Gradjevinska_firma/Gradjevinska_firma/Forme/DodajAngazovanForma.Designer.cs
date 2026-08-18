@@ -54,17 +54,20 @@
             groupBox1.Controls.Add(label1);
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Location = new Point(0, 0);
+            groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(508, 352);
+            groupBox1.Padding = new Padding(3, 2, 3, 2);
+            groupBox1.Size = new Size(444, 264);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Dodaj angazovanje";
             // 
             // btDodaj
             // 
-            btDodaj.Location = new Point(32, 289);
+            btDodaj.Location = new Point(28, 217);
+            btDodaj.Margin = new Padding(3, 2, 3, 2);
             btDodaj.Name = "btDodaj";
-            btDodaj.Size = new Size(94, 29);
+            btDodaj.Size = new Size(82, 22);
             btDodaj.TabIndex = 8;
             btDodaj.Text = "Dodaj";
             btDodaj.UseVisualStyleBackColor = true;
@@ -74,75 +77,81 @@
             // 
             cbStatus.FormattingEnabled = true;
             cbStatus.Items.AddRange(new object[] { "Dodeljen", "Odsutan", "Razduzen" });
-            cbStatus.Location = new Point(178, 200);
+            cbStatus.Location = new Point(156, 150);
+            cbStatus.Margin = new Padding(3, 2, 3, 2);
             cbStatus.Name = "cbStatus";
-            cbStatus.Size = new Size(151, 28);
+            cbStatus.Size = new Size(133, 23);
             cbStatus.TabIndex = 7;
             // 
             // dtpDatumDo
             // 
-            dtpDatumDo.Location = new Point(117, 148);
+            dtpDatumDo.Location = new Point(102, 111);
+            dtpDatumDo.Margin = new Padding(3, 2, 3, 2);
             dtpDatumDo.Name = "dtpDatumDo";
-            dtpDatumDo.Size = new Size(250, 27);
+            dtpDatumDo.Size = new Size(219, 23);
             dtpDatumDo.TabIndex = 6;
             // 
             // dtpDatumOd
             // 
-            dtpDatumOd.Location = new Point(117, 96);
+            dtpDatumOd.Location = new Point(102, 72);
+            dtpDatumOd.Margin = new Padding(3, 2, 3, 2);
             dtpDatumOd.Name = "dtpDatumOd";
-            dtpDatumOd.Size = new Size(250, 27);
+            dtpDatumOd.Size = new Size(219, 23);
             dtpDatumOd.TabIndex = 5;
             // 
             // cbOsoba
             // 
             cbOsoba.FormattingEnabled = true;
-            cbOsoba.Location = new Point(93, 52);
+            cbOsoba.Location = new Point(81, 39);
+            cbOsoba.Margin = new Padding(3, 2, 3, 2);
             cbOsoba.Name = "cbOsoba";
-            cbOsoba.Size = new Size(215, 28);
+            cbOsoba.Size = new Size(189, 23);
             cbOsoba.TabIndex = 4;
+            cbOsoba.SelectedIndexChanged += cbOsoba_SelectedIndexChanged;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(32, 203);
+            label4.Location = new Point(28, 152);
             label4.Name = "label4";
-            label4.Size = new Size(140, 20);
+            label4.Size = new Size(111, 15);
             label4.TabIndex = 3;
             label4.Text = "Status angazovanja:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(32, 153);
+            label3.Location = new Point(28, 115);
             label3.Name = "label3";
-            label3.Size = new Size(79, 20);
+            label3.Size = new Size(63, 15);
             label3.TabIndex = 2;
             label3.Text = "Datum do:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(32, 101);
+            label2.Location = new Point(28, 76);
             label2.Name = "label2";
-            label2.Size = new Size(79, 20);
+            label2.Size = new Size(63, 15);
             label2.TabIndex = 1;
             label2.Text = "Datum od:";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(32, 55);
+            label1.Location = new Point(28, 41);
             label1.Name = "label1";
-            label1.Size = new Size(55, 20);
+            label1.Size = new Size(44, 15);
             label1.TabIndex = 0;
             label1.Text = "Osoba:";
             // 
             // DodajAngazovanForma
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(508, 352);
+            ClientSize = new Size(444, 264);
             Controls.Add(groupBox1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "DodajAngazovanForma";
             Text = "DodajAngazovanForma";
             Load += DodajAngazovanForma_Load;
