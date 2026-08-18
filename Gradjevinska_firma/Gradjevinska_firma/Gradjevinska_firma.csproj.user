@@ -19,6 +19,9 @@
     <Compile Update="Forme\DodajAngazovanForma.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\DodajBezbednosniIncidentForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\DodajFotografijuForma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +89,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\IzmeniAngazujForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\IzmeniBezbednosniIncidentForma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\IzmeniIndustrijskiForma.cs">

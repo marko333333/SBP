@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FluentNHibernate.Testing.Values;
 using Gradjevinska_firma.DTO;
 using Gradjevinska_firma.Entiteti;
 
@@ -64,17 +65,17 @@ namespace Gradjevinska_firma.Forme
                 popuniPodacimaUgovora(ugovori);
 
             }
-            else if (tabControl1.SelectedIndex == 2) 
+            else if (tabControl1.SelectedIndex == 2)
             {
                 List<BezbednosniIncidentBasic> bezbednosniIncidenti = DTOManager.vratiBezbednosniIncidenteProjekta(IdIndustrijski);
                 popuniPodacimaBezbednosnihIncidenta(bezbednosniIncidenti);
             }
-            else if(tabControl1.SelectedIndex == 3)
+            else if (tabControl1.SelectedIndex == 3)
             {
                 List<FakturaBasic> fakture = DTOManager.vratiFaktureProjekta(IdIndustrijski);
                 popuniPodacimaFakture(fakture);
             }
-            else if(tabControl1.SelectedIndex == 4)
+            else if (tabControl1.SelectedIndex == 4)
             {
                 List<FazaBasic> faze = DTOManager.vratiFazeProjekta(IdIndustrijski);
                 popuniPodacimaFaza(faze);
@@ -108,7 +109,7 @@ namespace Gradjevinska_firma.Forme
         {
             Incidenti.Items.Clear();
 
-            foreach(BezbednosniIncidentBasic inc in incidenti)
+            foreach (BezbednosniIncidentBasic inc in incidenti)
             {
                 ListViewItem item = new ListViewItem(
                      new string[]
@@ -156,7 +157,7 @@ namespace Gradjevinska_firma.Forme
         {
             Faze.Items.Clear();
 
-            foreach(FazaBasic f in faze)
+            foreach (FazaBasic f in faze)
             {
                 ListViewItem item = new ListViewItem(
                      new string[]
@@ -172,6 +173,72 @@ namespace Gradjevinska_firma.Forme
             }
             Faze.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             this.Faze.Refresh();
+        }
+
+        //BezbednosiIncidenti
+        private void btnDodaj_Click(object sender, EventArgs e)
+        {
+            using (DodajBezbednosniIncidentForma forma = new DodajBezbednosniIncidentForma())
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    this.Incidenti.Refresh();//proveri mozda ne treba ovako
+                }
+            }
+        }
+
+        private void btnIzmeni_Click(object sender, EventArgs e)
+        {
+            ListView tabela = Incidenti;//proveri
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati bezbednosni incident iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+
+            using (IzmeniBezbednosniIncidentForma forma = new IzmeniBezbednosniIncidentForma(id))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    this.Incidenti.Refresh();//proveri
+                }
+            }
+        }
+
+        private void btnObrisi_Click(object sender, EventArgs e)
+        {
+            ListView tabela = Incidenti;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati incident iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+            string poruka = "Da li zelite da obrisete izabrani incident?";
+            string title = "Pitanje";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(poruka, title, buttons);
+
+            if (result == DialogResult.OK)
+            {
+                DTOManager.obrisiBezbednosniIncident(id);
+                MessageBox.Show("Brisanje incidenta je uspesno obavljeno!");
+                popuniPodacima();
+
+            }
+            else
+            {
+
+            }
         }
     }
 

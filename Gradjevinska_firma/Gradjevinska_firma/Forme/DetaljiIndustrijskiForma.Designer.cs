@@ -55,6 +55,9 @@
             Valuta = new ColumnHeader();
             Rok = new ColumnHeader();
             tabPage3 = new TabPage();
+            btnObrisi = new Button();
+            btnIzmeni = new Button();
+            btnDodaj = new Button();
             Incidenti = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
@@ -324,6 +327,9 @@
             // 
             // tabPage3
             // 
+            tabPage3.Controls.Add(btnObrisi);
+            tabPage3.Controls.Add(btnIzmeni);
+            tabPage3.Controls.Add(btnDodaj);
             tabPage3.Controls.Add(Incidenti);
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
@@ -332,12 +338,42 @@
             tabPage3.Text = "Bezbednosni Incidenti";
             tabPage3.UseVisualStyleBackColor = true;
             // 
+            // btnObrisi
+            // 
+            btnObrisi.Location = new Point(660, 147);
+            btnObrisi.Name = "btnObrisi";
+            btnObrisi.Size = new Size(128, 37);
+            btnObrisi.TabIndex = 3;
+            btnObrisi.Text = "Obrisi";
+            btnObrisi.UseVisualStyleBackColor = true;
+            btnObrisi.Click += btnObrisi_Click;
+            // 
+            // btnIzmeni
+            // 
+            btnIzmeni.Location = new Point(660, 88);
+            btnIzmeni.Name = "btnIzmeni";
+            btnIzmeni.Size = new Size(128, 37);
+            btnIzmeni.TabIndex = 2;
+            btnIzmeni.Text = "Izmeni";
+            btnIzmeni.UseVisualStyleBackColor = true;
+            btnIzmeni.Click += btnIzmeni_Click;
+            // 
+            // btnDodaj
+            // 
+            btnDodaj.Location = new Point(660, 28);
+            btnDodaj.Name = "btnDodaj";
+            btnDodaj.Size = new Size(128, 37);
+            btnDodaj.TabIndex = 1;
+            btnDodaj.Text = "Dodaj";
+            btnDodaj.UseVisualStyleBackColor = true;
+            btnDodaj.Click += btnDodaj_Click;
+            // 
             // Incidenti
             // 
             Incidenti.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6, columnHeader7 });
             Incidenti.Location = new Point(3, 12);
             Incidenti.Name = "Incidenti";
-            Incidenti.Size = new Size(507, 216);
+            Incidenti.Size = new Size(596, 216);
             Incidenti.TabIndex = 0;
             Incidenti.UseCompatibleStateImageBehavior = false;
             Incidenti.View = View.Details;
@@ -532,5 +568,8 @@
         private ColumnHeader columnHeader16;
         private ColumnHeader columnHeader17;
         private ColumnHeader columnHeader18;
+        private Button btnDodaj;
+        private Button btnObrisi;
+        private Button btnIzmeni;
     }
 }

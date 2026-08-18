@@ -2158,6 +2158,25 @@ namespace Gradjevinska_firma.DTO
             return incidenti;
         }
 
+        public static void obrisiBezbednosniIncident(int id)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                BezbednosniIncident inci = s.Load<BezbednosniIncident>(id);
+
+                s.Delete(inci);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         #endregion
 
         #region Deonice
