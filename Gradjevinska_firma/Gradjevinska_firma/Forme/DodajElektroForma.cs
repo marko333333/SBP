@@ -11,24 +11,24 @@ using System.Windows.Forms;
 
 namespace Gradjevinska_firma.Forme
 {
-    public partial class DodajOpremuForma : Form
+    public partial class DodajElektroForma : Form
     {
-        public DodajOpremuForma()
+        public DodajElektroForma()
         {
             InitializeComponent();
         }
 
         private void btDodaj_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(tbTip.Text))
+            if (string.IsNullOrWhiteSpace(tbcena.Text) || !tbcena.Text.All(char.IsDigit))
             {
-                MessageBox.Show("Unesite tip opreme!");
-                tbTip.Focus();
+                MessageBox.Show("Unesite cenu i cena mora da bude broj!");
+                tbcena.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(tbNaziv.Text))
             {
-                MessageBox.Show("Unesite naziv opreme!");
+                MessageBox.Show("Unesite naziv materijala!");
                 tbNaziv.Focus();
                 return;
             }
@@ -40,21 +40,22 @@ namespace Gradjevinska_firma.Forme
                 return;
             }
 
+            if (string.IsNullOrWhiteSpace(tbJedinicaMere.Text))
+            {
+                MessageBox.Show("Unesite jedinicu mere!");
+                tbJedinicaMere.Focus();
+                return;
+            }
 
-            OpremaBasic oprema = new OpremaBasic(
-                0, tbNaziv.Text, tbTip.Text, dtpdatumUvoza.Value, tbProizvodjac.Text, tbRasponOdrzavanja.Text, tbLokacija.Text, cbStatus.SelectedItem.ToString());
+            ElektroBasic materijal = new ElektroBasic
+                (0, tbNaziv.Text, int.Parse(tbcena.Text), tbProizvodjac.Text, tbJedinicaMere.Text, tbSertifikat.Text, "Elektro");
 
-            DTOManager.dodajOpremu(oprema);
+            DTOManager.dodajElektroMaterijal(materijal);
 
             MessageBox.Show("Uspesno dodavanje");
 
             this.DialogResult = DialogResult.OK;
             this.Close();
-        }
-
-        private void DodajOpremuForma_Load(object sender, EventArgs e)
-        {
-            cbStatus.SelectedIndex = 0;
         }
     }
 }

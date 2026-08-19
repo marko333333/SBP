@@ -1,6 +1,6 @@
 ﻿namespace Gradjevinska_firma.Forme
 {
-    partial class IzmeniMaterijalForma
+    partial class DodajMasinskiForma
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
-            btIzmeni = new Button();
+            btDodaj = new Button();
             tbSertifikat = new TextBox();
             tbJedinicaMere = new TextBox();
             tbProizvodjac = new TextBox();
@@ -45,7 +45,7 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(btIzmeni);
+            groupBox1.Controls.Add(btDodaj);
             groupBox1.Controls.Add(tbSertifikat);
             groupBox1.Controls.Add(tbJedinicaMere);
             groupBox1.Controls.Add(tbProizvodjac);
@@ -59,20 +59,20 @@
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(389, 321);
-            groupBox1.TabIndex = 1;
+            groupBox1.Size = new Size(350, 334);
+            groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Izmeni gradjevinski materijal";
+            groupBox1.Text = "Dodaj masinski materijal";
             // 
-            // btIzmeni
+            // btDodaj
             // 
-            btIzmeni.Location = new Point(33, 258);
-            btIzmeni.Name = "btIzmeni";
-            btIzmeni.Size = new Size(94, 29);
-            btIzmeni.TabIndex = 12;
-            btIzmeni.Text = "Izmeni";
-            btIzmeni.UseVisualStyleBackColor = true;
-            btIzmeni.Click += btIzmeni_Click;
+            btDodaj.Location = new Point(33, 266);
+            btDodaj.Name = "btDodaj";
+            btDodaj.Size = new Size(94, 29);
+            btDodaj.TabIndex = 12;
+            btDodaj.Text = "Dodaj";
+            btDodaj.UseVisualStyleBackColor = true;
+            btDodaj.Click += btDodaj_Click;
             // 
             // tbSertifikat
             // 
@@ -154,15 +154,14 @@
             label1.TabIndex = 0;
             label1.Text = "Naziv:";
             // 
-            // IzmeniMaterijalForma
+            // DodajMasinskiForma
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(389, 321);
+            ClientSize = new Size(350, 334);
             Controls.Add(groupBox1);
-            Name = "IzmeniMaterijalForma";
-            Text = "IzmeniMaterijalForma";
-            Load += IzmeniMaterijalForma_Load;
+            Name = "DodajMasinskiForma";
+            Text = "DodajMasinskiForma";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
@@ -171,7 +170,7 @@
         #endregion
 
         private GroupBox groupBox1;
-        private Button btIzmeni;
+        private Button btDodaj;
         private TextBox tbSertifikat;
         private TextBox tbJedinicaMere;
         private TextBox tbProizvodjac;

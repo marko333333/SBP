@@ -37,6 +37,7 @@
             button2 = new Button();
             btOprema = new Button();
             btMaterijal = new Button();
+            btNabavke = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -67,7 +68,7 @@
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(1, 1);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(366, 579);
+            pictureBox1.Size = new Size(366, 668);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
@@ -127,11 +128,22 @@
             btMaterijal.UseVisualStyleBackColor = true;
             btMaterijal.Click += btMaterijal_Click;
             // 
+            // btNabavke
+            // 
+            btNabavke.Font = new Font("Lucida Bright", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btNabavke.Location = new Point(477, 575);
+            btNabavke.Name = "btNabavke";
+            btNabavke.Size = new Size(209, 56);
+            btNabavke.TabIndex = 8;
+            btNabavke.Text = "Nabavke";
+            btNabavke.UseVisualStyleBackColor = true;
+            // 
             // PocetnaStranica
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(783, 576);
+            ClientSize = new Size(783, 667);
+            Controls.Add(btNabavke);
             Controls.Add(btMaterijal);
             Controls.Add(btOprema);
             Controls.Add(button2);
@@ -158,5 +170,6 @@
         private Button button2;
         private Button btOprema;
         private Button btMaterijal;
+        private Button btNabavke;
     }
 }

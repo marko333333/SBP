@@ -35,14 +35,13 @@
             columnHeader3 = new ColumnHeader();
             columnHeader4 = new ColumnHeader();
             columnHeader5 = new ColumnHeader();
-            columnHeader6 = new ColumnHeader();
             columnHeader7 = new ColumnHeader();
             columnHeader8 = new ColumnHeader();
             columnHeader9 = new ColumnHeader();
             btObrisiOpremu = new Button();
             btIzmeniOpremu = new Button();
             btDodajOpremu = new Button();
-            btNabavka = new Button();
+            btMehanizacija = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -58,7 +57,7 @@
             // 
             // oprema
             // 
-            oprema.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6, columnHeader7, columnHeader8, columnHeader9 });
+            oprema.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader7, columnHeader8, columnHeader9 });
             oprema.Dock = DockStyle.Fill;
             oprema.FullRowSelect = true;
             oprema.GridLines = true;
@@ -93,11 +92,6 @@
             columnHeader5.Text = "Proizvodjac";
             columnHeader5.TextAlign = HorizontalAlignment.Center;
             // 
-            // columnHeader6
-            // 
-            columnHeader6.Text = "Datum nabavke";
-            columnHeader6.TextAlign = HorizontalAlignment.Center;
-            // 
             // columnHeader7
             // 
             columnHeader7.Text = "Raspon odrzavanja";
@@ -121,6 +115,7 @@
             btObrisiOpremu.TabIndex = 12;
             btObrisiOpremu.Text = "Obrisi opremu";
             btObrisiOpremu.UseVisualStyleBackColor = true;
+            btObrisiOpremu.Click += btObrisiOpremu_Click;
             // 
             // btIzmeniOpremu
             // 
@@ -142,22 +137,22 @@
             btDodajOpremu.UseVisualStyleBackColor = true;
             btDodajOpremu.Click += btDodajOpremu_Click;
             // 
-            // btNabavka
+            // btMehanizacija
             // 
-            btNabavka.Location = new Point(639, 302);
-            btNabavka.Name = "btNabavka";
-            btNabavka.Size = new Size(139, 72);
-            btNabavka.TabIndex = 13;
-            btNabavka.Text = "Nabavke opreme";
-            btNabavka.UseVisualStyleBackColor = true;
-            btNabavka.Click += btNabavka_Click;
+            btMehanizacija.Location = new Point(639, 302);
+            btMehanizacija.Name = "btMehanizacija";
+            btMehanizacija.Size = new Size(139, 72);
+            btMehanizacija.TabIndex = 13;
+            btMehanizacija.Text = "Mehanizacija";
+            btMehanizacija.UseVisualStyleBackColor = true;
+            btMehanizacija.Click += btNabavka_Click;
             // 
             // OpremaForma
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(btNabavka);
+            Controls.Add(btMehanizacija);
             Controls.Add(btObrisiOpremu);
             Controls.Add(groupBox1);
             Controls.Add(btIzmeniOpremu);
@@ -175,16 +170,15 @@
         private Button btObrisiOpremu;
         private Button btIzmeniOpremu;
         private Button btDodajOpremu;
-        private Button btNabavka;
         private ListView oprema;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
         private ColumnHeader columnHeader4;
         private ColumnHeader columnHeader5;
-        private ColumnHeader columnHeader6;
         private ColumnHeader columnHeader7;
         private ColumnHeader columnHeader8;
         private ColumnHeader columnHeader9;
+        private Button btMehanizacija;
     }
 }

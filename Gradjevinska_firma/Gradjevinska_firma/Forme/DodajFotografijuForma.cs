@@ -14,6 +14,7 @@ namespace Gradjevinska_firma.Forme
     public partial class DodajFotografijuForma : Form
     {
         private int idNapredak;
+        private string nazivFotografije;
         public DodajFotografijuForma(int id)
         {
             InitializeComponent();
@@ -24,37 +25,63 @@ namespace Gradjevinska_firma.Forme
         {
 
         }
-
-        private string putanja;
         private void btIzaberi_Click(object sender, EventArgs e)
         {
+            string folder = Path.Combine(Application.StartupPath,"Fotografije");
+
+            if (!Directory.Exists(folder))
+            {
+                MessageBox.Show("Folder Fotografije ne postoji.");
+                return;
+            }
+
             using (OpenFileDialog dialog = new OpenFileDialog())
             {
                 dialog.Title = "Izaberite fotografiju";
 
-                dialog.Filter = "Slike (*.jpg;*.jpeg;*.png;*.bmp)|*.jpg;*.jpeg;*.png;*.bmp";
+                dialog.InitialDirectory = folder;
 
-                if (dialog.ShowDialog() == DialogResult.OK)
+                dialog.Filter ="Slike (*.jpg;*.jpeg;*.png;*.bmp)|*.jpg;*.jpeg;*.png;*.bmp";
+
+                if (dialog.ShowDialog() != DialogResult.OK)
+                    return;
+
+                string izabranaPutanja =Path.GetFullPath(dialog.FileName);
+
+                string folderPutanja =Path.GetFullPath(folder);
+
+                if (!izabranaPutanja.StartsWith(folderPutanja + Path.DirectorySeparatorChar,StringComparison.OrdinalIgnoreCase))
                 {
-                    putanja = dialog.FileName;
-
-                    tbFotografija.Text = putanja;
-
-                    pcFotografija.Image = Image.FromFile(putanja);
-                    pcFotografija.SizeMode = PictureBoxSizeMode.Zoom;
+                    MessageBox.Show("Morate izabrati samo fotografiju iz foldera Fotografije.");
+                    return;
                 }
+
+                nazivFotografije =Path.GetFileName(dialog.FileName);
+
+                tbFotografija.Text = nazivFotografije;
+
+                if (pcFotografija.Image != null)
+                {
+                    pcFotografija.Image.Dispose();
+                    pcFotografija.Image = null;
+                }
+
+                pcFotografija.Image =Image.FromFile(izabranaPutanja);
+
+                pcFotografija.SizeMode =PictureBoxSizeMode.Zoom;
             }
+
         }
 
         private void btDodaj_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(putanja))
+            if (string.IsNullOrWhiteSpace(nazivFotografije))
             {
                 MessageBox.Show("Morate izabrati fotografiju");
                 return;
             }
 
-            FotografijaBasic fotografija =new FotografijaBasic(idNapredak,putanja);
+            FotografijaBasic fotografija =new FotografijaBasic(idNapredak,nazivFotografije);
 
             DTOManager.dodajFotografiju(fotografija);
 

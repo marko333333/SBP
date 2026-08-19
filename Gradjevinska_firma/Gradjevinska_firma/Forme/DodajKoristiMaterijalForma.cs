@@ -12,7 +12,6 @@ using System.Windows.Forms;
 
 namespace Gradjevinska_firma.Forme
 {   
-    //proveriti dal je dobro
     public partial class DodajKoristiMaterijalForma : Form
     {
         private int idZadatka;

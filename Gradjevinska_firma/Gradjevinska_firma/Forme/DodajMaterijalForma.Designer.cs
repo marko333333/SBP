@@ -29,32 +29,28 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            label6 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            comboBox1 = new ComboBox();
             btDodaj = new Button();
+            tbSertifikat = new TextBox();
+            tbJedinicaMere = new TextBox();
+            tbProizvodjac = new TextBox();
+            tbcena = new TextBox();
+            tbNaziv = new TextBox();
+            label5 = new Label();
+            label4 = new Label();
+            label3 = new Label();
+            label2 = new Label();
+            label1 = new Label();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
             // 
             groupBox1.Controls.Add(btDodaj);
-            groupBox1.Controls.Add(comboBox1);
-            groupBox1.Controls.Add(textBox5);
-            groupBox1.Controls.Add(textBox4);
-            groupBox1.Controls.Add(textBox3);
-            groupBox1.Controls.Add(textBox2);
-            groupBox1.Controls.Add(textBox1);
-            groupBox1.Controls.Add(label6);
+            groupBox1.Controls.Add(tbSertifikat);
+            groupBox1.Controls.Add(tbJedinicaMere);
+            groupBox1.Controls.Add(tbProizvodjac);
+            groupBox1.Controls.Add(tbcena);
+            groupBox1.Controls.Add(tbNaziv);
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label3);
@@ -63,46 +59,55 @@
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(420, 396);
+            groupBox1.Size = new Size(420, 326);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Dodaj materijal";
+            groupBox1.Text = "Dodaj gradjevinski materijal";
             // 
-            // label1
+            // btDodaj
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(33, 53);
-            label1.Name = "label1";
-            label1.Size = new Size(49, 20);
-            label1.TabIndex = 0;
-            label1.Text = "Naziv:";
+            btDodaj.Location = new Point(33, 266);
+            btDodaj.Name = "btDodaj";
+            btDodaj.Size = new Size(94, 29);
+            btDodaj.TabIndex = 12;
+            btDodaj.Text = "Dodaj";
+            btDodaj.UseVisualStyleBackColor = true;
+            btDodaj.Click += btDodaj_Click;
             // 
-            // label2
+            // tbSertifikat
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(33, 95);
-            label2.Name = "label2";
-            label2.Size = new Size(45, 20);
-            label2.TabIndex = 1;
-            label2.Text = "Cena:";
+            tbSertifikat.Location = new Point(110, 215);
+            tbSertifikat.Name = "tbSertifikat";
+            tbSertifikat.Size = new Size(125, 27);
+            tbSertifikat.TabIndex = 10;
             // 
-            // label3
+            // tbJedinicaMere
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(33, 136);
-            label3.Name = "label3";
-            label3.Size = new Size(89, 20);
-            label3.TabIndex = 2;
-            label3.Text = "Proizvodjac:";
+            tbJedinicaMere.Location = new Point(142, 174);
+            tbJedinicaMere.Name = "tbJedinicaMere";
+            tbJedinicaMere.Size = new Size(79, 27);
+            tbJedinicaMere.TabIndex = 9;
             // 
-            // label4
+            // tbProizvodjac
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(33, 177);
-            label4.Name = "label4";
-            label4.Size = new Size(103, 20);
-            label4.TabIndex = 3;
-            label4.Text = "Jedinica mere:";
+            tbProizvodjac.Location = new Point(128, 133);
+            tbProizvodjac.Name = "tbProizvodjac";
+            tbProizvodjac.Size = new Size(180, 27);
+            tbProizvodjac.TabIndex = 8;
+            // 
+            // tbcena
+            // 
+            tbcena.Location = new Point(84, 92);
+            tbcena.Name = "tbcena";
+            tbcena.Size = new Size(125, 27);
+            tbcena.TabIndex = 7;
+            // 
+            // tbNaziv
+            // 
+            tbNaziv.Location = new Point(88, 50);
+            tbNaziv.Name = "tbNaziv";
+            tbNaziv.Size = new Size(149, 27);
+            tbNaziv.TabIndex = 6;
             // 
             // label5
             // 
@@ -114,76 +119,51 @@
             label5.Text = "Sertifikat:";
             label5.Click += label5_Click;
             // 
-            // label6
+            // label4
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(33, 259);
-            label6.Name = "label6";
-            label6.Size = new Size(33, 20);
-            label6.TabIndex = 5;
-            label6.Text = "Tip:";
+            label4.AutoSize = true;
+            label4.Location = new Point(33, 177);
+            label4.Name = "label4";
+            label4.Size = new Size(103, 20);
+            label4.TabIndex = 3;
+            label4.Text = "Jedinica mere:";
             // 
-            // textBox1
+            // label3
             // 
-            textBox1.Location = new Point(88, 50);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(149, 27);
-            textBox1.TabIndex = 6;
+            label3.AutoSize = true;
+            label3.Location = new Point(33, 136);
+            label3.Name = "label3";
+            label3.Size = new Size(89, 20);
+            label3.TabIndex = 2;
+            label3.Text = "Proizvodjac:";
             // 
-            // textBox2
+            // label2
             // 
-            textBox2.Location = new Point(84, 92);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(125, 27);
-            textBox2.TabIndex = 7;
+            label2.AutoSize = true;
+            label2.Location = new Point(33, 95);
+            label2.Name = "label2";
+            label2.Size = new Size(45, 20);
+            label2.TabIndex = 1;
+            label2.Text = "Cena:";
             // 
-            // textBox3
+            // label1
             // 
-            textBox3.Location = new Point(128, 133);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(180, 27);
-            textBox3.TabIndex = 8;
-            // 
-            // textBox4
-            // 
-            textBox4.Location = new Point(142, 174);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(79, 27);
-            textBox4.TabIndex = 9;
-            // 
-            // textBox5
-            // 
-            textBox5.Location = new Point(110, 215);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(125, 27);
-            textBox5.TabIndex = 10;
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Gradjevinski", "Elektro", "Masinski", "Zavrsni", "Zastitni" });
-            comboBox1.Location = new Point(70, 256);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(151, 28);
-            comboBox1.TabIndex = 11;
-            // 
-            // btDodaj
-            // 
-            btDodaj.Location = new Point(33, 315);
-            btDodaj.Name = "btDodaj";
-            btDodaj.Size = new Size(94, 29);
-            btDodaj.TabIndex = 12;
-            btDodaj.Text = "Dodaj";
-            btDodaj.UseVisualStyleBackColor = true;
+            label1.AutoSize = true;
+            label1.Location = new Point(33, 53);
+            label1.Name = "label1";
+            label1.Size = new Size(49, 20);
+            label1.TabIndex = 0;
+            label1.Text = "Naziv:";
             // 
             // DodajMaterijalForma
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(420, 396);
+            ClientSize = new Size(420, 326);
             Controls.Add(groupBox1);
             Name = "DodajMaterijalForma";
             Text = "DodajMaterijalForma";
+            Load += DodajMaterijalForma_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
@@ -197,13 +177,11 @@
         private Label label1;
         private Label label5;
         private Label label4;
-        private Label label6;
         private Button btDodaj;
-        private ComboBox comboBox1;
-        private TextBox textBox5;
-        private TextBox textBox4;
-        private TextBox textBox3;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox tbSertifikat;
+        private TextBox tbJedinicaMere;
+        private TextBox tbProizvodjac;
+        private TextBox tbcena;
+        private TextBox tbNaziv;
     }
 }

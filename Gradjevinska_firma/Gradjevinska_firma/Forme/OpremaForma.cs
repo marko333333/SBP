@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,7 +37,6 @@ namespace Gradjevinska_firma.Forme
                    o.Tip,
                    o.DatumUvoza.ToShortDateString(),
                    o.Proizvodjac,
-                   o.DatumNabavke.ToShortDateString(),
                    o.RasponOdrzavanja,
                    o.Lokacija,
                    o.Status});
@@ -100,6 +100,33 @@ namespace Gradjevinska_firma.Forme
             {
                 forma.ShowDialog();
                 popuniOpremu();
+            }
+        }
+
+        private void btObrisiOpremu_Click(object sender, EventArgs e)
+        {
+            ListView tabela = oprema;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati opremu iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+            string poruka = "Da li zelite da obrisete izabranu opremu?";
+            string title = "Pitanje";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(poruka, title, buttons);
+
+            if (result == DialogResult.OK)
+            {
+                DTOManager.obrisiOpremu(id);
+                MessageBox.Show("Brisanje opreme je uspesno obavljeno!");
+                popuniOpremu();
+
             }
         }
     }

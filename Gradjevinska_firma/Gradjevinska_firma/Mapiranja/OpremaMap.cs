@@ -21,7 +21,6 @@ namespace Gradjevinska_firma.Mapiranja
             Map(x => x.Tip, "TIP");
             Map(x => x.DatumUvoza, "DATUM_UVOZA");
             Map(x => x.Proizvodjac, "PROIZVODJAC");
-            Map(x => x.DatumNabavke, "DATUM_NABAVKE");
             Map(x => x.RasponOdrzavanja, "RASPON_ODRZAVANJA");
             Map(x => x.Lokacija, "LOKACIJA");
             Map(x => x.Status, "STATUS");

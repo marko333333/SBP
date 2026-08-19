@@ -595,7 +595,6 @@ namespace Gradjevinska_firma.DTO
         public string Tip;
         public DateTime DatumUvoza;
         public string Proizvodjac;
-        public DateTime DatumNabavke;
         public string RasponOdrzavanja;
         public string Lokacija;
         public string Status;
@@ -611,14 +610,13 @@ namespace Gradjevinska_firma.DTO
             NabavkaOprema = new List<NabavkaOpremaBasic>();
         }
 
-        public OpremaBasic(int id,string naziv,string tip,DateTime datumUvoza,string proizvodjac,DateTime datumNabavke,string rasponOdrzavanja,string lokacija,string status) : this()
+        public OpremaBasic(int id,string naziv,string tip,DateTime datumUvoza,string proizvodjac,string rasponOdrzavanja,string lokacija,string status) : this()
         {
             Id = id;
             Naziv = naziv;
             Tip = tip;
             DatumUvoza = datumUvoza;
             Proizvodjac = proizvodjac;
-            DatumNabavke = datumNabavke;
             RasponOdrzavanja = rasponOdrzavanja;
             Lokacija = lokacija;
             Status = status;
@@ -632,7 +630,6 @@ namespace Gradjevinska_firma.DTO
         public string Tip;
         public DateTime DatumUvoza;
         public string Proizvodjac;
-        public DateTime DatumNabavke;
         public string RasponOdrzavanja;
         public string Lokacija;
         public string Status;
@@ -641,14 +638,13 @@ namespace Gradjevinska_firma.DTO
         {
         }
 
-        public OpremaPregled(int id,string naziv,string tip,DateTime datumUvoza,string proizvodjac,DateTime datumNabavke,string rasponOdrzavanja,string lokacija,string status)
+        public OpremaPregled(int id,string naziv,string tip,DateTime datumUvoza,string proizvodjac,string rasponOdrzavanja,string lokacija,string status)
         {
             Id = id;
             Naziv = naziv;
             Tip = tip;
             DatumUvoza = datumUvoza;
             Proizvodjac = proizvodjac;
-            DatumNabavke = datumNabavke;
             RasponOdrzavanja = rasponOdrzavanja;
             Lokacija = lokacija;
             Status = status;
@@ -2030,7 +2026,7 @@ namespace Gradjevinska_firma.DTO
         public string TipMehanizacije;
         public MehanizacijaBasic() { }
         public MehanizacijaBasic(int id, string naziv, string tip, DateTime datumUvoza, string proizvodjac, DateTime datumNabavke, string rasponOdrzavanja, string lokacija, string status)
-            : base(id, naziv, tip, datumUvoza, proizvodjac,datumNabavke, rasponOdrzavanja, lokacija, status) 
+            : base(id, naziv, tip, datumUvoza, proizvodjac, rasponOdrzavanja, lokacija, status) 
         {
             this.TipMehanizacije = tip;
         }
@@ -2041,7 +2037,7 @@ namespace Gradjevinska_firma.DTO
         public string TipMehanizacije;
         public MehanizacijaPregled() { }
         public MehanizacijaPregled(int id, string naziv, string tip, DateTime datumUvoza, string proizvodjac, DateTime datumNabavke, string rasponOdrzavanja, string lokacija, string status)
-            : base(id, naziv, tip, datumUvoza, proizvodjac, datumNabavke, rasponOdrzavanja, lokacija, status)
+            : base(id, naziv, tip, datumUvoza, proizvodjac, rasponOdrzavanja, lokacija, status)
         {
             this.TipMehanizacije = tip;
         }

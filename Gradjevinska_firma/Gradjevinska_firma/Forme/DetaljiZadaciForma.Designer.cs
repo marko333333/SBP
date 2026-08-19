@@ -922,6 +922,7 @@
             btObrisiKoriscenje.TabIndex = 12;
             btObrisiKoriscenje.Text = "Obrisi koriscenje";
             btObrisiKoriscenje.UseVisualStyleBackColor = true;
+            btObrisiKoriscenje.Click += btObrisiKoriscenje_Click;
             // 
             // btIzmeniKoriscenje
             // 
@@ -931,6 +932,7 @@
             btIzmeniKoriscenje.TabIndex = 11;
             btIzmeniKoriscenje.Text = "Izmeni koriscenje";
             btIzmeniKoriscenje.UseVisualStyleBackColor = true;
+            btIzmeniKoriscenje.Click += btIzmeniKoriscenje_Click;
             // 
             // btKoristiMaterijal
             // 

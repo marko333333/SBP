@@ -728,5 +728,61 @@ namespace Gradjevinska_firma.Forme
                 }
             }
         }
+
+        private void btIzmeniKoriscenje_Click(object sender, EventArgs e)
+        {
+            ListView tabela = koriscenje;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati materijal iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+
+            using (IzmeniKoristiMaterijalForma forma = new IzmeniKoristiMaterijalForma(id))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                    popuniKoristi(zadatak);
+                }
+            }
+        }
+
+        private void btObrisiKoriscenje_Click(object sender, EventArgs e)
+        {
+            ListView tabela = koriscenje;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati materijal iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+            string poruka = "Da li zelite da obrisete izabrani materijal?";
+            string title = "Pitanje";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(poruka, title, buttons);
+
+            if (result == DialogResult.OK)
+            {
+                DTOManager.obrisiKoristi(id);
+                MessageBox.Show("Brisanje materijala je uspesno obavljeno!");
+                ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                popuniKoristi(zadatak);
+
+            }
+            else
+            {
+
+            }
+        }
     }
 }

@@ -68,13 +68,22 @@ namespace Gradjevinska_firma.Forme
             if (fotografije.SelectedItems.Count == 0)
                 return;
 
-            string putanja = fotografije.SelectedItems[0].SubItems[0].Text;
+            string nazivFotografije =fotografije.SelectedItems[0].SubItems[0].Text;
+
+            string putanja = Path.Combine(Application.StartupPath,"Fotografije",nazivFotografije);
 
             if (!File.Exists(putanja))
             {
-                MessageBox.Show("Fotografija nije pronađena:");
+                MessageBox.Show(
+                    "Fotografija nije pronadjena:\n" + putanja
+                );
 
-                pbFotografija.Image = null;
+                if (pbFotografija.Image != null)
+                {
+                    pbFotografija.Image.Dispose();
+                    pbFotografija.Image = null;
+                }
+
                 return;
             }
 
@@ -114,7 +123,7 @@ namespace Gradjevinska_firma.Forme
                 popuniPodacima(napredak);
 
             }
-            
+
         }
     }
 }

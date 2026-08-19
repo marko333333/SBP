@@ -22,6 +22,9 @@
     <Compile Update="Forme\DodajBezbednosniIncidentForma.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\DodajElektroForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\DodajFotografijuForma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -41,6 +44,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\DodajLicencuForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\DodajMasinskiForma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\DodajMaterijalForma.cs">
@@ -73,7 +79,13 @@
     <Compile Update="Forme\DodajZadatakForma.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\DodajZastitniForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\DodajZastitnuOpremuForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\DodajZavrsniForma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\FotografijeForma.cs">
@@ -94,6 +106,9 @@
     <Compile Update="Forme\IzmeniBezbednosniIncidentForma.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\IzmeniElektroForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\IzmeniIndustrijskiForma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +125,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\IzmeniLicencuForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\IzmeniMasinskiForma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\IzmeniMaterijalForma.cs">
@@ -139,7 +157,13 @@
     <Compile Update="Forme\IzmeniZadatakForma.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\IzmeniZastitniForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\IzmeniZastitnuOpremuForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\IzmeniZavrsniForma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\MaterijaliForma.cs">

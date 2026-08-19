@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,26 +12,17 @@ using System.Windows.Forms;
 
 namespace Gradjevinska_firma.Forme
 {
-    public partial class DodajMaterijalForma : Form
+    public partial class IzmeniElektroForma : Form
     {
-        public DodajMaterijalForma()
+        private int idMaterijal;
+        public IzmeniElektroForma(int id)
         {
             InitializeComponent();
+            idMaterijal = id;
         }
 
-        private void label5_Click(object sender, EventArgs e)
+        private void btIzmeni_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void DodajMaterijalForma_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btDodaj_Click(object sender, EventArgs e)
-        {
-
             if (string.IsNullOrWhiteSpace(tbcena.Text) || !tbcena.Text.All(char.IsDigit))
             {
                 MessageBox.Show("Unesite cenu i cena mora da bude broj!");
@@ -58,15 +50,27 @@ namespace Gradjevinska_firma.Forme
                 return;
             }
 
-            GradjevinskiBasic materijal=new GradjevinskiBasic
-                (0,tbNaziv.Text,int.Parse(tbcena.Text),tbProizvodjac.Text,tbJedinicaMere.Text,tbSertifikat.Text,"Gradjevinski");
+            ElektroBasic materijal = new ElektroBasic
+                (idMaterijal, tbNaziv.Text, int.Parse(tbcena.Text), tbProizvodjac.Text, tbJedinicaMere.Text, tbSertifikat.Text, "Elektro");
 
-            DTOManager.dodajGradjevinskiMaterijal(materijal);
+            DTOManager.izmeniElektroMaterijal(materijal);
 
-            MessageBox.Show("Uspesno dodavanje");
+            MessageBox.Show("Uspesna izmena");
 
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void IzmeniElektroForma_Load(object sender, EventArgs e)
+        {
+
+            ElektroBasic materijal = DTOManager.vratiElektroMaterijal(idMaterijal);
+
+            tbNaziv.Text = materijal.Naziv;
+            tbcena.Text = materijal.Cena.ToString();
+            tbProizvodjac.Text = materijal.Proizvodjac;
+            tbJedinicaMere.Text = materijal.JedinicaMere;
+            tbSertifikat.Text = materijal.Sertifikat;
         }
     }
 }

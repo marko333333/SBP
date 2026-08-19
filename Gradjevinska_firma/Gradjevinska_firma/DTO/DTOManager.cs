@@ -2039,7 +2039,6 @@ namespace Gradjevinska_firma.DTO
                             u.Oprema.Tip,
                             u.Oprema.DatumUvoza,
                             u.Oprema.Proizvodjac,
-                            u.Oprema.DatumNabavke,
                             u.Oprema.RasponOdrzavanja,
                             u.Oprema.Lokacija,
                             u.Oprema.Status
@@ -2082,7 +2081,7 @@ namespace Gradjevinska_firma.DTO
 
                 MaterijalBasic materijal = new MaterijalBasic(u.Materijal.ID, u.Materijal.Naziv, u.Materijal.Cena, u.Materijal.Proizvodjac, u.Materijal.JedinicaMere, u.Materijal.Sertifikat, u.Materijal.Tip);
                 ProjekatBasic projekat = new ProjekatBasic(u.Projekat.ID, u.Projekat.Naziv, u.Projekat.Opis, u.Projekat.Lokacija, u.Projekat.Datum_pocetka, u.Projekat.Budzet, u.Projekat.Status, u.Projekat.Planirani_Zavrsetak, u.Projekat.Stvarni_Zavrsetak);
-                OpremaBasic oprema = new OpremaBasic(u.Oprema.Id,u.Oprema.Naziv, u.Oprema.Tip, u.Oprema.DatumUvoza, u.Oprema.Proizvodjac, u.Oprema.DatumNabavke, u.Oprema.RasponOdrzavanja, u.Oprema.Lokacija, u.Oprema.Status);
+                OpremaBasic oprema = new OpremaBasic(u.Oprema.Id,u.Oprema.Naziv, u.Oprema.Tip, u.Oprema.DatumUvoza, u.Oprema.Proizvodjac, u.Oprema.RasponOdrzavanja, u.Oprema.Lokacija, u.Oprema.Status);
 
                 ugovor = new UgovorBasic(u.Id,u.DatumPotpisivanja, u.Vrednost, u.PredmetUgovora, u.Valuta, u.Rok, materijal, projekat, oprema);
 
@@ -3853,6 +3852,20 @@ namespace Gradjevinska_firma.DTO
             {
                 ISession s = DataLayer.GetSession();
 
+                if (angazuje.DatumDo.HasValue && angazuje.DatumDo.Value < angazuje.DatumOd)
+                {
+                    MessageBox.Show("Datum zavrsetka ne moze biti pre datuma pocetka");
+                    s.Close();
+                    return;
+                }
+
+                if (opremaJeZauzeta(s,angazuje.Zadatak.Id,angazuje.Oprema.Id,angazuje.DatumOd,angazuje.DatumDo))
+                {
+                    MessageBox.Show("Izabrana oprema je vec angazovana u tom periodu");
+                    s.Close();
+                    return;
+                }
+
                 Zadatak zadatak =s.Load<Zadatak>(angazuje.Zadatak.Id);
 
                 Oprema oprema =s.Load<Oprema>(angazuje.Oprema.Id);
@@ -3926,6 +3939,45 @@ namespace Gradjevinska_firma.DTO
             }
         }
 
+        private static bool opremaJeZauzeta(ISession s,int idZadatka,int idOpreme,DateTime datumOd,DateTime? datumDo)
+        {
+            IEnumerable<Angazuje> angazovanja =
+                from a in s.Query<Angazuje>()
+                where a.Oprema.Id == idOpreme
+                 && a.Zadatak.Id != idZadatka
+                select a;
+
+            foreach (Angazuje a in angazovanja)
+            {
+                DateTime postojeciKraj;
+
+                if (a.DatumDo.HasValue)
+                {
+                    postojeciKraj = a.DatumDo.Value;
+                }
+                else
+                {
+                    postojeciKraj = DateTime.MaxValue;
+                }
+
+                DateTime noviKraj;
+
+                if (datumDo.HasValue)
+                {
+                   noviKraj =datumDo.Value;
+                }
+                else
+                {
+                    noviKraj = DateTime.MaxValue;
+                }
+
+                if (datumOd <= postojeciKraj && a.DatumOd <= noviKraj)
+                    return true;
+            }
+
+            return false;
+        }
+
         #endregion
 
         #region Opreme
@@ -3940,7 +3992,7 @@ namespace Gradjevinska_firma.DTO
                 foreach (Oprema o in svuOpremu)
                 {
                     oprema.Add(new OpremaPregled(
-                       o.Id,o.Naziv,o.Tip,o.DatumUvoza,o.Proizvodjac,o.DatumNabavke,o.RasponOdrzavanja,o.Lokacija,o.Status));
+                       o.Id,o.Naziv,o.Tip,o.DatumUvoza,o.Proizvodjac,o.RasponOdrzavanja,o.Lokacija,o.Status));
                 }
                 s.Close();
 
@@ -3952,22 +4004,175 @@ namespace Gradjevinska_firma.DTO
             return oprema;
         }
 
-        #endregion
-
-        #region Materijali
-
-        public static List<MaterijalPregled> vratiSavMaterijal()
+        public static OpremaBasic vratiOpremu(int id)
         {
-            List<MaterijalPregled> materijali = new List<MaterijalPregled>();
+            OpremaBasic oprema = new OpremaBasic();
+
             try
             {
                 ISession s = DataLayer.GetSession();
-                IEnumerable<Materijal> savMaterijal = from o in s.Query<Materijal>()
-                                                select o;
-                foreach (Materijal o in savMaterijal)
+
+                Oprema m = s.Load<Oprema>(id);
+
+                oprema = new OpremaBasic(
+                    m.Id,m.Naziv,m.Tip,m.DatumUvoza,m.Proizvodjac,m.RasponOdrzavanja,m.Lokacija,m.Status);
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return oprema;
+        }
+
+        public static void dodajOpremu(OpremaBasic oprema)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Oprema o = new Oprema();
+
+                o.Naziv = oprema.Naziv;
+                o.Tip = oprema.Tip;
+                o.DatumUvoza = oprema.DatumUvoza;
+                o.Proizvodjac = oprema.Proizvodjac;
+                o.RasponOdrzavanja = oprema.RasponOdrzavanja;
+                o.Lokacija = oprema.Lokacija;
+                o.Status = oprema.Status;
+
+                s.Save(o);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void izmeniOpremu(OpremaBasic m)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Oprema oprema = s.Load<Oprema>(m.Id);
+
+                oprema.Naziv = m.Naziv;
+                oprema.Tip = m.Tip;
+                oprema.DatumUvoza = m.DatumUvoza;
+                oprema.Proizvodjac = m.Proizvodjac;
+                oprema.RasponOdrzavanja = m.RasponOdrzavanja;
+                oprema.Lokacija = m.Lokacija;
+                oprema.Status = m.Status;
+
+                s.Update(oprema);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void obrisiOpremu(int id)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Oprema oprema = s.Load<Oprema>(id);
+
+                s.Delete(oprema);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        #endregion
+
+        #region Materijali
+        public static List<MaterijalPregled> vratiSavMaterijal()
+        {
+            List<MaterijalPregled> materijali = new List<MaterijalPregled>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IList<Materijal> sviMaterijali = s.Query<Materijal>().ToList();
+
+                foreach (Materijal m in sviMaterijali)
                 {
+                    string tip = "";
+
+                    if (m is Zastitni)
+                        tip = "Zastitni";
+                    else if (m is Masinski)
+                        tip = "Masinski";
+                    else if (m is Gradjevinski)
+                        tip = "Gradjevinski";
+                    else if (m is Elektro)
+                        tip = "Elektro";
+                    else if (m is Zavrsni)
+                        tip = "Zavrsni";
+
                     materijali.Add(new MaterijalPregled(
-                      o.ID,o.Naziv,o.Cena,o.Proizvodjac,o.JedinicaMere,o.Sertifikat,o.Tip));
+                            m.ID,m.Naziv,m.Cena,m.Proizvodjac,m.JedinicaMere,m.Sertifikat,tip
+                        ));
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return materijali;
+        }
+        public static void obrisiMaterijal(int id)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Materijal materijal = s.Load<Materijal>(id);
+
+                s.Delete(materijal);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        #region Zastitni
+        public static List<ZastitniPregled> vratiSavZastitniMaterijal()
+        {
+            List<ZastitniPregled> materijali = new List<ZastitniPregled>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                IEnumerable<Zastitni> savMaterijal = from m in s.Query<Zastitni>()
+                                                      select m;
+                foreach (Zastitni m in savMaterijal)
+                {
+                    materijali.Add(new ZastitniPregled(
+                      m.ID, m.Naziv, m.Cena, m.Proizvodjac, m.JedinicaMere, m.Sertifikat, m.Tip));
                 }
                 s.Close();
 
@@ -3978,6 +4183,481 @@ namespace Gradjevinska_firma.DTO
             }
             return materijali;
         }
+
+        public static ZastitniBasic vratiZastitniMaterijal(int id)
+        {
+            ZastitniBasic materijal = new ZastitniBasic();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Zastitni m = s.Load<Zastitni>(id);
+
+                materijal = new ZastitniBasic(
+                    m.ID, m.Naziv, m.Cena, m.Proizvodjac, m.JedinicaMere, m.Sertifikat, m.Tip);
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return materijal;
+        }
+
+        public static void dodajZastitniMaterijal(ZastitniBasic m)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Zastitni materijal = new Zastitni();
+
+                materijal.Naziv = m.Naziv;
+                materijal.Cena = m.Cena;
+                materijal.Proizvodjac = m.Proizvodjac;
+                materijal.JedinicaMere = m.JedinicaMere;
+                materijal.Sertifikat = m.Sertifikat;
+                materijal.Tip = m.Tip;
+
+                s.Save(materijal);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void izmeniZastitniMaterijal(ZastitniBasic m)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Zastitni materijal = s.Load<Zastitni>(m.ID);
+
+                materijal.Naziv = m.Naziv;
+                materijal.Cena = m.Cena;
+                materijal.Proizvodjac = m.Proizvodjac;
+                materijal.JedinicaMere = m.JedinicaMere;
+                materijal.Sertifikat = m.Sertifikat;
+
+                s.Update(materijal);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        #endregion
+
+        #region Masinski
+
+        public static List<MasinskiPregled> vratiSavMasinskiMaterijal()
+        {
+            List<MasinskiPregled> materijali = new List<MasinskiPregled>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                IEnumerable<Masinski> savMaterijal = from m in s.Query<Masinski>()
+                                                     select m;
+                foreach (Masinski m in savMaterijal)
+                {
+                    materijali.Add(new MasinskiPregled(
+                      m.ID, m.Naziv, m.Cena, m.Proizvodjac, m.JedinicaMere, m.Sertifikat, m.Tip));
+                }
+                s.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return materijali;
+        }
+
+        public static MasinskiBasic vratiMasinskiMaterijal(int id)
+        {
+            MasinskiBasic materijal = new MasinskiBasic();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Masinski m = s.Load<Masinski>(id);
+
+                materijal = new MasinskiBasic(
+                    m.ID, m.Naziv, m.Cena, m.Proizvodjac, m.JedinicaMere, m.Sertifikat, m.Tip);
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return materijal;
+        }
+
+        public static void dodajMasinskiMaterijal(MasinskiBasic m)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Masinski materijal = new Masinski();
+
+                materijal.Naziv = m.Naziv;
+                materijal.Cena = m.Cena;
+                materijal.Proizvodjac = m.Proizvodjac;
+                materijal.JedinicaMere = m.JedinicaMere;
+                materijal.Sertifikat = m.Sertifikat;
+                materijal.Tip = m.Tip;
+
+                s.Save(materijal);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void izmeniMasinskiMaterijal(MasinskiBasic m)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Masinski materijal = s.Load<Masinski>(m.ID);
+
+                materijal.Naziv = m.Naziv;
+                materijal.Cena = m.Cena;
+                materijal.Proizvodjac = m.Proizvodjac;
+                materijal.JedinicaMere = m.JedinicaMere;
+                materijal.Sertifikat = m.Sertifikat;
+
+                s.Update(materijal);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        #endregion
+
+        #region Gradjevinski
+
+        public static List<GradjevinskiPregled> vratiSavGradjevinskiMaterijal()
+        {
+            List<GradjevinskiPregled> materijali = new List<GradjevinskiPregled>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                IEnumerable<Gradjevinski> savMaterijal = from m in s.Query<Gradjevinski>()
+                                                     select m;
+                foreach (Gradjevinski m in savMaterijal)
+                {
+                    materijali.Add(new GradjevinskiPregled(
+                      m.ID, m.Naziv, m.Cena, m.Proizvodjac, m.JedinicaMere, m.Sertifikat,m.Tip));
+                }
+                s.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return materijali;
+        }
+
+        public static GradjevinskiBasic vratiGradjevinskiMaterijal(int id)
+        {
+            GradjevinskiBasic materijal = new GradjevinskiBasic();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Gradjevinski m = s.Load<Gradjevinski>(id);
+
+                materijal = new GradjevinskiBasic(
+                    m.ID, m.Naziv, m.Cena, m.Proizvodjac, m.JedinicaMere, m.Sertifikat, m.Tip);
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return materijal;
+        }
+
+        public static void dodajGradjevinskiMaterijal(GradjevinskiBasic m)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Gradjevinski materijal = new Gradjevinski();
+
+                materijal.Naziv = m.Naziv;
+                materijal.Cena = m.Cena;
+                materijal.Proizvodjac = m.Proizvodjac;
+                materijal.JedinicaMere = m.JedinicaMere;
+                materijal.Sertifikat = m.Sertifikat;
+                materijal.Tip = m.Tip;
+
+                s.Save(materijal);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void izmeniGradjevinskiMaterijal(GradjevinskiBasic m)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Gradjevinski materijal = s.Load<Gradjevinski>(m.ID);
+
+                materijal.Naziv = m.Naziv;
+                materijal.Cena = m.Cena;
+                materijal.Proizvodjac = m.Proizvodjac;
+                materijal.JedinicaMere = m.JedinicaMere;
+                materijal.Sertifikat = m.Sertifikat;
+
+                s.Update(materijal);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        #endregion
+
+        #region Elektro
+
+        public static List<ElektroPregled> vratiSavElektroMaterijal()
+        {
+            List<ElektroPregled> materijali = new List<ElektroPregled>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                IEnumerable<Elektro> savMaterijal = from m in s.Query<Elektro>()
+                                                         select m;
+                foreach (Elektro m in savMaterijal)
+                {
+                    materijali.Add(new ElektroPregled(
+                      m.ID, m.Naziv, m.Cena, m.Proizvodjac, m.JedinicaMere, m.Sertifikat, m.Tip));
+                }
+                s.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return materijali;
+        }
+
+        public static ElektroBasic vratiElektroMaterijal(int id)
+        {
+            ElektroBasic materijal = new ElektroBasic();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Elektro m = s.Load<Elektro>(id);
+
+                materijal = new ElektroBasic(
+                    m.ID, m.Naziv, m.Cena, m.Proizvodjac, m.JedinicaMere, m.Sertifikat, m.Tip);
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return materijal;
+        }
+
+        public static void dodajElektroMaterijal(ElektroBasic m)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Elektro materijal = new Elektro();
+
+                materijal.Naziv = m.Naziv;
+                materijal.Cena = m.Cena;
+                materijal.Proizvodjac = m.Proizvodjac;
+                materijal.JedinicaMere = m.JedinicaMere;
+                materijal.Sertifikat = m.Sertifikat;
+                materijal.Tip = m.Tip;
+
+                s.Save(materijal);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void izmeniElektroMaterijal(ElektroBasic m)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Elektro materijal = s.Load<Elektro>(m.ID);
+
+                materijal.Naziv = m.Naziv;
+                materijal.Cena = m.Cena;
+                materijal.Proizvodjac = m.Proizvodjac;
+                materijal.JedinicaMere = m.JedinicaMere;
+                materijal.Sertifikat = m.Sertifikat;
+
+                s.Update(materijal);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        #endregion
+
+        #region Zavrsni
+
+        public static List<ZavrsniPregled> vratiSavZavrsniMaterijal()
+        {
+            List<ZavrsniPregled> materijali = new List<ZavrsniPregled>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                IEnumerable<Zavrsni> savMaterijal = from m in s.Query<Zavrsni>()
+                                                         select m;
+                foreach (Zavrsni m in savMaterijal)
+                {
+                    materijali.Add(new ZavrsniPregled(
+                      m.ID, m.Naziv, m.Cena, m.Proizvodjac, m.JedinicaMere, m.Sertifikat, m.Tip));
+                }
+                s.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return materijali;
+        }
+
+        public static ZavrsniBasic vratiZavrsniMaterijal(int id)
+        {
+            ZavrsniBasic materijal = new ZavrsniBasic();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Zavrsni m = s.Load<Zavrsni>(id);
+
+                materijal = new ZavrsniBasic(
+                    m.ID, m.Naziv, m.Cena, m.Proizvodjac, m.JedinicaMere, m.Sertifikat, m.Tip);
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return materijal;
+        }
+
+        public static void dodajZavrsniMaterijal(ZavrsniBasic m)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Zavrsni materijal = new Zavrsni();
+
+                materijal.Naziv = m.Naziv;
+                materijal.Cena = m.Cena;
+                materijal.Proizvodjac = m.Proizvodjac;
+                materijal.JedinicaMere = m.JedinicaMere;
+                materijal.Sertifikat = m.Sertifikat;
+                materijal.Tip = m.Tip;
+
+                s.Save(materijal);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void izmeniZavrsniMaterijal(ZavrsniBasic m)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Zavrsni materijal = s.Load<Zavrsni>(m.ID);
+
+                materijal.Naziv = m.Naziv;
+                materijal.Cena = m.Cena;
+                materijal.Proizvodjac = m.Proizvodjac;
+                materijal.JedinicaMere = m.JedinicaMere;
+                materijal.Sertifikat = m.Sertifikat;
+
+                s.Update(materijal);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        #endregion
 
         #endregion
 
@@ -4029,6 +4709,47 @@ namespace Gradjevinska_firma.DTO
             return koristi;
         }
 
+        public static KoristiBasic vratiKoristZadatka(int idKorist)
+        {
+            KoristiBasic korist = new KoristiBasic();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Koristi k = s.Load<Koristi>(idKorist);
+
+                ZadatakBasic zadatak = null;
+
+                if (k.Zadatak != null)
+                {
+                    zadatak = new ZadatakBasic();
+                    zadatak.Id = k.Zadatak.Id;
+                    zadatak.Naziv = k.Zadatak.Naziv;
+                }
+
+                MaterijalBasic materijal = null;
+
+                if (k.Materijal != null)
+                {
+                    materijal = new MaterijalBasic();
+                    materijal.ID = k.Materijal.ID;
+                    materijal.Naziv = k.Materijal.Naziv;
+                }
+
+                korist = new KoristiBasic(
+                        k.ID,k.Kolicina,zadatak,materijal);
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return korist;
+        }
+
         public static void dodajKoristiZadatka(KoristiBasic k)
         {
             try
@@ -4046,6 +4767,46 @@ namespace Gradjevinska_firma.DTO
                 koristi.Kolicina=k.Kolicina; 
 
                 s.Save(koristi);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void izmeniKoristi(KoristiBasic k)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Koristi koristi = s.Load<Koristi>(k.ID);
+
+                koristi.Kolicina = k.Kolicina;
+
+                s.Update(koristi);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void obrisiKoristi(int id)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Koristi koristi = s.Load<Koristi>(id);
+
+                s.Delete(koristi);
                 s.Flush();
 
                 s.Close();

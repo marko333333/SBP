@@ -1,6 +1,6 @@
 ﻿namespace Gradjevinska_firma.Forme
 {
-    partial class IzmeniMaterijalForma
+    partial class IzmeniZastitniForma
     {
         /// <summary>
         /// Required designer variable.
@@ -59,14 +59,14 @@
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(389, 321);
-            groupBox1.TabIndex = 1;
+            groupBox1.Size = new Size(364, 333);
+            groupBox1.TabIndex = 3;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Izmeni gradjevinski materijal";
+            groupBox1.Text = "Izmeni zastitni materijal";
             // 
             // btIzmeni
             // 
-            btIzmeni.Location = new Point(33, 258);
+            btIzmeni.Location = new Point(33, 266);
             btIzmeni.Name = "btIzmeni";
             btIzmeni.Size = new Size(94, 29);
             btIzmeni.TabIndex = 12;
@@ -154,15 +154,15 @@
             label1.TabIndex = 0;
             label1.Text = "Naziv:";
             // 
-            // IzmeniMaterijalForma
+            // IzmeniZastitniForma
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(389, 321);
+            ClientSize = new Size(364, 333);
             Controls.Add(groupBox1);
-            Name = "IzmeniMaterijalForma";
-            Text = "IzmeniMaterijalForma";
-            Load += IzmeniMaterijalForma_Load;
+            Name = "IzmeniZastitniForma";
+            Text = "IzmeniZastitniForma";
+            Load += IzmeniZastitniForma_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
