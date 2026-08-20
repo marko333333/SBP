@@ -25,6 +25,9 @@
     <Compile Update="Forme\DodajElektroForma.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\DodajFakturuForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\DodajFotografijuForma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +110,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\IzmeniElektroForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\IzmeniFakturuForma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\IzmeniIndustrijskiForma.cs">

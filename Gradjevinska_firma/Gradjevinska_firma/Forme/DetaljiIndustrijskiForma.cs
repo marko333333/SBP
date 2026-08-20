@@ -190,7 +190,7 @@ namespace Gradjevinska_firma.Forme
 
         private void btnIzmeni_Click(object sender, EventArgs e)
         {
-            ListView tabela = Incidenti;//proveri
+            ListView tabela = Incidenti;
 
             if (tabela.SelectedItems.Count == 0)
             {
@@ -247,6 +247,74 @@ namespace Gradjevinska_firma.Forme
         private void Incidenti_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnDodajFakturu_Click(object sender, EventArgs e)
+        {
+            using (DodajFakturuForma forma = new DodajFakturuForma(IdIndustrijski))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    List<FakturaBasic> fakture = DTOManager.vratiFaktureProjekta(IdIndustrijski);
+                    popuniPodacimaFakture(fakture);
+                }
+            }
+        }
+
+        private void btnObrisiFakturu_Click(object sender, EventArgs e)
+        {
+            ListView tabela = Fakture;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati fakturu iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+            string poruka = "Da li zelite da obrisete izabranu fakturu?";
+            string title = "Pitanje";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(poruka, title, buttons);
+
+            if (result == DialogResult.OK)
+            {
+                DTOManager.obrisiFakturu(id);
+                MessageBox.Show("Brisanje fakture je uspesno obavljeno!");
+                List<FakturaBasic> fak = DTOManager.vratiFaktureProjekta(IdIndustrijski);
+                popuniPodacimaFakture(fak);
+
+            }
+            else
+            {
+
+            }
+        }
+
+        private void btnIzmeniFakturu_Click(object sender, EventArgs e)
+        {
+            ListView tabela = Fakture;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati fakturu iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+
+            using (IzmeniFakturuForma forma = new IzmeniFakturuForma(id, IdIndustrijski))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    List<FakturaBasic> fak = DTOManager.vratiFaktureProjekta(IdIndustrijski);
+                    popuniPodacimaFakture(fak);
+                }
+            }
         }
     }
 

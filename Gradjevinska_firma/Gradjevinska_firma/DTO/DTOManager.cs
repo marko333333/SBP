@@ -370,6 +370,54 @@ namespace Gradjevinska_firma.DTO
             }
         }
 
+        public static List<PravnaLicaPregled> vratiPravnaLicaNaProjektu(int idProjekta)
+        {
+            List<PravnaLicaPregled> pravnaLica = new List<PravnaLicaPregled>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Faktura> sveFakture =
+                    from f in s.Query<Faktura>()
+                    where f.IDProjekta.ID == idProjekta
+                    select f;
+
+                HashSet<int> dodataLica = new HashSet<int>();
+
+                foreach (Faktura f in sveFakture)
+                {
+                    if (f.PravnoLiceIzdaje != null && !dodataLica.Contains(f.PravnoLiceIzdaje.Id))
+                    {
+                        pravnaLica.Add(new PravnaLicaPregled(
+                            f.PravnoLiceIzdaje.Id, f.PravnoLiceIzdaje.Jmbg, f.PravnoLiceIzdaje.Ime,
+                            f.PravnoLiceIzdaje.Prezime, f.PravnoLiceIzdaje.DatumRodjenja, f.PravnoLiceIzdaje.Struka,
+                            f.PravnoLiceIzdaje.FlagPB, f.PravnoLiceIzdaje.FlagInve, f.PravnoLiceIzdaje.FlagIzv,
+                            f.PravnoLiceIzdaje.FlagP, f.PravnoLiceIzdaje.FlagD, f.PravnoLiceIzdaje.FlagN));
+
+                        dodataLica.Add(f.PravnoLiceIzdaje.Id);
+                    }
+
+                    if (f.PravnoLicePrima != null && !dodataLica.Contains(f.PravnoLicePrima.Id))
+                    {
+                        pravnaLica.Add(new PravnaLicaPregled(
+                            f.PravnoLicePrima.Id, f.PravnoLicePrima.Jmbg, f.PravnoLicePrima.Ime,
+                            f.PravnoLicePrima.Prezime, f.PravnoLicePrima.DatumRodjenja, f.PravnoLicePrima.Struka,
+                            f.PravnoLicePrima.FlagPB, f.PravnoLicePrima.FlagInve, f.PravnoLicePrima.FlagIzv,
+                            f.PravnoLicePrima.FlagP, f.PravnoLicePrima.FlagD, f.PravnoLicePrima.FlagN));
+
+                        dodataLica.Add(f.PravnoLicePrima.Id);
+                    }
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return pravnaLica;
+        }
+
         #endregion
 
         #endregion
@@ -3588,6 +3636,104 @@ namespace Gradjevinska_firma.DTO
             }
 
             return fakture;
+        }
+
+        public static void dodajFakturu(FakturaBasic f)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Projekat projekat = s.Get<Projekat>(f.Projekat.ID);
+                PravnaLica primalac = s.Get<PravnaLica>(f.PravnoLicePrima.Id);
+                PravnaLica izdavalac = s.Get<PravnaLica>(f.PravnoLiceIzdaje.Id);
+                if (projekat == null)
+                {
+                    MessageBox.Show("Projekat ne postoji.");
+                    return;
+                }
+                if (primalac == null)
+                {
+                    MessageBox.Show("Primalac ne postoji.");
+                    return;
+                }
+                if (izdavalac == null)
+                {
+                    MessageBox.Show("Izdavalac ne postoji.");
+                    return;
+                }
+
+                Faktura fakt = new Faktura();
+
+                fakt.Iznos = f.Iznos;
+                fakt.Valuta = f.Valuta;
+                fakt.statusPlacanja = f.StatusPlacanja;
+                fakt.Datum = f.Datum;
+                fakt.IDProjekta = projekat;
+                fakt.PravnoLiceIzdaje = izdavalac;
+                fakt.PravnoLicePrima = primalac;
+
+                s.Save(fakt);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void obrisiFakturu(int id)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Faktura faktura = s.Get<Faktura>(id);
+                if( faktura == null )
+                {
+                    MessageBox.Show("Faktura ne postoji.");
+                    return;
+                }
+
+                s.Delete(faktura);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void izmeniFakturu(FakturaBasic f)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Faktura faktura = s.Get<Faktura>(f.Br_fakture);
+                if(faktura == null)
+                {
+                    MessageBox.Show("Faktura ne postoji.");
+                    return;
+                }
+                faktura.Iznos = f.Iznos;
+                faktura.Valuta = f.Valuta;
+                faktura.statusPlacanja = f.StatusPlacanja;
+                faktura.Datum = f.Datum;
+
+                s.Update(faktura);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         #endregion

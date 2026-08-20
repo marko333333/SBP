@@ -210,6 +210,10 @@ namespace Gradjevinska_firma.DTO
             FlagD = flagD;
             FlagN = flagN;
         }
+        public override string ToString()
+        {
+            return Ime + " " + Prezime;
+        }
     }
     #endregion
 

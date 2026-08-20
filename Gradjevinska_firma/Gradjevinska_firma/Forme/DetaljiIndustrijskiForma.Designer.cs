@@ -67,6 +67,9 @@
             columnHeader6 = new ColumnHeader();
             columnHeader7 = new ColumnHeader();
             tabPage4 = new TabPage();
+            btnObrisiFakturu = new Button();
+            btnIzmeniFakturu = new Button();
+            btnDodajFakturu = new Button();
             Fakture = new ListView();
             columnHeader8 = new ColumnHeader();
             columnHeader9 = new ColumnHeader();
@@ -414,6 +417,9 @@
             // 
             // tabPage4
             // 
+            tabPage4.Controls.Add(btnObrisiFakturu);
+            tabPage4.Controls.Add(btnIzmeniFakturu);
+            tabPage4.Controls.Add(btnDodajFakturu);
             tabPage4.Controls.Add(Fakture);
             tabPage4.Location = new Point(4, 24);
             tabPage4.Name = "tabPage4";
@@ -422,12 +428,44 @@
             tabPage4.Text = "Faktura";
             tabPage4.UseVisualStyleBackColor = true;
             // 
+            // btnObrisiFakturu
+            // 
+            btnObrisiFakturu.Location = new Point(664, 147);
+            btnObrisiFakturu.Name = "btnObrisiFakturu";
+            btnObrisiFakturu.Size = new Size(126, 36);
+            btnObrisiFakturu.TabIndex = 3;
+            btnObrisiFakturu.Text = "Obrisi";
+            btnObrisiFakturu.UseVisualStyleBackColor = true;
+            btnObrisiFakturu.Click += btnObrisiFakturu_Click;
+            // 
+            // btnIzmeniFakturu
+            // 
+            btnIzmeniFakturu.Location = new Point(664, 88);
+            btnIzmeniFakturu.Name = "btnIzmeniFakturu";
+            btnIzmeniFakturu.Size = new Size(126, 36);
+            btnIzmeniFakturu.TabIndex = 2;
+            btnIzmeniFakturu.Text = "Izmeni";
+            btnIzmeniFakturu.UseVisualStyleBackColor = true;
+            btnIzmeniFakturu.Click += btnIzmeniFakturu_Click;
+            // 
+            // btnDodajFakturu
+            // 
+            btnDodajFakturu.Location = new Point(664, 28);
+            btnDodajFakturu.Name = "btnDodajFakturu";
+            btnDodajFakturu.Size = new Size(126, 36);
+            btnDodajFakturu.TabIndex = 1;
+            btnDodajFakturu.Text = "Dodaj";
+            btnDodajFakturu.UseVisualStyleBackColor = true;
+            btnDodajFakturu.Click += btnDodajFakturu_Click;
+            // 
             // Fakture
             // 
             Fakture.Columns.AddRange(new ColumnHeader[] { columnHeader8, columnHeader9, columnHeader10, columnHeader11, columnHeader12 });
+            Fakture.FullRowSelect = true;
+            Fakture.GridLines = true;
             Fakture.Location = new Point(3, 13);
             Fakture.Name = "Fakture";
-            Fakture.Size = new Size(377, 212);
+            Fakture.Size = new Size(632, 212);
             Fakture.TabIndex = 0;
             Fakture.UseCompatibleStateImageBehavior = false;
             Fakture.View = View.Details;
@@ -505,7 +543,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(851, 352);
+            ClientSize = new Size(879, 352);
             Controls.Add(tabControl1);
             Name = "DetaljiIndustrijskiForma";
             Text = "DetaljiIndustrijskiForma";
@@ -574,5 +612,8 @@
         private Button btnDodaj;
         private Button btnObrisi;
         private Button btnIzmeni;
+        private Button btnObrisiFakturu;
+        private Button btnIzmeniFakturu;
+        private Button btnDodajFakturu;
     }
 }
