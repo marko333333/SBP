@@ -371,12 +371,15 @@
             // Incidenti
             // 
             Incidenti.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6, columnHeader7 });
+            Incidenti.FullRowSelect = true;
+            Incidenti.GridLines = true;
             Incidenti.Location = new Point(3, 12);
             Incidenti.Name = "Incidenti";
             Incidenti.Size = new Size(596, 216);
             Incidenti.TabIndex = 0;
             Incidenti.UseCompatibleStateImageBehavior = false;
             Incidenti.View = View.Details;
+            Incidenti.SelectedIndexChanged += Incidenti_SelectedIndexChanged;
             // 
             // columnHeader1
             // 

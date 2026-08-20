@@ -59,7 +59,7 @@ namespace Gradjevinska_firma.Forme
             this.Close();
         }
 
-        private void DodajBezbednosniIncidentForma_Load(object sender, EventArgs e)
+        private void DodajBezbednosniIncidentForma_Load(object sender, EventArgs e)//ne radi klik na item
         {
             popuniOsobama();
         }

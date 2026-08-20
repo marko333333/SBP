@@ -232,13 +232,19 @@ namespace Gradjevinska_firma.Forme
             {
                 DTOManager.obrisiBezbednosniIncident(id);
                 MessageBox.Show("Brisanje incidenta je uspesno obavljeno!");
-                popuniPodacima();
+                List<BezbednosniIncidentBasic> inc = DTOManager.vratiBezbednosniIncidenteProjekta(IdIndustrijski);
+                popuniPodacimaBezbednosnihIncidenta(inc);
 
             }
             else
             {
 
             }
+        }
+
+        private void Incidenti_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 
