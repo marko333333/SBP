@@ -182,7 +182,9 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    this.Incidenti.Refresh();//proveri mozda ne treba ovako
+                    //this.Incidenti.Refresh();//proveri mozda ne treba ovako
+                    List<BezbednosniIncidentBasic> incidenti = DTOManager.vratiBezbednosniIncidenteProjekta(IdIndustrijski);
+                    popuniPodacimaBezbednosnihIncidenta(incidenti);
                 }
             }
         }

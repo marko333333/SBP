@@ -30,6 +30,12 @@ namespace Gradjevinska_firma.Forme
                 return;
             }
 
+            if (cbOsoba.SelectedItem == null)
+            {
+                MessageBox.Show("Morate izabrati osobu.");
+                return;
+            }
+
             OsobaPregled izabranaOsoba = (OsobaPregled)cbOsoba.SelectedItem;
 
             OsobaBasic osoba = new OsobaBasic();
@@ -38,6 +44,17 @@ namespace Gradjevinska_firma.Forme
 
             ProjekatBasic projekat = DTOManager.vratiProjekat(IdProjekta);
 
+            string prikazaniTip = cbTipIncidenta.SelectedItem.ToString();
+
+            string tipZaKlasu = prikazaniTip switch
+            {
+                "Povreda na radu" => "PovredaNaRadu",
+                "Kvar opreme" => "KvarOpreme",
+                "Nepoštovanje procedura" => "NepostovanjeProcedura",
+                "Opasna situacija" => "OpasnaSituacija",
+                "Ekološki incident" => "EkoloskiIncident",
+                _ => throw new ArgumentException("Nepoznat tip incidenta.")
+            };
 
             BezbednosniIncidentBasic incident = new BezbednosniIncidentBasic(
                 0,
@@ -46,12 +63,12 @@ namespace Gradjevinska_firma.Forme
                 tbLokacija.Text,
                 tbPreduzeteMere.Text,
                 tbPosledice.Text,
-                cbTipIncidenta.SelectedItem.ToString(),
+                prikazaniTip,
                 projekat,
                 osoba
            );
 
-            DTOManager.dodajBezbednosniIncident(incident, cbTipIncidenta.SelectedItem.ToString());//proveri
+            DTOManager.dodajBezbednosniIncident(incident, tipZaKlasu);//proveri
 
             MessageBox.Show("Bezbednosni incident je uspesno dodat.");
 
@@ -67,16 +84,15 @@ namespace Gradjevinska_firma.Forme
         private void popuniOsobama()
         {
             cbOsoba.Items.Clear();
-
-            List<OsobaPregled> osobe =
-                DTOManager.vratiOsobeNaProjektu(IdProjekta);
+            List<OsobaPregled> osobe = DTOManager.vratiOsobeNaProjektu(IdProjekta);
 
             foreach (OsobaPregled osoba in osobe)
             {
-                cbOsoba.Items.Add(osoba.Ime + " " + osoba.Prezime);
+                cbOsoba.Items.Add(osoba);
             }
+
+            if (cbOsoba.Items.Count > 0)
+                cbOsoba.SelectedIndex = 0;
         }
-
-
     }
 }

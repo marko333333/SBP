@@ -83,45 +83,78 @@ namespace Gradjevinska_firma.DTO
             }
         }
 
+        //public static List<OsobaPregled> vratiOsobeNaProjektu(int idProjekta)
+        //{
+        //    List<OsobaPregled> osobe = new List<OsobaPregled>();
+
+        //    ProjekatBasic projekat = vratiProjekat(idProjekta);
+
+        //    if (projekat == null)
+        //        return osobe;
+
+        //    foreach (FazaBasic faza in projekat.Faze)
+        //    {
+        //        foreach (ZadatakBasic zadatak in faza.Zadaci)
+        //        {
+        //            foreach (AngazovanBasic angazovan in zadatak.Angazovani)
+        //            {
+        //                OsobaBasic osoba = angazovan.Osoba;
+
+        //                if (osoba == null)
+        //                    continue;
+
+        //                // Provera da osoba vec nije dodata
+        //                if (!osobe.Any(o => o.Id == osoba.Id))
+        //                {
+        //                    osobe.Add(new OsobaPregled(
+        //                        osoba.Id,
+        //                        osoba.Jmbg,
+        //                        osoba.Ime,
+        //                        osoba.Prezime,
+        //                        osoba.DatumRodjenja,
+        //                        osoba.Struka
+        //                    ));
+        //                }
+        //            }
+        //        }
+        //    }
+
+        //    return osobe;
+        //}
         public static List<OsobaPregled> vratiOsobeNaProjektu(int idProjekta)
         {
             List<OsobaPregled> osobe = new List<OsobaPregled>();
-
-            ProjekatBasic projekat = vratiProjekat(idProjekta);
-
-            if (projekat == null)
-                return osobe;
-
-            foreach (FazaBasic faza in projekat.Faze)
+            try
             {
-                foreach (ZadatakBasic zadatak in faza.Zadaci)
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Angazovan> sviAngazovani =
+                    from a in s.Query<Angazovan>()
+                    where a.Zadatak.Faza.Projekat.ID == idProjekta
+                    select a;
+
+                HashSet<int> dodateOsobe = new HashSet<int>();
+
+                foreach (Angazovan a in sviAngazovani)
                 {
-                    foreach (AngazovanBasic angazovan in zadatak.Angazovani)
+                    if (!dodateOsobe.Contains(a.Osoba.Id))
                     {
-                        OsobaBasic osoba = angazovan.Osoba;
+                        osobe.Add(new OsobaPregled(
+                            a.Osoba.Id, a.Osoba.Jmbg, a.Osoba.Ime, a.Osoba.Prezime,
+                            a.Osoba.DatumRodjenja, a.Osoba.Struka));
 
-                        if (osoba == null)
-                            continue;
-
-                        // Provera da osoba vec nije dodata
-                        if (!osobe.Any(o => o.Id == osoba.Id))
-                        {
-                            osobe.Add(new OsobaPregled(
-                                osoba.Id,
-                                osoba.Jmbg,
-                                osoba.Ime,
-                                osoba.Prezime,
-                                osoba.DatumRodjenja,
-                                osoba.Struka
-                            ));
-                        }
+                        dodateOsobe.Add(a.Osoba.Id);
                     }
                 }
-            }
 
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
             return osobe;
         }
-
 
 
         #region FizickaLica
