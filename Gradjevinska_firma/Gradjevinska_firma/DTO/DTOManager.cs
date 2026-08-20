@@ -83,44 +83,6 @@ namespace Gradjevinska_firma.DTO
             }
         }
 
-        //public static List<OsobaPregled> vratiOsobeNaProjektu(int idProjekta)
-        //{
-        //    List<OsobaPregled> osobe = new List<OsobaPregled>();
-
-        //    ProjekatBasic projekat = vratiProjekat(idProjekta);
-
-        //    if (projekat == null)
-        //        return osobe;
-
-        //    foreach (FazaBasic faza in projekat.Faze)
-        //    {
-        //        foreach (ZadatakBasic zadatak in faza.Zadaci)
-        //        {
-        //            foreach (AngazovanBasic angazovan in zadatak.Angazovani)
-        //            {
-        //                OsobaBasic osoba = angazovan.Osoba;
-
-        //                if (osoba == null)
-        //                    continue;
-
-        //                // Provera da osoba vec nije dodata
-        //                if (!osobe.Any(o => o.Id == osoba.Id))
-        //                {
-        //                    osobe.Add(new OsobaPregled(
-        //                        osoba.Id,
-        //                        osoba.Jmbg,
-        //                        osoba.Ime,
-        //                        osoba.Prezime,
-        //                        osoba.DatumRodjenja,
-        //                        osoba.Struka
-        //                    ));
-        //                }
-        //            }
-        //        }
-        //    }
-
-        //    return osobe;
-        //}
         public static List<OsobaPregled> vratiOsobeNaProjektu(int idProjekta)
         {
             List<OsobaPregled> osobe = new List<OsobaPregled>();
@@ -2293,6 +2255,34 @@ namespace Gradjevinska_firma.DTO
                 s.Save(incident);
                 s.Flush();
 
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void izmeniBezbednosniIncident(BezbednosniIncidentBasic inc)
+        {
+            try
+            {
+
+                ISession s = DataLayer.GetSession();
+
+                BezbednosniIncident b = s.Load<BezbednosniIncident>(inc.ID);
+
+                b.Opis = inc.Opis;
+                b.Datum = inc.Datum;
+                b.Lokacija = inc.Lokacija;
+                b.Preduzete_mere = inc.Preduzete_mere;
+                b.Posledice = inc.Posledice;
+                b.Tip_incidenta = inc.Tip_incidenta;
+
+
+
+                s.Update(b);
+                s.Flush();
                 s.Close();
             }
             catch (Exception ex)

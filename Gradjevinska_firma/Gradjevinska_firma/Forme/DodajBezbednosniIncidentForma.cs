@@ -50,9 +50,9 @@ namespace Gradjevinska_firma.Forme
             {
                 "Povreda na radu" => "PovredaNaRadu",
                 "Kvar opreme" => "KvarOpreme",
-                "Nepoštovanje procedura" => "NepostovanjeProcedura",
+                "Nepostovanje procedura" => "NepostovanjeProcedura",
                 "Opasna situacija" => "OpasnaSituacija",
-                "Ekološki incident" => "EkoloskiIncident",
+                "Ekoloski incident" => "EkoloskiIncident",
                 _ => throw new ArgumentException("Nepoznat tip incidenta.")
             };
 
@@ -68,7 +68,7 @@ namespace Gradjevinska_firma.Forme
                 osoba
            );
 
-            DTOManager.dodajBezbednosniIncident(incident, tipZaKlasu);//proveri
+            DTOManager.dodajBezbednosniIncident(incident, tipZaKlasu);
 
             MessageBox.Show("Bezbednosni incident je uspesno dodat.");
 
@@ -76,7 +76,7 @@ namespace Gradjevinska_firma.Forme
             this.Close();
         }
 
-        private void DodajBezbednosniIncidentForma_Load(object sender, EventArgs e)//ne radi klik na item
+        private void DodajBezbednosniIncidentForma_Load(object sender, EventArgs e)
         {
             popuniOsobama();
         }

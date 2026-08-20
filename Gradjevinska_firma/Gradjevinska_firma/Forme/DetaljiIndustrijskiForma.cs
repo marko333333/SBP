@@ -182,7 +182,6 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    //this.Incidenti.Refresh();//proveri mozda ne treba ovako
                     List<BezbednosniIncidentBasic> incidenti = DTOManager.vratiBezbednosniIncidenteProjekta(IdIndustrijski);
                     popuniPodacimaBezbednosnihIncidenta(incidenti);
                 }
@@ -203,11 +202,12 @@ namespace Gradjevinska_firma.Forme
                 tabela.SelectedItems[0].SubItems[0].Text
             );
 
-            using (IzmeniBezbednosniIncidentForma forma = new IzmeniBezbednosniIncidentForma(id))
+            using (IzmeniBezbednosniIncidentForma forma = new IzmeniBezbednosniIncidentForma(id, IdIndustrijski))
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    this.Incidenti.Refresh();//proveri
+                    List<BezbednosniIncidentBasic> incidenti = DTOManager.vratiBezbednosniIncidenteProjekta(IdIndustrijski);
+                    popuniPodacimaBezbednosnihIncidenta(incidenti);
                 }
             }
         }

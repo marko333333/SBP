@@ -112,6 +112,7 @@
             btnIzmeni.TabIndex = 17;
             btnIzmeni.Text = "Izmeni";
             btnIzmeni.UseVisualStyleBackColor = true;
+            btnIzmeni.Click += btnIzmeni_Click;
             // 
             // tbOpis
             // 
@@ -203,6 +204,7 @@
             Controls.Add(groupBox1);
             Name = "IzmeniBezbednosniIncidentForma";
             Text = "IzmeniBezbednosniIncidentForma";
+            Load += IzmeniBezbednosniIncidentForma_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
