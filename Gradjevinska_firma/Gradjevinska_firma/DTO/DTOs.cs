@@ -660,7 +660,7 @@ namespace Gradjevinska_firma.DTO
     }
 
     #endregion
-    //proveri
+
     #region BezbednosnaObuka
 
     public class BezbednosnaObukaBasic
@@ -1031,7 +1031,7 @@ namespace Gradjevinska_firma.DTO
         }
     }
     #endregion
-    //proveri
+
     #region PosebnaKlauzula
 
     public class PosebnaKlauzulaBasic
@@ -1115,7 +1115,7 @@ namespace Gradjevinska_firma.DTO
     }
 
     #endregion
-    //proveri
+
     #region SertifikatSpecOpreme
     public class SertifikatSpecOpremeBasic
     {
@@ -2029,10 +2029,10 @@ namespace Gradjevinska_firma.DTO
     {
         public string TipMehanizacije;
         public MehanizacijaBasic() { }
-        public MehanizacijaBasic(int id, string naziv, string tip, DateTime datumUvoza, string proizvodjac, DateTime datumNabavke, string rasponOdrzavanja, string lokacija, string status)
+        public MehanizacijaBasic(int id, string naziv, string tip, DateTime datumUvoza, string proizvodjac, string rasponOdrzavanja, string lokacija, string status,string tip_mehanizacije)
             : base(id, naziv, tip, datumUvoza, proizvodjac, rasponOdrzavanja, lokacija, status) 
         {
-            this.TipMehanizacije = tip;
+            this.TipMehanizacije = tip_mehanizacije;
         }
     }
 
@@ -2040,10 +2040,10 @@ namespace Gradjevinska_firma.DTO
     {
         public string TipMehanizacije;
         public MehanizacijaPregled() { }
-        public MehanizacijaPregled(int id, string naziv, string tip, DateTime datumUvoza, string proizvodjac, DateTime datumNabavke, string rasponOdrzavanja, string lokacija, string status)
+        public MehanizacijaPregled(int id, string naziv, string tip, DateTime datumUvoza, string proizvodjac, string rasponOdrzavanja, string lokacija, string status,string tip_mehanizacije)
             : base(id, naziv, tip, datumUvoza, proizvodjac, rasponOdrzavanja, lokacija, status)
         {
-            this.TipMehanizacije = tip;
+            this.TipMehanizacije = tip_mehanizacije;
         }
     }
     #endregion

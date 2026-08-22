@@ -2112,6 +2112,8 @@ namespace Gradjevinska_firma.DTO
             return ugovori;
         }
 
+        
+
         public static UgovorBasic vratiUgovor(int id)
         {
             UgovorBasic ugovor = new UgovorBasic();
@@ -2128,10 +2130,8 @@ namespace Gradjevinska_firma.DTO
 
                 ugovor = new UgovorBasic(u.Id,u.DatumPotpisivanja, u.Vrednost, u.PredmetUgovora, u.Valuta, u.Rok, materijal, projekat, oprema);
 
-                //ugovor.Materijal = vratiKontakteOsobe(id);
-                //ugovor.Projekat = vratiLicenceOsobe(id);
-                //ugovor.Oprema = vratiBezbednosniIncidentOsobe(id);
-
+                ugovor.UgovorneStrane = vratiUgovorneStrane(id);
+                
                 s.Close();
             }
             catch (Exception ex)
@@ -2139,6 +2139,509 @@ namespace Gradjevinska_firma.DTO
                 MessageBox.Show(ex.ToString());
             }
             return ugovor;
+        }
+
+        public static List<UgovorPregled> vratiUgovoreMaterijala(int idMaterijala)
+        {
+            List<UgovorPregled> ugovori = new List<UgovorPregled>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Ugovor> sviUgovori =
+                    from u in s.Query<Ugovor>()
+                    where u.Materijal != null
+                       && u.Materijal.ID == idMaterijala
+                    select u;
+
+                foreach (Ugovor u in sviUgovori)
+                {
+                    MaterijalPregled materijal = null;
+
+                    if (u.Materijal != null)
+                    {
+                        materijal = new MaterijalPregled();
+
+                        materijal.ID = u.Materijal.ID;
+                        materijal.Naziv = u.Materijal.Naziv;
+                        materijal.Tip = u.Materijal.Tip;
+                    }
+
+                    ugovori.Add(new UgovorPregled(
+                        u.Id,u.DatumPotpisivanja,u.Vrednost,u.PredmetUgovora,u.Valuta,u.Rok,materijal,null,null
+                    ));
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return ugovori;
+        }
+
+        public static List<UgovorPregled> vratiSveUgovore()
+        {
+            List<UgovorPregled> ugovori = new List<UgovorPregled>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Ugovor> sviUgovori =
+                    from u in s.Query<Ugovor>()
+                    select u;
+
+                foreach (Ugovor u in sviUgovori)
+                {
+                    MaterijalPregled materijal = null;
+
+                    if (u.Materijal != null)
+                    {
+                        materijal = new MaterijalPregled();
+
+                        materijal.ID = u.Materijal.ID;
+                        materijal.Naziv = u.Materijal.Naziv;
+                    }
+
+                    ProjekatPregled projekat = null;
+
+                    if (u.Projekat != null)
+                    {
+                        projekat = new ProjekatPregled();
+
+                        projekat.ID = u.Projekat.ID;
+                        projekat.Naziv = u.Projekat.Naziv;
+                    }
+
+                    OpremaPregled oprema = null;
+
+                    if (u.Oprema != null)
+                    {
+                        oprema = new OpremaPregled();
+
+                        oprema.Id = u.Oprema.Id;
+                        oprema.Naziv = u.Oprema.Naziv;
+                    }
+
+                    ugovori.Add(new UgovorPregled(
+                            u.Id,u.DatumPotpisivanja,u.Vrednost,u.PredmetUgovora,u.Valuta,u.Rok,materijal,projekat,oprema
+                        )
+                        
+                    );
+                    
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return ugovori;
+        }
+
+        public static void dodajUgovor(UgovorBasic u)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Ugovor ugovor = new Ugovor();
+
+                ugovor.DatumPotpisivanja = u.DatumPotpisivanja;
+                ugovor.Vrednost = u.Vrednost;
+                ugovor.PredmetUgovora = u.PredmetUgovora;
+                ugovor.Valuta = u.Valuta;
+                ugovor.Rok = u.Rok;
+
+                
+
+
+                if (u.Materijal != null)
+                {
+                    ugovor.Materijal = s.Load<Materijal>(u.Materijal.ID);
+                }
+
+                if (u.Projekat != null)
+                {
+                    ugovor.Projekat = s.Load<Projekat>(u.Projekat.ID);
+                }
+
+                if (u.Oprema != null)
+                {
+                    ugovor.Oprema = s.Load<Oprema>(u.Oprema.Id);
+                }
+
+                s.Save(ugovor);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void izmeniUgovor(UgovorBasic u)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Ugovor ugovor = s.Load<Ugovor>(u.Id);
+
+                ugovor.DatumPotpisivanja = u.DatumPotpisivanja;
+                ugovor.Vrednost = u.Vrednost;
+                ugovor.PredmetUgovora = u.PredmetUgovora;
+                ugovor.Valuta = u.Valuta;
+                ugovor.Rok = u.Rok;
+
+                if (u.Materijal != null)
+                {
+                    ugovor.Materijal = s.Load<Materijal>(u.Materijal.ID);
+                }
+                else
+                {
+                    ugovor.Materijal = null;
+                }
+
+                if (u.Projekat != null)
+                {
+                    ugovor.Projekat = s.Load<Projekat>(u.Projekat.ID);
+                }
+                else
+                {
+                    ugovor.Projekat = null;
+                }
+
+                if (u.Oprema != null)
+                {
+                    ugovor.Oprema = s.Load<Oprema>(u.Oprema.Id);
+                }
+                else
+                {
+                    ugovor.Oprema = null;
+                }
+
+                s.Update(ugovor);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void obrisiUgovor(int id)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Ugovor ugovor = s.Load<Ugovor>(id);
+
+                s.Delete(ugovor);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        #endregion
+
+        #region ImaUgovorneStrane
+
+        public static List<ImaUgovornuStranuBasic> vratiUgovorneStrane(int idUgovora)
+        {
+            List<ImaUgovornuStranuBasic> strane = new List<ImaUgovornuStranuBasic>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<ImaUgovornuStranu> sveStrane =
+                    from i in s.Query<ImaUgovornuStranu>()
+                    where i.Ugovor.Id == idUgovora
+                    select i;
+
+                foreach (ImaUgovornuStranu i in sveStrane)
+                {
+                    OsobaBasic osoba = null;
+
+                    if (i.Osoba != null)
+                    {
+                        osoba = new OsobaBasic();
+                        osoba.Id = i.Osoba.Id;
+                        osoba.Ime = i.Osoba.Ime;
+                        osoba.Prezime = i.Osoba.Prezime;
+                    }
+
+                    UgovorBasic ugovor = null;
+
+                    if (i.Ugovor != null)
+                    {
+                        ugovor = new UgovorBasic();
+                        ugovor.Id = i.Ugovor.Id;
+                    }
+
+                    strane.Add( new ImaUgovornuStranuBasic(
+                            i.Id, osoba,ugovor,i.Uloga
+                        )
+                    );
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return strane;
+        }
+
+        public static ImaUgovornuStranuBasic vratiImaUgovornuStranu(int id)
+        {
+            ImaUgovornuStranuBasic strana = null;
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                ImaUgovornuStranu i = s.Load<ImaUgovornuStranu>(id);
+
+                OsobaBasic osoba = null;
+
+                if (i.Osoba != null)
+                {
+                    osoba = new OsobaBasic();
+                    osoba.Id = i.Osoba.Id;
+                    osoba.Ime = i.Osoba.Ime;
+                    osoba.Prezime = i.Osoba.Prezime;
+                }
+
+                UgovorBasic ugovor = null;
+
+                if (i.Ugovor != null)
+                {
+                    ugovor = new UgovorBasic();
+                    ugovor.Id = i.Ugovor.Id;
+                }
+
+                strana = new ImaUgovornuStranuBasic(
+                    i.Id,osoba,ugovor,i.Uloga
+                );
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return strana;
+        }
+
+        public static void dodajUgovornuStranu(ImaUgovornuStranuBasic i)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Osoba osoba = s.Load<Osoba>(i.Osoba.Id);
+
+                Ugovor ugovor = s.Load<Ugovor>(i.Ugovor.Id);
+
+                ImaUgovornuStranu strana = new ImaUgovornuStranu();
+
+                strana.Osoba = osoba;
+                strana.Ugovor = ugovor;
+                strana.Uloga = i.Uloga;
+
+                s.Save(strana);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void izmeniUgovornuStranu(ImaUgovornuStranuBasic i)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                ImaUgovornuStranu strana = s.Load<ImaUgovornuStranu>(i.Id);
+
+                strana.Uloga = i.Uloga;
+
+                s.Update(strana);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void obrisiUgovornuStranu(int id)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                ImaUgovornuStranu strana = s.Load<ImaUgovornuStranu>(id);
+
+                s.Delete(strana);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        #endregion
+
+        #region PosebneKlauzule
+
+        public static List<PosebnaKlauzulaBasic> vratiPosebneKlauzule(int idUgovora)
+        {
+            List<PosebnaKlauzulaBasic> klauzule = new List<PosebnaKlauzulaBasic>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<PosebnaKlauzula> sveKlauzule =
+                    from k in s.Query<PosebnaKlauzula>()
+                    where k.Ugovor.Id == idUgovora
+                    select k;
+
+                foreach (PosebnaKlauzula k in sveKlauzule)
+                {
+                    klauzule.Add( new PosebnaKlauzulaBasic(
+                            k.Id,k.Ugovor.Id,k.TekstKlauzule
+                        )
+                    );
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return klauzule;
+        }
+
+        public static PosebnaKlauzulaBasic vratiPosebnuKlauzulu(int id)
+        {
+            PosebnaKlauzulaBasic klauzula = null;
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                PosebnaKlauzula k = s.Load<PosebnaKlauzula>(id);
+
+                klauzula = new PosebnaKlauzulaBasic(
+                    k.Id, k.Ugovor.Id, k.TekstKlauzule
+                );
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return klauzula;
+        }
+
+        public static void dodajPosebnuKlauzulu(PosebnaKlauzulaBasic k)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Ugovor ugovor = s.Load<Ugovor>(k.IdUgovor);
+
+                PosebnaKlauzula klauzula = new PosebnaKlauzula();
+
+                klauzula.Ugovor = ugovor;
+                klauzula.TekstKlauzule = k.TekstKlauzule;
+
+                s.Save(klauzula);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void izmeniPosebnuKlauzulu(PosebnaKlauzulaBasic k)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                PosebnaKlauzula klauzula = s.Load<PosebnaKlauzula>(k.Id);
+
+                klauzula.TekstKlauzule = k.TekstKlauzule;
+
+                s.Update(klauzula);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void obrisiPosebnuKlauzulu(int id)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                PosebnaKlauzula klauzula = s.Load<PosebnaKlauzula>(id);
+
+                s.Delete(klauzula);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         #endregion
@@ -4267,6 +4770,120 @@ namespace Gradjevinska_firma.DTO
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        #region Mehanizacija
+
+        public static List<MehanizacijaPregled> vratiSveMehanizacije()
+        {
+            List<MehanizacijaPregled> mehanizacije = new List<MehanizacijaPregled>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Mehanizacija> sveMehanizacije =
+                    from m in s.Query<Mehanizacija>()
+                    select m;
+
+                foreach (Mehanizacija m in sveMehanizacije)
+                {
+                    mehanizacije.Add( new MehanizacijaPregled(
+                            m.Id,m.Naziv,m.Tip,m.DatumUvoza,m.Proizvodjac,m.RasponOdrzavanja,m.Lokacija,m.Status,m.TipMehanizacije)
+                    );
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return mehanizacije;
+        }
+
+        public static MehanizacijaBasic vratiMehanizaciju(int id)
+        {
+            MehanizacijaBasic mehanizacija = null;
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Mehanizacija m = s.Load<Mehanizacija>(id);
+
+                mehanizacija = new MehanizacijaBasic(
+                    m.Id,m.Naziv,m.Tip,m.DatumUvoza,m.Proizvodjac,m.RasponOdrzavanja,m.Lokacija,m.Status,m.TipMehanizacije
+                );
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return mehanizacija;
+        }
+
+        public static void dodajMehanizaciju(MehanizacijaBasic m)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Mehanizacija mehanizacija = new Mehanizacija();
+
+                mehanizacija.Naziv = m.Naziv;
+                mehanizacija.Tip = m.Tip;
+                mehanizacija.DatumUvoza = m.DatumUvoza;
+                mehanizacija.Proizvodjac = m.Proizvodjac;
+                mehanizacija.RasponOdrzavanja = m.RasponOdrzavanja;
+                mehanizacija.Lokacija = m.Lokacija;
+                mehanizacija.Status = m.Status;
+
+                mehanizacija.TipMehanizacije = m.TipMehanizacije;
+
+                s.Save(mehanizacija);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void izmeniMehanizaciju(MehanizacijaBasic m)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Mehanizacija mehanizacija = s.Load<Mehanizacija>(m.Id);
+
+                mehanizacija.Naziv = m.Naziv;
+                mehanizacija.Tip = m.Tip;
+                mehanizacija.DatumUvoza = m.DatumUvoza;
+                mehanizacija.Proizvodjac = m.Proizvodjac;
+                mehanizacija.RasponOdrzavanja = m.RasponOdrzavanja;
+                mehanizacija.Lokacija = m.Lokacija;
+                mehanizacija.Status = m.Status;
+                mehanizacija.TipMehanizacije = m.TipMehanizacije;
+
+                s.Update(mehanizacija);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        #endregion
 
         #endregion
 

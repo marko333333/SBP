@@ -83,23 +83,12 @@ namespace Gradjevinska_firma.Forme
 
         private void btNabavka_Click(object sender, EventArgs e)
         {
-            ListView tabela = oprema;
-
-
-            if (tabela.SelectedItems.Count == 0)
+            using (MehanizacijaForma forma = new MehanizacijaForma())
             {
-                MessageBox.Show("Potrebno je odabrati opremu iz tabele.");
-                return;
-            }
-
-            int id = int.Parse(
-                tabela.SelectedItems[0].SubItems[0].Text
-            );
-
-            using (NabavkaOpremuForma forma = new NabavkaOpremuForma(id))
-            {
-                forma.ShowDialog();
-                popuniOpremu();
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    popuniOpremu();
+                }
             }
         }
 

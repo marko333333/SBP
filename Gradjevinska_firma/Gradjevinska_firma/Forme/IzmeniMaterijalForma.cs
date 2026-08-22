@@ -65,7 +65,7 @@ namespace Gradjevinska_firma.Forme
 
             DTOManager.izmeniGradjevinskiMaterijal(materijal);
 
-            MessageBox.Show("Uspesno dodavanje");
+            MessageBox.Show("Uspesna izmena");
 
             this.DialogResult = DialogResult.OK;
             this.Close();

@@ -11,33 +11,24 @@ using System.Windows.Forms;
 
 namespace Gradjevinska_firma.Forme
 {
-    public partial class IzmeniOpremuForma : Form
+    public partial class DodajMehanizacijuForma : Form
     {
-        private int idOprema;
-        public IzmeniOpremuForma(int id)
+        public DodajMehanizacijuForma()
         {
             InitializeComponent();
-            idOprema = id;
         }
 
-        private void IzmeniOpremuForma_Load(object sender, EventArgs e)
-        {
-            OpremaBasic oprema=DTOManager.vratiOpremu(idOprema);
-
-            tbNaziv.Text= oprema.Naziv;
-            tbTip.Text= oprema.Tip;
-            dtpdatumUvoza.Value = oprema.DatumUvoza;
-            tbProizvodjac.Text=oprema.Proizvodjac;
-            tbRasponOdrzavanja.Text = oprema.RasponOdrzavanja;
-            tbLokacija.Text=oprema.Lokacija;
-            cbStatus.SelectedItem = oprema.Status;
-        }
-
-        private void btizmeni_Click(object sender, EventArgs e)
+        private void btDodaj_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(tbTip.Text))
             {
                 MessageBox.Show("Unesite tip opreme!");
+                tbTip.Focus();
+                return;
+            }
+            if (cbTipMehanizacije.SelectedItem == null)
+            {
+                MessageBox.Show("Unesite tip mehanizacije!");
                 tbTip.Focus();
                 return;
             }
@@ -56,15 +47,20 @@ namespace Gradjevinska_firma.Forme
             }
 
 
-            OpremaBasic oprema = new OpremaBasic(
-                idOprema, tbNaziv.Text, tbTip.Text, dtpdatumUvoza.Value, tbProizvodjac.Text, tbRasponOdrzavanja.Text, tbLokacija.Text, cbStatus.SelectedItem.ToString());
+            MehanizacijaBasic oprema = new MehanizacijaBasic(
+                0, tbNaziv.Text, tbTip.Text, dtpdatumUvoza.Value, tbProizvodjac.Text, tbRasponOdrzavanja.Text, tbLokacija.Text, cbStatus.SelectedItem.ToString(), cbTipMehanizacije.SelectedItem.ToString());
 
-            DTOManager.izmeniOpremu(oprema);
+            DTOManager.dodajMehanizaciju(oprema);
 
-            MessageBox.Show("Uspesna izmena");
+            MessageBox.Show("Uspesno dodavanje");
 
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void DodajMehanizacijuForma_Load(object sender, EventArgs e)
+        {
+            cbStatus.SelectedIndex = 0;
         }
     }
 }
