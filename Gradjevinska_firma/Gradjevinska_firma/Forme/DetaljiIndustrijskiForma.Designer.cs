@@ -48,12 +48,8 @@
             lbStatus = new Label();
             tabPage2 = new TabPage();
             Ugovori = new ListView();
-            Datum_potpisivanja = new ColumnHeader();
-            ID = new ColumnHeader();
-            Vrednost = new ColumnHeader();
-            Predmet_ugovora = new ColumnHeader();
-            Valuta = new ColumnHeader();
-            Rok = new ColumnHeader();
+            Datum = new ColumnHeader();
+            Br_nabavke = new ColumnHeader();
             tabPage3 = new TabPage();
             btnObrisi = new Button();
             btnIzmeni = new Button();
@@ -87,6 +83,9 @@
             columnHeader16 = new ColumnHeader();
             columnHeader17 = new ColumnHeader();
             columnHeader18 = new ColumnHeader();
+            btnDodajNabavku = new Button();
+            btnIzmeniNabavku = new Button();
+            btnObrisiNabavku = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -281,55 +280,40 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(btnObrisiNabavku);
+            tabPage2.Controls.Add(btnIzmeniNabavku);
+            tabPage2.Controls.Add(btnDodajNabavku);
             tabPage2.Controls.Add(Ugovori);
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
             tabPage2.Size = new Size(833, 228);
             tabPage2.TabIndex = 1;
-            tabPage2.Text = "Ugovori";
+            tabPage2.Text = "Nabavke";
             tabPage2.UseVisualStyleBackColor = true;
             // 
             // Ugovori
             // 
-            Ugovori.Columns.AddRange(new ColumnHeader[] { Datum_potpisivanja, ID, Vrednost, Predmet_ugovora, Valuta, Rok });
+            Ugovori.Columns.AddRange(new ColumnHeader[] { Datum, Br_nabavke });
             Ugovori.GridLines = true;
             Ugovori.Location = new Point(3, 19);
             Ugovori.Name = "Ugovori";
-            Ugovori.Size = new Size(528, 203);
+            Ugovori.Size = new Size(629, 203);
             Ugovori.TabIndex = 0;
             Ugovori.UseCompatibleStateImageBehavior = false;
             Ugovori.View = View.Details;
             // 
-            // Datum_potpisivanja
+            // Datum
             // 
-            Datum_potpisivanja.DisplayIndex = 1;
-            Datum_potpisivanja.Text = "Datum_potpisivanja";
-            Datum_potpisivanja.Width = 130;
+            Datum.DisplayIndex = 1;
+            Datum.Text = "Datum";
+            Datum.Width = 130;
             // 
-            // ID
+            // Br_nabavke
             // 
-            ID.DisplayIndex = 0;
-            ID.Text = "ID";
-            ID.Width = 30;
-            // 
-            // Vrednost
-            // 
-            Vrednost.Text = "Vrednost";
-            // 
-            // Predmet_ugovora
-            // 
-            Predmet_ugovora.Text = "Predmet_ugovora";
-            Predmet_ugovora.Width = 120;
-            // 
-            // Valuta
-            // 
-            Valuta.Text = "Valuta";
-            // 
-            // Rok
-            // 
-            Rok.Text = "Rok";
-            Rok.Width = 120;
+            Br_nabavke.DisplayIndex = 0;
+            Br_nabavke.Text = "Br_nabavke";
+            Br_nabavke.Width = 80;
             // 
             // tabPage3
             // 
@@ -577,6 +561,33 @@
             // 
             columnHeader18.Text = "Budzet";
             // 
+            // btnDodajNabavku
+            // 
+            btnDodajNabavku.Location = new Point(692, 30);
+            btnDodajNabavku.Name = "btnDodajNabavku";
+            btnDodajNabavku.Size = new Size(113, 40);
+            btnDodajNabavku.TabIndex = 1;
+            btnDodajNabavku.Text = "Dodaj";
+            btnDodajNabavku.UseVisualStyleBackColor = true;
+            // 
+            // btnIzmeniNabavku
+            // 
+            btnIzmeniNabavku.Location = new Point(692, 95);
+            btnIzmeniNabavku.Name = "btnIzmeniNabavku";
+            btnIzmeniNabavku.Size = new Size(113, 40);
+            btnIzmeniNabavku.TabIndex = 2;
+            btnIzmeniNabavku.Text = "Izmeni";
+            btnIzmeniNabavku.UseVisualStyleBackColor = true;
+            // 
+            // btnObrisiNabavku
+            // 
+            btnObrisiNabavku.Location = new Point(692, 166);
+            btnObrisiNabavku.Name = "btnObrisiNabavku";
+            btnObrisiNabavku.Size = new Size(113, 40);
+            btnObrisiNabavku.TabIndex = 3;
+            btnObrisiNabavku.Text = "Obrisi";
+            btnObrisiNabavku.UseVisualStyleBackColor = true;
+            // 
             // DetaljiIndustrijskiForma
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -620,12 +631,8 @@
         private Label lbBudzet;
         private Label lbStatus;
         private ListView Ugovori;
-        private ColumnHeader Datum_potpisivanja;
-        private ColumnHeader ID;
-        private ColumnHeader Vrednost;
-        private ColumnHeader Predmet_ugovora;
-        private ColumnHeader Valuta;
-        private ColumnHeader Rok;
+        private ColumnHeader Datum;
+        private ColumnHeader Br_nabavke;
         private ListView Incidenti;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
@@ -656,5 +663,8 @@
         private Button btnObrisiFazu;
         private Button btnIzmeniFazu;
         private Button btnDodajFazu;
+        private Button btnObrisiNabavku;
+        private Button btnIzmeniNabavku;
+        private Button btnDodajNabavku;
     }
 }
