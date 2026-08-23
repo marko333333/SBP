@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
@@ -32,9 +33,9 @@ namespace Gradjevinska_firma.Forme
         {
             cbOprema.Items.Clear();
 
-            ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+            ZadatakBasic zadatak = ZadaciDTOManager.vratiZadatak(idZadatka);
 
-            List<OpremaPregled> oprema = DTOManager.vratiSvuOpremu();
+            List<OpremaPregled> oprema = OpremaDTOManager.vratiSvuOpremu();
 
             foreach (OpremaPregled o in oprema)
             {
@@ -79,7 +80,7 @@ namespace Gradjevinska_firma.Forme
             oprema.Id = izabranaOprema.Id;
             oprema.Naziv = izabranaOprema.Naziv;
 
-            ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+            ZadatakBasic zadatak = ZadaciDTOManager.vratiZadatak(idZadatka);
 
             DateTime? datumDo = null;
 
@@ -91,7 +92,7 @@ namespace Gradjevinska_firma.Forme
             AngazujeBasic angazujOpremu = new AngazujeBasic(
                     zadatak,oprema,dtpDatumOd.Value,datumDo,int.Parse(tbBrojSati.Text));
 
-            DTOManager.dodajAngazuje(angazujOpremu);
+            AngazujOpremuDTOManager.dodajAngazuje(angazujOpremu);
 
             MessageBox.Show("Uspesno dodavanje");
 

@@ -162,6 +162,7 @@
             Controls.Add(groupBox1);
             Name = "DodajElektroForma";
             Text = "DodajElektroForma";
+            Load += DodajElektroForma_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);

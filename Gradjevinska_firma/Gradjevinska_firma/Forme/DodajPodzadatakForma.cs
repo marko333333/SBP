@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,7 +30,7 @@ namespace Gradjevinska_firma.Forme
         {
             cbNaziv.Items.Clear();
 
-            List<ZadatakPregled> zadaci =DTOManager.vratiSveZadatke();
+            List<ZadatakPregled> zadaci = ZadaciDTOManager.vratiSveZadatke();
 
             foreach (ZadatakPregled z in zadaci)
             {
@@ -60,7 +61,7 @@ namespace Gradjevinska_firma.Forme
 
             int idPodzadatka = izabrani.Id;
 
-            DTOManager.dodajPodzadatak(idZadatka,idPodzadatka);
+            ZadaciDTOManager.dodajPodzadatak(idZadatka,idPodzadatka);
 
             MessageBox.Show("Podzadatak je uspesno dodat.");
 

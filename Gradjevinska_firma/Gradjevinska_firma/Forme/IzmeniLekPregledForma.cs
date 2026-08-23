@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,7 +26,7 @@ namespace Gradjevinska_firma.Forme
 
         private void IzmeniLekPregledForma_Load(object sender, EventArgs e)
         {
-            LekarskiPregledBasic lekpregled = DTOManager.vratiLekPregled(idLekPregled);
+            LekarskiPregledBasic lekpregled = LekPregledDTOManager.vratiLekPregled(idLekPregled);
             tbLekPregled.Text = lekpregled.Rezultat;
             dtpDatum.Value= lekpregled.Datum;
         }
@@ -34,7 +35,7 @@ namespace Gradjevinska_firma.Forme
         {
             LekarskiPregledBasic lekpregled = new LekarskiPregledBasic(idLekPregled,idOsobe,tbLekPregled.Text,dtpDatum.Value);
 
-            DTOManager.izmeniLekPregled(lekpregled);
+            LekPregledDTOManager.izmeniLekPregled(lekpregled);
             MessageBox.Show("Uspesna izmena.");
             this.DialogResult = DialogResult.OK;
             this.Close();

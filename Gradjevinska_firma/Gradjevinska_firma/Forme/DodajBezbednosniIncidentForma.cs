@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 
 namespace Gradjevinska_firma.Forme
@@ -42,7 +43,7 @@ namespace Gradjevinska_firma.Forme
 
             osoba.Id = izabranaOsoba.Id;
 
-            ProjekatBasic projekat = DTOManager.vratiProjekat(IdProjekta);
+            ProjekatBasic projekat = ProjekatDTOManager.vratiProjekat(IdProjekta);
 
             string prikazaniTip = cbTipIncidenta.SelectedItem.ToString();
 
@@ -68,7 +69,7 @@ namespace Gradjevinska_firma.Forme
                 osoba
            );
 
-            DTOManager.dodajBezbednosniIncident(incident, tipZaKlasu);
+            BezbednosniIncidentDTOManager.dodajBezbednosniIncident(incident, tipZaKlasu);
 
             MessageBox.Show("Bezbednosni incident je uspesno dodat.");
 
@@ -84,7 +85,7 @@ namespace Gradjevinska_firma.Forme
         private void popuniOsobama()
         {
             cbOsoba.Items.Clear();
-            List<OsobaPregled> osobe = DTOManager.vratiOsobeNaProjektu(IdProjekta);
+            List<OsobaPregled> osobe = OsobaDTOManager.vratiOsobeNaProjektu(IdProjekta);
 
             foreach (OsobaPregled osoba in osobe)
             {

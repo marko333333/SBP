@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,7 +38,7 @@ namespace Gradjevinska_firma.Forme
             LekarskiPregledBasic lekPregled = new LekarskiPregledBasic(
                 0,idOsobe,tbLekPregled.Text,dtpDatum.Value);
 
-            DTOManager.dodajLekPregled(lekPregled);
+            LekPregledDTOManager.dodajLekPregled(lekPregled);
 
             MessageBox.Show("Uspesno dodavanje.");
 

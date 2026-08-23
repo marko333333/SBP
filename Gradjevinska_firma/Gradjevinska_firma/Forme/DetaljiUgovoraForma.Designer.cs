@@ -255,6 +255,7 @@
             btObrisiUgovornuStranu.TabIndex = 16;
             btObrisiUgovornuStranu.Text = "Obrisi ugovornu stranu";
             btObrisiUgovornuStranu.UseVisualStyleBackColor = true;
+            btObrisiUgovornuStranu.Click += btObrisiUgovornuStranu_Click;
             // 
             // btIzmeniUgovornuStranu
             // 
@@ -264,6 +265,7 @@
             btIzmeniUgovornuStranu.TabIndex = 15;
             btIzmeniUgovornuStranu.Text = "Izmeni ugovornu stranu";
             btIzmeniUgovornuStranu.UseVisualStyleBackColor = true;
+            btIzmeniUgovornuStranu.Click += btIzmeniUgovornuStranu_Click;
             // 
             // btDodajUgovornuStranu
             // 
@@ -273,6 +275,7 @@
             btDodajUgovornuStranu.TabIndex = 14;
             btDodajUgovornuStranu.Text = "Dodaj ugovornu stranu";
             btDodajUgovornuStranu.UseVisualStyleBackColor = true;
+            btDodajUgovornuStranu.Click += btDodajUgovornuStranu_Click;
             // 
             // groupBox1
             // 
@@ -333,6 +336,7 @@
             btObrisiPosebnuKlauzulu.TabIndex = 19;
             btObrisiPosebnuKlauzulu.Text = "Obrisi posebnu klauzulu";
             btObrisiPosebnuKlauzulu.UseVisualStyleBackColor = true;
+            btObrisiPosebnuKlauzulu.Click += btObrisiPosebnuKlauzulu_Click;
             // 
             // btizmeniKlauzulu
             // 
@@ -342,6 +346,7 @@
             btizmeniKlauzulu.TabIndex = 18;
             btizmeniKlauzulu.Text = "Izmeni posebnu klauzulu";
             btizmeniKlauzulu.UseVisualStyleBackColor = true;
+            btizmeniKlauzulu.Click += btizmeniKlauzulu_Click;
             // 
             // btDodajKlauzulu
             // 
@@ -351,6 +356,7 @@
             btDodajKlauzulu.TabIndex = 17;
             btDodajKlauzulu.Text = "Dodaj posebnu klauzulu";
             btDodajKlauzulu.UseVisualStyleBackColor = true;
+            btDodajKlauzulu.Click += btDodajKlauzulu_Click;
             // 
             // groupBox2
             // 

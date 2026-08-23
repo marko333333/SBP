@@ -162,6 +162,7 @@
             Controls.Add(groupBox1);
             Name = "DodajZastitniForma";
             Text = "DodajZastitniForma";
+            Load += DodajZastitniForma_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);

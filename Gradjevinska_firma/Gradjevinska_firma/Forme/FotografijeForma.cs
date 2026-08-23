@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +23,7 @@ namespace Gradjevinska_firma.Forme
 
         private void FotografijeForma_Load(object sender, EventArgs e)
         {
-            NapredakBasic napredak = DTOManager.vratiNapredak(idNapredak);
+            NapredakBasic napredak = NapredakDTOManager.vratiNapredak(idNapredak);
             popuniPodacima(napredak);
 
             pbFotografija.SizeMode = PictureBoxSizeMode.Zoom;
@@ -53,7 +54,7 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    NapredakBasic napredak = DTOManager.vratiNapredak(idNapredak);
+                    NapredakBasic napredak = NapredakDTOManager.vratiNapredak(idNapredak);
                     popuniPodacima(napredak);
                 }
             }
@@ -116,10 +117,10 @@ namespace Gradjevinska_firma.Forme
 
             if (result == DialogResult.OK)
             {
-                DTOManager.obrisiFotografiju(f.IdNapredak, f.Putanja);
+                FotografijaDTOManager.obrisiFotografiju(f.IdNapredak, f.Putanja);
                 MessageBox.Show("Brisanje fotografije je uspesno obavljeno!");
                 pbFotografija.Image = null;
-                NapredakBasic napredak = DTOManager.vratiNapredak(idNapredak);
+                NapredakBasic napredak = NapredakDTOManager.vratiNapredak(idNapredak);
                 popuniPodacima(napredak);
 
             }

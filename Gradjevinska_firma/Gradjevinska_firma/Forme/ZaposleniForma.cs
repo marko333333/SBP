@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,7 +27,7 @@ namespace Gradjevinska_firma.Forme
         {
             this.fizickaLica.Items.Clear();
 
-            List<FizickoLicePregled> osobe = DTOManager.vratiSvaFizickaLica();
+            List<FizickoLicePregled> osobe = OsobaDTOManager.vratiSvaFizickaLica();
 
             foreach (FizickoLicePregled o in osobe)
             {
@@ -48,7 +49,7 @@ namespace Gradjevinska_firma.Forme
         {
             this.pravnaLica.Items.Clear();
 
-            List<PravnaLicaPregled> osobe = DTOManager.vratiSvaPravnaLica();
+            List<PravnaLicaPregled> osobe = OsobaDTOManager.vratiSvaPravnaLica();
 
             foreach (PravnaLicaPregled o in osobe)
             {
@@ -71,7 +72,7 @@ namespace Gradjevinska_firma.Forme
         {
             String pom;
             this.zaposleni.Items.Clear();
-            List<OsobaPregled> osobe = DTOManager.vratiSveOsobe();
+            List<OsobaPregled> osobe = OsobaDTOManager.vratiSveOsobe();
 
             foreach (OsobaPregled o in osobe)
             {
@@ -203,7 +204,7 @@ namespace Gradjevinska_firma.Forme
 
             if (result == DialogResult.OK)
             {
-                DTOManager.obrisiOsobu(id);
+                OsobaDTOManager.obrisiOsobu(id);
                 MessageBox.Show("Brisanje osobe je uspesno obavljeno!");
                 if (tabControl1.SelectedIndex == 0)
                     popuniZaposlene();
@@ -212,11 +213,7 @@ namespace Gradjevinska_firma.Forme
                 else if (tabControl1.SelectedIndex == 2)
                     popuniPravnaLica();
 
-            }
-            else
-            {
-
-            }   
+            } 
         }
     }
 }

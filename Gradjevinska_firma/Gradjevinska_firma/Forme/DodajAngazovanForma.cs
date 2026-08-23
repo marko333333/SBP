@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
@@ -34,9 +35,9 @@ namespace Gradjevinska_firma.Forme
         {
             cbOsoba.Items.Clear();
 
-            ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+            ZadatakBasic zadatak = ZadaciDTOManager.vratiZadatak(idZadatka);
 
-            List<OsobaPregled> osobe = DTOManager.vratiSveOsobe();
+            List<OsobaPregled> osobe = OsobaDTOManager.vratiSveOsobe();
 
             foreach (OsobaPregled o in osobe)
             {
@@ -82,7 +83,7 @@ namespace Gradjevinska_firma.Forme
             osoba.Ime = izabranaOsoba.Ime;
             osoba.Prezime = izabranaOsoba.Prezime;
 
-            ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+            ZadatakBasic zadatak = ZadaciDTOManager.vratiZadatak(idZadatka);
 
             DateTime? datumDo = null;
 
@@ -95,7 +96,7 @@ namespace Gradjevinska_firma.Forme
                 zadatak, osoba, dtpDatumOd.Value, datumDo, cbStatus.SelectedItem.ToString()
             );
 
-            DTOManager.dodajAngazovanje(angazovan);
+            AngazovanDTOManager.dodajAngazovanje(angazovan);
 
             MessageBox.Show("Uspesno dodavanje");
 

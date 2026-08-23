@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 
 namespace Gradjevinska_firma.Forme
@@ -30,7 +31,7 @@ namespace Gradjevinska_firma.Forme
         private void PopuniOsobama()
         {
             cbOsoba.Items.Clear();
-            List<OsobaPregled> osobe = DTOManager.vratiOsobeNaProjektu(IdProjekta);
+            List<OsobaPregled> osobe = OsobaDTOManager.vratiOsobeNaProjektu(IdProjekta);
 
             foreach (OsobaPregled osoba in osobe)
             {
@@ -60,10 +61,12 @@ namespace Gradjevinska_firma.Forme
             OsobaBasic osoba = new OsobaBasic();
             osoba.Id = izabranaOsoba.Id;
 
-            ProjekatBasic projekat = DTOManager.vratiProjekat(IdProjekta);
+            ProjekatBasic projekat = ProjekatDTOManager.vratiProjekat(IdProjekta);
 
             string prikazaniTip = cbTipIncidenta.SelectedItem.ToString();
 
+
+            //molim te mi napisi poruku kada vidis ovo, ja ne znam cemu sluzi ovo sto si napisao
             string tipZaKlasu = prikazaniTip switch
             {
                 "Povreda na radu" => "PovredaNaRadu",
@@ -86,7 +89,7 @@ namespace Gradjevinska_firma.Forme
                 osoba
             );
 
-            DTOManager.izmeniBezbednosniIncident(incident);
+            BezbednosniIncidentDTOManager.izmeniBezbednosniIncident(incident);
 
             MessageBox.Show("Bezbednosni incident je uspesno izmenjen.");
 

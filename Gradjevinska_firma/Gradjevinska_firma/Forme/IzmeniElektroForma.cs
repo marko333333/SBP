@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
@@ -53,7 +54,7 @@ namespace Gradjevinska_firma.Forme
             ElektroBasic materijal = new ElektroBasic
                 (idMaterijal, tbNaziv.Text, int.Parse(tbcena.Text), tbProizvodjac.Text, tbJedinicaMere.Text, tbSertifikat.Text, "Elektro");
 
-            DTOManager.izmeniElektroMaterijal(materijal);
+            MaterijalDTOManager.izmeniElektroMaterijal(materijal);
 
             MessageBox.Show("Uspesna izmena");
 
@@ -64,7 +65,7 @@ namespace Gradjevinska_firma.Forme
         private void IzmeniElektroForma_Load(object sender, EventArgs e)
         {
 
-            ElektroBasic materijal = DTOManager.vratiElektroMaterijal(idMaterijal);
+            ElektroBasic materijal = MaterijalDTOManager.vratiElektroMaterijal(idMaterijal);
 
             tbNaziv.Text = materijal.Naziv;
             tbcena.Text = materijal.Cena.ToString();

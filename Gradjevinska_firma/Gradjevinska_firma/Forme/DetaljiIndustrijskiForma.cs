@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FluentNHibernate.Testing.Values;
 using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 
 namespace Gradjevinska_firma.Forme
@@ -34,7 +35,7 @@ namespace Gradjevinska_firma.Forme
 
         private void popuniPodacima()
         {
-            ProjekatBasic projekat = DTOManager.vratiProjekat(IdIndustrijski);
+            ProjekatBasic projekat = ProjekatDTOManager.vratiProjekat(IdIndustrijski);
 
             if (projekat == null)
                 return;
@@ -61,23 +62,23 @@ namespace Gradjevinska_firma.Forme
             }
             else if (tabControl1.SelectedIndex == 1)
             {
-                List<UgovorBasic> ugovori = DTOManager.vratiUgovoreProjekta(IdIndustrijski);
+                List<UgovorBasic> ugovori = UgovorDTOManager.vratiUgovoreProjekta(IdIndustrijski);
                 popuniPodacimaUgovora(ugovori);
 
             }
             else if (tabControl1.SelectedIndex == 2)
             {
-                List<BezbednosniIncidentBasic> bezbednosniIncidenti = DTOManager.vratiBezbednosniIncidenteProjekta(IdIndustrijski);
+                List<BezbednosniIncidentBasic> bezbednosniIncidenti = BezbednosniIncidentDTOManager.vratiBezbednosniIncidenteProjekta(IdIndustrijski);
                 popuniPodacimaBezbednosnihIncidenta(bezbednosniIncidenti);
             }
             else if (tabControl1.SelectedIndex == 3)
             {
-                List<FakturaBasic> fakture = DTOManager.vratiFaktureProjekta(IdIndustrijski);
+                List<FakturaBasic> fakture = FakturaDTOManager.vratiFaktureProjekta(IdIndustrijski);
                 popuniPodacimaFakture(fakture);
             }
             else if (tabControl1.SelectedIndex == 4)
             {
-                List<FazaBasic> faze = DTOManager.vratiFazeProjekta(IdIndustrijski);
+                List<FazaBasic> faze = FazaDTOManager.vratiFazeProjekta(IdIndustrijski);
                 popuniPodacimaFaza(faze);
             }
         }
@@ -182,7 +183,7 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    List<BezbednosniIncidentBasic> incidenti = DTOManager.vratiBezbednosniIncidenteProjekta(IdIndustrijski);
+                    List<BezbednosniIncidentBasic> incidenti = BezbednosniIncidentDTOManager.vratiBezbednosniIncidenteProjekta(IdIndustrijski);
                     popuniPodacimaBezbednosnihIncidenta(incidenti);
                 }
             }
@@ -206,7 +207,7 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    List<BezbednosniIncidentBasic> incidenti = DTOManager.vratiBezbednosniIncidenteProjekta(IdIndustrijski);
+                    List<BezbednosniIncidentBasic> incidenti = BezbednosniIncidentDTOManager.vratiBezbednosniIncidenteProjekta(IdIndustrijski);
                     popuniPodacimaBezbednosnihIncidenta(incidenti);
                 }
             }
@@ -232,9 +233,9 @@ namespace Gradjevinska_firma.Forme
 
             if (result == DialogResult.OK)
             {
-                DTOManager.obrisiBezbednosniIncident(id);
+                BezbednosniIncidentDTOManager.obrisiBezbednosniIncident(id);
                 MessageBox.Show("Brisanje incidenta je uspesno obavljeno!");
-                List<BezbednosniIncidentBasic> inc = DTOManager.vratiBezbednosniIncidenteProjekta(IdIndustrijski);
+                List<BezbednosniIncidentBasic> inc = BezbednosniIncidentDTOManager.vratiBezbednosniIncidenteProjekta(IdIndustrijski);
                 popuniPodacimaBezbednosnihIncidenta(inc);
 
             }
@@ -255,7 +256,7 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    List<FakturaBasic> fakture = DTOManager.vratiFaktureProjekta(IdIndustrijski);
+                    List<FakturaBasic> fakture = FakturaDTOManager.vratiFaktureProjekta(IdIndustrijski);
                     popuniPodacimaFakture(fakture);
                 }
             }
@@ -281,9 +282,9 @@ namespace Gradjevinska_firma.Forme
 
             if (result == DialogResult.OK)
             {
-                DTOManager.obrisiFakturu(id);
+                FakturaDTOManager.obrisiFakturu(id);
                 MessageBox.Show("Brisanje fakture je uspesno obavljeno!");
-                List<FakturaBasic> fak = DTOManager.vratiFaktureProjekta(IdIndustrijski);
+                List<FakturaBasic> fak = FakturaDTOManager.vratiFaktureProjekta(IdIndustrijski);
                 popuniPodacimaFakture(fak);
 
             }
@@ -311,7 +312,7 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    List<FakturaBasic> fak = DTOManager.vratiFaktureProjekta(IdIndustrijski);
+                    List<FakturaBasic> fak = FakturaDTOManager.vratiFaktureProjekta(IdIndustrijski);
                     popuniPodacimaFakture(fak);
                 }
             }

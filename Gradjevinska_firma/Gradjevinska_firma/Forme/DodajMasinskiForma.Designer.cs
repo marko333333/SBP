@@ -162,6 +162,7 @@
             Controls.Add(groupBox1);
             Name = "DodajMasinskiForma";
             Text = "DodajMasinskiForma";
+            Load += DodajMasinskiForma_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);

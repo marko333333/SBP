@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -45,12 +46,12 @@ namespace Gradjevinska_firma.Forme
             if (dtpRok.Checked)
                 rokZaOtklanjanje = dtpRok.Value;
 
-            KontrolaKvalitetaBasic kontrola = DTOManager.vratiKontroluKvaliteta(idKontrole);
+            KontrolaKvalitetaBasic kontrola = KontrolaKvalitetaDTOManager.vratiKontroluKvaliteta(idKontrole);
 
             StavkaKontroleBasic stavka = new StavkaKontroleBasic(
                 0,kontrola,int.Parse(tbRbStavke.Text),tbUzorci.Text,tbLabNalaz.Text,tbRezultatIspit.Text,tbKorektivneMere.Text,rokZaOtklanjanje);
 
-            DTOManager.dodajStavku(stavka);
+            StavkaKontroleDTOManager.dodajStavku(stavka);
 
             MessageBox.Show("Uspesno dodavanje.");
 

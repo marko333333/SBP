@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -50,12 +51,17 @@ namespace Gradjevinska_firma.Forme
             ZastitniBasic materijal = new ZastitniBasic
                 (0, tbNaziv.Text, int.Parse(tbcena.Text), tbProizvodjac.Text, tbJedinicaMere.Text, tbSertifikat.Text, "Zastitni");
 
-            DTOManager.dodajZastitniMaterijal(materijal);
+            MaterijalDTOManager.dodajZastitniMaterijal(materijal);
 
             MessageBox.Show("Uspesno dodavanje");
 
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void DodajZastitniForma_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

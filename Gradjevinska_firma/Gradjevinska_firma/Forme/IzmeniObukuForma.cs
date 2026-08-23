@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace Gradjevinska_firma.Forme
 
         private void IzmeniObukuForma_Load(object sender, EventArgs e)
         {
-            BezbednosnaObukaBasic obuka = DTOManager.vratiObuku(idObuke);
+            BezbednosnaObukaBasic obuka = BezbednosnaObukaDTOManager.vratiObuku(idObuke);
             tbObuka.Text = obuka.NazivObuke;
             dtpDatum.Value=obuka.Datum;
         }
@@ -34,7 +35,7 @@ namespace Gradjevinska_firma.Forme
         {
             BezbednosnaObukaBasic obuka = new BezbednosnaObukaBasic(idObuke,idOsobe,tbObuka.Text,dtpDatum.Value);
             
-            DTOManager.izmeniBezbednosnuObuku(obuka);
+            BezbednosnaObukaDTOManager.izmeniBezbednosnuObuku(obuka);
             MessageBox.Show("Uspesna izmena.");
             this.DialogResult = DialogResult.OK;
             this.Close();

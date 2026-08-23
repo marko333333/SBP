@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,7 @@ namespace Gradjevinska_firma.Forme
         public void popuniGradjevinskeMaterijale()
         {
             this.gradjevinski.Items.Clear();
-            List<GradjevinskiPregled> materijali = DTOManager.vratiSavGradjevinskiMaterijal();
+            List<GradjevinskiPregled> materijali = MaterijalDTOManager.vratiSavGradjevinskiMaterijal();
 
             foreach (GradjevinskiPregled m in materijali)
             {
@@ -49,7 +50,7 @@ namespace Gradjevinska_firma.Forme
         public void popuniZavrsniMaterijale()
         {
             this.zavrsni.Items.Clear();
-            List<ZavrsniPregled> materijali = DTOManager.vratiSavZavrsniMaterijal();
+            List<ZavrsniPregled> materijali = MaterijalDTOManager.vratiSavZavrsniMaterijal();
 
             foreach (ZavrsniPregled m in materijali)
             {
@@ -71,7 +72,7 @@ namespace Gradjevinska_firma.Forme
         public void popuniZastitniMaterijale()
         {
             this.zastitni.Items.Clear();
-            List<ZastitniPregled> materijali = DTOManager.vratiSavZastitniMaterijal();
+            List<ZastitniPregled> materijali = MaterijalDTOManager.vratiSavZastitniMaterijal();
 
             foreach (ZastitniPregled m in materijali)
             {
@@ -93,7 +94,7 @@ namespace Gradjevinska_firma.Forme
         public void popuniElektroMaterijale()
         {
             this.elektro.Items.Clear();
-            List<ElektroPregled> materijali = DTOManager.vratiSavElektroMaterijal();
+            List<ElektroPregled> materijali = MaterijalDTOManager.vratiSavElektroMaterijal();
 
             foreach (ElektroPregled m in materijali)
             {
@@ -115,7 +116,7 @@ namespace Gradjevinska_firma.Forme
         public void popuniMasinskiMaterijale()
         {
             this.masinski.Items.Clear();
-            List<MasinskiPregled> materijali = DTOManager.vratiSavMasinskiMaterijal();
+            List<MasinskiPregled> materijali = MaterijalDTOManager.vratiSavMasinskiMaterijal();
 
             foreach (MasinskiPregled m in materijali)
             {
@@ -348,7 +349,7 @@ namespace Gradjevinska_firma.Forme
 
             if (result == DialogResult.OK)
             {
-                DTOManager.obrisiMaterijal(id);
+                MaterijalDTOManager.obrisiMaterijal(id);
                 MessageBox.Show("Brisanje materijala je uspesno obavljeno!");
                 popuniMasinskiMaterijale();
 
@@ -375,7 +376,7 @@ namespace Gradjevinska_firma.Forme
 
             if (result == DialogResult.OK)
             {
-                DTOManager.obrisiMaterijal(id);
+                MaterijalDTOManager.obrisiMaterijal(id);
                 MessageBox.Show("Brisanje materijala je uspesno obavljeno!");
                 popuniElektroMaterijale();
 
@@ -402,7 +403,7 @@ namespace Gradjevinska_firma.Forme
 
             if (result == DialogResult.OK)
             {
-                DTOManager.obrisiMaterijal(id);
+                MaterijalDTOManager.obrisiMaterijal(id);
                 MessageBox.Show("Brisanje materijala je uspesno obavljeno!");
                 popuniZastitniMaterijale();
 
@@ -429,7 +430,7 @@ namespace Gradjevinska_firma.Forme
 
             if (result == DialogResult.OK)
             {
-                DTOManager.obrisiMaterijal(id);
+                MaterijalDTOManager.obrisiMaterijal(id);
                 MessageBox.Show("Brisanje materijala je uspesno obavljeno!");
                 popuniZavrsniMaterijale();
 
@@ -456,7 +457,7 @@ namespace Gradjevinska_firma.Forme
 
             if (result == DialogResult.OK)
             {
-                DTOManager.obrisiMaterijal(id);
+                MaterijalDTOManager.obrisiMaterijal(id);
                 MessageBox.Show("Brisanje materijala je uspesno obavljeno!");
                 popuniGradjevinskeMaterijale();
 

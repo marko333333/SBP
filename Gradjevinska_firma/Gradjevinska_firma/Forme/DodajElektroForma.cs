@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -50,12 +51,17 @@ namespace Gradjevinska_firma.Forme
             ElektroBasic materijal = new ElektroBasic
                 (0, tbNaziv.Text, int.Parse(tbcena.Text), tbProizvodjac.Text, tbJedinicaMere.Text, tbSertifikat.Text, "Elektro");
 
-            DTOManager.dodajElektroMaterijal(materijal);
+            MaterijalDTOManager.dodajElektroMaterijal(materijal);
 
             MessageBox.Show("Uspesno dodavanje");
 
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void DodajElektroForma_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

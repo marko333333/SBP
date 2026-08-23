@@ -64,5 +64,11 @@ namespace Gradjevinska_firma
             MaterijaliForma forma = new MaterijaliForma();
             forma.ShowDialog();
         }
+
+        private void btNabavke_Click(object sender, EventArgs e)
+        {
+            NabavkeForma forma = new NabavkeForma();
+            forma.ShowDialog();
+        }
     }
 }

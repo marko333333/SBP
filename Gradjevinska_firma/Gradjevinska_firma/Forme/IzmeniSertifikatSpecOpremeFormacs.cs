@@ -1,5 +1,6 @@
 ﻿using FluentNHibernate.Conventions;
 using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,7 @@ namespace Gradjevinska_firma.Forme
 
         private void IzmeniSertifikatSpecOpremeFormacs_Load(object sender, EventArgs e)
         {
-            SertifikatSpecOpremeBasic sertifikatSpec=DTOManager.vratiSertifikat(idSertifikat);
+            SertifikatSpecOpremeBasic sertifikatSpec=SertifikatSpecOpremeDTOManager.vratiSertifikat(idSertifikat);
             tbSertifikatSpec.Text = sertifikatSpec.Sertifikat;
         }
 
@@ -35,7 +36,7 @@ namespace Gradjevinska_firma.Forme
         {
                 SertifikatSpecOpremeBasic sertifikatSpec = new SertifikatSpecOpremeBasic(idSertifikat, idOsobe, tbSertifikatSpec.Text);
 
-                DTOManager.izmeniSertifikatSpecOpreme(sertifikatSpec);
+                SertifikatSpecOpremeDTOManager.izmeniSertifikatSpecOpreme(sertifikatSpec);
                 MessageBox.Show("Uspesna izmena.");
                 this.DialogResult = DialogResult.OK;
                 this.Close();

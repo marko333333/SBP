@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -50,12 +51,17 @@ namespace Gradjevinska_firma.Forme
             ZavrsniBasic materijal = new ZavrsniBasic
                 (0, tbNaziv.Text, int.Parse(tbcena.Text), tbProizvodjac.Text, tbJedinicaMere.Text, tbSertifikat.Text, "Zavrsni");
 
-            DTOManager.dodajZavrsniMaterijal(materijal);
+            MaterijalDTOManager.dodajZavrsniMaterijal(materijal);
 
             MessageBox.Show("Uspesno dodavanje");
 
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void DodajZavrsniForma_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

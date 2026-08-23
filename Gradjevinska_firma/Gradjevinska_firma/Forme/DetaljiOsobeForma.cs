@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 using NHibernate.Cfg.MappingSchema;
 using System;
@@ -33,7 +34,7 @@ namespace Gradjevinska_firma.Forme
             tabControl1.TabPages.Remove(tabPage7);
             tabControl1.TabPages.Remove(tabPage8);
             popuniPodacima();
-            FizickoLiceBasic fizicko = DTOManager.vratiFizickoLice(idOsobe);
+            FizickoLiceBasic fizicko = OsobaDTOManager.vratiFizickoLice(idOsobe);
             if (fizicko != null)
             {
                 tabControl1.TabPages.Add(tabPage5);
@@ -51,7 +52,7 @@ namespace Gradjevinska_firma.Forme
         }
         private void popuniPodacima()
         {
-            OsobaBasic osoba = DTOManager.vratiOsobu(idOsobe);
+            OsobaBasic osoba = OsobaDTOManager.vratiOsobu(idOsobe);
 
             if (osoba == null)
                 return;
@@ -65,6 +66,7 @@ namespace Gradjevinska_firma.Forme
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             if (tabControl1.SelectedIndex == 0)
             {
                 popuniPodacima();
@@ -82,7 +84,7 @@ namespace Gradjevinska_firma.Forme
                 lbO.Visible = false;
                 lbOdgovornosti.Visible = false;
 
-                FizickoLiceBasic fizicko = DTOManager.vratiFizickoLice(idOsobe);
+                FizickoLiceBasic fizicko = OsobaDTOManager.vratiFizickoLice(idOsobe);
 
                 if (fizicko != null)
                 {
@@ -115,7 +117,7 @@ namespace Gradjevinska_firma.Forme
                 }
                 else
                 {
-                    PravnaLicaBasic pravno = DTOManager.vratiPravnoLice(idOsobe);
+                    PravnaLicaBasic pravno = OsobaDTOManager.vratiPravnoLice(idOsobe);
 
                     if (pravno != null)
                     {
@@ -132,35 +134,35 @@ namespace Gradjevinska_firma.Forme
             }
             else if (tabControl1.SelectedIndex == 2)
             {
-                OsobaBasic osoba = DTOManager.vratiOsobu(idOsobe);
+                OsobaBasic osoba = OsobaDTOManager.vratiOsobu(idOsobe);
                 popuniKontakte(osoba);
             }
             else if (tabControl1.SelectedIndex == 3)
             {
-                OsobaBasic osoba = DTOManager.vratiOsobu(idOsobe);
+                OsobaBasic osoba = OsobaDTOManager.vratiOsobu(idOsobe);
                 popuniLicence(osoba);
             }
             else if (tabControl1.SelectedIndex == 4)
             {
-                FizickoLiceBasic fizicko = DTOManager.vratiFizickoLice(idOsobe);
+                FizickoLiceBasic fizicko = OsobaDTOManager.vratiFizickoLice(idOsobe);
                 if (fizicko != null)
                     popuniBezbednosneObuke(fizicko);
             }
             else if (tabControl1.SelectedIndex == 5)
             {
-                FizickoLiceBasic fizicko = DTOManager.vratiFizickoLice(idOsobe);
+                FizickoLiceBasic fizicko = OsobaDTOManager.vratiFizickoLice(idOsobe);
                 if (fizicko != null)
                     popuniLekPregled(fizicko);
             }
             else if (tabControl1.SelectedIndex == 6)
             {
-                FizickoLiceBasic fizicko = DTOManager.vratiFizickoLice(idOsobe);
+                FizickoLiceBasic fizicko = OsobaDTOManager.vratiFizickoLice(idOsobe);
                 if (fizicko != null)
                     popuniZastitnaOprema(fizicko);
             }
             else if (tabControl1.SelectedIndex == 7)
             {
-                FizickoLiceBasic fizicko = DTOManager.vratiFizickoLice(idOsobe);
+                FizickoLiceBasic fizicko = OsobaDTOManager.vratiFizickoLice(idOsobe);
                 if (fizicko != null)
                     popuniSertifikatSpec(fizicko);
             }
@@ -175,8 +177,8 @@ namespace Gradjevinska_firma.Forme
                 ListViewItem item = new ListViewItem(
                     new string[]
                     {
-                k.Id.ToString(),
-                k.Broj
+                        k.Id.ToString(),
+                        k.Broj
                     });
 
                 kontakti.Items.Add(item);
@@ -232,9 +234,9 @@ namespace Gradjevinska_firma.Forme
                 ListViewItem item = new ListViewItem(
                     new string[]
                     {
-                   lp.Id.ToString(),
-                   lp.Rezultat,
-                   lp.Datum.ToShortDateString()
+                       lp.Id.ToString(),
+                       lp.Rezultat,
+                       lp.Datum.ToShortDateString()
                     });
 
                 lekpregledi.Items.Add(item);
@@ -251,8 +253,8 @@ namespace Gradjevinska_firma.Forme
                 ListViewItem item = new ListViewItem(
                     new string[]
                     {
-                   zo.Id.ToString(),
-                   zo.NazivOpreme
+                       zo.Id.ToString(),
+                       zo.NazivOpreme
 
                     });
 
@@ -271,8 +273,8 @@ namespace Gradjevinska_firma.Forme
                 ListViewItem item = new ListViewItem(
                     new string[]
                     {
-                   sso.Id.ToString(),
-                   sso.Sertifikat
+                       sso.Id.ToString(),
+                       sso.Sertifikat
                     });
 
                 sertifikatiSpec.Items.Add(item);
@@ -291,7 +293,7 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    OsobaBasic osoba = DTOManager.vratiOsobu(idOsobe);
+                    OsobaBasic osoba = OsobaDTOManager.vratiOsobu(idOsobe);
                     popuniKontakte(osoba);
                 }
             }
@@ -303,7 +305,7 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    OsobaBasic osoba = DTOManager.vratiOsobu(idOsobe);
+                    OsobaBasic osoba = OsobaDTOManager.vratiOsobu(idOsobe);
                     popuniLicence(osoba);
                 }
             }
@@ -315,7 +317,7 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    FizickoLiceBasic osoba = DTOManager.vratiFizickoLice(idOsobe);
+                    FizickoLiceBasic osoba = OsobaDTOManager.vratiFizickoLice(idOsobe);
                     popuniBezbednosneObuke(osoba);
                 }
             }
@@ -327,7 +329,7 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    FizickoLiceBasic osoba = DTOManager.vratiFizickoLice(idOsobe);
+                    FizickoLiceBasic osoba = OsobaDTOManager.vratiFizickoLice(idOsobe);
                     popuniLekPregled(osoba);
                 }
             }
@@ -339,7 +341,7 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    FizickoLiceBasic osoba = DTOManager.vratiFizickoLice(idOsobe);
+                    FizickoLiceBasic osoba = OsobaDTOManager.vratiFizickoLice(idOsobe);
                     popuniZastitnaOprema(osoba);
                 }
             }
@@ -351,7 +353,7 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    FizickoLiceBasic osoba = DTOManager.vratiFizickoLice(idOsobe);
+                    FizickoLiceBasic osoba = OsobaDTOManager.vratiFizickoLice(idOsobe);
                     popuniSertifikatSpec(osoba);
                 }
             }
@@ -375,7 +377,7 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    OsobaBasic osoba = DTOManager.vratiOsobu(idOsobe);
+                    OsobaBasic osoba = OsobaDTOManager.vratiOsobu(idOsobe);
                     popuniKontakte(osoba);
                 }
             }
@@ -399,7 +401,7 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    OsobaBasic osoba = DTOManager.vratiOsobu(idOsobe);
+                    OsobaBasic osoba = OsobaDTOManager.vratiOsobu(idOsobe);
                     popuniLicence(osoba);
                 }
             }
@@ -423,7 +425,7 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    FizickoLiceBasic osoba = DTOManager.vratiFizickoLice(idOsobe);
+                    FizickoLiceBasic osoba = OsobaDTOManager.vratiFizickoLice(idOsobe);
                     popuniBezbednosneObuke(osoba);
                 }
             }
@@ -447,7 +449,7 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    FizickoLiceBasic osoba = DTOManager.vratiFizickoLice(idOsobe);
+                    FizickoLiceBasic osoba = OsobaDTOManager.vratiFizickoLice(idOsobe);
                     popuniLekPregled(osoba);
                 }
             }
@@ -471,7 +473,7 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    FizickoLiceBasic osoba = DTOManager.vratiFizickoLice(idOsobe);
+                    FizickoLiceBasic osoba = OsobaDTOManager.vratiFizickoLice(idOsobe);
                     popuniZastitnaOprema(osoba);
                 }
             }
@@ -495,7 +497,7 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    FizickoLiceBasic osoba = DTOManager.vratiFizickoLice(idOsobe);
+                    FizickoLiceBasic osoba = OsobaDTOManager.vratiFizickoLice(idOsobe);
                     popuniSertifikatSpec(osoba);
                 }
             }
@@ -518,9 +520,9 @@ namespace Gradjevinska_firma.Forme
             if (result == DialogResult.OK)
             {
                 
-                DTOManager.obrisiKontakt(idKontakt);
+                KontaktDTOManager.obrisiKontakt(idKontakt);
                 MessageBox.Show("Brisanje kontakta je uspesno obavljeno!");
-                OsobaBasic osoba = DTOManager.vratiOsobu(idOsobe);
+                OsobaBasic osoba = OsobaDTOManager.vratiOsobu(idOsobe);
                 popuniKontakte(osoba);
             }
             else
@@ -546,9 +548,9 @@ namespace Gradjevinska_firma.Forme
             if (result == DialogResult.OK)
             {
                 
-                DTOManager.obrisiLicencu(idLicenca);
+                LicencaDTOManager.obrisiLicencu(idLicenca);
                 MessageBox.Show("Brisanje licence je uspesno obavljeno!");
-                OsobaBasic osoba = DTOManager.vratiOsobu(idOsobe);
+                OsobaBasic osoba = OsobaDTOManager.vratiOsobu(idOsobe);
                 popuniLicence(osoba);
             }
             else
@@ -574,9 +576,9 @@ namespace Gradjevinska_firma.Forme
             if (result == DialogResult.OK)
             {
 
-                DTOManager.obrisiBezbednosnuObuku(idObuke);
+                BezbednosnaObukaDTOManager.obrisiBezbednosnuObuku(idObuke);
                 MessageBox.Show("Brisanje obuke je uspesno obavljeno!");
-                FizickoLiceBasic osoba = DTOManager.vratiFizickoLice(idOsobe);
+                FizickoLiceBasic osoba = OsobaDTOManager.vratiFizickoLice(idOsobe);
                 popuniBezbednosneObuke(osoba);
             }
             else
@@ -602,9 +604,9 @@ namespace Gradjevinska_firma.Forme
             if (result == DialogResult.OK)
             {
 
-                DTOManager.obrisiLekPregled(idLekPregled);
+                LekPregledDTOManager.obrisiLekPregled(idLekPregled);
                 MessageBox.Show("Brisanje lekarskog pregleda je uspesno obavljeno!");
-                FizickoLiceBasic osoba = DTOManager.vratiFizickoLice(idOsobe);
+                FizickoLiceBasic osoba = OsobaDTOManager.vratiFizickoLice(idOsobe);
                 popuniLekPregled(osoba);
             }
             else
@@ -630,9 +632,9 @@ namespace Gradjevinska_firma.Forme
             if (result == DialogResult.OK)
             {
 
-                DTOManager.obrisiZastitnuOpremu(idZastitnaOprema);
+                ZastitnaOpremaDTOManager.obrisiZastitnuOpremu(idZastitnaOprema);
                 MessageBox.Show("Brisanje zastitne opreme je uspesno obavljeno!");
-                FizickoLiceBasic osoba = DTOManager.vratiFizickoLice(idOsobe);
+                FizickoLiceBasic osoba = OsobaDTOManager.vratiFizickoLice(idOsobe);
                 popuniZastitnaOprema(osoba);
             }
             else
@@ -658,9 +660,9 @@ namespace Gradjevinska_firma.Forme
             if (result == DialogResult.OK)
             {
 
-                DTOManager.obrisiSertifikatSpecOpreme(idSertifikatSpec);
+                SertifikatSpecOpremeDTOManager.obrisiSertifikatSpecOpreme(idSertifikatSpec);
                 MessageBox.Show("Brisanje sertifikata je uspesno obavljeno!");
-                FizickoLiceBasic osoba = DTOManager.vratiFizickoLice(idOsobe);
+                FizickoLiceBasic osoba = OsobaDTOManager.vratiFizickoLice(idOsobe);
                 popuniSertifikatSpec(osoba);
             }
             else

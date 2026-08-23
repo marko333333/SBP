@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,11 +36,11 @@ namespace Gradjevinska_firma.Forme
                 return;
             }
 
-            ZadatakBasic zadatak=DTOManager.vratiZadatak(idZadatka);
+            ZadatakBasic zadatak=ZadaciDTOManager.vratiZadatak(idZadatka);
             NapredakBasic napredak=new NapredakBasic(
                 0,dtpDatum.Value,zadatak,tbDnevniIzvestaj.Text,int.Parse(tbProcenatRealizacije.Text),tbPrimedbaNadzora.Text,tbKorektivnaMera.Text);
 
-            DTOManager.dodajNapredak(napredak);
+            NapredakDTOManager.dodajNapredak(napredak);
 
             MessageBox.Show("Uspesno dodavanje.");
 

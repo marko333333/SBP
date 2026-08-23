@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 using Oracle.ManagedDataAccess.Types;
 using System;
@@ -16,12 +17,10 @@ namespace Gradjevinska_firma.Forme
     public partial class IzmeniStavkuForma : Form
     {
         private int idStavke;
-        private int idKontrole;
-        public IzmeniStavkuForma(int id, int idkontrola)
+        public IzmeniStavkuForma(int id)
         {
             InitializeComponent();
             idStavke = id;
-            idKontrole = idkontrola;
         }
 
         private void IzmeniStavkuForma_Load(object sender, EventArgs e)
@@ -29,7 +28,7 @@ namespace Gradjevinska_firma.Forme
             dtpRok.ShowCheckBox = true;
             dtpRok.Checked = false;
 
-            StavkaKontroleBasic stavka=DTOManager.vratiStavku(idStavke);
+            StavkaKontroleBasic stavka=StavkaKontroleDTOManager.vratiStavku(idStavke);
             tbRbStavke.Text = stavka.RedniBrojStavke.ToString();
             tbUzorci.Text = stavka.Uzorci;
             tbLabNalaz.Text = stavka.LabNalazi;
@@ -51,12 +50,16 @@ namespace Gradjevinska_firma.Forme
             if (dtpRok.Checked)
                 rokZaOtklanjanje = dtpRok.Value;
 
-            KontrolaKvalitetaBasic kontrola = DTOManager.vratiKontroluKvaliteta(idKontrole);
+            StavkaKontroleBasic stavka = new StavkaKontroleBasic();
+            stavka.Id = idStavke;
+            stavka.RedniBrojStavke = int.Parse(tbRbStavke.Text);
+            stavka.Uzorci = tbUzorci.Text;
+            stavka.LabNalazi = tbLabNalaz.Text;
+            stavka.RezultatiIspitivanja = tbRezultatIspit.Text;
+            stavka.KorektivneMere = tbKorektivneMere.Text;
+            stavka.RokZaOtklanjanje = rokZaOtklanjanje;
 
-            StavkaKontroleBasic stavka = new StavkaKontroleBasic(
-                idStavke, kontrola, int.Parse(tbRbStavke.Text), tbUzorci.Text, tbLabNalaz.Text, tbRezultatIspit.Text, tbKorektivneMere.Text, rokZaOtklanjanje);
-
-            DTOManager.izmeniStavku(stavka);
+            StavkaKontroleDTOManager.izmeniStavku(stavka);
 
             MessageBox.Show("Uspesna izmena.");
 

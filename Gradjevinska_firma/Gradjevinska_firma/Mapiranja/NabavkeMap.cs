@@ -19,9 +19,9 @@ namespace Gradjevinska_firma.Mapiranja
 
             References(x=>x.Projekat, "IDPROJEKTA");
 
-            HasMany(x => x.NabavkaMaterijal).KeyColumn("IDNABAVKE").LazyLoad().Cascade.All().Inverse();
+            HasMany(x => x.NabavkaMaterijal).KeyColumn("IDNABAVKA").LazyLoad().Cascade.All().Inverse();
 
-            HasMany(x => x.NabavkaOprema).KeyColumn("IDNABAVKE").LazyLoad().Cascade.All().Inverse();
+            HasMany(x => x.NabavkaOprema).KeyColumn("IDNABAVKA").LazyLoad().Cascade.All().Inverse();
         }
     }
 }

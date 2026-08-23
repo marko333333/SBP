@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
@@ -107,7 +108,7 @@ namespace Gradjevinska_firma.Forme
                    cbNadzorniOrgan.Checked,
                    cbAO.Checked);
 
-                DTOManager.dodajFizickoLice(fizicko);
+                OsobaDTOManager.dodajFizickoLice(fizicko);
                 MessageBox.Show("Uspesno dodavanje.");
             }
             else if (rbPravnoLice.Checked)
@@ -126,7 +127,7 @@ namespace Gradjevinska_firma.Forme
                    cbDobavljaci.Checked,
                    cbNO.Checked);
 
-                DTOManager.dodajPravnoLice(pravno);
+                OsobaDTOManager.dodajPravnoLice(pravno);
 
                 MessageBox.Show("Uspesno dodavanje.");
 

@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace Gradjevinska_firma.Forme
 
         private void StavkeKontroleForma_Load(object sender, EventArgs e)
         {
-            KontrolaKvalitetaBasic kontrola=DTOManager.vratiKontroluKvaliteta(idKontrole);
+            KontrolaKvalitetaBasic kontrola=KontrolaKvalitetaDTOManager.vratiKontroluKvaliteta(idKontrole);
             popuniPodacima(kontrola);
         }
 
@@ -63,7 +64,7 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    KontrolaKvalitetaBasic kontrola = DTOManager.vratiKontroluKvaliteta(idKontrole);
+                    KontrolaKvalitetaBasic kontrola = KontrolaKvalitetaDTOManager.vratiKontroluKvaliteta(idKontrole);
                     popuniPodacima(kontrola);
                 }
             }
@@ -83,11 +84,11 @@ namespace Gradjevinska_firma.Forme
                 tabela.SelectedItems[0].SubItems[0].Text
             );
 
-            using (IzmeniStavkuForma forma = new IzmeniStavkuForma(id, idKontrole))
+            using (IzmeniStavkuForma forma = new IzmeniStavkuForma(id))
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    KontrolaKvalitetaBasic kontrola = DTOManager.vratiKontroluKvaliteta(idKontrole);
+                    KontrolaKvalitetaBasic kontrola = KontrolaKvalitetaDTOManager.vratiKontroluKvaliteta(idKontrole);
                     popuniPodacima(kontrola);
                 }
             }
@@ -113,9 +114,9 @@ namespace Gradjevinska_firma.Forme
 
             if (result == DialogResult.OK)
             {
-                DTOManager.obrisiStavku(id);
+                StavkaKontroleDTOManager.obrisiStavku(id);
                 MessageBox.Show("Brisanje stavke je uspesno obavljeno!");
-                KontrolaKvalitetaBasic kontrola = DTOManager.vratiKontroluKvaliteta(idKontrole);
+                KontrolaKvalitetaBasic kontrola = KontrolaKvalitetaDTOManager.vratiKontroluKvaliteta(idKontrole);
                 popuniPodacima(kontrola);
 
             }

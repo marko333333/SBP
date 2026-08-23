@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +23,7 @@ namespace Gradjevinska_firma.Forme
 
         private void IzmeniOpremuForma_Load(object sender, EventArgs e)
         {
-            OpremaBasic oprema=DTOManager.vratiOpremu(idOprema);
+            OpremaBasic oprema=OpremaDTOManager.vratiOpremu(idOprema);
 
             tbNaziv.Text= oprema.Naziv;
             tbTip.Text= oprema.Tip;
@@ -59,7 +60,7 @@ namespace Gradjevinska_firma.Forme
             OpremaBasic oprema = new OpremaBasic(
                 idOprema, tbNaziv.Text, tbTip.Text, dtpdatumUvoza.Value, tbProizvodjac.Text, tbRasponOdrzavanja.Text, tbLokacija.Text, cbStatus.SelectedItem.ToString());
 
-            DTOManager.izmeniOpremu(oprema);
+            OpremaDTOManager.izmeniOpremu(oprema);
 
             MessageBox.Show("Uspesna izmena");
 

@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -44,7 +45,7 @@ namespace Gradjevinska_firma.Forme
             OpremaBasic oprema = new OpremaBasic(
                 0, tbNaziv.Text, tbTip.Text, dtpdatumUvoza.Value, tbProizvodjac.Text, tbRasponOdrzavanja.Text, tbLokacija.Text, cbStatus.SelectedItem.ToString());
 
-            DTOManager.dodajOpremu(oprema);
+            OpremaDTOManager.dodajOpremu(oprema);
 
             MessageBox.Show("Uspesno dodavanje");
 

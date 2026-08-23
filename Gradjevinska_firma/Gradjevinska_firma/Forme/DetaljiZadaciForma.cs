@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 using Gradjevinska_firma.Mapiranja;
 using System;
@@ -30,7 +31,7 @@ namespace Gradjevinska_firma.Forme
 
         private void popuniPodacima()
         {
-            ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+            ZadatakBasic zadatak = ZadaciDTOManager.vratiZadatak(idZadatka);
 
             if (zadatak == null)
                 return;
@@ -236,7 +237,7 @@ namespace Gradjevinska_firma.Forme
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+            ZadatakBasic zadatak = ZadaciDTOManager.vratiZadatak(idZadatka);
             if (tabControl1.SelectedIndex == 0)
             {
                 popuniPodacima();
@@ -276,7 +277,7 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                    ZadatakBasic zadatak = ZadaciDTOManager.vratiZadatak(idZadatka);
                     popuniPodzadacima(zadatak);
                 }
             }
@@ -288,7 +289,7 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                    ZadatakBasic zadatak = ZadaciDTOManager.vratiZadatak(idZadatka);
                     popuniRadneNaloge(zadatak);
                 }
             }
@@ -300,7 +301,7 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                    ZadatakBasic zadatak = ZadaciDTOManager.vratiZadatak(idZadatka);
                     popuniNapretke(zadatak);
                 }
             }
@@ -312,7 +313,7 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                    ZadatakBasic zadatak = ZadaciDTOManager.vratiZadatak(idZadatka);
                     popuniKontroluKvaliteta(zadatak);
                 }
             }
@@ -337,11 +338,11 @@ namespace Gradjevinska_firma.Forme
                 tabela.SelectedItems[0].SubItems[0].Text
             );
 
-            using (IzmeniRadniNalogForma forma = new IzmeniRadniNalogForma(id, idZadatka))
+            using (IzmeniRadniNalogForma forma = new IzmeniRadniNalogForma(id))
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                    ZadatakBasic zadatak = ZadaciDTOManager.vratiZadatak(idZadatka);
                     popuniRadneNaloge(zadatak);
                 }
             }
@@ -361,11 +362,11 @@ namespace Gradjevinska_firma.Forme
                 tabela.SelectedItems[0].SubItems[0].Text
             );
 
-            using (IzmeniNapredakForma forma = new IzmeniNapredakForma(id, idZadatka))
+            using (IzmeniNapredakForma forma = new IzmeniNapredakForma(id))
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                    ZadatakBasic zadatak = ZadaciDTOManager.vratiZadatak(idZadatka);
                     popuniNapretke(zadatak);
                 }
             }
@@ -385,11 +386,11 @@ namespace Gradjevinska_firma.Forme
                 tabela.SelectedItems[0].SubItems[0].Text
             );
 
-            using (IzmeniKontroluForma forma = new IzmeniKontroluForma(id, idZadatka))
+            using (IzmeniKontroluForma forma = new IzmeniKontroluForma(id))
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                    ZadatakBasic zadatak = ZadaciDTOManager.vratiZadatak(idZadatka);
                     popuniKontroluKvaliteta(zadatak);
                 }
             }
@@ -413,7 +414,7 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                    ZadatakBasic zadatak = ZadaciDTOManager.vratiZadatak(idZadatka);
                     popuniKontroluKvaliteta(zadatak);
                 }
             }
@@ -439,9 +440,9 @@ namespace Gradjevinska_firma.Forme
 
             if (result == DialogResult.OK)
             {
-                DTOManager.obrisiRadniNalog(id);
+                RadniNaloziDTOManager.obrisiRadniNalog(id);
                 MessageBox.Show("Brisanje radni naloga je uspesno obavljeno!");
-                ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                ZadatakBasic zadatak = ZadaciDTOManager.vratiZadatak(idZadatka);
                 popuniRadneNaloge(zadatak);
 
             }
@@ -471,9 +472,9 @@ namespace Gradjevinska_firma.Forme
 
             if (result == DialogResult.OK)
             {
-                DTOManager.obrisiNapredak(id);
+                NapredakDTOManager.obrisiNapredak(id);
                 MessageBox.Show("Brisanje napretka je uspesno obavljeno!");
-                ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                ZadatakBasic zadatak = ZadaciDTOManager.vratiZadatak(idZadatka);
                 popuniNapretke(zadatak);
 
             }
@@ -503,9 +504,9 @@ namespace Gradjevinska_firma.Forme
 
             if (result == DialogResult.OK)
             {
-                DTOManager.obrisiKontrolu(id);
+                KontrolaKvalitetaDTOManager.obrisiKontrolu(id);
                 MessageBox.Show("Brisanje kontrole je uspesno obavljeno!");
-                ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                ZadatakBasic zadatak = ZadaciDTOManager.vratiZadatak(idZadatka);
                 popuniKontroluKvaliteta(zadatak);
 
             }
@@ -533,7 +534,7 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                    ZadatakBasic zadatak = ZadaciDTOManager.vratiZadatak(idZadatka);
                     popuniNapretke(zadatak);
                 }
             }
@@ -559,9 +560,9 @@ namespace Gradjevinska_firma.Forme
 
             if (result == DialogResult.OK)
             {
-                DTOManager.obrisiPodzadatak(id);
+                ZadaciDTOManager.obrisiPodzadatak(id);
                 MessageBox.Show("Brisanje podzadatka je uspesno obavljeno!");
-                ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                ZadatakBasic zadatak = ZadaciDTOManager.vratiZadatak(idZadatka);
                 popuniPodzadacima(zadatak);
 
             }
@@ -577,7 +578,7 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                    ZadatakBasic zadatak = ZadaciDTOManager.vratiZadatak(idZadatka);
                     popuniAngazovanja(zadatak);
                 }
             }
@@ -606,9 +607,9 @@ namespace Gradjevinska_firma.Forme
 
             if (result == DialogResult.OK)
             {
-                DTOManager.obrisiAngazovanje(idZadatka, idOsobe);
+                AngazovanDTOManager.obrisiAngazovanje(idZadatka, idOsobe);
                 MessageBox.Show("Brisanje angazovanja je uspesno obavljeno!");
-                ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                ZadatakBasic zadatak = ZadaciDTOManager.vratiZadatak(idZadatka);
                 popuniAngazovanja(zadatak);
 
             }
@@ -638,7 +639,7 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                    ZadatakBasic zadatak = ZadaciDTOManager.vratiZadatak(idZadatka);
                     popuniAngazovanja(zadatak);
                 }
             }
@@ -650,8 +651,8 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
-                    popuniAngazovanja(zadatak);
+                    ZadatakBasic zadatak = ZadaciDTOManager.vratiZadatak(idZadatka);
+                    popuniAngazuj(zadatak);
                 }
             }
         }
@@ -676,7 +677,7 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                    ZadatakBasic zadatak = ZadaciDTOManager.vratiZadatak(idZadatka);
                     popuniAngazuj(zadatak);
                 }
             }
@@ -705,9 +706,9 @@ namespace Gradjevinska_firma.Forme
 
             if (result == DialogResult.OK)
             {
-                DTOManager.obrisiAngazuje(idZadatka, idOprema);
+                AngazujOpremuDTOManager.obrisiAngazuje(idZadatka, idOprema);
                 MessageBox.Show("Brisanje opreme je uspesno obavljeno!");
-                ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                ZadatakBasic zadatak = ZadaciDTOManager.vratiZadatak(idZadatka);
                 popuniAngazuj(zadatak);
 
             }
@@ -723,7 +724,7 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                    ZadatakBasic zadatak = ZadaciDTOManager.vratiZadatak(idZadatka);
                     popuniKoristi(zadatak);
                 }
             }
@@ -747,7 +748,7 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                    ZadatakBasic zadatak = ZadaciDTOManager.vratiZadatak(idZadatka);
                     popuniKoristi(zadatak);
                 }
             }
@@ -773,9 +774,9 @@ namespace Gradjevinska_firma.Forme
 
             if (result == DialogResult.OK)
             {
-                DTOManager.obrisiKoristi(id);
+                KoristiDTOManager.obrisiKoristi(id);
                 MessageBox.Show("Brisanje materijala je uspesno obavljeno!");
-                ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+                ZadatakBasic zadatak = ZadaciDTOManager.vratiZadatak(idZadatka);
                 popuniKoristi(zadatak);
 
             }

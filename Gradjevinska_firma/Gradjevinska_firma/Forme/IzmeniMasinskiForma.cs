@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -52,7 +53,7 @@ namespace Gradjevinska_firma.Forme
             MasinskiBasic materijal = new MasinskiBasic
                 (idMaterijal, tbNaziv.Text, int.Parse(tbcena.Text), tbProizvodjac.Text, tbJedinicaMere.Text, tbSertifikat.Text, "Masinski");
 
-            DTOManager.izmeniMasinskiMaterijal(materijal);
+            MaterijalDTOManager.izmeniMasinskiMaterijal(materijal);
 
             MessageBox.Show("Uspesna izmena");
 
@@ -62,7 +63,7 @@ namespace Gradjevinska_firma.Forme
 
         private void IzmeniMasinskiForma_Load(object sender, EventArgs e)
         {
-            MasinskiBasic materijal = DTOManager.vratiMasinskiMaterijal(idMaterijal);
+            MasinskiBasic materijal = MaterijalDTOManager.vratiMasinskiMaterijal(idMaterijal);
 
             tbNaziv.Text = materijal.Naziv;
             tbcena.Text = materijal.Cena.ToString();

@@ -1,4 +1,6 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
+using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -78,7 +80,7 @@ namespace Gradjevinska_firma.Forme
 
         private void popuniPodacima()
         {
-            UgovorBasic ugovor = DTOManager.vratiUgovor(idUgovora);
+            UgovorBasic ugovor = UgovorDTOManager.vratiUgovor(idUgovora);
 
             lbDatumPotpisivanja.Text = ugovor.DatumPotpisivanja.ToShortDateString();
             lbVrednost.Text = ugovor.Vrednost.ToString();
@@ -107,7 +109,7 @@ namespace Gradjevinska_firma.Forme
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            UgovorBasic ugovor = DTOManager.vratiUgovor(idUgovora);
+            UgovorBasic ugovor = UgovorDTOManager.vratiUgovor(idUgovora);
 
             if (tabControl1.SelectedIndex == 0)
             {
@@ -117,9 +119,145 @@ namespace Gradjevinska_firma.Forme
             {
                 popuniUgovorneStrane(ugovor);
             }
-            else if(tabControl1.SelectedIndex == 2)
+            else if (tabControl1.SelectedIndex == 2)
             {
                 popuniPosebneKlauzule(ugovor);
+            }
+        }
+
+        private void btDodajUgovornuStranu_Click(object sender, EventArgs e)
+        {
+            using (DodajUgovornuStranuForma forma = new DodajUgovornuStranuForma(idUgovora))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    UgovorBasic ugovor = UgovorDTOManager.vratiUgovor(idUgovora);
+                    popuniUgovorneStrane(ugovor);
+                }
+            }
+        }
+
+        private void btIzmeniUgovornuStranu_Click(object sender, EventArgs e)
+        {
+            ListView tabela = ugovorneStrane;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati ugovornu stranu iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+
+            using (IzmeniUgovornuStranuForma forma = new IzmeniUgovornuStranuForma(id))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    UgovorBasic ugovor = UgovorDTOManager.vratiUgovor(idUgovora);
+                    popuniUgovorneStrane(ugovor);
+                }
+            }
+        }
+
+        private void btObrisiUgovornuStranu_Click(object sender, EventArgs e)
+        {
+            ListView tabela = ugovorneStrane;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati ugovornu stranu iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+            string poruka = "Da li zelite da obrisete izabranu ugovornu stranu?";
+            string title = "Pitanje";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(poruka, title, buttons);
+
+            if (result == DialogResult.OK)
+            {
+                ImaUgovorneStraneDTOManager.obrisiUgovornuStranu(id);
+                MessageBox.Show("Brisanje ugovorne strane je uspesno obavljeno!");
+                UgovorBasic ugovor = UgovorDTOManager.vratiUgovor(idUgovora);
+                popuniUgovorneStrane(ugovor);
+
+            }
+            else
+            {
+
+            }
+        }
+
+        private void btDodajKlauzulu_Click(object sender, EventArgs e)
+        {
+            using (DodajPosebnuKlauzuluForma forma = new DodajPosebnuKlauzuluForma(idUgovora))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    UgovorBasic ugovor = UgovorDTOManager.vratiUgovor(idUgovora);
+                    popuniPosebneKlauzule(ugovor);
+                }
+            }
+        }
+
+        private void btizmeniKlauzulu_Click(object sender, EventArgs e)
+        {
+            ListView tabela = posebneKlauzule;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati posebnu klauzulu iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+
+            using (IzmeniPosebnuKlauzuluForma forma = new IzmeniPosebnuKlauzuluForma(id))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    UgovorBasic ugovor = UgovorDTOManager.vratiUgovor(idUgovora);
+                    popuniPosebneKlauzule(ugovor);
+                }
+            }
+        }
+
+        private void btObrisiPosebnuKlauzulu_Click(object sender, EventArgs e)
+        {
+            ListView tabela = posebneKlauzule;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati posebnu klauzulu iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+            string poruka = "Da li zelite da obrisete izabranu posebnu klauzulu?";
+            string title = "Pitanje";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(poruka, title, buttons);
+
+            if (result == DialogResult.OK)
+            {
+                PosebnaKlauzulaDTOManager.obrisiPosebnuKlauzulu(id);
+                MessageBox.Show("Brisanje posebne klauzule je uspesno obavljeno!");
+                UgovorBasic ugovor = UgovorDTOManager.vratiUgovor(idUgovora);
+                popuniPosebneKlauzule(ugovor);
+
+            }
+            else
+            {
+
             }
         }
     }

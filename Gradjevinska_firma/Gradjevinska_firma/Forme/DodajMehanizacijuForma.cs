@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -50,7 +51,7 @@ namespace Gradjevinska_firma.Forme
             MehanizacijaBasic oprema = new MehanizacijaBasic(
                 0, tbNaziv.Text, tbTip.Text, dtpdatumUvoza.Value, tbProizvodjac.Text, tbRasponOdrzavanja.Text, tbLokacija.Text, cbStatus.SelectedItem.ToString(), cbTipMehanizacije.SelectedItem.ToString());
 
-            DTOManager.dodajMehanizaciju(oprema);
+            OpremaDTOManager.dodajMehanizaciju(oprema);
 
             MessageBox.Show("Uspesno dodavanje");
 

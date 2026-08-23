@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
@@ -38,7 +39,7 @@ namespace Gradjevinska_firma.Forme
             SertifikatSpecOpremeBasic sertifikatspec = new SertifikatSpecOpremeBasic(
                 0, idOsobe, tbSertifikatSpec.Text);
 
-            DTOManager.dodajSertifikatSpecOpreme(sertifikatspec);
+            SertifikatSpecOpremeDTOManager.dodajSertifikatSpecOpreme(sertifikatspec);
 
             MessageBox.Show("Uspesno dodavanje.");
 

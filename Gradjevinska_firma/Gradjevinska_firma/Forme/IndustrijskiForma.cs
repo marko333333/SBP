@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 
 namespace Gradjevinska_firma.Forme
 {
@@ -22,7 +23,7 @@ namespace Gradjevinska_firma.Forme
         {
             projekti.Items.Clear();
 
-            List<IndustrijskiPregled> lista = DTOManager.vratiSveIndustrijske();
+            List<IndustrijskiPregled> lista = ProjekatDTOManager.vratiSveIndustrijske();
 
             foreach (IndustrijskiPregled i in lista)
             {
@@ -73,7 +74,7 @@ namespace Gradjevinska_firma.Forme
 
             if (result == DialogResult.OK)
             {
-                DTOManager.obrisiProjekat(id);
+                ProjekatDTOManager.obrisiProjekat(id);
                 MessageBox.Show("Brisanje projekta je uspesno obavljeno!");
                 popuniPodacima();
 

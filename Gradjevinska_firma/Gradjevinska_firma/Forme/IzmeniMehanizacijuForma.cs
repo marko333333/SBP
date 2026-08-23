@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace Gradjevinska_firma.Forme
 
         private void IzmeniMehanizacijuForma_Load(object sender, EventArgs e)
         {
-            MehanizacijaBasic mehanizacija = DTOManager.vratiMehanizaciju(idMehanizacije);
+            MehanizacijaBasic mehanizacija = OpremaDTOManager.vratiMehanizaciju(idMehanizacije);
 
             tbNaziv.Text = mehanizacija.Naziv;
             tbTip.Text = mehanizacija.Tip;
@@ -65,7 +66,7 @@ namespace Gradjevinska_firma.Forme
             MehanizacijaBasic oprema = new MehanizacijaBasic(
                 idMehanizacije, tbNaziv.Text, tbTip.Text, dtpdatumUvoza.Value, tbProizvodjac.Text, tbRasponOdrzavanja.Text, tbLokacija.Text, cbStatus.SelectedItem.ToString(),cbTipMehanizacije.SelectedItem.ToString());
 
-            DTOManager.izmeniMehanizaciju(oprema);
+            OpremaDTOManager.izmeniMehanizaciju(oprema);
 
             MessageBox.Show("Uspesna izmena");
 

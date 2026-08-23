@@ -38,10 +38,10 @@
             columnHeader7 = new ColumnHeader();
             columnHeader8 = new ColumnHeader();
             columnHeader9 = new ColumnHeader();
+            columnHeader6 = new ColumnHeader();
             btObrisiMehanizaciju = new Button();
             btIzmeniOpremu = new Button();
             btDodajMehanizaciju = new Button();
-            columnHeader6 = new ColumnHeader();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -107,6 +107,11 @@
             columnHeader9.Text = "Status";
             columnHeader9.TextAlign = HorizontalAlignment.Center;
             // 
+            // columnHeader6
+            // 
+            columnHeader6.Text = "Tip mehanizacije";
+            columnHeader6.TextAlign = HorizontalAlignment.Center;
+            // 
             // btObrisiMehanizaciju
             // 
             btObrisiMehanizaciju.Location = new Point(632, 193);
@@ -137,11 +142,6 @@
             btDodajMehanizaciju.UseVisualStyleBackColor = true;
             btDodajMehanizaciju.Click += btDodajOpremu_Click;
             // 
-            // columnHeader6
-            // 
-            columnHeader6.Text = "Tip mehanizacije";
-            columnHeader6.TextAlign = HorizontalAlignment.Center;
-            // 
             // MehanizacijaForma
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -153,6 +153,7 @@
             Controls.Add(groupBox1);
             Name = "MehanizacijaForma";
             Text = "MehanizacijaForma";
+            FormClosed += MehanizacijaForma_FormClosed;
             Load += MehanizacijaForma_Load;
             groupBox1.ResumeLayout(false);
             ResumeLayout(false);

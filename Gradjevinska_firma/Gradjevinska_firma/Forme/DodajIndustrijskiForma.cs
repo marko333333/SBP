@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 
 namespace Gradjevinska_firma.Forme
@@ -51,7 +52,7 @@ namespace Gradjevinska_firma.Forme
                dtpStvarniZavrsetak.Value
            );
 
-            DTOManager.dodajIndustrijski(industrijski);
+            ProjekatDTOManager.dodajIndustrijski(industrijski);
 
             MessageBox.Show("Projekat infrastruktura je uspesno dodat.");
 

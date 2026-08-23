@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace Gradjevinska_firma.Forme
         {
             mehanizacija.Items.Clear();
 
-            List<MehanizacijaPregled> lista = DTOManager.vratiSveMehanizacije();
+            List<MehanizacijaPregled> lista = OpremaDTOManager.vratiSveMehanizacije();
 
             foreach (MehanizacijaPregled m in lista)
             {
@@ -106,11 +107,17 @@ namespace Gradjevinska_firma.Forme
 
             if (result == DialogResult.OK)
             {
-                DTOManager.obrisiOpremu(id);
+                OpremaDTOManager.obrisiOpremu(id);
                 MessageBox.Show("Brisanje mehanizacije je uspesno obavljeno!");
                 popuniMehanizacije();
 
             }
+        }
+
+        private void MehanizacijaForma_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

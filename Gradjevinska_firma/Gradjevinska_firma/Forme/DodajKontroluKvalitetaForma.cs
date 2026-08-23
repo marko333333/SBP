@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
@@ -33,7 +34,7 @@ namespace Gradjevinska_firma.Forme
         private void btDodaj_Click(object sender, EventArgs e)
         {
 
-            ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+            ZadatakBasic zadatak = ZadaciDTOManager.vratiZadatak(idZadatka);
 
             DateTime? datumOtklananja = null;
 
@@ -44,7 +45,7 @@ namespace Gradjevinska_firma.Forme
             KontrolaKvalitetaBasic kontrola = new KontrolaKvalitetaBasic(
                 0,dtpDatumInspekcije.Value,tbPrimedba.Text,tbZapisnik.Text,cbZabrana.Checked,tbRazlogZabrane.Text,datumOtklananja,zadatak);
 
-            DTOManager.dodajKontrolu(kontrola);
+            KontrolaKvalitetaDTOManager.dodajKontrolu(kontrola);
 
             MessageBox.Show("Uspesno dodavanje.");
 

@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
@@ -15,19 +16,17 @@ namespace Gradjevinska_firma.Forme
     public partial class IzmeniKontroluForma : Form
     {
         private int idKontrole;
-        private int idZadatka;
-        public IzmeniKontroluForma(int id, int idzadatak)
+        public IzmeniKontroluForma(int id)
         {
             InitializeComponent();
             idKontrole = id;
-            idZadatka = idzadatak;
         }
 
         private void IzmeniKontroluForma_Load(object sender, EventArgs e)
         {
             dtpDatumOtklananja.ShowCheckBox = true;
             dtpDatumOtklananja.Checked = false;
-            KontrolaKvalitetaBasic kontrola = DTOManager.vratiKontroluKvaliteta(idKontrole);
+            KontrolaKvalitetaBasic kontrola = KontrolaKvalitetaDTOManager.vratiKontroluKvaliteta(idKontrole);
 
             dtpDatumInspekcije.Value = kontrola.DatumInspekcije;
             tbPrimedba.Text = kontrola.PrimedbeNadzora;
@@ -51,11 +50,16 @@ namespace Gradjevinska_firma.Forme
             {
                 datumOtklananja = dtpDatumOtklananja.Value;
             }
-            ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
-            KontrolaKvalitetaBasic kontrola = new KontrolaKvalitetaBasic(
-                idKontrole,dtpDatumInspekcije.Value,tbPrimedba.Text,tbZapisnik.Text,cbZabrana.Checked,tbRazlogZabrane.Text,datumOtklananja,zadatak);
+            KontrolaKvalitetaBasic kontrola = new KontrolaKvalitetaBasic();
+            kontrola.Id = idKontrole;
+            kontrola.DatumInspekcije = dtpDatumInspekcije.Value;
+            kontrola.PrimedbeNadzora = tbPrimedba.Text;
+            kontrola.Zapisnik = tbZapisnik.Text;
+            kontrola.ZabranaNastavkaRadova = cbZabrana.Checked;
+            kontrola.RazlogZabrane = tbRazlogZabrane.Text;
+            kontrola.DatumOtklanjanjaZabrane = datumOtklananja;
 
-            DTOManager.izmeniKontrolu(kontrola);
+            KontrolaKvalitetaDTOManager.izmeniKontrolu(kontrola);
             MessageBox.Show("Uspesna izmena.");
             this.DialogResult = DialogResult.OK;
             this.Close();

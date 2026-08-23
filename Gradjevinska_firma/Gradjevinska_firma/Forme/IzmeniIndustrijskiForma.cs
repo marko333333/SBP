@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 
 namespace Gradjevinska_firma.Forme
@@ -49,7 +50,7 @@ namespace Gradjevinska_firma.Forme
                //stvarniZavrsetak
            );
 
-            DTOManager.izmeniIndustrijski(industrijski);
+            ProjekatDTOManager.izmeniIndustrijski(industrijski);
 
             MessageBox.Show("Industrijski projekat je uspesno izmenjen.");
 

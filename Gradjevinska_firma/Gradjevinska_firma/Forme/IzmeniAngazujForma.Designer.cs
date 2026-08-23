@@ -55,6 +55,7 @@
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Angazuj opremu";
+            groupBox1.Enter += groupBox1_Enter;
             // 
             // btIzmeni
             // 

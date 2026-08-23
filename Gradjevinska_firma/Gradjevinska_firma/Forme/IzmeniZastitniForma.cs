@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -52,7 +53,7 @@ namespace Gradjevinska_firma.Forme
             ZastitniBasic materijal = new ZastitniBasic
                 (idMaterijal, tbNaziv.Text, int.Parse(tbcena.Text), tbProizvodjac.Text, tbJedinicaMere.Text, tbSertifikat.Text, "Zastitni");
 
-            DTOManager.izmeniZastitniMaterijal(materijal);
+            MaterijalDTOManager.izmeniZastitniMaterijal(materijal);
 
             MessageBox.Show("Uspesna izmena");
 
@@ -62,7 +63,7 @@ namespace Gradjevinska_firma.Forme
 
         private void IzmeniZastitniForma_Load(object sender, EventArgs e)
         {
-            ZastitniBasic zastitni = DTOManager.vratiZastitniMaterijal(idMaterijal);
+            ZastitniBasic zastitni = MaterijalDTOManager.vratiZastitniMaterijal(idMaterijal);
 
             tbNaziv.Text = zastitni.Naziv;
             tbcena.Text = zastitni.Cena.ToString();

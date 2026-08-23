@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
@@ -30,9 +31,9 @@ namespace Gradjevinska_firma.Forme
         {
             cbMaterijal.Items.Clear();
 
-            ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+            ZadatakBasic zadatak =  ZadaciDTOManager.vratiZadatak(idZadatka);
 
-            List<MaterijalPregled> materijal = DTOManager.vratiSavMaterijal();
+            List<MaterijalPregled> materijal = MaterijalDTOManager.vratiSavMaterijal();
 
             foreach (MaterijalPregled m in materijal)
             {
@@ -77,12 +78,12 @@ namespace Gradjevinska_firma.Forme
             materijal.ID = izabraniMaterijal.ID;
             materijal.Naziv = izabraniMaterijal.Naziv;
 
-            ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+            ZadatakBasic zadatak = ZadaciDTOManager.vratiZadatak(idZadatka);
 
             KoristiBasic koristi = new KoristiBasic(
                    0,int.Parse(tbKolicina.Text),zadatak,materijal);
 
-            DTOManager.dodajKoristiZadatka(koristi);
+            KoristiDTOManager.dodajKoristiZadatka(koristi);
 
             MessageBox.Show("Uspesno dodavanje");
 

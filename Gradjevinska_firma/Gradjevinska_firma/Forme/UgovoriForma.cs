@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace Gradjevinska_firma.Forme
         public void popuniUgovore()
         {
             this.ugovori.Items.Clear();
-            List<UgovorPregled> ugovor = DTOManager.vratiSveUgovore();
+            List<UgovorPregled> ugovor = UgovorDTOManager.vratiSveUgovore();
 
             foreach (UgovorPregled u in ugovor)
             {
@@ -44,8 +45,100 @@ namespace Gradjevinska_firma.Forme
             this.ugovori.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             this.ugovori.Refresh();
         }
+
+        public void popuniUgovoreProjekata()
+        {
+            this.ugovoriProjekta.Items.Clear();
+
+            List<UgovorPregled> ugovori = UgovorDTOManager.vratiSveUgovore();
+            
+
+            foreach (UgovorPregled u in ugovori)
+            {
+                if (u.Projekat != null)
+                {
+                    ListViewItem item = new ListViewItem(new string[] {
+                   u.Id.ToString(),
+                   u.Projekat.Naziv,
+                   u.DatumPotpisivanja.ToShortDateString(),
+                   u.Vrednost.ToString(),
+                   u.PredmetUgovora,
+                   u.Valuta,
+                   u.Rok.ToShortDateString()
+
+                   });
+
+                    this.ugovoriProjekta.Items.Add(item);
+                }
+
+            }
+            this.ugovoriProjekta.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.ugovoriProjekta.Refresh();
+        }
+
+        public void popuniUgovoreOpreme()
+        {
+            this.ugovoriOprema.Items.Clear();
+
+            List<UgovorPregled> ugovor = UgovorDTOManager.vratiSveUgovore();
+
+
+            foreach (UgovorPregled u in ugovor)
+            {
+                if (u.Oprema != null)
+                {
+                    ListViewItem item = new ListViewItem(new string[] {
+                   u.Id.ToString(),
+                   u.Oprema.Naziv,
+                   u.DatumPotpisivanja.ToShortDateString(),
+                   u.Vrednost.ToString(),
+                   u.PredmetUgovora,
+                   u.Valuta,
+                   u.Rok.ToShortDateString()
+
+                   });
+
+                    this.ugovoriOprema.Items.Add(item);
+                }
+
+            }
+            this.ugovoriOprema.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.ugovoriOprema.Refresh();
+        }
+
+        public void popuniUgovoreMaterijala()
+        {
+            this.ugovoriMaterijala.Items.Clear();
+
+            List<UgovorPregled> ugovor = UgovorDTOManager.vratiSveUgovore();
+
+
+            foreach (UgovorPregled u in ugovor)
+            {
+                if (u.Materijal != null)
+                {
+                    ListViewItem item = new ListViewItem(new string[] {
+                   u.Id.ToString(),
+                   u.Materijal.Naziv,
+                   u.DatumPotpisivanja.ToShortDateString(),
+                   u.Vrednost.ToString(),
+                   u.PredmetUgovora,
+                   u.Valuta,
+                   u.Rok.ToShortDateString()
+
+                   });
+
+                    this.ugovoriMaterijala.Items.Add(item);
+                }
+
+            }
+            this.ugovoriMaterijala.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.ugovoriMaterijala.Refresh();
+        }
+
         private void UgovoriForma_Load(object sender, EventArgs e)
         {
+            popuniUgovore();
 
         }
 
@@ -60,12 +153,21 @@ namespace Gradjevinska_firma.Forme
 
         private void btDetaljiUgovora_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ListView tabela = ugovori;
+            ListView tabela = null;
+
+            if (tabControl1.SelectedIndex == 0)
+                tabela = ugovori;
+            else if (tabControl1.SelectedIndex == 1)
+                tabela = ugovoriProjekta;
+            else if (tabControl1.SelectedIndex == 2)
+                tabela = ugovoriMaterijala;
+            else if (tabControl1.SelectedIndex == 3)
+                tabela = ugovoriOprema;
 
             if (tabela.SelectedItems.Count == 0)
             {
@@ -81,7 +183,22 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    popuniUgovore();
+                    if (tabControl1.SelectedIndex == 0)
+                    {
+                        popuniUgovore();
+                    }
+                    else if (tabControl1.SelectedIndex == 1)
+                    {
+                        popuniUgovoreProjekata();
+                    }
+                    else if (tabControl1.SelectedIndex == 2)
+                    {
+                        popuniUgovoreMaterijala();
+                    }
+                    else if (tabControl1.SelectedIndex == 3)
+                    {
+                        popuniUgovoreOpreme();
+                    }
                 }
             }
         }
@@ -92,14 +209,38 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    popuniUgovore();
+                    if (tabControl1.SelectedIndex == 0)
+                    {
+                        popuniUgovore();
+                    }
+                    else if (tabControl1.SelectedIndex == 1)
+                    {
+                        popuniUgovoreProjekata();
+                    }
+                    else if (tabControl1.SelectedIndex == 2)
+                    {
+                        popuniUgovoreMaterijala();
+                    }
+                    else if (tabControl1.SelectedIndex == 3)
+                    {
+                        popuniUgovoreOpreme();
+                    }
                 }
             }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ListView tabela = ugovori;
+            ListView tabela = null;
+
+            if (tabControl1.SelectedIndex == 0)
+                tabela = ugovori;
+            else if (tabControl1.SelectedIndex == 1)
+                tabela = ugovoriProjekta;
+            else if (tabControl1.SelectedIndex == 2)
+                tabela = ugovoriMaterijala;
+            else if (tabControl1.SelectedIndex == 3)
+                tabela = ugovoriOprema;
 
             if (tabela.SelectedItems.Count == 0)
             {
@@ -117,16 +258,40 @@ namespace Gradjevinska_firma.Forme
 
             if (result == DialogResult.OK)
             {
-                DTOManager.obrisiUgovor(id);
+                UgovorDTOManager.obrisiUgovor(id);
                 MessageBox.Show("Brisanje ugovora je uspesno obavljeno!");
-                popuniUgovore();
+                if (tabControl1.SelectedIndex == 0)
+                {
+                    popuniUgovore();
+                }
+                else if (tabControl1.SelectedIndex == 1)
+                {
+                    popuniUgovoreProjekata();
+                }
+                else if (tabControl1.SelectedIndex == 2)
+                {
+                    popuniUgovoreMaterijala();
+                }
+                else if (tabControl1.SelectedIndex == 3)
+                {
+                    popuniUgovoreOpreme();
+                }
 
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ListView tabela = ugovori;
+            ListView tabela = null;
+
+            if (tabControl1.SelectedIndex == 0)
+                tabela = ugovori;
+            else if (tabControl1.SelectedIndex == 1)
+                tabela = ugovoriProjekta;
+            else if (tabControl1.SelectedIndex == 2)
+                tabela = ugovoriMaterijala;
+            else if (tabControl1.SelectedIndex == 3)
+                tabela = ugovoriOprema;
 
             if (tabela.SelectedItems.Count == 0)
             {
@@ -142,8 +307,43 @@ namespace Gradjevinska_firma.Forme
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    popuniUgovore();
+                    if (tabControl1.SelectedIndex == 0)
+                    {
+                        popuniUgovore();
+                    }
+                    else if (tabControl1.SelectedIndex == 1)
+                    {
+                        popuniUgovoreProjekata();
+                    }
+                    else if (tabControl1.SelectedIndex == 2)
+                    {
+                        popuniUgovoreMaterijala();
+                    }
+                    else if (tabControl1.SelectedIndex == 3)
+                    {
+                        popuniUgovoreOpreme();
+                    }
                 }
+            }
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 0)
+            {
+                popuniUgovore();
+            }
+            else if (tabControl1.SelectedIndex == 1)
+            {
+                popuniUgovoreProjekata();
+            }
+            else if (tabControl1.SelectedIndex == 2)
+            {
+                popuniUgovoreMaterijala();
+            }
+            else if(tabControl1.SelectedIndex == 3)
+            {
+                popuniUgovoreOpreme();
             }
         }
     }

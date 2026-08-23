@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +23,7 @@ namespace Gradjevinska_firma.Forme
 
         private void IzmeniMaterijalForma_Load(object sender, EventArgs e)
         {
-            GradjevinskiBasic materijal = DTOManager.vratiGradjevinskiMaterijal(idMaterijal);
+            GradjevinskiBasic materijal = MaterijalDTOManager.vratiGradjevinskiMaterijal(idMaterijal);
 
             tbNaziv.Text = materijal.Naziv;
             tbcena.Text = materijal.Cena.ToString();
@@ -63,7 +64,7 @@ namespace Gradjevinska_firma.Forme
             GradjevinskiBasic materijal = new GradjevinskiBasic
                 (idMaterijal, tbNaziv.Text, int.Parse(tbcena.Text), tbProizvodjac.Text, tbJedinicaMere.Text, tbSertifikat.Text, "Gradjevinski");
 
-            DTOManager.izmeniGradjevinskiMaterijal(materijal);
+            MaterijalDTOManager.izmeniGradjevinskiMaterijal(materijal);
 
             MessageBox.Show("Uspesna izmena");
 

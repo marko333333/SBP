@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 
 namespace Gradjevinska_firma.Forme
 {
@@ -31,7 +32,7 @@ namespace Gradjevinska_firma.Forme
         {
             cbPrimalac.Items.Clear();
             cbIzdavalac.Items.Clear();
-            List<PravnaLicaPregled> pravnaLica = DTOManager.vratiPravnaLicaNaProjektu(idProjekta);
+            List<PravnaLicaPregled> pravnaLica = OsobaDTOManager.vratiPravnaLicaNaProjektu(idProjekta);
 
             foreach (PravnaLicaPregled osoba in pravnaLica)
             {
@@ -69,7 +70,7 @@ namespace Gradjevinska_firma.Forme
             izdavalac.Id = izabranIzdavalac.Id;
             primalac.Id = izabranPrimalac.Id;
 
-            ProjekatBasic projekat = DTOManager.vratiProjekat(idProjekta);
+            ProjekatBasic projekat = ProjekatDTOManager.vratiProjekat(idProjekta);
 
             FakturaBasic faktura = new FakturaBasic(
                 idFakture,
@@ -82,7 +83,7 @@ namespace Gradjevinska_firma.Forme
                 primalac
            );
 
-            DTOManager.izmeniFakturu(faktura);
+            FakturaDTOManager.izmeniFakturu(faktura);
 
             MessageBox.Show("Faktura je uspesno izmenjena.");
 

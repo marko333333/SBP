@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
@@ -29,11 +30,11 @@ namespace Gradjevinska_firma.Forme
         private void btDodaj_Click(object sender, EventArgs e)
         {
 
-            ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+            ZadatakBasic zadatak = ZadaciDTOManager.vratiZadatak(idZadatka);
             RadniNalogBasic radniNalog = new RadniNalogBasic(
                 0, zadatak, cbStatus.SelectedItem.ToString(), dtpDatumIzdavanja.Value);
 
-            DTOManager.dodajRadniNalog(radniNalog);
+            RadniNaloziDTOManager.dodajRadniNalog(radniNalog);
 
             MessageBox.Show("Uspesno dodavanje.");
 

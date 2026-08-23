@@ -137,6 +137,7 @@
             btNabavke.TabIndex = 8;
             btNabavke.Text = "Nabavke";
             btNabavke.UseVisualStyleBackColor = true;
+            btNabavke.Click += btNabavke_Click;
             // 
             // PocetnaStranica
             // 

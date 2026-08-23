@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace Gradjevinska_firma.Forme
 
         private void IzmeniLicencuForma_Load(object sender, EventArgs e)
         {
-            LicencaBasic licenca=DTOManager.vratiLicencu(idLicenca);
+            LicencaBasic licenca=LicencaDTOManager.vratiLicencu(idLicenca);
 
             tbLicenca.Text=licenca.NazivLicence;
         }
@@ -34,7 +35,7 @@ namespace Gradjevinska_firma.Forme
         {
             LicencaBasic licenca = new LicencaBasic(idLicenca, idOsoba, tbLicenca.Text);
 
-            DTOManager.izmeniLicencu(licenca);
+            LicencaDTOManager.izmeniLicencu(licenca);
             MessageBox.Show("Uspesna izmena.");
             this.DialogResult = DialogResult.OK;
             this.Close();

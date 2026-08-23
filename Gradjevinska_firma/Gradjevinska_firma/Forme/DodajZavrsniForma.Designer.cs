@@ -162,6 +162,7 @@
             Controls.Add(groupBox1);
             Name = "DodajZavrsniForma";
             Text = "DodajZavrsniForma";
+            Load += DodajZavrsniForma_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);

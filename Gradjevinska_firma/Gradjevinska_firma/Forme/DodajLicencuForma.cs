@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
@@ -38,7 +39,7 @@ namespace Gradjevinska_firma.Forme
             LicencaBasic licenca = new LicencaBasic(
                     0, idOsobe, tbLicenca.Text);
 
-            DTOManager.dodajLicencu(licenca);
+            LicencaDTOManager.dodajLicencu(licenca);
 
             MessageBox.Show("Uspesno dodavanje.");
 

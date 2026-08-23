@@ -58,5 +58,10 @@ namespace Gradjevinska_firma.Forme
             RekonstrukcijaForma forma = new RekonstrukcijaForma();
             forma.ShowDialog();
         }
+
+        private void ProjekatForma_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,7 @@ namespace Gradjevinska_firma.Forme
             rbOprema.Checked = false;
             rbProjekat.Checked = false;
 
-            UgovorBasic ugovor = DTOManager.vratiUgovor(idUgovor);
+            UgovorBasic ugovor = UgovorDTOManager.vratiUgovor(idUgovor);
 
             dtpDatumPotpisivanja.Value = ugovor.DatumPotpisivanja;
             tbVrednost.Text = ugovor.Vrednost.ToString();
@@ -63,7 +64,7 @@ namespace Gradjevinska_firma.Forme
         {
             cbTipUgovora.Items.Clear();
 
-            List<ProjekatPregled> projekti = DTOManager.vratiSveProjekte();
+            List<ProjekatPregled> projekti = ProjekatDTOManager.vratiSveProjekte();
 
             foreach (ProjekatPregled p in projekti)
             {
@@ -80,7 +81,7 @@ namespace Gradjevinska_firma.Forme
         {
             cbTipUgovora.Items.Clear();
 
-            List<MaterijalPregled> materijali = DTOManager.vratiSavMaterijal();
+            List<MaterijalPregled> materijali = MaterijalDTOManager.vratiSavMaterijal();
 
             foreach (MaterijalPregled m in materijali)
             {
@@ -97,7 +98,7 @@ namespace Gradjevinska_firma.Forme
         {
             cbTipUgovora.Items.Clear();
 
-            List<OpremaPregled> oprema = DTOManager.vratiSvuOpremu();
+            List<OpremaPregled> oprema = OpremaDTOManager.vratiSvuOpremu();
 
             foreach (OpremaPregled o in oprema)
             {
@@ -241,7 +242,7 @@ namespace Gradjevinska_firma.Forme
             UgovorBasic ugovor = new UgovorBasic(
                 idUgovor, dtpDatumPotpisivanja.Value, decimal.Parse(tbVrednost.Text), tbPredmetUgovora.Text, tbValuta.Text, dtpRok.Value, materijal, projekat, oprema);
 
-            DTOManager.izmeniUgovor(ugovor);
+            UgovorDTOManager.izmeniUgovor(ugovor);
 
             MessageBox.Show("Uspesna izmena");
 

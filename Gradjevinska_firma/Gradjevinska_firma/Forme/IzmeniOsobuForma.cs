@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,7 +25,7 @@ namespace Gradjevinska_firma.Forme
 
         public void popuniPodacima()
         {
-            FizickoLiceBasic fizicko = DTOManager.vratiFizickoLice(idOsobe);
+            FizickoLiceBasic fizicko = OsobaDTOManager.vratiFizickoLice(idOsobe);
 
             if (fizicko != null)
             {
@@ -66,7 +67,7 @@ namespace Gradjevinska_firma.Forme
             }
             else
             {
-                PravnaLicaBasic pravno = DTOManager.vratiPravnoLice(idOsobe);
+                PravnaLicaBasic pravno = OsobaDTOManager.vratiPravnoLice(idOsobe);
 
                 if (pravno != null)
                 {
@@ -113,7 +114,7 @@ namespace Gradjevinska_firma.Forme
                   cbNadzorniOrgan.Checked,
                   cbAO.Checked);
 
-                DTOManager.izmeniFizickoLice(fizicko);
+                OsobaDTOManager.izmeniFizickoLice(fizicko);
                 MessageBox.Show("Uspesna izmena.");
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -135,9 +136,9 @@ namespace Gradjevinska_firma.Forme
                    cbDobavljaci.Checked,
                    cbNO.Checked);
 
-                DTOManager.izmeniPravnoLice(pravno);
+                OsobaDTOManager.izmeniPravnoLice(pravno);
 
-                MessageBox.Show("Uspesna izmena.");
+                MessageBox.Show("Uspesna izmena");
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();

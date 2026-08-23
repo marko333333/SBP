@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -61,7 +62,7 @@ namespace Gradjevinska_firma.Forme
             GradjevinskiBasic materijal=new GradjevinskiBasic
                 (0,tbNaziv.Text,int.Parse(tbcena.Text),tbProizvodjac.Text,tbJedinicaMere.Text,tbSertifikat.Text,"Gradjevinski");
 
-            DTOManager.dodajGradjevinskiMaterijal(materijal);
+            MaterijalDTOManager.dodajGradjevinskiMaterijal(materijal);
 
             MessageBox.Show("Uspesno dodavanje");
 

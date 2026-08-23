@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
@@ -39,7 +40,7 @@ namespace Gradjevinska_firma.Forme
 
         private void popuniPodacima()
         {
-            ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
+            ZadatakBasic zadatak = ZadaciDTOManager.vratiZadatak(idZadatka);
             tbNaziv.Text = zadatak.Naziv;
             tbOpis.Text = zadatak.Opis;
             tbTrosak.Text = zadatak.ProcenjeniTrosak.ToString();
@@ -114,7 +115,7 @@ namespace Gradjevinska_firma.Forme
         {
             cbFaza.Items.Clear();
 
-            List<FazaPregled> faze = DTOManager.vratiSveFaze();
+            List<FazaPregled> faze = FazaDTOManager.vratiSveFaze();
 
             foreach (FazaPregled f in faze)
             {
@@ -132,7 +133,7 @@ namespace Gradjevinska_firma.Forme
 
             cbNadzadatak.Items.Add("Nema nadzadatka");
 
-            List<ZadatakPregled> zadaci = DTOManager.vratiSveZadatke();
+            List<ZadatakPregled> zadaci = ZadaciDTOManager.vratiSveZadatke();
 
             foreach (ZadatakPregled z in zadaci)
             {
@@ -190,7 +191,7 @@ namespace Gradjevinska_firma.Forme
                 roditelj
             );
 
-            DTOManager.izmeniZadatak(zadatak);
+            ZadaciDTOManager.izmeniZadatak(zadatak);
 
             MessageBox.Show("Zadatak je uspesno izmenjen.");
 

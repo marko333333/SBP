@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
@@ -34,15 +35,20 @@ namespace Gradjevinska_firma.Forme
                 tbObuka.Focus();
                 return;
             }
-            BezbednosnaObukaBasic obuka=new BezbednosnaObukaBasic(
-                0,idOsobe,tbObuka.Text,dtpDatum.Value);
+            BezbednosnaObukaBasic obuka = new BezbednosnaObukaBasic(
+                0, idOsobe, tbObuka.Text, dtpDatum.Value);
 
-            DTOManager.dodajBezbednosnuObuku(obuka);
+            BezbednosnaObukaDTOManager.dodajBezbednosnuObuku(obuka);
 
             MessageBox.Show("Uspesno dodavanje.");
 
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

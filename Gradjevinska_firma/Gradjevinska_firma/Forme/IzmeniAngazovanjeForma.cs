@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace Gradjevinska_firma.Forme
 
         private void IzmeniAngazovanjeForma_Load(object sender, EventArgs e)
         {
-            AngazovanBasic a = DTOManager.vratiAngazovanje(idZadatka, idOsobe);
+            AngazovanBasic a = AngazovanDTOManager.vratiAngazovanje(idZadatka, idOsobe);
             dtpDatumDo.Checked = false;
 
             dtpDatumOd.Value = a.DatumOd;
@@ -58,7 +59,7 @@ namespace Gradjevinska_firma.Forme
                 zadatak,osoba,dtpDatumOd.Value,datumDo,cbStatus.SelectedItem.ToString()
             );
 
-            DTOManager.izmeniAngazovanje(angazovanje);
+            AngazovanDTOManager.izmeniAngazovanje(angazovanje);
 
             MessageBox.Show("Uspesna izmena");
 

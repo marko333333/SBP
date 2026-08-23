@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,7 +29,7 @@ namespace Gradjevinska_firma.Forme
         {
             cbTipUgovora.Items.Clear();
 
-            List<ProjekatPregled> projekti = DTOManager.vratiSveProjekte();
+            List<ProjekatPregled> projekti = ProjekatDTOManager.vratiSveProjekte();
 
             foreach (ProjekatPregled p in projekti)
             {
@@ -45,7 +46,7 @@ namespace Gradjevinska_firma.Forme
         {
             cbTipUgovora.Items.Clear();
 
-            List<MaterijalPregled> materijali = DTOManager.vratiSavMaterijal();
+            List<MaterijalPregled> materijali = MaterijalDTOManager.vratiSavMaterijal();
 
             foreach (MaterijalPregled m in materijali)
             {
@@ -62,7 +63,7 @@ namespace Gradjevinska_firma.Forme
         {
             cbTipUgovora.Items.Clear();
 
-            List<OpremaPregled> oprema = DTOManager.vratiSvuOpremu();
+            List<OpremaPregled> oprema = OpremaDTOManager.vratiSvuOpremu();
 
             foreach (OpremaPregled o in oprema)
             {
@@ -164,7 +165,7 @@ namespace Gradjevinska_firma.Forme
             UgovorBasic ugovor = new UgovorBasic(
                 0,dtpDatumPotpisivanja.Value,decimal.Parse(tbVrednost.Text),tbPredmetUgovora.Text,tbValuta.Text,dtpRok.Value,materijal,projekat,oprema);
 
-            DTOManager.dodajUgovor(ugovor);
+            UgovorDTOManager.dodajUgovor(ugovor);
 
             MessageBox.Show("Uspesno dodavanje");
 

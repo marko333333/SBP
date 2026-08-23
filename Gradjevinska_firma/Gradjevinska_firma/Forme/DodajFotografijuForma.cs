@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -50,12 +51,6 @@ namespace Gradjevinska_firma.Forme
 
                 string folderPutanja =Path.GetFullPath(folder);
 
-                if (!izabranaPutanja.StartsWith(folderPutanja + Path.DirectorySeparatorChar,StringComparison.OrdinalIgnoreCase))
-                {
-                    MessageBox.Show("Morate izabrati samo fotografiju iz foldera Fotografije.");
-                    return;
-                }
-
                 nazivFotografije =Path.GetFileName(dialog.FileName);
 
                 tbFotografija.Text = nazivFotografije;
@@ -68,7 +63,7 @@ namespace Gradjevinska_firma.Forme
 
                 pcFotografija.Image =Image.FromFile(izabranaPutanja);
 
-                pcFotografija.SizeMode =PictureBoxSizeMode.Zoom;
+                pcFotografija.SizeMode = PictureBoxSizeMode.Zoom;
             }
 
         }
@@ -83,7 +78,7 @@ namespace Gradjevinska_firma.Forme
 
             FotografijaBasic fotografija =new FotografijaBasic(idNapredak,nazivFotografije);
 
-            DTOManager.dodajFotografiju(fotografija);
+            FotografijaDTOManager.dodajFotografiju(fotografija);
 
             MessageBox.Show("Uspesno dodavanje.");
 

@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
@@ -15,29 +16,28 @@ namespace Gradjevinska_firma.Forme
     public partial class IzmeniRadniNalogForma : Form
     {
         private int idRadniNalog;
-        private int idZadatka;
-        public IzmeniRadniNalogForma(int id, int idzadatak)
+        public IzmeniRadniNalogForma(int id)
         {
             InitializeComponent();
             idRadniNalog = id;
-            idZadatka = idzadatak;
         }
 
         private void IzmeniRadniNalogForma_Load(object sender, EventArgs e)
         {
-            RadniNalogBasic radniNalog=DTOManager.vratiRadniNalog(idRadniNalog);
+            RadniNalogBasic radniNalog=RadniNaloziDTOManager.vratiRadniNalog(idRadniNalog);
             cbStatus.SelectedItem= radniNalog.Status;
             dtpDatumIzdavanja.Value = radniNalog.DatumIzdavanja;
         }
 
         private void btIzmeni_Click(object sender, EventArgs e)
-        {   
-            ZadatakBasic zadatak=DTOManager.vratiZadatak(idZadatka);
+        {
 
-            RadniNalogBasic radniNalog = new RadniNalogBasic(
-                idRadniNalog,zadatak,cbStatus.SelectedItem.ToString(),dtpDatumIzdavanja.Value);
+            RadniNalogBasic radniNalog = new RadniNalogBasic();
+            radniNalog.BrNaloga = idRadniNalog;
+            radniNalog.Status = cbStatus.SelectedItem.ToString();
+            radniNalog.DatumIzdavanja = dtpDatumIzdavanja.Value;
 
-            DTOManager.izmeniRadniNalog(radniNalog);
+            RadniNaloziDTOManager.izmeniRadniNalog(radniNalog);
             MessageBox.Show("Uspesna izmena.");
             this.DialogResult = DialogResult.OK;
             this.Close();

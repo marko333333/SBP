@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
@@ -37,7 +38,7 @@ namespace Gradjevinska_firma.Forme
             ZastitnaOpremaBasic zastitnaOprema = new ZastitnaOpremaBasic(
                 0, idOsobe, tbZastitnaOprema.Text);
 
-            DTOManager.dodajZastitnuOpremu(zastitnaOprema);
+            ZastitnaOpremaDTOManager.dodajZastitnuOpremu(zastitnaOprema);
 
             MessageBox.Show("Uspesno dodavanje.");
 

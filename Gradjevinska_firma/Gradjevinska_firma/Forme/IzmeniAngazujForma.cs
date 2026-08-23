@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using NHibernate.Action;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace Gradjevinska_firma.Forme
 
         private void IzmeniAngazujForma_Load(object sender, EventArgs e)
         {
-            AngazujeBasic a = DTOManager.vratiAngazuje(idZadatka, idOprema);
+            AngazujeBasic a = AngazujOpremuDTOManager.vratiAngazuje(idZadatka, idOprema);
             dtpDatumDo.ShowCheckBox = true;
             dtpDatumDo.Checked = false;
 
@@ -56,14 +57,19 @@ namespace Gradjevinska_firma.Forme
             oprema.Id = idOprema;
 
             AngazujeBasic angazuje = new AngazujeBasic(
-                zadatak,oprema,dtpDatumOd.Value,datumDo,int.Parse(tbBrojSati.Text));
+                zadatak, oprema, dtpDatumOd.Value, datumDo, int.Parse(tbBrojSati.Text));
 
-            DTOManager.izmeniAngazuje(angazuje);
+            AngazujOpremuDTOManager.izmeniAngazuje(angazuje);
 
             MessageBox.Show("Uspesna izmena");
 
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using FluentNHibernate.Conventions;
 using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,7 @@ namespace Gradjevinska_firma.Forme
 
                 ZastitnaOpremaBasic zastitnaOprema = new ZastitnaOpremaBasic(idZastitnaOprema, idOsobe, tbZastitnaOprema.Text);
 
-                DTOManager.izmeniZastitnuOpremu(zastitnaOprema);
+                ZastitnaOpremaDTOManager.izmeniZastitnuOpremu(zastitnaOprema);
                 MessageBox.Show("Uspesna izmena.");
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -40,7 +41,7 @@ namespace Gradjevinska_firma.Forme
 
         private void IzmeniZastitnuOpremuForma_Load(object sender, EventArgs e)
         {
-            ZastitnaOpremaBasic zastitnaOprema = DTOManager.vratiZastitnuOpremu(idZastitnaOprema);
+            ZastitnaOpremaBasic zastitnaOprema = ZastitnaOpremaDTOManager.vratiZastitnuOpremu(idZastitnaOprema);
             tbZastitnaOprema.Text=zastitnaOprema.NazivOpreme;
             
         }

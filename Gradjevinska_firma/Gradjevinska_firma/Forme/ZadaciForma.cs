@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace Gradjevinska_firma.Forme
         {
             zadaci.Items.Clear();
 
-            List<ZadatakPregled> lista = DTOManager.vratiSveZadatke();
+            List<ZadatakPregled> lista = ZadaciDTOManager.vratiSveZadatke();
 
             foreach (ZadatakPregled z in lista)
             {
@@ -131,7 +132,7 @@ namespace Gradjevinska_firma.Forme
 
             if (result == DialogResult.OK)
             {
-                DTOManager.obrisiZadatak(id);
+                ZadaciDTOManager.obrisiZadatak(id);
                 MessageBox.Show("Brisanje zadatka je uspesno obavljeno!");
                 popuniPodacima();
 

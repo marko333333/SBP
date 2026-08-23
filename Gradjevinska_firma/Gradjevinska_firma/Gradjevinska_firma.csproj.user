@@ -10,6 +10,9 @@
     <Compile Update="Forme\DetaljiIndustrijskiForma.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\DetaljiNabavkeForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\DetaljiOsobeForma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +64,9 @@
     <Compile Update="Forme\DodajMehanizacijuForma.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\DodajNabavkuForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\DodajNapredakForma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +82,9 @@
     <Compile Update="Forme\DodajPodzadatakForma.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\DodajPosebnuKlauzuluForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\DodajRadniNalogForma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +95,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\DodajUgovorForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\DodajUgovornuStranuForma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\DodajZadatakForma.cs">
@@ -151,6 +163,9 @@
     <Compile Update="Forme\IzmeniMehanizacijuForma.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\IzmeniNabavkuForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\IzmeniNapredakForma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,6 +178,9 @@
     <Compile Update="Forme\IzmeniOsobuForma.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\IzmeniPosebnuKlauzuluForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\IzmeniRadniNalogForma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +191,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\IzmeniUgovorForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\IzmeniUgovornuStranuForma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\IzmeniZadatakForma.cs">
@@ -194,6 +215,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\NabavkaOpremuForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\NabavkeForma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\OpremaForma.cs">

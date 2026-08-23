@@ -1443,6 +1443,10 @@ namespace Gradjevinska_firma.DTO
             Planirani_zavrsetak = planirani_zavrsetak;
             Stvarni_zavrsetak = stvarni_zavrsetak;
         }
+        public override string ToString()
+        {
+            return Naziv;
+        }
     }
 
     #endregion
@@ -1647,12 +1651,12 @@ namespace Gradjevinska_firma.DTO
         public int Kolicina;
         public int Cena;
         public bool Status_isporuke;
-        public MaterijalBasic Materijal;
-        public NabavkeBasic Nabavke;
+        public MaterijalPregled Materijal;
+        public NabavkePregled Nabavke;
 
         public NabavkaMaterijalPregled() { }
 
-        public NabavkaMaterijalPregled(int iD, int kolicina, int cena, bool status_isporuke, MaterijalBasic materijal, NabavkeBasic nabavke)
+        public NabavkaMaterijalPregled(int iD, int kolicina, int cena, bool status_isporuke, MaterijalPregled materijal, NabavkePregled nabavke)
         {
             ID = iD;
             Kolicina = kolicina;
@@ -1692,10 +1696,10 @@ namespace Gradjevinska_firma.DTO
     {
         public int Br_nabavke;
         public DateTime Datum;
-        public ProjekatBasic Projekat;
+        public ProjekatPregled Projekat;
 
         public NabavkePregled() { }
-        public NabavkePregled(int br_nabavke, DateTime datum, ProjekatBasic projekat)
+        public NabavkePregled(int br_nabavke, DateTime datum, ProjekatPregled projekat)
         {
             Br_nabavke = br_nabavke;
             Datum = datum;

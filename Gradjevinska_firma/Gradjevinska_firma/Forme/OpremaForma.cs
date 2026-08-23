@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,7 @@ namespace Gradjevinska_firma.Forme
         public void popuniOpremu()
         {
             this.oprema.Items.Clear();
-            List<OpremaPregled> oprema = DTOManager.vratiSvuOpremu();
+            List<OpremaPregled> oprema = OpremaDTOManager.vratiSvuOpremu();
 
             foreach (OpremaPregled o in oprema)
             {
@@ -112,7 +113,7 @@ namespace Gradjevinska_firma.Forme
 
             if (result == DialogResult.OK)
             {
-                DTOManager.obrisiOpremu(id);
+                OpremaDTOManager.obrisiOpremu(id);
                 MessageBox.Show("Brisanje opreme je uspesno obavljeno!");
                 popuniOpremu();
 

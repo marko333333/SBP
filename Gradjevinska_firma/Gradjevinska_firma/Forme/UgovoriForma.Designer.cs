@@ -39,33 +39,36 @@
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             tabPage2 = new TabPage();
-            tabPage3 = new TabPage();
-            tabPage4 = new TabPage();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            listView1 = new ListView();
+            ugovoriProjekta = new ListView();
             columnHeader7 = new ColumnHeader();
+            columnHeader25 = new ColumnHeader();
             columnHeader8 = new ColumnHeader();
             columnHeader9 = new ColumnHeader();
             columnHeader10 = new ColumnHeader();
             columnHeader11 = new ColumnHeader();
             columnHeader12 = new ColumnHeader();
-            listView2 = new ListView();
+            tabPage3 = new TabPage();
+            ugovoriMaterijala = new ListView();
             columnHeader13 = new ColumnHeader();
             columnHeader14 = new ColumnHeader();
             columnHeader15 = new ColumnHeader();
             columnHeader16 = new ColumnHeader();
             columnHeader17 = new ColumnHeader();
             columnHeader18 = new ColumnHeader();
-            listView3 = new ListView();
+            columnHeader26 = new ColumnHeader();
+            tabPage4 = new TabPage();
+            ugovoriOprema = new ListView();
             columnHeader19 = new ColumnHeader();
             columnHeader20 = new ColumnHeader();
             columnHeader21 = new ColumnHeader();
             columnHeader22 = new ColumnHeader();
             columnHeader23 = new ColumnHeader();
             columnHeader24 = new ColumnHeader();
+            columnHeader27 = new ColumnHeader();
+            button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
+            button4 = new Button();
             groupBox1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -137,6 +140,7 @@
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(626, 446);
             tabControl1.TabIndex = 13;
+            tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
             // 
             // tabPage1
             // 
@@ -151,7 +155,7 @@
             // 
             // tabPage2
             // 
-            tabPage2.Controls.Add(listView1);
+            tabPage2.Controls.Add(ugovoriProjekta);
             tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
@@ -160,9 +164,56 @@
             tabPage2.Text = "Ugovori projekata";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // ugovoriProjekta
+            // 
+            ugovoriProjekta.Columns.AddRange(new ColumnHeader[] { columnHeader7, columnHeader25, columnHeader8, columnHeader9, columnHeader10, columnHeader11, columnHeader12 });
+            ugovoriProjekta.Dock = DockStyle.Fill;
+            ugovoriProjekta.FullRowSelect = true;
+            ugovoriProjekta.GridLines = true;
+            ugovoriProjekta.Location = new Point(3, 3);
+            ugovoriProjekta.Name = "ugovoriProjekta";
+            ugovoriProjekta.Size = new Size(612, 407);
+            ugovoriProjekta.TabIndex = 1;
+            ugovoriProjekta.UseCompatibleStateImageBehavior = false;
+            ugovoriProjekta.View = View.Details;
+            // 
+            // columnHeader7
+            // 
+            columnHeader7.Text = "Id";
+            // 
+            // columnHeader25
+            // 
+            columnHeader25.Text = "Naziv";
+            columnHeader25.TextAlign = HorizontalAlignment.Center;
+            // 
+            // columnHeader8
+            // 
+            columnHeader8.Text = "Datum potpisivanja";
+            columnHeader8.TextAlign = HorizontalAlignment.Center;
+            // 
+            // columnHeader9
+            // 
+            columnHeader9.Text = "Vrednost";
+            columnHeader9.TextAlign = HorizontalAlignment.Center;
+            // 
+            // columnHeader10
+            // 
+            columnHeader10.Text = "Predmet ugovora";
+            columnHeader10.TextAlign = HorizontalAlignment.Center;
+            // 
+            // columnHeader11
+            // 
+            columnHeader11.Text = "Valuta";
+            columnHeader11.TextAlign = HorizontalAlignment.Center;
+            // 
+            // columnHeader12
+            // 
+            columnHeader12.Text = "Rok";
+            columnHeader12.TextAlign = HorizontalAlignment.Center;
+            // 
             // tabPage3
             // 
-            tabPage3.Controls.Add(listView2);
+            tabPage3.Controls.Add(ugovoriMaterijala);
             tabPage3.Location = new Point(4, 29);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
@@ -171,9 +222,56 @@
             tabPage3.Text = "Ugovori materijala";
             tabPage3.UseVisualStyleBackColor = true;
             // 
+            // ugovoriMaterijala
+            // 
+            ugovoriMaterijala.Columns.AddRange(new ColumnHeader[] { columnHeader13, columnHeader26, columnHeader14, columnHeader15, columnHeader16, columnHeader17, columnHeader18 });
+            ugovoriMaterijala.Dock = DockStyle.Fill;
+            ugovoriMaterijala.FullRowSelect = true;
+            ugovoriMaterijala.GridLines = true;
+            ugovoriMaterijala.Location = new Point(3, 3);
+            ugovoriMaterijala.Name = "ugovoriMaterijala";
+            ugovoriMaterijala.Size = new Size(612, 407);
+            ugovoriMaterijala.TabIndex = 1;
+            ugovoriMaterijala.UseCompatibleStateImageBehavior = false;
+            ugovoriMaterijala.View = View.Details;
+            // 
+            // columnHeader13
+            // 
+            columnHeader13.Text = "Id";
+            // 
+            // columnHeader14
+            // 
+            columnHeader14.Text = "Datum potpisivanja";
+            columnHeader14.TextAlign = HorizontalAlignment.Center;
+            // 
+            // columnHeader15
+            // 
+            columnHeader15.Text = "Vrednost";
+            columnHeader15.TextAlign = HorizontalAlignment.Center;
+            // 
+            // columnHeader16
+            // 
+            columnHeader16.Text = "Predmet ugovora";
+            columnHeader16.TextAlign = HorizontalAlignment.Center;
+            // 
+            // columnHeader17
+            // 
+            columnHeader17.Text = "Valuta";
+            columnHeader17.TextAlign = HorizontalAlignment.Center;
+            // 
+            // columnHeader18
+            // 
+            columnHeader18.Text = "Rok";
+            columnHeader18.TextAlign = HorizontalAlignment.Center;
+            // 
+            // columnHeader26
+            // 
+            columnHeader26.Text = "Naziv";
+            columnHeader26.TextAlign = HorizontalAlignment.Center;
+            // 
             // tabPage4
             // 
-            tabPage4.Controls.Add(listView3);
+            tabPage4.Controls.Add(ugovoriOprema);
             tabPage4.Location = new Point(4, 29);
             tabPage4.Name = "tabPage4";
             tabPage4.Padding = new Padding(3);
@@ -181,6 +279,59 @@
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Ugovori opreme";
             tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // ugovoriOprema
+            // 
+            ugovoriOprema.Columns.AddRange(new ColumnHeader[] { columnHeader19, columnHeader27, columnHeader20, columnHeader21, columnHeader22, columnHeader23, columnHeader24 });
+            ugovoriOprema.Dock = DockStyle.Fill;
+            ugovoriOprema.FullRowSelect = true;
+            ugovoriOprema.GridLines = true;
+            ugovoriOprema.Location = new Point(3, 3);
+            ugovoriOprema.Name = "ugovoriOprema";
+            ugovoriOprema.Size = new Size(612, 407);
+            ugovoriOprema.TabIndex = 1;
+            ugovoriOprema.UseCompatibleStateImageBehavior = false;
+            ugovoriOprema.View = View.Details;
+            // 
+            // columnHeader19
+            // 
+            columnHeader19.Text = "Id";
+            // 
+            // columnHeader20
+            // 
+            columnHeader20.DisplayIndex = 2;
+            columnHeader20.Text = "Datum potpisivanja";
+            columnHeader20.TextAlign = HorizontalAlignment.Center;
+            // 
+            // columnHeader21
+            // 
+            columnHeader21.DisplayIndex = 3;
+            columnHeader21.Text = "Vrednost";
+            columnHeader21.TextAlign = HorizontalAlignment.Center;
+            // 
+            // columnHeader22
+            // 
+            columnHeader22.DisplayIndex = 4;
+            columnHeader22.Text = "Predmet ugovora";
+            columnHeader22.TextAlign = HorizontalAlignment.Center;
+            // 
+            // columnHeader23
+            // 
+            columnHeader23.DisplayIndex = 5;
+            columnHeader23.Text = "Valuta";
+            columnHeader23.TextAlign = HorizontalAlignment.Center;
+            // 
+            // columnHeader24
+            // 
+            columnHeader24.DisplayIndex = 6;
+            columnHeader24.Text = "Rok";
+            columnHeader24.TextAlign = HorizontalAlignment.Center;
+            // 
+            // columnHeader27
+            // 
+            columnHeader27.DisplayIndex = 1;
+            columnHeader27.Text = "Naziv";
+            columnHeader27.TextAlign = HorizontalAlignment.Center;
             // 
             // button1
             // 
@@ -221,132 +372,6 @@
             button4.Text = "Izmeni ugovor";
             button4.UseVisualStyleBackColor = true;
             button4.Click += button4_Click;
-            // 
-            // listView1
-            // 
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader7, columnHeader8, columnHeader9, columnHeader10, columnHeader11, columnHeader12 });
-            listView1.Dock = DockStyle.Fill;
-            listView1.FullRowSelect = true;
-            listView1.GridLines = true;
-            listView1.Location = new Point(3, 3);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(612, 407);
-            listView1.TabIndex = 1;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
-            // 
-            // columnHeader7
-            // 
-            columnHeader7.Text = "Id";
-            // 
-            // columnHeader8
-            // 
-            columnHeader8.Text = "Datum potpisivanja";
-            columnHeader8.TextAlign = HorizontalAlignment.Center;
-            // 
-            // columnHeader9
-            // 
-            columnHeader9.Text = "Vrednost";
-            columnHeader9.TextAlign = HorizontalAlignment.Center;
-            // 
-            // columnHeader10
-            // 
-            columnHeader10.Text = "Predmet ugovora";
-            columnHeader10.TextAlign = HorizontalAlignment.Center;
-            // 
-            // columnHeader11
-            // 
-            columnHeader11.Text = "Valuta";
-            columnHeader11.TextAlign = HorizontalAlignment.Center;
-            // 
-            // columnHeader12
-            // 
-            columnHeader12.Text = "Rok";
-            columnHeader12.TextAlign = HorizontalAlignment.Center;
-            // 
-            // listView2
-            // 
-            listView2.Columns.AddRange(new ColumnHeader[] { columnHeader13, columnHeader14, columnHeader15, columnHeader16, columnHeader17, columnHeader18 });
-            listView2.Dock = DockStyle.Fill;
-            listView2.FullRowSelect = true;
-            listView2.GridLines = true;
-            listView2.Location = new Point(3, 3);
-            listView2.Name = "listView2";
-            listView2.Size = new Size(612, 407);
-            listView2.TabIndex = 1;
-            listView2.UseCompatibleStateImageBehavior = false;
-            listView2.View = View.Details;
-            // 
-            // columnHeader13
-            // 
-            columnHeader13.Text = "Id";
-            // 
-            // columnHeader14
-            // 
-            columnHeader14.Text = "Datum potpisivanja";
-            columnHeader14.TextAlign = HorizontalAlignment.Center;
-            // 
-            // columnHeader15
-            // 
-            columnHeader15.Text = "Vrednost";
-            columnHeader15.TextAlign = HorizontalAlignment.Center;
-            // 
-            // columnHeader16
-            // 
-            columnHeader16.Text = "Predmet ugovora";
-            columnHeader16.TextAlign = HorizontalAlignment.Center;
-            // 
-            // columnHeader17
-            // 
-            columnHeader17.Text = "Valuta";
-            columnHeader17.TextAlign = HorizontalAlignment.Center;
-            // 
-            // columnHeader18
-            // 
-            columnHeader18.Text = "Rok";
-            columnHeader18.TextAlign = HorizontalAlignment.Center;
-            // 
-            // listView3
-            // 
-            listView3.Columns.AddRange(new ColumnHeader[] { columnHeader19, columnHeader20, columnHeader21, columnHeader22, columnHeader23, columnHeader24 });
-            listView3.Dock = DockStyle.Fill;
-            listView3.FullRowSelect = true;
-            listView3.GridLines = true;
-            listView3.Location = new Point(3, 3);
-            listView3.Name = "listView3";
-            listView3.Size = new Size(612, 407);
-            listView3.TabIndex = 1;
-            listView3.UseCompatibleStateImageBehavior = false;
-            listView3.View = View.Details;
-            // 
-            // columnHeader19
-            // 
-            columnHeader19.Text = "Id";
-            // 
-            // columnHeader20
-            // 
-            columnHeader20.Text = "Datum potpisivanja";
-            columnHeader20.TextAlign = HorizontalAlignment.Center;
-            // 
-            // columnHeader21
-            // 
-            columnHeader21.Text = "Vrednost";
-            columnHeader21.TextAlign = HorizontalAlignment.Center;
-            // 
-            // columnHeader22
-            // 
-            columnHeader22.Text = "Predmet ugovora";
-            columnHeader22.TextAlign = HorizontalAlignment.Center;
-            // 
-            // columnHeader23
-            // 
-            columnHeader23.Text = "Valuta";
-            columnHeader23.TextAlign = HorizontalAlignment.Center;
-            // 
-            // columnHeader24
-            // 
-            columnHeader24.Text = "Rok";
-            columnHeader24.TextAlign = HorizontalAlignment.Center;
             // 
             // UgovoriForma
             // 
@@ -389,26 +414,29 @@
         private Button button2;
         private Button button3;
         private Button button4;
-        private ListView listView1;
+        private ListView ugovoriProjekta;
         private ColumnHeader columnHeader7;
         private ColumnHeader columnHeader8;
         private ColumnHeader columnHeader9;
         private ColumnHeader columnHeader10;
         private ColumnHeader columnHeader11;
         private ColumnHeader columnHeader12;
-        private ListView listView2;
+        private ListView ugovoriMaterijala;
         private ColumnHeader columnHeader13;
         private ColumnHeader columnHeader14;
         private ColumnHeader columnHeader15;
         private ColumnHeader columnHeader16;
         private ColumnHeader columnHeader17;
         private ColumnHeader columnHeader18;
-        private ListView listView3;
+        private ListView ugovoriOprema;
         private ColumnHeader columnHeader19;
         private ColumnHeader columnHeader20;
         private ColumnHeader columnHeader21;
         private ColumnHeader columnHeader22;
         private ColumnHeader columnHeader23;
         private ColumnHeader columnHeader24;
+        private ColumnHeader columnHeader25;
+        private ColumnHeader columnHeader26;
+        private ColumnHeader columnHeader27;
     }
 }

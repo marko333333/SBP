@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 using System;
 using System.Collections.Generic;
@@ -15,17 +16,15 @@ namespace Gradjevinska_firma.Forme
     public partial class IzmeniNapredakForma : Form
     {
         private int idNapredak;
-        private int idZadatka;
-        public IzmeniNapredakForma(int id, int idzadatak)
+        public IzmeniNapredakForma(int id)
         {
             InitializeComponent();
             idNapredak = id;
-            idZadatka = idzadatak;
         }
 
         private void IzmeniNapredakForma_Load(object sender, EventArgs e)
         {
-            NapredakBasic napredak = DTOManager.vratiNapredak(idNapredak);
+            NapredakBasic napredak = NapredakDTOManager.vratiNapredak(idNapredak);
             dtpDatum.Value = napredak.Datum;
             tbDnevniIzvestaj.Text = napredak.DnevniIzvestaj;
             tbProcenatRealizacije.Text = napredak.ProcenatRealizacije.ToString();
@@ -35,11 +34,15 @@ namespace Gradjevinska_firma.Forme
 
         private void btIzmeni_Click(object sender, EventArgs e)
         {
-            ZadatakBasic zadatak = DTOManager.vratiZadatak(idZadatka);
-            NapredakBasic napredak=new NapredakBasic(
-                idNapredak,dtpDatum.Value,zadatak,tbDnevniIzvestaj.Text,int.Parse(tbProcenatRealizacije.Text),tbPrimedbaNadzora.Text,tbKorektivnaMera.Text);
+            NapredakBasic napredak = new NapredakBasic();
+            napredak.Id = idNapredak;
+            napredak.Datum = dtpDatum.Value;
+            napredak.DnevniIzvestaj = tbDnevniIzvestaj.Text;
+            napredak.ProcenatRealizacije = int.Parse(tbProcenatRealizacije.Text);
+            napredak.PrimedbaNadzora = tbPrimedbaNadzora.Text;
+            napredak.KorektivnaMera = tbKorektivnaMera.Text;
 
-            DTOManager.izmeniNapredak(napredak);
+            NapredakDTOManager.izmeniNapredak(napredak);
             MessageBox.Show("Uspesna izmena.");
             this.DialogResult = DialogResult.OK;
             this.Close();

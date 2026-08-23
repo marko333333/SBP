@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,7 +34,7 @@ namespace Gradjevinska_firma.Forme
             KontaktBasic kontakt = new KontaktBasic(
                     0,idOsobe,tbKontakt.Text);
 
-            DTOManager.dodajKontakt(kontakt);
+            KontaktDTOManager.dodajKontakt(kontakt);
 
             MessageBox.Show("Uspesno dodavanje.");
 

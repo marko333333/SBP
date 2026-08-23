@@ -1,4 +1,5 @@
 ﻿using Gradjevinska_firma.DTO;
+using Gradjevinska_firma.DTOManager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,7 +25,7 @@ namespace Gradjevinska_firma.Forme
 
         private void IzmeniKontaktForma_Load(object sender, EventArgs e)
         {
-            KontaktBasic kontakt = DTOManager.vratiKontakt(idKontakt);
+            KontaktBasic kontakt = KontaktDTOManager.vratiKontakt(idKontakt);
             tbKontakt.Text = kontakt.Broj;
         }
 
@@ -32,7 +33,7 @@ namespace Gradjevinska_firma.Forme
         {
             KontaktBasic kontakt = new KontaktBasic(idKontakt, idOsoba, tbKontakt.Text);
 
-            DTOManager.izmeniKontakt(kontakt);
+            KontaktDTOManager.izmeniKontakt(kontakt);
             MessageBox.Show("Uspesna izmena.");
             this.DialogResult = DialogResult.OK;
             this.Close();
