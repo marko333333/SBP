@@ -77,6 +77,9 @@
             columnHeader11 = new ColumnHeader();
             columnHeader12 = new ColumnHeader();
             tabPage5 = new TabPage();
+            btnObrisiFazu = new Button();
+            btnIzmeniFazu = new Button();
+            btnDodajFazu = new Button();
             Faze = new ListView();
             columnHeader13 = new ColumnHeader();
             columnHeader14 = new ColumnHeader();
@@ -84,9 +87,6 @@
             columnHeader16 = new ColumnHeader();
             columnHeader17 = new ColumnHeader();
             columnHeader18 = new ColumnHeader();
-            btnDodajFazu = new Button();
-            btnIzmeniFazu = new Button();
-            btnObrisiFazu = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -509,6 +509,36 @@
             tabPage5.Text = "Faza";
             tabPage5.UseVisualStyleBackColor = true;
             // 
+            // btnObrisiFazu
+            // 
+            btnObrisiFazu.Location = new Point(670, 154);
+            btnObrisiFazu.Name = "btnObrisiFazu";
+            btnObrisiFazu.Size = new Size(116, 36);
+            btnObrisiFazu.TabIndex = 3;
+            btnObrisiFazu.Text = "Obrisi";
+            btnObrisiFazu.UseVisualStyleBackColor = true;
+            btnObrisiFazu.Click += btnObrisiFazu_Click;
+            // 
+            // btnIzmeniFazu
+            // 
+            btnIzmeniFazu.Location = new Point(670, 95);
+            btnIzmeniFazu.Name = "btnIzmeniFazu";
+            btnIzmeniFazu.Size = new Size(116, 36);
+            btnIzmeniFazu.TabIndex = 2;
+            btnIzmeniFazu.Text = "Izmeni";
+            btnIzmeniFazu.UseVisualStyleBackColor = true;
+            btnIzmeniFazu.Click += btnIzmeniFazu_Click;
+            // 
+            // btnDodajFazu
+            // 
+            btnDodajFazu.Location = new Point(670, 36);
+            btnDodajFazu.Name = "btnDodajFazu";
+            btnDodajFazu.Size = new Size(116, 36);
+            btnDodajFazu.TabIndex = 1;
+            btnDodajFazu.Text = "Dodaj";
+            btnDodajFazu.UseVisualStyleBackColor = true;
+            btnDodajFazu.Click += btnDodajFazu_Click;
+            // 
             // Faze
             // 
             Faze.Columns.AddRange(new ColumnHeader[] { columnHeader13, columnHeader14, columnHeader15, columnHeader16, columnHeader17, columnHeader18 });
@@ -546,34 +576,6 @@
             // columnHeader18
             // 
             columnHeader18.Text = "Budzet";
-            // 
-            // btnDodajFazu
-            // 
-            btnDodajFazu.Location = new Point(670, 36);
-            btnDodajFazu.Name = "btnDodajFazu";
-            btnDodajFazu.Size = new Size(116, 36);
-            btnDodajFazu.TabIndex = 1;
-            btnDodajFazu.Text = "Dodaj";
-            btnDodajFazu.UseVisualStyleBackColor = true;
-            btnDodajFazu.Click += btnDodajFazu_Click;
-            // 
-            // btnIzmeniFazu
-            // 
-            btnIzmeniFazu.Location = new Point(670, 95);
-            btnIzmeniFazu.Name = "btnIzmeniFazu";
-            btnIzmeniFazu.Size = new Size(116, 36);
-            btnIzmeniFazu.TabIndex = 2;
-            btnIzmeniFazu.Text = "Izmeni";
-            btnIzmeniFazu.UseVisualStyleBackColor = true;
-            // 
-            // btnObrisiFazu
-            // 
-            btnObrisiFazu.Location = new Point(670, 154);
-            btnObrisiFazu.Name = "btnObrisiFazu";
-            btnObrisiFazu.Size = new Size(116, 36);
-            btnObrisiFazu.TabIndex = 3;
-            btnObrisiFazu.Text = "Obrisi";
-            btnObrisiFazu.UseVisualStyleBackColor = true;
             // 
             // DetaljiIndustrijskiForma
             // 

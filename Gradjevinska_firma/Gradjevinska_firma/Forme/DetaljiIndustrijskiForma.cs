@@ -329,6 +329,62 @@ namespace Gradjevinska_firma.Forme
                 }
             }
         }
+
+        private void btnIzmeniFazu_Click(object sender, EventArgs e)
+        {
+            ListView tabela = Faze;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati fazu iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+
+            using (IzmeniFazuForma forma = new IzmeniFazuForma(id, IdIndustrijski))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    List<FazaBasic> faz = FazaDTOManager.vratiFazeProjekta(IdIndustrijski);
+                    popuniPodacimaFaza(faz);
+                }
+            }
+        }
+
+        private void btnObrisiFazu_Click(object sender, EventArgs e)
+        {
+            ListView tabela = Faze;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati fazu iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+            string poruka = "Da li zelite da obrisete izabranu fazu?";
+            string title = "Pitanje";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(poruka, title, buttons);
+
+            if (result == DialogResult.OK)
+            {
+                FazaDTOManager.obrisiFazu(id);
+                MessageBox.Show("Brisanje faze je uspesno obavljeno!");
+                List<FazaBasic> faz = FazaDTOManager.vratiFazeProjekta(IdIndustrijski);
+                popuniPodacimaFaza(faz);
+
+            }
+            else
+            {
+
+            }
+        }
     }
 
 }

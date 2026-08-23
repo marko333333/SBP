@@ -39,7 +39,7 @@ namespace Gradjevinska_firma.Mapiranja
                 .Inverse();
 
             HasMany(x => x.Zadaci)
-                .KeyColumn("IDFAZA")
+                .KeyColumn("ID_FAZE")
                 .LazyLoad()
                 .Cascade.All()
                 .Inverse();
