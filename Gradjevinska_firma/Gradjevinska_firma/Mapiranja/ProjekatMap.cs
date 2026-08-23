@@ -39,6 +39,10 @@ namespace Gradjevinska_firma.Mapiranja
                 .Cascade.All()
                 .Inverse();
 
+            HasMany(x=> x.Nabavke)
+                .KeyColumn("IDPROJEKTA")
+                .LazyLoad().Cascade.All().Inverse();
+
             HasMany(x => x.Faze)
                 .KeyColumn("IDPROJEKTA")
                 .LazyLoad()

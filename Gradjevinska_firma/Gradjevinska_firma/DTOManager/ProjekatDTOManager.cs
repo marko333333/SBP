@@ -50,6 +50,7 @@ namespace Gradjevinska_firma.DTOManager
                 projekat.Ugovori = UgovorDTOManager.vratiUgovoreProjekta(id);
                 projekat.BezbednosniIncidenti = BezbednosniIncidentDTOManager.vratiBezbednosniIncidenteProjekta(id);
                 projekat.Faze = FazaDTOManager.vratiFazeProjekta(id);
+                projekat.Nabavke = NabavkeDTOManager.vratiNabavkeProjekta(id);
 
                 s.Close();
             }

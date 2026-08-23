@@ -162,6 +162,54 @@ namespace Gradjevinska_firma.DTOManager
             }
         }
 
+        public static List<NabavkeBasic> vratiNabavkeProjekta(int idProjekta)
+        {
+            List<NabavkeBasic> nabavke = new List<NabavkeBasic>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Nabavke> sveNabavke =
+                    from n in s.Query<Nabavke>()
+                    where n.Projekat.ID == idProjekta
+                    select n;
+
+                foreach (Nabavke n in sveNabavke)
+                {
+                    ProjekatBasic projekat = null;
+                    if (n.Projekat != null)
+                    {
+                        projekat = new ProjekatBasic(
+                            n.Projekat.ID,
+                            n.Projekat.Naziv,
+                            n.Projekat.Opis,
+                            n.Projekat.Lokacija,
+                            n.Projekat.Datum_pocetka,
+                            n.Projekat.Budzet,
+                            n.Projekat.Status,
+                            n.Projekat.Planirani_Zavrsetak,
+                            n.Projekat.Stvarni_Zavrsetak
+                        );
+
+                    }
+
+                    nabavke.Add(new NabavkeBasic(
+                        n.Br_nabavke,
+                        n.Datum,
+                        projekat
+                    ));
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return nabavke;
+        }
+
         #endregion
 
         #region NabavkaMaterijal

@@ -1394,6 +1394,7 @@ namespace Gradjevinska_firma.DTO
         public virtual IList<UgovorBasic> Ugovori { get; set; }
         public virtual IList<BezbednosniIncidentBasic> BezbednosniIncidenti { get; set; }
         public virtual IList<FakturaBasic> Fakture { get; set; }
+        public virtual IList<NabavkeBasic> Nabavke { get; set; }
         public virtual IList<FazaBasic> Faze { get; set; }
 
         public ProjekatBasic() 
@@ -1401,6 +1402,7 @@ namespace Gradjevinska_firma.DTO
             Ugovori = new List<UgovorBasic>();
             BezbednosniIncidenti = new List<BezbednosniIncidentBasic>();
             Fakture=new List<FakturaBasic>();
+            Nabavke = new List<NabavkeBasic>();
             Faze=new List<FazaBasic>();
         }
 

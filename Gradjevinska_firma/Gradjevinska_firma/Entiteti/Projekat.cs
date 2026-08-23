@@ -23,6 +23,7 @@ namespace Gradjevinska_firma.Entiteti
 
         //nije bila dodata kolekcija Faktura!!!!!!!!!!!!!
         public virtual IList<Faktura> Fakture {  get; set; }
+        public virtual IList<Nabavke> Nabavke { get; set; }
 
         //nema i za Faze
         public virtual IList<Faza> Faze { get; set; }
@@ -32,6 +33,7 @@ namespace Gradjevinska_firma.Entiteti
             Ugovori = new List<Ugovor>();
             BezbednosniIncidenti = new List<BezbednosniIncident>();
             Fakture=new List<Faktura>();
+            Nabavke = new List<Nabavke>();
             Faze=new List<Faza>();
         }
     }
