@@ -317,6 +317,18 @@ namespace Gradjevinska_firma.Forme
                 }
             }
         }
+
+        private void btnDodajFazu_Click(object sender, EventArgs e)
+        {
+            using (DodajFazuForma forma = new DodajFazuForma(IdIndustrijski))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    List<FazaBasic> faze = FazaDTOManager.vratiFazeProjekta(IdIndustrijski);
+                    popuniPodacimaFaza(faze);
+                }
+            }
+        }
     }
 
 }

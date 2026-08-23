@@ -167,6 +167,41 @@ namespace Gradjevinska_firma.DTOManager
             return faze;
         }
 
+        public static void dodajFazu(FazaBasic f)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Faza nadFaza = s.Load<Faza>(f.NadFaza.Id);
+
+                FizickoLice fizickoLice = s.Load<FizickoLice>(f.FizickoLice.Id);
+
+                Projekat projekat = s.Load<Projekat>(f.Projekat.ID);
+
+                Faza faza = new Faza();
+
+                faza.Naziv = f.Naziv;
+                faza.DatumDo = f.DatumDo;
+                faza.Status = f.Status;
+                faza.DatumOd = f.DatumOd;
+                faza.Budzet = f.Budzet;
+                faza.Projekat = projekat;
+                faza.FizickoLice = fizickoLice;
+                faza.NadFaza = nadFaza;
+
+
+                s.Save(faza);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         #endregion
     }
 }

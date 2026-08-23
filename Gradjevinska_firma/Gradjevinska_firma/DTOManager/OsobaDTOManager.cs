@@ -245,6 +245,56 @@ namespace Gradjevinska_firma.DTOManager
             }
         }
 
+        public static List<FizickoLicePregled> vratiFizickaLicaNaProjektu(int idProjekta)
+        {
+            List<FizickoLicePregled> fizickaLica = new List<FizickoLicePregled>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Faza> sveFaze =
+                    from f in s.Query<Faza>()
+                    where f.Projekat.ID == idProjekta
+                    select f;
+
+                HashSet<int> dodataLica = new HashSet<int>();
+
+                foreach (Faza f in sveFaze)
+                {
+                    if (f.FizickoLice != null && !dodataLica.Contains(f.FizickoLice.Id))
+                    {
+                        fizickaLica.Add(new FizickoLicePregled(
+                            f.FizickoLice.Id,
+                            f.FizickoLice.Jmbg,
+                            f.FizickoLice.Ime,
+                            f.FizickoLice.Prezime,
+                            f.FizickoLice.DatumRodjenja,
+                            f.FizickoLice.Struka,
+                            f.FizickoLice.FlagBK,
+                            f.FizickoLice.FlagR,
+                            f.FizickoLice.Kvalifikacija,
+                            f.FizickoLice.FlagI,
+                            f.FizickoLice.OblastRada,
+                            f.FizickoLice.Odgovornosti,
+                            f.FizickoLice.FlagA,
+                            f.FizickoLice.FlagP,
+                            f.FizickoLice.FlagN,
+                            f.FizickoLice.FlagAO
+                        ));
+
+                        dodataLica.Add(f.FizickoLice.Id);
+                    }
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return fizickaLica;
+        }
+
         #endregion
 
         #region PravnaLica
