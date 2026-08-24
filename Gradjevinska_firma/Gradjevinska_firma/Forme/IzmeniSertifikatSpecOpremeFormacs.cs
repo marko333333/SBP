@@ -34,7 +34,13 @@ namespace Gradjevinska_firma.Forme
 
         private void btIzmeni_Click(object sender, EventArgs e)
         {
-                SertifikatSpecOpremeBasic sertifikatSpec = new SertifikatSpecOpremeBasic(idSertifikat, idOsobe, tbSertifikatSpec.Text);
+            if (string.IsNullOrWhiteSpace(tbSertifikatSpec.Text))
+            {
+                MessageBox.Show("Unesite sertifikat");
+                tbSertifikatSpec.Focus();
+                return;
+            }
+            SertifikatSpecOpremeBasic sertifikatSpec = new SertifikatSpecOpremeBasic(idSertifikat, idOsobe, tbSertifikatSpec.Text);
 
                 SertifikatSpecOpremeDTOManager.izmeniSertifikatSpecOpreme(sertifikatSpec);
                 MessageBox.Show("Uspesna izmena.");

@@ -25,12 +25,19 @@ namespace Gradjevinska_firma.Forme
 
         private void IzmeniKontaktForma_Load(object sender, EventArgs e)
         {
+
             KontaktBasic kontakt = KontaktDTOManager.vratiKontakt(idKontakt);
             tbKontakt.Text = kontakt.Broj;
         }
 
         private void btIzmeni_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(tbKontakt.Text))
+            {
+                MessageBox.Show("Polje za kontakt ne sme biti prazno!");
+                tbKontakt.Focus();
+                return;
+            }
             KontaktBasic kontakt = new KontaktBasic(idKontakt, idOsoba, tbKontakt.Text);
 
             KontaktDTOManager.izmeniKontakt(kontakt);

@@ -35,14 +35,20 @@
             label2 = new Label();
             label1 = new Label();
             tabPage2 = new TabPage();
+            btObrisiNabavkuOprema = new Button();
+            btIzmeniNabavkuOprema = new Button();
+            btDodajNabavkuOprema = new Button();
             nabavkeOprema = new ListView();
-            tabPage3 = new TabPage();
-            nabavkeMaterijal = new ListView();
             columnHeader1 = new ColumnHeader();
+            columnHeader5 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
             columnHeader4 = new ColumnHeader();
-            columnHeader5 = new ColumnHeader();
+            tabPage3 = new TabPage();
+            btObrisiNabavkuMaterijal = new Button();
+            btIzmeniNabavkuMaterijal = new Button();
+            btDodajNabavkuMaterijal = new Button();
+            nabavkeMaterijal = new ListView();
             columnHeader6 = new ColumnHeader();
             columnHeader7 = new ColumnHeader();
             columnHeader8 = new ColumnHeader();
@@ -119,6 +125,9 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(btObrisiNabavkuOprema);
+            tabPage2.Controls.Add(btIzmeniNabavkuOprema);
+            tabPage2.Controls.Add(btDodajNabavkuOprema);
             tabPage2.Controls.Add(nabavkeOprema);
             tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
@@ -127,6 +136,36 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Nabavke oprema";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btObrisiNabavkuOprema
+            // 
+            btObrisiNabavkuOprema.Location = new Point(615, 180);
+            btObrisiNabavkuOprema.Name = "btObrisiNabavkuOprema";
+            btObrisiNabavkuOprema.Size = new Size(139, 72);
+            btObrisiNabavkuOprema.TabIndex = 19;
+            btObrisiNabavkuOprema.Text = "Obrisi nabavku";
+            btObrisiNabavkuOprema.UseVisualStyleBackColor = true;
+            btObrisiNabavkuOprema.Click += btObrisiNabavkuOprema_Click;
+            // 
+            // btIzmeniNabavkuOprema
+            // 
+            btIzmeniNabavkuOprema.Location = new Point(615, 100);
+            btIzmeniNabavkuOprema.Name = "btIzmeniNabavkuOprema";
+            btIzmeniNabavkuOprema.Size = new Size(139, 61);
+            btIzmeniNabavkuOprema.TabIndex = 18;
+            btIzmeniNabavkuOprema.Text = "Izmeni nabavku";
+            btIzmeniNabavkuOprema.UseVisualStyleBackColor = true;
+            btIzmeniNabavkuOprema.Click += btIzmeniNabavkuOprema_Click;
+            // 
+            // btDodajNabavkuOprema
+            // 
+            btDodajNabavkuOprema.Location = new Point(615, 22);
+            btDodajNabavkuOprema.Name = "btDodajNabavkuOprema";
+            btDodajNabavkuOprema.Size = new Size(139, 57);
+            btDodajNabavkuOprema.TabIndex = 17;
+            btDodajNabavkuOprema.Text = "Dodaj nabavku";
+            btDodajNabavkuOprema.UseVisualStyleBackColor = true;
+            btDodajNabavkuOprema.Click += btDodajNabavkuOprema_Click;
             // 
             // nabavkeOprema
             // 
@@ -141,33 +180,14 @@
             nabavkeOprema.UseCompatibleStateImageBehavior = false;
             nabavkeOprema.View = View.Details;
             // 
-            // tabPage3
-            // 
-            tabPage3.Controls.Add(nabavkeMaterijal);
-            tabPage3.Location = new Point(4, 29);
-            tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(792, 417);
-            tabPage3.TabIndex = 2;
-            tabPage3.Text = "Nabavke materijal";
-            tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // nabavkeMaterijal
-            // 
-            nabavkeMaterijal.Columns.AddRange(new ColumnHeader[] { columnHeader6, columnHeader7, columnHeader8, columnHeader9, columnHeader10 });
-            nabavkeMaterijal.Dock = DockStyle.Left;
-            nabavkeMaterijal.FullRowSelect = true;
-            nabavkeMaterijal.GridLines = true;
-            nabavkeMaterijal.Location = new Point(3, 3);
-            nabavkeMaterijal.Name = "nabavkeMaterijal";
-            nabavkeMaterijal.Size = new Size(574, 411);
-            nabavkeMaterijal.TabIndex = 1;
-            nabavkeMaterijal.UseCompatibleStateImageBehavior = false;
-            nabavkeMaterijal.View = View.Details;
-            // 
             // columnHeader1
             // 
             columnHeader1.Text = "Id";
+            // 
+            // columnHeader5
+            // 
+            columnHeader5.Text = "Oprema";
+            columnHeader5.TextAlign = HorizontalAlignment.Center;
             // 
             // columnHeader2
             // 
@@ -184,10 +204,62 @@
             columnHeader4.Text = "Status isporuke";
             columnHeader4.TextAlign = HorizontalAlignment.Center;
             // 
-            // columnHeader5
+            // tabPage3
             // 
-            columnHeader5.Text = "Oprema";
-            columnHeader5.TextAlign = HorizontalAlignment.Center;
+            tabPage3.Controls.Add(btObrisiNabavkuMaterijal);
+            tabPage3.Controls.Add(btIzmeniNabavkuMaterijal);
+            tabPage3.Controls.Add(btDodajNabavkuMaterijal);
+            tabPage3.Controls.Add(nabavkeMaterijal);
+            tabPage3.Location = new Point(4, 29);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Padding = new Padding(3);
+            tabPage3.Size = new Size(792, 417);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "Nabavke materijal";
+            tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // btObrisiNabavkuMaterijal
+            // 
+            btObrisiNabavkuMaterijal.Location = new Point(614, 175);
+            btObrisiNabavkuMaterijal.Name = "btObrisiNabavkuMaterijal";
+            btObrisiNabavkuMaterijal.Size = new Size(139, 72);
+            btObrisiNabavkuMaterijal.TabIndex = 19;
+            btObrisiNabavkuMaterijal.Text = "Obrisi nabavku";
+            btObrisiNabavkuMaterijal.UseVisualStyleBackColor = true;
+            btObrisiNabavkuMaterijal.Click += btObrisiNabavkuMaterijal_Click;
+            // 
+            // btIzmeniNabavkuMaterijal
+            // 
+            btIzmeniNabavkuMaterijal.Location = new Point(614, 95);
+            btIzmeniNabavkuMaterijal.Name = "btIzmeniNabavkuMaterijal";
+            btIzmeniNabavkuMaterijal.Size = new Size(139, 61);
+            btIzmeniNabavkuMaterijal.TabIndex = 18;
+            btIzmeniNabavkuMaterijal.Text = "Izmeni nabavku";
+            btIzmeniNabavkuMaterijal.UseVisualStyleBackColor = true;
+            btIzmeniNabavkuMaterijal.Click += btIzmeniNabavkuMaterijal_Click;
+            // 
+            // btDodajNabavkuMaterijal
+            // 
+            btDodajNabavkuMaterijal.Location = new Point(614, 17);
+            btDodajNabavkuMaterijal.Name = "btDodajNabavkuMaterijal";
+            btDodajNabavkuMaterijal.Size = new Size(139, 57);
+            btDodajNabavkuMaterijal.TabIndex = 17;
+            btDodajNabavkuMaterijal.Text = "Dodaj nabavku";
+            btDodajNabavkuMaterijal.UseVisualStyleBackColor = true;
+            btDodajNabavkuMaterijal.Click += btDodajNabavkuMaterijal_Click;
+            // 
+            // nabavkeMaterijal
+            // 
+            nabavkeMaterijal.Columns.AddRange(new ColumnHeader[] { columnHeader6, columnHeader7, columnHeader8, columnHeader9, columnHeader10 });
+            nabavkeMaterijal.Dock = DockStyle.Left;
+            nabavkeMaterijal.FullRowSelect = true;
+            nabavkeMaterijal.GridLines = true;
+            nabavkeMaterijal.Location = new Point(3, 3);
+            nabavkeMaterijal.Name = "nabavkeMaterijal";
+            nabavkeMaterijal.Size = new Size(574, 411);
+            nabavkeMaterijal.TabIndex = 1;
+            nabavkeMaterijal.UseCompatibleStateImageBehavior = false;
+            nabavkeMaterijal.View = View.Details;
             // 
             // columnHeader6
             // 
@@ -252,5 +324,11 @@
         private ColumnHeader columnHeader8;
         private ColumnHeader columnHeader9;
         private ColumnHeader columnHeader10;
+        private Button btObrisiNabavkuOprema;
+        private Button btIzmeniNabavkuOprema;
+        private Button btDodajNabavkuOprema;
+        private Button btObrisiNabavkuMaterijal;
+        private Button btIzmeniNabavkuMaterijal;
+        private Button btDodajNabavkuMaterijal;
     }
 }

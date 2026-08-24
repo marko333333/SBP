@@ -42,6 +42,12 @@ namespace Gradjevinska_firma.Forme
 
         private void btIzmeni_Click(object sender, EventArgs e)
         {
+            if (cbStatus.SelectedItem == null)
+            {
+                MessageBox.Show("Izaberite status angazovanja");
+                return;
+            }
+
             DateTime? datumDo = null;
 
             if (dtpDatumDo.Checked)

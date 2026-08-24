@@ -64,7 +64,32 @@ namespace Gradjevinska_firma.Forme
 
         private void IzmeniElektroForma_Load(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(tbcena.Text) || !tbcena.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("Unesite cenu i cena mora da bude broj!");
+                tbcena.Focus();
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(tbNaziv.Text))
+            {
+                MessageBox.Show("Unesite naziv materijala!");
+                tbNaziv.Focus();
+                return;
+            }
 
+            if (string.IsNullOrWhiteSpace(tbProizvodjac.Text))
+            {
+                MessageBox.Show("Unesite proizvodjaca!");
+                tbProizvodjac.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(tbJedinicaMere.Text))
+            {
+                MessageBox.Show("Unesite jedinicu mere!");
+                tbJedinicaMere.Focus();
+                return;
+            }
             ElektroBasic materijal = MaterijalDTOManager.vratiElektroMaterijal(idMaterijal);
 
             tbNaziv.Text = materijal.Naziv;

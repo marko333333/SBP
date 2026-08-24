@@ -33,6 +33,12 @@ namespace Gradjevinska_firma.Forme
 
         private void btIzmeni_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(tbObuka.Text))
+            {
+                MessageBox.Show("Unesite obuku");
+                tbObuka.Focus();
+                return;
+            }
             BezbednosnaObukaBasic obuka = new BezbednosnaObukaBasic(idObuke,idOsobe,tbObuka.Text,dtpDatum.Value);
             
             BezbednosnaObukaDTOManager.izmeniBezbednosnuObuku(obuka);

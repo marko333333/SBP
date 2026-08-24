@@ -16,6 +16,7 @@ namespace Gradjevinska_firma.Forme
     public partial class DetaljiNabavkeForma : Form
     {
         private int idNabavke;
+        private NabavkeBasic nabavka;
         public DetaljiNabavkeForma(int id)
         {
             InitializeComponent();
@@ -24,17 +25,18 @@ namespace Gradjevinska_firma.Forme
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            nabavka = NabavkeDTOManager.vratiNabavku(idNabavke);
             if (tabControl1.SelectedIndex == 0)
             {
                 popuniPodacima();
             }
             else if (tabControl1.SelectedIndex == 1)
             {
-                popuniOpremu();
+                popuniOpremu(nabavka);
             }
             else if (tabControl1.SelectedIndex == 2)
             {
-                popuniMaterijale();
+                popuniMaterijale(nabavka);
             }
         }
 
@@ -50,44 +52,51 @@ namespace Gradjevinska_firma.Forme
             lbDatum.Text = nabavka.Datum.ToString();
             lbProjekat.Text = nabavka.Projekat.Naziv;
         }
-        private void popuniMaterijale()
+        private void popuniMaterijale(NabavkeBasic nabavka)
         {
             nabavkeMaterijal.Items.Clear();
 
-            List<NabavkaMaterijalPregled> lista = NabavkeDTOManager.vratiNabavkeMaterijala(idNabavke);
-
-            foreach (NabavkaMaterijalPregled nm in lista)
+            foreach (NabavkaMaterijalBasic nm in nabavka.NabavkaMaterijal)
             {
+                string nazivMaterijala = "";
+
+                if (nm.Materijal != null)
+                    nazivMaterijala = nm.Materijal.Naziv;
+
                 ListViewItem item = new ListViewItem(
                     new string[]
                     {
                         nm.ID.ToString(),
-                        nm.Materijal.Naziv,
+                        nazivMaterijala,
                         nm.Kolicina.ToString(),
                         nm.Cena.ToString(),
-                        nm.Status_isporuke? "Isporuceno" : "Nije isporuceno"
+                        nm.Status_isporuke ? "Isporuceno" : "Nije isporuceno"
                     });
 
                 nabavkeMaterijal.Items.Add(item);
             }
 
             nabavkeMaterijal.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+
             nabavkeMaterijal.Refresh();
         }
 
-        private void popuniOpremu()
+        private void popuniOpremu(NabavkeBasic nabavka)
         {
             nabavkeOprema.Items.Clear();
 
-            List<NabavkaOpremaPregled> lista = NabavkeDTOManager.vratiNabavkeOpreme(idNabavke);
-
-            foreach (NabavkaOpremaPregled no in lista)
+            foreach (NabavkaOpremaBasic no in nabavka.NabavkaOprema)
             {
+                string nazivOpreme = "";
+
+                if (no.Oprema != null)
+                    nazivOpreme = no.Oprema.Naziv;
+
                 ListViewItem item = new ListViewItem(
                     new string[]
                     {
                         no.ID.ToString(),
-                        no.Oprema.Naziv,
+                        nazivOpreme,
                         no.Kolicina.ToString(),
                         no.Cena.ToString(),
                         no.Status_isporuke ? "Isporuceno" : "Nije isporuceno"
@@ -97,9 +106,134 @@ namespace Gradjevinska_firma.Forme
             }
 
             nabavkeOprema.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+
             nabavkeOprema.Refresh();
         }
 
+        private void btDodajNabavkuOprema_Click(object sender, EventArgs e)
+        {
+            using (DodajNabavkuOpremaForma forma = new DodajNabavkuOpremaForma(idNabavke))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    nabavka = NabavkeDTOManager.vratiNabavku(idNabavke);
+                    popuniOpremu(nabavka);
+                }
+            }
+        }
 
+        private void btObrisiNabavkuOprema_Click(object sender, EventArgs e)
+        {
+            ListView tabela = nabavkeOprema;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati nabavku iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+            string poruka = "Da li zelite da obrisete izabranu nabavku?";
+            string title = "Pitanje";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(poruka, title, buttons);
+
+            if (result == DialogResult.OK)
+            {
+                NabavkeDTOManager.obrisiNabavkaOprema(id);
+                MessageBox.Show("Brisanje nabavke je uspesno obavljeno!");
+                nabavka = NabavkeDTOManager.vratiNabavku(idNabavke);
+                popuniOpremu(nabavka);
+            }
+        }
+
+        private void btDodajNabavkuMaterijal_Click(object sender, EventArgs e)
+        {
+            using (DodajNabavkuMaterijalForma forma = new DodajNabavkuMaterijalForma(idNabavke))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    nabavka = NabavkeDTOManager.vratiNabavku(idNabavke);
+                    popuniMaterijale(nabavka);
+                }
+            }
+        }
+
+        private void btIzmeniNabavkuOprema_Click(object sender, EventArgs e)
+        {
+            ListView tabela = nabavkeOprema;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati nabavku iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+
+            using (IzmeniNabavkuOpremaForma forma = new IzmeniNabavkuOpremaForma(id,idNabavke))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    nabavka = NabavkeDTOManager.vratiNabavku(idNabavke);
+                    popuniOpremu(nabavka);
+                }
+            }
+        }
+
+        private void btIzmeniNabavkuMaterijal_Click(object sender, EventArgs e)
+        {
+            ListView tabela = nabavkeMaterijal;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati nabavku iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+
+            using (IzmeniNabavkuMaterijalForma forma = new IzmeniNabavkuMaterijalForma(id,idNabavke))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    nabavka = NabavkeDTOManager.vratiNabavku(idNabavke);
+                    popuniMaterijale(nabavka);
+                }
+            }
+        }
+
+        private void btObrisiNabavkuMaterijal_Click(object sender, EventArgs e)
+        {
+            ListView tabela = nabavkeMaterijal;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati nabavku iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+            string poruka = "Da li zelite da obrisete izabranu nabavku?";
+            string title = "Pitanje";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(poruka, title, buttons);
+
+            if (result == DialogResult.OK)
+            {
+                NabavkeDTOManager.obrisiNabavkaMaterijal(id);
+                MessageBox.Show("Brisanje nabavke je uspesno obavljeno!");
+                nabavka = NabavkeDTOManager.vratiNabavku(idNabavke);
+                popuniMaterijale(nabavka);
+            }
+        }
     }
 }

@@ -37,12 +37,14 @@ namespace Gradjevinska_firma.Forme
             FizickoLiceBasic fizicko = OsobaDTOManager.vratiFizickoLice(idOsobe);
             if (fizicko != null)
             {
-                tabControl1.TabPages.Add(tabPage5);
-                tabControl1.TabPages.Add(tabPage6);
-                tabControl1.TabPages.Add(tabPage7);
-
                 if (fizicko.FlagR)
+                {
                     tabControl1.TabPages.Add(tabPage8);
+                    tabControl1.TabPages.Add(tabPage5);
+                    tabControl1.TabPages.Add(tabPage6);
+                    tabControl1.TabPages.Add(tabPage7);
+                }
+                    
             }
         }
 

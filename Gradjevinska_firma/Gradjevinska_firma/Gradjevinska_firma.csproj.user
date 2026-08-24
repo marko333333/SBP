@@ -70,6 +70,12 @@
     <Compile Update="Forme\DodajNabavkuForma.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\DodajNabavkuMaterijalForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\DodajNabavkuOpremaForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\DodajNapredakForma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +178,12 @@
     <Compile Update="Forme\IzmeniNabavkuForma.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\IzmeniNabavkuMaterijalForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\IzmeniNabavkuOpremaForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\IzmeniNapredakForma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,9 +230,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\MehanizacijaForma.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forme\NabavkaOpremuForma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\NabavkeForma.cs">

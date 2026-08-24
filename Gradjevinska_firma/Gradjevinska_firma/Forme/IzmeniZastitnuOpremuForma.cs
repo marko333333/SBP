@@ -27,16 +27,18 @@ namespace Gradjevinska_firma.Forme
 
         private void btIzmeni_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(tbZastitnaOprema.Text))
+            {
+                MessageBox.Show("Unesite zastitnu opremu");
+                tbZastitnaOprema.Focus();
+                return;
+            }
+            ZastitnaOpremaBasic zastitnaOprema = new ZastitnaOpremaBasic(idZastitnaOprema, idOsobe, tbZastitnaOprema.Text);
 
-                ZastitnaOpremaBasic zastitnaOprema = new ZastitnaOpremaBasic(idZastitnaOprema, idOsobe, tbZastitnaOprema.Text);
-
-                ZastitnaOpremaDTOManager.izmeniZastitnuOpremu(zastitnaOprema);
-                MessageBox.Show("Uspesna izmena.");
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-
-            
-
+            ZastitnaOpremaDTOManager.izmeniZastitnuOpremu(zastitnaOprema);
+            MessageBox.Show("Uspesna izmena.");
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
         private void IzmeniZastitnuOpremuForma_Load(object sender, EventArgs e)

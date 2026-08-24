@@ -34,6 +34,13 @@ namespace Gradjevinska_firma.Forme
 
         private void btIzmeni_Click(object sender, EventArgs e)
         {
+
+            if (string.IsNullOrWhiteSpace(tbProcenatRealizacije.Text) || !tbProcenatRealizacije.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("Procenat mora da ima cifre, polje ne sme da bude prazno!");
+                tbProcenatRealizacije.Focus();
+                return;
+            }
             NapredakBasic napredak = new NapredakBasic();
             napredak.Id = idNapredak;
             napredak.Datum = dtpDatum.Value;

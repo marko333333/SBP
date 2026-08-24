@@ -33,6 +33,12 @@ namespace Gradjevinska_firma.Forme
 
         private void btIzmeni_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(tbLekPregled.Text))
+            {
+                MessageBox.Show("Unesite rezultat lekarskog pregleda");
+                tbLekPregled.Focus();
+                return;
+            }
             LekarskiPregledBasic lekpregled = new LekarskiPregledBasic(idLekPregled,idOsobe,tbLekPregled.Text,dtpDatum.Value);
 
             LekPregledDTOManager.izmeniLekPregled(lekpregled);

@@ -43,7 +43,7 @@
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(580, 194);
+            groupBox1.Size = new Size(418, 194);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Kontakt";
@@ -78,7 +78,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(580, 194);
+            ClientSize = new Size(418, 194);
             Controls.Add(groupBox1);
             Name = "DodajKontaktForma";
             Text = "DodajKontaktForma";

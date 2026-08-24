@@ -150,6 +150,17 @@ namespace Gradjevinska_firma.Forme
 
         private void btIzmeni_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(tbNaziv.Text))
+            {
+                MessageBox.Show("Morate uneti naziv zadatka.");
+                return;
+            }
+
+            if (cbFaza.SelectedItem == null)
+            {
+                MessageBox.Show("Morate izabrati fazu.");
+                return;
+            }
             FazaPregled izabranaFaza =(FazaPregled)cbFaza.SelectedItem;
 
             FazaBasic faza = new FazaBasic();

@@ -79,6 +79,9 @@ namespace Gradjevinska_firma.DTOManager
                    n.Br_nabavke,n.Datum,projekat
                 );
 
+                nabavka.NabavkaOprema = vratiNabavkeOpreme(id);
+                nabavka.NabavkaMaterijal = vratiNabavkeMaterijala(id);
+
                 s.Close();
             }
             catch (Exception ex)
@@ -214,9 +217,9 @@ namespace Gradjevinska_firma.DTOManager
 
         #region NabavkaMaterijal
 
-        public static List<NabavkaMaterijalPregled> vratiNabavkeMaterijala(int brNabavke)
+        public static List<NabavkaMaterijalBasic> vratiNabavkeMaterijala(int brNabavke)
         {
-            List<NabavkaMaterijalPregled> lista = new List<NabavkaMaterijalPregled>();
+            List<NabavkaMaterijalBasic> lista = new List<NabavkaMaterijalBasic>();
 
             try
             {
@@ -229,49 +232,21 @@ namespace Gradjevinska_firma.DTOManager
 
                 foreach (NabavkaMaterijal nm in stavke)
                 {
-                    MaterijalPregled materijal = null;
+                    MaterijalBasic materijal = null;
 
                     if (nm.Materijal != null)
                     {
-                        materijal = new MaterijalPregled(
-                            nm.Materijal.ID,
-                            nm.Materijal.Naziv,
-                            nm.Materijal.Cena,
-                            nm.Materijal.Proizvodjac,
-                            nm.Materijal.JedinicaMere,
-                            nm.Materijal.Sertifikat,
-                            nm.Materijal.Tip
-                        );
+                        materijal = new MaterijalBasic();
+
+                        materijal.ID = nm.Materijal.ID;
+                        materijal.Naziv = nm.Materijal.Naziv;
                     }
 
-                    NabavkePregled nabavka = null;
-
-                    if (nm.Nabavke != null)
-                    {
-                        ProjekatPregled projekat = null;
-
-                        if (nm.Nabavke.Projekat != null)
-                        {
-                            projekat = new ProjekatPregled();
-
-                            projekat.ID = nm.Nabavke.Projekat.ID;
-                            projekat.Naziv = nm.Nabavke.Projekat.Naziv;
-                            
-                            
-                        }
-
-                        nabavka = new NabavkePregled(
-                            nm.Nabavke.Br_nabavke,
-                            nm.Nabavke.Datum,
-                            projekat
-                        );
-                    }
-
-                    lista.Add(
-                        new NabavkaMaterijalPregled(
-                            nm.ID,nm.Kolicina,nm.Cena,nm.Status_isporuke,materijal,nabavka
-                        )
+                    NabavkaMaterijalBasic stavka = new NabavkaMaterijalBasic(
+                        nm.ID,nm.Kolicina,nm.Cena,nm.Status_isporuke,materijal,null
                     );
+
+                    lista.Add(stavka);
                 }
 
                 s.Close();
@@ -407,9 +382,9 @@ namespace Gradjevinska_firma.DTOManager
 
         #region NabavkaOprema
 
-        public static List<NabavkaOpremaPregled> vratiNabavkeOpreme(int brNabavke)
+        public static List<NabavkaOpremaBasic> vratiNabavkeOpreme(int brNabavke)
         {
-            List<NabavkaOpremaPregled> lista = new List<NabavkaOpremaPregled>();
+            List<NabavkaOpremaBasic> lista = new List<NabavkaOpremaBasic>();
 
             try
             {
@@ -422,46 +397,21 @@ namespace Gradjevinska_firma.DTOManager
 
                 foreach (NabavkaOprema no in stavke)
                 {
-                    OpremaPregled oprema = null;
+                    OpremaBasic oprema = null;
 
                     if (no.Oprema != null)
                     {
-                        oprema = new OpremaPregled(
-                            no.Oprema.Id,
-                            no.Oprema.Naziv,
-                            no.Oprema.Tip,
-                            no.Oprema.DatumUvoza,
-                            no.Oprema.Proizvodjac,
-                            no.Oprema.RasponOdrzavanja,
-                            no.Oprema.Lokacija,
-                            no.Oprema.Status
-                        );
+                        oprema = new OpremaBasic();
+
+                        oprema.Id = no.Oprema.Id;
+                        oprema.Naziv = no.Oprema.Naziv;
                     }
 
-                    NabavkePregled nabavka = null;
-
-                    if (no.Nabavka != null)
-                    {
-                        ProjekatPregled projekat = null;
-
-                        if (no.Nabavka.Projekat != null)
-                        {
-                            projekat = new ProjekatPregled();
-
-                            projekat.ID = no.Nabavka.Projekat.ID;
-                            projekat.Naziv = no.Nabavka.Projekat.Naziv;
-                        }
-
-                        nabavka = new NabavkePregled(
-                            no.Nabavka.Br_nabavke,no.Nabavka.Datum,projekat
-                        );
-                    }
-
-                    lista.Add(
-                        new NabavkaOpremaPregled(
-                            no.ID,no.Kolicina,no.Cena,no.Status_isporuke,oprema,nabavka
-                        )
+                    NabavkaOpremaBasic stavka = new NabavkaOpremaBasic(
+                        no.ID,no.Kolicina,no.Cena,no.Status_isporuke,oprema,null
                     );
+
+                    lista.Add(stavka);
                 }
 
                 s.Close();

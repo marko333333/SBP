@@ -1,5 +1,6 @@
 ﻿using Gradjevinska_firma.DTO;
 using Gradjevinska_firma.DTOManager;
+using Gradjevinska_firma.Entiteti;
 using NHibernate.Action;
 using System;
 using System.Collections.Generic;
@@ -43,6 +44,13 @@ namespace Gradjevinska_firma.Forme
 
         private void btIzmeni_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(tbBrojSati.Text) || !tbBrojSati.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("Unesite broj sati i broj sati mora da bude broj!!!");
+                tbBrojSati.Focus();
+                return;
+            }
+
             DateTime? datumDo = null;
 
             if (dtpDatumDo.Checked)

@@ -24,7 +24,8 @@ namespace Gradjevinska_firma.Forme
         }
 
         public void popuniPodacima()
-        {
+        {   
+
             FizickoLiceBasic fizicko = OsobaDTOManager.vratiFizickoLice(idOsobe);
 
             if (fizicko != null)
@@ -93,6 +94,25 @@ namespace Gradjevinska_firma.Forme
 
         private void btIzmeni_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(tbJmbg.Text) || tbJmbg.Text.Length != 13 || !tbJmbg.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("JMBG mora imati tacno 13 cifara i ne sme biti prazan!");
+                tbJmbg.Focus();
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(tbIme.Text))
+            {
+                MessageBox.Show("Unesite ime osobe");
+                tbIme.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(tbPrezime.Text))
+            {
+                MessageBox.Show("Unesite prezime osobe");
+                tbPrezime.Focus();
+                return;
+            }
 
             if (rbFizickoLice.Checked)
             {

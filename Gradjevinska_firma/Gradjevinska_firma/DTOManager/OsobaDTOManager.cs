@@ -91,6 +91,7 @@ namespace Gradjevinska_firma.DTOManager
                     where a.Zadatak.Faza.Projekat.ID == idProjekta
                     select a;
 
+                //zasta sluzi ovaj HashSet?
                 HashSet<int> dodateOsobe = new HashSet<int>();
 
                 foreach (Angazovan a in sviAngazovani)

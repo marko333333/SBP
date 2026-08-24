@@ -44,7 +44,12 @@ namespace Gradjevinska_firma.Forme
 
         private void btIzmeni_Click(object sender, EventArgs e)
         {
-
+            if (string.IsNullOrWhiteSpace(tbRbStavke.Text))
+            {
+                MessageBox.Show("Unesite redni broj stavke");
+                tbRbStavke.Focus();
+                return;
+            }
             DateTime? rokZaOtklanjanje = null;
 
             if (dtpRok.Checked)

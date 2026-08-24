@@ -219,7 +219,6 @@ namespace Gradjevinska_firma.DTO
 
     #endregion
     
-    //proveri
     #region Kontakt
     public class KontaktBasic
     {
@@ -252,7 +251,7 @@ namespace Gradjevinska_firma.DTO
         }
     }
     #endregion
-    //proveri
+
     #region Licenca
 
     public class LicencaBasic
@@ -700,7 +699,7 @@ namespace Gradjevinska_firma.DTO
         }
     }
     #endregion
-    //proveri
+
     #region LekarskiPregled
 
     public class LekarskiPregledBasic
@@ -817,7 +816,7 @@ namespace Gradjevinska_firma.DTO
 
 
     #endregion
-    //proveri
+
     #region Fotografija
 
     public class FotografijaBasic
@@ -1155,7 +1154,7 @@ namespace Gradjevinska_firma.DTO
 
 
     #endregion
-    //proveri
+
     #region ZastitnaOprema
 
     public class ZastitnaOpremaBasic
