@@ -13,7 +13,7 @@ namespace Gradjevinska_firma.Entiteti
         public virtual string Ime { get; set; }
         public virtual string Prezime { get; set; }
         public virtual DateTime DatumRodjenja { get; set; }
-        public virtual string Struka { get; set; }
+        public virtual string? Struka { get; set; }
         
         public virtual IList<Kontakt> Kontakti { get; set; }
         public virtual IList<Licenca> Licence { get; set; }

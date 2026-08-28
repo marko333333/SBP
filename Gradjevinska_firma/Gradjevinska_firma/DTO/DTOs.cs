@@ -18,7 +18,7 @@ namespace Gradjevinska_firma.DTO
          public string Ime;
          public string Prezime;
          public DateTime DatumRodjenja;
-         public string Struka;
+         public string? Struka;
          public virtual IList<KontaktBasic> Kontakti { get; set; }
          public virtual IList<LicencaBasic> Licence { get; set; }
          public virtual IList<AngazovanBasic> Angazovanja { get; set; }
@@ -34,7 +34,7 @@ namespace Gradjevinska_firma.DTO
             BezbednosniIncidenti = new List<BezbednosniIncidentBasic>();
          }
 
-         public OsobaBasic(int id, string jmbg, string ime,string prezime, DateTime datumRodjenja, string struka) : this()
+         public OsobaBasic(int id, string jmbg, string ime,string prezime, DateTime datumRodjenja, string? struka) : this()
          {
              Id = id;
              Jmbg = jmbg;
@@ -52,14 +52,14 @@ namespace Gradjevinska_firma.DTO
         public string Ime;
         public string Prezime;
         public DateTime DatumRodjenja;
-        public string Struka;
+        public string? Struka;
 
         public OsobaPregled()
         {
 
         }
 
-        public OsobaPregled(int id, string jmbg, string ime,string prezime, DateTime datumRodjenja, string struka)
+        public OsobaPregled(int id, string jmbg, string ime,string prezime, DateTime datumRodjenja, string? struka)
         {
             Id = id;
             Jmbg = jmbg;
@@ -80,10 +80,10 @@ namespace Gradjevinska_firma.DTO
     {
         public bool FlagBK;
         public bool FlagR;
-        public string Kvalifikacija;
+        public string? Kvalifikacija;
         public bool FlagI;
-        public string OblastRada;
-        public string Odgovornosti;
+        public string? OblastRada;
+        public string? Odgovornosti;
         public bool FlagA;
         public bool FlagP;
         public bool FlagN;
@@ -104,7 +104,7 @@ namespace Gradjevinska_firma.DTO
         }
 
         public FizickoLiceBasic(
-            int id,string jmbg,string ime,string prezime,DateTime datumRodjenja,string struka,bool flagBK,bool flagR, string kvalifikacija,bool flagI,string oblastRada,string odgovornosti,bool flagA,bool flagP,bool flagN,bool flagAO)
+            int id,string jmbg,string ime,string prezime,DateTime datumRodjenja,string struka,bool flagBK,bool flagR, string? kvalifikacija,bool flagI,string? oblastRada,string? odgovornosti,bool flagA,bool flagP,bool flagN,bool flagAO)
             : base(id, jmbg, ime, prezime, datumRodjenja, struka)
         {
             FlagBK = flagBK;
@@ -124,10 +124,10 @@ namespace Gradjevinska_firma.DTO
     {
         public bool FlagBK;
         public bool FlagR;
-        public string Kvalifikacija;
+        public string? Kvalifikacija;
         public bool FlagI;
-        public string OblastRada;
-        public string Odgovornosti;
+        public string? OblastRada;
+        public string? Odgovornosti;
         public bool FlagA;
         public bool FlagP;
         public bool FlagN;
@@ -138,7 +138,7 @@ namespace Gradjevinska_firma.DTO
         }
 
         public FizickoLicePregled(
-            int id, string jmbg, string ime, string prezime, DateTime datumRodjenja, string struka, bool flagBK, bool flagR, string kvalifikacija, bool flagI, string oblastRada, string odgovornosti, bool flagA, bool flagP, bool flagN, bool flagAO)
+            int id, string jmbg, string ime, string prezime, DateTime datumRodjenja, string struka, bool flagBK, bool flagR, string? kvalifikacija, bool flagI, string? oblastRada, string? odgovornosti, bool flagA, bool flagP, bool flagN, bool flagAO)
             : base(id, jmbg, ime, prezime, datumRodjenja, struka)
         {
             FlagBK = flagBK;
