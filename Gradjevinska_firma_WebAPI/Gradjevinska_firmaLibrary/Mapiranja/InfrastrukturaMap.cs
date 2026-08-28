@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using FluentNHibernate.Mapping;
+using Gradjevinska_firmaLibrary.Entiteti;
+namespace Gradjevinska_firmaLibrary.Mapiranja
+{
+    public class InfrastrukturaMap : SubclassMap<Infrastruktura>
+    {
+        public InfrastrukturaMap()
+        {
+            Table("INFRASTRUKTURA");
+            KeyColumn("IDPROJEKTA");
+
+            HasMany(x => x.Deonice).Table("Deonica").KeyColumn("IDPROJEKAT").Cascade.AllDeleteOrphan().Inverse().LazyLoad();
+        }
+    }
+}

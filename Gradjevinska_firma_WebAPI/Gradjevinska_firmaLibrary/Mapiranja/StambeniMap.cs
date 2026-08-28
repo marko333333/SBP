@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using FluentNHibernate.Mapping;
+using Gradjevinska_firmaLibrary.Entiteti;
+namespace Gradjevinska_firmaLibrary.Mapiranja
+{
+    public class StambeniMap : SubclassMap<Stambeni>
+    {
+        public StambeniMap()
+        {
+            Table("STAMBENI");
+            KeyColumn("IDPROJEKTA");
+
+            HasMany(x => x.Objekti).Table("ObjekatStambeni").KeyColumn("IDPROJEKTA").Cascade.AllDeleteOrphan().Inverse().LazyLoad();
+        }
+    }
+}

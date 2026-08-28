@@ -1,0 +1,65 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using FluentNHibernate.Mapping;
+using Gradjevinska_firmaLibrary.Entiteti;
+namespace Gradjevinska_firmaLibrary.Mapiranja
+{
+    public class BezbednosniIncidentMap:ClassMap<BezbednosniIncident>
+    {
+        public BezbednosniIncidentMap() 
+        {
+            Table("BEZBEDNOSNI_INCIDENT");
+
+            DiscriminateSubClassesOnColumn("TIP_INCIDENTA");
+
+            Id(x => x.ID, "ID").GeneratedBy.TriggerIdentity();
+
+            Map(x => x.Opis, "OPIS");
+            Map(x => x.Datum,"DATUM");
+            Map(x => x.Lokacija, "LOKACIJA");
+            Map(x => x.Preduzete_mere, "PREDUZETE_MERE");
+            Map(x => x.Posledice, "POSLEDICE");
+
+            References(x => x.Projekat).Column("IDPROJEKTA");
+            References(x => x.Osoba).Column("IDOSOBE");
+        }
+    }
+    class PovredaNaRaduMap:SubclassMap<PovredaNaRadu> 
+    {
+        public PovredaNaRaduMap()
+        {
+            DiscriminatorValue("Povreda na radu");
+        }
+    }
+    class KvarOpremeMap : SubclassMap<KvarOpreme>
+    {
+        public KvarOpremeMap()
+        {
+            DiscriminatorValue("Kvar opreme");
+        }
+    }
+    class NepostovanjeProceduraMap : SubclassMap<NepostovanjeProcedura>
+    {
+        public NepostovanjeProceduraMap()
+        {
+            DiscriminatorValue("Nepostovanje procedura");
+        }
+    }
+    class OpasnaSituacijaMap : SubclassMap<OpasnaSituacija>
+    {
+        public OpasnaSituacijaMap()
+        {
+            DiscriminatorValue("Opasna situacija");
+        }
+    }
+    class EkoloskiIncidentMap : SubclassMap<EkoloskiIncident>
+    {
+        public EkoloskiIncidentMap()
+        {
+            DiscriminatorValue("Ekoloski incident");
+        }
+    }
+}

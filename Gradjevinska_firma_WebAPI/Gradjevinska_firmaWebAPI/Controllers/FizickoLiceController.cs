@@ -1,0 +1,30 @@
+﻿using Gradjevinska_firmaLibrary;
+using Gradjevinska_firmaLibrary.DTOs;
+using Gradjevinska_firmaLibrary.Entiteti;
+using Gradjevinska_firmaLibrary.DataProvider;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Gradjevinska_firmaWebAPI.Controllers
+{
+    [ApiController]
+    [Route("[controller]")]
+    public class FizickoLiceController:ControllerBase
+    {
+        [HttpGet]
+        [Route("VratiSvaFizickaLica")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        public async Task<IActionResult> GetFizickaLica()
+        {
+            var fizickaLica = await FizickoLiceDataProvider.VratiSvaFizickaLicaAsync();
+
+            if (fizickaLica.IsError)
+            {
+                return StatusCode(fizickaLica.Error.StatusCode,fizickaLica.Error.Message);
+            }
+
+            return Ok(fizickaLica.Data);
+        }
+    }
+}
