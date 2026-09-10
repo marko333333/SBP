@@ -114,7 +114,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(807, 34);
+            button1.Location = new Point(795, 37);
             button1.Name = "button1";
             button1.Size = new Size(126, 39);
             button1.TabIndex = 2;
@@ -124,7 +124,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(807, 79);
+            button2.Location = new Point(795, 82);
             button2.Name = "button2";
             button2.Size = new Size(126, 39);
             button2.TabIndex = 3;
@@ -134,7 +134,7 @@
             // 
             // button3
             // 
-            button3.Location = new Point(807, 124);
+            button3.Location = new Point(795, 127);
             button3.Name = "button3";
             button3.Size = new Size(126, 39);
             button3.TabIndex = 4;
@@ -144,7 +144,7 @@
             // 
             // button4
             // 
-            button4.Location = new Point(807, 169);
+            button4.Location = new Point(795, 172);
             button4.Name = "button4";
             button4.Size = new Size(126, 39);
             button4.TabIndex = 5;
