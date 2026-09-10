@@ -29,78 +29,84 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
-            btDodaj = new Button();
             cbProjekat = new ComboBox();
-            dtpDatum = new DateTimePicker();
             label2 = new Label();
+            btDodaj = new Button();
+            dtpDatum = new DateTimePicker();
             label1 = new Label();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(btDodaj);
             groupBox1.Controls.Add(cbProjekat);
-            groupBox1.Controls.Add(dtpDatum);
             groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(btDodaj);
+            groupBox1.Controls.Add(dtpDatum);
             groupBox1.Controls.Add(label1);
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Location = new Point(0, 0);
+            groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(387, 224);
+            groupBox1.Padding = new Padding(3, 2, 3, 2);
+            groupBox1.Size = new Size(339, 168);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Dodaj nabavku";
             // 
+            // cbProjekat
+            // 
+            cbProjekat.FormattingEnabled = true;
+            cbProjekat.Location = new Point(97, 75);
+            cbProjekat.Name = "cbProjekat";
+            cbProjekat.Size = new Size(203, 23);
+            cbProjekat.TabIndex = 6;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(6, 75);
+            label2.Name = "label2";
+            label2.Size = new Size(85, 15);
+            label2.TabIndex = 5;
+            label2.Text = "Naziv projekta:";
+            label2.Click += label2_Click;
+            // 
             // btDodaj
             // 
-            btDodaj.Location = new Point(30, 168);
+            btDodaj.Location = new Point(26, 126);
+            btDodaj.Margin = new Padding(3, 2, 3, 2);
             btDodaj.Name = "btDodaj";
-            btDodaj.Size = new Size(94, 29);
+            btDodaj.Size = new Size(82, 22);
             btDodaj.TabIndex = 4;
             btDodaj.Text = "Dodaj";
             btDodaj.UseVisualStyleBackColor = true;
             btDodaj.Click += btDodaj_Click;
             // 
-            // cbProjekat
-            // 
-            cbProjekat.FormattingEnabled = true;
-            cbProjekat.Location = new Point(144, 94);
-            cbProjekat.Name = "cbProjekat";
-            cbProjekat.Size = new Size(199, 28);
-            cbProjekat.TabIndex = 3;
-            // 
             // dtpDatum
             // 
-            dtpDatum.Location = new Point(93, 50);
+            dtpDatum.Location = new Point(81, 38);
+            dtpDatum.Margin = new Padding(3, 2, 3, 2);
             dtpDatum.Name = "dtpDatum";
-            dtpDatum.Size = new Size(250, 27);
+            dtpDatum.Size = new Size(219, 23);
             dtpDatum.TabIndex = 2;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(30, 97);
-            label2.Name = "label2";
-            label2.Size = new Size(108, 20);
-            label2.TabIndex = 1;
-            label2.Text = "Naziv projekta:";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(30, 55);
+            label1.Location = new Point(26, 41);
             label1.Name = "label1";
-            label1.Size = new Size(57, 20);
+            label1.Size = new Size(46, 15);
             label1.TabIndex = 0;
             label1.Text = "Datum:";
             // 
             // DodajNabavkuForma
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(387, 224);
+            ClientSize = new Size(339, 168);
             Controls.Add(groupBox1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "DodajNabavkuForma";
             Text = "DodajNabavkuForma";
             Load += DodajNabavkuForma_Load;
@@ -113,9 +119,9 @@
 
         private GroupBox groupBox1;
         private Button btDodaj;
-        private ComboBox cbProjekat;
         private DateTimePicker dtpDatum;
-        private Label label2;
         private Label label1;
+        private Label label2;
+        private ComboBox cbProjekat;
     }
 }

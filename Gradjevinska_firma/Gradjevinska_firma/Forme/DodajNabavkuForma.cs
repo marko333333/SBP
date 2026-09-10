@@ -28,7 +28,7 @@ namespace Gradjevinska_firma.Forme
                 return;
             }
 
-            ProjekatBasic projekat = new ProjekatBasic(); ;
+            ProjekatBasic projekat = new ProjekatBasic();
 
             ProjekatPregled p = (ProjekatPregled)cbProjekat.SelectedItem;
 
@@ -66,6 +66,11 @@ namespace Gradjevinska_firma.Forme
         private void DodajNabavkuForma_Load(object sender, EventArgs e)
         {
             popuniProjekte();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

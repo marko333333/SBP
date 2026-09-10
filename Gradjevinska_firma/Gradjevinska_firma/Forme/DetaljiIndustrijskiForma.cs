@@ -62,8 +62,8 @@ namespace Gradjevinska_firma.Forme
             }
             else if (tabControl1.SelectedIndex == 1)
             {
-                List<UgovorBasic> ugovori = UgovorDTOManager.vratiUgovoreProjekta(IdIndustrijski);
-                popuniPodacimaUgovora(ugovori);
+                List<NabavkeBasic> nabavke = NabavkeDTOManager.vratiNabavkeProjekta(IdIndustrijski);
+                popuniPodacimaNabavke(nabavke);
 
             }
             else if (tabControl1.SelectedIndex == 2)
@@ -85,7 +85,7 @@ namespace Gradjevinska_firma.Forme
 
         private void popuniPodacimaUgovora(List<UgovorBasic> ugovori)
         {
-            Ugovori.Items.Clear();
+            Nabavke.Items.Clear();
 
             foreach (UgovorBasic u in ugovori)
             {
@@ -101,10 +101,10 @@ namespace Gradjevinska_firma.Forme
 
                     });
 
-                Ugovori.Items.Add(item);
+                Nabavke.Items.Add(item);
             }
-            Ugovori.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-            this.Ugovori.Refresh();
+            Nabavke.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.Nabavke.Refresh();
         }
         private void popuniPodacimaBezbednosnihIncidenta(List<BezbednosniIncidentBasic> incidenti)
         {
@@ -174,6 +174,24 @@ namespace Gradjevinska_firma.Forme
             }
             Faze.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             this.Faze.Refresh();
+        }
+
+        private void popuniPodacimaNabavke(List<NabavkeBasic> nabavke)
+        {
+            Nabavke.Items.Clear();
+
+            foreach (NabavkeBasic n in nabavke)
+            {
+                ListViewItem item = new ListViewItem(
+                     new string[]
+                     {
+                         n.Datum.ToShortDateString(),
+                         n.Br_nabavke.ToString()
+                     });
+                Nabavke.Items.Add(item);
+            }
+            Nabavke.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.Nabavke.Refresh();
         }
 
         //BezbednosiIncidenti
@@ -383,6 +401,18 @@ namespace Gradjevinska_firma.Forme
             else
             {
 
+            }
+        }
+
+        private void btnDodajNabavku_Click(object sender, EventArgs e)
+        {
+            using (DodajNabavkuProjektaForma forma = new DodajNabavkuProjektaForma(IdIndustrijski))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    List<NabavkeBasic> nab = NabavkeDTOManager.vratiNabavkeProjekta(IdIndustrijski);
+                    popuniPodacimaNabavke(nab);
+                }
             }
         }
     }
