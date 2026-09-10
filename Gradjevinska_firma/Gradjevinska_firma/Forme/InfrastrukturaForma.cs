@@ -118,6 +118,24 @@ namespace Gradjevinska_firma.Forme
                 }
             }
         }
-    }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ListView tabela = projekti;
+
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati zadatak iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+
+            DetaljiInfrastrukturaForma forma = new DetaljiInfrastrukturaForma(id);
+            forma.ShowDialog();
+        }
+    }
 }

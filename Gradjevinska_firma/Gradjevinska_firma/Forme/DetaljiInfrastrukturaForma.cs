@@ -7,35 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FluentNHibernate.Testing.Values;
 using Gradjevinska_firma.DTO;
 using Gradjevinska_firma.DTOManager;
 using Gradjevinska_firma.Entiteti;
 
 namespace Gradjevinska_firma.Forme
 {
-    public partial class DetaljiIndustrijskiForma : Form
+    public partial class DetaljiInfrastrukturaForma : Form
     {
-        private int IdIndustrijski;
-        public DetaljiIndustrijskiForma(int idProjekta)
+        private int idInfrastruktura;
+        public DetaljiInfrastrukturaForma(int idInfrastruktura)
         {
             InitializeComponent();
-            IdIndustrijski = idProjekta;
+            this.idInfrastruktura = idInfrastruktura;
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        public void popuniPodacima()
         {
-
-        }
-
-        private void DetaljiIndustrijskiForma_Load(object sender, EventArgs e)
-        {
-            popuniPodacima();
-        }
-
-        private void popuniPodacima()
-        {
-            ProjekatBasic projekat = ProjekatDTOManager.vratiProjekat(IdIndustrijski);
+            ProjekatBasic projekat = ProjekatDTOManager.vratiProjekat(idInfrastruktura);
 
             if (projekat == null)
                 return;
@@ -54,58 +43,12 @@ namespace Gradjevinska_firma.Forme
                 lbStvarniZavrsetak.Text = "";
         }
 
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        private void DetaljiInfrastrukturaForma_Load(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedIndex == 0)
-            {
-                popuniPodacima();
-            }
-            else if (tabControl1.SelectedIndex == 1)
-            {
-                List<NabavkeBasic> nabavke = NabavkeDTOManager.vratiNabavkeProjekta(IdIndustrijski);
-                popuniPodacimaNabavke(nabavke);
-
-            }
-            else if (tabControl1.SelectedIndex == 2)
-            {
-                List<BezbednosniIncidentBasic> bezbednosniIncidenti = BezbednosniIncidentDTOManager.vratiBezbednosniIncidenteProjekta(IdIndustrijski);
-                popuniPodacimaBezbednosnihIncidenta(bezbednosniIncidenti);
-            }
-            else if (tabControl1.SelectedIndex == 3)
-            {
-                List<FakturaBasic> fakture = FakturaDTOManager.vratiFaktureProjekta(IdIndustrijski);
-                popuniPodacimaFakture(fakture);
-            }
-            else if (tabControl1.SelectedIndex == 4)
-            {
-                List<FazaBasic> faze = FazaDTOManager.vratiFazeProjekta(IdIndustrijski);
-                popuniPodacimaFaza(faze);
-            }
+            popuniPodacima();
         }
 
-        //private void popuniPodacimaUgovora(List<UgovorBasic> ugovori)
-        //{
-        //    Nabavke.Items.Clear();
 
-        //    foreach (UgovorBasic u in ugovori)
-        //    {
-        //        ListViewItem item = new ListViewItem(
-        //            new string[]
-        //            {
-        //                u.DatumPotpisivanja.ToShortDateString(),
-        //                u.Id.ToString(),
-        //                u.Vrednost.ToString(),
-        //                u.PredmetUgovora,
-        //                u.Valuta,
-        //                u.Rok.ToShortDateString(),
-
-        //            });
-
-        //        Nabavke.Items.Add(item);
-        //    }
-        //    Nabavke.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-        //    this.Nabavke.Refresh();
-        //}
         private void popuniPodacimaBezbednosnihIncidenta(List<BezbednosniIncidentBasic> incidenti)
         {
             Incidenti.Items.Clear();
@@ -196,11 +139,11 @@ namespace Gradjevinska_firma.Forme
 
         private void btnDodaj_Click(object sender, EventArgs e)
         {
-            using (DodajBezbednosniIncidentForma forma = new DodajBezbednosniIncidentForma(IdIndustrijski))
+            using (DodajBezbednosniIncidentForma forma = new DodajBezbednosniIncidentForma(idInfrastruktura))
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    List<BezbednosniIncidentBasic> incidenti = BezbednosniIncidentDTOManager.vratiBezbednosniIncidenteProjekta(IdIndustrijski);
+                    List<BezbednosniIncidentBasic> incidenti = BezbednosniIncidentDTOManager.vratiBezbednosniIncidenteProjekta(idInfrastruktura);
                     popuniPodacimaBezbednosnihIncidenta(incidenti);
                 }
             }
@@ -220,11 +163,11 @@ namespace Gradjevinska_firma.Forme
                 tabela.SelectedItems[0].SubItems[0].Text
             );
 
-            using (IzmeniBezbednosniIncidentForma forma = new IzmeniBezbednosniIncidentForma(id, IdIndustrijski))
+            using (IzmeniBezbednosniIncidentForma forma = new IzmeniBezbednosniIncidentForma(id, idInfrastruktura))
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    List<BezbednosniIncidentBasic> incidenti = BezbednosniIncidentDTOManager.vratiBezbednosniIncidenteProjekta(IdIndustrijski);
+                    List<BezbednosniIncidentBasic> incidenti = BezbednosniIncidentDTOManager.vratiBezbednosniIncidenteProjekta(idInfrastruktura);
                     popuniPodacimaBezbednosnihIncidenta(incidenti);
                 }
             }
@@ -252,7 +195,7 @@ namespace Gradjevinska_firma.Forme
             {
                 BezbednosniIncidentDTOManager.obrisiBezbednosniIncident(id);
                 MessageBox.Show("Brisanje incidenta je uspesno obavljeno!");
-                List<BezbednosniIncidentBasic> inc = BezbednosniIncidentDTOManager.vratiBezbednosniIncidenteProjekta(IdIndustrijski);
+                List<BezbednosniIncidentBasic> inc = BezbednosniIncidentDTOManager.vratiBezbednosniIncidenteProjekta(idInfrastruktura);
                 popuniPodacimaBezbednosnihIncidenta(inc);
 
             }
@@ -262,19 +205,39 @@ namespace Gradjevinska_firma.Forme
             }
         }
 
-        private void Incidenti_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void btnDodajFakturu_Click(object sender, EventArgs e)
+        private void btnDodajFakturu_Click_1(object sender, EventArgs e)
         {
-            using (DodajFakturuForma forma = new DodajFakturuForma(IdIndustrijski))
+            using (DodajFakturuForma forma = new DodajFakturuForma(idInfrastruktura))
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    List<FakturaBasic> fakture = FakturaDTOManager.vratiFaktureProjekta(IdIndustrijski);
+                    List<FakturaBasic> fakture = FakturaDTOManager.vratiFaktureProjekta(idInfrastruktura);
                     popuniPodacimaFakture(fakture);
+                }
+            }
+        }
+
+        private void btnIzmeniFakturu_Click(object sender, EventArgs e)
+        {
+            ListView tabela = Fakture;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati fakturu iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+
+            using (IzmeniFakturuForma forma = new IzmeniFakturuForma(id, idInfrastruktura))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    List<FakturaBasic> fak = FakturaDTOManager.vratiFaktureProjekta(idInfrastruktura);
+                    popuniPodacimaFakture(fak);
                 }
             }
         }
@@ -301,7 +264,7 @@ namespace Gradjevinska_firma.Forme
             {
                 FakturaDTOManager.obrisiFakturu(id);
                 MessageBox.Show("Brisanje fakture je uspesno obavljeno!");
-                List<FakturaBasic> fak = FakturaDTOManager.vratiFaktureProjekta(IdIndustrijski);
+                List<FakturaBasic> fak = FakturaDTOManager.vratiFaktureProjekta(idInfrastruktura);
                 popuniPodacimaFakture(fak);
 
             }
@@ -311,37 +274,42 @@ namespace Gradjevinska_firma.Forme
             }
         }
 
-        private void btnIzmeniFakturu_Click(object sender, EventArgs e)
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ListView tabela = Fakture;
-
-            if (tabela.SelectedItems.Count == 0)
+            if (tabControl1.SelectedIndex == 0)
             {
-                MessageBox.Show("Potrebno je odabrati fakturu iz tabele.");
-                return;
+                popuniPodacima();
             }
-
-            int id = int.Parse(
-                tabela.SelectedItems[0].SubItems[0].Text
-            );
-
-            using (IzmeniFakturuForma forma = new IzmeniFakturuForma(id, IdIndustrijski))
+            else if (tabControl1.SelectedIndex == 1)
             {
-                if (forma.ShowDialog() == DialogResult.OK)
-                {
-                    List<FakturaBasic> fak = FakturaDTOManager.vratiFaktureProjekta(IdIndustrijski);
-                    popuniPodacimaFakture(fak);
-                }
+                List<NabavkeBasic> nabavke = NabavkeDTOManager.vratiNabavkeProjekta(idInfrastruktura);
+                popuniPodacimaNabavke(nabavke);
+
+            }
+            else if (tabControl1.SelectedIndex == 2)
+            {
+                List<BezbednosniIncidentBasic> bezbednosniIncidenti = BezbednosniIncidentDTOManager.vratiBezbednosniIncidenteProjekta(idInfrastruktura);
+                popuniPodacimaBezbednosnihIncidenta(bezbednosniIncidenti);
+            }
+            else if (tabControl1.SelectedIndex == 3)
+            {
+                List<FakturaBasic> fakture = FakturaDTOManager.vratiFaktureProjekta(idInfrastruktura);
+                popuniPodacimaFakture(fakture);
+            }
+            else if (tabControl1.SelectedIndex == 4)
+            {
+                List<FazaBasic> faze = FazaDTOManager.vratiFazeProjekta(idInfrastruktura);
+                popuniPodacimaFaza(faze);
             }
         }
 
         private void btnDodajFazu_Click(object sender, EventArgs e)
         {
-            using (DodajFazuForma forma = new DodajFazuForma(IdIndustrijski))
+            using (DodajFazuForma forma = new DodajFazuForma(idInfrastruktura))
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    List<FazaBasic> faze = FazaDTOManager.vratiFazeProjekta(IdIndustrijski);
+                    List<FazaBasic> faze = FazaDTOManager.vratiFazeProjekta(idInfrastruktura);
                     popuniPodacimaFaza(faze);
                 }
             }
@@ -361,11 +329,11 @@ namespace Gradjevinska_firma.Forme
                 tabela.SelectedItems[0].SubItems[0].Text
             );
 
-            using (IzmeniFazuForma forma = new IzmeniFazuForma(id, IdIndustrijski))
+            using (IzmeniFazuForma forma = new IzmeniFazuForma(id, idInfrastruktura))
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    List<FazaBasic> faz = FazaDTOManager.vratiFazeProjekta(IdIndustrijski);
+                    List<FazaBasic> faz = FazaDTOManager.vratiFazeProjekta(idInfrastruktura);
                     popuniPodacimaFaza(faz);
                 }
             }
@@ -393,7 +361,7 @@ namespace Gradjevinska_firma.Forme
             {
                 FazaDTOManager.obrisiFazu(id);
                 MessageBox.Show("Brisanje faze je uspesno obavljeno!");
-                List<FazaBasic> faz = FazaDTOManager.vratiFazeProjekta(IdIndustrijski);
+                List<FazaBasic> faz = FazaDTOManager.vratiFazeProjekta(idInfrastruktura);
                 popuniPodacimaFaza(faz);
 
             }
@@ -405,11 +373,11 @@ namespace Gradjevinska_firma.Forme
 
         private void btnDodajNabavku_Click(object sender, EventArgs e)
         {
-            using (DodajNabavkuProjektaForma forma = new DodajNabavkuProjektaForma(IdIndustrijski))
+            using (DodajNabavkuProjektaForma forma = new DodajNabavkuProjektaForma(idInfrastruktura))
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    List<NabavkeBasic> nab = NabavkeDTOManager.vratiNabavkeProjekta(IdIndustrijski);
+                    List<NabavkeBasic> nab = NabavkeDTOManager.vratiNabavkeProjekta(idInfrastruktura);
                     popuniPodacimaNabavke(nab);
                 }
             }
@@ -437,7 +405,7 @@ namespace Gradjevinska_firma.Forme
             {
                 NabavkeDTOManager.obrisiNabavku(id);
                 MessageBox.Show("Brisanje nabavke je uspesno obavljeno!");
-                List<NabavkeBasic> nab = NabavkeDTOManager.vratiNabavkeProjekta(IdIndustrijski);
+                List<NabavkeBasic> nab = NabavkeDTOManager.vratiNabavkeProjekta(idInfrastruktura);
                 popuniPodacimaNabavke(nab);
 
             }
@@ -461,15 +429,14 @@ namespace Gradjevinska_firma.Forme
                 tabela.SelectedItems[0].SubItems[0].Text
             );
 
-            using (IzmeniNabavkuProjektaForma forma = new IzmeniNabavkuProjektaForma(id, IdIndustrijski))
+            using (IzmeniNabavkuProjektaForma forma = new IzmeniNabavkuProjektaForma(id, idInfrastruktura))
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {
-                    List<NabavkeBasic> nab = NabavkeDTOManager.vratiNabavkeProjekta(IdIndustrijski);
+                    List<NabavkeBasic> nab = NabavkeDTOManager.vratiNabavkeProjekta(idInfrastruktura);
                     popuniPodacimaNabavke(nab);
                 }
             }
         }
     }
-
 }
