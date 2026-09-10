@@ -185,8 +185,8 @@ namespace Gradjevinska_firma.Forme
                 ListViewItem item = new ListViewItem(
                      new string[]
                      {
-                         n.Datum.ToShortDateString(),
-                         n.Br_nabavke.ToString()
+                         n.Br_nabavke.ToString(),
+                         n.Datum.ToShortDateString()
                      });
                 Nabavke.Items.Add(item);
             }
@@ -407,6 +407,62 @@ namespace Gradjevinska_firma.Forme
         private void btnDodajNabavku_Click(object sender, EventArgs e)
         {
             using (DodajNabavkuProjektaForma forma = new DodajNabavkuProjektaForma(IdIndustrijski))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    List<NabavkeBasic> nab = NabavkeDTOManager.vratiNabavkeProjekta(IdIndustrijski);
+                    popuniPodacimaNabavke(nab);
+                }
+            }
+        }
+
+        private void btnObrisiNabavku_Click(object sender, EventArgs e)
+        {
+            ListView tabela = Nabavke;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati nabavku iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+            string poruka = "Da li zelite da obrisete izabranu nabavku?";
+            string title = "Pitanje";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(poruka, title, buttons);
+
+            if (result == DialogResult.OK)
+            {
+                NabavkeDTOManager.obrisiNabavku(id);
+                MessageBox.Show("Brisanje nabavke je uspesno obavljeno!");
+                List<NabavkeBasic> nab = NabavkeDTOManager.vratiNabavkeProjekta(IdIndustrijski);
+                popuniPodacimaNabavke(nab);
+
+            }
+            else
+            {
+
+            }
+        }
+
+        private void btnIzmeniNabavku_Click(object sender, EventArgs e)
+        {
+            ListView tabela = Nabavke;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati nabavku iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+
+            using (IzmeniNabavkuProjektaForma forma = new IzmeniNabavkuProjektaForma(id, IdIndustrijski))
             {
                 if (forma.ShowDialog() == DialogResult.OK)
                 {

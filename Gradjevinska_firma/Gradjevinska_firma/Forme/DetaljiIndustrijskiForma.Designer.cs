@@ -51,8 +51,8 @@
             btnIzmeniNabavku = new Button();
             btnDodajNabavku = new Button();
             Nabavke = new ListView();
-            Datum = new ColumnHeader();
             Br_nabavke = new ColumnHeader();
+            Datum = new ColumnHeader();
             tabPage3 = new TabPage();
             btnObrisi = new Button();
             btnIzmeni = new Button();
@@ -300,6 +300,7 @@
             btnObrisiNabavku.TabIndex = 3;
             btnObrisiNabavku.Text = "Obrisi";
             btnObrisiNabavku.UseVisualStyleBackColor = true;
+            btnObrisiNabavku.Click += btnObrisiNabavku_Click;
             // 
             // btnIzmeniNabavku
             // 
@@ -309,6 +310,7 @@
             btnIzmeniNabavku.TabIndex = 2;
             btnIzmeniNabavku.Text = "Izmeni";
             btnIzmeniNabavku.UseVisualStyleBackColor = true;
+            btnIzmeniNabavku.Click += btnIzmeniNabavku_Click;
             // 
             // btnDodajNabavku
             // 
@@ -322,7 +324,7 @@
             // 
             // Nabavke
             // 
-            Nabavke.Columns.AddRange(new ColumnHeader[] { Datum, Br_nabavke });
+            Nabavke.Columns.AddRange(new ColumnHeader[] { Br_nabavke, Datum });
             Nabavke.FullRowSelect = true;
             Nabavke.GridLines = true;
             Nabavke.Location = new Point(3, 19);
@@ -332,17 +334,15 @@
             Nabavke.UseCompatibleStateImageBehavior = false;
             Nabavke.View = View.Details;
             // 
-            // Datum
-            // 
-            Datum.DisplayIndex = 1;
-            Datum.Text = "Datum";
-            Datum.Width = 130;
-            // 
             // Br_nabavke
             // 
-            Br_nabavke.DisplayIndex = 0;
             Br_nabavke.Text = "Br_nabavke";
             Br_nabavke.Width = 80;
+            // 
+            // Datum
+            // 
+            Datum.Text = "Datum";
+            Datum.Width = 130;
             // 
             // tabPage3
             // 
