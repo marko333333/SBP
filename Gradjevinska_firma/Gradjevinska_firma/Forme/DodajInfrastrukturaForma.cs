@@ -9,24 +9,25 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gradjevinska_firma.DTO;
 using Gradjevinska_firma.DTOManager;
-using Gradjevinska_firma.Entiteti;
 
 namespace Gradjevinska_firma.Forme
 {
-    public partial class DodajIndustrijskiForma : Form
+    public partial class DodajInfrastrukturaForma : Form
     {
-        public DodajIndustrijskiForma()
+        public DodajInfrastrukturaForma()
         {
             InitializeComponent();
         }
 
-        private void DodajIndustrijskiForma_Load(object sender, EventArgs e)
+        private void DodajInfrastrukturaForma_Load(object sender, EventArgs e)
         {
+            dtpStvarniZavrsetak.ShowCheckBox = true;
+
+            dtpStvarniZavrsetak.Checked = false;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Dodaj_button_Click(object sender, EventArgs e)
         {
-
             if (string.IsNullOrWhiteSpace(tbNaziv.Text))
             {
                 MessageBox.Show("Morate uneti naziv projekta.");
@@ -34,7 +35,7 @@ namespace Gradjevinska_firma.Forme
             }
 
 
-            IndustrijskiBasic industrijski = new IndustrijskiBasic(
+            InfrastrukturaBasic infrastruktura = new InfrastrukturaBasic(
                0,
                tbNaziv.Text,
                tbOpis.Text,
@@ -46,19 +47,12 @@ namespace Gradjevinska_firma.Forme
                dtpStvarniZavrsetak.Value
            );
 
-            ProjekatDTOManager.dodajIndustrijski(industrijski);
+            ProjekatDTOManager.dodajInfrastrukturu(infrastruktura);
 
-            MessageBox.Show("Industrijski projekat je uspesno dodat.");
+            MessageBox.Show("Projekat infrastruktura je uspesno dodat.");
 
             this.DialogResult = DialogResult.OK;
             this.Close();
-        }
-
-        private void DodajIndustrijskiForma_Load_1(object sender, EventArgs e)
-        {
-            dtpStvarniZavrsetak.ShowCheckBox = true;
-
-            dtpStvarniZavrsetak.Checked = false;
         }
     }
 }

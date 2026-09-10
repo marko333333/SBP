@@ -43,6 +43,9 @@
     <Compile Update="Forme\DodajIndustrijskiForma.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\DodajInfrastrukturaForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\DodajKontaktForma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +155,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\IzmeniIndustrijskiForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\IzmeniInfrastrukturaForma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\IzmeniKontaktForma.cs">

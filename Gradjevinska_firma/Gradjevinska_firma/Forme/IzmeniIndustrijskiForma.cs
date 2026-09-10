@@ -31,12 +31,6 @@ namespace Gradjevinska_firma.Forme
 
         private void Izmeni_button_Click(object sender, EventArgs e)
         {
-
-            //DateTime stvarniZavrsetak = null;
-
-            //if (dtpStvarniZavrsetak.Checked)
-            //    stvarniZavrsetak = dtpStvarniZavrsetak.Value;
-
             IndustrijskiBasic industrijski = new IndustrijskiBasic(
                IdIndustrijski,
                tbNaziv.Text,

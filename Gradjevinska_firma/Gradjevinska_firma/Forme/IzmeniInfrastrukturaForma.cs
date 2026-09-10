@@ -13,29 +13,26 @@ using Gradjevinska_firma.Entiteti;
 
 namespace Gradjevinska_firma.Forme
 {
-    public partial class DodajIndustrijskiForma : Form
+    public partial class IzmeniInfrastrukturaForma : Form
     {
-        public DodajIndustrijskiForma()
+        private int idInfrastruktura;
+        public IzmeniInfrastrukturaForma(int idInfrastruktura)
         {
             InitializeComponent();
+            this.idInfrastruktura = idInfrastruktura;
         }
 
-        private void DodajIndustrijskiForma_Load(object sender, EventArgs e)
+        private void IzmeniInfrastrukturaForma_Load(object sender, EventArgs e)
         {
+            dtpStvarniZavrsetak.ShowCheckBox = true;
+
+            dtpStvarniZavrsetak.Checked = false;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Izmeni_button_Click(object sender, EventArgs e)
         {
-
-            if (string.IsNullOrWhiteSpace(tbNaziv.Text))
-            {
-                MessageBox.Show("Morate uneti naziv projekta.");
-                return;
-            }
-
-
-            IndustrijskiBasic industrijski = new IndustrijskiBasic(
-               0,
+            InfrastrukturaBasic infrastruktura = new InfrastrukturaBasic(
+               idInfrastruktura,
                tbNaziv.Text,
                tbOpis.Text,
                tbLokacija.Text,
@@ -44,21 +41,15 @@ namespace Gradjevinska_firma.Forme
                cbStatus.SelectedItem.ToString(),
                dtpPlaniraniZavrsetak.Value,
                dtpStvarniZavrsetak.Value
+           //stvarniZavrsetak
            );
 
-            ProjekatDTOManager.dodajIndustrijski(industrijski);
+            ProjekatDTOManager.izmeniInfrastrukturu(infrastruktura);
 
-            MessageBox.Show("Industrijski projekat je uspesno dodat.");
+            MessageBox.Show("Infrastrukturni projekat je uspesno izmenjen.");
 
             this.DialogResult = DialogResult.OK;
             this.Close();
-        }
-
-        private void DodajIndustrijskiForma_Load_1(object sender, EventArgs e)
-        {
-            dtpStvarniZavrsetak.ShowCheckBox = true;
-
-            dtpStvarniZavrsetak.Checked = false;
         }
     }
 }

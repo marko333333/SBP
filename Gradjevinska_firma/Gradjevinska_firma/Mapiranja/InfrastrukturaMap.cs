@@ -14,7 +14,7 @@ namespace Gradjevinska_firma.Mapiranja
             Table("INFRASTRUKTURA");
             KeyColumn("IDPROJEKTA");
 
-            HasMany(x => x.Deonice).Table("Deonica").KeyColumn("IDPROJEKAT").Cascade.AllDeleteOrphan().Inverse().LazyLoad();
+            HasMany(x => x.Deonice).Table("Deonica").KeyColumn("IDPROJEKTA").Cascade.AllDeleteOrphan().Inverse().LazyLoad();
         }
     }
 }

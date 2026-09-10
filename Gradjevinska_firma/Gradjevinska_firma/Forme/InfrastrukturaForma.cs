@@ -99,13 +99,24 @@ namespace Gradjevinska_firma.Forme
                 tabela.SelectedItems[0].SubItems[0].Text
             );
 
-            //using (IzmeniInfrastrukturaForma forma = new IzmeniInfrastrukturaForma(id))
-            //{
-            //    if (forma.ShowDialog() == DialogResult.OK)
-            //    {
-            //        popuniPodacima();
-            //    }
-            //}
+            using (IzmeniInfrastrukturaForma forma = new IzmeniInfrastrukturaForma(id))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    popuniPodacima();
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (DodajInfrastrukturaForma forma = new DodajInfrastrukturaForma())
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    popuniPodacima();
+                }
+            }
         }
     }
 
