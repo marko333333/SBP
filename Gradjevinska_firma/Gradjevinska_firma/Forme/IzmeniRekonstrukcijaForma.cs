@@ -13,16 +13,16 @@ using Gradjevinska_firma.Entiteti;
 
 namespace Gradjevinska_firma.Forme
 {
-    public partial class IzmeniInfrastrukturaForma : Form
+    public partial class IzmeniRekonstrukcijaForma : Form
     {
-        private int idInfrastruktura;
-        public IzmeniInfrastrukturaForma(int idInfrastruktura)
+        private int idRekonstrukcija;
+        public IzmeniRekonstrukcijaForma(int idRekonstrukcija)
         {
             InitializeComponent();
-            this.idInfrastruktura = idInfrastruktura;
+            this.idRekonstrukcija = idRekonstrukcija;
         }
 
-        private void IzmeniInfrastrukturaForma_Load(object sender, EventArgs e)
+        private void IzmeniRekonstrukcijaForma_Load(object sender, EventArgs e)
         {
             dtpStvarniZavrsetak.ShowCheckBox = true;
 
@@ -31,8 +31,8 @@ namespace Gradjevinska_firma.Forme
 
         private void Izmeni_button_Click(object sender, EventArgs e)
         {
-            InfrastrukturaBasic infrastruktura = new InfrastrukturaBasic(
-               idInfrastruktura,
+            RekonstrukcijaBasic rekon = new RekonstrukcijaBasic(
+               idRekonstrukcija,
                tbNaziv.Text,
                tbOpis.Text,
                tbLokacija.Text,
@@ -43,9 +43,9 @@ namespace Gradjevinska_firma.Forme
                dtpStvarniZavrsetak.Value
            );
 
-            ProjekatDTOManager.izmeniInfrastrukturu(infrastruktura);
+            ProjekatDTOManager.izmeniRekonstrukciju(rekon);
 
-            MessageBox.Show("Infrastrukturni projekat je uspesno izmenjen.");
+            MessageBox.Show("Projekat rekonstrukcije je uspesno izmenjen.");
 
             this.DialogResult = DialogResult.OK;
             this.Close();

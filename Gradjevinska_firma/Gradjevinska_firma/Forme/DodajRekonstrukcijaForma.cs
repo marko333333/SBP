@@ -9,30 +9,34 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gradjevinska_firma.DTO;
 using Gradjevinska_firma.DTOManager;
-using Gradjevinska_firma.Entiteti;
 
 namespace Gradjevinska_firma.Forme
 {
-    public partial class IzmeniInfrastrukturaForma : Form
+    public partial class DodajRekonstrukcijaForma : Form
     {
-        private int idInfrastruktura;
-        public IzmeniInfrastrukturaForma(int idInfrastruktura)
+        public DodajRekonstrukcijaForma()
         {
             InitializeComponent();
-            this.idInfrastruktura = idInfrastruktura;
         }
 
-        private void IzmeniInfrastrukturaForma_Load(object sender, EventArgs e)
+        private void DodajRekonstrukcijaForma_Load(object sender, EventArgs e)
         {
             dtpStvarniZavrsetak.ShowCheckBox = true;
 
             dtpStvarniZavrsetak.Checked = false;
         }
 
-        private void Izmeni_button_Click(object sender, EventArgs e)
+        private void Dodaj_button_Click(object sender, EventArgs e)
         {
-            InfrastrukturaBasic infrastruktura = new InfrastrukturaBasic(
-               idInfrastruktura,
+            if (string.IsNullOrWhiteSpace(tbNaziv.Text))
+            {
+                MessageBox.Show("Morate uneti naziv projekta.");
+                return;
+            }
+
+
+            RekonstrukcijaBasic rekonstrukcija = new RekonstrukcijaBasic(
+               0,
                tbNaziv.Text,
                tbOpis.Text,
                tbLokacija.Text,
@@ -43,9 +47,9 @@ namespace Gradjevinska_firma.Forme
                dtpStvarniZavrsetak.Value
            );
 
-            ProjekatDTOManager.izmeniInfrastrukturu(infrastruktura);
+            ProjekatDTOManager.dodajRekonstrukciju(rekonstrukcija);
 
-            MessageBox.Show("Infrastrukturni projekat je uspesno izmenjen.");
+            MessageBox.Show("Projekat rekonstrukcija je uspesno dodat.");
 
             this.DialogResult = DialogResult.OK;
             this.Close();
