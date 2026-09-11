@@ -1,36 +1,37 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Gradjevinska_firmaLibrary.DataProvider;
+﻿using Gradjevinska_firmaLibrary.DataProvider;
+using Microsoft.AspNetCore.Mvc;
+
 namespace Gradjevinska_firmaWebAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class KontaktController:ControllerBase
+    public class LekPregledController:ControllerBase
     {
         [HttpGet]
-        [Route("VratiSveKontakte")]
+        [Route("VratiSveLekPreglede")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        public async Task<IActionResult> GetKontakti()
+        public async Task<IActionResult> GetLekPreglede()
         {
-            var kontakti = await KontaktDataProvider.VratiSveKontakteAsync();
+            var result = await LekPregledDataProvider.VratiSveLekPregledeAsync();
 
-            if (kontakti.IsError)
+            if (result.IsError)
             {
-                return StatusCode(kontakti.Error.StatusCode,kontakti.Error.Message);
+                return StatusCode(result.Error.StatusCode, result.Error.Message);
             }
 
-            return Ok(kontakti.Data);
+            return Ok(result.Data);
         }
 
         [HttpGet]
-        [Route("VratiKontakteOsobe/{idOsobe}")]
+        [Route("VratiLekPregledFizickoglica/{idOsobe}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        public async Task<IActionResult> GetKontakteOsobe(int idOsobe)
+        public async Task<IActionResult> GetLicenceOsobe(int idOsobe)
         {
-            var result = await KontaktDataProvider.VratiKontakteOsobeAsync(idOsobe);
+            var result = await LekPregledDataProvider.VratiLekPregledFizickogLicaAsync(idOsobe);
 
             if (result.IsError)
             {
@@ -40,4 +41,5 @@ namespace Gradjevinska_firmaWebAPI.Controllers
             return Ok(result.Data);
         }
     }
+
 }

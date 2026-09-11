@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace Gradjevinska_firmaLibrary.DataProvider
 {
-    public static class KontaktDataProvider
+    public static class BezbednosnaObukaDataProvider
     {
-        public static async Task<Result<List<KontaktView>, ErrorMessage>> VratiSveKontakteAsync()
+        public static async Task<Result<List<BezbednosnaObukaView>, ErrorMessage>> VratiSveBezbednosneObukeAsync()
         {
-            List<KontaktView> data = new();
+            List<BezbednosnaObukaView> data = new();
 
             ISession? s = null;
 
@@ -27,13 +27,13 @@ namespace Gradjevinska_firmaLibrary.DataProvider
                     return "Nemoguce otvoriti sesiju.".ToError(403);
                 }
 
-                data = (await s.QueryOver<Kontakt>().ListAsync())
-                    .Select(k => new KontaktView(k))
+                data = (await s.QueryOver<BezbednosnaObuka>().ListAsync())
+                    .Select(l => new BezbednosnaObukaView(l))
                     .ToList();
             }
             catch (Exception)
             {
-                return "Doslo je do greske prilikom prikupljanja kontakata.".ToError(400);
+                return "Doslo je do greske prilikom prikupljanja bezbednosnih obuka".ToError(400);
             }
             finally
             {
@@ -44,9 +44,9 @@ namespace Gradjevinska_firmaLibrary.DataProvider
             return data;
         }
 
-        public static async Task<Result<List<KontaktView>, ErrorMessage>> VratiKontakteOsobeAsync(int idOsobe)
+        public static async Task<Result<List<BezbednosnaObukaView>, ErrorMessage>> VratiBezObukuFizickogLicaAsync(int idFizicko)
         {
-            List<KontaktView> data = new();
+            List<BezbednosnaObukaView> data = new();
 
             ISession? s = null;
 
@@ -59,15 +59,15 @@ namespace Gradjevinska_firmaLibrary.DataProvider
                     return "Nemoguce otvoriti sesiju.".ToError(403);
                 }
 
-                data = (await s.QueryOver<Kontakt>()
-                    .Where(k => k.Osoba.Id == idOsobe)
+                data = (await s.QueryOver<BezbednosnaObuka>()
+                    .Where(l => l.FizickoLice.Id == idFizicko)
                     .ListAsync())
-                    .Select(k => new KontaktView(k))
+                    .Select(l => new BezbednosnaObukaView(l))
                     .ToList();
             }
             catch (Exception)
             {
-                return "Doslo je do greske prilikom prikupljanja kontakata osobe.".ToError(400);
+                return "Doslo je do greske prilikom prikupljanja bezbednosnih obuka osobe".ToError(400);
             }
             finally
             {
