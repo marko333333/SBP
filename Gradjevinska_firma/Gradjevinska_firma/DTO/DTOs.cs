@@ -1390,6 +1390,7 @@ namespace Gradjevinska_firma.DTO
         public string Status;
         public DateTime Planirani_zavrsetak;
         public DateTime? Stvarni_zavrsetak;
+        public int Trosak;
         public virtual IList<UgovorBasic> Ugovori { get; set; }
         public virtual IList<BezbednosniIncidentBasic> BezbednosniIncidenti { get; set; }
         public virtual IList<FakturaBasic> Fakture { get; set; }
@@ -1416,6 +1417,7 @@ namespace Gradjevinska_firma.DTO
             Status = status;
             Planirani_zavrsetak = planirani_zavrsetak;
             Stvarni_zavrsetak = stvarni_zavrsetak;
+            
         }
     }
     public class ProjekatPregled
@@ -1429,6 +1431,7 @@ namespace Gradjevinska_firma.DTO
         public string Status;
         public DateTime Planirani_zavrsetak;
         public DateTime? Stvarni_zavrsetak;
+        public int Trosak;
 
         public ProjekatPregled() { }
 

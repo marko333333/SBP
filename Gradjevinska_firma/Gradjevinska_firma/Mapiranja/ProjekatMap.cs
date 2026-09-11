@@ -25,6 +25,7 @@ namespace Gradjevinska_firma.Mapiranja
             Map(x => x.Status, "STATUS");
             Map(x => x.Planirani_Zavrsetak, "PLANIRANI_ZAVRSETAK");
             Map(x => x.Stvarni_Zavrsetak, "STVARNI_ZAVRSETAK");
+            //Map(x => x.Trosak, "TROSAK");
 
 
             HasMany(x => x.Ugovori)

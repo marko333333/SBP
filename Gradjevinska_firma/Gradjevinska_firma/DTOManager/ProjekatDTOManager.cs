@@ -14,6 +14,35 @@ namespace Gradjevinska_firma.DTOManager
     {
         #region Projekat
 
+        public static int IzracunajTrosakProjekta(int idProjekta)
+        {
+            int trosak = 0;
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                int sumaMaterijala = (from nm in s.Query<NabavkaMaterijal>()
+                                      where nm.Nabavke.Projekat.ID == idProjekta
+                                      select nm.Cena).DefaultIfEmpty(0).Sum();
+
+                int sumaOpreme = (from no in s.Query<NabavkaOprema>()
+                                  where no.Nabavka.Projekat.ID == idProjekta
+                                  select no.Cena).DefaultIfEmpty(0).Sum();
+
+                int sumaFaktura = (from f in s.Query<Faktura>()
+                                   where f.IDProjekta.ID == idProjekta
+                                   select f.Iznos).DefaultIfEmpty(0).Sum();
+
+                trosak = sumaMaterijala + sumaOpreme + sumaFaktura;
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return trosak;
+        }
         public static List<ProjekatPregled> vratiSveProjekte()
         {
             List<ProjekatPregled> projekti = new List<ProjekatPregled>();
@@ -23,7 +52,12 @@ namespace Gradjevinska_firma.DTOManager
                 IEnumerable<Projekat> sviProjekti = from p in s.Query<Projekat>() select p;
                 foreach (Projekat p in sviProjekti)
                 {
-                    projekti.Add(new ProjekatPregled(p.ID, p.Naziv, p.Opis, p.Lokacija, p.Datum_pocetka, p.Budzet, p.Status, p.Planirani_Zavrsetak, p.Stvarni_Zavrsetak));
+                    ProjekatPregled pregled = new ProjekatPregled(
+                    p.ID, p.Naziv, p.Opis, p.Lokacija, p.Datum_pocetka,
+                    p.Budzet, p.Status, p.Planirani_Zavrsetak, p.Stvarni_Zavrsetak);
+                    pregled.Trosak = IzracunajTrosakProjekta(p.ID);
+
+                    projekti.Add(pregled);
                 }
                 s.Close();
 
@@ -47,6 +81,7 @@ namespace Gradjevinska_firma.DTOManager
 
                 projekat = new ProjekatBasic(p.ID, p.Naziv, p.Opis, p.Lokacija, p.Datum_pocetka, p.Budzet, p.Status, p.Planirani_Zavrsetak, p.Stvarni_Zavrsetak);
 
+                projekat.Trosak = IzracunajTrosakProjekta(id);
                 projekat.Ugovori = UgovorDTOManager.vratiUgovoreProjekta(id);
                 projekat.BezbednosniIncidenti = BezbednosniIncidentDTOManager.vratiBezbednosniIncidenteProjekta(id);
                 projekat.Faze = FazaDTOManager.vratiFazeProjekta(id);
@@ -97,7 +132,13 @@ namespace Gradjevinska_firma.DTOManager
 
                 foreach (Infrastruktura i in sveInfrastrukture)
                 {
-                    infrastrukture.Add(new InfrastrukturaPregled(i.ID, i.Naziv, i.Opis, i.Lokacija, i.Datum_pocetka, i.Budzet, i.Status, i.Planirani_Zavrsetak, i.Stvarni_Zavrsetak));
+                    InfrastrukturaPregled pregled = new InfrastrukturaPregled(
+                     i.ID, i.Naziv, i.Opis, i.Lokacija, i.Datum_pocetka,
+                     i.Budzet, i.Status, i.Planirani_Zavrsetak, i.Stvarni_Zavrsetak);
+
+                    pregled.Trosak = IzracunajTrosakProjekta(i.ID);
+
+                    infrastrukture.Add(pregled);
                 }
 
                 s.Close();
@@ -122,6 +163,7 @@ namespace Gradjevinska_firma.DTOManager
                 if (i != null)
                 {
                     infra = new InfrastrukturaBasic(i.ID, i.Naziv, i.Opis, i.Lokacija, i.Datum_pocetka, i.Budzet, i.Status, i.Planirani_Zavrsetak, i.Stvarni_Zavrsetak);
+                    infra.Trosak = IzracunajTrosakProjekta(i.ID);
 
                     infra.Deonice = DeonicaDTOManager.vratiDeoniceInfrastrukture(id);
                 }
@@ -207,7 +249,13 @@ namespace Gradjevinska_firma.DTOManager
 
                 foreach (Industrijski inds in sviIndustrijski)
                 {
-                    ind.Add(new IndustrijskiPregled(inds.ID, inds.Naziv, inds.Opis, inds.Lokacija, inds.Datum_pocetka, inds.Budzet, inds.Status, inds.Planirani_Zavrsetak, inds.Stvarni_Zavrsetak));
+                    IndustrijskiPregled pregled = new IndustrijskiPregled(
+                     inds.ID, inds.Naziv, inds.Opis, inds.Lokacija, inds.Datum_pocetka,
+                     inds.Budzet, inds.Status, inds.Planirani_Zavrsetak, inds.Stvarni_Zavrsetak);
+
+                    pregled.Trosak = IzracunajTrosakProjekta(inds.ID);
+
+                    ind.Add(pregled);
                 }
 
                 s.Close();
@@ -230,6 +278,7 @@ namespace Gradjevinska_firma.DTOManager
                 if (inds != null)
                 {
                     ind = new IndustrijskiBasic(inds.ID, inds.Naziv, inds.Opis, inds.Lokacija, inds.Datum_pocetka, inds.Budzet, inds.Status, inds.Planirani_Zavrsetak, inds.Stvarni_Zavrsetak);
+                    ind.Trosak = IzracunajTrosakProjekta(id);
                 }
                 s.Close();
             }
@@ -313,7 +362,13 @@ namespace Gradjevinska_firma.DTOManager
 
                 foreach (Poslovni p in sviPoslovni)
                 {
-                    posl.Add(new PoslovniPregled(p.ID, p.Naziv, p.Opis, p.Lokacija, p.Datum_pocetka, p.Budzet, p.Status, p.Planirani_Zavrsetak, p.Stvarni_Zavrsetak));
+                    PoslovniPregled pregled = new PoslovniPregled(
+                     p.ID, p.Naziv, p.Opis, p.Lokacija, p.Datum_pocetka,
+                     p.Budzet, p.Status, p.Planirani_Zavrsetak, p.Stvarni_Zavrsetak);
+
+                    pregled.Trosak = IzracunajTrosakProjekta(p.ID);
+
+                    posl.Add(pregled);
                 }
 
                 s.Close();
@@ -338,6 +393,7 @@ namespace Gradjevinska_firma.DTOManager
                 if (p != null)
                 {
                     posl = new PoslovniBasic(p.ID, p.Naziv, p.Opis, p.Lokacija, p.Datum_pocetka, p.Budzet, p.Status, p.Planirani_Zavrsetak, p.Stvarni_Zavrsetak);
+                    posl.Trosak = IzracunajTrosakProjekta (p.ID);
 
                     posl.Objekti = vratiObjektePoslovne(id);
                 }
@@ -434,9 +490,10 @@ namespace Gradjevinska_firma.DTOManager
                         p.Poslovni.Planirani_Zavrsetak,
                         p.Poslovni.Stvarni_Zavrsetak
                     );
-
+                    poslovni.Trosak = IzracunajTrosakProjekta(p.Poslovni.ID);
                     obj.Add(new ObjekatPoslovniBasic(p.Id, p.Br_objekta, p.Spratnost, p.Br_jedinica, poslovni));
                 }
+                s.Close();
             }
             catch (Exception ex)
             {
@@ -497,7 +554,13 @@ namespace Gradjevinska_firma.DTOManager
 
                 foreach (Stambeni st in sviStambeni)
                 {
-                    stam.Add(new StambeniPregled(st.ID, st.Naziv, st.Opis, st.Lokacija, st.Datum_pocetka, st.Budzet, st.Status, st.Planirani_Zavrsetak, st.Stvarni_Zavrsetak));
+                    StambeniPregled pregled = new StambeniPregled(
+                      st.ID, st.Naziv, st.Opis, st.Lokacija, st.Datum_pocetka,
+                      st.Budzet, st.Status, st.Planirani_Zavrsetak, st.Stvarni_Zavrsetak);
+
+                    pregled.Trosak = IzracunajTrosakProjekta(st.ID);
+
+                    stam.Add(pregled);
                 }
 
                 s.Close();
@@ -521,6 +584,7 @@ namespace Gradjevinska_firma.DTOManager
                 if (st != null)
                 {
                     stam = new StambeniBasic(st.ID, st.Naziv, st.Opis, st.Lokacija, st.Datum_pocetka, st.Budzet, st.Status, st.Planirani_Zavrsetak, st.Stvarni_Zavrsetak);
+                    stam.Trosak = IzracunajTrosakProjekta (st.ID);
 
                     stam.Objekti = vratiObjekteStambene(id);
                 }
@@ -617,9 +681,10 @@ namespace Gradjevinska_firma.DTOManager
                         ss.Stambeni.Planirani_Zavrsetak,
                         ss.Stambeni.Stvarni_Zavrsetak
                     );
-
+                    stambeni.Trosak = IzracunajTrosakProjekta(ss.Stambeni.ID);
                     obj.Add(new ObjekatStambeniBasic(ss.Id, ss.Br_objekta, ss.Spratnost, ss.Br_jedinica, stambeni));
                 }
+                s.Close();
             }
             catch (Exception ex)
             {
@@ -684,7 +749,13 @@ namespace Gradjevinska_firma.DTOManager
 
                 foreach (Sanacija sa in sveSanacije)
                 {
-                    sanac.Add(new SanacijaPregled(sa.ID, sa.Naziv, sa.Opis, sa.Lokacija, sa.Datum_pocetka, sa.Budzet, sa.Status, sa.Planirani_Zavrsetak, sa.Stvarni_Zavrsetak));
+                    SanacijaPregled pregled = new SanacijaPregled(
+                     sa.ID, sa.Naziv, sa.Opis, sa.Lokacija, sa.Datum_pocetka,
+                     sa.Budzet, sa.Status, sa.Planirani_Zavrsetak, sa.Stvarni_Zavrsetak);
+
+                    pregled.Trosak = IzracunajTrosakProjekta(sa.ID);
+
+                    sanac.Add(pregled);
                 }
 
                 s.Close();
@@ -707,6 +778,7 @@ namespace Gradjevinska_firma.DTOManager
                 if (sa != null)
                 {
                     sanac = new SanacijaBasic(sa.ID, sa.Naziv, sa.Opis, sa.Lokacija, sa.Datum_pocetka, sa.Budzet, sa.Status, sa.Planirani_Zavrsetak, sa.Stvarni_Zavrsetak);
+                    sanac.Trosak = IzracunajTrosakProjekta(id);
                 }
                 s.Close();
             }
@@ -788,7 +860,13 @@ namespace Gradjevinska_firma.DTOManager
 
                 foreach (Rekonstrukcija re in sveRekonstrukcije)
                 {
-                    rek.Add(new RekonstrukcijaPregled(re.ID, re.Naziv, re.Opis, re.Lokacija, re.Datum_pocetka, re.Budzet, re.Status, re.Planirani_Zavrsetak, re.Stvarni_Zavrsetak));
+                    RekonstrukcijaPregled pregled = new RekonstrukcijaPregled(
+                      re.ID, re.Naziv, re.Opis, re.Lokacija, re.Datum_pocetka,
+                      re.Budzet, re.Status, re.Planirani_Zavrsetak, re.Stvarni_Zavrsetak);
+
+                    pregled.Trosak = IzracunajTrosakProjekta(re.ID);
+
+                    rek.Add(pregled);
                 }
 
                 s.Close();
@@ -811,6 +889,7 @@ namespace Gradjevinska_firma.DTOManager
                 if (re != null)
                 {
                     rek = new RekonstrukcijaBasic(re.ID, re.Naziv, re.Opis, re.Lokacija, re.Datum_pocetka, re.Budzet, re.Status, re.Planirani_Zavrsetak, re.Stvarni_Zavrsetak);
+                    rek.Trosak = IzracunajTrosakProjekta(id);
                 }
                 s.Close();
             }
