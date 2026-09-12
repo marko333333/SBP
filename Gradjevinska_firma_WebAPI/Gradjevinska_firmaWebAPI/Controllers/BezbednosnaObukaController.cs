@@ -1,36 +1,37 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Gradjevinska_firmaLibrary.DataProvider;
+﻿using Gradjevinska_firmaLibrary.DataProvider;
+using Microsoft.AspNetCore.Mvc;
+
 namespace Gradjevinska_firmaWebAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class KontaktController:ControllerBase
+    public class BezbednosnaObukaController:ControllerBase
     {
         [HttpGet]
-        [Route("VratiSveKontakte")]
+        [Route("VratiSveBezbednosneObuke")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        public async Task<IActionResult> GetKontakti()
+        public async Task<IActionResult> GetBezbodnosnaObuka()
         {
-            var kontakti = await KontaktDataProvider.VratiSveKontakteAsync();
+            var result = await BezbednosnaObukaDataProvider.VratiSveBezbednosneObukeAsync();
 
-            if (kontakti.IsError)
+            if (result.IsError)
             {
-                return StatusCode(kontakti.Error.StatusCode,kontakti.Error.Message);
+                return StatusCode(result.Error.StatusCode, result.Error.Message);
             }
 
-            return Ok(kontakti.Data);
+            return Ok(result.Data);
         }
 
         [HttpGet]
-        [Route("VratiKontakteOsobe/{idOsobe}")]
+        [Route("VratiBezObukuFizickogLica/{idOsobe}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        public async Task<IActionResult> GetKontakteOsobe(int idOsobe)
+        public async Task<IActionResult> GetLicenceOsobe(int idOsobe)
         {
-            var result = await KontaktDataProvider.VratiKontakteOsobeAsync(idOsobe);
+            var result = await BezbednosnaObukaDataProvider.VratiBezObukuFizickogLicaAsync(idOsobe);
 
             if (result.IsError)
             {

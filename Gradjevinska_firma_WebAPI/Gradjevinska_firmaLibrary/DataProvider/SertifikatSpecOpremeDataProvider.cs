@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace Gradjevinska_firmaLibrary.DataProvider
 {
-    public static class KontaktDataProvider
+    public static class SertifikatSpecOpremeDataProvider
     {
-        public static async Task<Result<List<KontaktView>, ErrorMessage>> VratiSveKontakteAsync()
+        public static async Task<Result<List<SertifikatSpecOpremeView>, ErrorMessage>> VratiSveSertifikateAsync()
         {
-            List<KontaktView> data = new();
+            List<SertifikatSpecOpremeView> data = new();
 
             ISession? s = null;
 
@@ -27,13 +27,13 @@ namespace Gradjevinska_firmaLibrary.DataProvider
                     return "Nemoguce otvoriti sesiju.".ToError(403);
                 }
 
-                data = (await s.QueryOver<Kontakt>().ListAsync())
-                    .Select(k => new KontaktView(k))
+                data = (await s.QueryOver<SertifikatSpecOpreme>().ListAsync())
+                    .Select(s => new SertifikatSpecOpremeView(s))
                     .ToList();
             }
             catch (Exception)
             {
-                return "Doslo je do greske prilikom prikupljanja kontakata.".ToError(400);
+                return "Doslo je do greske prilikom prikupljanja sertifikata specijalnih oprema".ToError(400);
             }
             finally
             {
@@ -44,9 +44,9 @@ namespace Gradjevinska_firmaLibrary.DataProvider
             return data;
         }
 
-        public static async Task<Result<List<KontaktView>, ErrorMessage>> VratiKontakteOsobeAsync(int idOsobe)
+        public static async Task<Result<List<SertifikatSpecOpremeView>, ErrorMessage>> VratiSertifikateFizickogLicaAsync(int idFizicko)
         {
-            List<KontaktView> data = new();
+            List<SertifikatSpecOpremeView> data = new();
 
             ISession? s = null;
 
@@ -59,15 +59,15 @@ namespace Gradjevinska_firmaLibrary.DataProvider
                     return "Nemoguce otvoriti sesiju.".ToError(403);
                 }
 
-                data = (await s.QueryOver<Kontakt>()
-                    .Where(k => k.Osoba.Id == idOsobe)
+                data = (await s.QueryOver<SertifikatSpecOpreme>()
+                    .Where(l => l.FizickoLice.Id == idFizicko)
                     .ListAsync())
-                    .Select(k => new KontaktView(k))
+                    .Select(l => new SertifikatSpecOpremeView(l))
                     .ToList();
             }
             catch (Exception)
             {
-                return "Doslo je do greske prilikom prikupljanja kontakata osobe.".ToError(400);
+                return "Doslo je do greske prilikom prikupljanja sertifikata".ToError(400);
             }
             finally
             {

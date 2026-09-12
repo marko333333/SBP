@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace Gradjevinska_firmaLibrary.DataProvider
 {
-    public static class KontaktDataProvider
+    public static class LicencaDataProvider
     {
-        public static async Task<Result<List<KontaktView>, ErrorMessage>> VratiSveKontakteAsync()
+        public static async Task<Result<List<LicencaView>, ErrorMessage>> VratiSveLicenceAsync()
         {
-            List<KontaktView> data = new();
+            List<LicencaView> data = new();
 
             ISession? s = null;
 
@@ -27,13 +27,13 @@ namespace Gradjevinska_firmaLibrary.DataProvider
                     return "Nemoguce otvoriti sesiju.".ToError(403);
                 }
 
-                data = (await s.QueryOver<Kontakt>().ListAsync())
-                    .Select(k => new KontaktView(k))
+                data = (await s.QueryOver<Licenca>().ListAsync())
+                    .Select(l => new LicencaView(l))
                     .ToList();
             }
             catch (Exception)
             {
-                return "Doslo je do greske prilikom prikupljanja kontakata.".ToError(400);
+                return "Doslo je do greske prilikom prikupljanja licenca".ToError(400);
             }
             finally
             {
@@ -44,9 +44,9 @@ namespace Gradjevinska_firmaLibrary.DataProvider
             return data;
         }
 
-        public static async Task<Result<List<KontaktView>, ErrorMessage>> VratiKontakteOsobeAsync(int idOsobe)
+        public static async Task<Result<List<LicencaView>, ErrorMessage>> VratiLicenceOsobeAsync(int idOsobe)
         {
-            List<KontaktView> data = new();
+            List<LicencaView> data = new();
 
             ISession? s = null;
 
@@ -59,15 +59,15 @@ namespace Gradjevinska_firmaLibrary.DataProvider
                     return "Nemoguce otvoriti sesiju.".ToError(403);
                 }
 
-                data = (await s.QueryOver<Kontakt>()
-                    .Where(k => k.Osoba.Id == idOsobe)
+                data = (await s.QueryOver<Licenca>()
+                    .Where(l => l.Osoba.Id == idOsobe)
                     .ListAsync())
-                    .Select(k => new KontaktView(k))
+                    .Select(k => new LicencaView(k))
                     .ToList();
             }
             catch (Exception)
             {
-                return "Doslo je do greske prilikom prikupljanja kontakata osobe.".ToError(400);
+                return "Doslo je do greske prilikom prikupljanja licenca osobe".ToError(400);
             }
             finally
             {
