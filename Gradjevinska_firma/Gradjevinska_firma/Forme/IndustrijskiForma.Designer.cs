@@ -43,17 +43,18 @@
             button2 = new Button();
             button3 = new Button();
             button4 = new Button();
+            columnHeader8 = new ColumnHeader();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // projekti
             // 
-            projekti.Columns.AddRange(new ColumnHeader[] { ID, Naziv, columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6, columnHeader7 });
+            projekti.Columns.AddRange(new ColumnHeader[] { ID, Naziv, columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6, columnHeader7, columnHeader8 });
             projekti.FullRowSelect = true;
             projekti.GridLines = true;
             projekti.Location = new Point(6, 22);
             projekti.Name = "projekti";
-            projekti.Size = new Size(741, 245);
+            projekti.Size = new Size(917, 245);
             projekti.TabIndex = 0;
             projekti.UseCompatibleStateImageBehavior = false;
             projekti.View = View.Details;
@@ -107,14 +108,14 @@
             groupBox1.Controls.Add(projekti);
             groupBox1.Location = new Point(12, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(753, 286);
+            groupBox1.Size = new Size(915, 286);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Projekti";
             // 
             // button1
             // 
-            button1.Location = new Point(795, 37);
+            button1.Location = new Point(969, 34);
             button1.Name = "button1";
             button1.Size = new Size(126, 39);
             button1.TabIndex = 2;
@@ -124,7 +125,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(795, 82);
+            button2.Location = new Point(969, 79);
             button2.Name = "button2";
             button2.Size = new Size(126, 39);
             button2.TabIndex = 3;
@@ -134,7 +135,7 @@
             // 
             // button3
             // 
-            button3.Location = new Point(795, 127);
+            button3.Location = new Point(969, 124);
             button3.Name = "button3";
             button3.Size = new Size(126, 39);
             button3.TabIndex = 4;
@@ -144,7 +145,7 @@
             // 
             // button4
             // 
-            button4.Location = new Point(795, 172);
+            button4.Location = new Point(969, 169);
             button4.Name = "button4";
             button4.Size = new Size(126, 39);
             button4.TabIndex = 5;
@@ -152,11 +153,15 @@
             button4.UseVisualStyleBackColor = true;
             button4.Click += button4_Click;
             // 
+            // columnHeader8
+            // 
+            columnHeader8.Text = "Trosak";
+            // 
             // IndustrijskiForma
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(945, 356);
+            ClientSize = new Size(1150, 356);
             Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);
@@ -186,5 +191,6 @@
         private Button button2;
         private Button button3;
         private Button button4;
+        private ColumnHeader columnHeader8;
     }
 }

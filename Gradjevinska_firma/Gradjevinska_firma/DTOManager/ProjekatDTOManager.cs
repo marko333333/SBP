@@ -13,7 +13,6 @@ namespace Gradjevinska_firma.DTOManager
     public class ProjekatDTOManager
     {
         #region Projekat
-
         public static int IzracunajTrosakProjekta(int idProjekta)
         {
             int trosak = 0;
@@ -21,17 +20,20 @@ namespace Gradjevinska_firma.DTOManager
             {
                 ISession s = DataLayer.GetSession();
 
-                int sumaMaterijala = (from nm in s.Query<NabavkaMaterijal>()
-                                      where nm.Nabavke.Projekat.ID == idProjekta
-                                      select nm.Cena).DefaultIfEmpty(0).Sum();
+                List<NabavkaMaterijal> sviMaterijali = s.Query<NabavkaMaterijal>().ToList();
+                int sumaMaterijala = sviMaterijali
+                    .Where(nm => nm.Nabavke.Projekat.ID == idProjekta)
+                    .Sum(nm => nm.Cena);
 
-                int sumaOpreme = (from no in s.Query<NabavkaOprema>()
-                                  where no.Nabavka.Projekat.ID == idProjekta
-                                  select no.Cena).DefaultIfEmpty(0).Sum();
+                List<NabavkaOprema> svaOprema = s.Query<NabavkaOprema>().ToList();
+                int sumaOpreme = svaOprema
+                    .Where(no => no.Nabavka.Projekat.ID == idProjekta)
+                    .Sum(no => no.Cena);
 
-                int sumaFaktura = (from f in s.Query<Faktura>()
-                                   where f.IDProjekta.ID == idProjekta
-                                   select f.Iznos).DefaultIfEmpty(0).Sum();
+                List<Faktura> sveFakture = s.Query<Faktura>().ToList();
+                int sumaFaktura = sveFakture
+                    .Where(f => f.IDProjekta.ID == idProjekta)
+                    .Sum(f => f.Iznos);
 
                 trosak = sumaMaterijala + sumaOpreme + sumaFaktura;
 

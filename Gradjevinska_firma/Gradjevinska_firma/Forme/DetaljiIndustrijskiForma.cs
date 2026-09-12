@@ -47,6 +47,7 @@ namespace Gradjevinska_firma.Forme
             lbStatus.Text = projekat.Status;
             lbDatumPocetka.Text = projekat.Datum_pocetka.ToShortDateString();
             lbPlaniraniZavrsetak.Text = projekat.Planirani_zavrsetak.ToShortDateString();
+            lblTrosak.Text = projekat.Trosak.ToString();
 
             if (projekat.Stvarni_zavrsetak.HasValue)
                 lbStvarniZavrsetak.Text = projekat.Stvarni_zavrsetak.Value.ToShortDateString();
