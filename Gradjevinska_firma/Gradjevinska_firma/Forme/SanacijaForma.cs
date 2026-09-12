@@ -23,9 +23,9 @@ namespace Gradjevinska_firma.Forme
         {
             projekti.Items.Clear();
 
-            List<RekonstrukcijaPregled> lista = ProjekatDTOManager.vratiSveRekonstrukcije();
+            List<SanacijaPregled> lista = ProjekatDTOManager.vratiSveSanacije();
 
-            foreach (RekonstrukcijaPregled i in lista)
+            foreach (SanacijaPregled i in lista)
             {
                 ListViewItem item = new ListViewItem(new string[]
                 {
