@@ -43,12 +43,13 @@
             columnHeader5 = new ColumnHeader();
             columnHeader6 = new ColumnHeader();
             columnHeader7 = new ColumnHeader();
+            columnHeader8 = new ColumnHeader();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // button4
             // 
-            button4.Location = new Point(797, 177);
+            button4.Location = new Point(1007, 183);
             button4.Name = "button4";
             button4.Size = new Size(126, 39);
             button4.TabIndex = 14;
@@ -58,7 +59,7 @@
             // 
             // button3
             // 
-            button3.Location = new Point(797, 132);
+            button3.Location = new Point(1007, 138);
             button3.Name = "button3";
             button3.Size = new Size(126, 39);
             button3.TabIndex = 13;
@@ -68,7 +69,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(797, 87);
+            button2.Location = new Point(1007, 93);
             button2.Name = "button2";
             button2.Size = new Size(126, 39);
             button2.TabIndex = 12;
@@ -78,7 +79,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(797, 42);
+            button1.Location = new Point(1007, 48);
             button1.Name = "button1";
             button1.Size = new Size(126, 39);
             button1.TabIndex = 11;
@@ -95,19 +96,19 @@
             groupBox1.Controls.Add(button3);
             groupBox1.Location = new Point(12, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(937, 284);
+            groupBox1.Size = new Size(1169, 284);
             groupBox1.TabIndex = 15;
             groupBox1.TabStop = false;
             groupBox1.Text = "Projekti";
             // 
             // projekti
             // 
-            projekti.Columns.AddRange(new ColumnHeader[] { ID, Naziv, columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6, columnHeader7 });
+            projekti.Columns.AddRange(new ColumnHeader[] { ID, Naziv, columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6, columnHeader7, columnHeader8 });
             projekti.FullRowSelect = true;
             projekti.GridLines = true;
             projekti.Location = new Point(6, 22);
             projekti.Name = "projekti";
-            projekti.Size = new Size(741, 245);
+            projekti.Size = new Size(912, 245);
             projekti.TabIndex = 15;
             projekti.UseCompatibleStateImageBehavior = false;
             projekti.View = View.Details;
@@ -156,11 +157,15 @@
             columnHeader7.Text = "Stvarni_zavrsetak";
             columnHeader7.Width = 111;
             // 
+            // columnHeader8
+            // 
+            columnHeader8.Text = "Trosak";
+            // 
             // RekonstrukcijaForma
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(976, 322);
+            ClientSize = new Size(1240, 322);
             Controls.Add(groupBox1);
             Name = "RekonstrukcijaForma";
             Text = "RekonstrukcijaForma";
@@ -186,5 +191,6 @@
         private ColumnHeader columnHeader5;
         private ColumnHeader columnHeader6;
         private ColumnHeader columnHeader7;
+        private ColumnHeader columnHeader8;
     }
 }

@@ -86,6 +86,8 @@
             columnHeader16 = new ColumnHeader();
             columnHeader17 = new ColumnHeader();
             columnHeader18 = new ColumnHeader();
+            label1 = new Label();
+            lblTrosak = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -110,6 +112,8 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(lblTrosak);
+            tabPage1.Controls.Add(label1);
             tabPage1.Controls.Add(label2);
             tabPage1.Controls.Add(lbStvarniZavrsetak);
             tabPage1.Controls.Add(label6);
@@ -589,6 +593,24 @@
             // 
             columnHeader18.Text = "Budzet";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(19, 153);
+            label1.Name = "label1";
+            label1.Size = new Size(44, 15);
+            label1.TabIndex = 34;
+            label1.Text = "Trosak:";
+            // 
+            // lblTrosak
+            // 
+            lblTrosak.AutoSize = true;
+            lblTrosak.Location = new Point(81, 153);
+            lblTrosak.Name = "lblTrosak";
+            lblTrosak.Size = new Size(38, 15);
+            lblTrosak.TabIndex = 35;
+            lblTrosak.Text = "label3";
+            // 
             // DetaljiRekonstrukcijaForma
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -668,5 +690,7 @@
         private ColumnHeader columnHeader16;
         private ColumnHeader columnHeader17;
         private ColumnHeader columnHeader18;
+        private Label lblTrosak;
+        private Label label1;
     }
 }
