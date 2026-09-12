@@ -1,0 +1,696 @@
+﻿namespace Gradjevinska_firma.Forme
+{
+    partial class DetaljiStambeniForma
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            tabControl1 = new TabControl();
+            tabPage1 = new TabPage();
+            lblTrosak = new Label();
+            label1 = new Label();
+            label2 = new Label();
+            lbStvarniZavrsetak = new Label();
+            label6 = new Label();
+            lbPlaniraniZavrsetak = new Label();
+            label8 = new Label();
+            label9 = new Label();
+            lbDatumPocetka = new Label();
+            label11 = new Label();
+            label12 = new Label();
+            lbNaziv = new Label();
+            label14 = new Label();
+            lbLokacija = new Label();
+            lbOpis = new Label();
+            label17 = new Label();
+            lbBudzet = new Label();
+            lbStatus = new Label();
+            tabPage2 = new TabPage();
+            btnObrisiNabavku = new Button();
+            btnIzmeniNabavku = new Button();
+            btnDodajNabavku = new Button();
+            Nabavke = new ListView();
+            Br_nabavke = new ColumnHeader();
+            Datum = new ColumnHeader();
+            tabPage3 = new TabPage();
+            btnObrisi = new Button();
+            btnIzmeni = new Button();
+            btnDodaj = new Button();
+            Incidenti = new ListView();
+            columnHeader1 = new ColumnHeader();
+            columnHeader2 = new ColumnHeader();
+            columnHeader3 = new ColumnHeader();
+            columnHeader4 = new ColumnHeader();
+            columnHeader5 = new ColumnHeader();
+            columnHeader6 = new ColumnHeader();
+            columnHeader7 = new ColumnHeader();
+            tabPage4 = new TabPage();
+            btnObrisiFakturu = new Button();
+            btnIzmeniFakturu = new Button();
+            btnDodajFakturu = new Button();
+            Fakture = new ListView();
+            columnHeader8 = new ColumnHeader();
+            columnHeader9 = new ColumnHeader();
+            columnHeader10 = new ColumnHeader();
+            columnHeader11 = new ColumnHeader();
+            columnHeader12 = new ColumnHeader();
+            tabPage5 = new TabPage();
+            btnObrisiFazu = new Button();
+            btnIzmeniFazu = new Button();
+            btnDodajFazu = new Button();
+            Faze = new ListView();
+            columnHeader13 = new ColumnHeader();
+            columnHeader14 = new ColumnHeader();
+            columnHeader15 = new ColumnHeader();
+            columnHeader16 = new ColumnHeader();
+            columnHeader17 = new ColumnHeader();
+            columnHeader18 = new ColumnHeader();
+            tabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
+            tabPage2.SuspendLayout();
+            tabPage3.SuspendLayout();
+            tabPage4.SuspendLayout();
+            tabPage5.SuspendLayout();
+            SuspendLayout();
+            // 
+            // tabControl1
+            // 
+            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Controls.Add(tabPage3);
+            tabControl1.Controls.Add(tabPage4);
+            tabControl1.Controls.Add(tabPage5);
+            tabControl1.Location = new Point(12, 1);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(841, 256);
+            tabControl1.TabIndex = 24;
+            tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
+            // 
+            // tabPage1
+            // 
+            tabPage1.Controls.Add(lblTrosak);
+            tabPage1.Controls.Add(label1);
+            tabPage1.Controls.Add(label2);
+            tabPage1.Controls.Add(lbStvarniZavrsetak);
+            tabPage1.Controls.Add(label6);
+            tabPage1.Controls.Add(lbPlaniraniZavrsetak);
+            tabPage1.Controls.Add(label8);
+            tabPage1.Controls.Add(label9);
+            tabPage1.Controls.Add(lbDatumPocetka);
+            tabPage1.Controls.Add(label11);
+            tabPage1.Controls.Add(label12);
+            tabPage1.Controls.Add(lbNaziv);
+            tabPage1.Controls.Add(label14);
+            tabPage1.Controls.Add(lbLokacija);
+            tabPage1.Controls.Add(lbOpis);
+            tabPage1.Controls.Add(label17);
+            tabPage1.Controls.Add(lbBudzet);
+            tabPage1.Controls.Add(lbStatus);
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(833, 228);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "Osnovni podaci";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // lblTrosak
+            // 
+            lblTrosak.AutoSize = true;
+            lblTrosak.Location = new Point(87, 159);
+            lblTrosak.Name = "lblTrosak";
+            lblTrosak.Size = new Size(38, 15);
+            lblTrosak.TabIndex = 35;
+            lblTrosak.Text = "label3";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(25, 159);
+            label1.Name = "label1";
+            label1.Size = new Size(44, 15);
+            label1.TabIndex = 34;
+            label1.Text = "Trosak:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(25, 27);
+            label2.Name = "label2";
+            label2.Size = new Size(39, 15);
+            label2.TabIndex = 18;
+            label2.Text = "Naziv:";
+            // 
+            // lbStvarniZavrsetak
+            // 
+            lbStvarniZavrsetak.AutoSize = true;
+            lbStvarniZavrsetak.Location = new Point(570, 86);
+            lbStvarniZavrsetak.Name = "lbStvarniZavrsetak";
+            lbStvarniZavrsetak.Size = new Size(38, 15);
+            lbStvarniZavrsetak.TabIndex = 33;
+            lbStvarniZavrsetak.Text = "label1";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(25, 77);
+            label6.Name = "label6";
+            label6.Size = new Size(53, 15);
+            label6.TabIndex = 20;
+            label6.Text = "Lokacija:";
+            // 
+            // lbPlaniraniZavrsetak
+            // 
+            lbPlaniraniZavrsetak.AutoSize = true;
+            lbPlaniraniZavrsetak.Location = new Point(570, 53);
+            lbPlaniraniZavrsetak.Name = "lbPlaniraniZavrsetak";
+            lbPlaniraniZavrsetak.Size = new Size(38, 15);
+            lbPlaniraniZavrsetak.TabIndex = 32;
+            lbPlaniraniZavrsetak.Text = "label1";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(25, 103);
+            label8.Name = "label8";
+            label8.Size = new Size(46, 15);
+            label8.TabIndex = 21;
+            label8.Text = "Budzet:";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(25, 53);
+            label9.Name = "label9";
+            label9.Size = new Size(34, 15);
+            label9.TabIndex = 19;
+            label9.Text = "Opis:";
+            // 
+            // lbDatumPocetka
+            // 
+            lbDatumPocetka.AutoSize = true;
+            lbDatumPocetka.Location = new Point(570, 18);
+            lbDatumPocetka.Name = "lbDatumPocetka";
+            lbDatumPocetka.Size = new Size(38, 15);
+            lbDatumPocetka.TabIndex = 31;
+            lbDatumPocetka.Text = "label1";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(25, 132);
+            label11.Name = "label11";
+            label11.Size = new Size(42, 15);
+            label11.TabIndex = 22;
+            label11.Text = "Status:";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(447, 86);
+            label12.Name = "label12";
+            label12.Size = new Size(97, 15);
+            label12.TabIndex = 30;
+            label12.Text = "Stvarni zavrsetak:";
+            // 
+            // lbNaziv
+            // 
+            lbNaziv.AutoSize = true;
+            lbNaziv.Location = new Point(87, 27);
+            lbNaziv.Name = "lbNaziv";
+            lbNaziv.Size = new Size(38, 15);
+            lbNaziv.TabIndex = 23;
+            lbNaziv.Text = "label1";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(447, 53);
+            label14.Name = "label14";
+            label14.Size = new Size(107, 15);
+            label14.TabIndex = 29;
+            label14.Text = "Planirani zavrsetak:";
+            // 
+            // lbLokacija
+            // 
+            lbLokacija.AutoSize = true;
+            lbLokacija.Location = new Point(87, 77);
+            lbLokacija.Name = "lbLokacija";
+            lbLokacija.Size = new Size(38, 15);
+            lbLokacija.TabIndex = 24;
+            lbLokacija.Text = "label1";
+            // 
+            // lbOpis
+            // 
+            lbOpis.AutoSize = true;
+            lbOpis.Location = new Point(87, 53);
+            lbOpis.Name = "lbOpis";
+            lbOpis.Size = new Size(38, 15);
+            lbOpis.TabIndex = 25;
+            lbOpis.Text = "label1";
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new Point(447, 18);
+            label17.Name = "label17";
+            label17.Size = new Size(91, 15);
+            label17.TabIndex = 28;
+            label17.Text = "Datum pocetka:";
+            // 
+            // lbBudzet
+            // 
+            lbBudzet.AutoSize = true;
+            lbBudzet.Location = new Point(87, 103);
+            lbBudzet.Name = "lbBudzet";
+            lbBudzet.Size = new Size(38, 15);
+            lbBudzet.TabIndex = 26;
+            lbBudzet.Text = "label1";
+            // 
+            // lbStatus
+            // 
+            lbStatus.AutoSize = true;
+            lbStatus.Location = new Point(87, 132);
+            lbStatus.Name = "lbStatus";
+            lbStatus.Size = new Size(38, 15);
+            lbStatus.TabIndex = 27;
+            lbStatus.Text = "label1";
+            // 
+            // tabPage2
+            // 
+            tabPage2.Controls.Add(btnObrisiNabavku);
+            tabPage2.Controls.Add(btnIzmeniNabavku);
+            tabPage2.Controls.Add(btnDodajNabavku);
+            tabPage2.Controls.Add(Nabavke);
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(833, 228);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Nabavke";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnObrisiNabavku
+            // 
+            btnObrisiNabavku.Location = new Point(692, 166);
+            btnObrisiNabavku.Name = "btnObrisiNabavku";
+            btnObrisiNabavku.Size = new Size(113, 40);
+            btnObrisiNabavku.TabIndex = 3;
+            btnObrisiNabavku.Text = "Obrisi";
+            btnObrisiNabavku.UseVisualStyleBackColor = true;
+            btnObrisiNabavku.Click += btnObrisiNabavku_Click;
+            // 
+            // btnIzmeniNabavku
+            // 
+            btnIzmeniNabavku.Location = new Point(692, 95);
+            btnIzmeniNabavku.Name = "btnIzmeniNabavku";
+            btnIzmeniNabavku.Size = new Size(113, 40);
+            btnIzmeniNabavku.TabIndex = 2;
+            btnIzmeniNabavku.Text = "Izmeni";
+            btnIzmeniNabavku.UseVisualStyleBackColor = true;
+            btnIzmeniNabavku.Click += btnIzmeniNabavku_Click;
+            // 
+            // btnDodajNabavku
+            // 
+            btnDodajNabavku.Location = new Point(692, 30);
+            btnDodajNabavku.Name = "btnDodajNabavku";
+            btnDodajNabavku.Size = new Size(113, 40);
+            btnDodajNabavku.TabIndex = 1;
+            btnDodajNabavku.Text = "Dodaj";
+            btnDodajNabavku.UseVisualStyleBackColor = true;
+            btnDodajNabavku.Click += btnDodajNabavku_Click;
+            // 
+            // Nabavke
+            // 
+            Nabavke.Columns.AddRange(new ColumnHeader[] { Br_nabavke, Datum });
+            Nabavke.FullRowSelect = true;
+            Nabavke.GridLines = true;
+            Nabavke.Location = new Point(3, 19);
+            Nabavke.Name = "Nabavke";
+            Nabavke.Size = new Size(629, 203);
+            Nabavke.TabIndex = 0;
+            Nabavke.UseCompatibleStateImageBehavior = false;
+            Nabavke.View = View.Details;
+            // 
+            // Br_nabavke
+            // 
+            Br_nabavke.Text = "Br_nabavke";
+            Br_nabavke.Width = 80;
+            // 
+            // Datum
+            // 
+            Datum.Text = "Datum";
+            Datum.Width = 130;
+            // 
+            // tabPage3
+            // 
+            tabPage3.Controls.Add(btnObrisi);
+            tabPage3.Controls.Add(btnIzmeni);
+            tabPage3.Controls.Add(btnDodaj);
+            tabPage3.Controls.Add(Incidenti);
+            tabPage3.Location = new Point(4, 24);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Size = new Size(833, 228);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "Bezbednosni Incidenti";
+            tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // btnObrisi
+            // 
+            btnObrisi.Location = new Point(660, 147);
+            btnObrisi.Name = "btnObrisi";
+            btnObrisi.Size = new Size(128, 37);
+            btnObrisi.TabIndex = 3;
+            btnObrisi.Text = "Obrisi";
+            btnObrisi.UseVisualStyleBackColor = true;
+            btnObrisi.Click += btnObrisi_Click;
+            // 
+            // btnIzmeni
+            // 
+            btnIzmeni.Location = new Point(660, 88);
+            btnIzmeni.Name = "btnIzmeni";
+            btnIzmeni.Size = new Size(128, 37);
+            btnIzmeni.TabIndex = 2;
+            btnIzmeni.Text = "Izmeni";
+            btnIzmeni.UseVisualStyleBackColor = true;
+            btnIzmeni.Click += btnIzmeni_Click;
+            // 
+            // btnDodaj
+            // 
+            btnDodaj.Location = new Point(660, 28);
+            btnDodaj.Name = "btnDodaj";
+            btnDodaj.Size = new Size(128, 37);
+            btnDodaj.TabIndex = 1;
+            btnDodaj.Text = "Dodaj";
+            btnDodaj.UseVisualStyleBackColor = true;
+            btnDodaj.Click += btnDodaj_Click;
+            // 
+            // Incidenti
+            // 
+            Incidenti.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6, columnHeader7 });
+            Incidenti.FullRowSelect = true;
+            Incidenti.GridLines = true;
+            Incidenti.Location = new Point(3, 12);
+            Incidenti.Name = "Incidenti";
+            Incidenti.Size = new Size(596, 216);
+            Incidenti.TabIndex = 0;
+            Incidenti.UseCompatibleStateImageBehavior = false;
+            Incidenti.View = View.Details;
+            // 
+            // columnHeader1
+            // 
+            columnHeader1.Text = "ID";
+            // 
+            // columnHeader2
+            // 
+            columnHeader2.Text = "Opis";
+            // 
+            // columnHeader3
+            // 
+            columnHeader3.Text = "Datum";
+            // 
+            // columnHeader4
+            // 
+            columnHeader4.Text = "Lokacija";
+            // 
+            // columnHeader5
+            // 
+            columnHeader5.Text = "Preduzete_mere";
+            columnHeader5.Width = 100;
+            // 
+            // columnHeader6
+            // 
+            columnHeader6.Text = "Posledice";
+            columnHeader6.Width = 70;
+            // 
+            // columnHeader7
+            // 
+            columnHeader7.Text = "Tip_incidenta";
+            columnHeader7.Width = 90;
+            // 
+            // tabPage4
+            // 
+            tabPage4.Controls.Add(btnObrisiFakturu);
+            tabPage4.Controls.Add(btnIzmeniFakturu);
+            tabPage4.Controls.Add(btnDodajFakturu);
+            tabPage4.Controls.Add(Fakture);
+            tabPage4.Location = new Point(4, 24);
+            tabPage4.Name = "tabPage4";
+            tabPage4.Size = new Size(833, 228);
+            tabPage4.TabIndex = 3;
+            tabPage4.Text = "Faktura";
+            tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // btnObrisiFakturu
+            // 
+            btnObrisiFakturu.Location = new Point(664, 147);
+            btnObrisiFakturu.Name = "btnObrisiFakturu";
+            btnObrisiFakturu.Size = new Size(126, 36);
+            btnObrisiFakturu.TabIndex = 3;
+            btnObrisiFakturu.Text = "Obrisi";
+            btnObrisiFakturu.UseVisualStyleBackColor = true;
+            btnObrisiFakturu.Click += btnObrisiFakturu_Click;
+            // 
+            // btnIzmeniFakturu
+            // 
+            btnIzmeniFakturu.Location = new Point(664, 88);
+            btnIzmeniFakturu.Name = "btnIzmeniFakturu";
+            btnIzmeniFakturu.Size = new Size(126, 36);
+            btnIzmeniFakturu.TabIndex = 2;
+            btnIzmeniFakturu.Text = "Izmeni";
+            btnIzmeniFakturu.UseVisualStyleBackColor = true;
+            btnIzmeniFakturu.Click += btnIzmeniFakturu_Click;
+            // 
+            // btnDodajFakturu
+            // 
+            btnDodajFakturu.Location = new Point(664, 28);
+            btnDodajFakturu.Name = "btnDodajFakturu";
+            btnDodajFakturu.Size = new Size(126, 36);
+            btnDodajFakturu.TabIndex = 1;
+            btnDodajFakturu.Text = "Dodaj";
+            btnDodajFakturu.UseVisualStyleBackColor = true;
+            btnDodajFakturu.Click += btnDodajFakturu_Click;
+            // 
+            // Fakture
+            // 
+            Fakture.Columns.AddRange(new ColumnHeader[] { columnHeader8, columnHeader9, columnHeader10, columnHeader11, columnHeader12 });
+            Fakture.FullRowSelect = true;
+            Fakture.GridLines = true;
+            Fakture.Location = new Point(3, 13);
+            Fakture.Name = "Fakture";
+            Fakture.Size = new Size(632, 212);
+            Fakture.TabIndex = 0;
+            Fakture.UseCompatibleStateImageBehavior = false;
+            Fakture.View = View.Details;
+            // 
+            // columnHeader8
+            // 
+            columnHeader8.Text = "Br_fakture";
+            columnHeader8.Width = 65;
+            // 
+            // columnHeader9
+            // 
+            columnHeader9.Text = "Iznos";
+            // 
+            // columnHeader10
+            // 
+            columnHeader10.Text = "Valuta";
+            // 
+            // columnHeader11
+            // 
+            columnHeader11.Text = "Status_placanja";
+            columnHeader11.Width = 105;
+            // 
+            // columnHeader12
+            // 
+            columnHeader12.Text = "Datum";
+            columnHeader12.Width = 80;
+            // 
+            // tabPage5
+            // 
+            tabPage5.Controls.Add(btnObrisiFazu);
+            tabPage5.Controls.Add(btnIzmeniFazu);
+            tabPage5.Controls.Add(btnDodajFazu);
+            tabPage5.Controls.Add(Faze);
+            tabPage5.Location = new Point(4, 24);
+            tabPage5.Name = "tabPage5";
+            tabPage5.Size = new Size(833, 228);
+            tabPage5.TabIndex = 4;
+            tabPage5.Text = "Faza";
+            tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // btnObrisiFazu
+            // 
+            btnObrisiFazu.Location = new Point(670, 154);
+            btnObrisiFazu.Name = "btnObrisiFazu";
+            btnObrisiFazu.Size = new Size(116, 36);
+            btnObrisiFazu.TabIndex = 3;
+            btnObrisiFazu.Text = "Obrisi";
+            btnObrisiFazu.UseVisualStyleBackColor = true;
+            btnObrisiFazu.Click += btnObrisiFazu_Click;
+            // 
+            // btnIzmeniFazu
+            // 
+            btnIzmeniFazu.Location = new Point(670, 95);
+            btnIzmeniFazu.Name = "btnIzmeniFazu";
+            btnIzmeniFazu.Size = new Size(116, 36);
+            btnIzmeniFazu.TabIndex = 2;
+            btnIzmeniFazu.Text = "Izmeni";
+            btnIzmeniFazu.UseVisualStyleBackColor = true;
+            btnIzmeniFazu.Click += btnIzmeniFazu_Click;
+            // 
+            // btnDodajFazu
+            // 
+            btnDodajFazu.Location = new Point(670, 36);
+            btnDodajFazu.Name = "btnDodajFazu";
+            btnDodajFazu.Size = new Size(116, 36);
+            btnDodajFazu.TabIndex = 1;
+            btnDodajFazu.Text = "Dodaj";
+            btnDodajFazu.UseVisualStyleBackColor = true;
+            btnDodajFazu.Click += btnDodajFazu_Click;
+            // 
+            // Faze
+            // 
+            Faze.Columns.AddRange(new ColumnHeader[] { columnHeader13, columnHeader14, columnHeader15, columnHeader16, columnHeader17, columnHeader18 });
+            Faze.FullRowSelect = true;
+            Faze.GridLines = true;
+            Faze.Location = new Point(3, 17);
+            Faze.Name = "Faze";
+            Faze.Size = new Size(621, 208);
+            Faze.TabIndex = 0;
+            Faze.UseCompatibleStateImageBehavior = false;
+            Faze.View = View.Details;
+            // 
+            // columnHeader13
+            // 
+            columnHeader13.Text = "ID";
+            // 
+            // columnHeader14
+            // 
+            columnHeader14.Text = "Naziv";
+            // 
+            // columnHeader15
+            // 
+            columnHeader15.Text = "Datum_od";
+            columnHeader15.Width = 80;
+            // 
+            // columnHeader16
+            // 
+            columnHeader16.Text = "Datum_do";
+            columnHeader16.Width = 80;
+            // 
+            // columnHeader17
+            // 
+            columnHeader17.Text = "Status";
+            // 
+            // columnHeader18
+            // 
+            columnHeader18.Text = "Budzet";
+            // 
+            // DetaljiStambeniForma
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(863, 270);
+            Controls.Add(tabControl1);
+            Name = "DetaljiStambeniForma";
+            Text = "DetaljiStambeniForma";
+            Load += DetaljiStambeniForma_Load;
+            tabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tabPage1.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            tabPage3.ResumeLayout(false);
+            tabPage4.ResumeLayout(false);
+            tabPage5.ResumeLayout(false);
+            ResumeLayout(false);
+        }
+
+        #endregion
+
+        private TabControl tabControl1;
+        private TabPage tabPage1;
+        private Label lblTrosak;
+        private Label label1;
+        private Label label2;
+        private Label lbStvarniZavrsetak;
+        private Label label6;
+        private Label lbPlaniraniZavrsetak;
+        private Label label8;
+        private Label label9;
+        private Label lbDatumPocetka;
+        private Label label11;
+        private Label label12;
+        private Label lbNaziv;
+        private Label label14;
+        private Label lbLokacija;
+        private Label lbOpis;
+        private Label label17;
+        private Label lbBudzet;
+        private Label lbStatus;
+        private TabPage tabPage2;
+        private Button btnObrisiNabavku;
+        private Button btnIzmeniNabavku;
+        private Button btnDodajNabavku;
+        private ListView Nabavke;
+        private ColumnHeader Br_nabavke;
+        private ColumnHeader Datum;
+        private TabPage tabPage3;
+        private Button btnObrisi;
+        private Button btnIzmeni;
+        private Button btnDodaj;
+        private ListView Incidenti;
+        private ColumnHeader columnHeader1;
+        private ColumnHeader columnHeader2;
+        private ColumnHeader columnHeader3;
+        private ColumnHeader columnHeader4;
+        private ColumnHeader columnHeader5;
+        private ColumnHeader columnHeader6;
+        private ColumnHeader columnHeader7;
+        private TabPage tabPage4;
+        private Button btnObrisiFakturu;
+        private Button btnIzmeniFakturu;
+        private Button btnDodajFakturu;
+        private ListView Fakture;
+        private ColumnHeader columnHeader8;
+        private ColumnHeader columnHeader9;
+        private ColumnHeader columnHeader10;
+        private ColumnHeader columnHeader11;
+        private ColumnHeader columnHeader12;
+        private TabPage tabPage5;
+        private Button btnObrisiFazu;
+        private Button btnIzmeniFazu;
+        private Button btnDodajFazu;
+        private ListView Faze;
+        private ColumnHeader columnHeader13;
+        private ColumnHeader columnHeader14;
+        private ColumnHeader columnHeader15;
+        private ColumnHeader columnHeader16;
+        private ColumnHeader columnHeader17;
+        private ColumnHeader columnHeader18;
+    }
+}
