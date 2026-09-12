@@ -22,6 +22,9 @@
     <Compile Update="Forme\DetaljiRekonstrukcijaForma.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\DetaljiSanacijaForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\DetaljiUgovoraForma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +113,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\DodajRekonstrukcijaForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\DodajSanacijaForma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\DodajSertifikatSpecOpremeForma.cs">
@@ -224,6 +230,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\IzmeniRekonstrukcijaForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\IzmeniSanacijaForma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\IzmeniSertifikatSpecOpremeFormacs.cs">
