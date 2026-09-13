@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gradjevinska_firma.DTO;
 using Gradjevinska_firma.DTOManager;
+using Gradjevinska_firma.Entiteti;
 
 namespace Gradjevinska_firma.Forme
 {
@@ -28,9 +29,42 @@ namespace Gradjevinska_firma.Forme
             popuniNadFaze();
             popuniPravnaLica();
 
-            dtpDatumDo.ShowCheckBox = true;
+            FazaBasic faza = FazaDTOManager.vratiFazuProjekta(idFaze);
 
-            dtpDatumDo.Checked = false;
+            cbNaziv.SelectedItem = faza.Naziv;
+            cbStatus.SelectedItem = faza.Status;
+            nudBudzet.Value = (int)faza.Budzet;
+
+            if (faza.FizickoLice != null)
+            {
+                foreach (var item in cbFicickoLice.Items)
+                {
+                    if (item is FizickoLicePregled f && f.Id == faza.FizickoLice.Id)
+                    {
+                        cbFicickoLice.SelectedValue = item;
+                        break;
+                    }
+                }
+            }
+
+            if (faza.NadFaza != null)
+            {
+                foreach (var item in cbNadFaza.Items)
+                {
+                    if (item is FazaPregled fp && fp.Id == faza.NadFaza.Id)
+                    {
+                        cbNadFaza.SelectedValue = item;
+                        break;
+                    }
+                }
+            }
+
+            if (faza.DatumDo.HasValue)
+            {
+                dtpDatumDo.Value = faza.DatumDo.Value;
+                dtpDatumDo.Checked = true;
+            }
+            dtpDatumOd.Value = faza.DatumOd;
         }
 
         private void popuniNadFaze()

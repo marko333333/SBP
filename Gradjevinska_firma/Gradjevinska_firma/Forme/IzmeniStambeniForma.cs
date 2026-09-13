@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,9 +26,22 @@ namespace Gradjevinska_firma.Forme
 
         private void IzmeniStambeniForma_Load(object sender, EventArgs e)
         {
-            dtpStvarniZavrsetak.ShowCheckBox = true;
 
-            dtpStvarniZavrsetak.Checked = false;
+            StambeniBasic stambeni = ProjekatDTOManager.vratiStambeni(idStambeni);
+
+            tbNaziv.Text = stambeni.Naziv;
+            tbOpis.Text = stambeni.Opis;
+            tbOpis.Text = stambeni.Opis;
+            tbLokacija.Text = stambeni.Lokacija;
+            dtpDatumPocetka.Value = stambeni.Datum_pocetka;
+            nudBudzet.Value = (int)stambeni.Budzet;
+            cbStatus.Text = stambeni.Status;
+            dtpPlaniraniZavrsetak.Value = stambeni.Planirani_zavrsetak;
+            if (stambeni.Stvarni_zavrsetak.HasValue)
+            {
+                dtpStvarniZavrsetak.Value = stambeni.Stvarni_zavrsetak.Value;
+                dtpStvarniZavrsetak.Checked = true;
+            }
         }
 
         private void Izmeni_button_Click(object sender, EventArgs e)

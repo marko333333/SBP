@@ -14,6 +14,42 @@ namespace Gradjevinska_firma.DTOManager
     {
         #region Faktura
 
+        //public virtual int Br_fakture { get; set; }
+        //public virtual int Iznos { get; set; }
+        //public virtual string Valuta { get; set; }
+        //public virtual bool statusPlacanja { get; set; }
+        //public virtual DateTime Datum { get; set; }
+
+        //public virtual Projekat IDProjekta { get; set; }
+        //public virtual PravnaLica PravnoLiceIzdaje { get; set; }
+        //public virtual PravnaLica PravnoLicePrima { get; set; }
+        public static FakturaBasic vratiFakturuProjekta(int idFakture)
+        {
+            FakturaBasic faktura = new FakturaBasic();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Faktura f = s.Get<Faktura>(idFakture);
+                if (f != null)
+                {
+                    ProjekatBasic projekat = ProjekatDTOManager.vratiProjekat(f.IDProjekta.ID);
+                    PravnaLicaBasic izdavalac = OsobaDTOManager.vratiPravnoLice(f.PravnoLiceIzdaje.Id);
+                    PravnaLicaBasic primalac = OsobaDTOManager.vratiPravnoLice(f.PravnoLicePrima.Id);
+
+
+                    faktura = new FakturaBasic(f.Br_fakture,f.Iznos,f.Valuta,f.statusPlacanja,f.Datum,projekat,izdavalac,primalac);
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return faktura;
+        }
         public static List<FakturaBasic> vratiFaktureProjekta(int idProjekta)
         {
             List<FakturaBasic> fakture = new List<FakturaBasic>();

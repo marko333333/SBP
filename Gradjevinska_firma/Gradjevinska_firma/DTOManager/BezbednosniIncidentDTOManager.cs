@@ -14,6 +14,34 @@ namespace Gradjevinska_firma.DTOManager
     {
         #region BezbednosniIncident
 
+        public static BezbednosniIncidentBasic vratiBezbednosniIncidentProjekta(int idIncidenta)
+        {
+            BezbednosniIncidentBasic incident = new BezbednosniIncidentBasic();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                BezbednosniIncident b = s.Get<BezbednosniIncident>(idIncidenta);
+                if (b != null)
+                {
+                    ProjekatBasic projekat = ProjekatDTOManager.vratiProjekat(b.Projekat.ID);
+                    OsobaBasic osoba = OsobaDTOManager.vratiOsobu(b.Osoba.Id);
+
+                    incident = new BezbednosniIncidentBasic(
+                        b.ID, b.Opis, b.Datum, b.Lokacija, b.Preduzete_mere,
+                        b.Posledice, b.Tip_incidenta, projekat, osoba);
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return incident;
+        }
+
         public static List<BezbednosniIncidentBasic> vratiBezbednosniIncidenteProjekta(int idProjekta)
         {
             List<BezbednosniIncidentBasic> incidenti = new List<BezbednosniIncidentBasic>();

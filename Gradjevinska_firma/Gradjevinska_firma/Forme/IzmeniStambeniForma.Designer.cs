@@ -88,6 +88,7 @@
             // nudBudzet
             // 
             nudBudzet.Location = new Point(70, 109);
+            nudBudzet.Maximum = new decimal(new int[] { 1410065408, 2, 0, 0 });
             nudBudzet.Name = "nudBudzet";
             nudBudzet.Size = new Size(120, 23);
             nudBudzet.TabIndex = 18;

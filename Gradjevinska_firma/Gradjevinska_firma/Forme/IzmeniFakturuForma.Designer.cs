@@ -98,6 +98,7 @@
             // nudIznos
             // 
             nudIznos.Location = new Point(107, 22);
+            nudIznos.Maximum = new decimal(new int[] { 100000000, 0, 0, 0 });
             nudIznos.Name = "nudIznos";
             nudIznos.Size = new Size(120, 23);
             nudIznos.TabIndex = 3;

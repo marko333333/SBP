@@ -24,9 +24,21 @@ namespace Gradjevinska_firma.Forme
 
         private void IzmeniPoslovniForma_Load(object sender, EventArgs e)
         {
-            dtpStvarniZavrsetak.ShowCheckBox = true;
+            PoslovniBasic poslovni = ProjekatDTOManager.vratiPoslovni(idPoslovni);
 
-            dtpStvarniZavrsetak.Checked = false;
+            tbNaziv.Text = poslovni.Naziv;
+            tbOpis.Text = poslovni.Opis;
+            tbOpis.Text = poslovni.Opis;
+            tbLokacija.Text = poslovni.Lokacija;
+            dtpDatumPocetka.Value = poslovni.Datum_pocetka;
+            nudBudzet.Value = (int)poslovni.Budzet;
+            cbStatus.Text = poslovni.Status;
+            dtpPlaniraniZavrsetak.Value = poslovni.Planirani_zavrsetak;
+            if (poslovni.Stvarni_zavrsetak.HasValue)
+            {
+                dtpStvarniZavrsetak.Value = poslovni.Stvarni_zavrsetak.Value;
+                dtpStvarniZavrsetak.Checked = true;
+            }
         }
 
         private void Izmeni_button_Click(object sender, EventArgs e)

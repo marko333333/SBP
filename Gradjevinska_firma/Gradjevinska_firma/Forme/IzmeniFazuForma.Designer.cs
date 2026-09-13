@@ -106,7 +106,7 @@
             // 
             nudBudzet.Location = new Point(71, 85);
             nudBudzet.Margin = new Padding(3, 2, 3, 2);
-            nudBudzet.Maximum = new decimal(new int[] { 5, 0, 0, 0 });
+            nudBudzet.Maximum = new decimal(new int[] { 100000000, 0, 0, 0 });
             nudBudzet.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             nudBudzet.Name = "nudBudzet";
             nudBudzet.Size = new Size(140, 23);

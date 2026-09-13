@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gradjevinska_firma.DTO;
 using Gradjevinska_firma.DTOManager;
+using Gradjevinska_firma.Entiteti;
 
 namespace Gradjevinska_firma.Forme
 {
@@ -26,6 +27,16 @@ namespace Gradjevinska_firma.Forme
         private void IzmeniFakturuForma_Load(object sender, EventArgs e)
         {
             PopuniPravnimLicima();
+
+            FakturaBasic faktura = FakturaDTOManager.vratiFakturuProjekta(idFakture);
+
+            nudIznos.Value = faktura.Iznos;
+            tbValuta.Text = faktura.Iznos.ToString();
+            tbValuta.Text = faktura.Valuta;
+            cbStatusPlacanja.Checked = faktura.StatusPlacanja;
+            cbIzdavalac.SelectedValue = faktura.PravnoLiceIzdaje;
+            cbPrimalac.SelectedValue = faktura.PravnoLicePrima;
+            dtpDatum.Value = faktura.Datum;
         }
 
         private void PopuniPravnimLicima()

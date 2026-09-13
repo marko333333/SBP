@@ -24,9 +24,21 @@ namespace Gradjevinska_firma.Forme
 
         private void IzmeniSanacijaForma_Load(object sender, EventArgs e)
         {
-            dtpStvarniZavrsetak.ShowCheckBox = true;
+            SanacijaBasic sanacija = ProjekatDTOManager.vratiSanaciju(idSanacija);
 
-            dtpStvarniZavrsetak.Checked = false;
+            tbNaziv.Text = sanacija.Naziv;
+            tbOpis.Text = sanacija.Opis;
+            tbOpis.Text = sanacija.Opis;
+            tbLokacija.Text = sanacija.Lokacija;
+            dtpDatumPocetka.Value = sanacija.Datum_pocetka;
+            nudBudzet.Value = (int)sanacija.Budzet;
+            cbStatus.Text = sanacija.Status;
+            dtpPlaniraniZavrsetak.Value = sanacija.Planirani_zavrsetak;
+            if (sanacija.Stvarni_zavrsetak.HasValue)
+            {
+                dtpStvarniZavrsetak.Value = sanacija.Stvarni_zavrsetak.Value;
+                dtpStvarniZavrsetak.Checked = true;
+            }
         }
 
         private void Izmeni_button_Click(object sender, EventArgs e)

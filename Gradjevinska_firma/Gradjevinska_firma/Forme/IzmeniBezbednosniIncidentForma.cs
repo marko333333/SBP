@@ -26,6 +26,16 @@ namespace Gradjevinska_firma.Forme
         private void IzmeniBezbednosniIncidentForma_Load(object sender, EventArgs e)
         {
             PopuniOsobama();
+
+            BezbednosniIncidentBasic incident = BezbednosniIncidentDTOManager.vratiBezbednosniIncidentProjekta(IdIncidenta);
+
+            tbOpis.Text = incident.Opis;
+            tbLokacija.Text = incident.Lokacija;
+            tbPreduzeteMere.Text = incident.Preduzete_mere;
+            tbPosledice.Text = incident.Posledice;
+            cbTipIncidenta.SelectedItem = incident.Tip_incidenta;
+            dtpDatum.Value = incident.Datum;
+            cbOsoba.SelectedItem = incident.Osoba;
         }
 
         private void PopuniOsobama()

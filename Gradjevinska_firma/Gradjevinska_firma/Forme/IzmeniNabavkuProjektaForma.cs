@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gradjevinska_firma.DTO;
 using Gradjevinska_firma.DTOManager;
+using Gradjevinska_firma.Entiteti;
 
 namespace Gradjevinska_firma.Forme
 {
@@ -38,6 +39,12 @@ namespace Gradjevinska_firma.Forme
 
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void IzmeniNabavkuProjektaForma_Load(object sender, EventArgs e)
+        {
+            NabavkeBasic nabavka = NabavkeDTOManager.vratiNabavku(idNabavke);
+            dtpDatum.Value = nabavka.Datum;
         }
     }
 }

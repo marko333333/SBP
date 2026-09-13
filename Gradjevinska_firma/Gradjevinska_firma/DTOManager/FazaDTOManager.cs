@@ -14,6 +14,41 @@ namespace Gradjevinska_firma.DTOManager
     {
         #region Faza
 
+        public static FazaBasic vratiFazuProjekta(int idFaze)
+        {
+            FazaBasic faza = new FazaBasic();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Faza f = s.Get<Faza>(idFaze);
+                if (f != null)
+                {
+                    ProjekatBasic projekat = ProjekatDTOManager.vratiProjekat(f.Projekat.ID);
+                    FizickoLiceBasic fizLice = OsobaDTOManager.vratiFizickoLice(f.FizickoLice.Id);
+
+                    FazaBasic nadFaza = null;
+                    if (f.NadFaza != null)
+                    {
+                        nadFaza = new FazaBasic();
+                        nadFaza.Id = f.NadFaza.Id;
+                        nadFaza.Naziv = f.NadFaza.Naziv;
+                    }
+
+
+                    faza = new FazaBasic(f.Id,f.Naziv, f.DatumOd, f.DatumDo , f.Status, f.Budzet, projekat, fizLice, nadFaza);
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return faza;
+        }
+
         public static List<FazaPregled> vratiSveFaze()
         {
             List<FazaPregled> faze = new List<FazaPregled>();

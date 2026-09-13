@@ -81,6 +81,7 @@
             Controls.Add(groupBox1);
             Name = "IzmeniNabavkuProjektaForma";
             Text = "IzmeniNabavkuProjektaForma";
+            Load += IzmeniNabavkuProjektaForma_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);

@@ -24,9 +24,21 @@ namespace Gradjevinska_firma.Forme
 
         private void IzmeniRekonstrukcijaForma_Load(object sender, EventArgs e)
         {
-            dtpStvarniZavrsetak.ShowCheckBox = true;
+            RekonstrukcijaBasic rekon = ProjekatDTOManager.vratiRekonstrukciju(idRekonstrukcija);
 
-            dtpStvarniZavrsetak.Checked = false;
+            tbNaziv.Text = rekon.Naziv;
+            tbOpis.Text = rekon.Opis;
+            tbOpis.Text = rekon.Opis;
+            tbLokacija.Text = rekon.Lokacija;
+            dtpDatumPocetka.Value = rekon.Datum_pocetka;
+            nudBudzet.Value = (int)rekon.Budzet;
+            cbStatus.Text = rekon.Status;
+            dtpPlaniraniZavrsetak.Value = rekon.Planirani_zavrsetak;
+            if (rekon.Stvarni_zavrsetak.HasValue)
+            {
+                dtpStvarniZavrsetak.Value = rekon.Stvarni_zavrsetak.Value;
+                dtpStvarniZavrsetak.Checked = true;
+            }
         }
 
         private void Izmeni_button_Click(object sender, EventArgs e)
