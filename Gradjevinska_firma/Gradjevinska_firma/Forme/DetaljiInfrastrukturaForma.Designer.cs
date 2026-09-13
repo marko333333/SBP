@@ -49,6 +49,7 @@
             lbBudzet = new Label();
             lbStatus = new Label();
             tabPage2 = new TabPage();
+            btnDetaljiNabavke = new Button();
             btnObrisiNabavku = new Button();
             btnIzmeniNabavku = new Button();
             btnDodajNabavku = new Button();
@@ -88,13 +89,20 @@
             columnHeader16 = new ColumnHeader();
             columnHeader17 = new ColumnHeader();
             columnHeader18 = new ColumnHeader();
-            btnDetaljiNabavke = new Button();
+            tabPage6 = new TabPage();
+            button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
+            Deonice = new ListView();
+            columnHeader19 = new ColumnHeader();
+            columnHeader20 = new ColumnHeader();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
             tabPage3.SuspendLayout();
             tabPage4.SuspendLayout();
             tabPage5.SuspendLayout();
+            tabPage6.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -104,6 +112,7 @@
             tabControl1.Controls.Add(tabPage3);
             tabControl1.Controls.Add(tabPage4);
             tabControl1.Controls.Add(tabPage5);
+            tabControl1.Controls.Add(tabPage6);
             tabControl1.Location = new Point(12, 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -315,6 +324,16 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Nabavke";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnDetaljiNabavke
+            // 
+            btnDetaljiNabavke.Location = new Point(692, 168);
+            btnDetaljiNabavke.Name = "btnDetaljiNabavke";
+            btnDetaljiNabavke.Size = new Size(113, 40);
+            btnDetaljiNabavke.TabIndex = 5;
+            btnDetaljiNabavke.Text = "Detalji nabavke";
+            btnDetaljiNabavke.UseVisualStyleBackColor = true;
+            btnDetaljiNabavke.Click += btnDetaljiNabavke_Click;
             // 
             // btnObrisiNabavku
             // 
@@ -613,15 +632,68 @@
             // 
             columnHeader18.Text = "Budzet";
             // 
-            // btnDetaljiNabavke
+            // tabPage6
             // 
-            btnDetaljiNabavke.Location = new Point(692, 168);
-            btnDetaljiNabavke.Name = "btnDetaljiNabavke";
-            btnDetaljiNabavke.Size = new Size(113, 40);
-            btnDetaljiNabavke.TabIndex = 5;
-            btnDetaljiNabavke.Text = "Detalji nabavke";
-            btnDetaljiNabavke.UseVisualStyleBackColor = true;
-            btnDetaljiNabavke.Click += btnDetaljiNabavke_Click;
+            tabPage6.Controls.Add(button1);
+            tabPage6.Controls.Add(button2);
+            tabPage6.Controls.Add(button3);
+            tabPage6.Controls.Add(Deonice);
+            tabPage6.Location = new Point(4, 24);
+            tabPage6.Name = "tabPage6";
+            tabPage6.Size = new Size(833, 228);
+            tabPage6.TabIndex = 5;
+            tabPage6.Text = "Deonice";
+            tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(661, 149);
+            button1.Name = "button1";
+            button1.Size = new Size(116, 36);
+            button1.TabIndex = 6;
+            button1.Text = "Obrisi";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(661, 90);
+            button2.Name = "button2";
+            button2.Size = new Size(116, 36);
+            button2.TabIndex = 5;
+            button2.Text = "Izmeni";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(661, 31);
+            button3.Name = "button3";
+            button3.Size = new Size(116, 36);
+            button3.TabIndex = 4;
+            button3.Text = "Dodaj";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
+            // Deonice
+            // 
+            Deonice.Columns.AddRange(new ColumnHeader[] { columnHeader19, columnHeader20 });
+            Deonice.FullRowSelect = true;
+            Deonice.GridLines = true;
+            Deonice.Location = new Point(3, 3);
+            Deonice.Name = "Deonice";
+            Deonice.Size = new Size(590, 222);
+            Deonice.TabIndex = 1;
+            Deonice.UseCompatibleStateImageBehavior = false;
+            Deonice.View = View.Details;
+            // 
+            // columnHeader19
+            // 
+            columnHeader19.Text = "ID";
+            // 
+            // columnHeader20
+            // 
+            columnHeader20.Text = "Br deonice";
             // 
             // DetaljiInfrastrukturaForma
             // 
@@ -639,6 +711,7 @@
             tabPage3.ResumeLayout(false);
             tabPage4.ResumeLayout(false);
             tabPage5.ResumeLayout(false);
+            tabPage6.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -705,5 +778,12 @@
         private Label lblTrosak;
         private Label label1;
         private Button btnDetaljiNabavke;
+        private TabPage tabPage6;
+        private ListView Deonice;
+        private ColumnHeader columnHeader19;
+        private ColumnHeader columnHeader20;
+        private Button button1;
+        private Button button2;
+        private Button button3;
     }
 }

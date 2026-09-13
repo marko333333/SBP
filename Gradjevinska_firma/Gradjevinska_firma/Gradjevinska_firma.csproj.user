@@ -43,6 +43,9 @@
     <Compile Update="Forme\DodajBezbednosniIncidentForma.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\DodajDeonicuForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\DodajElektroForma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +173,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\IzmeniBezbednosniIncidentForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\IzmeniDeonicuForma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\IzmeniElektroForma.cs">

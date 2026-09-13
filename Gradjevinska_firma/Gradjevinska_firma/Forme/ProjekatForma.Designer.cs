@@ -34,15 +34,16 @@
             button4 = new Button();
             button5 = new Button();
             button6 = new Button();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // button1
             // 
             button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(600, 75);
-            button1.Margin = new Padding(3, 4, 3, 4);
+            button1.Location = new Point(525, 56);
             button1.Name = "button1";
-            button1.Size = new Size(160, 69);
+            button1.Size = new Size(140, 52);
             button1.TabIndex = 0;
             button1.Text = "Industrijski";
             button1.UseVisualStyleBackColor = true;
@@ -51,10 +52,9 @@
             // button3
             // 
             button3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button3.Location = new Point(600, 152);
-            button3.Margin = new Padding(3, 4, 3, 4);
+            button3.Location = new Point(525, 114);
             button3.Name = "button3";
-            button3.Size = new Size(160, 69);
+            button3.Size = new Size(140, 52);
             button3.TabIndex = 2;
             button3.Text = "Infrastruktura";
             button3.UseVisualStyleBackColor = true;
@@ -63,10 +63,9 @@
             // button2
             // 
             button2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(600, 229);
-            button2.Margin = new Padding(3, 4, 3, 4);
+            button2.Location = new Point(525, 172);
             button2.Name = "button2";
-            button2.Size = new Size(160, 69);
+            button2.Size = new Size(140, 52);
             button2.TabIndex = 3;
             button2.Text = "Poslovni";
             button2.UseVisualStyleBackColor = true;
@@ -75,10 +74,9 @@
             // button4
             // 
             button4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button4.Location = new Point(600, 307);
-            button4.Margin = new Padding(3, 4, 3, 4);
+            button4.Location = new Point(525, 230);
             button4.Name = "button4";
-            button4.Size = new Size(160, 69);
+            button4.Size = new Size(140, 52);
             button4.TabIndex = 4;
             button4.Text = "Stambeni";
             button4.UseVisualStyleBackColor = true;
@@ -87,10 +85,9 @@
             // button5
             // 
             button5.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button5.Location = new Point(600, 461);
-            button5.Margin = new Padding(3, 4, 3, 4);
+            button5.Location = new Point(525, 346);
             button5.Name = "button5";
-            button5.Size = new Size(160, 69);
+            button5.Size = new Size(140, 52);
             button5.TabIndex = 5;
             button5.Text = "Rekonstrukcija";
             button5.UseVisualStyleBackColor = true;
@@ -99,30 +96,39 @@
             // button6
             // 
             button6.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button6.Location = new Point(600, 384);
-            button6.Margin = new Padding(3, 4, 3, 4);
+            button6.Location = new Point(525, 288);
             button6.Name = "button6";
-            button6.Size = new Size(160, 69);
+            button6.Size = new Size(140, 52);
             button6.TabIndex = 6;
             button6.Text = "Sanacija";
             button6.UseVisualStyleBackColor = true;
             button6.Click += button6_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.zgrada2;
+            pictureBox1.Location = new Point(3, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(433, 426);
+            pictureBox1.TabIndex = 7;
+            pictureBox1.TabStop = false;
+            // 
             // ProjekatForma
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(789, 600);
+            ClientSize = new Size(690, 450);
+            Controls.Add(pictureBox1);
             Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(button2);
             Controls.Add(button3);
             Controls.Add(button1);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "ProjekatForma";
             Text = "ProjekatForma";
             Load += ProjekatForma_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -133,5 +139,6 @@
         private Button button4;
         private Button button5;
         private Button button6;
+        private PictureBox pictureBox1;
     }
 }

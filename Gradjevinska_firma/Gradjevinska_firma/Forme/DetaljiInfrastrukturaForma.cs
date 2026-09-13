@@ -138,6 +138,25 @@ namespace Gradjevinska_firma.Forme
             this.Nabavke.Refresh();
         }
 
+        private void popuniPodacimaDeonice(List<DeonicaBasic> deonice)
+        {
+            Deonice.Items.Clear();
+
+            foreach (DeonicaBasic d in deonice)
+            {
+                ListViewItem item = new ListViewItem(
+                     new string[]
+                     {
+                        d.ID.ToString(),
+                        d.Br_deonice.ToString()
+
+                     });
+
+                Deonice.Items.Add(item);
+            }
+            Deonice.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.Deonice.Refresh();
+        }
         private void btnDodaj_Click(object sender, EventArgs e)
         {
             using (DodajBezbednosniIncidentForma forma = new DodajBezbednosniIncidentForma(idInfrastruktura))
@@ -301,6 +320,11 @@ namespace Gradjevinska_firma.Forme
             {
                 List<FazaBasic> faze = FazaDTOManager.vratiFazeProjekta(idInfrastruktura);
                 popuniPodacimaFaza(faze);
+            }
+            else if (tabControl1.SelectedIndex == 5)
+            {
+                List<DeonicaBasic> deonice = DeonicaDTOManager.vratiDeoniceInfrastrukture(idInfrastruktura);
+                popuniPodacimaDeonice(deonice);
             }
         }
 
@@ -480,6 +504,74 @@ namespace Gradjevinska_firma.Forme
                 {
                     popuniNabavke();
                 }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            using (DodajDeonicuForma forma = new DodajDeonicuForma(idInfrastruktura))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    List<DeonicaBasic> deb = DeonicaDTOManager.vratiDeoniceInfrastrukture(idInfrastruktura);
+                    popuniPodacimaDeonice(deb);
+                }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ListView tabela = Deonice;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati deonicu iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+
+            using (IzmeniDeonicuForma forma = new IzmeniDeonicuForma(id, idInfrastruktura))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    List<DeonicaBasic> deo = DeonicaDTOManager.vratiDeoniceInfrastrukture(idInfrastruktura);
+                    popuniPodacimaDeonice(deo);
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ListView tabela = Deonice;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati deonicu iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+            string poruka = "Da li zelite da obrisete izabranu deonicu?";
+            string title = "Pitanje";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(poruka, title, buttons);
+
+            if (result == DialogResult.OK)
+            {
+                DeonicaDTOManager.obrisiDeonicu(id);
+                MessageBox.Show("Brisanje deonice je uspesno obavljeno!");
+                List<DeonicaBasic> deb = DeonicaDTOManager.vratiDeoniceInfrastrukture(idInfrastruktura);
+                popuniPodacimaDeonice(deb);
+
+            }
+            else
+            {
+
             }
         }
     }
