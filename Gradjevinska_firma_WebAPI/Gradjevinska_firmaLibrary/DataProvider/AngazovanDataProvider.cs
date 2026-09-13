@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace Gradjevinska_firmaLibrary.DataProvider
 {
-    public static class KontaktDataProvider
+    public static class AngazovanDataProvider
     {
-        public static async Task<Result<List<KontaktView>, ErrorMessage>> VratiSveKontakteAsync()
+        public static async Task<Result<List<AngazovanView>, ErrorMessage>> VratiSveAngazovaneAsync()
         {
-            List<KontaktView> data = new();
+            List<AngazovanView> data = new();
 
             ISession? s = null;
 
@@ -27,18 +27,14 @@ namespace Gradjevinska_firmaLibrary.DataProvider
                     return "Nemoguce otvoriti sesiju.".ToError(403);
                 }
 
-                data = (await s.QueryOver<Kontakt>().ListAsync())
-                    .Select(k => new KontaktView(k))
+                data = (await s.QueryOver<Angazovan>()
+                    .ListAsync())
+                    .Select(a => new AngazovanView(a))
                     .ToList();
-                
-                if(data.Count==0)
-                {
-                    return "Nema kontakata".ToError(404);
-                }
             }
             catch (Exception)
             {
-                return "Doslo je do greske prilikom prikupljanja kontakata.".ToError(400);
+                return "Doslo je do greske prilikom prikupljanja angazovanja.".ToError(400);
             }
             finally
             {
@@ -49,9 +45,9 @@ namespace Gradjevinska_firmaLibrary.DataProvider
             return data;
         }
 
-        public static async Task<Result<List<KontaktView>, ErrorMessage>> VratiKontakteOsobeAsync(int idOsobe)
+        public static async Task<Result<List<AngazovanView>, ErrorMessage>> VratiAngazovanjaOsobeAsync(int idOsobe)
         {
-            List<KontaktView> data = new();
+            List<AngazovanView> data = new();
 
             ISession? s = null;
 
@@ -64,15 +60,20 @@ namespace Gradjevinska_firmaLibrary.DataProvider
                     return "Nemoguce otvoriti sesiju.".ToError(403);
                 }
 
-                data = (await s.QueryOver<Kontakt>()
-                    .Where(k => k.Osoba.Id == idOsobe)
+                data = (await s.QueryOver<Angazovan>()
+                    .Where(a => a.Osoba.Id == idOsobe)
                     .ListAsync())
-                    .Select(k => new KontaktView(k))
+                    .Select(a => new AngazovanView(a))
                     .ToList();
+
+                if (data.Count == 0)
+                {
+                    return "Osoba nema angazovanja.".ToError(404);
+                }
             }
             catch (Exception)
             {
-                return "Doslo je do greske prilikom prikupljanja kontakata osobe.".ToError(400);
+                return "Doslo je do greske prilikom prikupljanja angazovanja osobe.".ToError(400);
             }
             finally
             {

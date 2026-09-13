@@ -21,11 +21,9 @@ namespace Gradjevinska_firmaLibrary.Entiteti
         public virtual IList<Ugovor> Ugovori { get; set; }
         public virtual IList<BezbednosniIncident> BezbednosniIncidenti { get; set; }
 
-        //nije bila dodata kolekcija Faktura!!!!!!!!!!!!!
         public virtual IList<Faktura> Fakture {  get; set; }
         public virtual IList<Nabavke> Nabavke { get; set; }
 
-        //nema i za Faze
         public virtual IList<Faza> Faze { get; set; }
 
         public Projekat()

@@ -5,16 +5,17 @@ namespace Gradjevinska_firmaWebAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class BezbednosnaObukaController:ControllerBase
+    public class AngazovanController:ControllerBase
     {
+
         [HttpGet]
-        [Route("VratiSveBezbednosneObuke")]
+        [Route("VratiSveAngazovane")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        public async Task<IActionResult> GetBezbodnosnaObuka()
+        public async Task<IActionResult> GetAngazovani()
         {
-            var result = await BezbednosnaObukaDataProvider.VratiSveBezbednosneObukeAsync();
+            var result = await AngazovanDataProvider.VratiSveAngazovaneAsync();
 
             if (result.IsError)
             {
@@ -23,20 +24,17 @@ namespace Gradjevinska_firmaWebAPI.Controllers
 
             return Ok(result.Data);
         }
-
         [HttpGet]
-        [Route("VratiBezObukuFizickogLica/{idOsobe}")]
+        [Route("VratiAngazovanjaOsobe/{idOsobe}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        public async Task<IActionResult> GetBezbednosnaObukaOsobe(int idOsobe)
+        public async Task<IActionResult> GetAngazovanjaOsobe(int idOsobe)
         {
-            var result = await BezbednosnaObukaDataProvider.VratiBezObukuFizickogLicaAsync(idOsobe);
+            var result = await AngazovanDataProvider.VratiAngazovanjaOsobeAsync(idOsobe);
 
             if (result.IsError)
-            {
                 return StatusCode(result.Error.StatusCode, result.Error.Message);
-            }
 
             return Ok(result.Data);
         }
