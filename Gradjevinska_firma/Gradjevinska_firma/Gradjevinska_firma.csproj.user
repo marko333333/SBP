@@ -136,6 +136,9 @@
     <Compile Update="Forme\DodajStambeniForma.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\DodajStambeniObjekatForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\DodajStavkuForma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -260,6 +263,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\IzmeniStambeniForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\IzmeniStambeniObjekatForma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\IzmeniStavkuForma.cs">

@@ -137,6 +137,26 @@ namespace Gradjevinska_firma.Forme
             this.Nabavke.Refresh();
         }
 
+        private void popuniPodacimaStambenihObjekata(List<ObjekatStambeniBasic> objekti)
+        {
+            StambeniObjekti.Items.Clear();
+
+            foreach (ObjekatStambeniBasic n in objekti)
+            {
+                ListViewItem item = new ListViewItem(
+                     new string[]
+                     {
+                         n.ID.ToString(),
+                         n.Br_objekta.ToString(),
+                         n.Spratnost.ToString(),
+                         n.Br_jedinica.ToString()
+                     });
+                StambeniObjekti.Items.Add(item);
+            }
+            StambeniObjekti.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.StambeniObjekti.Refresh();
+        }
+
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControl1.SelectedIndex == 0)
@@ -163,6 +183,11 @@ namespace Gradjevinska_firma.Forme
             {
                 List<FazaBasic> faze = FazaDTOManager.vratiFazeProjekta(idStambeni);
                 popuniPodacimaFaza(faze);
+            }
+            else if (tabControl1.SelectedIndex == 5)
+            {
+                List<ObjekatStambeniBasic> objekti = ProjekatDTOManager.vratiObjekteStambene(idStambeni);
+                popuniPodacimaStambenihObjekata(objekti);
             }
         }
 
@@ -477,6 +502,74 @@ namespace Gradjevinska_firma.Forme
                 {
                     popuniNabavke();
                 }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            using (DodajStambeniObjekatForma forma = new DodajStambeniObjekatForma(idStambeni))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    List<ObjekatStambeniBasic> obj = ProjekatDTOManager.vratiObjekteStambene(idStambeni);
+                    popuniPodacimaStambenihObjekata(obj);
+                }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ListView tabela = StambeniObjekti;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati stambeni objekat iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+
+            using (IzmeniStambeniObjekatForma forma = new IzmeniStambeniObjekatForma(id, idStambeni))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    List<ObjekatStambeniBasic> obj = ProjekatDTOManager.vratiObjekteStambene(idStambeni);
+                    popuniPodacimaStambenihObjekata(obj);
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ListView tabela = StambeniObjekti;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati stambeni objekat iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+            string poruka = "Da li zelite da obrisete izabrani stambeni objekat?";
+            string title = "Pitanje";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(poruka, title, buttons);
+
+            if (result == DialogResult.OK)
+            {
+                ProjekatDTOManager.obrisiStambeniObjekat(id);
+                MessageBox.Show("Brisanje stambenog objekta je uspesno obavljeno!");
+                List<ObjekatStambeniBasic> nab = ProjekatDTOManager.vratiObjekteStambene(idStambeni);
+                popuniPodacimaStambenihObjekata(nab);
+
+            }
+            else
+            {
+
             }
         }
     }

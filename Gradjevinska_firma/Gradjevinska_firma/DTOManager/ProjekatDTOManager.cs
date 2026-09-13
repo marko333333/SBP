@@ -657,6 +657,48 @@ namespace Gradjevinska_firma.DTOManager
 
         #region ObjekatStambeni
 
+
+        public static void obrisiStambeniObjekat(int id)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                ObjekatStambeni p = s.Load<ObjekatStambeni>(id);
+
+                s.Delete(p);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void izmeniObjekatStambeni(ObjekatStambeniBasic stam)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                ObjekatStambeni st = s.Load<ObjekatStambeni>(stam.ID);
+
+                st.Br_objekta = stam.Br_objekta;
+                st.Spratnost = stam.Spratnost;
+                st.Br_jedinica = stam.Br_jedinica;
+
+                s.Update(st);
+                s.Flush();
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         public static List<ObjekatStambeniBasic> vratiObjekteStambene(int idProjekta)
         {
             List<ObjekatStambeniBasic> obj = new List<ObjekatStambeniBasic>();
