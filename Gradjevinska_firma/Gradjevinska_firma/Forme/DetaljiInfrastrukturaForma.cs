@@ -439,5 +439,48 @@ namespace Gradjevinska_firma.Forme
                 }
             }
         }
+
+        public void popuniNabavke()
+        {
+            this.Nabavke.Items.Clear();
+            List<NabavkePregled> nabavke = NabavkeDTOManager.vratiSveNabavke();
+
+            foreach (NabavkePregled n in nabavke)
+            {
+                ListViewItem item = new ListViewItem(new string[] {
+                   n.Br_nabavke.ToString(),
+                   n.Datum.ToShortDateString(),
+                   n.Projekat.Naziv
+
+                   });
+                this.Nabavke.Items.Add(item);
+
+            }
+            this.Nabavke.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.Nabavke.Refresh();
+        }
+
+        private void btnDetaljiNabavke_Click(object sender, EventArgs e)
+        {
+            ListView tabela = Nabavke;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati nabavku iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+
+            using (DetaljiNabavkeForma forma = new DetaljiNabavkeForma(id))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    popuniNabavke();
+                }
+            }
+        }
     }
 }

@@ -30,6 +30,8 @@
         {
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            lblTrosak = new Label();
+            label1 = new Label();
             label2 = new Label();
             lbStvarniZavrsetak = new Label();
             label6 = new Label();
@@ -86,8 +88,7 @@
             columnHeader16 = new ColumnHeader();
             columnHeader17 = new ColumnHeader();
             columnHeader18 = new ColumnHeader();
-            label1 = new Label();
-            lblTrosak = new Label();
+            btnDetaljiNabavke = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -137,6 +138,24 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Osnovni podaci";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // lblTrosak
+            // 
+            lblTrosak.AutoSize = true;
+            lblTrosak.Location = new Point(78, 154);
+            lblTrosak.Name = "lblTrosak";
+            lblTrosak.Size = new Size(38, 15);
+            lblTrosak.TabIndex = 35;
+            lblTrosak.Text = "label3";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(16, 154);
+            label1.Name = "label1";
+            label1.Size = new Size(44, 15);
+            label1.TabIndex = 34;
+            label1.Text = "Trosak:";
             // 
             // label2
             // 
@@ -284,6 +303,7 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(btnDetaljiNabavke);
             tabPage2.Controls.Add(btnObrisiNabavku);
             tabPage2.Controls.Add(btnIzmeniNabavku);
             tabPage2.Controls.Add(btnDodajNabavku);
@@ -298,7 +318,7 @@
             // 
             // btnObrisiNabavku
             // 
-            btnObrisiNabavku.Location = new Point(692, 166);
+            btnObrisiNabavku.Location = new Point(692, 122);
             btnObrisiNabavku.Name = "btnObrisiNabavku";
             btnObrisiNabavku.Size = new Size(113, 40);
             btnObrisiNabavku.TabIndex = 3;
@@ -308,7 +328,7 @@
             // 
             // btnIzmeniNabavku
             // 
-            btnIzmeniNabavku.Location = new Point(692, 95);
+            btnIzmeniNabavku.Location = new Point(692, 76);
             btnIzmeniNabavku.Name = "btnIzmeniNabavku";
             btnIzmeniNabavku.Size = new Size(113, 40);
             btnIzmeniNabavku.TabIndex = 2;
@@ -593,23 +613,15 @@
             // 
             columnHeader18.Text = "Budzet";
             // 
-            // label1
+            // btnDetaljiNabavke
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(16, 154);
-            label1.Name = "label1";
-            label1.Size = new Size(44, 15);
-            label1.TabIndex = 34;
-            label1.Text = "Trosak:";
-            // 
-            // lblTrosak
-            // 
-            lblTrosak.AutoSize = true;
-            lblTrosak.Location = new Point(78, 154);
-            lblTrosak.Name = "lblTrosak";
-            lblTrosak.Size = new Size(38, 15);
-            lblTrosak.TabIndex = 35;
-            lblTrosak.Text = "label3";
+            btnDetaljiNabavke.Location = new Point(692, 168);
+            btnDetaljiNabavke.Name = "btnDetaljiNabavke";
+            btnDetaljiNabavke.Size = new Size(113, 40);
+            btnDetaljiNabavke.TabIndex = 5;
+            btnDetaljiNabavke.Text = "Detalji nabavke";
+            btnDetaljiNabavke.UseVisualStyleBackColor = true;
+            btnDetaljiNabavke.Click += btnDetaljiNabavke_Click;
             // 
             // DetaljiInfrastrukturaForma
             // 
@@ -692,5 +704,6 @@
         private ColumnHeader columnHeader18;
         private Label lblTrosak;
         private Label label1;
+        private Button btnDetaljiNabavke;
     }
 }

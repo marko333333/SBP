@@ -88,6 +88,7 @@
             columnHeader16 = new ColumnHeader();
             columnHeader17 = new ColumnHeader();
             columnHeader18 = new ColumnHeader();
+            btnDetaljiNabavke = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -302,6 +303,7 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(btnDetaljiNabavke);
             tabPage2.Controls.Add(btnObrisiNabavku);
             tabPage2.Controls.Add(btnIzmeniNabavku);
             tabPage2.Controls.Add(btnDodajNabavku);
@@ -316,7 +318,7 @@
             // 
             // btnObrisiNabavku
             // 
-            btnObrisiNabavku.Location = new Point(692, 166);
+            btnObrisiNabavku.Location = new Point(692, 122);
             btnObrisiNabavku.Name = "btnObrisiNabavku";
             btnObrisiNabavku.Size = new Size(113, 40);
             btnObrisiNabavku.TabIndex = 3;
@@ -326,7 +328,7 @@
             // 
             // btnIzmeniNabavku
             // 
-            btnIzmeniNabavku.Location = new Point(692, 95);
+            btnIzmeniNabavku.Location = new Point(692, 76);
             btnIzmeniNabavku.Name = "btnIzmeniNabavku";
             btnIzmeniNabavku.Size = new Size(113, 40);
             btnIzmeniNabavku.TabIndex = 2;
@@ -611,6 +613,16 @@
             // 
             columnHeader18.Text = "Budzet";
             // 
+            // btnDetaljiNabavke
+            // 
+            btnDetaljiNabavke.Location = new Point(692, 168);
+            btnDetaljiNabavke.Name = "btnDetaljiNabavke";
+            btnDetaljiNabavke.Size = new Size(113, 40);
+            btnDetaljiNabavke.TabIndex = 5;
+            btnDetaljiNabavke.Text = "Detalji nabavke";
+            btnDetaljiNabavke.UseVisualStyleBackColor = true;
+            btnDetaljiNabavke.Click += btnDetaljiNabavke_Click;
+            // 
             // DetaljiPoslovniForma
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -692,5 +704,6 @@
         private ColumnHeader columnHeader16;
         private ColumnHeader columnHeader17;
         private ColumnHeader columnHeader18;
+        private Button btnDetaljiNabavke;
     }
 }
