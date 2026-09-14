@@ -1,6 +1,6 @@
 ﻿namespace Gradjevinska_firma.Forme
 {
-    partial class IzmeniStambeniObjekatForma
+    partial class IzmeniPoslovniObjekatForma
     {
         /// <summary>
         /// Required designer variable.
@@ -54,9 +54,9 @@
             groupBox1.Location = new Point(12, 12);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(229, 196);
-            groupBox1.TabIndex = 6;
+            groupBox1.TabIndex = 7;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Izmeni stambeni objekat";
+            groupBox1.Text = "Izmeni poslovni objekat";
             // 
             // numBrJedinica
             // 
@@ -116,15 +116,15 @@
             label1.TabIndex = 0;
             label1.Text = "Br_objekta :";
             // 
-            // IzmeniStambeniObjekatForma
+            // IzmeniPoslovniObjekatForma
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(247, 204);
+            ClientSize = new Size(246, 204);
             Controls.Add(groupBox1);
-            Name = "IzmeniStambeniObjekatForma";
-            Text = "IzmeniStambeniObjekatForma";
-            Load += IzmeniStambeniObjekatForma_Load;
+            Name = "IzmeniPoslovniObjekatForma";
+            Text = "IzmeniPoslovniObjekatForma";
+            Load += IzmeniPoslovniObjekatForma_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numBrJedinica).EndInit();

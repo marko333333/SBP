@@ -1,6 +1,6 @@
 ﻿namespace Gradjevinska_firma.Forme
 {
-    partial class IzmeniStambeniObjekatForma
+    partial class DodajPoslovniObjekatForma
     {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +32,7 @@
             numBrJedinica = new NumericUpDown();
             numSpratnost = new NumericUpDown();
             numBrObjekta = new NumericUpDown();
-            Izmeni_button = new Button();
+            Dodaj_button = new Button();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
@@ -47,7 +47,7 @@
             groupBox1.Controls.Add(numBrJedinica);
             groupBox1.Controls.Add(numSpratnost);
             groupBox1.Controls.Add(numBrObjekta);
-            groupBox1.Controls.Add(Izmeni_button);
+            groupBox1.Controls.Add(Dodaj_button);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
@@ -56,7 +56,7 @@
             groupBox1.Size = new Size(229, 196);
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Izmeni stambeni objekat";
+            groupBox1.Text = "Dodaj poslovin objekat";
             // 
             // numBrJedinica
             // 
@@ -79,15 +79,15 @@
             numBrObjekta.Size = new Size(120, 23);
             numBrObjekta.TabIndex = 18;
             // 
-            // Izmeni_button
+            // Dodaj_button
             // 
-            Izmeni_button.Location = new Point(32, 127);
-            Izmeni_button.Name = "Izmeni_button";
-            Izmeni_button.Size = new Size(170, 48);
-            Izmeni_button.TabIndex = 17;
-            Izmeni_button.Text = "Izmeni";
-            Izmeni_button.UseVisualStyleBackColor = true;
-            Izmeni_button.Click += Izmeni_button_Click;
+            Dodaj_button.Location = new Point(32, 127);
+            Dodaj_button.Name = "Dodaj_button";
+            Dodaj_button.Size = new Size(170, 48);
+            Dodaj_button.TabIndex = 17;
+            Dodaj_button.Text = "Dodaj";
+            Dodaj_button.UseVisualStyleBackColor = true;
+            Dodaj_button.Click += Dodaj_button_Click;
             // 
             // label3
             // 
@@ -116,15 +116,14 @@
             label1.TabIndex = 0;
             label1.Text = "Br_objekta :";
             // 
-            // IzmeniStambeniObjekatForma
+            // DodajPoslovniObjekatForma
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(247, 204);
+            ClientSize = new Size(252, 208);
             Controls.Add(groupBox1);
-            Name = "IzmeniStambeniObjekatForma";
-            Text = "IzmeniStambeniObjekatForma";
-            Load += IzmeniStambeniObjekatForma_Load;
+            Name = "DodajPoslovniObjekatForma";
+            Text = "DodajPoslovniObjekatForma";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numBrJedinica).EndInit();
@@ -139,7 +138,7 @@
         private NumericUpDown numBrJedinica;
         private NumericUpDown numSpratnost;
         private NumericUpDown numBrObjekta;
-        private Button Izmeni_button;
+        private Button Dodaj_button;
         private Label label3;
         private Label label2;
         private Label label1;

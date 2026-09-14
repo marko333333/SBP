@@ -540,6 +540,85 @@ namespace Gradjevinska_firma.DTOManager
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        public static ObjekatPoslovniBasic vratiObjekatPoslovni(int id)
+        {
+            ObjekatPoslovniBasic objekat = new ObjekatPoslovniBasic();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                ObjekatPoslovni o = s.Get<ObjekatPoslovni>(id);
+
+                if (o != null)
+                {
+                    PoslovniBasic poslovni = vratiPoslovni(o.Poslovni.ID);
+
+                    objekat = new ObjekatPoslovniBasic(
+                        o.Id,
+                        o.Br_objekta,
+                        o.Spratnost,
+                        o.Br_jedinica,
+                        poslovni
+                    );
+                }
+                else
+                {
+                    MessageBox.Show($"Ne postoji objekatPoslovni sa ID = {id}");
+                }
+
+
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return objekat;
+        }
+
+        public static void izmeniObjekatPoslovni(ObjekatPoslovniBasic stan)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                ObjekatPoslovni st = s.Load<ObjekatPoslovni>(stan.ID);
+
+                st.Br_objekta = stan.Br_objekta;
+                st.Spratnost = stan.Spratnost;
+                st.Br_jedinica = stan.Br_jedinica;
+
+                s.Update(st);
+                s.Flush();
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void obrisiPoslovniObjekat(int id)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                ObjekatPoslovni p = s.Load<ObjekatPoslovni>(id);
+
+                s.Delete(p);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         #endregion
 
         #region Stambeni
@@ -773,6 +852,43 @@ namespace Gradjevinska_firma.DTOManager
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        public static ObjekatStambeniBasic vratiObjekatStambeni(int id)
+        {
+            ObjekatStambeniBasic objekat = new ObjekatStambeniBasic();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                ObjekatStambeni o = s.Get<ObjekatStambeni>(id);
+
+                if (o != null)
+                {
+                    StambeniBasic stambeni = vratiStambeni(o.Stambeni.ID);
+
+                    objekat = new ObjekatStambeniBasic(
+                        o.Id,
+                        o.Br_objekta,
+                        o.Spratnost,
+                        o.Br_jedinica,
+                        stambeni
+                    );
+                }
+                else
+                {
+                    MessageBox.Show($"Ne postoji ObjekatStambeni sa ID = {id}");
+                }
+
+
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return objekat;
         }
 
         #endregion

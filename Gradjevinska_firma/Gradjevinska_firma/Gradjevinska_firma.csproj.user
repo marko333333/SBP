@@ -121,6 +121,9 @@
     <Compile Update="Forme\DodajPoslovniForma.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forme\DodajPoslovniObjekatForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forme\DodajRadniNalogForma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -248,6 +251,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\IzmeniPoslovniForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forme\IzmeniPoslovniObjekatForma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forme\IzmeniRadniNalogForma.cs">

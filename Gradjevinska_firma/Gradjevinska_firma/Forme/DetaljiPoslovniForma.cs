@@ -137,6 +137,26 @@ namespace Gradjevinska_firma.Forme
             this.Nabavke.Refresh();
         }
 
+        private void popuniPodacimaPoslovnihObjekata(List<ObjekatPoslovniBasic> objekti)
+        {
+            PoslovniObjekti.Items.Clear();
+
+            foreach (ObjekatPoslovniBasic n in objekti)
+            {
+                ListViewItem item = new ListViewItem(
+                     new string[]
+                     {
+                         n.ID.ToString(),
+                         n.Br_objekta.ToString(),
+                         n.Spratnost.ToString(),
+                         n.Br_jedinica.ToString()
+                     });
+                PoslovniObjekti.Items.Add(item);
+            }
+            PoslovniObjekti.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.PoslovniObjekti.Refresh();
+        }
+
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControl1.SelectedIndex == 0)
@@ -163,6 +183,11 @@ namespace Gradjevinska_firma.Forme
             {
                 List<FazaBasic> faze = FazaDTOManager.vratiFazeProjekta(idPoslovni);
                 popuniPodacimaFaza(faze);
+            }
+            else if (tabControl1.SelectedIndex == 5)
+            {
+                List<ObjekatPoslovniBasic> objekti = ProjekatDTOManager.vratiObjektePoslovne(idPoslovni);
+                popuniPodacimaPoslovnihObjekata(objekti);
             }
         }
 
@@ -479,6 +504,74 @@ namespace Gradjevinska_firma.Forme
                 {
                     popuniNabavke();
                 }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            using (DodajPoslovniObjekatForma forma = new DodajPoslovniObjekatForma(idPoslovni))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    List<ObjekatPoslovniBasic> ob = ProjekatDTOManager.vratiObjektePoslovne(idPoslovni);
+                    popuniPodacimaPoslovnihObjekata(ob);
+                }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ListView tabela = PoslovniObjekti;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati poslovni objekat iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+
+            using (IzmeniPoslovniObjekatForma forma = new IzmeniPoslovniObjekatForma(id, idPoslovni))
+            {
+                if (forma.ShowDialog() == DialogResult.OK)
+                {
+                    List<ObjekatPoslovniBasic> ob = ProjekatDTOManager.vratiObjektePoslovne(idPoslovni);
+                    popuniPodacimaPoslovnihObjekata(ob);
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ListView tabela = PoslovniObjekti;
+
+            if (tabela.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Potrebno je odabrati poslovni objekat iz tabele.");
+                return;
+            }
+
+            int id = int.Parse(
+                tabela.SelectedItems[0].SubItems[0].Text
+            );
+            string poruka = "Da li zelite da obrisete izabrani objekat?";
+            string title = "Pitanje";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(poruka, title, buttons);
+
+            if (result == DialogResult.OK)
+            {
+                ProjekatDTOManager.obrisiPoslovniObjekat(id);
+                MessageBox.Show("Brisanje objekta je uspesno obavljeno!");
+                List<ObjekatPoslovniBasic> ob = ProjekatDTOManager.vratiObjektePoslovne(idPoslovni);
+                popuniPodacimaPoslovnihObjekata(ob);
+
+            }
+            else
+            {
+
             }
         }
     }

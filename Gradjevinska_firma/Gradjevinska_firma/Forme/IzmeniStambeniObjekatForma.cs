@@ -41,5 +41,14 @@ namespace Gradjevinska_firma.Forme
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+
+        private void IzmeniStambeniObjekatForma_Load(object sender, EventArgs e)
+        {
+            ObjekatStambeniBasic stambeni = ProjekatDTOManager.vratiObjekatStambeni(idObjekta);
+
+            numBrObjekta.Value = stambeni.Br_objekta;
+            numSpratnost.Value = stambeni.Spratnost;
+            numBrJedinica.Value = stambeni.Br_jedinica;
+        }
     }
 }
