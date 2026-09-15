@@ -64,6 +64,11 @@ namespace Gradjevinska_firmaLibrary.DataProvider
                     .ListAsync())
                     .Select(l => new LekPregledView(l))
                     .ToList();
+
+                if (data.Count == 0)
+                {
+                    return "Fizicko lice nema lekarske preglede".ToError(404);
+                }
             }
             catch (Exception)
             {

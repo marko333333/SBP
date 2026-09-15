@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Gradjevinska_firmaLibrary.DataProvider;
+﻿using Gradjevinska_firmaLibrary.DataProvider;
+using Gradjevinska_firmaLibrary.DTOs;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Gradjevinska_firmaWebAPI.Controllers
 {
@@ -23,5 +24,25 @@ namespace Gradjevinska_firmaWebAPI.Controllers
 
             return Ok(osobe.Data);
         }
+
+        [HttpDelete]
+        [Route("ObrisiOsobu/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        public async Task<IActionResult> ObrisiOsobu(int id)
+        {
+            var result = await OsobaDataProvider.ObrisiOsobuAsync(id);
+
+            if (result.IsError)
+            {
+                return StatusCode(
+                    result.Error.StatusCode,
+                    result.Error.Message);
+            }
+
+            return Ok(result.Data);
+        }
+
     }
 }

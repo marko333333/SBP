@@ -31,10 +31,6 @@ namespace Gradjevinska_firmaLibrary.DataProvider
                     .Select(k => new KontaktView(k))
                     .ToList();
                 
-                if(data.Count==0)
-                {
-                    return "Nema kontakata".ToError(404);
-                }
             }
             catch (Exception)
             {
@@ -69,6 +65,11 @@ namespace Gradjevinska_firmaLibrary.DataProvider
                     .ListAsync())
                     .Select(k => new KontaktView(k))
                     .ToList();
+
+                if (data.Count == 0)
+                {
+                    return "Osoba nema kontakte".ToError(404);
+                }
             }
             catch (Exception)
             {

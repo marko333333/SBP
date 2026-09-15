@@ -64,6 +64,11 @@ namespace Gradjevinska_firmaLibrary.DataProvider
                     .ListAsync())
                     .Select(l => new ZastitnaOpremaView(l))
                     .ToList();
+
+                if (data.Count == 0)
+                {
+                    return "Osoba nema zastitnu opremu".ToError(404);
+                }
             }
             catch (Exception)
             {

@@ -33,6 +33,11 @@ namespace Gradjevinska_firmaLibrary.DataProvider
                     .Select(k => new RadniNalogView(k))
                     .ToList();
 
+                if (data.Count == 0)
+                {
+                    return "Zadatak nema radne naloge".ToError(404);
+                }
+
             }
             catch (Exception)
             {

@@ -35,7 +35,7 @@ namespace Gradjevinska_firmaLibrary.DataProvider
 
                 if (data.Count == 0)
                 {
-                    return "Osoba nema angazovanja.".ToError(404);
+                    return "Ugovor nema posebne klauzule".ToError(404);
                 }
             }
             catch (Exception)

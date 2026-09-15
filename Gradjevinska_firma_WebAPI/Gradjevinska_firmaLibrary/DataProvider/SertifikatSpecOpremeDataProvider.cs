@@ -64,6 +64,11 @@ namespace Gradjevinska_firmaLibrary.DataProvider
                     .ListAsync())
                     .Select(l => new SertifikatSpecOpremeView(l))
                     .ToList();
+
+                if (data.Count == 0)
+                {
+                    return "Radnik nema sertifikate".ToError(404);
+                }
             }
             catch (Exception)
             {

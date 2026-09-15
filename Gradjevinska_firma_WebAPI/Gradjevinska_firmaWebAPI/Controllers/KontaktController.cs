@@ -28,6 +28,7 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetKontakteOsobe(int idOsobe)
         {
             var result = await KontaktDataProvider.VratiKontakteOsobeAsync(idOsobe);

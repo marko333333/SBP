@@ -17,7 +17,7 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public async Task<IActionResult> GetFizickaLica()
         {
-            var fizickaLica = await FizickoLiceDataProvider.VratiSvaFizickaLicaAsync();
+            var fizickaLica = await OsobaDataProvider.VratiSvaFizickaLicaAsync();
 
             if (fizickaLica.IsError)
             {
@@ -25,6 +25,40 @@ namespace Gradjevinska_firmaWebAPI.Controllers
             }
 
             return Ok(fizickaLica.Data);
+        }
+
+        [HttpPost]
+        [Route("DodajFizickoLice")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        public async Task<IActionResult> DodajFizickoLice([FromBody] FizickoLiceView f)
+        {
+            var result = await OsobaDataProvider.DodajFizickoLiceAsync(f);
+
+            if (result.IsError)
+            {
+                return StatusCode(result.Error.StatusCode, result.Error.Message);
+            }
+
+            return Ok(result.Data);
+        }
+
+        [HttpPut]
+        [Route("IzmeniFizickoLice")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        public async Task<IActionResult> IzmeniFizickoLice([FromBody] FizickoLiceView f)
+        {
+            var result = await OsobaDataProvider.IzmeniFizickoLiceAsync(f);
+
+            if (result.IsError)
+            {
+                return StatusCode(result.Error.StatusCode,result.Error.Message);
+            }
+
+            return Ok(result.Data);
         }
     }
 }

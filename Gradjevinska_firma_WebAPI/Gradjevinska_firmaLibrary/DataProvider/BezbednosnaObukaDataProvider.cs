@@ -64,6 +64,11 @@ namespace Gradjevinska_firmaLibrary.DataProvider
                     .ListAsync())
                     .Select(l => new BezbednosnaObukaView(l))
                     .ToList();
+
+                if (data.Count == 0)
+                {
+                    return "Fizicko lice nema obuku".ToError(404);
+                }
             }
             catch (Exception)
             {

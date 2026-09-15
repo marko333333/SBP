@@ -67,7 +67,7 @@ namespace Gradjevinska_firmaLibrary.DataProvider
 
                 if (data.Count == 0)
                 {
-                    return "Osoba nema angazovanja.".ToError(404);
+                    return "Napredak nema fotografije".ToError(404);
                 }
             }
             catch (Exception)

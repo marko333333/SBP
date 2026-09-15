@@ -33,6 +33,11 @@ namespace Gradjevinska_firmaLibrary.DataProvider
                     .Select(k => new StavkaKontroleView(k))
                     .ToList();
 
+                if (data.Count == 0)
+                {
+                    return "Kontrola nema stavke".ToError(404);
+                }
+
             }
             catch (Exception)
             {

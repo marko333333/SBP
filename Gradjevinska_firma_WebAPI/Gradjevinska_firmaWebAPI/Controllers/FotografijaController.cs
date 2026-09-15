@@ -12,6 +12,7 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetFotografijeNapretka(int idNapretka)
         {
             var result = await FotografijaDataProvider.VratiFotografijeNapretkaAsync(idNapretka);

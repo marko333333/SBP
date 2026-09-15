@@ -64,6 +64,11 @@ namespace Gradjevinska_firmaLibrary.DataProvider
                     .ListAsync())
                     .Select(k => new LicencaView(k))
                     .ToList();
+
+                if (data.Count == 0)
+                {
+                    return "Osoba nema licence".ToError(404);
+                }
             }
             catch (Exception)
             {
