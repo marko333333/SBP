@@ -164,6 +164,36 @@ namespace Gradjevinska_firmaLibrary.DataProvider
             }
         }
 
+        public static async Task<Result<AngazovanView, ErrorMessage>> VratiAngazovanAsync(int zadatakId, int osobaId)
+        {
+            ISession? s = null;
+            try
+            {
+                s = DataLayer.GetSession();
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                Angazovan? angazovan = await s.QueryOver<Angazovan>()
+                    .Where(x => x.Zadatak.Id == zadatakId)
+                    .And(x => x.Osoba.Id == osobaId)
+                    .SingleOrDefaultAsync();
+
+                if (angazovan == null)
+                    return "Angazovanje osobe ne postoji.".ToError(404);
+
+                return new AngazovanView(angazovan);
+            }
+            catch (Exception)
+            {
+                return "Greska pri dobijanju podataka.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
         public static async Task<Result<AngazovanView, ErrorMessage>>IzmeniAngazovanAsync(AngazovanView a)
         {
             ISession? s = null;

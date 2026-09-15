@@ -13,7 +13,7 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        public async Task<IActionResult> GetAngazovanja()
+        public async Task<IActionResult> VratiSvaAngazovanja()
         {
             var result = await AngazujeDataProvider.VratiSvaAngazovanjaAsync();
 
@@ -31,7 +31,7 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetAngazovanjaOpreme(int opremaId)
+        public async Task<IActionResult> VratiAngazovanjaOpreme(int opremaId)
         {
             var result = await AngazujeDataProvider.VratiAngazovanjaOpremeAsync(opremaId);
 
@@ -47,7 +47,7 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetAngazovanjaZadatka(int zadatakId)
+        public async Task<IActionResult> VratiAngazovanjaZadatka(int zadatakId)
         {
             var result = await AngazujeDataProvider.VratiAngazovanjaZadatkaAsync(zadatakId);
 
@@ -73,12 +73,12 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("VratiAngazovanje/{zadatakId}/{opremaId}")]
+        [Route("VratiAngazuje/{zadatakId}/{opremaId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetAngazuje(int zadatakId, int opremaId)
+        public async Task<IActionResult> VratiAngazuje( int zadatakId, int opremaId)
         {
             var result = await AngazujeDataProvider.VratiAngazujeAsync(zadatakId, opremaId);
 
@@ -89,14 +89,14 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         }
 
         [HttpPut]
-        [Route("IzmeniAngazuje/{zadatakId}/{opremaId}")]
+        [Route("IzmeniAngazuje")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> IzmeniAngazuje([FromRoute] int zadatakId, [FromRoute] int opremaId,[FromBody] AngazujeView a)
+        public async Task<IActionResult> IzmeniAngazuje([FromBody] AngazujeView a)
         {
-            var result = await AngazujeDataProvider.IzmeniAngazujeAsync(zadatakId, opremaId, a);
+            var result = await AngazujeDataProvider.IzmeniAngazujeAsync(a);
 
             if (result.IsError)
                 return StatusCode(result.Error.StatusCode, result.Error.Message);

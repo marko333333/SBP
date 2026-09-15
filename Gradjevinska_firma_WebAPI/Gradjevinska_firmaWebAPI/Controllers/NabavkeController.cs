@@ -13,7 +13,7 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetNabavkeProjekta(int idProjekta)
+        public async Task<IActionResult> VratiNabavkeProjekta(int idProjekta)
         {
             var result = await NabavkeDataProvider.VratiNabavkeProjektaAsync(idProjekta);
 

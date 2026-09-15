@@ -183,7 +183,7 @@ namespace Gradjevinska_firmaLibrary.DataProvider
             }
         }
 
-        public static async Task<Result<AngazujeView, ErrorMessage>>IzmeniAngazujeAsync(int zadatakId,int opremaId,AngazujeView a)
+        public static async Task<Result<AngazujeView, ErrorMessage>>IzmeniAngazujeAsync(AngazujeView a)
         {
             ISession? s = null;
 
@@ -195,8 +195,8 @@ namespace Gradjevinska_firmaLibrary.DataProvider
                     return "Nemoguce otvoriti sesiju.".ToError(403);
 
                 Angazuje? angazuje = await s.QueryOver<Angazuje>()
-                    .Where(x => x.Zadatak.Id == zadatakId)
-                    .And(x => x.Oprema.Id == opremaId)
+                    .Where(x => x.Zadatak.Id == a.ZadatakId)
+                    .And(x => x.Oprema.Id == a.OpremaId)
                     .SingleOrDefaultAsync();
 
                 if (angazuje == null)

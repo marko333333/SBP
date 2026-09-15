@@ -17,7 +17,7 @@ namespace Gradjevinska_firmaLibrary.DTOs
         public int? Budzet { get; set; }
         public int ProjekatId { get; set; }
         public int FizickoLiceId { get; set; }
-        public int NadFazaId { get; set; }
+        public int? NadFazaId { get; set; }
 
         public FazaView()
         {
@@ -33,8 +33,7 @@ namespace Gradjevinska_firmaLibrary.DTOs
             Budzet = faza.Budzet;
             ProjekatId = faza.Projekat.ID;
             FizickoLiceId = faza.FizickoLice.Id;
-            //mora ovo da se proveri
-            NadFazaId = faza.Id;
+            NadFazaId = faza.NadFaza?.Id;
 
         }
     }

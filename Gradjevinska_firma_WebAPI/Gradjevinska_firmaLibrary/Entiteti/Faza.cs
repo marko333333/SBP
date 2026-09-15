@@ -16,9 +16,9 @@ namespace Gradjevinska_firmaLibrary.Entiteti
         public virtual int? Budzet { get; set; }
         public virtual Projekat Projekat { get; set; }
         public virtual FizickoLice FizickoLice { get; set; }
-        public virtual Faza NadFaza { get; set; }
+        public virtual Faza? NadFaza { get; set; }
 
-        public virtual IList<Faza> PodFaze { get; set; }
+        public virtual IList<Faza>? PodFaze { get; set; }
 
         public virtual IList<Zadatak> Zadaci { get; set; }
 

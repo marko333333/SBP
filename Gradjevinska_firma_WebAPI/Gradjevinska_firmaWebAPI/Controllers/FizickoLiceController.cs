@@ -15,7 +15,7 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        public async Task<IActionResult> GetFizickaLica()
+        public async Task<IActionResult> VratiSvaFizickaLica()
         {
             var fizickaLica = await OsobaDataProvider.VratiSvaFizickaLicaAsync();
 

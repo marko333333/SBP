@@ -13,7 +13,7 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetRadneNalogeZadatka(int idZadatka)
+        public async Task<IActionResult> VratiRadneNalogeZadatka(int idZadatka)
         {
             var result = await RadniNalogDataProvider.VratiRadneNalogeZadatkaAsync(idZadatka);
 

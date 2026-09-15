@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Gradjevinska_firmaLibrary.DataProvider;
+﻿using Gradjevinska_firmaLibrary.DataProvider;
+using Gradjevinska_firmaLibrary.DTOs;
+using Microsoft.AspNetCore.Mvc;
 namespace Gradjevinska_firmaWebAPI.Controllers
 {
     [ApiController]
@@ -11,7 +12,7 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        public async Task<IActionResult> GetKontakti()
+        public async Task<IActionResult> VratiSveKontakte()
         {
             var kontakti = await KontaktDataProvider.VratiSveKontakteAsync();
 
@@ -29,7 +30,7 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetKontakteOsobe(int idOsobe)
+        public async Task<IActionResult> VratiKontakteOsobe(int idOsobe)
         {
             var result = await KontaktDataProvider.VratiKontakteOsobeAsync(idOsobe);
 
@@ -37,6 +38,73 @@ namespace Gradjevinska_firmaWebAPI.Controllers
             {
                 return StatusCode(result.Error.StatusCode, result.Error.Message);
             }
+
+            return Ok(result.Data);
+        }
+
+        [HttpPost]
+        [Route("DodajKontakt")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> DodajKontakt([FromBody] KontaktView kontaktView)
+        {
+            var result =await KontaktDataProvider.DodajKontaktAsync(kontaktView);
+
+            if (result.IsError)
+                return StatusCode(result.Error.StatusCode,result.Error.Message);
+
+            return Ok(result.Data);
+        }
+
+        [HttpGet]
+        [Route("VratiKontakt/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> VratiKontakt(int id)
+        {
+            var result = await KontaktDataProvider.VratiKontaktAsync(id);
+
+            if (result.IsError)
+                return StatusCode(result.Error.StatusCode,result.Error.Message);
+
+            return Ok(result.Data);
+        }
+
+        [HttpPut]
+        [Route("IzmeniKontakt")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> IzmeniKontakt([FromBody] KontaktView kontaktView)
+        {
+            var result =
+                await KontaktDataProvider.IzmeniKontaktAsync(kontaktView);
+
+            if (result.IsError)
+                return StatusCode(
+                    result.Error.StatusCode,
+                    result.Error.Message);
+
+            return Ok(result.Data);
+        }
+
+        [HttpDelete]
+        [Route("ObrisiKontakt/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> ObrisiKontakt(int id)
+        {
+            var result = await KontaktDataProvider.ObrisiKontaktAsync(id);
+
+            if (result.IsError)
+                return StatusCode(result.Error.StatusCode,result.Error.Message);
 
             return Ok(result.Data);
         }

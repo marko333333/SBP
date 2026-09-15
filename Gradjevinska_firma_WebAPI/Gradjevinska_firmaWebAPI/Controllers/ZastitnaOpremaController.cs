@@ -12,7 +12,7 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        public async Task<IActionResult> GetZastitnaOprema()
+        public async Task<IActionResult> VratiSvuZastitnuOpremu()
         {
             var result = await ZastitnaOpremaDataProvider.VratiSvuZastitnuOpremuAsync();
 
@@ -30,7 +30,7 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetZastitnaOpremaFizickogLica(int idOsobe)
+        public async Task<IActionResult> VratiZastitneOpremeFizickogLica(int idOsobe)
         {
             var result = await ZastitnaOpremaDataProvider.VratiZastitneOpremeFizickogLicaAsync(idOsobe);
 

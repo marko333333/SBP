@@ -20,7 +20,7 @@ namespace Gradjevinska_firmaLibrary.DTOs
         public int Prioritet { get; set; }
         public string Status { get; set; }
         public int FazaId { get; set; }
-        public int RoditeljId { get; set; }
+        public int? RoditeljId { get; set; }
 
         public ZadatakView()
         {
@@ -39,7 +39,7 @@ namespace Gradjevinska_firmaLibrary.DTOs
             Prioritet=zadatak.Prioritet;
             Status=zadatak.Status;
             FazaId = zadatak.Faza.Id;
-            RoditeljId = zadatak.Roditelj.Id;
+            RoditeljId = zadatak.Roditelj?.Id;
         }
     }
 }

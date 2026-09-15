@@ -14,7 +14,7 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetPosebnaKlauzulaUgovora(int idUgovor)
+        public async Task<IActionResult> VratiPosebneKlauzuleUgovora(int idUgovor)
         {
             var result = await PosebneKlauzuleDataProvider.VratiPosebneKlauzuleUgovoraAsync(idUgovor);
 

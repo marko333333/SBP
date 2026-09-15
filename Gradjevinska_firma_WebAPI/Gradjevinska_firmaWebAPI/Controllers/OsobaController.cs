@@ -13,7 +13,7 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        public async Task<IActionResult> GetOsobe()
+        public async Task<IActionResult> VratiSveOsobe()
         {
             var osobe = await OsobaDataProvider.VratiSveOsobeAsync();
 
@@ -25,11 +25,30 @@ namespace Gradjevinska_firmaWebAPI.Controllers
             return Ok(osobe.Data);
         }
 
+        [HttpGet]
+        [Route("VratiOsobu/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> VratiOsobu(int id)
+        {
+            var osobe = await OsobaDataProvider.VratiOsobuAsync(id);
+
+            if (osobe.IsError)
+            {
+                return StatusCode(osobe.Error.StatusCode, osobe.Error.Message);
+            }
+
+            return Ok(osobe.Data);
+        }
+
         [HttpDelete]
         [Route("ObrisiOsobu/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> ObrisiOsobu(int id)
         {
             var result = await OsobaDataProvider.ObrisiOsobuAsync(id);

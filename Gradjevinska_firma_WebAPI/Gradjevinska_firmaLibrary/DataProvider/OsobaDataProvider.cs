@@ -45,6 +45,43 @@ namespace Gradjevinska_firmaLibrary.DataProvider
             return data;
         }
 
+        public static async Task<Result<OsobaView, ErrorMessage>> VratiOsobuAsync(int id)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                Osoba? osoba = await s.QueryOver<Osoba>()
+                    .Where(x => x.Id == id)
+                    .SingleOrDefaultAsync();
+
+                if (osoba == null)
+                    return "Osoba ne postoji.".ToError(404);
+
+                if (osoba is FizickoLice fizickoLice)
+                    return new FizickoLiceView(fizickoLice);
+
+                if (osoba is PravnaLica pravnaLica)
+                    return new PravnaLicaView(pravnaLica);
+
+                return new OsobaView(osoba);
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom dobijanja osobe.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
         public static async Task<Result<bool, ErrorMessage>>ObrisiOsobuAsync(int id)
         {
             ISession? s = null;

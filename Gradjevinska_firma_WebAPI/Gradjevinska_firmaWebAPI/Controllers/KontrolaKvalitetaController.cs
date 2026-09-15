@@ -13,7 +13,7 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetKontroleKvalitetaZadatka(int idZadatak)
+        public async Task<IActionResult> VratiKontroleKvalitetaZadatka(int idZadatak)
         {
             var result = await KontrolaKvalitetaDataProvider.VratiKontroleKvalitetaZadatkaAsync(idZadatak);
 

@@ -14,7 +14,7 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        public async Task<IActionResult> GetAngazovani()
+        public async Task<IActionResult> VratiSveAngazovane()
         {
             var result = await AngazovanDataProvider.VratiSveAngazovaneAsync();
 
@@ -31,7 +31,7 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetAngazovanjaOsobe(int idOsobe)
+        public async Task<IActionResult> VratiAngazovanjaOsobe(int idOsobe)
         {
             var result = await AngazovanDataProvider.VratiAngazovanjaOsobeAsync(idOsobe);
 
@@ -47,7 +47,7 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetAngazovanjaZadatka(int idZadatka)
+        public async Task<IActionResult> VratiAngazovanjaZadatka(int idZadatka)
         {
             var result = await AngazovanDataProvider.VratiAngazovanjaZadatkaAsync(idZadatka);
 
@@ -74,11 +74,28 @@ namespace Gradjevinska_firmaWebAPI.Controllers
             return Ok(result.Data);
         }
 
-        [HttpPut]
-        [Route("IzmeniAngazovanAsync")]
+        [HttpGet]
+        [Route("VratiAngazovan/{zadatakId}/{osobaId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> VratiAngazovan(int zadatakId, int osobaId)
+        {
+            var result = await AngazovanDataProvider.VratiAngazovanAsync(zadatakId, osobaId);
+
+            if (result.IsError)
+                return StatusCode(result.Error.StatusCode, result.Error.Message);
+
+            return Ok(result.Data);
+        }
+
+        [HttpPut]
+        [Route("IzmeniAngazovan")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> IzmeniAngazovan([FromBody] AngazovanView a)
         {
             var result = await AngazovanDataProvider.IzmeniAngazovanAsync(a);
