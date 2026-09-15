@@ -19,9 +19,9 @@ namespace Gradjevinska_firma.Entiteti
         public virtual int Prioritet { get; set; }
         public virtual string Status { get; set; }
         public virtual Faza Faza { get; set; }
-        public virtual Zadatak Roditelj { get; set; }
+        public virtual Zadatak? Roditelj { get; set; }
 
-        public virtual IList<Zadatak> Podzadaci { get; set; }
+        public virtual IList<Zadatak>? Podzadaci { get; set; }
         public virtual IList<RadniNalog> RadniNalozi { get; set; }
         public virtual IList<Napredak> Napreci { get; set; }
         public virtual IList<KontrolaKvaliteta> KontroleKvaliteta { get; set; }
