@@ -82,5 +82,153 @@ namespace Gradjevinska_firmaLibrary.DataProvider
 
             return data;
         }
+
+        public static async Task<Result<ZastitnaOpremaView, ErrorMessage>> vratiZastitnuOpremuAsync(int id)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                ZastitnaOprema? oprema = await s.QueryOver<ZastitnaOprema>()
+                    .Where(x => x.Id == id)
+                    .SingleOrDefaultAsync();
+
+                if (oprema == null)
+                    return "Zastitna oprema ne postoji.".ToError(404);
+
+                return new ZastitnaOpremaView(oprema);
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom dobavljanja zastitne opreme.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
+        public static async Task<Result<ZastitnaOpremaView, ErrorMessage>> DodajZastitnuOpremuAsync(ZastitnaOpremaView f)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                {
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+                }
+
+                FizickoLice? lice = await s.QueryOver<FizickoLice>()
+                    .Where(x => x.Id == f.FizickoLiceId)
+                    .SingleOrDefaultAsync();
+
+                ZastitnaOprema oprema = new ZastitnaOprema
+                {
+                    FizickoLice = lice,
+                    NazivOpreme = f.NazivOpreme
+                };
+
+                await s.SaveOrUpdateAsync(oprema);
+                await s.FlushAsync();
+
+                return new ZastitnaOpremaView(oprema);
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom dodavanje zastitne opreme.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
+        public static async Task<Result<ZastitnaOpremaView, ErrorMessage>> izmeniZastitnuOpremuAsync(ZastitnaOpremaView f)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                ZastitnaOprema? oprema = await s.QueryOver<ZastitnaOprema>().Where(x => x.Id == f.Id).SingleOrDefaultAsync();
+                if (oprema == null)
+                    return "Zastitna oprema ne postoji.".ToError();
+
+                FizickoLice? lice = await s.QueryOver<FizickoLice>()
+                    .Where(x => x.Id == f.FizickoLiceId)
+                    .SingleOrDefaultAsync();
+
+                if (lice == null)
+                    return "Fizicko lice ne postoji.".ToError(404);
+
+                //oprema.Id = f.Id;
+                oprema.FizickoLice = lice;
+                oprema.NazivOpreme = f.NazivOpreme;
+
+
+                await s.UpdateAsync(oprema);
+                await s.FlushAsync();
+
+                return new ZastitnaOpremaView(oprema);
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom izmene zastitne opreme.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
+        public static async Task<Result<bool, ErrorMessage>> ObrisiZastitnuOpremuAsync(int id)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                ZastitnaOprema? oprema = await s.QueryOver<ZastitnaOprema>()
+                    .Where(x => x.Id == id)
+                    .SingleOrDefaultAsync();
+
+                if (oprema == null)
+                    return "Zastitna oprema ne postoji.".ToError(404);
+
+                await s.DeleteAsync(oprema);
+                await s.FlushAsync();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom brisanja zastitne opreme.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
     }
 }
