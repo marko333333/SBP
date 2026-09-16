@@ -274,5 +274,39 @@ namespace Gradjevinska_firmaLibrary.DataProvider
             }
         }
 
+        public static async Task<Result<List<BezbednosniIncidentView>, ErrorMessage>> VratiBezbednosneIncidenteOsobeAsync(int osobaId)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                List<BezbednosniIncidentView> data =
+                    (await s.QueryOver<BezbednosniIncident>()
+                        .Where(x => x.Osoba.Id == osobaId)
+                        .ListAsync())
+                    .Select(x => new BezbednosniIncidentView(x))
+                    .ToList();
+
+                if (data.Count == 0)
+                    return "Osoba nema bezbednosne incidente.".ToError(404);
+
+                return data;
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom dobijanja incidenta osobe.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
     }
 }

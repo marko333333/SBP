@@ -9,15 +9,15 @@ namespace Gradjevinska_firmaLibrary.DTOs
 {
     public class UgovorView
     {
-        public int Id { get; protected set; }
+        public int Id { get; set; }
         public DateTime DatumPotpisivanja { get; set; }
         public decimal Vrednost { get; set; }
         public string PredmetUgovora { get; set; }
         public string Valuta { get; set; }
         public DateTime Rok { get; set; }
-        public int MaterijalId { get; set; }
-        public int ProjekatId { get; set; }
-        public int OpremaId { get; set; }
+        public int? MaterijalId { get; set; }
+        public int? ProjekatId { get; set; }
+        public int? OpremaId { get; set; }
 
         public UgovorView()
         {
@@ -31,9 +31,9 @@ namespace Gradjevinska_firmaLibrary.DTOs
             PredmetUgovora = ugovor.PredmetUgovora;
             Valuta=ugovor.Valuta;
             Rok = ugovor.Rok;
-            MaterijalId = ugovor.Materijal.ID;
-            ProjekatId = ugovor.Projekat.ID;
-            OpremaId = ugovor.Oprema.Id;
+            MaterijalId = ugovor.Materijal?.ID;
+            ProjekatId = ugovor.Projekat?.ID;
+            OpremaId = ugovor.Oprema?.Id;
         }
     }
 }
