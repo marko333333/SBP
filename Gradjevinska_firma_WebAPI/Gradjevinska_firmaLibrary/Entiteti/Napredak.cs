@@ -8,7 +8,7 @@ namespace Gradjevinska_firmaLibrary.Entiteti
 {
     public class Napredak
     {   
-        public virtual int Id { get; protected set; }
+        public virtual int Id { get; set; }
         public virtual DateTime Datum { get; set; }
         public virtual Zadatak Zadatak { get; set; }
         public virtual string DnevniIzvestaj { get; set; }
