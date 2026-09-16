@@ -219,5 +219,44 @@ namespace Gradjevinska_firmaLibrary.DataProvider
             }
         }
 
+        public static async Task<Result<List<ZadatakView>, ErrorMessage>> VratiPodzadatkeZadatkaAsync(int idZadatka)
+        {
+            List<ZadatakView> data = new();
+
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                {
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+                }
+
+                data = (await s.QueryOver<Zadatak>()
+                    .Where(l => l.Roditelj.Id == idZadatka)
+                    .ListAsync())
+                    .Select(k => new ZadatakView(k))
+                    .ToList();
+
+                if (data.Count == 0)
+                {
+                    return "Zadatak nema podzadatke".ToError(404);
+                }
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom prikupljanja podzadataka zadatka".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+
+            return data;
+        }
+
     }
 }

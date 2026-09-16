@@ -11,7 +11,7 @@ namespace Gradjevinska_firmaLibrary.Entiteti
         public virtual int Br_nabavke { get; protected set; }
         public virtual DateTime Datum { get; set; }
         public virtual Projekat Projekat { get; set; }
-        public virtual IList<NabavkaMaterijal> NabavkaMaterijal { get; set; }
-        public virtual IList<NabavkaOprema> NabavkaOprema { get; set; }
+        public virtual IList<NabavkaMaterijal> NabavkaMaterijal { get; set; }//dodaj
+        public virtual IList<NabavkaOprema> NabavkaOprema { get; set; }//dodaj
     }
 }

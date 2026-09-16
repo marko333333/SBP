@@ -22,6 +22,15 @@ namespace Gradjevinska_firmaLibrary.DTOs
         public int FazaId { get; set; }
         public int? RoditeljId { get; set; }
 
+        public virtual IList<Zadatak>? Podzadaci { get; set; }
+        public virtual IList<RadniNalog> RadniNalozi { get; set; }
+        public virtual IList<Napredak> Napreci { get; set; }
+        public virtual IList<KontrolaKvaliteta> KontroleKvaliteta { get; set; }
+        public virtual IList<Angazovan> Angazovani { get; set; }
+        public virtual IList<Angazuje> AngazovanaOprema { get; set; }
+
+        public virtual IList<Koristi> Koristi { get; set; }
+
         public ZadatakView()
         {
         }

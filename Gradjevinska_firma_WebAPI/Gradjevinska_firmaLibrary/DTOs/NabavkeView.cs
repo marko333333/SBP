@@ -9,7 +9,7 @@ namespace Gradjevinska_firmaLibrary.DTOs
 {
     public class NabavkeView
     {
-        public int Br_nabavke { get; protected set; }
+        public int Br_nabavke { get; set; }
         public DateTime Datum { get; set; }
         public int ProjekatId { get; set; }
 
