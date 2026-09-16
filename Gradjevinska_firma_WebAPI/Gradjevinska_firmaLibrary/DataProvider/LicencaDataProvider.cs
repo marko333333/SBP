@@ -82,5 +82,153 @@ namespace Gradjevinska_firmaLibrary.DataProvider
 
             return data;
         }
+
+        public static async Task<Result<LicencaView, ErrorMessage>> vratiLicencuAsync(int id)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                Licenca? licenca = await s.QueryOver<Licenca>()
+                    .Where(x => x.Id == id)
+                    .SingleOrDefaultAsync();
+
+                if (licenca == null)
+                    return "Licenca ne postoji.".ToError(404);
+
+                return new LicencaView(licenca);
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom dobavljanja licence.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
+        public static async Task<Result<LicencaView, ErrorMessage>> DodajLicencuAsync(LicencaView f)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                {
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+                }
+
+                Osoba? osoba = await s.QueryOver<Osoba>()
+                    .Where(x => x.Id == f.OsobaId)
+                    .SingleOrDefaultAsync();
+
+                Licenca licenca = new Licenca
+                {
+                    Osoba = osoba,
+                    NazivLicence = f.NazivLicence
+                };
+
+                await s.SaveOrUpdateAsync(licenca);
+                await s.FlushAsync();
+
+                return new LicencaView(licenca);
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom dodavanje licence.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
+        public static async Task<Result<LicencaView, ErrorMessage>> izmeniLicencuAsync(LicencaView f)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                Licenca? licenca = await s.QueryOver<Licenca>().Where(x=>x.Id == f.Id).SingleOrDefaultAsync();
+                if (licenca == null)
+                    return "Licenca ne postoji.".ToError();
+
+                Osoba? osoba = await s.QueryOver<Osoba>()
+                    .Where(x => x.Id == f.OsobaId)
+                    .SingleOrDefaultAsync();
+
+                if (osoba == null)
+                    return "Osoba ne postoji.".ToError(404);
+
+                licenca.Osoba = osoba;
+                licenca.NazivLicence = f.NazivLicence;
+
+
+                await s.UpdateAsync(licenca);
+                await s.FlushAsync();
+
+                return new LicencaView(licenca);
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom izmene licence.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
+        public static async Task<Result<bool, ErrorMessage>> ObrisiLicencuAsync(int id)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                Licenca? licenca = await s.QueryOver<Licenca>()
+                    .Where(x => x.Id == id)
+                    .SingleOrDefaultAsync();
+
+                if (licenca == null)
+                    return "Licenca ne postoji.".ToError(404);
+
+                await s.DeleteAsync(licenca);
+                await s.FlushAsync();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom brisanja licence.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
     }
+
 }

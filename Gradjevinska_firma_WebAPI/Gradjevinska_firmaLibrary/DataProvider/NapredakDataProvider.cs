@@ -102,7 +102,6 @@ namespace Gradjevinska_firmaLibrary.DataProvider
 
                 Napredak napredak = new Napredak
                 {
-                    Id = f.Id,
                     Datum = f.Datum,
                     Zadatak = zadatak,
                     DnevniIzvestaj = f.DnevniIzvestaj,
@@ -118,7 +117,7 @@ namespace Gradjevinska_firmaLibrary.DataProvider
             }
             catch (Exception)
             {
-                return "Doslo je do greske prilikom dodavanja fizickog lica.".ToError(400);
+                return "Doslo je do greske prilikom dodavanja napretka.".ToError(400);
             }
             finally
             {
