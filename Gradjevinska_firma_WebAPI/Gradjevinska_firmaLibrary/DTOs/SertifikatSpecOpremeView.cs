@@ -9,7 +9,7 @@ namespace Gradjevinska_firmaLibrary.DTOs
 {
     public class SertifikatSpecOpremeView
     {
-        public int Id { get; protected set; }
+        public int Id { get; set; }
         public int FizickoLiceId { get; set; }
         public string Sertifikat { get; set; }
 

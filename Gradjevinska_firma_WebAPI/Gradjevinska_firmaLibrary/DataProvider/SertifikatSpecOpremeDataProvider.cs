@@ -82,5 +82,149 @@ namespace Gradjevinska_firmaLibrary.DataProvider
 
             return data;
         }
+
+        public static async Task<Result<SertifikatSpecOpremeView, ErrorMessage>> vratiSertifikatAsync(int id)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                SertifikatSpecOpreme? sertif = await s.QueryOver<SertifikatSpecOpreme>()
+                    .Where(x => x.Id == id)
+                    .SingleOrDefaultAsync();
+
+                if (sertif == null)
+                    return "Sertifikat ne postoji.".ToError(404);
+
+                return new SertifikatSpecOpremeView(sertif);
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom dobavljanja sertifikata.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
+        public static async Task<Result<SertifikatSpecOpremeView, ErrorMessage>> DodajSertifikatAsync(SertifikatSpecOpremeView f)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                {
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+                }
+
+                FizickoLice? lice = await s.QueryOver<FizickoLice>()
+                    .Where(x => x.Id == f.FizickoLiceId)
+                    .SingleOrDefaultAsync();
+
+                SertifikatSpecOpreme sertif = new SertifikatSpecOpreme
+                {
+                    FizickoLice = lice,
+                    Sertifikat = f.Sertifikat
+                };
+
+                await s.SaveOrUpdateAsync(sertif);
+                await s.FlushAsync();
+
+                return new SertifikatSpecOpremeView(sertif);
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom dodavanje sertifikata.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
+        public static async Task<Result<SertifikatSpecOpremeView, ErrorMessage>> izmeniSertifikatAsync(SertifikatSpecOpremeView f)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                SertifikatSpecOpreme? sertif = await s.QueryOver<SertifikatSpecOpreme>().Where(x => x.Id == f.Id).SingleOrDefaultAsync();
+                if (sertif == null)
+                    return "Nepostojec sertifikat".ToError();
+
+                FizickoLice? lice = await s.QueryOver<FizickoLice>().Where(x => x.Id == f.FizickoLiceId).SingleOrDefaultAsync();
+                if (lice == null)
+                    return "Fizicko lice ne postoji.".ToError();
+
+                sertif.FizickoLice = lice;
+                sertif.Sertifikat = f.Sertifikat;
+
+
+                await s.UpdateAsync(sertif);
+                await s.FlushAsync();
+
+                return new SertifikatSpecOpremeView(sertif);
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom izmene sertifikata specijalne opreme.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
+        public static async Task<Result<bool, ErrorMessage>> obrisiSertifikatAsync(int id)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                SertifikatSpecOpreme? sertif = await s.QueryOver<SertifikatSpecOpreme>()
+                    .Where(x => x.Id == id)
+                    .SingleOrDefaultAsync();
+
+                if (sertif == null)
+                    return "Sertifikat ne postoji.".ToError(404);
+
+                await s.DeleteAsync(sertif);
+                await s.FlushAsync();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom brisanja sertifikata.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
     }
 }
