@@ -296,5 +296,156 @@ namespace Gradjevinska_firmaLibrary.DataProvider
 
         #endregion
 
+        #region Sanacija
+
+        public static async Task<Result<List<SanacijaView>, ErrorMessage>> vratiSveSanacije()
+        {
+            List<SanacijaView> data = new();
+
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                {
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+                }
+
+                data = (await s.QueryOver<Sanacija>().ListAsync())
+                    .Select(l => new SanacijaView(l))
+                    .ToList();
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom prikupljanja sanacija projekata".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+
+            return data;
+        }
+
+        public static async Task<Result<SanacijaView, ErrorMessage>> vratiSanacijuProjekatAsync(int id)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                Sanacija? projekat = await s.QueryOver<Sanacija>()
+                    .Where(x => x.ID == id)
+                    .SingleOrDefaultAsync();
+
+                if (projekat == null)
+                    return "Projekat ne postoji.".ToError(404);
+
+                return new SanacijaView(projekat);
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom dobavljanja sanacije projekta.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
+        public static async Task<Result<SanacijaView, ErrorMessage>> DodajSanacijaProjekatAsync(SanacijaView f)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                {
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+                }
+
+                Sanacija stan = new Sanacija
+                {
+                    Naziv = f.Naziv,
+                    Opis = f.Opis,
+                    Lokacija = f.Lokacija,
+                    Datum_pocetka = f.Datum_pocetka,
+                    Budzet = f.Budzet,
+                    Status = f.Status,
+                    Planirani_Zavrsetak = f.Planirani_Zavrsetak,
+                    Stvarni_Zavrsetak = f.Stvarni_Zavrsetak
+
+
+                };
+
+                await s.SaveOrUpdateAsync(stan);
+                await s.FlushAsync();
+
+                return new SanacijaView(stan);
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom dodavanje stambenog projekta.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
+        public static async Task<Result<SanacijaView, ErrorMessage>> izmeniSanacijaProjekatAsync(SanacijaView f)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                Sanacija? stan = await s.QueryOver<Sanacija>().Where(x => x.ID == f.ID).SingleOrDefaultAsync();
+                if (stan == null)
+                    return "Nepostojeci projekat".ToError();
+
+
+                stan.Naziv = f.Naziv;
+                stan.Opis = f.Opis;
+                stan.Lokacija = f.Lokacija;
+                stan.Datum_pocetka = f.Datum_pocetka;
+                stan.Budzet = f.Budzet;
+                stan.Status = f.Status;
+                stan.Planirani_Zavrsetak = f.Planirani_Zavrsetak;
+                stan.Stvarni_Zavrsetak = f.Stvarni_Zavrsetak;
+
+                await s.UpdateAsync(stan);
+                await s.FlushAsync();
+
+                return new SanacijaView(stan);
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom izmene sanacije projekta.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
+        #endregion
+
     }
 }
