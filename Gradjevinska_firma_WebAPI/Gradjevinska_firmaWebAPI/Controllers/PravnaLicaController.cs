@@ -24,6 +24,22 @@ namespace Gradjevinska_firmaWebAPI.Controllers
             return Ok(pravnaLica.Data);
         }
 
+        [HttpGet]
+        [Route("VratiPravnoLice/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> vratiPravnoLice(int id)
+        {
+            var result = await OsobaDataProvider.vratiPravnoLiceAsync(id);
+
+            if (result.IsError)
+                return StatusCode(result.Error.StatusCode, result.Error.Message);
+
+            return Ok(result.Data);
+        }
+
         [HttpPost]
         [Route("DodajPravnoLice")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -56,6 +72,22 @@ namespace Gradjevinska_firmaWebAPI.Controllers
                     result.Error.StatusCode,
                     result.Error.Message);
             }
+
+            return Ok(result.Data);
+        }
+
+        [HttpDelete]
+        [Route("ObrisiPravnoLice/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> obrisiPravnoLice(int id)
+        {
+            var result = await OsobaDataProvider.obrisiPravnoLiceAsync(id);
+
+            if (result.IsError)
+                return StatusCode(result.Error.StatusCode, result.Error.Message);
 
             return Ok(result.Data);
         }

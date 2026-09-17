@@ -149,6 +149,37 @@ namespace Gradjevinska_firmaLibrary.DataProvider
             return data;
         }
 
+        public static async Task<Result<FizickoLiceView, ErrorMessage>> vratiFizickoLiceAsync(int id)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                FizickoLice? lice = await s.QueryOver<FizickoLice>()
+                    .Where(x => x.Id == id)
+                    .SingleOrDefaultAsync();
+
+                if (lice == null)
+                    return "Fizicko licene postoji.".ToError(404);
+
+                return new FizickoLiceView(lice);
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom dobavljanja fizickog lica.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
         public static async Task<Result<FizickoLiceView, ErrorMessage>>DodajFizickoLiceAsync(FizickoLiceView f)
         {
             ISession? s = null;
@@ -246,6 +277,41 @@ namespace Gradjevinska_firmaLibrary.DataProvider
             }
         }
 
+        public static async Task<Result<bool, ErrorMessage>> obrisiFizickoLiceAsync(int id)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                FizickoLice? lice = await s.QueryOver<FizickoLice>()
+                    .Where(x => x.Id == id)
+                    .SingleOrDefaultAsync();
+
+                if (lice == null)
+                    return "Fizicko lice ne postoji.".ToError(404);
+
+                await s.DeleteAsync(lice);
+                await s.FlushAsync();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom brisanja fizickog lica.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
+
         #endregion
 
         #region PravnaLica
@@ -280,6 +346,37 @@ namespace Gradjevinska_firmaLibrary.DataProvider
             }
 
             return data;
+        }
+
+        public static async Task<Result<PravnaLicaView, ErrorMessage>> vratiPravnoLiceAsync(int id)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                PravnaLica? lice = await s.QueryOver<PravnaLica>()
+                    .Where(x => x.Id == id)
+                    .SingleOrDefaultAsync();
+
+                if (lice == null)
+                    return "Pravno licene postoji.".ToError(404);
+
+                return new PravnaLicaView(lice);
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom dobavljanja pravnog lica.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
         }
 
         public static async Task<Result<PravnaLicaView, ErrorMessage>>DodajPravnoLiceAsync(PravnaLicaView p)
@@ -363,6 +460,40 @@ namespace Gradjevinska_firmaLibrary.DataProvider
             catch (Exception)
             {
                 return "Doslo je do greske prilikom izmene pravnog lica.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
+        public static async Task<Result<bool, ErrorMessage>> obrisiPravnoLiceAsync(int id)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                PravnaLica? lice = await s.QueryOver<PravnaLica>()
+                    .Where(x => x.Id == id)
+                    .SingleOrDefaultAsync();
+
+                if (lice == null)
+                    return "Pravno lice ne postoji.".ToError(404);
+
+                await s.DeleteAsync(lice);
+                await s.FlushAsync();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom brisanja pravnog lica.".ToError(400);
             }
             finally
             {

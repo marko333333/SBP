@@ -113,7 +113,7 @@ namespace Gradjevinska_firmaLibrary.DataProvider
                 s?.Close();
                 s?.Dispose();
             }
-         }
+        }
 
         public static async Task<Result<StavkaKontroleView, ErrorMessage>> DodajStavkuKontroleAsync(StavkaKontroleView f)
         {

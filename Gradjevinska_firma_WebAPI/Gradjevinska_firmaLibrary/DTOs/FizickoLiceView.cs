@@ -20,6 +20,7 @@ namespace Gradjevinska_firmaLibrary.DTOs
         public bool FlagN { get; set; }
         public bool FlagAO { get; set; }
 
+
         public FizickoLiceView()
         {
         }

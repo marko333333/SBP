@@ -16,6 +16,7 @@ namespace Gradjevinska_firmaLibrary.DTOs
         public DateTime DatumRodjenja { get; set; }
         public string? Struka { get; set; }
 
+
         public OsobaView()
         {
         }
