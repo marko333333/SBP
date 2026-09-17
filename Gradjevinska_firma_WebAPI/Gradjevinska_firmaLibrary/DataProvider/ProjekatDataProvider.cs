@@ -598,5 +598,156 @@ namespace Gradjevinska_firmaLibrary.DataProvider
 
         #endregion
 
+        #region Industrijski
+
+        public static async Task<Result<List<IndustrijskiView>, ErrorMessage>> vratiSveIndustrijskeProjekte()
+        {
+            List<IndustrijskiView> data = new();
+
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                {
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+                }
+
+                data = (await s.QueryOver<Industrijski>().ListAsync())
+                    .Select(l => new IndustrijskiView(l))
+                    .ToList();
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom prikupljanja industrijskih projekata".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+
+            return data;
+        }
+
+        public static async Task<Result<IndustrijskiView, ErrorMessage>> vratiIndustrijskiProjekatAsync(int id)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                Industrijski? projekat = await s.QueryOver<Industrijski>()
+                    .Where(x => x.ID == id)
+                    .SingleOrDefaultAsync();
+
+                if (projekat == null)
+                    return "Projekat ne postoji.".ToError(404);
+
+                return new IndustrijskiView(projekat);
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom dobavljanja industrijskog projekta.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
+        public static async Task<Result<IndustrijskiView, ErrorMessage>> DodajIndustrijskiProjekatAsync(IndustrijskiView f)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                {
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+                }
+
+                Industrijski stan = new Industrijski
+                {
+                    Naziv = f.Naziv,
+                    Opis = f.Opis,
+                    Lokacija = f.Lokacija,
+                    Datum_pocetka = f.Datum_pocetka,
+                    Budzet = f.Budzet,
+                    Status = f.Status,
+                    Planirani_Zavrsetak = f.Planirani_Zavrsetak,
+                    Stvarni_Zavrsetak = f.Stvarni_Zavrsetak
+
+
+                };
+
+                await s.SaveOrUpdateAsync(stan);
+                await s.FlushAsync();
+
+                return new IndustrijskiView(stan);
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom dodavanje industrijskog projekta.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
+        public static async Task<Result<IndustrijskiView, ErrorMessage>> izmeniIndustrijskiProjekatAsync(IndustrijskiView f)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                Industrijski? stan = await s.QueryOver<Industrijski>().Where(x => x.ID == f.ID).SingleOrDefaultAsync();
+                if (stan == null)
+                    return "Nepostojeci projekat".ToError();
+
+
+                stan.Naziv = f.Naziv;
+                stan.Opis = f.Opis;
+                stan.Lokacija = f.Lokacija;
+                stan.Datum_pocetka = f.Datum_pocetka;
+                stan.Budzet = f.Budzet;
+                stan.Status = f.Status;
+                stan.Planirani_Zavrsetak = f.Planirani_Zavrsetak;
+                stan.Stvarni_Zavrsetak = f.Stvarni_Zavrsetak;
+
+                await s.UpdateAsync(stan);
+                await s.FlushAsync();
+
+                return new IndustrijskiView(stan);
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom izmene industrijskog projekta.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
+        #endregion
+
     }
 }
