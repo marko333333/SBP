@@ -9,7 +9,7 @@ namespace Gradjevinska_firmaLibrary.DTOs
 {
     public class StavkaKontroleView
     {
-        public int Id { get; protected set; }
+        public int Id { get; set; }
         public int KontrolaId { get; set; }
         public int RedniBrojStavke { get; set; }
         public string Uzorci { get; set; }
