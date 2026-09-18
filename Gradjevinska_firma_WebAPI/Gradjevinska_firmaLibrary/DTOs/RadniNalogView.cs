@@ -9,7 +9,7 @@ namespace Gradjevinska_firmaLibrary.DTOs
 {
     public class RadniNalogView
     {
-        public int BrojNaloga { get; protected set; }
+        public int BrojNaloga { get; set; }
         public string Status { get; set; }
         public DateTime DatumIzdavanja { get; set; }
         public int ZadatakId { get; set; }
