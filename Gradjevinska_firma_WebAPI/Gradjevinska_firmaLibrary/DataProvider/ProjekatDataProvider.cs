@@ -900,5 +900,156 @@ namespace Gradjevinska_firmaLibrary.DataProvider
 
         #endregion
 
+        #region Poslovni
+
+        public static async Task<Result<List<PoslovniView>, ErrorMessage>> vratiSvePoslovneProjekte()
+        {
+            List<PoslovniView> data = new();
+
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                {
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+                }
+
+                data = (await s.QueryOver<Poslovni>().ListAsync())
+                    .Select(l => new PoslovniView(l))
+                    .ToList();
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom prikupljanja poslovnih projekata".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+
+            return data;
+        }
+
+        public static async Task<Result<PoslovniView, ErrorMessage>> vratiPoslovniProjekatAsync(int id)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                Poslovni? projekat = await s.QueryOver<Poslovni>()
+                    .Where(x => x.ID == id)
+                    .SingleOrDefaultAsync();
+
+                if (projekat == null)
+                    return "Projekat ne postoji.".ToError(404);
+
+                return new PoslovniView(projekat);
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom dobavljanja poslovnog projekta.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
+        public static async Task<Result<PoslovniView, ErrorMessage>> DodajPoslovniProjekatAsync(PoslovniView f)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                {
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+                }
+
+                Poslovni stan = new Poslovni
+                {
+                    Naziv = f.Naziv,
+                    Opis = f.Opis,
+                    Lokacija = f.Lokacija,
+                    Datum_pocetka = f.Datum_pocetka,
+                    Budzet = f.Budzet,
+                    Status = f.Status,
+                    Planirani_Zavrsetak = f.Planirani_Zavrsetak,
+                    Stvarni_Zavrsetak = f.Stvarni_Zavrsetak
+
+
+                };
+
+                await s.SaveOrUpdateAsync(stan);
+                await s.FlushAsync();
+
+                return new PoslovniView(stan);
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom dodavanje poslovnog projekta.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
+        public static async Task<Result<PoslovniView, ErrorMessage>> izmeniPoslovniProjekatAsync(PoslovniView f)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                Poslovni? stan = await s.QueryOver<Poslovni>().Where(x => x.ID == f.ID).SingleOrDefaultAsync();
+                if (stan == null)
+                    return "Nepostojeci projekat".ToError();
+
+
+                stan.Naziv = f.Naziv;
+                stan.Opis = f.Opis;
+                stan.Lokacija = f.Lokacija;
+                stan.Datum_pocetka = f.Datum_pocetka;
+                stan.Budzet = f.Budzet;
+                stan.Status = f.Status;
+                stan.Planirani_Zavrsetak = f.Planirani_Zavrsetak;
+                stan.Stvarni_Zavrsetak = f.Stvarni_Zavrsetak;
+
+                await s.UpdateAsync(stan);
+                await s.FlushAsync();
+
+                return new PoslovniView(stan);
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom izmene poslovnog projekta.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
+        #endregion
+
     }
 }

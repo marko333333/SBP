@@ -8,6 +8,6 @@ namespace Gradjevinska_firmaLibrary.Entiteti
 {
     public class Poslovni : Projekat
     {
-        public virtual IList<ObjekatPoslovni> Objekti { get; set; }
+        public virtual IList<ObjekatPoslovni> Objekti { get; set; }//dodaj
     }
 }
