@@ -749,5 +749,156 @@ namespace Gradjevinska_firmaLibrary.DataProvider
 
         #endregion
 
+        #region Infrastruktura
+
+        public static async Task<Result<List<InfrastrukturaView>, ErrorMessage>> vratiSveInfrastrukturaProjekte()
+        {
+            List<InfrastrukturaView> data = new();
+
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                {
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+                }
+
+                data = (await s.QueryOver<Infrastruktura>().ListAsync())
+                    .Select(l => new InfrastrukturaView(l))
+                    .ToList();
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom prikupljanja infrastrukturnih projekata".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+
+            return data;
+        }
+
+        public static async Task<Result<InfrastrukturaView, ErrorMessage>> vratiInfrastrukturniProjekatAsync(int id)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                Infrastruktura? projekat = await s.QueryOver<Infrastruktura>()
+                    .Where(x => x.ID == id)
+                    .SingleOrDefaultAsync();
+
+                if (projekat == null)
+                    return "Projekat ne postoji.".ToError(404);
+
+                return new InfrastrukturaView(projekat);
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom dobavljanja infrastrukturnog projekta.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
+        public static async Task<Result<InfrastrukturaView, ErrorMessage>> DodajInfrastrukturniProjekatAsync(InfrastrukturaView f)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                {
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+                }
+
+                Infrastruktura stan = new Infrastruktura
+                {
+                    Naziv = f.Naziv,
+                    Opis = f.Opis,
+                    Lokacija = f.Lokacija,
+                    Datum_pocetka = f.Datum_pocetka,
+                    Budzet = f.Budzet,
+                    Status = f.Status,
+                    Planirani_Zavrsetak = f.Planirani_Zavrsetak,
+                    Stvarni_Zavrsetak = f.Stvarni_Zavrsetak
+
+
+                };
+
+                await s.SaveOrUpdateAsync(stan);
+                await s.FlushAsync();
+
+                return new InfrastrukturaView(stan);
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom dodavanje infrastrukturnog projekta.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
+        public static async Task<Result<InfrastrukturaView, ErrorMessage>> izmeniInfrastrukturniProjekatAsync(InfrastrukturaView f)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                Infrastruktura? stan = await s.QueryOver<Infrastruktura>().Where(x => x.ID == f.ID).SingleOrDefaultAsync();
+                if (stan == null)
+                    return "Nepostojeci projekat".ToError();
+
+
+                stan.Naziv = f.Naziv;
+                stan.Opis = f.Opis;
+                stan.Lokacija = f.Lokacija;
+                stan.Datum_pocetka = f.Datum_pocetka;
+                stan.Budzet = f.Budzet;
+                stan.Status = f.Status;
+                stan.Planirani_Zavrsetak = f.Planirani_Zavrsetak;
+                stan.Stvarni_Zavrsetak = f.Stvarni_Zavrsetak;
+
+                await s.UpdateAsync(stan);
+                await s.FlushAsync();
+
+                return new InfrastrukturaView(stan);
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom izmene infrasturkturnog projekta.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
+        #endregion
+
     }
 }
