@@ -6,17 +6,17 @@ namespace Gradjevinska_firmaWebAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class NabavkaOpremaController : ControllerBase
+    public class NabavkaMaterijalController : ControllerBase
     {
         [HttpGet]
-        [Route("VratiNabavkeOpremaNabavki/{brNabavke}")]
+        [Route("VratiNabavkeMaterijalaNabavki/{brNabavke}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> VratiNabavkeOpremaNabavki(int brNabavke)
+        public async Task<IActionResult> VratiNabavkeMaterijalaNabavki(int brNabavke)
         {
-            var result = await NabavkaOpremaDataProvider.VratiNabavkeOpremaNabavkiAsync(brNabavke);
+            var result = await NabavkaMaterijalDataProvider.VratiNabavkeMaterijalNabavkiAsync(brNabavke);
 
             if (result.IsError)
             {
@@ -27,13 +27,13 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("VratiSveNabavkeOprema")]
+        [Route("VratiSveNabavkeMaterijal")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public async Task<IActionResult> VratiSveNabavkeOprema()
         {
-            var result = await NabavkaOpremaDataProvider.VratiSveNabavkeOpremaAsync();
+            var result = await NabavkaMaterijalDataProvider.VratiSveNabavkeMaterijalAsync();
 
             if (result.IsError)
             {
@@ -44,14 +44,14 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("VratiNabavkuOpreme/{id}")]
+        [Route("VratiNabavkuMaterijala/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> vratiNabavkuOpreme(int id)
+        public async Task<IActionResult> vratiNabavkuMaterijala(int id)
         {
-            var result = await NabavkaOpremaDataProvider.vratiNabavkuOpremeAsync(id);
+            var result = await NabavkaMaterijalDataProvider.vratiNabavkuMaterijalaAsync(id);
 
             if (result.IsError)
                 return StatusCode(result.Error.StatusCode, result.Error.Message);
@@ -60,14 +60,14 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         }
 
         [HttpPost]
-        [Route("DodajNabavkuOpreme")]
+        [Route("DodajNabavkuMaterijala")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> dodajNabavkuOpreme([FromBody] NabavkaOpremaView f)
+        public async Task<IActionResult> dodajNabavkuMaterijala([FromBody] NabavkaMaterijalView f)
         {
-            var result = await NabavkaOpremaDataProvider.DodajNabavkuOpremeAsync(f);
+            var result = await NabavkaMaterijalDataProvider.DodajNabavkuMaterijalaAsync(f);
 
             if (result.IsError)
                 return StatusCode(result.Error.StatusCode, result.Error.Message);
@@ -76,14 +76,14 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         }
 
         [HttpPut]
-        [Route("IzmeniNabavkuOpereme")]
+        [Route("IzmeniNabavkuMaterijal")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> izmeniNabavkuOpreme([FromBody] NabavkaOpremaView f)
+        public async Task<IActionResult> izmeniNabavkuMaterijal([FromBody] NabavkaMaterijalView f)
         {
-            var result = await NabavkaOpremaDataProvider.izmeniNabavkuOpremeAsync(f);
+            var result = await NabavkaMaterijalDataProvider.izmeniNabavkuMaterijalaAsync(f);
 
             if (result.IsError)
                 return StatusCode(result.Error.StatusCode, result.Error.Message);
@@ -92,14 +92,14 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         }
 
         [HttpDelete]
-        [Route("ObrisiNabavkuOpreme/{id}")]
+        [Route("ObrisiNabavkuMaterijal/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> obrisiNabavkuOpreme(int id)
+        public async Task<IActionResult> obrisiNabavkuMaterijala(int id)
         {
-            var result = await NabavkaOpremaDataProvider.ObrisiNabavkuOpremeAsync(id);
+            var result = await NabavkaMaterijalDataProvider.ObrisiNabavkuMaterijalaAsync(id);
 
             if (result.IsError)
                 return StatusCode(result.Error.StatusCode, result.Error.Message);
