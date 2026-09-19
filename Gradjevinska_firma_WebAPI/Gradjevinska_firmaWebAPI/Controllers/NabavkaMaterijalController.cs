@@ -27,6 +27,24 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         }
 
         [HttpGet]
+        [Route("VratiNabavkeMaterijalaMaterijala/{idMaterijala}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> VratiNabavkeMaterijalMaterijala(int idMaterijala)
+        {
+            var result = await NabavkaMaterijalDataProvider.VratiNabavkeMaterijalMaterijalaAsync(idMaterijala);
+
+            if (result.IsError)
+            {
+                return StatusCode(result.Error.StatusCode, result.Error.Message);
+            }
+
+            return Ok(result.Data);
+        }
+
+        [HttpGet]
         [Route("VratiSveNabavkeMaterijal")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

@@ -52,6 +52,46 @@ namespace Gradjevinska_firmaLibrary.DataProvider
             return data;
         }
 
+        public static async Task<Result<List<NabavkaMaterijalView>, ErrorMessage>> VratiNabavkeMaterijalMaterijalaAsync(int idMaterijala)
+        {
+            List<NabavkaMaterijalView> data = new();
+
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                {
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+                }
+
+                data = (await s.QueryOver<NabavkaMaterijal>()
+                    .Where(k => k.Materijal.ID == idMaterijala)
+                    .ListAsync())
+                    .Select(k => new NabavkaMaterijalView(k))
+                    .ToList();
+
+                if (data.Count == 0)
+                {
+                    return "Materijal nema nabavku materijala".ToError(404);
+                }
+
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom prikupljanja nabavki materijala nabavki".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+
+            return data;
+        }
+
         public static async Task<Result<List<NabavkaMaterijalView>, ErrorMessage>> VratiSveNabavkeMaterijalAsync()
         {
             List<NabavkaMaterijalView> data = new();
