@@ -9,7 +9,7 @@ namespace Gradjevinska_firmaLibrary.DTOs
 {
     public class KontrolaKvalitetaView
     {
-        public int Id { get; protected set; }
+        public int Id { get; set; }
         public DateTime DatumInspekcije { get; set; }
         public string PrimedbeNadzora { get; set; }
         public string Zapisnik { get; set; }
