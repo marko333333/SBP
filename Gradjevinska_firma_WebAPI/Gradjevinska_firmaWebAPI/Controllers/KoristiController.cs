@@ -25,6 +25,23 @@ namespace Gradjevinska_firmaWebAPI.Controllers
             return Ok(licence.Data);
         }
 
+        [HttpGet]
+        [Route("VratiKoristiZadatka/{idZadatka}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        public async Task<IActionResult> vratiKoristiZadatka(int idZadatka)
+        {
+            var result = await KoristiDataProvider.vratiKoristiZadatka(idZadatka);
+
+            if(result.IsError)
+            {
+                return StatusCode(result.Error.StatusCode, result.Error.Message);
+            }
+
+            return Ok(result.Data);
+        }
+
         [HttpPost]
         [Route("DodajKoristi")]
         [ProducesResponseType(StatusCodes.Status200OK)]

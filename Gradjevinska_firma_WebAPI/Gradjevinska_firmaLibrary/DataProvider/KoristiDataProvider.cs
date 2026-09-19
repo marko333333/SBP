@@ -203,5 +203,44 @@ namespace Gradjevinska_firmaLibrary.DataProvider
             }
         }
 
+        public static async Task<Result<List<KoristiView>, ErrorMessage>> vratiKoristiZadatka(int idZadatka)
+        {
+            List<KoristiView> data = new();
+
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                {
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+                }
+
+                data = (await s.QueryOver<Koristi>()
+                    .Where(l => l.Zadatak.Id == idZadatka)
+                    .ListAsync())
+                    .Select(k => new KoristiView(k))
+                    .ToList();
+
+                if (data.Count == 0)
+                {
+                    return "Zadatak nema koristi".ToError(404);
+                }
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom prikupljanja koristi zadatka".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+
+            return data;
+        }
+
     }
 }

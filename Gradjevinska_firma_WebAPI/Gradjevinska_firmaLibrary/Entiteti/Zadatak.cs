@@ -28,7 +28,7 @@ namespace Gradjevinska_firmaLibrary.Entiteti
         public virtual IList<Angazovan> Angazovani { get; set; }
         public virtual IList<Angazuje> AngazovanaOprema { get; set; }
 
-        public virtual IList<Koristi> Koristi { get; set; }//dodati
+        public virtual IList<Koristi> Koristi { get; set; }
 
         public Zadatak() {
 
