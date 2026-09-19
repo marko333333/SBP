@@ -18,7 +18,7 @@ namespace Gradjevinska_firmaLibrary.Entiteti
        public virtual Projekat Projekat { get; set; }
        public virtual Oprema Oprema { get; set; }
 
-        public virtual IList<ImaUgovornuStranu> UgovorneStrane { get; set; }//dodaj 
+        public virtual IList<ImaUgovornuStranu> UgovorneStrane { get; set; }
         public virtual IList<PosebnaKlauzula> PosebneKlauzule { get; set; }
         public Ugovor()
         {

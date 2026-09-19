@@ -266,5 +266,73 @@ namespace Gradjevinska_firmaLibrary.DataProvider
             }
         }
 
+        public static async Task<Result<List<FakturaView>, ErrorMessage>> vratiIzdateFakturePravnogLica(int pravnoLiceID)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                List<FakturaView> data =
+                    (await s.QueryOver<Faktura>()
+                        .Where(x => x.PravnoLiceIzdaje.Id == pravnoLiceID)
+                        .ListAsync())
+                    .Select(x => new FakturaView(x))
+                    .ToList();
+
+                if (data.Count == 0)
+                    return "Faktura nema izdate fakture datum pravnom licu.".ToError(404);
+
+                return data;
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom dobijanja faktura.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
+        public static async Task<Result<List<FakturaView>, ErrorMessage>> vratiPrimljeneFakturePravnogLica(int pravnoLiceID)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                List<FakturaView> data =
+                    (await s.QueryOver<Faktura>()
+                        .Where(x => x.PravnoLicePrima.Id == pravnoLiceID)
+                        .ListAsync())
+                    .Select(x => new FakturaView(x))
+                    .ToList();
+
+                if (data.Count == 0)
+                    return "Faktura nema date fakture datum pravnom licu.".ToError(404);
+
+                return data;
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom dobijanja faktura.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
     }
 }

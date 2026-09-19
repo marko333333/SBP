@@ -41,6 +41,38 @@ namespace Gradjevinska_firmaWebAPI.Controllers
             return Ok(result.Data);
         }
 
+        [HttpGet]
+        [Route("VratiIzdateFakturePravnogLica/{pravnoLiceID}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> vratiIzdateFakturePravnogLica(int pravnoLiceID)
+        {
+            var result = await FakturaDataProvider.vratiIzdateFakturePravnogLica(pravnoLiceID);
+
+            if (result.IsError)
+                return StatusCode(result.Error.StatusCode, result.Error.Message);
+
+            return Ok(result.Data);
+        }
+
+        [HttpGet]
+        [Route("VratiPrimljeneFakturePravnogLica/{pravnoLiceID}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> vratiPrimljeneFakturePravnogLica(int pravnoLiceID)
+        {
+            var result = await FakturaDataProvider.vratiPrimljeneFakturePravnogLica(pravnoLiceID);
+
+            if (result.IsError)
+                return StatusCode(result.Error.StatusCode, result.Error.Message);
+
+            return Ok(result.Data);
+        }
+
 
         [HttpPost]
         [Route("DodajFakturu")]
