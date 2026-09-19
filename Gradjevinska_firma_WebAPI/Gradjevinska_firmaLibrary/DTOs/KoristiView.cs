@@ -9,7 +9,7 @@ namespace Gradjevinska_firmaLibrary.DTOs
 {
     public class KoristiView
     {
-        public int ID { get; protected set; }
+        public int ID { get; set; }
         public int ZadatakId { get; set; }
         public int MaterijalId { get; set; }
         public int Kolicina { get; set; }
