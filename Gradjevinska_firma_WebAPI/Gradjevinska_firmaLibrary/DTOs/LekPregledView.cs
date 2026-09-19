@@ -9,7 +9,7 @@ namespace Gradjevinska_firmaLibrary.DTOs
 {
     public class LekPregledView
     {
-        public int Id { get; protected set; }
+        public int Id { get; set; }
         public int FizickoLiceId { get; set; }
         public string Rezultat { get; set; }
         public DateTime Datum { get; set; }
