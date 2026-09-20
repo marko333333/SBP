@@ -16,8 +16,8 @@ namespace Gradjevinska_firmaLibrary.Entiteti
         public virtual string Sertifikat { get; set; }
         public virtual string Tip { get; set; }
 
-        public virtual IList<Ugovor> Ugovori { get; set; }//dodaj
-        public virtual IList<Koristi> Koristi { get; set; }//dodaj
+        public virtual IList<Ugovor> Ugovori { get; set; }
+        public virtual IList<Koristi> Koristi { get; set; }
         public virtual IList<NabavkaMaterijal> NabavkaMaterijal { get; set; }
         public Materijal()
         {

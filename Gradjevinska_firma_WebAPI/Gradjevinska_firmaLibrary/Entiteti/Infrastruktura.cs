@@ -8,6 +8,6 @@ namespace Gradjevinska_firmaLibrary.Entiteti
 {
     public class Infrastruktura : Projekat
     {
-        public virtual IList<Deonica> Deonice { get; set; }//dodaj
+        public virtual IList<Deonica> Deonice { get; set; }
     }
 }

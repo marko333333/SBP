@@ -242,5 +242,45 @@ namespace Gradjevinska_firmaLibrary.DataProvider
                 s?.Dispose();
             }
         }
+
+        public static async Task<Result<List<NabavkaOpremaView>, ErrorMessage>> VratiNabavkeOpremaOpremeAsync(int opremaId)
+        {
+            List<NabavkaOpremaView> data = new();
+
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                {
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+                }
+
+                data = (await s.QueryOver<NabavkaOprema>()
+                    .Where(k => k.Oprema.Id == opremaId)
+                    .ListAsync())
+                    .Select(k => new NabavkaOpremaView(k))
+                    .ToList();
+
+                if (data.Count == 0)
+                {
+                    return "Oprema nema nabavku oprema".ToError(404);
+                }
+
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom prikupljanja nabavki oprema opreme".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+
+            return data;
+        }
     }
 }

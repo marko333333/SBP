@@ -26,6 +26,38 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         }
 
         [HttpGet]
+        [Route("VratiPodfazeFaze/{fazaId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> VratiPodfazeFaze(int fazaId)
+        {
+            var result = await FazaDataProvider.VratiPodfazeFazeAsync(fazaId);
+
+            if (result.IsError)
+                return StatusCode(result.Error.StatusCode, result.Error.Message);
+
+            return Ok(result.Data);
+        }
+
+        [HttpGet]
+        [Route("VratiFazeFizickogLica/{liceId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> VratiFazeFizickogLica(int liceId)
+        {
+            var result = await FazaDataProvider.VratiFazeFizickogLicaAsync(liceId);
+
+            if (result.IsError)
+                return StatusCode(result.Error.StatusCode, result.Error.Message);
+
+            return Ok(result.Data);
+        }
+
+        [HttpGet]
         [Route("VratiFazeProjekta/{projekatId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

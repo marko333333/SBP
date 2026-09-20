@@ -242,5 +242,44 @@ namespace Gradjevinska_firmaLibrary.DataProvider
             return data;
         }
 
+        public static async Task<Result<List<KoristiView>, ErrorMessage>> vratiKoristiMaterijala(int idMaterijala)
+        {
+            List<KoristiView> data = new();
+
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                {
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+                }
+
+                data = (await s.QueryOver<Koristi>()
+                    .Where(l => l.Materijal.ID == idMaterijala)
+                    .ListAsync())
+                    .Select(k => new KoristiView(k))
+                    .ToList();
+
+                if (data.Count == 0)
+                {
+                    return "Materijal nema koristi".ToError(404);
+                }
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom prikupljanja koristi materijala".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+
+            return data;
+        }
+
     }
 }

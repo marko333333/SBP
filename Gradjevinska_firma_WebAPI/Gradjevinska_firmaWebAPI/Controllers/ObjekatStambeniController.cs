@@ -1,40 +1,22 @@
 using Gradjevinska_firmaLibrary.DataProvider;
 using Gradjevinska_firmaLibrary.DTOs;
 using Microsoft.AspNetCore.Mvc;
-
 namespace Gradjevinska_firmaWebAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class KoristiController : ControllerBase
+    public class ObjekatStambeniController : ControllerBase
     {
         [HttpGet]
-        [Route("VratiSveKoristi")]
+        [Route("VratiSveStambeneObjekte")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        public async Task<IActionResult> VratiSveKoristi()
+        public async Task<IActionResult> VratiSveKontakte()
         {
-            var licence = await KoristiDataProvider.VratiSveKoristiAsync();
+            var result = await ObjekatStambeniDataProvider.VratiObjekteAsync();
 
-            if (licence.IsError)
-            {
-                return StatusCode(licence.Error.StatusCode, licence.Error.Message);
-            }
-
-            return Ok(licence.Data);
-        }
-
-        [HttpGet]
-        [Route("VratiKoristiZadatka/{idZadatka}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        public async Task<IActionResult> vratiKoristiZadatka(int idZadatka)
-        {
-            var result = await KoristiDataProvider.vratiKoristiZadatka(idZadatka);
-
-            if(result.IsError)
+            if (result.IsError)
             {
                 return StatusCode(result.Error.StatusCode, result.Error.Message);
             }
@@ -43,13 +25,14 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("VratiKoristiMaterijala/{materijalId}")]
+        [Route("VratiObjekteStambenogProjekta/{stambeniId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        public async Task<IActionResult> vratiKoristiMaterijala(int materijalId)
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> vratiObjekteStambenogProjekta(int stambeniId)
         {
-            var result = await KoristiDataProvider.vratiKoristiMaterijala(materijalId);
+            var result = await ObjekatStambeniDataProvider.VratiObjekteStambenogProjektaAsync(stambeniId);
 
             if (result.IsError)
             {
@@ -60,14 +43,14 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         }
 
         [HttpPost]
-        [Route("DodajKoristi")]
+        [Route("DodajStambeniObjekat")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> DodajKoristi([FromBody] KoristiView f)
+        public async Task<IActionResult> dodajStambeniObjekat([FromBody] ObjekatStambeniView f)
         {
-            var result = await KoristiDataProvider.DodajKoristiAsync(f);
+            var result = await ObjekatStambeniDataProvider.DodajObjekatAsync(f);
 
             if (result.IsError)
                 return StatusCode(result.Error.StatusCode, result.Error.Message);
@@ -76,14 +59,14 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("VratiKoristi/{id}")]
+        [Route("VratiStambeniObjekat/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> vratiKoristi(int id)
+        public async Task<IActionResult> vratiObjekatStambeni(int id)
         {
-            var result = await KoristiDataProvider.vratiKoristiAsync(id);
+            var result = await ObjekatStambeniDataProvider.vratiObjekatAsync(id);
 
             if (result.IsError)
                 return StatusCode(result.Error.StatusCode, result.Error.Message);
@@ -92,36 +75,38 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         }
 
         [HttpPut]
-        [Route("IzmeniKoristi")]
+        [Route("IzmeniStambeniObjekat")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> izmeniKoristi([FromBody] KoristiView f)
+        public async Task<IActionResult> izmeniObjekat([FromBody] ObjekatStambeniView f)
         {
-            var result = await KoristiDataProvider.izmeniKoristiAsync(f);
+            var result =
+                await ObjekatStambeniDataProvider.izmeniObjekatAsync(f);
 
             if (result.IsError)
-                return StatusCode(result.Error.StatusCode, result.Error.Message);
+                return StatusCode(
+                    result.Error.StatusCode,
+                    result.Error.Message);
 
             return Ok(result.Data);
         }
 
         [HttpDelete]
-        [Route("ObrisiKoristi/{id}")]
+        [Route("ObrisiStambeniObjekat/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> obrisiKoristi(int id)
+        public async Task<IActionResult> obrisiStambeniObjekat(int id)
         {
-            var result = await KoristiDataProvider.obrisiKoristiAsync(id);
+            var result = await ObjekatStambeniDataProvider.ObrisiObjekatAsync(id);
 
             if (result.IsError)
                 return StatusCode(result.Error.StatusCode, result.Error.Message);
 
             return Ok(result.Data);
         }
-
     }
 }

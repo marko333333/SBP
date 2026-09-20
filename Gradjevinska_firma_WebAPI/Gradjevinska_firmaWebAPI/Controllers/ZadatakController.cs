@@ -106,5 +106,23 @@ namespace Gradjevinska_firmaWebAPI.Controllers
 
             return Ok(result.Data);
         }
+
+        [HttpGet]
+        [Route("VratiZadatkeFaze/{idFaze}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> vratiZadatkeFaze(int idFaze)
+        {
+            var result = await ZadatakDataProvider.VratiZadatkeFazeAsync(idFaze);
+
+            if (result.IsError)
+            {
+                return StatusCode(result.Error.StatusCode, result.Error.Message);
+            }
+
+            return Ok(result.Data);
+        }
     }
 }

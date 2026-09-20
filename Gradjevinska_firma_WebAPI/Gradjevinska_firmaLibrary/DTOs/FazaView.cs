@@ -9,7 +9,7 @@ namespace Gradjevinska_firmaLibrary.DTOs
 {
     public class FazaView
     {
-        public int Id { get; protected set; }
+        public int Id { get; set; }
         public string Naziv { get; set; }
         public DateTime DatumOd { get; set; }
         public DateTime? DatumDo { get; set; }

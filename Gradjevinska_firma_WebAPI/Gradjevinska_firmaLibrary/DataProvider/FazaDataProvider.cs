@@ -277,5 +277,73 @@ namespace Gradjevinska_firmaLibrary.DataProvider
             }
         }
 
+        public static async Task<Result<List<FazaView>, ErrorMessage>> VratiPodfazeFazeAsync(int fazaId)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                List<FazaView> data =
+                    (await s.QueryOver<Faza>()
+                        .Where(x => x.NadFaza.Id == fazaId)
+                        .ListAsync())
+                    .Select(x => new FazaView(x))
+                    .ToList();
+
+                if (data.Count == 0)
+                    return "Faza nema podfaze.".ToError(404);
+
+                return data;
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom dobijanja podfaza faze.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
+        public static async Task<Result<List<FazaView>, ErrorMessage>> VratiFazeFizickogLicaAsync(int liceId)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                List<FazaView> data =
+                    (await s.QueryOver<Faza>()
+                        .Where(x => x.FizickoLice.Id == liceId)
+                        .ListAsync())
+                    .Select(x => new FazaView(x))
+                    .ToList();
+
+                if (data.Count == 0)
+                    return "Fizicko lice nema dodeljenih faza.".ToError(404);
+
+                return data;
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom dobijanja faza fizickog lica.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
     }
 }

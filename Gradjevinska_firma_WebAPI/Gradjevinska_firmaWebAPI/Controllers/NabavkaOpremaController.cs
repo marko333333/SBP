@@ -27,6 +27,24 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         }
 
         [HttpGet]
+        [Route("VratiNabavkeOpremaOpreme/{opremaId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> VratiNabavkeOpremaOpreme(int opremaId)
+        {
+            var result = await NabavkaOpremaDataProvider.VratiNabavkeOpremaOpremeAsync(opremaId);
+
+            if (result.IsError)
+            {
+                return StatusCode(result.Error.StatusCode, result.Error.Message);
+            }
+
+            return Ok(result.Data);
+        }
+
+        [HttpGet]
         [Route("VratiSveNabavkeOprema")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

@@ -203,5 +203,107 @@ namespace Gradjevinska_firmaLibrary.DataProvider
                 s?.Dispose();
             }
         }
+
+        public static async Task<Result<List<UgovorView>, ErrorMessage>> VratiUgovoreMaterijalaAsync(int materijalId)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                List<UgovorView> data =
+                    (await s.QueryOver<Ugovor>()
+                        .Where(x => x.Materijal.ID == materijalId)
+                        .ListAsync())
+                    .Select(x => new UgovorView(x))
+                    .ToList();
+
+                if (data.Count == 0)
+                    return "Materijal nema ugovore.".ToError(404);
+
+                return data;
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom dobijanja ugovora materijala.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
+        public static async Task<Result<List<UgovorView>, ErrorMessage>> VratiUgovoreOpremeAsync(int opremaId)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                List<UgovorView> data =
+                    (await s.QueryOver<Ugovor>()
+                        .Where(x => x.Oprema.Id == opremaId)
+                        .ListAsync())
+                    .Select(x => new UgovorView(x))
+                    .ToList();
+
+                if (data.Count == 0)
+                    return "Oprema nema ugovore.".ToError(404);
+
+                return data;
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom dobijanja ugovora opreme.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
+        public static async Task<Result<List<UgovorView>, ErrorMessage>> VratiUgovoreProjektaAsync(int projekatId)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                List<UgovorView> data =
+                    (await s.QueryOver<Ugovor>()
+                        .Where(x => x.Projekat.ID == projekatId)
+                        .ListAsync())
+                    .Select(x => new UgovorView(x))
+                    .ToList();
+
+                if (data.Count == 0)
+                    return "Projekat nema ugovore.".ToError(404);
+
+                return data;
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom dobijanja ugovora projekta.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
     }
 }
