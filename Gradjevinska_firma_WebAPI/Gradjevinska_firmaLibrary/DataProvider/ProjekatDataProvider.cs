@@ -445,6 +445,40 @@ namespace Gradjevinska_firmaLibrary.DataProvider
             }
         }
 
+        public static async Task<Result<bool, ErrorMessage>> obrisiSanacijaProjekatAsync(int id)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                Sanacija? stan = await s.QueryOver<Sanacija>()
+                    .Where(x => x.ID == id)
+                    .SingleOrDefaultAsync();
+
+                if (stan == null)
+                    return "Sanacija projekat ne postoji.".ToError(404);
+
+                await s.DeleteAsync(stan);
+                await s.FlushAsync();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom brisanja sanacijskog projekta.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
         #endregion
 
         #region Rekonstrukcija
@@ -588,6 +622,40 @@ namespace Gradjevinska_firmaLibrary.DataProvider
             catch (Exception)
             {
                 return "Doslo je do greske prilikom izmene rekonstrukcije projekta.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
+        public static async Task<Result<bool, ErrorMessage>> obrisiRekonstrukcijaProjekatAsync(int id)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                Rekonstrukcija? stan = await s.QueryOver<Rekonstrukcija>()
+                    .Where(x => x.ID == id)
+                    .SingleOrDefaultAsync();
+
+                if (stan == null)
+                    return "Rekonstrukcijski projekat ne postoji.".ToError(404);
+
+                await s.DeleteAsync(stan);
+                await s.FlushAsync();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom brisanja rekonstrukcijskog projekta.".ToError(400);
             }
             finally
             {
@@ -747,6 +815,40 @@ namespace Gradjevinska_firmaLibrary.DataProvider
             }
         }
 
+        public static async Task<Result<bool, ErrorMessage>> obrisiIndustrijskiProjekatAsync(int id)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                Industrijski? stan = await s.QueryOver<Industrijski>()
+                    .Where(x => x.ID == id)
+                    .SingleOrDefaultAsync();
+
+                if (stan == null)
+                    return "Industrijski projekat ne postoji.".ToError(404);
+
+                await s.DeleteAsync(stan);
+                await s.FlushAsync();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom brisanja industrijskog projekta.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
         #endregion
 
         #region Infrastruktura
@@ -898,6 +1000,40 @@ namespace Gradjevinska_firmaLibrary.DataProvider
             }
         }
 
+        public static async Task<Result<bool, ErrorMessage>> obrisiInfrastukturniProjekatAsync(int id)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                Infrastruktura? stan = await s.QueryOver<Infrastruktura>()
+                    .Where(x => x.ID == id)
+                    .SingleOrDefaultAsync();
+
+                if (stan == null)
+                    return "Infrasturkturni projekat ne postoji.".ToError(404);
+
+                await s.DeleteAsync(stan);
+                await s.FlushAsync();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom brisanja infrastrukturnog projekta.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
         #endregion
 
         #region Poslovni
@@ -1041,6 +1177,40 @@ namespace Gradjevinska_firmaLibrary.DataProvider
             catch (Exception)
             {
                 return "Doslo je do greske prilikom izmene poslovnog projekta.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
+        public static async Task<Result<bool, ErrorMessage>> obrisiPoslovniProjekatAsync(int id)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                Poslovni? stan = await s.QueryOver<Poslovni>()
+                    .Where(x => x.ID == id)
+                    .SingleOrDefaultAsync();
+
+                if (stan == null)
+                    return "Poslovni projekat ne postoji.".ToError(404);
+
+                await s.DeleteAsync(stan);
+                await s.FlushAsync();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom brisanja poslovnog projekta.".ToError(400);
             }
             finally
             {

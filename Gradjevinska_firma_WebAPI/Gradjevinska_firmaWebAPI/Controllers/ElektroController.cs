@@ -81,7 +81,7 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> obrisiELektroMaterijal(int id)
         {
-            var result = await MaterijalDataProvider.obrisiMaterijalAsync(id);
+            var result = await MaterijalDataProvider.obrisiElektroMaterijalAsync(id);
 
             if (result.IsError)
                 return StatusCode(result.Error.StatusCode, result.Error.Message);

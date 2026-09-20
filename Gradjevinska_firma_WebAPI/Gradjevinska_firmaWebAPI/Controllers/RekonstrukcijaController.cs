@@ -81,7 +81,7 @@ namespace Gradjevinska_firmaWebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> obrisiRekonstrukcijaProjekat(int id)
         {
-            var result = await ProjekatDataProvider.obrisiProjekatAsync(id);
+            var result = await ProjekatDataProvider.obrisiRekonstrukcijaProjekatAsync(id);
 
             if (result.IsError)
                 return StatusCode(result.Error.StatusCode, result.Error.Message);

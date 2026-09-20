@@ -100,7 +100,7 @@ namespace Gradjevinska_firmaLibrary.DataProvider
             }
             catch (Exception)
             {
-                return "Doslo je do greske prilikom brisanja projekta.".ToError(400);
+                return "Doslo je do greske prilikom brisanja materijala.".ToError(400);
             }
             finally
             {
@@ -245,6 +245,40 @@ namespace Gradjevinska_firmaLibrary.DataProvider
             catch (Exception)
             {
                 return "Doslo je do greske prilikom izmene zastitnog materijala.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
+        public static async Task<Result<bool, ErrorMessage>> obrisiZastitniMaterijalAsync(int id)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                Zastitni? mat = await s.QueryOver<Zastitni>()
+                    .Where(x => x.ID == id)
+                    .SingleOrDefaultAsync();
+
+                if (mat == null)
+                    return "Zastitni materijal ne postoji.".ToError(404);
+
+                await s.DeleteAsync(mat);
+                await s.FlushAsync();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom brisanja zastitnog materijala.".ToError(400);
             }
             finally
             {
@@ -399,6 +433,40 @@ namespace Gradjevinska_firmaLibrary.DataProvider
             }
         }
 
+        public static async Task<Result<bool, ErrorMessage>> obrisiMasinskiMaterijalAsync(int id)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                Masinski? mat = await s.QueryOver<Masinski>()
+                    .Where(x => x.ID == id)
+                    .SingleOrDefaultAsync();
+
+                if (mat == null)
+                    return "Masinski materijal ne postoji.".ToError(404);
+
+                await s.DeleteAsync(mat);
+                await s.FlushAsync();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom brisanja masinskog materijala.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
         #endregion
 
         #region Gradjevinski
@@ -536,6 +604,40 @@ namespace Gradjevinska_firmaLibrary.DataProvider
             catch (Exception)
             {
                 return "Doslo je do greske prilikom izmene gradjevinskog materijala.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
+        public static async Task<Result<bool, ErrorMessage>> obrisiGradjevinskiMaterijalAsync(int id)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                Gradjevinski? mat = await s.QueryOver<Gradjevinski>()
+                    .Where(x => x.ID == id)
+                    .SingleOrDefaultAsync();
+
+                if (mat == null)
+                    return "Gradjevinski materijal ne postoji.".ToError(404);
+
+                await s.DeleteAsync(mat);
+                await s.FlushAsync();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom brisanja gradjevinskog materijala.".ToError(400);
             }
             finally
             {
@@ -689,6 +791,40 @@ namespace Gradjevinska_firmaLibrary.DataProvider
             }
         }
 
+        public static async Task<Result<bool, ErrorMessage>> obrisiElektroMaterijalAsync(int id)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                Elektro? mat = await s.QueryOver<Elektro>()
+                    .Where(x => x.ID == id)
+                    .SingleOrDefaultAsync();
+
+                if (mat == null)
+                    return "Elektro materijal ne postoji.".ToError(404);
+
+                await s.DeleteAsync(mat);
+                await s.FlushAsync();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom brisanja elektro materijala.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
         #endregion
 
         #region Zavrsni
@@ -826,6 +962,40 @@ namespace Gradjevinska_firmaLibrary.DataProvider
             catch (Exception)
             {
                 return "Doslo je do greske prilikom izmene zavrsnog materijala.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
+
+        public static async Task<Result<bool, ErrorMessage>> obrisiZavrsniMaterijalAsync(int id)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                Zavrsni? mat = await s.QueryOver<Zavrsni>()
+                    .Where(x => x.ID == id)
+                    .SingleOrDefaultAsync();
+
+                if (mat == null)
+                    return "Zavrsni materijal ne postoji.".ToError(404);
+
+                await s.DeleteAsync(mat);
+                await s.FlushAsync();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom brisanja zavrsnog materijala.".ToError(400);
             }
             finally
             {
