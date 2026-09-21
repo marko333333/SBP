@@ -84,29 +84,6 @@ namespace Gradjevinska_firma.Forme
             }
         }
 
-        //private void popuniPodacimaUgovora(List<UgovorBasic> ugovori)
-        //{
-        //    Nabavke.Items.Clear();
-
-        //    foreach (UgovorBasic u in ugovori)
-        //    {
-        //        ListViewItem item = new ListViewItem(
-        //            new string[]
-        //            {
-        //                u.DatumPotpisivanja.ToShortDateString(),
-        //                u.Id.ToString(),
-        //                u.Vrednost.ToString(),
-        //                u.PredmetUgovora,
-        //                u.Valuta,
-        //                u.Rok.ToShortDateString(),
-
-        //            });
-
-        //        Nabavke.Items.Add(item);
-        //    }
-        //    Nabavke.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-        //    this.Nabavke.Refresh();
-        //}
         private void popuniPodacimaBezbednosnihIncidenta(List<BezbednosniIncidentBasic> incidenti)
         {
             Incidenti.Items.Clear();

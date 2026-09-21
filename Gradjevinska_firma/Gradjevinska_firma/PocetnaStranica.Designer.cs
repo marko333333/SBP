@@ -37,27 +37,27 @@
             button2 = new Button();
             btOprema = new Button();
             btMaterijal = new Button();
-            btNabavke = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // lb1
             // 
             lb1.AutoSize = true;
-            lb1.Font = new Font("Elephant", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lb1.Location = new Point(406, 39);
+            lb1.Font = new Font("Microsoft Sans Serif", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lb1.Location = new Point(355, 29);
             lb1.Name = "lb1";
-            lb1.Size = new Size(364, 43);
+            lb1.Size = new Size(258, 31);
             lb1.TabIndex = 0;
             lb1.Text = "Gradjevinska firma";
             lb1.Click += label1_Click;
             // 
             // bt1
             // 
-            bt1.Font = new Font("Lucida Bright", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            bt1.Location = new Point(477, 113);
+            bt1.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bt1.Location = new Point(417, 101);
+            bt1.Margin = new Padding(3, 2, 3, 2);
             bt1.Name = "bt1";
-            bt1.Size = new Size(209, 56);
+            bt1.Size = new Size(183, 42);
             bt1.TabIndex = 1;
             bt1.Text = "Projekti";
             bt1.UseVisualStyleBackColor = true;
@@ -67,18 +67,20 @@
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(1, 1);
+            pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(366, 668);
+            pictureBox1.Size = new Size(320, 501);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
             // 
             // bt2
             // 
-            bt2.Font = new Font("Lucida Bright", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            bt2.Location = new Point(477, 186);
+            bt2.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bt2.Location = new Point(417, 163);
+            bt2.Margin = new Padding(3, 2, 3, 2);
             bt2.Name = "bt2";
-            bt2.Size = new Size(209, 56);
+            bt2.Size = new Size(183, 42);
             bt2.TabIndex = 3;
             bt2.Text = "Zaposleni";
             bt2.UseVisualStyleBackColor = true;
@@ -86,10 +88,11 @@
             // 
             // button1
             // 
-            button1.Font = new Font("Lucida Bright", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(477, 257);
+            button1.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.Location = new Point(417, 222);
+            button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new Size(209, 56);
+            button1.Size = new Size(183, 42);
             button1.TabIndex = 4;
             button1.Text = "Zadaci";
             button1.UseVisualStyleBackColor = true;
@@ -97,10 +100,11 @@
             // 
             // button2
             // 
-            button2.Font = new Font("Lucida Bright", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(477, 335);
+            button2.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button2.Location = new Point(417, 285);
+            button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
-            button2.Size = new Size(209, 56);
+            button2.Size = new Size(183, 42);
             button2.TabIndex = 5;
             button2.Text = "Ugovori";
             button2.UseVisualStyleBackColor = true;
@@ -108,10 +112,11 @@
             // 
             // btOprema
             // 
-            btOprema.Font = new Font("Lucida Bright", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btOprema.Location = new Point(477, 413);
+            btOprema.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btOprema.Location = new Point(417, 343);
+            btOprema.Margin = new Padding(3, 2, 3, 2);
             btOprema.Name = "btOprema";
-            btOprema.Size = new Size(209, 56);
+            btOprema.Size = new Size(183, 42);
             btOprema.TabIndex = 6;
             btOprema.Text = "Oprema";
             btOprema.UseVisualStyleBackColor = true;
@@ -119,32 +124,21 @@
             // 
             // btMaterijal
             // 
-            btMaterijal.Font = new Font("Lucida Bright", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btMaterijal.Location = new Point(477, 495);
+            btMaterijal.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btMaterijal.Location = new Point(417, 411);
+            btMaterijal.Margin = new Padding(3, 2, 3, 2);
             btMaterijal.Name = "btMaterijal";
-            btMaterijal.Size = new Size(209, 56);
+            btMaterijal.Size = new Size(183, 42);
             btMaterijal.TabIndex = 7;
             btMaterijal.Text = "Materijali";
             btMaterijal.UseVisualStyleBackColor = true;
             btMaterijal.Click += btMaterijal_Click;
             // 
-            // btNabavke
-            // 
-            btNabavke.Font = new Font("Lucida Bright", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btNabavke.Location = new Point(477, 575);
-            btNabavke.Name = "btNabavke";
-            btNabavke.Size = new Size(209, 56);
-            btNabavke.TabIndex = 8;
-            btNabavke.Text = "Nabavke";
-            btNabavke.UseVisualStyleBackColor = true;
-            btNabavke.Click += btNabavke_Click;
-            // 
             // PocetnaStranica
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(783, 667);
-            Controls.Add(btNabavke);
+            ClientSize = new Size(685, 500);
             Controls.Add(btMaterijal);
             Controls.Add(btOprema);
             Controls.Add(button2);
@@ -153,6 +147,7 @@
             Controls.Add(pictureBox1);
             Controls.Add(bt1);
             Controls.Add(lb1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "PocetnaStranica";
             Text = "PocetnaStranica";
             Load += PocetnaStranica_Load;
@@ -171,6 +166,5 @@
         private Button button2;
         private Button btOprema;
         private Button btMaterijal;
-        private Button btNabavke;
     }
 }

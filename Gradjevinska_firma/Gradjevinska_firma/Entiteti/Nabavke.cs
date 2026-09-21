@@ -11,6 +11,7 @@ namespace Gradjevinska_firma.Entiteti
         public virtual int Br_nabavke { get; protected set; }
         public virtual DateTime Datum { get; set; }
         public virtual Projekat Projekat { get; set; }
+        public virtual PravnaLica Dobavljac {  get; set; }//dodaj cb kod nabavki projekata
         public virtual IList<NabavkaMaterijal> NabavkaMaterijal { get; set; }
         public virtual IList<NabavkaOprema> NabavkaOprema { get; set; }
     }

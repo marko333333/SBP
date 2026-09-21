@@ -67,8 +67,8 @@ namespace Gradjevinska_firma
 
         private void btNabavke_Click(object sender, EventArgs e)
         {
-            NabavkeForma forma = new NabavkeForma();
-            forma.ShowDialog();
+            //NabavkeForma forma = new NabavkeForma();
+            //forma.ShowDialog();
         }
     }
 }
