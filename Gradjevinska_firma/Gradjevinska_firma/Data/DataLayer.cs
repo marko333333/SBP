@@ -10,7 +10,7 @@ using Gradjevinska_firma.Mapiranja;
 
 namespace Gradjevinska_firma.Data
 {
-    class DataLayer
+    class DataLayer//dodaj handle error
     {
         private static ISessionFactory _factory = null;
         private static object objLock = new object();

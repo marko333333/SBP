@@ -13,8 +13,8 @@ namespace Gradjevinska_firma.Entiteti
         public virtual string Tip { get; set; }
         public virtual DateTime DatumUvoza { get; set; }
         public virtual string Proizvodjac { get; set; }
-        public virtual string RasponOdrzavanja { get; set; }
-        public virtual string Lokacija { get; set; }
+        public virtual string? RasponOdrzavanja { get; set; }
+        public virtual string? Lokacija { get; set; }
         public virtual string Status { get; set; }
 
         public virtual IList<Ugovor> Ugovori { get; set; }

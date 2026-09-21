@@ -8,6 +8,6 @@ namespace Gradjevinska_firmaLibrary.Entiteti
 {
     public class Mehanizacija:Oprema
     {
-        public virtual string TipMehanizacije { get; set; }
+        public virtual required string TipMehanizacije { get; set; }
     }
 }
