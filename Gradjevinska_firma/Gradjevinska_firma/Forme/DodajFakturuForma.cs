@@ -36,7 +36,7 @@ namespace Gradjevinska_firma.Forme
         {
             cbPrimalac.Items.Clear();
             cbIzdavalac.Items.Clear();
-            List<PravnaLicaPregled> pravnaLica = OsobaDTOManager.vratiPravnaLicaNaProjektu(idProjekta);
+            List<PravnaLicaPregled> pravnaLica = OsobaDTOManager.vratiSvaPravnaLica();
 
             foreach (PravnaLicaPregled osoba in pravnaLica)
             {

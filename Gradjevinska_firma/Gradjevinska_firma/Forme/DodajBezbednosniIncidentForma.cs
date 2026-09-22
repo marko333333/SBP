@@ -85,7 +85,7 @@ namespace Gradjevinska_firma.Forme
         private void popuniOsobama()
         {
             cbOsoba.Items.Clear();
-            List<OsobaPregled> osobe = OsobaDTOManager.vratiOsobeNaProjektu(IdProjekta);
+            List<OsobaPregled> osobe = OsobaDTOManager.vratiSveOsobe();
 
             foreach (OsobaPregled osoba in osobe)
             {
