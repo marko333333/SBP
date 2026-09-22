@@ -94,7 +94,8 @@ namespace Gradjevinska_firma.DTOManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.HandleError());
+
             }
             return ugovori;
         }
@@ -152,7 +153,8 @@ namespace Gradjevinska_firma.DTOManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.HandleError());
+
             }
 
             return ugovor;
@@ -214,7 +216,8 @@ namespace Gradjevinska_firma.DTOManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.HandleError());
+
             }
 
             return ugovori;
@@ -259,7 +262,8 @@ namespace Gradjevinska_firma.DTOManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.HandleError());
+
             }
         }
 
@@ -311,7 +315,8 @@ namespace Gradjevinska_firma.DTOManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.HandleError());
+
             }
         }
 
@@ -330,7 +335,8 @@ namespace Gradjevinska_firma.DTOManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.HandleError());
+
             }
         }
 

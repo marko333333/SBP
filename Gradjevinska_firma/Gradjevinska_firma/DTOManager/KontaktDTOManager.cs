@@ -34,7 +34,8 @@ namespace Gradjevinska_firma.DTOManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.HandleError());
+
             }
 
             return kontakti;
@@ -56,7 +57,8 @@ namespace Gradjevinska_firma.DTOManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.HandleError());
+
             }
 
             return kontakt;
@@ -81,7 +83,8 @@ namespace Gradjevinska_firma.DTOManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.HandleError());
+
             }
         }
 
@@ -102,7 +105,8 @@ namespace Gradjevinska_firma.DTOManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.HandleError());
+
             }
         }
 
@@ -121,7 +125,8 @@ namespace Gradjevinska_firma.DTOManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.HandleError());
+
             }
         }
     }

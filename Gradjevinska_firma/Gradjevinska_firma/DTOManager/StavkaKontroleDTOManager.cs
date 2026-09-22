@@ -36,7 +36,8 @@ namespace Gradjevinska_firma.DTOManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.HandleError());
+
             }
 
             return stavke;
@@ -67,7 +68,8 @@ namespace Gradjevinska_firma.DTOManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.HandleError());
+
             }
             return stavka;
         }
@@ -96,7 +98,8 @@ namespace Gradjevinska_firma.DTOManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.HandleError());
+
             }
         }
 
@@ -123,7 +126,8 @@ namespace Gradjevinska_firma.DTOManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.HandleError());
+
             }
         }
 
@@ -142,7 +146,8 @@ namespace Gradjevinska_firma.DTOManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.HandleError());
+
             }
         }
 
