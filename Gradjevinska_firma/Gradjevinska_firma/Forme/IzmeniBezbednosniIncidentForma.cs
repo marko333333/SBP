@@ -41,7 +41,7 @@ namespace Gradjevinska_firma.Forme
         private void PopuniOsobama()
         {
             cbOsoba.Items.Clear();
-            List<OsobaPregled> osobe = OsobaDTOManager.vratiOsobeNaProjektu(IdProjekta);
+            List<OsobaPregled> osobe = OsobaDTOManager.vratiSveOsobe();
 
             foreach (OsobaPregled osoba in osobe)
             {
@@ -76,7 +76,6 @@ namespace Gradjevinska_firma.Forme
             string prikazaniTip = cbTipIncidenta.SelectedItem.ToString();
 
 
-            //molim te mi napisi poruku kada vidis ovo, ja ne znam cemu sluzi ovo sto si napisao
             string tipZaKlasu = prikazaniTip switch
             {
                 "Povreda na radu" => "PovredaNaRadu",
