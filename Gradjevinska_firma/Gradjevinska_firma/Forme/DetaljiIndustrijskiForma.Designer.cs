@@ -49,6 +49,7 @@
             lbBudzet = new Label();
             lbStatus = new Label();
             tabPage2 = new TabPage();
+            btnDetaljiNabavke = new Button();
             btnObrisiNabavku = new Button();
             btnIzmeniNabavku = new Button();
             btnDodajNabavku = new Button();
@@ -88,7 +89,7 @@
             columnHeader16 = new ColumnHeader();
             columnHeader17 = new ColumnHeader();
             columnHeader18 = new ColumnHeader();
-            btnDetaljiNabavke = new Button();
+            Dobavljac = new ColumnHeader();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -134,7 +135,7 @@
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(833, 228);
+            tabPage1.Size = new Size(833, 284);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Osnovni podaci";
             tabPage1.UseVisualStyleBackColor = true;
@@ -316,6 +317,16 @@
             tabPage2.Text = "Nabavke";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // btnDetaljiNabavke
+            // 
+            btnDetaljiNabavke.Location = new Point(692, 157);
+            btnDetaljiNabavke.Name = "btnDetaljiNabavke";
+            btnDetaljiNabavke.Size = new Size(113, 40);
+            btnDetaljiNabavke.TabIndex = 4;
+            btnDetaljiNabavke.Text = "Detalji nabavke";
+            btnDetaljiNabavke.UseVisualStyleBackColor = true;
+            btnDetaljiNabavke.Click += btnDetaljiNabavke_Click;
+            // 
             // btnObrisiNabavku
             // 
             btnObrisiNabavku.Location = new Point(692, 111);
@@ -348,7 +359,7 @@
             // 
             // Nabavke
             // 
-            Nabavke.Columns.AddRange(new ColumnHeader[] { Br_nabavke, Datum });
+            Nabavke.Columns.AddRange(new ColumnHeader[] { Br_nabavke, Datum, Dobavljac });
             Nabavke.FullRowSelect = true;
             Nabavke.GridLines = true;
             Nabavke.Location = new Point(3, 19);
@@ -376,7 +387,7 @@
             tabPage3.Controls.Add(Incidenti);
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(833, 228);
+            tabPage3.Size = new Size(833, 284);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Bezbednosni Incidenti";
             tabPage3.UseVisualStyleBackColor = true;
@@ -463,7 +474,7 @@
             tabPage4.Controls.Add(Fakture);
             tabPage4.Location = new Point(4, 24);
             tabPage4.Name = "tabPage4";
-            tabPage4.Size = new Size(833, 228);
+            tabPage4.Size = new Size(833, 284);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Faktura";
             tabPage4.UseVisualStyleBackColor = true;
@@ -541,7 +552,7 @@
             tabPage5.Controls.Add(Faze);
             tabPage5.Location = new Point(4, 24);
             tabPage5.Name = "tabPage5";
-            tabPage5.Size = new Size(833, 228);
+            tabPage5.Size = new Size(833, 284);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Faza";
             tabPage5.UseVisualStyleBackColor = true;
@@ -614,15 +625,9 @@
             // 
             columnHeader18.Text = "Budzet";
             // 
-            // btnDetaljiNabavke
+            // Dobavljac
             // 
-            btnDetaljiNabavke.Location = new Point(692, 157);
-            btnDetaljiNabavke.Name = "btnDetaljiNabavke";
-            btnDetaljiNabavke.Size = new Size(113, 40);
-            btnDetaljiNabavke.TabIndex = 4;
-            btnDetaljiNabavke.Text = "Detalji nabavke";
-            btnDetaljiNabavke.UseVisualStyleBackColor = true;
-            btnDetaljiNabavke.Click += btnDetaljiNabavke_Click;
+            Dobavljac.Text = "Dobavljac";
             // 
             // DetaljiIndustrijskiForma
             // 
@@ -705,5 +710,6 @@
         private Label lblTrosak;
         private Label label1;
         private Button btnDetaljiNabavke;
+        private ColumnHeader Dobavljac;
     }
 }

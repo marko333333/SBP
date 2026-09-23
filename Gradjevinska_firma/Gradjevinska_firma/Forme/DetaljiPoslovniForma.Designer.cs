@@ -98,6 +98,7 @@
             columnHeader20 = new ColumnHeader();
             columnHeader21 = new ColumnHeader();
             columnHeader22 = new ColumnHeader();
+            columnHeader23 = new ColumnHeader();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -369,7 +370,7 @@
             // 
             // Nabavke
             // 
-            Nabavke.Columns.AddRange(new ColumnHeader[] { Br_nabavke, Datum });
+            Nabavke.Columns.AddRange(new ColumnHeader[] { Br_nabavke, Datum, columnHeader23 });
             Nabavke.FullRowSelect = true;
             Nabavke.GridLines = true;
             Nabavke.Location = new Point(3, 19);
@@ -707,6 +708,10 @@
             columnHeader22.Text = "Br_jedinica";
             columnHeader22.Width = 80;
             // 
+            // columnHeader23
+            // 
+            columnHeader23.Text = "Dobavljac";
+            // 
             // DetaljiPoslovniForma
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -799,5 +804,6 @@
         private Button button1;
         private Button button2;
         private Button button3;
+        private ColumnHeader columnHeader23;
     }
 }

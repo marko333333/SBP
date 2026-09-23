@@ -169,10 +169,12 @@ namespace Gradjevinska_firma.DTO
 
         public virtual IList<FakturaBasic> IzdateFakture { get; set; }
         public virtual IList<FakturaBasic> PrimljeneFakture { get; set; }
+        public virtual IList<NabavkeBasic> Nabavke { get; set; }
         public PravnaLicaBasic()
         {
             IzdateFakture = new List<FakturaBasic>();
             PrimljeneFakture = new List<FakturaBasic>();
+            Nabavke = new List<NabavkeBasic>();
         }
 
         public PravnaLicaBasic(int id,string jmbg,string ime,string prezime,DateTime datumRodjenja,string struka,bool flagPB,bool flagInve,bool flagIzv,bool flagP,bool flagD,bool flagN)
@@ -1679,6 +1681,7 @@ namespace Gradjevinska_firma.DTO
         public int Br_nabavke;
         public DateTime Datum;
         public ProjekatBasic Projekat;
+        public PravnaLicaBasic Dobavljac;
         public virtual IList<NabavkaMaterijalBasic> NabavkaMaterijal { get; set; }
         public virtual IList<NabavkaOpremaBasic> NabavkaOprema { get; set; }
 
@@ -1688,11 +1691,12 @@ namespace Gradjevinska_firma.DTO
             NabavkaOprema = new List<NabavkaOpremaBasic>();    
         }
 
-        public NabavkeBasic(int br_nabavke, DateTime datum, ProjekatBasic projekat)
+        public NabavkeBasic(int br_nabavke, DateTime datum, ProjekatBasic projekat, PravnaLicaBasic dobavljac)
         {
             Br_nabavke = br_nabavke;
             Datum = datum;
             Projekat = projekat;
+            Dobavljac = dobavljac;
         }
     }
 
@@ -1701,13 +1705,15 @@ namespace Gradjevinska_firma.DTO
         public int Br_nabavke;
         public DateTime Datum;
         public ProjekatPregled Projekat;
+        public PravnaLicaPregled Dobavljac;
 
         public NabavkePregled() { }
-        public NabavkePregled(int br_nabavke, DateTime datum, ProjekatPregled projekat)
+        public NabavkePregled(int br_nabavke, DateTime datum, ProjekatPregled projekat, PravnaLicaPregled dobavljac)
         {
             Br_nabavke = br_nabavke;
             Datum = datum;
             Projekat = projekat;
+            Dobavljac = dobavljac;
         }
     }
     #endregion

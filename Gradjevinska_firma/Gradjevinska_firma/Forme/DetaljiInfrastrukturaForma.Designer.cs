@@ -96,6 +96,7 @@
             Deonice = new ListView();
             columnHeader19 = new ColumnHeader();
             columnHeader20 = new ColumnHeader();
+            columnHeader21 = new ColumnHeader();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -367,7 +368,7 @@
             // 
             // Nabavke
             // 
-            Nabavke.Columns.AddRange(new ColumnHeader[] { Br_nabavke, Datum });
+            Nabavke.Columns.AddRange(new ColumnHeader[] { Br_nabavke, Datum, columnHeader21 });
             Nabavke.FullRowSelect = true;
             Nabavke.GridLines = true;
             Nabavke.Location = new Point(3, 19);
@@ -695,6 +696,10 @@
             // 
             columnHeader20.Text = "Br deonice";
             // 
+            // columnHeader21
+            // 
+            columnHeader21.Text = "Dobavljac";
+            // 
             // DetaljiInfrastrukturaForma
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -785,5 +790,6 @@
         private Button button1;
         private Button button2;
         private Button button3;
+        private ColumnHeader columnHeader21;
     }
 }

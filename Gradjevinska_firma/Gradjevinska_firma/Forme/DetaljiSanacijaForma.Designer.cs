@@ -49,6 +49,7 @@
             lbBudzet = new Label();
             lbStatus = new Label();
             tabPage2 = new TabPage();
+            btnDetaljiNabavke = new Button();
             btnObrisiNabavku = new Button();
             btnIzmeniNabavku = new Button();
             btnDodajNabavku = new Button();
@@ -88,7 +89,7 @@
             columnHeader16 = new ColumnHeader();
             columnHeader17 = new ColumnHeader();
             columnHeader18 = new ColumnHeader();
-            btnDetaljiNabavke = new Button();
+            columnHeader19 = new ColumnHeader();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -316,6 +317,16 @@
             tabPage2.Text = "Nabavke";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // btnDetaljiNabavke
+            // 
+            btnDetaljiNabavke.Location = new Point(692, 168);
+            btnDetaljiNabavke.Name = "btnDetaljiNabavke";
+            btnDetaljiNabavke.Size = new Size(113, 40);
+            btnDetaljiNabavke.TabIndex = 5;
+            btnDetaljiNabavke.Text = "Detalji nabavke";
+            btnDetaljiNabavke.UseVisualStyleBackColor = true;
+            btnDetaljiNabavke.Click += btnDetaljiNabavke_Click;
+            // 
             // btnObrisiNabavku
             // 
             btnObrisiNabavku.Location = new Point(692, 122);
@@ -348,7 +359,7 @@
             // 
             // Nabavke
             // 
-            Nabavke.Columns.AddRange(new ColumnHeader[] { Br_nabavke, Datum });
+            Nabavke.Columns.AddRange(new ColumnHeader[] { Br_nabavke, Datum, columnHeader19 });
             Nabavke.FullRowSelect = true;
             Nabavke.GridLines = true;
             Nabavke.Location = new Point(3, 19);
@@ -613,15 +624,9 @@
             // 
             columnHeader18.Text = "Budzet";
             // 
-            // btnDetaljiNabavke
+            // columnHeader19
             // 
-            btnDetaljiNabavke.Location = new Point(692, 168);
-            btnDetaljiNabavke.Name = "btnDetaljiNabavke";
-            btnDetaljiNabavke.Size = new Size(113, 40);
-            btnDetaljiNabavke.TabIndex = 5;
-            btnDetaljiNabavke.Text = "Detalji nabavke";
-            btnDetaljiNabavke.UseVisualStyleBackColor = true;
-            btnDetaljiNabavke.Click += btnDetaljiNabavke_Click;
+            columnHeader19.Text = "Dobavljac";
             // 
             // DetaljiSanacijaForma
             // 
@@ -705,5 +710,6 @@
         private ColumnHeader columnHeader17;
         private ColumnHeader columnHeader18;
         private Button btnDetaljiNabavke;
+        private ColumnHeader columnHeader19;
     }
 }

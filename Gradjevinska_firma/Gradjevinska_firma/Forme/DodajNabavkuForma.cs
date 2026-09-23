@@ -28,15 +28,24 @@ namespace Gradjevinska_firma.Forme
                 return;
             }
 
-            ProjekatBasic projekat = new ProjekatBasic();
-
             ProjekatPregled p = (ProjekatPregled)cbProjekat.SelectedItem;
+
+            ProjekatBasic projekat = new ProjekatBasic();
 
             projekat.ID = p.ID;
             projekat.Naziv = p.Naziv;
 
+            PravnaLicaBasic dobavljac = null;
+           
+            if(cbDobavljac.SelectedIndex != 0)
+            {
+                PravnaLicaPregled izabrani = (PravnaLicaPregled)cbDobavljac.SelectedItem;
+                dobavljac = new PravnaLicaBasic();
+                dobavljac.Id = izabrani.Id;
+            }
+
             NabavkeBasic nabavka = new NabavkeBasic(
-                0, dtpDatum.Value, projekat);
+                0, dtpDatum.Value, projekat, dobavljac);
 
             NabavkeDTOManager.dodajNabavku(nabavka);
 
@@ -63,9 +72,24 @@ namespace Gradjevinska_firma.Forme
                 cbProjekat.SelectedIndex = 0;
         }
 
+        private void popuniDobavljace()
+        {
+            cbDobavljac.Items.Clear();
+            cbDobavljac.Items.Add("Nema dobavljaca");
+
+            List<PravnaLicaPregled> pravnaLica = OsobaDTOManager.vratiSveDobavljace();
+            foreach (PravnaLicaPregled p in pravnaLica)
+            {
+                cbDobavljac.Items.Add(p);
+            }
+
+            cbDobavljac.SelectedIndex = 0;
+        }
+
         private void DodajNabavkuForma_Load(object sender, EventArgs e)
         {
             popuniProjekte();
+            popuniDobavljace();
         }
 
         private void label2_Click(object sender, EventArgs e)

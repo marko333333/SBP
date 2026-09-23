@@ -13,6 +13,36 @@ namespace Gradjevinska_firma.DTOManager
     public class NabavkeDTOManager
     {
         #region Nabavke
+
+        public static List<NabavkeBasic> vratiNabavkeDobavljaca(int idPravnogLica)
+        {
+            List<NabavkeBasic> nabavke = new List<NabavkeBasic>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Nabavke> sveNabavke =
+                    from n in s.Query<Nabavke>()
+                    where n.Dobavljac.Id == idPravnogLica
+                    select n;
+
+                foreach (Nabavke n in sveNabavke)
+                {
+                    ProjekatBasic projekat = new ProjekatBasic(n.Projekat.ID, n.Projekat.Naziv, n.Projekat.Opis, n.Projekat.Lokacija,
+                        n.Projekat.Datum_pocetka, n.Projekat.Budzet, n.Projekat.Status, n.Projekat.Planirani_Zavrsetak, n.Projekat.Stvarni_Zavrsetak);
+
+                    nabavke.Add(new NabavkeBasic(n.Br_nabavke, n.Datum, projekat, null));
+                }
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return nabavke;
+        }
+
         public static List<NabavkePregled> vratiSveNabavke()
         {
             List<NabavkePregled> nabavke = new List<NabavkePregled>();
@@ -29,6 +59,14 @@ namespace Gradjevinska_firma.DTOManager
                 {
 
                     ProjekatPregled projekat = null;
+                    PravnaLicaPregled dobavljac = null;
+
+                    if (n.Dobavljac != null)
+                    {
+                        dobavljac = new PravnaLicaPregled(n.Dobavljac.Id, n.Dobavljac.Jmbg, n.Dobavljac.Ime, n.Dobavljac.Prezime,
+                            n.Dobavljac.DatumRodjenja, n.Dobavljac.Struka, n.Dobavljac.FlagPB, n.Dobavljac.FlagInve, n.Dobavljac.FlagIzv, n.Dobavljac.FlagP,
+                            n.Dobavljac.FlagD, n.Dobavljac.FlagN);
+                    }
 
                     if (n.Projekat != null)
                     {
@@ -39,7 +77,7 @@ namespace Gradjevinska_firma.DTOManager
                     }
 
                     nabavke.Add(new NabavkePregled(
-                            n.Br_nabavke,n.Datum,projekat)
+                            n.Br_nabavke,n.Datum,projekat, dobavljac)
 
                     );
 
@@ -67,6 +105,7 @@ namespace Gradjevinska_firma.DTOManager
                 Nabavke n = s.Load<Nabavke>(id);
 
                 ProjekatBasic projekat = null;
+                PravnaLicaBasic dobavljac = null;
 
                 if (n.Projekat != null)
                 {
@@ -76,8 +115,15 @@ namespace Gradjevinska_firma.DTOManager
                     projekat.Naziv = n.Projekat.Naziv;
                 }
 
+                if(n.Dobavljac != null)
+                {
+                    dobavljac = new PravnaLicaBasic(n.Dobavljac.Id, n.Dobavljac.Jmbg, n.Dobavljac.Ime, n.Dobavljac.Prezime,
+                            n.Dobavljac.DatumRodjenja, n.Dobavljac.Struka, n.Dobavljac.FlagPB, n.Dobavljac.FlagInve, n.Dobavljac.FlagIzv, n.Dobavljac.FlagP,
+                            n.Dobavljac.FlagD, n.Dobavljac.FlagN);
+                }
+
                 nabavka = new NabavkeBasic(
-                   n.Br_nabavke,n.Datum,projekat
+                   n.Br_nabavke,n.Datum,projekat, dobavljac
                 );
 
                 nabavka.NabavkaOprema = vratiNabavkeOpreme(id);
@@ -102,9 +148,19 @@ namespace Gradjevinska_firma.DTOManager
 
                 Nabavke nabavka = new Nabavke();
 
-                nabavka.Projekat = s.Load<Projekat>(n.Projekat.ID);
+                Projekat projekat = s.Get<Projekat>(n.Projekat.ID);
+                if (projekat == null) { MessageBox.Show("Projekat ne postoji."); return; }
+
+                PravnaLica dobavljac = null;
+                if (n.Dobavljac != null)
+                {
+                    dobavljac = s.Get<PravnaLica>(n.Dobavljac.Id);
+                    if (dobavljac == null) { MessageBox.Show("Dobavljac ne postoji."); return; }
+                }
 
                 nabavka.Datum = n.Datum;
+                nabavka.Projekat = projekat;
+                nabavka.Dobavljac = dobavljac;
 
                 s.Save(nabavka);
                 s.Flush();
@@ -136,6 +192,10 @@ namespace Gradjevinska_firma.DTOManager
                 else
                 {
                     nabavka.Projekat = null;
+                }
+                if(n.Dobavljac != null)
+                {
+                    nabavka.Dobavljac = s.Load<PravnaLica>(n.Dobavljac.Id);
                 }
 
                 s.Update(nabavka);
@@ -201,11 +261,19 @@ namespace Gradjevinska_firma.DTOManager
                         );
 
                     }
+                    PravnaLicaBasic dobavljac = null;
+                    if(n.Dobavljac != null)
+                    {
+                        dobavljac = new PravnaLicaBasic(n.Dobavljac.Id, n.Dobavljac.Jmbg, n.Dobavljac.Ime, n.Dobavljac.Prezime,
+                            n.Dobavljac.DatumRodjenja, n.Dobavljac.Struka, n.Dobavljac.FlagPB, n.Dobavljac.FlagInve, n.Dobavljac.FlagIzv, n.Dobavljac.FlagP,
+                            n.Dobavljac.FlagD, n.Dobavljac.FlagN);
+                    }
 
                     nabavke.Add(new NabavkeBasic(
                         n.Br_nabavke,
                         n.Datum,
-                        projekat
+                        projekat,
+                        dobavljac
                     ));
                 }
 

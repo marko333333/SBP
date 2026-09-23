@@ -93,7 +93,6 @@ namespace Gradjevinska_firma.DTOManager
                     where a.Zadatak.Faza.Projekat.ID == idProjekta
                     select a;
 
-                //zasta sluzi ovaj HashSet?
                 HashSet<int> dodateOsobe = new HashSet<int>();
 
                 foreach (Angazovan a in sviAngazovani)
@@ -336,6 +335,8 @@ namespace Gradjevinska_firma.DTOManager
 
             return lica;
         }
+
+
         public static PravnaLicaBasic vratiPravnoLice(int id)
         {
             PravnaLicaBasic lice = new PravnaLicaBasic();
@@ -351,6 +352,7 @@ namespace Gradjevinska_firma.DTOManager
                         p.Id, p.Jmbg, p.Ime, p.Prezime, p.DatumRodjenja, p.Struka, p.FlagPB, p.FlagInve, p.FlagIzv, p.FlagP, p.FlagD, p.FlagN);
                     lice.Kontakti = KontaktDTOManager.vratiKontakteOsobe(id);
                     lice.Licence = LicencaDTOManager.vratiLicenceOsobe(id);
+                    lice.Nabavke = NabavkeDTOManager.vratiNabavkeDobavljaca(id);
                 }
                 s.Close();
             }
@@ -475,6 +477,34 @@ namespace Gradjevinska_firma.DTOManager
 
             }
             return pravnaLica;
+        }
+
+        public static List<PravnaLicaPregled> vratiSveDobavljace()
+        {
+            List<PravnaLicaPregled> dobavljaci = new List<PravnaLicaPregled>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+            
+                IEnumerable<PravnaLica> sviDobavljaci =
+                    from d in s.Query<PravnaLica>()
+                    where d.FlagD == true
+                    select d;
+                foreach (PravnaLica p in sviDobavljaci)
+                {
+                    dobavljaci.Add(new PravnaLicaPregled(p.Id,p.Jmbg,p.Ime,p.Prezime,p.DatumRodjenja,p.Struka,p.FlagPB,p.FlagInve,p.FlagIzv,p.FlagP,p.FlagD,p.FlagN));
+                }
+                s.Close();
+
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(ex.HandleError());
+            }
+
+
+            return dobavljaci;
         }
 
         #endregion

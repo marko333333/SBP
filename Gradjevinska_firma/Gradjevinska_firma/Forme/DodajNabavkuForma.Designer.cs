@@ -34,11 +34,15 @@
             btDodaj = new Button();
             dtpDatum = new DateTimePicker();
             label1 = new Label();
+            lblDobavljac = new Label();
+            cbDobavljac = new ComboBox();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(cbDobavljac);
+            groupBox1.Controls.Add(lblDobavljac);
             groupBox1.Controls.Add(cbProjekat);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(btDodaj);
@@ -49,7 +53,7 @@
             groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 2, 3, 2);
-            groupBox1.Size = new Size(339, 168);
+            groupBox1.Size = new Size(339, 228);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Dodaj nabavku";
@@ -74,7 +78,7 @@
             // 
             // btDodaj
             // 
-            btDodaj.Location = new Point(26, 126);
+            btDodaj.Location = new Point(116, 184);
             btDodaj.Margin = new Padding(3, 2, 3, 2);
             btDodaj.Name = "btDodaj";
             btDodaj.Size = new Size(82, 22);
@@ -100,11 +104,28 @@
             label1.TabIndex = 0;
             label1.Text = "Datum:";
             // 
+            // lblDobavljac
+            // 
+            lblDobavljac.AutoSize = true;
+            lblDobavljac.Location = new Point(12, 120);
+            lblDobavljac.Name = "lblDobavljac";
+            lblDobavljac.Size = new Size(62, 15);
+            lblDobavljac.TabIndex = 7;
+            lblDobavljac.Text = "Dobavljac:";
+            // 
+            // cbDobavljac
+            // 
+            cbDobavljac.FormattingEnabled = true;
+            cbDobavljac.Location = new Point(97, 117);
+            cbDobavljac.Name = "cbDobavljac";
+            cbDobavljac.Size = new Size(203, 23);
+            cbDobavljac.TabIndex = 8;
+            // 
             // DodajNabavkuForma
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(339, 168);
+            ClientSize = new Size(339, 228);
             Controls.Add(groupBox1);
             Margin = new Padding(3, 2, 3, 2);
             Name = "DodajNabavkuForma";
@@ -123,5 +144,7 @@
         private Label label1;
         private Label label2;
         private ComboBox cbProjekat;
+        private ComboBox cbDobavljac;
+        private Label lblDobavljac;
     }
 }

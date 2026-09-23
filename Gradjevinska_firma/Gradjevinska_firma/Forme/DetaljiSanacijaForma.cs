@@ -129,7 +129,8 @@ namespace Gradjevinska_firma.Forme
                      new string[]
                      {
                          n.Br_nabavke.ToString(),
-                         n.Datum.ToShortDateString()
+                         n.Datum.ToShortDateString(),
+                         n.Dobavljac.Ime.ToString() + " " + n.Dobavljac.Prezime.ToString()
                      });
                 Nabavke.Items.Add(item);
             }
