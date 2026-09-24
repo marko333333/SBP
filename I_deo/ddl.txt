@@ -1,0 +1,1996 @@
+--------------------------------------------------------
+--  File created - Thursday-September-24-2026   
+--------------------------------------------------------
+DROP SEQUENCE "BEZBEDNOSNA_OBUKA_SEQ";
+DROP SEQUENCE "BEZBEDNOSNI_INCIDENT_SEQ";
+DROP SEQUENCE "DEONICA_SEQ";
+DROP SEQUENCE "FAKTURA_SEQ";
+DROP SEQUENCE "FAZA_SEQ";
+DROP SEQUENCE "IMAUGOVORNUSTRANU_SEQ";
+DROP SEQUENCE "KONTAKT_SEQ";
+DROP SEQUENCE "KONTROLA_KVALITETA_SEQ";
+DROP SEQUENCE "KORISTI_SEQ";
+DROP SEQUENCE "LEK_PREGLED_SEQ";
+DROP SEQUENCE "LICENCA_SEQ";
+DROP SEQUENCE "MATERIJAL_SEQ";
+DROP SEQUENCE "NABAVKAMATERIJAL_SEQ";
+DROP SEQUENCE "NABAVKAOPREMA_SEQ";
+DROP SEQUENCE "NABAVKE_SEQ";
+DROP SEQUENCE "NAPREDAK_SEQ";
+DROP SEQUENCE "OBJEKAT_POSLOVNI_SEQ";
+DROP SEQUENCE "OBJEKAT_STAMBENI_SEQ";
+DROP SEQUENCE "OPREMA_SEQ";
+DROP SEQUENCE "OSOBA_SEQ";
+DROP SEQUENCE "POSEBNA_KLAUZULA_SEQ";
+DROP SEQUENCE "PROJEKAT_SEQ";
+DROP SEQUENCE "RADNI_NALOG_SEQ";
+DROP SEQUENCE "SERTIFIKAT_SPEC_OPREME_SEQ";
+DROP SEQUENCE "STAVKA_KONTROLE_SEQ";
+DROP SEQUENCE "UGOVOR_SEQ";
+DROP SEQUENCE "ZADATAK_SEQ";
+DROP SEQUENCE "ZASTITNA_OPREMA_SEQ";
+DROP TABLE "ANGAZOVAN" cascade constraints;
+DROP TABLE "ANGAZUJE" cascade constraints;
+DROP TABLE "BEZBEDNOSNA_OBUKA" cascade constraints;
+DROP TABLE "BEZBEDNOSNI_INCIDENT" cascade constraints;
+DROP TABLE "DEONICA" cascade constraints;
+DROP TABLE "FAKTURA" cascade constraints;
+DROP TABLE "FAZA" cascade constraints;
+DROP TABLE "FIZICKA_LICA" cascade constraints;
+DROP TABLE "FOTOGRAFIJA" cascade constraints;
+DROP TABLE "IMAUGOVORNUSTRANU" cascade constraints;
+DROP TABLE "INDUSTRIJSKI" cascade constraints;
+DROP TABLE "INFRASTRUKTURA" cascade constraints;
+DROP TABLE "KONTAKT" cascade constraints;
+DROP TABLE "KONTROLA_KVALITETA" cascade constraints;
+DROP TABLE "KORISTI" cascade constraints;
+DROP TABLE "LEK_PREGLED" cascade constraints;
+DROP TABLE "LICENCA" cascade constraints;
+DROP TABLE "MATERIJAL" cascade constraints;
+DROP TABLE "MEHANIZACIJA" cascade constraints;
+DROP TABLE "NABAVKAMATERIJAL" cascade constraints;
+DROP TABLE "NABAVKAOPREMA" cascade constraints;
+DROP TABLE "NABAVKE" cascade constraints;
+DROP TABLE "NAPREDAK" cascade constraints;
+DROP TABLE "OBJEKAT_POSLOVNI" cascade constraints;
+DROP TABLE "OBJEKAT_STAMBENI" cascade constraints;
+DROP TABLE "OPREMA" cascade constraints;
+DROP TABLE "OSOBA" cascade constraints;
+DROP TABLE "POSEBNA_KLAUZULA" cascade constraints;
+DROP TABLE "POSLOVNI" cascade constraints;
+DROP TABLE "PRAVNALICA" cascade constraints;
+DROP TABLE "PROJEKAT" cascade constraints;
+DROP TABLE "RADNI_NALOG" cascade constraints;
+DROP TABLE "REKONSTRUKCIJA" cascade constraints;
+DROP TABLE "SANACIJA" cascade constraints;
+DROP TABLE "SERTIFIKAT_SPEC_OPREME" cascade constraints;
+DROP TABLE "STAMBENI" cascade constraints;
+DROP TABLE "STAVKA_KONTROLE" cascade constraints;
+DROP TABLE "UGOVOR" cascade constraints;
+DROP TABLE "ZADATAK" cascade constraints;
+DROP TABLE "ZASTITNA_OPREMA" cascade constraints;
+--------------------------------------------------------
+--  DDL for Sequence BEZBEDNOSNA_OBUKA_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "BEZBEDNOSNA_OBUKA_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 41 CACHE 20 ORDER  NOCYCLE
+--------------------------------------------------------
+--  DDL for Sequence BEZBEDNOSNI_INCIDENT_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "BEZBEDNOSNI_INCIDENT_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 121 CACHE 20 ORDER  NOCYCLE
+--------------------------------------------------------
+--  DDL for Sequence DEONICA_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "DEONICA_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 61 CACHE 20 ORDER  NOCYCLE
+--------------------------------------------------------
+--  DDL for Sequence FAKTURA_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "FAKTURA_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 81 CACHE 20 ORDER  NOCYCLE
+--------------------------------------------------------
+--  DDL for Sequence FAZA_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "FAZA_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 101 CACHE 20 ORDER  NOCYCLE
+--------------------------------------------------------
+--  DDL for Sequence IMAUGOVORNUSTRANU_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "IMAUGOVORNUSTRANU_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 41 CACHE 20 ORDER  NOCYCLE
+--------------------------------------------------------
+--  DDL for Sequence KONTAKT_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "KONTAKT_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 21 CACHE 20 ORDER  NOCYCLE
+--------------------------------------------------------
+--  DDL for Sequence KONTROLA_KVALITETA_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "KONTROLA_KVALITETA_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 41 CACHE 20 ORDER  NOCYCLE
+--------------------------------------------------------
+--  DDL for Sequence KORISTI_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "KORISTI_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 61 CACHE 20 ORDER  NOCYCLE
+--------------------------------------------------------
+--  DDL for Sequence LEK_PREGLED_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "LEK_PREGLED_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 41 CACHE 20 ORDER  NOCYCLE
+--------------------------------------------------------
+--  DDL for Sequence LICENCA_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "LICENCA_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 41 CACHE 20 ORDER  NOCYCLE
+--------------------------------------------------------
+--  DDL for Sequence MATERIJAL_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MATERIJAL_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 101 CACHE 20 ORDER  NOCYCLE
+--------------------------------------------------------
+--  DDL for Sequence NABAVKAMATERIJAL_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "NABAVKAMATERIJAL_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 81 CACHE 20 ORDER  NOCYCLE
+--------------------------------------------------------
+--  DDL for Sequence NABAVKAOPREMA_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "NABAVKAOPREMA_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 101 CACHE 20 ORDER  NOCYCLE
+--------------------------------------------------------
+--  DDL for Sequence NABAVKE_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "NABAVKE_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 121 CACHE 20 ORDER  NOCYCLE
+--------------------------------------------------------
+--  DDL for Sequence NAPREDAK_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "NAPREDAK_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 41 CACHE 20 ORDER  NOCYCLE
+--------------------------------------------------------
+--  DDL for Sequence OBJEKAT_POSLOVNI_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "OBJEKAT_POSLOVNI_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 81 CACHE 20 ORDER  NOCYCLE
+--------------------------------------------------------
+--  DDL for Sequence OBJEKAT_STAMBENI_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "OBJEKAT_STAMBENI_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 41 CACHE 20 ORDER  NOCYCLE
+--------------------------------------------------------
+--  DDL for Sequence OPREMA_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "OPREMA_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 101 CACHE 20 ORDER  NOCYCLE
+--------------------------------------------------------
+--  DDL for Sequence OSOBA_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "OSOBA_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 61 CACHE 20 ORDER  NOCYCLE
+--------------------------------------------------------
+--  DDL for Sequence POSEBNA_KLAUZULA_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "POSEBNA_KLAUZULA_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 61 CACHE 20 ORDER  NOCYCLE
+--------------------------------------------------------
+--  DDL for Sequence PROJEKAT_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "PROJEKAT_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 61 CACHE 20 ORDER  NOCYCLE
+--------------------------------------------------------
+--  DDL for Sequence RADNI_NALOG_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "RADNI_NALOG_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 61 CACHE 20 ORDER  NOCYCLE
+--------------------------------------------------------
+--  DDL for Sequence SERTIFIKAT_SPEC_OPREME_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "SERTIFIKAT_SPEC_OPREME_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 41 CACHE 20 ORDER  NOCYCLE
+--------------------------------------------------------
+--  DDL for Sequence STAVKA_KONTROLE_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "STAVKA_KONTROLE_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 61 CACHE 20 ORDER  NOCYCLE
+--------------------------------------------------------
+--  DDL for Sequence UGOVOR_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "UGOVOR_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 61 CACHE 20 ORDER  NOCYCLE
+--------------------------------------------------------
+--  DDL for Sequence ZADATAK_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "ZADATAK_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 81 CACHE 20 ORDER  NOCYCLE
+--------------------------------------------------------
+--  DDL for Sequence ZASTITNA_OPREMA_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "ZASTITNA_OPREMA_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 41 CACHE 20 ORDER  NOCYCLE
+--------------------------------------------------------
+--  DDL for Table ANGAZOVAN
+--------------------------------------------------------
+
+  CREATE TABLE "ANGAZOVAN" 
+   (	"IDZADATAK" NUMBER(7,0), 
+	"IDOSOBA" NUMBER(7,0), 
+	"DATUM_OD" DATE, 
+	"DATUM_DO" DATE, 
+	"STATUS_ANGAZOVANJA" VARCHAR2(20 BYTE) DEFAULT 'Dodeljen'
+   )
+--------------------------------------------------------
+--  DDL for Table ANGAZUJE
+--------------------------------------------------------
+
+  CREATE TABLE "ANGAZUJE" 
+   (	"IDOPREMA" NUMBER(7,0), 
+	"IDZADATAK" NUMBER(7,0), 
+	"DATUM_OD" DATE, 
+	"DATUM_DO" DATE, 
+	"BROJ_SATI" NUMBER(7,0) DEFAULT 0
+   )
+--------------------------------------------------------
+--  DDL for Table BEZBEDNOSNA_OBUKA
+--------------------------------------------------------
+
+  CREATE TABLE "BEZBEDNOSNA_OBUKA" 
+   (	"ID" NUMBER(7,0), 
+	"IDOSOBA" NUMBER(7,0), 
+	"BEZBEDNOSNA_OBUKA" VARCHAR2(50 BYTE), 
+	"DATUM" DATE
+   )
+--------------------------------------------------------
+--  DDL for Table BEZBEDNOSNI_INCIDENT
+--------------------------------------------------------
+
+  CREATE TABLE "BEZBEDNOSNI_INCIDENT" 
+   (	"ID" NUMBER(7,0), 
+	"OPIS" VARCHAR2(100 BYTE), 
+	"DATUM" DATE, 
+	"LOKACIJA" VARCHAR2(30 BYTE), 
+	"PREDUZETE_MERE" VARCHAR2(100 BYTE), 
+	"POSLEDICE" VARCHAR2(100 BYTE), 
+	"TIP_INCIDENTA" VARCHAR2(30 BYTE), 
+	"IDPROJEKTA" NUMBER(7,0), 
+	"IDOSOBE" NUMBER(7,0)
+   )
+--------------------------------------------------------
+--  DDL for Table DEONICA
+--------------------------------------------------------
+
+  CREATE TABLE "DEONICA" 
+   (	"IDPROJEKTA" NUMBER(7,0), 
+	"BRDEONICE" NUMBER(7,0), 
+	"ID" NUMBER(7,0)
+   )
+--------------------------------------------------------
+--  DDL for Table FAKTURA
+--------------------------------------------------------
+
+  CREATE TABLE "FAKTURA" 
+   (	"BR_FAKTURE" NUMBER(7,0), 
+	"IZNOS" NUMBER(7,0), 
+	"VALUTA" VARCHAR2(30 BYTE) DEFAULT 'RSD', 
+	"STATUS_PLACANJA" NUMBER(1,0) DEFAULT 0, 
+	"DATUM" DATE DEFAULT SYSDATE, 
+	"IDPROJEKTA" NUMBER(7,0), 
+	"IDOSOBAIZDAJE" NUMBER(7,0), 
+	"IDOSOBAPRIMA" NUMBER(7,0)
+   )
+--------------------------------------------------------
+--  DDL for Table FAZA
+--------------------------------------------------------
+
+  CREATE TABLE "FAZA" 
+   (	"NAZIV" VARCHAR2(100 BYTE), 
+	"IDPROJEKTA" NUMBER(7,0), 
+	"DATUM_OD" DATE, 
+	"DATUM_DO" DATE, 
+	"STATUS" VARCHAR2(20 BYTE) DEFAULT 'Planiran', 
+	"BUDZET" NUMBER(7,0), 
+	"IDFIZICKO_LICE" NUMBER(7,0), 
+	"ID" NUMBER(7,0), 
+	"ID_NADFAZE" NUMBER(7,0)
+   )
+--------------------------------------------------------
+--  DDL for Table FIZICKA_LICA
+--------------------------------------------------------
+
+  CREATE TABLE "FIZICKA_LICA" 
+   (	"IDOSOBA" NUMBER(7,0), 
+	"FLAGBK" NUMBER(1,0) DEFAULT 0, 
+	"FLAGR" NUMBER(1,0) DEFAULT 0, 
+	"KVALIFIKACIJA" VARCHAR2(20 BYTE), 
+	"FLAGI" NUMBER(1,0) DEFAULT 0, 
+	"OBLASTRADA" VARCHAR2(50 BYTE), 
+	"ODGOVORNOSTI" VARCHAR2(50 BYTE), 
+	"FLAGA" NUMBER(1,0) DEFAULT 0, 
+	"FLAGP" NUMBER(1,0) DEFAULT 0, 
+	"FLAGN" NUMBER(1,0) DEFAULT 0, 
+	"FLAGAO" NUMBER(1,0) DEFAULT 0
+   )
+--------------------------------------------------------
+--  DDL for Table FOTOGRAFIJA
+--------------------------------------------------------
+
+  CREATE TABLE "FOTOGRAFIJA" 
+   (	"FOTOGRAFIJA" VARCHAR2(100 BYTE), 
+	"IDNAPREDAK" NUMBER(7,0)
+   )
+--------------------------------------------------------
+--  DDL for Table IMAUGOVORNUSTRANU
+--------------------------------------------------------
+
+  CREATE TABLE "IMAUGOVORNUSTRANU" 
+   (	"ID" NUMBER(7,0), 
+	"IDOSOBA" NUMBER(7,0), 
+	"IDUGOVOR" NUMBER(7,0), 
+	"ULOGA" VARCHAR2(100 BYTE)
+   )
+--------------------------------------------------------
+--  DDL for Table INDUSTRIJSKI
+--------------------------------------------------------
+
+  CREATE TABLE "INDUSTRIJSKI" 
+   (	"IDPROJEKTA" NUMBER(7,0)
+   )
+--------------------------------------------------------
+--  DDL for Table INFRASTRUKTURA
+--------------------------------------------------------
+
+  CREATE TABLE "INFRASTRUKTURA" 
+   (	"IDPROJEKTA" NUMBER(7,0)
+   )
+--------------------------------------------------------
+--  DDL for Table KONTAKT
+--------------------------------------------------------
+
+  CREATE TABLE "KONTAKT" 
+   (	"IDOSOBA" NUMBER(7,0), 
+	"KONTAKT" VARCHAR2(50 BYTE), 
+	"ID" NUMBER(7,0)
+   )
+--------------------------------------------------------
+--  DDL for Table KONTROLA_KVALITETA
+--------------------------------------------------------
+
+  CREATE TABLE "KONTROLA_KVALITETA" 
+   (	"ID" NUMBER(7,0), 
+	"IDZADATKA" NUMBER(7,0), 
+	"DATUM_INSPEKCIJE" DATE, 
+	"PRIMEDBE_NADZORA" VARCHAR2(100 BYTE), 
+	"ZAPISNIK" VARCHAR2(100 BYTE), 
+	"ZABRANA_NASTAVKA_RADOVA" NUMBER(1,0) DEFAULT 0, 
+	"RAZLOG_ZABRANE" VARCHAR2(100 BYTE), 
+	"DATUM_OTKLANJANJA_ZABRANE" DATE
+   )
+--------------------------------------------------------
+--  DDL for Table KORISTI
+--------------------------------------------------------
+
+  CREATE TABLE "KORISTI" 
+   (	"IDZADATAK" NUMBER(7,0), 
+	"IDMATERIJAL" NUMBER(7,0), 
+	"KOLICINA" NUMBER(10,2), 
+	"ID" NUMBER(7,0)
+   )
+--------------------------------------------------------
+--  DDL for Table LEK_PREGLED
+--------------------------------------------------------
+
+  CREATE TABLE "LEK_PREGLED" 
+   (	"IDOSOBA" NUMBER(7,0), 
+	"REZULTAT" VARCHAR2(50 BYTE), 
+	"DATUM" DATE, 
+	"ID" NUMBER(7,0)
+   )
+--------------------------------------------------------
+--  DDL for Table LICENCA
+--------------------------------------------------------
+
+  CREATE TABLE "LICENCA" 
+   (	"LICENCA" VARCHAR2(100 BYTE), 
+	"IDOSOBE" NUMBER(7,0), 
+	"ID" NUMBER(7,0)
+   )
+--------------------------------------------------------
+--  DDL for Table MATERIJAL
+--------------------------------------------------------
+
+  CREATE TABLE "MATERIJAL" 
+   (	"ID" NUMBER(7,0), 
+	"NAZIV" VARCHAR2(100 BYTE), 
+	"TIP" VARCHAR2(50 BYTE), 
+	"CENA" NUMBER(10,2), 
+	"PROIZVODJAC" VARCHAR2(50 BYTE), 
+	"JEDINICA_MERE" VARCHAR2(20 BYTE), 
+	"SERTIFIKAT" VARCHAR2(100 BYTE)
+   )
+--------------------------------------------------------
+--  DDL for Table MEHANIZACIJA
+--------------------------------------------------------
+
+  CREATE TABLE "MEHANIZACIJA" 
+   (	"IDOPREMA" NUMBER(7,0), 
+	"TIP_MEHANIZACIJE" VARCHAR2(50 BYTE)
+   )
+--------------------------------------------------------
+--  DDL for Table NABAVKAMATERIJAL
+--------------------------------------------------------
+
+  CREATE TABLE "NABAVKAMATERIJAL" 
+   (	"IDMATERIJAL" NUMBER(7,0), 
+	"IDNABAVKA" NUMBER(7,0), 
+	"KOLICINA" NUMBER(10,2), 
+	"CENA" NUMBER(10,2), 
+	"STATUS_ISPORUKE" NUMBER(1,0) DEFAULT 0, 
+	"ID" NUMBER(7,0)
+   )
+--------------------------------------------------------
+--  DDL for Table NABAVKAOPREMA
+--------------------------------------------------------
+
+  CREATE TABLE "NABAVKAOPREMA" 
+   (	"IDOPREMA" NUMBER(7,0), 
+	"IDNABAVKA" NUMBER(7,0), 
+	"KOLICINA" NUMBER(10,2), 
+	"CENA" NUMBER(10,2), 
+	"STATUS_ISPORUKE" NUMBER(1,0) DEFAULT 0, 
+	"ID" NUMBER(7,0)
+   )
+--------------------------------------------------------
+--  DDL for Table NABAVKE
+--------------------------------------------------------
+
+  CREATE TABLE "NABAVKE" 
+   (	"BR_NABAVKE" NUMBER(7,0), 
+	"IDPROJEKTA" NUMBER(7,0), 
+	"DATUM" DATE, 
+	"IDOSOBA" NUMBER(7,0)
+   )
+--------------------------------------------------------
+--  DDL for Table NAPREDAK
+--------------------------------------------------------
+
+  CREATE TABLE "NAPREDAK" 
+   (	"DATUM" DATE, 
+	"IDZADATAK" NUMBER(7,0), 
+	"DNEVNI_IZVESTAJ" VARCHAR2(1000 BYTE), 
+	"PROCENAT_REALIZACIJE" NUMBER(7,0), 
+	"PRIMEDBA_NADZORA" VARCHAR2(500 BYTE), 
+	"KOREKTIVNA_MERA" VARCHAR2(500 BYTE), 
+	"ID" NUMBER(7,0)
+   )
+--------------------------------------------------------
+--  DDL for Table OBJEKAT_POSLOVNI
+--------------------------------------------------------
+
+  CREATE TABLE "OBJEKAT_POSLOVNI" 
+   (	"BR_OBJEKTA" NUMBER(7,0), 
+	"IDPROJEKTA" NUMBER(7,0), 
+	"SPRATNOST" NUMBER(7,0), 
+	"BR_JEDINICA" NUMBER(7,0), 
+	"ID" NUMBER(7,0)
+   )
+--------------------------------------------------------
+--  DDL for Table OBJEKAT_STAMBENI
+--------------------------------------------------------
+
+  CREATE TABLE "OBJEKAT_STAMBENI" 
+   (	"BR_OBJEKTA" NUMBER(7,0), 
+	"IDPROJEKTA" NUMBER(7,0), 
+	"SPRATNOST" NUMBER(7,0), 
+	"BR_JEDINICA" NUMBER(7,0), 
+	"ID" NUMBER(7,0)
+   )
+--------------------------------------------------------
+--  DDL for Table OPREMA
+--------------------------------------------------------
+
+  CREATE TABLE "OPREMA" 
+   (	"ID" NUMBER(7,0), 
+	"NAZIV" VARCHAR2(100 BYTE), 
+	"TIP" VARCHAR2(50 BYTE), 
+	"DATUM_UVOZA" DATE, 
+	"PROIZVODJAC" VARCHAR2(100 BYTE), 
+	"RASPON_ODRZAVANJA" VARCHAR2(100 BYTE), 
+	"LOKACIJA" VARCHAR2(100 BYTE), 
+	"STATUS" VARCHAR2(20 BYTE) DEFAULT 'Slobodna'
+   )
+--------------------------------------------------------
+--  DDL for Table OSOBA
+--------------------------------------------------------
+
+  CREATE TABLE "OSOBA" 
+   (	"ID" NUMBER(7,0), 
+	"IME" VARCHAR2(50 BYTE), 
+	"PREZIME" VARCHAR2(50 BYTE), 
+	"DATUM_RODJENJA" DATE, 
+	"STRUKA" VARCHAR2(20 BYTE), 
+	"JMBG" VARCHAR2(13 BYTE)
+   )
+--------------------------------------------------------
+--  DDL for Table POSEBNA_KLAUZULA
+--------------------------------------------------------
+
+  CREATE TABLE "POSEBNA_KLAUZULA" 
+   (	"POSEBNA_KLAUZULA" VARCHAR2(500 BYTE), 
+	"IDUGOVOR" NUMBER(7,0), 
+	"ID" NUMBER(7,0)
+   )
+--------------------------------------------------------
+--  DDL for Table POSLOVNI
+--------------------------------------------------------
+
+  CREATE TABLE "POSLOVNI" 
+   (	"IDPROJEKTA" NUMBER(7,0)
+   )
+--------------------------------------------------------
+--  DDL for Table PRAVNALICA
+--------------------------------------------------------
+
+  CREATE TABLE "PRAVNALICA" 
+   (	"IDOSOBA" NUMBER(7,0), 
+	"FLAGPB" NUMBER(1,0) DEFAULT 0, 
+	"FLAGINVE" NUMBER(1,0) DEFAULT 0, 
+	"FLAGIZV" NUMBER(1,0) DEFAULT 0, 
+	"FLAGP" NUMBER(1,0) DEFAULT 0, 
+	"FLAGD" NUMBER(1,0) DEFAULT 0, 
+	"FLAGN" NUMBER(1,0) DEFAULT 0
+   )
+--------------------------------------------------------
+--  DDL for Table PROJEKAT
+--------------------------------------------------------
+
+  CREATE TABLE "PROJEKAT" 
+   (	"ID" NUMBER(7,0), 
+	"NAZIV" VARCHAR2(100 BYTE), 
+	"OPIS" VARCHAR2(500 BYTE), 
+	"LOKACIJA" VARCHAR2(50 BYTE), 
+	"DATUM_POCETKA" DATE, 
+	"BUDZET" NUMBER(*,0), 
+	"STATUS" VARCHAR2(20 BYTE) DEFAULT 'Planiran', 
+	"PLANIRANI_ZAVRSETAK" DATE, 
+	"STVARNI_ZAVRSETAK" DATE
+   )
+--------------------------------------------------------
+--  DDL for Table RADNI_NALOG
+--------------------------------------------------------
+
+  CREATE TABLE "RADNI_NALOG" 
+   (	"BR_NALOGA" NUMBER(7,0), 
+	"IDZADATAK" NUMBER(7,0), 
+	"STATUS" VARCHAR2(30 BYTE) DEFAULT 'Izdat', 
+	"DATUM_IZDAVANJA" DATE
+   )
+--------------------------------------------------------
+--  DDL for Table REKONSTRUKCIJA
+--------------------------------------------------------
+
+  CREATE TABLE "REKONSTRUKCIJA" 
+   (	"IDPROJEKTA" NUMBER(7,0)
+   )
+--------------------------------------------------------
+--  DDL for Table SANACIJA
+--------------------------------------------------------
+
+  CREATE TABLE "SANACIJA" 
+   (	"IDPROJEKTA" NUMBER(7,0)
+   )
+--------------------------------------------------------
+--  DDL for Table SERTIFIKAT_SPEC_OPREME
+--------------------------------------------------------
+
+  CREATE TABLE "SERTIFIKAT_SPEC_OPREME" 
+   (	"IDOSOBA" NUMBER(7,0), 
+	"SERTIFIKAT_SPEC_OPREME" VARCHAR2(50 BYTE), 
+	"ID" NUMBER(7,0)
+   )
+--------------------------------------------------------
+--  DDL for Table STAMBENI
+--------------------------------------------------------
+
+  CREATE TABLE "STAMBENI" 
+   (	"IDPROJEKTA" NUMBER(7,0)
+   )
+--------------------------------------------------------
+--  DDL for Table STAVKA_KONTROLE
+--------------------------------------------------------
+
+  CREATE TABLE "STAVKA_KONTROLE" 
+   (	"IDKONTROLE" NUMBER(7,0), 
+	"REDNI_BROJ_STAVKE" NUMBER(7,0), 
+	"UZORCI" VARCHAR2(100 BYTE), 
+	"LAB_NALAZI" VARCHAR2(100 BYTE), 
+	"REZULTATI_ISPITIVANJA" VARCHAR2(100 BYTE), 
+	"KOREKTIVNE_MERE" VARCHAR2(100 BYTE), 
+	"ROK_ZA_OTKLANJANJE" DATE, 
+	"ID" NUMBER(7,0)
+   )
+--------------------------------------------------------
+--  DDL for Table UGOVOR
+--------------------------------------------------------
+
+  CREATE TABLE "UGOVOR" 
+   (	"ID" NUMBER(7,0), 
+	"DATUM_POTPISIVANJA" DATE, 
+	"VREDNOST" NUMBER(12,2), 
+	"PREDMET_UGOVORA" VARCHAR2(500 BYTE), 
+	"VALUTA" VARCHAR2(10 BYTE), 
+	"ROK" DATE, 
+	"IDMATERIJAL" NUMBER(7,0), 
+	"IDPROJEKTA" NUMBER(7,0), 
+	"IDOPREMA" NUMBER(7,0)
+   )
+--------------------------------------------------------
+--  DDL for Table ZADATAK
+--------------------------------------------------------
+
+  CREATE TABLE "ZADATAK" 
+   (	"ID" NUMBER(7,0), 
+	"NAZIV" VARCHAR2(100 BYTE), 
+	"OPIS" VARCHAR2(500 BYTE), 
+	"PROCENJENI_TROSAK" NUMBER(10,2), 
+	"PLANIRANI_ZAVRSETAK" DATE, 
+	"STVARNI_ZAVRSETAK" DATE, 
+	"PLANIRANI_POCETAK" DATE, 
+	"STVARNI_POCETAK" DATE, 
+	"PRIORITET" NUMBER(7,0) DEFAULT 3, 
+	"STATUS" VARCHAR2(30 BYTE) DEFAULT 'Planiran', 
+	"ID_ZADATAK_RODITELJ" NUMBER(7,0), 
+	"ID_FAZE" NUMBER(7,0)
+   )
+--------------------------------------------------------
+--  DDL for Table ZASTITNA_OPREMA
+--------------------------------------------------------
+
+  CREATE TABLE "ZASTITNA_OPREMA" 
+   (	"IDOSOBA" NUMBER(7,0), 
+	"ZASTITNA_OPREMA" VARCHAR2(50 BYTE), 
+	"ID" NUMBER(7,0)
+   )
+--------------------------------------------------------
+--  DDL for Index UQ_IMAUGOVOR_OSOBA_UGOVOR
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "UQ_IMAUGOVOR_OSOBA_UGOVOR" ON "IMAUGOVORNUSTRANU" ("IDOSOBA", "IDUGOVOR")
+--------------------------------------------------------
+--  DDL for Index PK_KONTR_KVAL
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PK_KONTR_KVAL" ON "KONTROLA_KVALITETA" ("ID")
+--------------------------------------------------------
+--  DDL for Index UQ_ZADATAK_DATUM_INSP
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "UQ_ZADATAK_DATUM_INSP" ON "KONTROLA_KVALITETA" ("IDZADATKA", "DATUM_INSPEKCIJE")
+--------------------------------------------------------
+--  DDL for Index PK_NAB
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PK_NAB" ON "NABAVKE" ("BR_NABAVKE")
+--------------------------------------------------------
+--  DDL for Index PK_ANGAZUJE
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PK_ANGAZUJE" ON "ANGAZOVAN" ("IDZADATAK", "IDOSOBA")
+--------------------------------------------------------
+--  DDL for Index UQ_OBJEKAT_STAMBENI
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "UQ_OBJEKAT_STAMBENI" ON "OBJEKAT_STAMBENI" ("IDPROJEKTA", "BR_OBJEKTA")
+--------------------------------------------------------
+--  DDL for Index PK_KONTAKT
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PK_KONTAKT" ON "KONTAKT" ("ID")
+--------------------------------------------------------
+--  DDL for Index UQ_LEK_PREGLED_OSOBA_DATUM
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "UQ_LEK_PREGLED_OSOBA_DATUM" ON "LEK_PREGLED" ("IDOSOBA", "DATUM")
+--------------------------------------------------------
+--  DDL for Index PK_ZASTITNA_OPREMA
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PK_ZASTITNA_OPREMA" ON "ZASTITNA_OPREMA" ("ID")
+--------------------------------------------------------
+--  DDL for Index PK_NAPREDAK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PK_NAPREDAK" ON "NAPREDAK" ("ID")
+--------------------------------------------------------
+--  DDL for Index PK_NABAVKA_MAT
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PK_NABAVKA_MAT" ON "NABAVKAMATERIJAL" ("ID")
+--------------------------------------------------------
+--  DDL for Index UQ_NAPREDAK_DATUM_ZADATAK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "UQ_NAPREDAK_DATUM_ZADATAK" ON "NAPREDAK" ("DATUM", "IDZADATAK")
+--------------------------------------------------------
+--  DDL for Index PK_MEHANIZACIJA
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PK_MEHANIZACIJA" ON "MEHANIZACIJA" ("IDOPREMA")
+--------------------------------------------------------
+--  DDL for Index UQ_NABAVKAMAT_MAT_NAB
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "UQ_NABAVKAMAT_MAT_NAB" ON "NABAVKAMATERIJAL" ("IDMATERIJAL", "IDNABAVKA")
+--------------------------------------------------------
+--  DDL for Index PK_STAVKA_KONTR
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PK_STAVKA_KONTR" ON "STAVKA_KONTROLE" ("ID")
+--------------------------------------------------------
+--  DDL for Index PK_LICENCA
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PK_LICENCA" ON "LICENCA" ("ID")
+--------------------------------------------------------
+--  DDL for Index PK_OBJEKAT_STAMBENI
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PK_OBJEKAT_STAMBENI" ON "OBJEKAT_STAMBENI" ("ID")
+--------------------------------------------------------
+--  DDL for Index PK_IMAUGOVOR
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PK_IMAUGOVOR" ON "IMAUGOVORNUSTRANU" ("ID")
+--------------------------------------------------------
+--  DDL for Index UQ_OSOBA_JMBG
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "UQ_OSOBA_JMBG" ON "OSOBA" ("JMBG")
+--------------------------------------------------------
+--  DDL for Index UQ_SERT_SPEC_OPR_OSOBA_SERT
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "UQ_SERT_SPEC_OPR_OSOBA_SERT" ON "SERTIFIKAT_SPEC_OPREME" ("IDOSOBA", "SERTIFIKAT_SPEC_OPREME")
+--------------------------------------------------------
+--  DDL for Index UQ_KORISTI_ZAD_MAT
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "UQ_KORISTI_ZAD_MAT" ON "KORISTI" ("IDZADATAK", "IDMATERIJAL")
+--------------------------------------------------------
+--  DDL for Index PK_FOTOGRAFIJA
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PK_FOTOGRAFIJA" ON "FOTOGRAFIJA" ("IDNAPREDAK", "FOTOGRAFIJA")
+--------------------------------------------------------
+--  DDL for Index UQ_DEONICA
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "UQ_DEONICA" ON "DEONICA" ("IDPROJEKTA", "BRDEONICE")
+--------------------------------------------------------
+--  DDL for Index PK_OBJEKAT_POSLOVNI
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PK_OBJEKAT_POSLOVNI" ON "OBJEKAT_POSLOVNI" ("ID")
+--------------------------------------------------------
+--  DDL for Index PK_MATERIJAL
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PK_MATERIJAL" ON "MATERIJAL" ("ID")
+--------------------------------------------------------
+--  DDL for Index UQ_POSKLAU_KLAUZULA_UGOVOR
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "UQ_POSKLAU_KLAUZULA_UGOVOR" ON "POSEBNA_KLAUZULA" ("POSEBNA_KLAUZULA", "IDUGOVOR")
+--------------------------------------------------------
+--  DDL for Index PROJEKAT_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PROJEKAT_PK" ON "PROJEKAT" ("ID")
+--------------------------------------------------------
+--  DDL for Index PK_ANGAZUJE_ZAD_OPREMA
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PK_ANGAZUJE_ZAD_OPREMA" ON "ANGAZUJE" ("IDZADATAK", "IDOPREMA")
+--------------------------------------------------------
+--  DDL for Index PK_BEZBEDNOSNI_INCIDENT
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PK_BEZBEDNOSNI_INCIDENT" ON "BEZBEDNOSNI_INCIDENT" ("ID")
+--------------------------------------------------------
+--  DDL for Index PK_RADNI_NALOG
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PK_RADNI_NALOG" ON "RADNI_NALOG" ("BR_NALOGA")
+--------------------------------------------------------
+--  DDL for Index PK_KORISTI
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PK_KORISTI" ON "KORISTI" ("ID")
+--------------------------------------------------------
+--  DDL for Index UQ_KONTAKT_OSOBA
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "UQ_KONTAKT_OSOBA" ON "KONTAKT" ("IDOSOBA", "KONTAKT")
+--------------------------------------------------------
+--  DDL for Index PK_FAKTURA
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PK_FAKTURA" ON "FAKTURA" ("BR_FAKTURE")
+--------------------------------------------------------
+--  DDL for Index UQ_STAVKA_KONTR
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "UQ_STAVKA_KONTR" ON "STAVKA_KONTROLE" ("IDKONTROLE", "REDNI_BROJ_STAVKE")
+--------------------------------------------------------
+--  DDL for Index UQ_OSOBA_OBUKA
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "UQ_OSOBA_OBUKA" ON "BEZBEDNOSNA_OBUKA" ("IDOSOBA", "BEZBEDNOSNA_OBUKA")
+--------------------------------------------------------
+--  DDL for Index UQ_ZAS_OPR_OSOBA_OPR
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "UQ_ZAS_OPR_OSOBA_OPR" ON "ZASTITNA_OPREMA" ("IDOSOBA", "ZASTITNA_OPREMA")
+--------------------------------------------------------
+--  DDL for Index PK_NABAVKE
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PK_NABAVKE" ON "NABAVKAOPREMA" ("ID")
+--------------------------------------------------------
+--  DDL for Index UQ_OBJEKAT_POSLOVNI
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "UQ_OBJEKAT_POSLOVNI" ON "OBJEKAT_POSLOVNI" ("IDPROJEKTA", "BR_OBJEKTA")
+--------------------------------------------------------
+--  DDL for Index UQ_NABAVKAOPREMA_OPR_NAB
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "UQ_NABAVKAOPREMA_OPR_NAB" ON "NABAVKAOPREMA" ("IDOPREMA", "IDNABAVKA")
+--------------------------------------------------------
+--  DDL for Index PK_DEONICA
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PK_DEONICA" ON "DEONICA" ("ID")
+--------------------------------------------------------
+--  DDL for Index PK_POSEBNA_KLAUZULA
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PK_POSEBNA_KLAUZULA" ON "POSEBNA_KLAUZULA" ("ID")
+--------------------------------------------------------
+--  DDL for Index PK_FAZA
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PK_FAZA" ON "FAZA" ("ID")
+--------------------------------------------------------
+--  DDL for Index PK_SERTIFIKAT_SPEC_OPREME
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PK_SERTIFIKAT_SPEC_OPREME" ON "SERTIFIKAT_SPEC_OPREME" ("ID")
+--------------------------------------------------------
+--  DDL for Index UQ_LICENCA_OSOBA
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "UQ_LICENCA_OSOBA" ON "LICENCA" ("LICENCA", "IDOSOBE")
+--------------------------------------------------------
+--  DDL for Index PK_BEZBEDNOSNA_OBUKA
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PK_BEZBEDNOSNA_OBUKA" ON "BEZBEDNOSNA_OBUKA" ("ID")
+--------------------------------------------------------
+--  DDL for Index PK_LEK_PREGLED
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PK_LEK_PREGLED" ON "LEK_PREGLED" ("ID")
+--------------------------------------------------------
+--  DDL for Trigger BEZBEDNOSNA_OBUKA_AUTO_PK
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "BEZBEDNOSNA_OBUKA_AUTO_PK" BEFORE
+   INSERT ON BEZBEDNOSNA_OBUKA
+   REFERENCING
+      NEW AS NEW
+   FOR EACH ROW
+BEGIN
+   SELECT BEZBEDNOSNA_OBUKA_SEQ.NEXTVAL
+     INTO :NEW.ID
+     FROM DUAL;
+END;
+
+ALTER TRIGGER "BEZBEDNOSNA_OBUKA_AUTO_PK" ENABLE
+--------------------------------------------------------
+--  DDL for Trigger BEZBEDNOSNI_INCIDENT_AUTO_PK
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "BEZBEDNOSNI_INCIDENT_AUTO_PK" 
+BEFORE INSERT
+ON bezbednosni_incident
+REFERENCING NEW AS NEW
+FOR EACH ROW
+BEGIN
+SELECT bezbednosni_incident_seq.NEXTVAL INTO :NEW.ID FROM DUAL;
+END;
+
+ALTER TRIGGER "BEZBEDNOSNI_INCIDENT_AUTO_PK" ENABLE
+--------------------------------------------------------
+--  DDL for Trigger DEONICA_AUTO_PK
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "DEONICA_AUTO_PK" 
+BEFORE INSERT
+ON deonica
+REFERENCING NEW AS NEW
+FOR EACH ROW
+BEGIN
+SELECT deonica_seq.NEXTVAL INTO :NEW.ID FROM DUAL;
+END;
+
+
+ALTER TRIGGER "DEONICA_AUTO_PK" ENABLE
+--------------------------------------------------------
+--  DDL for Trigger FAKTURA_AUTO_PK
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "FAKTURA_AUTO_PK" 
+BEFORE INSERT
+ON faktura
+REFERENCING NEW AS NEW
+FOR EACH ROW
+BEGIN
+SELECT faktura_seq.NEXTVAL INTO :NEW.br_fakture FROM DUAL;
+END;
+
+ALTER TRIGGER "FAKTURA_AUTO_PK" ENABLE
+--------------------------------------------------------
+--  DDL for Trigger FAZA_AUTO_PK
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "FAZA_AUTO_PK" BEFORE
+   INSERT ON FAZA
+   REFERENCING
+      NEW AS NEW
+   FOR EACH ROW
+BEGIN
+   SELECT FAZA_SEQ.NEXTVAL
+     INTO :NEW.ID
+     FROM DUAL;
+END;
+
+ALTER TRIGGER "FAZA_AUTO_PK" ENABLE
+--------------------------------------------------------
+--  DDL for Trigger IMAUGOVORNUSTRANU_AUTO_PK
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "IMAUGOVORNUSTRANU_AUTO_PK" BEFORE
+   INSERT ON IMAUGOVORNUSTRANU
+   REFERENCING
+      NEW AS NEW
+   FOR EACH ROW
+BEGIN
+   SELECT IMAUGOVORNUSTRANU_SEQ.NEXTVAL
+     INTO :NEW.ID
+     FROM DUAL;
+END;
+
+ALTER TRIGGER "IMAUGOVORNUSTRANU_AUTO_PK" ENABLE
+--------------------------------------------------------
+--  DDL for Trigger KONTAKT_AUTO_PK
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "KONTAKT_AUTO_PK" 
+BEFORE INSERT
+ON kontakt
+REFERENCING NEW AS NEW
+FOR EACH ROW
+BEGIN
+SELECT kontakt_seq.NEXTVAL INTO :NEW.ID FROM DUAL;
+END;
+
+
+ALTER TRIGGER "KONTAKT_AUTO_PK" ENABLE
+--------------------------------------------------------
+--  DDL for Trigger KONTROLA_KVALITETA_AUTO_PK
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "KONTROLA_KVALITETA_AUTO_PK" 
+BEFORE INSERT
+ON KONTROLA_KVALITETA
+REFERENCING NEW AS NEW
+FOR EACH ROW
+BEGIN
+SELECT KONTROLA_KVALITETA_SEQ.NEXTVAL INTO :NEW.ID FROM DUAL;
+END;
+
+
+
+ALTER TRIGGER "KONTROLA_KVALITETA_AUTO_PK" ENABLE
+--------------------------------------------------------
+--  DDL for Trigger KORISTI_AUTO_PK
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "KORISTI_AUTO_PK" 
+BEFORE INSERT
+ON koristi
+REFERENCING NEW AS NEW
+FOR EACH ROW
+BEGIN
+SELECT koristi_seq.NEXTVAL INTO :NEW.ID FROM DUAL;
+END;
+
+
+ALTER TRIGGER "KORISTI_AUTO_PK" ENABLE
+--------------------------------------------------------
+--  DDL for Trigger LEK_PREGLED_AUTO_PK
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "LEK_PREGLED_AUTO_PK" 
+BEFORE INSERT
+ON lek_pregled
+REFERENCING NEW AS NEW
+FOR EACH ROW
+BEGIN
+SELECT lek_pregled_seq.NEXTVAL INTO :NEW.ID FROM DUAL;
+END;
+
+
+ALTER TRIGGER "LEK_PREGLED_AUTO_PK" ENABLE
+--------------------------------------------------------
+--  DDL for Trigger LICENCA_AUTO_PK
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "LICENCA_AUTO_PK" 
+BEFORE INSERT
+ON licenca
+REFERENCING NEW AS NEW
+FOR EACH ROW
+BEGIN
+SELECT licenca_seq.NEXTVAL INTO :NEW.ID FROM DUAL;
+END;
+
+
+ALTER TRIGGER "LICENCA_AUTO_PK" ENABLE
+--------------------------------------------------------
+--  DDL for Trigger MATERIJAL_AUTO_PK
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "MATERIJAL_AUTO_PK" 
+BEFORE INSERT
+ON materijal
+REFERENCING NEW AS NEW
+FOR EACH ROW
+BEGIN
+SELECT materijal_seq.NEXTVAL INTO :NEW.ID FROM DUAL;
+END;
+
+ALTER TRIGGER "MATERIJAL_AUTO_PK" ENABLE
+--------------------------------------------------------
+--  DDL for Trigger NABAVKAMATERIJAL_AUTO_PK
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "NABAVKAMATERIJAL_AUTO_PK" 
+BEFORE INSERT
+ON nabavkamaterijal
+REFERENCING NEW AS NEW
+FOR EACH ROW
+BEGIN
+SELECT nabavkamaterijal_seq.NEXTVAL INTO :NEW.ID FROM DUAL;
+END;
+
+
+ALTER TRIGGER "NABAVKAMATERIJAL_AUTO_PK" ENABLE
+--------------------------------------------------------
+--  DDL for Trigger NABAVKAOPREMA_AUTO_PK
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "NABAVKAOPREMA_AUTO_PK" 
+BEFORE INSERT
+ON NABAVKAOPREMA
+REFERENCING NEW AS NEW
+FOR EACH ROW
+BEGIN
+SELECT NABAVKAOPREMA_seq.NEXTVAL INTO :NEW.ID FROM DUAL;
+END;
+
+
+ALTER TRIGGER "NABAVKAOPREMA_AUTO_PK" ENABLE
+--------------------------------------------------------
+--  DDL for Trigger NABAVKE_AUTO_PK
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "NABAVKE_AUTO_PK" 
+BEFORE INSERT
+ON nabavke
+REFERENCING NEW AS NEW
+FOR EACH ROW
+BEGIN
+SELECT nabavke_seq.NEXTVAL INTO :NEW.br_nabavke FROM DUAL;
+END;
+
+ALTER TRIGGER "NABAVKE_AUTO_PK" ENABLE
+--------------------------------------------------------
+--  DDL for Trigger NAPREDAK_AUTO_PK
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "NAPREDAK_AUTO_PK" BEFORE
+   INSERT ON NAPREDAK
+   REFERENCING
+      NEW AS NEW
+   FOR EACH ROW
+BEGIN
+   SELECT NAPREDAK_SEQ.NEXTVAL
+     INTO :NEW.ID
+     FROM DUAL;
+END;
+
+ALTER TRIGGER "NAPREDAK_AUTO_PK" ENABLE
+--------------------------------------------------------
+--  DDL for Trigger OBJEKAT_POSLOVNI_AUTO_PK
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "OBJEKAT_POSLOVNI_AUTO_PK" BEFORE
+   INSERT ON OBJEKAT_POSLOVNI
+   REFERENCING
+      NEW AS NEW
+   FOR EACH ROW
+BEGIN
+   SELECT OBJEKAT_POSLOVNI_SEQ.NEXTVAL
+     INTO :NEW.ID
+     FROM DUAL;
+END;
+
+ALTER TRIGGER "OBJEKAT_POSLOVNI_AUTO_PK" ENABLE
+--------------------------------------------------------
+--  DDL for Trigger OBJEKAT_STAMBENI_AUTO_PK
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "OBJEKAT_STAMBENI_AUTO_PK" BEFORE
+   INSERT ON OBJEKAT_STAMBENI
+   REFERENCING
+      NEW AS NEW
+   FOR EACH ROW
+BEGIN
+   SELECT OBJEKAT_STAMBENI_SEQ.NEXTVAL
+     INTO :NEW.ID
+     FROM DUAL;
+END;
+
+ALTER TRIGGER "OBJEKAT_STAMBENI_AUTO_PK" ENABLE
+--------------------------------------------------------
+--  DDL for Trigger OPREMA_AUTO_PK
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "OPREMA_AUTO_PK" 
+BEFORE INSERT
+ON oprema
+REFERENCING NEW AS NEW
+FOR EACH ROW
+BEGIN
+SELECT oprema_seq.NEXTVAL INTO :NEW.ID FROM DUAL;
+END;
+
+ALTER TRIGGER "OPREMA_AUTO_PK" ENABLE
+--------------------------------------------------------
+--  DDL for Trigger OSOBA_AUTO_PK
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "OSOBA_AUTO_PK" 
+BEFORE INSERT
+ON osoba
+REFERENCING NEW AS NEW
+FOR EACH ROW
+BEGIN
+SELECT osoba_seq.NEXTVAL INTO :NEW.ID FROM DUAL;
+END;
+
+ALTER TRIGGER "OSOBA_AUTO_PK" ENABLE
+--------------------------------------------------------
+--  DDL for Trigger POSEBNA_KLAUZULA_AUTO_PK
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "POSEBNA_KLAUZULA_AUTO_PK" 
+BEFORE INSERT
+ON POSEBNA_KLAUZULA
+REFERENCING NEW AS NEW
+FOR EACH ROW
+BEGIN
+SELECT POSEBNA_KLAUZULA_seq.NEXTVAL INTO :NEW.ID FROM DUAL;
+END;
+
+
+ALTER TRIGGER "POSEBNA_KLAUZULA_AUTO_PK" ENABLE
+--------------------------------------------------------
+--  DDL for Trigger PROJEKAT_AUTO_PK
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "PROJEKAT_AUTO_PK" BEFORE
+   INSERT ON PROJEKAT
+   REFERENCING
+      NEW AS NEW
+   FOR EACH ROW
+BEGIN
+   SELECT PROJEKAT_SEQ.NEXTVAL
+     INTO :NEW.ID
+     FROM DUAL;
+END;
+
+ALTER TRIGGER "PROJEKAT_AUTO_PK" ENABLE
+--------------------------------------------------------
+--  DDL for Trigger RADNI_NALOG_AUTO_PK
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "RADNI_NALOG_AUTO_PK" 
+BEFORE INSERT
+ON radni_nalog
+REFERENCING NEW AS NEW
+FOR EACH ROW
+BEGIN
+SELECT radni_nalog_seq.NEXTVAL INTO :NEW.br_naloga FROM DUAL;
+END;
+
+ALTER TRIGGER "RADNI_NALOG_AUTO_PK" ENABLE
+--------------------------------------------------------
+--  DDL for Trigger SERTIFIKAT_SPEC_OPREME_AUTO_PK
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "SERTIFIKAT_SPEC_OPREME_AUTO_PK" 
+BEFORE INSERT
+ON SERTIFIKAT_SPEC_OPREME
+REFERENCING NEW AS NEW
+FOR EACH ROW
+BEGIN
+SELECT SERTIFIKAT_SPEC_OPREME_seq.NEXTVAL INTO :NEW.ID FROM DUAL;
+END;
+
+
+ALTER TRIGGER "SERTIFIKAT_SPEC_OPREME_AUTO_PK" ENABLE
+--------------------------------------------------------
+--  DDL for Trigger STAVKA_KONTROLE_AUTO_PK
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "STAVKA_KONTROLE_AUTO_PK" 
+BEFORE INSERT
+ON STAVKA_KONTROLE
+REFERENCING NEW AS NEW
+FOR EACH ROW
+BEGIN
+SELECT STAVKA_KONTROLE_seq.NEXTVAL INTO :NEW.ID FROM DUAL;
+END;
+
+
+ALTER TRIGGER "STAVKA_KONTROLE_AUTO_PK" ENABLE
+--------------------------------------------------------
+--  DDL for Trigger UGOVOR_AUTO_PK
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "UGOVOR_AUTO_PK" 
+BEFORE INSERT
+ON ugovor
+REFERENCING NEW AS NEW
+FOR EACH ROW
+BEGIN
+SELECT ugovor_seq.NEXTVAL INTO :NEW.ID FROM DUAL;
+END;
+
+ALTER TRIGGER "UGOVOR_AUTO_PK" ENABLE
+--------------------------------------------------------
+--  DDL for Trigger ZADATAK_AUTO_PK
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "ZADATAK_AUTO_PK" 
+BEFORE INSERT
+ON zadatak
+REFERENCING NEW AS NEW
+FOR EACH ROW
+BEGIN
+SELECT zadatak_seq.NEXTVAL INTO :NEW.ID FROM DUAL;
+END;
+
+ALTER TRIGGER "ZADATAK_AUTO_PK" ENABLE
+--------------------------------------------------------
+--  DDL for Trigger ZASTITNA_OPREMA_AUTO_PK
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "ZASTITNA_OPREMA_AUTO_PK" 
+BEFORE INSERT
+ON ZASTITNA_OPREMA
+REFERENCING NEW AS NEW
+FOR EACH ROW
+BEGIN
+SELECT ZASTITNA_OPREMA_seq.NEXTVAL INTO :NEW.ID FROM DUAL;
+END;
+
+
+ALTER TRIGGER "ZASTITNA_OPREMA_AUTO_PK" ENABLE
+--------------------------------------------------------
+--  Constraints for Table OPREMA
+--------------------------------------------------------
+
+  ALTER TABLE "OPREMA" MODIFY ("DATUM_UVOZA" NOT NULL ENABLE)
+  ALTER TABLE "OPREMA" MODIFY ("STATUS" NOT NULL ENABLE)
+  ALTER TABLE "OPREMA" MODIFY ("TIP" NOT NULL ENABLE)
+  ALTER TABLE "OPREMA" MODIFY ("NAZIV" NOT NULL ENABLE)
+  ALTER TABLE "OPREMA" MODIFY ("PROIZVODJAC" NOT NULL ENABLE)
+  ALTER TABLE "OPREMA" ADD PRIMARY KEY ("ID")
+  USING INDEX  ENABLE
+  ALTER TABLE "OPREMA" ADD CONSTRAINT "CHK_STATUS_OPREME" CHECK (
+        Status IN ('Slobodna', 'U upotrebi', 'U odrzavanju', 'Rashodovana', 'Vracena')) ENABLE
+--------------------------------------------------------
+--  Constraints for Table PRAVNALICA
+--------------------------------------------------------
+
+  ALTER TABLE "PRAVNALICA" ADD CONSTRAINT "CHK_PRAVNALICA_MIN_JEDAN" CHECK (
+    FLAGPB = 1 OR 
+    FLAGINVE = 1 OR 
+    FLAGIZV = 1 OR 
+    FLAGP = 1 OR 
+    FLAGD = 1 OR 
+    FLAGN = 1
+) ENABLE
+  ALTER TABLE "PRAVNALICA" MODIFY ("FLAGN" NOT NULL ENABLE)
+  ALTER TABLE "PRAVNALICA" MODIFY ("FLAGD" NOT NULL ENABLE)
+  ALTER TABLE "PRAVNALICA" MODIFY ("FLAGP" NOT NULL ENABLE)
+  ALTER TABLE "PRAVNALICA" MODIFY ("FLAGIZV" NOT NULL ENABLE)
+  ALTER TABLE "PRAVNALICA" MODIFY ("FLAGINVE" NOT NULL ENABLE)
+  ALTER TABLE "PRAVNALICA" MODIFY ("FLAGPB" NOT NULL ENABLE)
+  ALTER TABLE "PRAVNALICA" ADD PRIMARY KEY ("IDOSOBA")
+  USING INDEX  ENABLE
+--------------------------------------------------------
+--  Constraints for Table ANGAZOVAN
+--------------------------------------------------------
+
+  ALTER TABLE "ANGAZOVAN" MODIFY ("DATUM_OD" NOT NULL ENABLE)
+  ALTER TABLE "ANGAZOVAN" MODIFY ("IDOSOBA" NOT NULL ENABLE)
+  ALTER TABLE "ANGAZOVAN" MODIFY ("IDZADATAK" NOT NULL ENABLE)
+  ALTER TABLE "ANGAZOVAN" ADD CONSTRAINT "PK_ANGAZUJE" PRIMARY KEY ("IDZADATAK", "IDOSOBA")
+  USING INDEX  ENABLE
+  ALTER TABLE "ANGAZOVAN" MODIFY ("STATUS_ANGAZOVANJA" NOT NULL ENABLE)
+  ALTER TABLE "ANGAZOVAN" ADD CONSTRAINT "CHK_STATUS_ANGAZOVANJA" CHECK (STATUS_ANGAZOVANJA IN ('Dodeljen', 'Odsutan', 'Razduzen')) ENABLE
+--------------------------------------------------------
+--  Constraints for Table OBJEKAT_STAMBENI
+--------------------------------------------------------
+
+  ALTER TABLE "OBJEKAT_STAMBENI" MODIFY ("BR_JEDINICA" NOT NULL ENABLE)
+  ALTER TABLE "OBJEKAT_STAMBENI" MODIFY ("SPRATNOST" NOT NULL ENABLE)
+  ALTER TABLE "OBJEKAT_STAMBENI" MODIFY ("BR_OBJEKTA" NOT NULL ENABLE)
+  ALTER TABLE "OBJEKAT_STAMBENI" MODIFY ("IDPROJEKTA" NOT NULL ENABLE)
+  ALTER TABLE "OBJEKAT_STAMBENI" ADD CONSTRAINT "PK_OBJEKAT_STAMBENI" PRIMARY KEY ("ID")
+  USING INDEX  ENABLE
+  ALTER TABLE "OBJEKAT_STAMBENI" ADD CONSTRAINT "UQ_OBJEKAT_STAMBENI" UNIQUE ("IDPROJEKTA", "BR_OBJEKTA")
+  USING INDEX  ENABLE
+--------------------------------------------------------
+--  Constraints for Table NABAVKE
+--------------------------------------------------------
+
+  ALTER TABLE "NABAVKE" MODIFY ("DATUM" NOT NULL ENABLE)
+  ALTER TABLE "NABAVKE" MODIFY ("IDPROJEKTA" NOT NULL ENABLE)
+  ALTER TABLE "NABAVKE" MODIFY ("IDOSOBA" NOT NULL ENABLE)
+  ALTER TABLE "NABAVKE" ADD CONSTRAINT "PK_NAB" PRIMARY KEY ("BR_NABAVKE")
+  USING INDEX  ENABLE
+--------------------------------------------------------
+--  Constraints for Table LICENCA
+--------------------------------------------------------
+
+  ALTER TABLE "LICENCA" MODIFY ("IDOSOBE" NOT NULL ENABLE)
+  ALTER TABLE "LICENCA" MODIFY ("LICENCA" NOT NULL ENABLE)
+  ALTER TABLE "LICENCA" ADD CONSTRAINT "UQ_LICENCA_OSOBA" UNIQUE ("LICENCA", "IDOSOBE")
+  USING INDEX  ENABLE
+  ALTER TABLE "LICENCA" ADD CONSTRAINT "PK_LICENCA" PRIMARY KEY ("ID")
+  USING INDEX  ENABLE
+--------------------------------------------------------
+--  Constraints for Table DEONICA
+--------------------------------------------------------
+
+  ALTER TABLE "DEONICA" MODIFY ("BRDEONICE" NOT NULL ENABLE)
+  ALTER TABLE "DEONICA" MODIFY ("IDPROJEKTA" NOT NULL ENABLE)
+  ALTER TABLE "DEONICA" ADD CONSTRAINT "UQ_DEONICA" UNIQUE ("IDPROJEKTA", "BRDEONICE")
+  USING INDEX  ENABLE
+  ALTER TABLE "DEONICA" ADD CONSTRAINT "PK_DEONICA" PRIMARY KEY ("ID")
+  USING INDEX  ENABLE
+--------------------------------------------------------
+--  Constraints for Table IMAUGOVORNUSTRANU
+--------------------------------------------------------
+
+  ALTER TABLE "IMAUGOVORNUSTRANU" ADD CONSTRAINT "UQ_IMAUGOVOR_OSOBA_UGOVOR" UNIQUE ("IDOSOBA", "IDUGOVOR")
+  USING INDEX  ENABLE
+  ALTER TABLE "IMAUGOVORNUSTRANU" ADD CONSTRAINT "PK_IMAUGOVOR" PRIMARY KEY ("ID")
+  USING INDEX  ENABLE
+  ALTER TABLE "IMAUGOVORNUSTRANU" MODIFY ("ULOGA" NOT NULL ENABLE)
+  ALTER TABLE "IMAUGOVORNUSTRANU" MODIFY ("IDUGOVOR" NOT NULL ENABLE)
+  ALTER TABLE "IMAUGOVORNUSTRANU" MODIFY ("IDOSOBA" NOT NULL ENABLE)
+  ALTER TABLE "IMAUGOVORNUSTRANU" MODIFY ("ID" NOT NULL ENABLE)
+--------------------------------------------------------
+--  Constraints for Table POSEBNA_KLAUZULA
+--------------------------------------------------------
+
+  ALTER TABLE "POSEBNA_KLAUZULA" MODIFY ("POSEBNA_KLAUZULA" NOT NULL ENABLE)
+  ALTER TABLE "POSEBNA_KLAUZULA" MODIFY ("IDUGOVOR" NOT NULL ENABLE)
+  ALTER TABLE "POSEBNA_KLAUZULA" ADD CONSTRAINT "UQ_POSKLAU_KLAUZULA_UGOVOR" UNIQUE ("POSEBNA_KLAUZULA", "IDUGOVOR")
+  USING INDEX  ENABLE
+  ALTER TABLE "POSEBNA_KLAUZULA" ADD CONSTRAINT "PK_POSEBNA_KLAUZULA" PRIMARY KEY ("ID")
+  USING INDEX  ENABLE
+--------------------------------------------------------
+--  Constraints for Table RADNI_NALOG
+--------------------------------------------------------
+
+  ALTER TABLE "RADNI_NALOG" MODIFY ("DATUM_IZDAVANJA" NOT NULL ENABLE)
+  ALTER TABLE "RADNI_NALOG" MODIFY ("STATUS" NOT NULL ENABLE)
+  ALTER TABLE "RADNI_NALOG" ADD CONSTRAINT "PK_RADNI_NALOG" PRIMARY KEY ("BR_NALOGA")
+  USING INDEX  ENABLE
+  ALTER TABLE "RADNI_NALOG" MODIFY ("IDZADATAK" NOT NULL ENABLE)
+  ALTER TABLE "RADNI_NALOG" MODIFY ("BR_NALOGA" NOT NULL ENABLE)
+  ALTER TABLE "RADNI_NALOG" ADD CONSTRAINT "RADNI_NALOG_STATUS_CHK" CHECK (status in ('Izdat', 'U radu', 'Zavrsen', 'Storniran')) ENABLE
+--------------------------------------------------------
+--  Constraints for Table POSLOVNI
+--------------------------------------------------------
+
+  ALTER TABLE "POSLOVNI" ADD PRIMARY KEY ("IDPROJEKTA")
+  USING INDEX  ENABLE
+--------------------------------------------------------
+--  Constraints for Table FOTOGRAFIJA
+--------------------------------------------------------
+
+  ALTER TABLE "FOTOGRAFIJA" MODIFY ("FOTOGRAFIJA" NOT NULL ENABLE)
+  ALTER TABLE "FOTOGRAFIJA" ADD CONSTRAINT "PK_FOTOGRAFIJA" PRIMARY KEY ("IDNAPREDAK", "FOTOGRAFIJA")
+  USING INDEX  ENABLE
+--------------------------------------------------------
+--  Constraints for Table KONTAKT
+--------------------------------------------------------
+
+  ALTER TABLE "KONTAKT" MODIFY ("KONTAKT" NOT NULL ENABLE)
+  ALTER TABLE "KONTAKT" MODIFY ("IDOSOBA" NOT NULL ENABLE)
+  ALTER TABLE "KONTAKT" ADD CONSTRAINT "UQ_KONTAKT_OSOBA" UNIQUE ("IDOSOBA", "KONTAKT")
+  USING INDEX  ENABLE
+  ALTER TABLE "KONTAKT" ADD CONSTRAINT "PK_KONTAKT" PRIMARY KEY ("ID")
+  USING INDEX  ENABLE
+--------------------------------------------------------
+--  Constraints for Table SANACIJA
+--------------------------------------------------------
+
+  ALTER TABLE "SANACIJA" ADD PRIMARY KEY ("IDPROJEKTA")
+  USING INDEX  ENABLE
+--------------------------------------------------------
+--  Constraints for Table MATERIJAL
+--------------------------------------------------------
+
+  ALTER TABLE "MATERIJAL" MODIFY ("CENA" NOT NULL ENABLE)
+  ALTER TABLE "MATERIJAL" MODIFY ("JEDINICA_MERE" NOT NULL ENABLE)
+  ALTER TABLE "MATERIJAL" MODIFY ("PROIZVODJAC" NOT NULL ENABLE)
+  ALTER TABLE "MATERIJAL" MODIFY ("TIP" NOT NULL ENABLE)
+  ALTER TABLE "MATERIJAL" MODIFY ("NAZIV" NOT NULL ENABLE)
+  ALTER TABLE "MATERIJAL" ADD CONSTRAINT "CHK_MATERIJAL_TIP" CHECK (TIP IN ('Gradjevinski', 'Elektro', 'Masinski', 'Zavrsni', 'Zastitni')) ENABLE
+  ALTER TABLE "MATERIJAL" ADD CONSTRAINT "PK_MATERIJAL" PRIMARY KEY ("ID")
+  USING INDEX  ENABLE
+--------------------------------------------------------
+--  Constraints for Table SERTIFIKAT_SPEC_OPREME
+--------------------------------------------------------
+
+  ALTER TABLE "SERTIFIKAT_SPEC_OPREME" MODIFY ("SERTIFIKAT_SPEC_OPREME" NOT NULL ENABLE)
+  ALTER TABLE "SERTIFIKAT_SPEC_OPREME" MODIFY ("IDOSOBA" NOT NULL ENABLE)
+  ALTER TABLE "SERTIFIKAT_SPEC_OPREME" ADD CONSTRAINT "UQ_SERT_SPEC_OPR_OSOBA_SERT" UNIQUE ("IDOSOBA", "SERTIFIKAT_SPEC_OPREME")
+  USING INDEX  ENABLE
+  ALTER TABLE "SERTIFIKAT_SPEC_OPREME" ADD CONSTRAINT "PK_SERTIFIKAT_SPEC_OPREME" PRIMARY KEY ("ID")
+  USING INDEX  ENABLE
+--------------------------------------------------------
+--  Constraints for Table LEK_PREGLED
+--------------------------------------------------------
+
+  ALTER TABLE "LEK_PREGLED" MODIFY ("REZULTAT" NOT NULL ENABLE)
+  ALTER TABLE "LEK_PREGLED" MODIFY ("DATUM" NOT NULL ENABLE)
+  ALTER TABLE "LEK_PREGLED" MODIFY ("IDOSOBA" NOT NULL ENABLE)
+  ALTER TABLE "LEK_PREGLED" ADD CONSTRAINT "UQ_LEK_PREGLED_OSOBA_DATUM" UNIQUE ("IDOSOBA", "DATUM")
+  USING INDEX  ENABLE
+  ALTER TABLE "LEK_PREGLED" ADD CONSTRAINT "PK_LEK_PREGLED" PRIMARY KEY ("ID")
+  USING INDEX  ENABLE
+--------------------------------------------------------
+--  Constraints for Table BEZBEDNOSNA_OBUKA
+--------------------------------------------------------
+
+  ALTER TABLE "BEZBEDNOSNA_OBUKA" MODIFY ("DATUM" NOT NULL ENABLE)
+  ALTER TABLE "BEZBEDNOSNA_OBUKA" ADD CONSTRAINT "UQ_OSOBA_OBUKA" UNIQUE ("IDOSOBA", "BEZBEDNOSNA_OBUKA")
+  USING INDEX  ENABLE
+  ALTER TABLE "BEZBEDNOSNA_OBUKA" ADD CONSTRAINT "PK_BEZBEDNOSNA_OBUKA" PRIMARY KEY ("ID")
+  USING INDEX  ENABLE
+  ALTER TABLE "BEZBEDNOSNA_OBUKA" MODIFY ("BEZBEDNOSNA_OBUKA" NOT NULL ENABLE)
+  ALTER TABLE "BEZBEDNOSNA_OBUKA" MODIFY ("IDOSOBA" NOT NULL ENABLE)
+--------------------------------------------------------
+--  Constraints for Table FIZICKA_LICA
+--------------------------------------------------------
+
+  ALTER TABLE "FIZICKA_LICA" MODIFY ("FLAGAO" NOT NULL ENABLE)
+  ALTER TABLE "FIZICKA_LICA" MODIFY ("FLAGN" NOT NULL ENABLE)
+  ALTER TABLE "FIZICKA_LICA" MODIFY ("FLAGP" NOT NULL ENABLE)
+  ALTER TABLE "FIZICKA_LICA" MODIFY ("FLAGA" NOT NULL ENABLE)
+  ALTER TABLE "FIZICKA_LICA" MODIFY ("FLAGI" NOT NULL ENABLE)
+  ALTER TABLE "FIZICKA_LICA" MODIFY ("FLAGR" NOT NULL ENABLE)
+  ALTER TABLE "FIZICKA_LICA" MODIFY ("FLAGBK" NOT NULL ENABLE)
+  ALTER TABLE "FIZICKA_LICA" ADD CONSTRAINT "CHK_FIZICKA_MIN_JEDAN" CHECK (
+   FLAGBK = 1 OR FLAGR = 1 OR FLAGI = 1 OR 
+   FLAGA = 1 OR FLAGP = 1 OR FLAGN = 1 OR FLAGAO = 1
+) ENABLE
+  ALTER TABLE "FIZICKA_LICA" ADD PRIMARY KEY ("IDOSOBA")
+  USING INDEX  ENABLE
+--------------------------------------------------------
+--  Constraints for Table FAZA
+--------------------------------------------------------
+
+  ALTER TABLE "FAZA" MODIFY ("DATUM_OD" NOT NULL ENABLE)
+  ALTER TABLE "FAZA" MODIFY ("STATUS" NOT NULL ENABLE)
+  ALTER TABLE "FAZA" MODIFY ("NAZIV" NOT NULL ENABLE)
+  ALTER TABLE "FAZA" ADD CONSTRAINT "PK_FAZA" PRIMARY KEY ("ID")
+  USING INDEX  ENABLE
+  ALTER TABLE "FAZA" ADD CONSTRAINT "FAZA_STATUS_CHK" CHECK (STATUS IN ('Planiran', 'U toku', 'Zavrsen', 'Otkazan')) ENABLE
+  ALTER TABLE "FAZA" ADD CONSTRAINT "FAZA_NAZIV_CHK" CHECK (NAZIV IN ('Pripremni radovi', 'Grubi gradjevinski radovi', 'Instalacije', 'Zavrsni radovi', 'Tehnicki prijem', 'Ostalo')) ENABLE
+  ALTER TABLE "FAZA" MODIFY ("IDPROJEKTA" NOT NULL ENABLE)
+--------------------------------------------------------
+--  Constraints for Table OSOBA
+--------------------------------------------------------
+
+  ALTER TABLE "OSOBA" MODIFY ("DATUM_RODJENJA" NOT NULL ENABLE)
+  ALTER TABLE "OSOBA" MODIFY ("PREZIME" NOT NULL ENABLE)
+  ALTER TABLE "OSOBA" MODIFY ("IME" NOT NULL ENABLE)
+  ALTER TABLE "OSOBA" ADD CONSTRAINT "UQ_OSOBA_JMBG" UNIQUE ("JMBG")
+  USING INDEX  ENABLE
+  ALTER TABLE "OSOBA" MODIFY ("JMBG" NOT NULL ENABLE)
+  ALTER TABLE "OSOBA" ADD PRIMARY KEY ("ID")
+  USING INDEX  ENABLE
+--------------------------------------------------------
+--  Constraints for Table PROJEKAT
+--------------------------------------------------------
+
+  ALTER TABLE "PROJEKAT" MODIFY ("LOKACIJA" NOT NULL ENABLE)
+  ALTER TABLE "PROJEKAT" MODIFY ("BUDZET" NOT NULL ENABLE)
+  ALTER TABLE "PROJEKAT" MODIFY ("STATUS" NOT NULL ENABLE)
+  ALTER TABLE "PROJEKAT" MODIFY ("PLANIRANI_ZAVRSETAK" NOT NULL ENABLE)
+  ALTER TABLE "PROJEKAT" MODIFY ("DATUM_POCETKA" NOT NULL ENABLE)
+  ALTER TABLE "PROJEKAT" MODIFY ("NAZIV" NOT NULL ENABLE)
+  ALTER TABLE "PROJEKAT" ADD CONSTRAINT "PROJEKAT_STATUS_CHK" CHECK (status in ('Planiran', 'Aktivan', 'Pauziran', 'Zavrsen', 'Otkazan')) ENABLE
+  ALTER TABLE "PROJEKAT" ADD CONSTRAINT "PROJEKAT_PK" PRIMARY KEY ("ID")
+  USING INDEX  ENABLE
+--------------------------------------------------------
+--  Constraints for Table ANGAZUJE
+--------------------------------------------------------
+
+  ALTER TABLE "ANGAZUJE" ADD CONSTRAINT "PK_ANGAZUJE_ZAD_OPREMA" PRIMARY KEY ("IDZADATAK", "IDOPREMA")
+  USING INDEX  ENABLE
+  ALTER TABLE "ANGAZUJE" MODIFY ("BROJ_SATI" NOT NULL ENABLE)
+  ALTER TABLE "ANGAZUJE" MODIFY ("DATUM_OD" NOT NULL ENABLE)
+--------------------------------------------------------
+--  Constraints for Table REKONSTRUKCIJA
+--------------------------------------------------------
+
+  ALTER TABLE "REKONSTRUKCIJA" ADD PRIMARY KEY ("IDPROJEKTA")
+  USING INDEX  ENABLE
+--------------------------------------------------------
+--  Constraints for Table KONTROLA_KVALITETA
+--------------------------------------------------------
+
+  ALTER TABLE "KONTROLA_KVALITETA" MODIFY ("ZABRANA_NASTAVKA_RADOVA" NOT NULL ENABLE)
+  ALTER TABLE "KONTROLA_KVALITETA" MODIFY ("DATUM_INSPEKCIJE" NOT NULL ENABLE)
+  ALTER TABLE "KONTROLA_KVALITETA" MODIFY ("IDZADATKA" NOT NULL ENABLE)
+  ALTER TABLE "KONTROLA_KVALITETA" ADD CONSTRAINT "KK_ZABRANA_CHK" CHECK (ZABRANA_NASTAVKA_RADOVA IN (0, 1)) ENABLE
+  ALTER TABLE "KONTROLA_KVALITETA" ADD CONSTRAINT "UQ_ZADATAK_DATUM_INSP" UNIQUE ("IDZADATKA", "DATUM_INSPEKCIJE")
+  USING INDEX  ENABLE
+  ALTER TABLE "KONTROLA_KVALITETA" ADD CONSTRAINT "PK_KONTR_KVAL" PRIMARY KEY ("ID")
+  USING INDEX  ENABLE
+--------------------------------------------------------
+--  Constraints for Table OBJEKAT_POSLOVNI
+--------------------------------------------------------
+
+  ALTER TABLE "OBJEKAT_POSLOVNI" MODIFY ("BR_JEDINICA" NOT NULL ENABLE)
+  ALTER TABLE "OBJEKAT_POSLOVNI" MODIFY ("SPRATNOST" NOT NULL ENABLE)
+  ALTER TABLE "OBJEKAT_POSLOVNI" MODIFY ("BR_OBJEKTA" NOT NULL ENABLE)
+  ALTER TABLE "OBJEKAT_POSLOVNI" MODIFY ("IDPROJEKTA" NOT NULL ENABLE)
+  ALTER TABLE "OBJEKAT_POSLOVNI" ADD CONSTRAINT "PK_OBJEKAT_POSLOVNI" PRIMARY KEY ("ID")
+  USING INDEX  ENABLE
+  ALTER TABLE "OBJEKAT_POSLOVNI" ADD CONSTRAINT "UQ_OBJEKAT_POSLOVNI" UNIQUE ("IDPROJEKTA", "BR_OBJEKTA")
+  USING INDEX  ENABLE
+--------------------------------------------------------
+--  Constraints for Table ZADATAK
+--------------------------------------------------------
+
+  ALTER TABLE "ZADATAK" MODIFY ("PRIORITET" NOT NULL ENABLE)
+  ALTER TABLE "ZADATAK" MODIFY ("STATUS" NOT NULL ENABLE)
+  ALTER TABLE "ZADATAK" MODIFY ("PLANIRANI_ZAVRSETAK" NOT NULL ENABLE)
+  ALTER TABLE "ZADATAK" MODIFY ("PLANIRANI_POCETAK" NOT NULL ENABLE)
+  ALTER TABLE "ZADATAK" MODIFY ("ID_FAZE" NOT NULL ENABLE)
+  ALTER TABLE "ZADATAK" ADD CONSTRAINT "ZADATAK_PRIORITET_CHK" CHECK (prioritet between 1 and 5) ENABLE
+  ALTER TABLE "ZADATAK" MODIFY ("ID" NOT NULL ENABLE)
+  ALTER TABLE "ZADATAK" MODIFY ("NAZIV" NOT NULL ENABLE)
+  ALTER TABLE "ZADATAK" ADD PRIMARY KEY ("ID")
+  USING INDEX  ENABLE
+  ALTER TABLE "ZADATAK" ADD CONSTRAINT "ZADATAK_STATUS_CHK" CHECK (STATUS IN ('Planiran', 'U toku', 'Zavrsen', 'Otkazan')) ENABLE
+--------------------------------------------------------
+--  Constraints for Table NABAVKAMATERIJAL
+--------------------------------------------------------
+
+  ALTER TABLE "NABAVKAMATERIJAL" MODIFY ("STATUS_ISPORUKE" NOT NULL ENABLE)
+  ALTER TABLE "NABAVKAMATERIJAL" MODIFY ("CENA" NOT NULL ENABLE)
+  ALTER TABLE "NABAVKAMATERIJAL" MODIFY ("KOLICINA" NOT NULL ENABLE)
+  ALTER TABLE "NABAVKAMATERIJAL" MODIFY ("IDNABAVKA" NOT NULL ENABLE)
+  ALTER TABLE "NABAVKAMATERIJAL" MODIFY ("IDMATERIJAL" NOT NULL ENABLE)
+  ALTER TABLE "NABAVKAMATERIJAL" ADD CONSTRAINT "NM_CENA_CHK" CHECK (CENA >= 0) ENABLE
+  ALTER TABLE "NABAVKAMATERIJAL" ADD CONSTRAINT "NM_KOLICINA_CHK" CHECK (KOLICINA > 0) ENABLE
+  ALTER TABLE "NABAVKAMATERIJAL" ADD CONSTRAINT "NM_STATUS_CHK" CHECK (STATUS_ISPORUKE IN (0, 1)) ENABLE
+  ALTER TABLE "NABAVKAMATERIJAL" ADD CONSTRAINT "UQ_NABAVKAMAT_MAT_NAB" UNIQUE ("IDMATERIJAL", "IDNABAVKA")
+  USING INDEX  ENABLE
+  ALTER TABLE "NABAVKAMATERIJAL" ADD CONSTRAINT "PK_NABAVKA_MAT" PRIMARY KEY ("ID")
+  USING INDEX  ENABLE
+--------------------------------------------------------
+--  Constraints for Table STAVKA_KONTROLE
+--------------------------------------------------------
+
+  ALTER TABLE "STAVKA_KONTROLE" MODIFY ("REDNI_BROJ_STAVKE" NOT NULL ENABLE)
+  ALTER TABLE "STAVKA_KONTROLE" MODIFY ("IDKONTROLE" NOT NULL ENABLE)
+  ALTER TABLE "STAVKA_KONTROLE" ADD CONSTRAINT "UQ_STAVKA_KONTR" UNIQUE ("IDKONTROLE", "REDNI_BROJ_STAVKE")
+  USING INDEX  ENABLE
+  ALTER TABLE "STAVKA_KONTROLE" ADD CONSTRAINT "PK_STAVKA_KONTR" PRIMARY KEY ("ID")
+  USING INDEX  ENABLE
+--------------------------------------------------------
+--  Constraints for Table KORISTI
+--------------------------------------------------------
+
+  ALTER TABLE "KORISTI" MODIFY ("KOLICINA" NOT NULL ENABLE)
+  ALTER TABLE "KORISTI" MODIFY ("IDMATERIJAL" NOT NULL ENABLE)
+  ALTER TABLE "KORISTI" MODIFY ("IDZADATAK" NOT NULL ENABLE)
+  ALTER TABLE "KORISTI" ADD CONSTRAINT "UQ_KORISTI_ZAD_MAT" UNIQUE ("IDZADATAK", "IDMATERIJAL")
+  USING INDEX  ENABLE
+  ALTER TABLE "KORISTI" ADD CONSTRAINT "PK_KORISTI" PRIMARY KEY ("ID")
+  USING INDEX  ENABLE
+--------------------------------------------------------
+--  Constraints for Table INDUSTRIJSKI
+--------------------------------------------------------
+
+  ALTER TABLE "INDUSTRIJSKI" ADD PRIMARY KEY ("IDPROJEKTA")
+  USING INDEX  ENABLE
+--------------------------------------------------------
+--  Constraints for Table FAKTURA
+--------------------------------------------------------
+
+  ALTER TABLE "FAKTURA" ADD CONSTRAINT "FAKTURA_STATUS_CHK" CHECK (STATUS_PLACANJA IN (0, 1)) ENABLE
+  ALTER TABLE "FAKTURA" MODIFY ("VALUTA" NOT NULL ENABLE)
+  ALTER TABLE "FAKTURA" MODIFY ("IDOSOBAPRIMA" NOT NULL ENABLE)
+  ALTER TABLE "FAKTURA" MODIFY ("IDOSOBAIZDAJE" NOT NULL ENABLE)
+  ALTER TABLE "FAKTURA" MODIFY ("IDPROJEKTA" NOT NULL ENABLE)
+  ALTER TABLE "FAKTURA" MODIFY ("STATUS_PLACANJA" NOT NULL ENABLE)
+  ALTER TABLE "FAKTURA" MODIFY ("DATUM" NOT NULL ENABLE)
+  ALTER TABLE "FAKTURA" MODIFY ("IZNOS" NOT NULL ENABLE)
+  ALTER TABLE "FAKTURA" ADD CONSTRAINT "PK_FAKTURA" PRIMARY KEY ("BR_FAKTURE")
+  USING INDEX  ENABLE
+--------------------------------------------------------
+--  Constraints for Table MEHANIZACIJA
+--------------------------------------------------------
+
+  ALTER TABLE "MEHANIZACIJA" MODIFY ("TIP_MEHANIZACIJE" NOT NULL ENABLE)
+  ALTER TABLE "MEHANIZACIJA" ADD CONSTRAINT "MEHANIZACIJA_TIP_CHK" CHECK (tip_mehanizacije in ('Gradjevinska masina', 'Transportno sredstvo', 'Alat', 'Specijalizovana oprema')) ENABLE
+  ALTER TABLE "MEHANIZACIJA" ADD CONSTRAINT "PK_MEHANIZACIJA" PRIMARY KEY ("IDOPREMA")
+  USING INDEX  ENABLE
+--------------------------------------------------------
+--  Constraints for Table BEZBEDNOSNI_INCIDENT
+--------------------------------------------------------
+
+  ALTER TABLE "BEZBEDNOSNI_INCIDENT" MODIFY ("IDOSOBE" NOT NULL ENABLE)
+  ALTER TABLE "BEZBEDNOSNI_INCIDENT" MODIFY ("TIP_INCIDENTA" NOT NULL ENABLE)
+  ALTER TABLE "BEZBEDNOSNI_INCIDENT" MODIFY ("OPIS" NOT NULL ENABLE)
+  ALTER TABLE "BEZBEDNOSNI_INCIDENT" MODIFY ("LOKACIJA" NOT NULL ENABLE)
+  ALTER TABLE "BEZBEDNOSNI_INCIDENT" MODIFY ("DATUM" NOT NULL ENABLE)
+  ALTER TABLE "BEZBEDNOSNI_INCIDENT" MODIFY ("IDPROJEKTA" NOT NULL ENABLE)
+  ALTER TABLE "BEZBEDNOSNI_INCIDENT" ADD CONSTRAINT "BEZ_INC_TIP_CHK" CHECK (tip_incidenta in (
+    'Povreda na radu', 
+    'Kvar opreme', 
+    'Nepostovanje procedura', 
+    'Opasna situacija', 
+    'Ekoloski incident'
+  )) ENABLE
+  ALTER TABLE "BEZBEDNOSNI_INCIDENT" ADD CONSTRAINT "PK_BEZBEDNOSNI_INCIDENT" PRIMARY KEY ("ID")
+  USING INDEX  ENABLE
+--------------------------------------------------------
+--  Constraints for Table UGOVOR
+--------------------------------------------------------
+
+  ALTER TABLE "UGOVOR" MODIFY ("ROK" NOT NULL ENABLE)
+  ALTER TABLE "UGOVOR" MODIFY ("PREDMET_UGOVORA" NOT NULL ENABLE)
+  ALTER TABLE "UGOVOR" MODIFY ("VALUTA" NOT NULL ENABLE)
+  ALTER TABLE "UGOVOR" MODIFY ("VREDNOST" NOT NULL ENABLE)
+  ALTER TABLE "UGOVOR" MODIFY ("DATUM_POTPISIVANJA" NOT NULL ENABLE)
+  ALTER TABLE "UGOVOR" ADD PRIMARY KEY ("ID")
+  USING INDEX  ENABLE
+  ALTER TABLE "UGOVOR" ADD CONSTRAINT "CHK_UGOVOR_EKSKLUZIVNOST" CHECK (
+    (IDPROJEKTA IS NOT NULL AND IDMATERIJAL IS NULL     AND IDOPREMA IS NULL) OR
+    (IDPROJEKTA IS NULL     AND IDMATERIJAL IS NOT NULL AND IDOPREMA IS NULL) OR
+    (IDPROJEKTA IS NULL     AND IDMATERIJAL IS NULL     AND IDOPREMA IS NOT NULL)
+) ENABLE
+--------------------------------------------------------
+--  Constraints for Table INFRASTRUKTURA
+--------------------------------------------------------
+
+  ALTER TABLE "INFRASTRUKTURA" ADD PRIMARY KEY ("IDPROJEKTA")
+  USING INDEX  ENABLE
+--------------------------------------------------------
+--  Constraints for Table NAPREDAK
+--------------------------------------------------------
+
+  ALTER TABLE "NAPREDAK" MODIFY ("PROCENAT_REALIZACIJE" NOT NULL ENABLE)
+  ALTER TABLE "NAPREDAK" ADD CONSTRAINT "NAPREDAK_PROCENAT_CHK" CHECK (procenat_realizacije between 0 and 100) ENABLE
+  ALTER TABLE "NAPREDAK" MODIFY ("IDZADATAK" NOT NULL ENABLE)
+  ALTER TABLE "NAPREDAK" MODIFY ("DATUM" NOT NULL ENABLE)
+  ALTER TABLE "NAPREDAK" ADD CONSTRAINT "UQ_NAPREDAK_DATUM_ZADATAK" UNIQUE ("DATUM", "IDZADATAK")
+  USING INDEX  ENABLE
+  ALTER TABLE "NAPREDAK" ADD CONSTRAINT "PK_NAPREDAK" PRIMARY KEY ("ID")
+  USING INDEX  ENABLE
+--------------------------------------------------------
+--  Constraints for Table STAMBENI
+--------------------------------------------------------
+
+  ALTER TABLE "STAMBENI" ADD PRIMARY KEY ("IDPROJEKTA")
+  USING INDEX  ENABLE
+--------------------------------------------------------
+--  Constraints for Table NABAVKAOPREMA
+--------------------------------------------------------
+
+  ALTER TABLE "NABAVKAOPREMA" MODIFY ("STATUS_ISPORUKE" NOT NULL ENABLE)
+  ALTER TABLE "NABAVKAOPREMA" MODIFY ("CENA" NOT NULL ENABLE)
+  ALTER TABLE "NABAVKAOPREMA" MODIFY ("KOLICINA" NOT NULL ENABLE)
+  ALTER TABLE "NABAVKAOPREMA" MODIFY ("IDNABAVKA" NOT NULL ENABLE)
+  ALTER TABLE "NABAVKAOPREMA" MODIFY ("IDOPREMA" NOT NULL ENABLE)
+  ALTER TABLE "NABAVKAOPREMA" ADD CONSTRAINT "NO_STATUS_CHK" CHECK (STATUS_ISPORUKE IN (0, 1)) ENABLE
+  ALTER TABLE "NABAVKAOPREMA" ADD CONSTRAINT "NO_CENA_CHK" CHECK (CENA >= 0) ENABLE
+  ALTER TABLE "NABAVKAOPREMA" ADD CONSTRAINT "NO_KOLICINA_CHK" CHECK (KOLICINA > 0) ENABLE
+  ALTER TABLE "NABAVKAOPREMA" ADD CONSTRAINT "UQ_NABAVKAOPREMA_OPR_NAB" UNIQUE ("IDOPREMA", "IDNABAVKA")
+  USING INDEX  ENABLE
+  ALTER TABLE "NABAVKAOPREMA" ADD CONSTRAINT "PK_NABAVKE" PRIMARY KEY ("ID")
+  USING INDEX  ENABLE
+--------------------------------------------------------
+--  Constraints for Table ZASTITNA_OPREMA
+--------------------------------------------------------
+
+  ALTER TABLE "ZASTITNA_OPREMA" MODIFY ("ZASTITNA_OPREMA" NOT NULL ENABLE)
+  ALTER TABLE "ZASTITNA_OPREMA" MODIFY ("IDOSOBA" NOT NULL ENABLE)
+  ALTER TABLE "ZASTITNA_OPREMA" ADD CONSTRAINT "UQ_ZAS_OPR_OSOBA_OPR" UNIQUE ("IDOSOBA", "ZASTITNA_OPREMA")
+  USING INDEX  ENABLE
+  ALTER TABLE "ZASTITNA_OPREMA" ADD CONSTRAINT "PK_ZASTITNA_OPREMA" PRIMARY KEY ("ID")
+  USING INDEX  ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table ANGAZOVAN
+--------------------------------------------------------
+
+  ALTER TABLE "ANGAZOVAN" ADD CONSTRAINT "FK_ANGAZUJE_OSOBA" FOREIGN KEY ("IDOSOBA")
+	  REFERENCES "OSOBA" ("ID") ON DELETE CASCADE ENABLE
+  ALTER TABLE "ANGAZOVAN" ADD CONSTRAINT "FK_ANGAZUJE_ZADATAK" FOREIGN KEY ("IDZADATAK")
+	  REFERENCES "ZADATAK" ("ID") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table ANGAZUJE
+--------------------------------------------------------
+
+  ALTER TABLE "ANGAZUJE" ADD CONSTRAINT "FK_ANGAZUJE_OPREMA" FOREIGN KEY ("IDOPREMA")
+	  REFERENCES "OPREMA" ("ID") ON DELETE CASCADE ENABLE
+  ALTER TABLE "ANGAZUJE" ADD CONSTRAINT "FK_ANGAZUJE_ZAD" FOREIGN KEY ("IDZADATAK")
+	  REFERENCES "ZADATAK" ("ID") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table BEZBEDNOSNA_OBUKA
+--------------------------------------------------------
+
+  ALTER TABLE "BEZBEDNOSNA_OBUKA" ADD CONSTRAINT "FK_OSOBA_FIZ_BEZ_OBUKA" FOREIGN KEY ("IDOSOBA")
+	  REFERENCES "FIZICKA_LICA" ("IDOSOBA") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table BEZBEDNOSNI_INCIDENT
+--------------------------------------------------------
+
+  ALTER TABLE "BEZBEDNOSNI_INCIDENT" ADD CONSTRAINT "FK_BEZ_INC_PROJEKAT" FOREIGN KEY ("IDPROJEKTA")
+	  REFERENCES "PROJEKAT" ("ID") ON DELETE CASCADE ENABLE
+  ALTER TABLE "BEZBEDNOSNI_INCIDENT" ADD CONSTRAINT "FK_OSOBA_BI" FOREIGN KEY ("IDOSOBE")
+	  REFERENCES "OSOBA" ("ID") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table DEONICA
+--------------------------------------------------------
+
+  ALTER TABLE "DEONICA" ADD CONSTRAINT "FK_DEONICA_INFRA" FOREIGN KEY ("IDPROJEKTA")
+	  REFERENCES "INFRASTRUKTURA" ("IDPROJEKTA") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table FAKTURA
+--------------------------------------------------------
+
+  ALTER TABLE "FAKTURA" ADD CONSTRAINT "FK_FAKTURA_IZDAJE" FOREIGN KEY ("IDOSOBAIZDAJE")
+	  REFERENCES "PRAVNALICA" ("IDOSOBA") ON DELETE CASCADE ENABLE
+  ALTER TABLE "FAKTURA" ADD CONSTRAINT "FK_FAKTURA_PRIMA" FOREIGN KEY ("IDOSOBAPRIMA")
+	  REFERENCES "PRAVNALICA" ("IDOSOBA") ON DELETE CASCADE ENABLE
+  ALTER TABLE "FAKTURA" ADD CONSTRAINT "FK_FAKTURA_PROJEKAT" FOREIGN KEY ("IDPROJEKTA")
+	  REFERENCES "PROJEKAT" ("ID") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table FAZA
+--------------------------------------------------------
+
+  ALTER TABLE "FAZA" ADD CONSTRAINT "FK_FAZA_FIZICKO_LICE" FOREIGN KEY ("IDFIZICKO_LICE")
+	  REFERENCES "FIZICKA_LICA" ("IDOSOBA") ON DELETE SET NULL ENABLE
+  ALTER TABLE "FAZA" ADD CONSTRAINT "FK_FAZA_NADFAZA" FOREIGN KEY ("ID_NADFAZE")
+	  REFERENCES "FAZA" ("ID") ON DELETE SET NULL ENABLE
+  ALTER TABLE "FAZA" ADD CONSTRAINT "FK_FAZA_PROJEKAT" FOREIGN KEY ("IDPROJEKTA")
+	  REFERENCES "PROJEKAT" ("ID") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table FIZICKA_LICA
+--------------------------------------------------------
+
+  ALTER TABLE "FIZICKA_LICA" ADD CONSTRAINT "FK_OSOBA_FIZ" FOREIGN KEY ("IDOSOBA")
+	  REFERENCES "OSOBA" ("ID") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table FOTOGRAFIJA
+--------------------------------------------------------
+
+  ALTER TABLE "FOTOGRAFIJA" ADD CONSTRAINT "FK_FOTO" FOREIGN KEY ("IDNAPREDAK")
+	  REFERENCES "NAPREDAK" ("ID") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table IMAUGOVORNUSTRANU
+--------------------------------------------------------
+
+  ALTER TABLE "IMAUGOVORNUSTRANU" ADD CONSTRAINT "FK_UGOVORNA_STRANA_OSOBA" FOREIGN KEY ("IDOSOBA")
+	  REFERENCES "OSOBA" ("ID") ON DELETE CASCADE ENABLE
+  ALTER TABLE "IMAUGOVORNUSTRANU" ADD CONSTRAINT "FK_UGOVORNA_STRANA_UGOVOR" FOREIGN KEY ("IDUGOVOR")
+	  REFERENCES "UGOVOR" ("ID") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table INDUSTRIJSKI
+--------------------------------------------------------
+
+  ALTER TABLE "INDUSTRIJSKI" ADD CONSTRAINT "FK_INDUSTRIJSKI_PROJEKAT" FOREIGN KEY ("IDPROJEKTA")
+	  REFERENCES "PROJEKAT" ("ID") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table INFRASTRUKTURA
+--------------------------------------------------------
+
+  ALTER TABLE "INFRASTRUKTURA" ADD CONSTRAINT "FK_INFRASTRUKTURA_PROJEKAT" FOREIGN KEY ("IDPROJEKTA")
+	  REFERENCES "PROJEKAT" ("ID") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table KONTAKT
+--------------------------------------------------------
+
+  ALTER TABLE "KONTAKT" ADD CONSTRAINT "FK_OSOBA_FIZ_KON" FOREIGN KEY ("IDOSOBA")
+	  REFERENCES "OSOBA" ("ID") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table KONTROLA_KVALITETA
+--------------------------------------------------------
+
+  ALTER TABLE "KONTROLA_KVALITETA" ADD CONSTRAINT "FK_KK_ZADATAK" FOREIGN KEY ("IDZADATKA")
+	  REFERENCES "ZADATAK" ("ID") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table KORISTI
+--------------------------------------------------------
+
+  ALTER TABLE "KORISTI" ADD CONSTRAINT "FK_KORISTI_MATERIJAL" FOREIGN KEY ("IDMATERIJAL")
+	  REFERENCES "MATERIJAL" ("ID") ON DELETE CASCADE ENABLE
+  ALTER TABLE "KORISTI" ADD CONSTRAINT "FK_KORISTI_ZADATAK" FOREIGN KEY ("IDZADATAK")
+	  REFERENCES "ZADATAK" ("ID") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table LEK_PREGLED
+--------------------------------------------------------
+
+  ALTER TABLE "LEK_PREGLED" ADD CONSTRAINT "FK_OSOBA_FIZ_LEK" FOREIGN KEY ("IDOSOBA")
+	  REFERENCES "FIZICKA_LICA" ("IDOSOBA") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table LICENCA
+--------------------------------------------------------
+
+  ALTER TABLE "LICENCA" ADD CONSTRAINT "FK_OSOBA_LICENCA" FOREIGN KEY ("IDOSOBE")
+	  REFERENCES "OSOBA" ("ID") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table MEHANIZACIJA
+--------------------------------------------------------
+
+  ALTER TABLE "MEHANIZACIJA" ADD CONSTRAINT "FK_MEHANIZACIJA_OPREMA" FOREIGN KEY ("IDOPREMA")
+	  REFERENCES "OPREMA" ("ID") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table NABAVKAMATERIJAL
+--------------------------------------------------------
+
+  ALTER TABLE "NABAVKAMATERIJAL" ADD CONSTRAINT "FK_NAB_MAT_MATERIJAL" FOREIGN KEY ("IDMATERIJAL")
+	  REFERENCES "MATERIJAL" ("ID") ON DELETE CASCADE ENABLE
+  ALTER TABLE "NABAVKAMATERIJAL" ADD CONSTRAINT "FK_NAB_MAT_NABAVKE" FOREIGN KEY ("IDNABAVKA")
+	  REFERENCES "NABAVKE" ("BR_NABAVKE") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table NABAVKAOPREMA
+--------------------------------------------------------
+
+  ALTER TABLE "NABAVKAOPREMA" ADD CONSTRAINT "FK_NAB_OPREMA_NABAVKA" FOREIGN KEY ("IDNABAVKA")
+	  REFERENCES "NABAVKE" ("BR_NABAVKE") ON DELETE CASCADE ENABLE
+  ALTER TABLE "NABAVKAOPREMA" ADD CONSTRAINT "FK_NAB_OPREMA_OPREMA" FOREIGN KEY ("IDOPREMA")
+	  REFERENCES "OPREMA" ("ID") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table NABAVKE
+--------------------------------------------------------
+
+  ALTER TABLE "NABAVKE" ADD CONSTRAINT "FK_NABAVKE_PRAVNALICA" FOREIGN KEY ("IDOSOBA")
+	  REFERENCES "PRAVNALICA" ("IDOSOBA") ENABLE
+  ALTER TABLE "NABAVKE" ADD CONSTRAINT "FK_NABAVKE_PROJEKAT" FOREIGN KEY ("IDPROJEKTA")
+	  REFERENCES "PROJEKAT" ("ID") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table NAPREDAK
+--------------------------------------------------------
+
+  ALTER TABLE "NAPREDAK" ADD CONSTRAINT "FK_NAPREDAK_ZADATAK" FOREIGN KEY ("IDZADATAK")
+	  REFERENCES "ZADATAK" ("ID") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table OBJEKAT_POSLOVNI
+--------------------------------------------------------
+
+  ALTER TABLE "OBJEKAT_POSLOVNI" ADD CONSTRAINT "FK_OBJEKAT_POSLOVNI" FOREIGN KEY ("IDPROJEKTA")
+	  REFERENCES "POSLOVNI" ("IDPROJEKTA") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table OBJEKAT_STAMBENI
+--------------------------------------------------------
+
+  ALTER TABLE "OBJEKAT_STAMBENI" ADD CONSTRAINT "FK_OBJEKAT_STAMBENI" FOREIGN KEY ("IDPROJEKTA")
+	  REFERENCES "STAMBENI" ("IDPROJEKTA") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table POSEBNA_KLAUZULA
+--------------------------------------------------------
+
+  ALTER TABLE "POSEBNA_KLAUZULA" ADD CONSTRAINT "FK_POSKLAU_UGOVOR" FOREIGN KEY ("IDUGOVOR")
+	  REFERENCES "UGOVOR" ("ID") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table POSLOVNI
+--------------------------------------------------------
+
+  ALTER TABLE "POSLOVNI" ADD CONSTRAINT "FK_POSLOVNI_PROJEKAT" FOREIGN KEY ("IDPROJEKTA")
+	  REFERENCES "PROJEKAT" ("ID") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table PRAVNALICA
+--------------------------------------------------------
+
+  ALTER TABLE "PRAVNALICA" ADD CONSTRAINT "FK_PRAVNALICA_OSOBA" FOREIGN KEY ("IDOSOBA")
+	  REFERENCES "OSOBA" ("ID") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table RADNI_NALOG
+--------------------------------------------------------
+
+  ALTER TABLE "RADNI_NALOG" ADD CONSTRAINT "FK_RADNI_NALOG_ZAD" FOREIGN KEY ("IDZADATAK")
+	  REFERENCES "ZADATAK" ("ID") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table REKONSTRUKCIJA
+--------------------------------------------------------
+
+  ALTER TABLE "REKONSTRUKCIJA" ADD CONSTRAINT "FK_REKONSTRUKCIJA_PROJEKAT" FOREIGN KEY ("IDPROJEKTA")
+	  REFERENCES "PROJEKAT" ("ID") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table SANACIJA
+--------------------------------------------------------
+
+  ALTER TABLE "SANACIJA" ADD CONSTRAINT "FK_SANACIJA_PROJEKAT" FOREIGN KEY ("IDPROJEKTA")
+	  REFERENCES "PROJEKAT" ("ID") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table SERTIFIKAT_SPEC_OPREME
+--------------------------------------------------------
+
+  ALTER TABLE "SERTIFIKAT_SPEC_OPREME" ADD CONSTRAINT "FK_OSOBA_FIZ_SPEC_OPR" FOREIGN KEY ("IDOSOBA")
+	  REFERENCES "FIZICKA_LICA" ("IDOSOBA") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table STAMBENI
+--------------------------------------------------------
+
+  ALTER TABLE "STAMBENI" ADD CONSTRAINT "FK_STAMBENI_PROJEKAT" FOREIGN KEY ("IDPROJEKTA")
+	  REFERENCES "PROJEKAT" ("ID") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table STAVKA_KONTROLE
+--------------------------------------------------------
+
+  ALTER TABLE "STAVKA_KONTROLE" ADD CONSTRAINT "FK_KONTROLA" FOREIGN KEY ("IDKONTROLE")
+	  REFERENCES "KONTROLA_KVALITETA" ("ID") ON DELETE CASCADE ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table UGOVOR
+--------------------------------------------------------
+
+  ALTER TABLE "UGOVOR" ADD CONSTRAINT "FK_UGOVOR_MATERIJAL" FOREIGN KEY ("IDMATERIJAL")
+	  REFERENCES "MATERIJAL" ("ID") ON DELETE SET NULL ENABLE
+  ALTER TABLE "UGOVOR" ADD CONSTRAINT "FK_UGOVOR_OPREMA" FOREIGN KEY ("IDOPREMA")
+	  REFERENCES "OPREMA" ("ID") ON DELETE SET NULL ENABLE
+  ALTER TABLE "UGOVOR" ADD CONSTRAINT "FK_UGOVOR_PROJEKAT" FOREIGN KEY ("IDPROJEKTA")
+	  REFERENCES "PROJEKAT" ("ID") ON DELETE SET NULL ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table ZADATAK
+--------------------------------------------------------
+
+  ALTER TABLE "ZADATAK" ADD CONSTRAINT "FK_ZADATAK_FAZA" FOREIGN KEY ("ID_FAZE")
+	  REFERENCES "FAZA" ("ID") ON DELETE CASCADE ENABLE
+  ALTER TABLE "ZADATAK" ADD CONSTRAINT "FK_ZADATAK_RODITELJ" FOREIGN KEY ("ID_ZADATAK_RODITELJ")
+	  REFERENCES "ZADATAK" ("ID") ON DELETE SET NULL ENABLE
+--------------------------------------------------------
+--  Ref Constraints for Table ZASTITNA_OPREMA
+--------------------------------------------------------
+
+  ALTER TABLE "ZASTITNA_OPREMA" ADD CONSTRAINT "FK_OSOBA_FIZ_ZAS_OPR" FOREIGN KEY ("IDOSOBA")
+	  REFERENCES "FIZICKA_LICA" ("IDOSOBA") ON DELETE CASCADE ENABLE
