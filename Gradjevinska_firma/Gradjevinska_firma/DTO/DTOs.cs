@@ -293,8 +293,8 @@ namespace Gradjevinska_firma.DTO
     {
         public int Id;
         public string Naziv;
-        public string Opis;
-        public decimal ProcenjeniTrosak;
+        public string? Opis;
+        public decimal? ProcenjeniTrosak;
         public DateTime PlaniraniZavrsetak;
         public DateTime? StvarniZavrsetak;
         public DateTime PlaniraniPocetak;
@@ -303,7 +303,7 @@ namespace Gradjevinska_firma.DTO
         public string Status;
 
         public FazaBasic Faza;
-        public ZadatakBasic Roditelj;
+        public ZadatakBasic? Roditelj;
         public virtual IList<ZadatakBasic> Podzadaci { get; set; }
         public virtual IList<RadniNalogBasic> RadniNalozi { get; set; }
         public virtual IList<NapredakBasic> Napreci { get; set; }
@@ -324,7 +324,7 @@ namespace Gradjevinska_firma.DTO
             Koristi=new List<KoristiBasic>();
         }
 
-        public ZadatakBasic(int id, string naziv, string opis, decimal procenjeniTrosak, DateTime planiraniZavrsetak, DateTime? stvarniZavrsetak, DateTime planiraniPocetak, DateTime? stvarniPocetak, int prioritet, string status, FazaBasic faza, ZadatakBasic roditelj)
+        public ZadatakBasic(int id, string naziv, string? opis, decimal? procenjeniTrosak, DateTime planiraniZavrsetak, DateTime? stvarniZavrsetak, DateTime planiraniPocetak, DateTime? stvarniPocetak, int prioritet, string status, FazaBasic faza, ZadatakBasic? roditelj)
         {
             Id = id;
             Naziv = naziv;
@@ -345,8 +345,8 @@ namespace Gradjevinska_firma.DTO
     {
         public int Id;
         public string Naziv;
-        public string Opis;
-        public decimal ProcenjeniTrosak;
+        public string? Opis;
+        public decimal? ProcenjeniTrosak;
         public DateTime PlaniraniZavrsetak;
         public DateTime? StvarniZavrsetak;
         public DateTime PlaniraniPocetak;
@@ -355,12 +355,12 @@ namespace Gradjevinska_firma.DTO
         public string Status;
 
         public FazaPregled Faza;
-        public ZadatakPregled NadZadatak;
+        public ZadatakPregled? NadZadatak;
         public ZadatakPregled()
         {
         }
 
-        public ZadatakPregled(int id, string naziv, string opis, decimal procenjeniTrosak, DateTime planiraniZavrsetak, DateTime? stvarniZavrsetak, DateTime planiraniPocetak, DateTime? stvarniPocetak, int prioritet, string status, FazaPregled faza, ZadatakPregled zadatak)
+        public ZadatakPregled(int id, string naziv, string? opis, decimal? procenjeniTrosak, DateTime planiraniZavrsetak, DateTime? stvarniZavrsetak, DateTime planiraniPocetak, DateTime? stvarniPocetak, int prioritet, string status, FazaPregled faza, ZadatakPregled? zadatak)
         {
             Id = id;
             Naziv = naziv;
@@ -486,9 +486,9 @@ namespace Gradjevinska_firma.DTO
         public string PredmetUgovora;
         public string Valuta;
         public DateTime Rok;
-        public MaterijalBasic Materijal;
-        public ProjekatBasic Projekat;
-        public OpremaBasic Oprema;
+        public MaterijalBasic? Materijal;
+        public ProjekatBasic? Projekat;
+        public OpremaBasic? Oprema;
 
         public virtual IList<ImaUgovornuStranuBasic> UgovorneStrane { get; set; }
         public virtual IList<PosebnaKlauzulaBasic> PosebneKlauzule { get; set; }
@@ -519,9 +519,9 @@ namespace Gradjevinska_firma.DTO
         public string PredmetUgovora;
         public string Valuta;
         public DateTime Rok;
-        public MaterijalPregled Materijal;
-        public ProjekatPregled Projekat;
-        public OpremaPregled Oprema;
+        public MaterijalPregled? Materijal;
+        public ProjekatPregled? Projekat;
+        public OpremaPregled? Oprema;
 
         public UgovorPregled()
         {
@@ -600,8 +600,8 @@ namespace Gradjevinska_firma.DTO
         public string Tip;
         public DateTime DatumUvoza;
         public string Proizvodjac;
-        public string RasponOdrzavanja;
-        public string Lokacija;
+        public string? RasponOdrzavanja;
+        public string? Lokacija;
         public string Status;
 
         public IList<UgovorBasic> Ugovori { get; set; }
@@ -615,7 +615,7 @@ namespace Gradjevinska_firma.DTO
             NabavkaOprema = new List<NabavkaOpremaBasic>();
         }
 
-        public OpremaBasic(int id,string naziv,string tip,DateTime datumUvoza,string proizvodjac,string rasponOdrzavanja,string lokacija,string status) : this()
+        public OpremaBasic(int id,string naziv,string tip,DateTime datumUvoza,string proizvodjac,string? rasponOdrzavanja,string? lokacija,string status) : this()
         {
             Id = id;
             Naziv = naziv;
@@ -635,15 +635,15 @@ namespace Gradjevinska_firma.DTO
         public string Tip;
         public DateTime DatumUvoza;
         public string Proizvodjac;
-        public string RasponOdrzavanja;
-        public string Lokacija;
+        public string? RasponOdrzavanja;
+        public string? Lokacija;
         public string Status;
 
         public OpremaPregled()
         {
         }
 
-        public OpremaPregled(int id,string naziv,string tip,DateTime datumUvoza,string proizvodjac,string rasponOdrzavanja,string lokacija,string status)
+        public OpremaPregled(int id,string naziv,string tip,DateTime datumUvoza,string proizvodjac,string? rasponOdrzavanja,string? lokacija,string status)
         {
             Id = id;
             Naziv = naziv;
@@ -754,8 +754,8 @@ namespace Gradjevinska_firma.DTO
         public int? Budzet;
 
         public ProjekatBasic Projekat;
-        public FizickoLiceBasic FizickoLice;
-        public FazaBasic NadFaza;
+        public FizickoLiceBasic? FizickoLice;
+        public FazaBasic? NadFaza;
 
         public IList<FazaBasic> PodFaze;
         public IList<ZadatakBasic> Zadaci;
@@ -767,7 +767,7 @@ namespace Gradjevinska_firma.DTO
         }
 
 
-        public FazaBasic(int id,string naziv,DateTime datumOd,DateTime? datumDo,string status,int? budzet,ProjekatBasic projekat,FizickoLiceBasic fizickoLice,FazaBasic nadFaza)
+        public FazaBasic(int id,string naziv,DateTime datumOd,DateTime? datumDo,string status,int? budzet,ProjekatBasic projekat,FizickoLiceBasic? fizickoLice,FazaBasic? nadFaza)
         {
             Id = id;
             Naziv = naziv;
@@ -791,14 +791,14 @@ namespace Gradjevinska_firma.DTO
         public int? Budzet;
 
         public ProjekatPregled Projekat;
-        public FizickoLicePregled FizickoLice;
-        public FazaPregled NadFaza;
+        public FizickoLicePregled? FizickoLice;
+        public FazaPregled? NadFaza;
 
         public FazaPregled()
         {
         }
 
-        public FazaPregled(int id,string naziv,DateTime datumOd,DateTime? datumDo,string status,int? budzet,ProjekatPregled projekat,FizickoLicePregled fizickoLice,FazaPregled nadFaza)
+        public FazaPregled(int id,string naziv,DateTime datumOd,DateTime? datumDo,string status,int? budzet,ProjekatPregled projekat,FizickoLicePregled? fizickoLice,FazaPregled? nadFaza)
         {
             Id = id;
             Naziv = naziv;
@@ -857,10 +857,10 @@ namespace Gradjevinska_firma.DTO
     {
         public int Id;
         public DateTime DatumInspekcije;
-        public string PrimedbeNadzora;
-        public string Zapisnik;
+        public string? PrimedbeNadzora;
+        public string? Zapisnik;
         public bool ZabranaNastavkaRadova;
-        public string RazlogZabrane;
+        public string? RazlogZabrane;
         public DateTime? DatumOtklanjanjaZabrane;
 
         public ZadatakBasic Zadatak;
@@ -872,7 +872,7 @@ namespace Gradjevinska_firma.DTO
             StavkeKontrole = new List<StavkaKontroleBasic>();
         }
 
-        public KontrolaKvalitetaBasic(int id,DateTime datumInspekcije,string primedbeNadzora,string zapisnik,bool zabranaNastavkaRadova,string razlogZabrane,DateTime? datumOtklanjanjaZabrane,ZadatakBasic zadatak)
+        public KontrolaKvalitetaBasic(int id,DateTime datumInspekcije,string? primedbeNadzora,string? zapisnik,bool zabranaNastavkaRadova,string? razlogZabrane,DateTime? datumOtklanjanjaZabrane,ZadatakBasic zadatak)
         {
             Id = id;
             DatumInspekcije = datumInspekcije;
@@ -889,10 +889,10 @@ namespace Gradjevinska_firma.DTO
     {
         public int Id;
         public DateTime DatumInspekcije;
-        public string PrimedbeNadzora;
-        public string Zapisnik;
+        public string? PrimedbeNadzora;
+        public string? Zapisnik;
         public bool ZabranaNastavkaRadova;
-        public string RazlogZabrane;
+        public string? RazlogZabrane;
         public DateTime? DatumOtklanjanjaZabrane;
 
         public ZadatakPregled Zadatak;
@@ -901,7 +901,7 @@ namespace Gradjevinska_firma.DTO
         {
         }
 
-        public KontrolaKvalitetaPregled(int id,DateTime datumInspekcije,string primedbeNadzora,string zapisnik,bool zabranaNastavkaRadova,string razlogZabrane,DateTime? datumOtklanjanjaZabrane,ZadatakPregled zadatak)
+        public KontrolaKvalitetaPregled(int id,DateTime datumInspekcije,string? primedbeNadzora,string? zapisnik,bool zabranaNastavkaRadova,string? razlogZabrane,DateTime? datumOtklanjanjaZabrane,ZadatakPregled zadatak)
         {
             Id = id;
             DatumInspekcije = datumInspekcije;
@@ -923,17 +923,17 @@ namespace Gradjevinska_firma.DTO
         public int Id;
         public KontrolaKvalitetaBasic Kontrola;
         public int RedniBrojStavke;
-        public string Uzorci;
-        public string LabNalazi;
-        public string RezultatiIspitivanja;
-        public string KorektivneMere;
+        public string? Uzorci;
+        public string? LabNalazi;
+        public string? RezultatiIspitivanja;
+        public string? KorektivneMere;
         public DateTime? RokZaOtklanjanje;
 
         public StavkaKontroleBasic()
         {
         }
 
-        public StavkaKontroleBasic(int id,KontrolaKvalitetaBasic kontrola,int redniBrojStavke,string uzorci,string labNalazi,string rezultatiIspitivanja,string korektivneMere,DateTime? rokZaOtklanjanje)
+        public StavkaKontroleBasic(int id,KontrolaKvalitetaBasic kontrola,int redniBrojStavke,string? uzorci,string? labNalazi,string? rezultatiIspitivanja,string? korektivneMere,DateTime? rokZaOtklanjanje)
         {
             Id = id;
             Kontrola = kontrola;
@@ -951,17 +951,17 @@ namespace Gradjevinska_firma.DTO
         public int Id;
         public KontrolaKvalitetaPregled Kontrola;
         public int RedniBrojStavke;
-        public string Uzorci;
-        public string LabNalazi;
-        public string RezultatiIspitivanja;
-        public string KorektivneMere;
+        public string? Uzorci;
+        public string? LabNalazi;
+        public string? RezultatiIspitivanja;
+        public string? KorektivneMere;
         public DateTime? RokZaOtklanjanje;
 
         public StavkaKontrolePregled()
         {
         }
 
-        public StavkaKontrolePregled(int id, KontrolaKvalitetaPregled kontrola,int redniBrojStavke,string uzorci,string labNalazi,string rezultatiIspitivanja,string korektivneMere,DateTime? rokZaOtklanjanje)
+        public StavkaKontrolePregled(int id, KontrolaKvalitetaPregled kontrola,int redniBrojStavke,string? uzorci,string? labNalazi,string? rezultatiIspitivanja,string? korektivneMere,DateTime? rokZaOtklanjanje)
         {   
             Id = id;
             Kontrola = kontrola;
@@ -982,10 +982,10 @@ namespace Gradjevinska_firma.DTO
         public int Id;
         public DateTime Datum;
         public ZadatakBasic Zadatak;
-        public string DnevniIzvestaj;
+        public string? DnevniIzvestaj;
         public int ProcenatRealizacije;
-        public string PrimedbaNadzora;
-        public string KorektivnaMera;
+        public string? PrimedbaNadzora;
+        public string? KorektivnaMera;
 
         public IList<FotografijaBasic> Fotografije;
 
@@ -994,7 +994,7 @@ namespace Gradjevinska_firma.DTO
             Fotografije = new List<FotografijaBasic>();
         }
 
-        public NapredakBasic(int id,DateTime datum,ZadatakBasic zadatak,string dnevniIzvestaj,int procenatRealizacije,string primedbaNadzora,string korektivnaMera)
+        public NapredakBasic(int id,DateTime datum,ZadatakBasic zadatak,string? dnevniIzvestaj,int procenatRealizacije,string? primedbaNadzora,string? korektivnaMera)
         {
             Id = id;
             Datum = datum;
@@ -1011,16 +1011,16 @@ namespace Gradjevinska_firma.DTO
         public int Id;
         public DateTime Datum;
         public ZadatakPregled Zadatak;
-        public string DnevniIzvestaj;
+        public string? DnevniIzvestaj;
         public int ProcenatRealizacije;
-        public string PrimedbaNadzora;
-        public string KorektivnaMera;
+        public string? PrimedbaNadzora;
+        public string? KorektivnaMera;
 
         public NapredakPregled()
         {
         }
 
-        public NapredakPregled(int id,DateTime datum,ZadatakPregled zadatak,string dnevniIzvestaj,int procenatRealizacije,string primedbaNadzora,string korektivnaMera)
+        public NapredakPregled(int id,DateTime datum,ZadatakPregled zadatak,string? dnevniIzvestaj,int procenatRealizacije,string? primedbaNadzora,string? korektivnaMera)
         {
             Id = id;
             Datum = datum;
@@ -1205,14 +1205,14 @@ namespace Gradjevinska_firma.DTO
         public string Opis;
         public DateTime Datum;
         public string Lokacija;
-        public string Preduzete_mere;
-        public string Posledice;
+        public string? Preduzete_mere;
+        public string? Posledice;
         public string Tip_incidenta;
         public ProjekatBasic Projekat;
         public OsobaBasic Osoba;
 
         public BezbednosniIncidentBasic() { }
-        public BezbednosniIncidentBasic(int iD, string opis, DateTime datum, string lokacija, string preduzete_mere, string posledice, string tip_incidenta, ProjekatBasic projekat, OsobaBasic osoba)
+        public BezbednosniIncidentBasic(int iD, string opis, DateTime datum, string lokacija, string? preduzete_mere, string? posledice, string tip_incidenta, ProjekatBasic projekat, OsobaBasic osoba)
         {
             ID = iD;
             Opis = opis;
@@ -1267,15 +1267,15 @@ namespace Gradjevinska_firma.DTO
         public string Opis;
         public DateTime Datum;
         public string Lokacija;
-        public string Preduzete_mere;
-        public string Posledice;
+        public string? Preduzete_mere;
+        public string? Posledice;
         public string Tip_incidenta;
         public ProjekatPregled Projekat;
         public OsobaPregled Osoba;
 
         public BezbednosniIncidentPregled() { }
 
-        public BezbednosniIncidentPregled(int iD, string opis, DateTime datum, string lokacija, string preduzete_mere, string posledice, string tip_incidenta, ProjekatPregled projekat, OsobaPregled osoba)
+        public BezbednosniIncidentPregled(int iD, string opis, DateTime datum, string lokacija, string? preduzete_mere, string? posledice, string tip_incidenta, ProjekatPregled projekat, OsobaPregled osoba)
         {
             ID = iD;
             Opis = opis;
@@ -1385,10 +1385,10 @@ namespace Gradjevinska_firma.DTO
     {
         public int ID;
         public string Naziv;
-        public string Opis;
+        public string? Opis;
         public string Lokacija;
         public DateTime Datum_pocetka;
-        public int? Budzet;
+        public int Budzet;
         public string Status;
         public DateTime Planirani_zavrsetak;
         public DateTime? Stvarni_zavrsetak;
@@ -1408,7 +1408,7 @@ namespace Gradjevinska_firma.DTO
             Faze=new List<FazaBasic>();
         }
 
-        public ProjekatBasic(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planirani_zavrsetak, DateTime? stvarni_zavrsetak)
+        public ProjekatBasic(int iD, string naziv, string? opis, string lokacija, DateTime datum_pocetka, int budzet, string status, DateTime planirani_zavrsetak, DateTime? stvarni_zavrsetak)
         {
             ID = iD;
             Naziv = naziv;
@@ -1426,10 +1426,10 @@ namespace Gradjevinska_firma.DTO
     {
         public int ID;
         public string Naziv;
-        public string Opis;
+        public string? Opis;
         public string Lokacija;
         public DateTime Datum_pocetka;
-        public int? Budzet;
+        public int Budzet;
         public string Status;
         public DateTime Planirani_zavrsetak;
         public DateTime? Stvarni_zavrsetak;
@@ -1437,7 +1437,7 @@ namespace Gradjevinska_firma.DTO
 
         public ProjekatPregled() { }
 
-        public ProjekatPregled(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planirani_zavrsetak, DateTime? stvarni_zavrsetak)
+        public ProjekatPregled(int iD, string naziv, string? opis, string lokacija, DateTime datum_pocetka, int budzet, string status, DateTime planirani_zavrsetak, DateTime? stvarni_zavrsetak)
         {
             ID = iD;
             Naziv = naziv;
@@ -1466,7 +1466,7 @@ namespace Gradjevinska_firma.DTO
         public int Cena;
         public string Proizvodjac;
         public string JedinicaMere;
-        public string Sertifikat;
+        public string? Sertifikat;
         public string Tip;
         public virtual IList<UgovorBasic> Ugovori { get; set; }
         public virtual IList<KoristiBasic> Koristi { get; set; }
@@ -1479,7 +1479,7 @@ namespace Gradjevinska_firma.DTO
             NabavkaMaterijal = new List<NabavkaMaterijalBasic>();
         }
 
-        public MaterijalBasic(int iD, string naziv, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tip)
+        public MaterijalBasic(int iD, string naziv, int cena, string proizvodjac, string jedinicaMere, string? sertifikat, string tip)
         {
             ID = iD;
             Naziv = naziv;
@@ -1534,11 +1534,11 @@ namespace Gradjevinska_firma.DTO
         public int Cena;
         public string Proizvodjac;
         public string JedinicaMere;
-        public string Sertifikat;
+        public string? Sertifikat;
         public string Tip;
 
         public MaterijalPregled() { }
-        public MaterijalPregled(int iD, string naziv, int cena, string proizvodjac, string jedinicaMere, string sertifikat, string tip)
+        public MaterijalPregled(int iD, string naziv, int cena, string proizvodjac, string jedinicaMere, string? sertifikat, string tip)
         {
             ID = iD;
             Naziv = naziv;
@@ -1816,7 +1816,7 @@ namespace Gradjevinska_firma.DTO
             Deonice = new List<DeonicaBasic>();
         }
 
-        public InfrastrukturaBasic(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
+        public InfrastrukturaBasic(int iD, string naziv, string? opis, string lokacija, DateTime datum_pocetka, int budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
             :base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak)
         {
 
@@ -1832,7 +1832,7 @@ namespace Gradjevinska_firma.DTO
             Deonice = new List<DeonicaPregled>();
         }
 
-        public InfrastrukturaPregled(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
+        public InfrastrukturaPregled(int iD, string naziv, string? opis, string lokacija, DateTime datum_pocetka, int budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
             : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak)
         {
 
@@ -1846,14 +1846,14 @@ namespace Gradjevinska_firma.DTO
     public class IndustrijskiBasic : ProjekatBasic
     {
         public IndustrijskiBasic() { }
-        public IndustrijskiBasic(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
+        public IndustrijskiBasic(int iD, string naziv, string? opis, string lokacija, DateTime datum_pocetka, int budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
             : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak) { }
     }
 
     public class IndustrijskiPregled : ProjekatPregled
     {
         public IndustrijskiPregled() { }
-        public IndustrijskiPregled(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
+        public IndustrijskiPregled(int iD, string naziv, string? opis, string lokacija, DateTime datum_pocetka, int budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
             : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak) { }
     }
 
@@ -1864,14 +1864,14 @@ namespace Gradjevinska_firma.DTO
     public class SanacijaBasic : ProjekatBasic
     {
         public SanacijaBasic() { }
-        public SanacijaBasic(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
+        public SanacijaBasic(int iD, string naziv, string? opis, string lokacija, DateTime datum_pocetka, int budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
             : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak) { }
     }
 
     public class SanacijaPregled : ProjekatPregled
     {
         public SanacijaPregled() { }
-        public SanacijaPregled(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
+        public SanacijaPregled(int iD, string naziv, string? opis, string lokacija, DateTime datum_pocetka, int budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
             : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak) { }
     }
 
@@ -1882,14 +1882,14 @@ namespace Gradjevinska_firma.DTO
     public class RekonstrukcijaBasic : ProjekatBasic 
     {
         public RekonstrukcijaBasic() { }
-        public RekonstrukcijaBasic(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
+        public RekonstrukcijaBasic(int iD, string naziv, string? opis, string lokacija, DateTime datum_pocetka, int budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
             : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak) { }
     }
 
     public class RekonstrukcijaPregled : ProjekatPregled
     {
         public RekonstrukcijaPregled() { }
-        public RekonstrukcijaPregled(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
+        public RekonstrukcijaPregled(int iD, string naziv, string? opis, string lokacija, DateTime datum_pocetka, int budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
             : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak) { }
     }
 
@@ -1904,7 +1904,7 @@ namespace Gradjevinska_firma.DTO
         {
             Objekti = new List<ObjekatPoslovniBasic>();
         }
-        public PoslovniBasic(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
+        public PoslovniBasic(int iD, string naziv, string? opis, string lokacija, DateTime datum_pocetka, int budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
             : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak) { }
     }
 
@@ -1915,7 +1915,7 @@ namespace Gradjevinska_firma.DTO
         {
             Objekti = new List<ObjekatPoslovniPregled>();
         }
-        public PoslovniPregled(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
+        public PoslovniPregled(int iD, string naziv, string? opis, string lokacija, DateTime datum_pocetka, int budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
             : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak) { }
     }
     #endregion
@@ -1971,7 +1971,7 @@ namespace Gradjevinska_firma.DTO
         {
             Objekti = new List<ObjekatStambeniBasic>();
         }
-        public StambeniBasic(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
+        public StambeniBasic(int iD, string naziv, string? opis, string lokacija, DateTime datum_pocetka, int budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
             : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak)
         {
 
@@ -1985,7 +1985,7 @@ namespace Gradjevinska_firma.DTO
         {
             Objekti = new List<ObjekatStambeniPregled>();
         }
-        public StambeniPregled(int iD, string naziv, string opis, string lokacija, DateTime datum_pocetka, int? budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
+        public StambeniPregled(int iD, string naziv, string? opis, string lokacija, DateTime datum_pocetka, int budzet, string status, DateTime planiran_zavrsetak, DateTime? stvarni_zavrsetak)
             : base(iD, naziv, opis, lokacija, datum_pocetka, budzet, status, planiran_zavrsetak, stvarni_zavrsetak)
         {
 

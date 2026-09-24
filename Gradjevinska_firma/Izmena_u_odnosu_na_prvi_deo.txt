@@ -1,0 +1,20 @@
+Promenjene tabele (tabele u kojima smo dodali ID umesto slozenog primarnog kljuca):
+Faza
+ImaUgovornuStranu 
+StavkaKontrole
+Deonica
+Objekat_poslovni
+Objekat_stambeni
+Koristi
+Napredak
+NabavkaOprema
+NabavkaMaterijal
+BezbednosnaObuka
+Kontakt
+LekarskiPregled
+Licenca
+PosebnaKlauzula
+SertifikatSpecOpreme
+ZastitnaOprema
+
+

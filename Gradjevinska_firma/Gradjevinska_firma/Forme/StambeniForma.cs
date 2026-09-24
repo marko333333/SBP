@@ -35,7 +35,7 @@ namespace Gradjevinska_firma.Forme
                     i.Lokacija,
 
                     i.Datum_pocetka.ToShortDateString(),
-                    i.Budzet.HasValue ? i.Budzet.Value.ToString() : "",
+                    i.Budzet.ToString(),
                     i.Status,
                     i.Planirani_zavrsetak.ToShortDateString(),
                     i.Stvarni_zavrsetak.HasValue ? i.Stvarni_zavrsetak.Value.ToShortDateString() : "",
