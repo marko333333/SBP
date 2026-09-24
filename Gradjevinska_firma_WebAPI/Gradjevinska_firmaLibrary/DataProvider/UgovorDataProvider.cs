@@ -217,7 +217,7 @@ namespace Gradjevinska_firmaLibrary.DataProvider
 
                 List<UgovorView> data =
                     (await s.QueryOver<Ugovor>()
-                        .Where(x => x.Materijal.ID == materijalId)
+                        .Where(x => x.Materijal!.ID == materijalId)
                         .ListAsync())
                     .Select(x => new UgovorView(x))
                     .ToList();
@@ -251,7 +251,7 @@ namespace Gradjevinska_firmaLibrary.DataProvider
 
                 List<UgovorView> data =
                     (await s.QueryOver<Ugovor>()
-                        .Where(x => x.Oprema.Id == opremaId)
+                        .Where(x => x.Oprema!.Id == opremaId)
                         .ListAsync())
                     .Select(x => new UgovorView(x))
                     .ToList();
@@ -285,7 +285,7 @@ namespace Gradjevinska_firmaLibrary.DataProvider
 
                 List<UgovorView> data =
                     (await s.QueryOver<Ugovor>()
-                        .Where(x => x.Projekat.ID == projekatId)
+                        .Where(x => x.Projekat!.ID == projekatId)
                         .ListAsync())
                     .Select(x => new UgovorView(x))
                     .ToList();

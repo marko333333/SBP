@@ -129,7 +129,12 @@ namespace Gradjevinska_firmaLibrary.DataProvider
 
                 FizickoLice? lice = await s.QueryOver<FizickoLice>()
                     .Where(x => x.Id == f.FizickoLiceId)
+                    .And(x => x.FlagR == true)
                     .SingleOrDefaultAsync();
+                if (lice == null)
+                {
+                    return "Izabrano fizicko lice nije radnik.".ToError(404);
+                }
 
                 ZastitnaOprema oprema = new ZastitnaOprema
                 {
@@ -170,10 +175,11 @@ namespace Gradjevinska_firmaLibrary.DataProvider
 
                 FizickoLice? lice = await s.QueryOver<FizickoLice>()
                     .Where(x => x.Id == f.FizickoLiceId)
+                    .And(x => x.FlagR == true)
                     .SingleOrDefaultAsync();
 
                 if (lice == null)
-                    return "Fizicko lice ne postoji.".ToError(404);
+                    return "Izabrano fizicko lice nije radnik.".ToError(404);
 
                 //oprema.Id = f.Id;
                 oprema.FizickoLice = lice;

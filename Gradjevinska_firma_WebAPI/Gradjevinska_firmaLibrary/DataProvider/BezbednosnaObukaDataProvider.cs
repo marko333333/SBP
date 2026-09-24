@@ -126,17 +126,17 @@ namespace Gradjevinska_firmaLibrary.DataProvider
                 if (!(s?.IsConnected ?? false))
                     return "Nemoguce otvoriti sesiju.".ToError(403);
 
-                FizickoLice? fizickoLice =
-                    await s.QueryOver<FizickoLice>()
+                FizickoLice? lice = await s.QueryOver<FizickoLice>()
                     .Where(x => x.Id == b.FizickoLiceId)
+                    .And(x => x.FlagR == true)
                     .SingleOrDefaultAsync();
 
-                if (fizickoLice == null)
-                    return "Fizicko lice ne postoji.".ToError(404);
+                if (lice == null)
+                    return "Izabrano fizicko lice nije radnik.".ToError(404);
 
                 BezbednosnaObuka obuka = new BezbednosnaObuka
                 {
-                    FizickoLice = fizickoLice,
+                    FizickoLice = lice,
                     NazivObuke = b.NazivObuke,
                     Datum = b.Datum
                 };
@@ -176,15 +176,15 @@ namespace Gradjevinska_firmaLibrary.DataProvider
                 if (obuka == null)
                     return "Bezbednosna obuka ne postoji.".ToError(404);
 
-                FizickoLice? fizickoLice =
-                    await s.QueryOver<FizickoLice>()
+                FizickoLice? lice = await s.QueryOver<FizickoLice>()
                     .Where(x => x.Id == b.FizickoLiceId)
+                    .And(x => x.FlagR == true)
                     .SingleOrDefaultAsync();
 
-                if (fizickoLice == null)
-                    return "Fizicko lice ne postoji.".ToError(404);
+                if (lice == null)
+                    return "Izabrano fizicko lice nije radnik.".ToError(404);
 
-                obuka.FizickoLice = fizickoLice;
+                obuka.FizickoLice = lice;
                 obuka.NazivObuke = b.NazivObuke;
                 obuka.Datum = b.Datum;
 

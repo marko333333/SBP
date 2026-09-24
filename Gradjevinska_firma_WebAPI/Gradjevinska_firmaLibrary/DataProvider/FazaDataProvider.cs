@@ -290,7 +290,7 @@ namespace Gradjevinska_firmaLibrary.DataProvider
 
                 List<FazaView> data =
                     (await s.QueryOver<Faza>()
-                        .Where(x => x.NadFaza.Id == fazaId)
+                        .Where(x => x.NadFaza!.Id == fazaId)
                         .ListAsync())
                     .Select(x => new FazaView(x))
                     .ToList();

@@ -129,9 +129,11 @@ namespace Gradjevinska_firmaLibrary.DataProvider
 
                 FizickoLice? lice = await s.QueryOver<FizickoLice>()
                     .Where(x => x.Id == f.FizickoLiceId)
+                    .And(x => x.FlagR == true)
                     .SingleOrDefaultAsync();
+
                 if (lice == null)
-                    return "Nepostojece fizicko lice".ToError();
+                    return "Izabrano fizicko lice nije radnik.".ToError(404);
 
                 LekarskiPregled pregled = new LekarskiPregled
                 {
@@ -174,12 +176,13 @@ namespace Gradjevinska_firmaLibrary.DataProvider
                 if (pregled == null)
                     return "Pregled ne postoji.".ToError(404);
 
-                FizickoLice ? lice = await s.QueryOver<FizickoLice>()
+                FizickoLice? lice = await s.QueryOver<FizickoLice>()
                     .Where(x => x.Id == f.FizickoLiceId)
+                    .And(x => x.FlagR == true)
                     .SingleOrDefaultAsync();
 
                 if (lice == null)
-                    return "Fizicko lice ne postoji.".ToError(404);
+                    return "Izabrano fizicko lice nije radnik.".ToError(404);
 
                 pregled.FizickoLice = lice;
                 pregled.Rezultat = f.Rezultat;

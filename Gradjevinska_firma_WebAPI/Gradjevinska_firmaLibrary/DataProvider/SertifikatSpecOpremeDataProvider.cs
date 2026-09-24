@@ -129,7 +129,11 @@ namespace Gradjevinska_firmaLibrary.DataProvider
 
                 FizickoLice? lice = await s.QueryOver<FizickoLice>()
                     .Where(x => x.Id == f.FizickoLiceId)
+                    .And(x => x.FlagR == true)
                     .SingleOrDefaultAsync();
+
+                if (lice == null)
+                    return "Izabrano fizicko lice nije radnik.".ToError(404);
 
                 SertifikatSpecOpreme sertif = new SertifikatSpecOpreme
                 {
@@ -168,9 +172,13 @@ namespace Gradjevinska_firmaLibrary.DataProvider
                 if (sertif == null)
                     return "Nepostojec sertifikat".ToError();
 
-                FizickoLice? lice = await s.QueryOver<FizickoLice>().Where(x => x.Id == f.FizickoLiceId).SingleOrDefaultAsync();
+                FizickoLice? lice = await s.QueryOver<FizickoLice>()
+                    .Where(x => x.Id == f.FizickoLiceId)
+                    .And(x => x.FlagR == true)
+                    .SingleOrDefaultAsync();
+
                 if (lice == null)
-                    return "Fizicko lice ne postoji.".ToError();
+                    return "Izabrano fizicko lice nije radnik.".ToError(404);
 
                 sertif.FizickoLice = lice;
                 sertif.Sertifikat = f.Sertifikat;

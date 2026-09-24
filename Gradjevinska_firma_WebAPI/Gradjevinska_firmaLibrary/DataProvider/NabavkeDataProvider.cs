@@ -130,11 +130,20 @@ namespace Gradjevinska_firmaLibrary.DataProvider
                 Projekat? projekat = await s.QueryOver<Projekat>()
                     .Where(x => x.ID == f.ProjekatId)
                     .SingleOrDefaultAsync();
+                PravnaLica? dobavljac =await s.QueryOver<PravnaLica>()
+                   .Where(x => x.Id == f.DobavljacId)
+                   .And(x => x.FlagD == true)
+                   .SingleOrDefaultAsync();
 
+                if (dobavljac == null)
+                {
+                    return "Izabrana osoba nije dobavljac.".ToError(404);
+                }
                 Nabavke nabavka = new Nabavke
                 {
                     Datum = f.Datum,
                     Projekat = projekat,
+                    Dobavljac= dobavljac
                 };
 
                 await s.SaveOrUpdateAsync(nabavka);
@@ -171,11 +180,20 @@ namespace Gradjevinska_firmaLibrary.DataProvider
                 Projekat? projekat = await s.QueryOver<Projekat>().Where(x => x.ID == f.ProjekatId).SingleOrDefaultAsync();
                 if (projekat == null)
                     return "Projekat ne postoji.".ToError();
+                PravnaLica? dobavljac = await s.QueryOver<PravnaLica>()
+                   .Where(x => x.Id == f.DobavljacId)
+                   .And(x => x.FlagD == true)
+                   .SingleOrDefaultAsync();
+
+                if (dobavljac == null)
+                {
+                    return "Izabrana osoba nije dobavljac.".ToError(404);
+                }
 
 
                 nabavka.Datum = f.Datum;
                 nabavka.Projekat = projekat;
-
+                nabavka.Dobavljac= dobavljac;
 
                 await s.UpdateAsync(nabavka);
                 await s.FlushAsync();

@@ -11,6 +11,8 @@ namespace Gradjevinska_firmaLibrary.DTOs
     {
         public int Br_nabavke { get; set; }
         public DateTime Datum { get; set; }
+
+        public int DobavljacId { get; set; }
         public int ProjekatId { get; set; }
 
         public NabavkeView()
@@ -22,6 +24,7 @@ namespace Gradjevinska_firmaLibrary.DTOs
             Br_nabavke = nabavke.Br_nabavke;
             Datum = nabavke.Datum;
             ProjekatId = nabavke.Projekat.ID;
+            DobavljacId = nabavke.Dobavljac.Id;
         }
     }   
 }
