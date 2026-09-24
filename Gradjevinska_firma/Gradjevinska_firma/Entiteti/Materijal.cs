@@ -13,7 +13,7 @@ namespace Gradjevinska_firma.Entiteti
         public virtual int Cena { get; set; }
         public virtual string Proizvodjac { get; set; }
         public virtual string JedinicaMere { get; set; }
-        public virtual string Sertifikat { get; set; }
+        public virtual string? Sertifikat { get; set; }
         public virtual string Tip { get; set; }
 
         public virtual IList<Ugovor> Ugovori { get; set; }

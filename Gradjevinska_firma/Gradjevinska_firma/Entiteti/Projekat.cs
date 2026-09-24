@@ -10,14 +10,13 @@ namespace Gradjevinska_firma.Entiteti
     {   
         public virtual int ID { get; set; }
         public virtual string Naziv { get; set; }
-        public virtual string Opis { get; set; }
+        public virtual string? Opis { get; set; }
         public virtual string Lokacija { get; set; }
         public virtual DateTime Datum_pocetka { get; set; }
         public virtual int? Budzet { get; set; }
         public virtual string Status { get; set; }
         public virtual DateTime Planirani_Zavrsetak { get; set; }
         public virtual DateTime? Stvarni_Zavrsetak { get; set; }
-        //public virtual int Trosak { get; set; }
 
         public virtual IList<Ugovor> Ugovori { get; set; }
         public virtual IList<BezbednosniIncident> BezbednosniIncidenti { get; set; }
