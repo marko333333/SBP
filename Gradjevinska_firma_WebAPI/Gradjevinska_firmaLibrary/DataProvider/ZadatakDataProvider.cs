@@ -96,8 +96,8 @@ namespace Gradjevinska_firmaLibrary.DataProvider
                     return "Nepostojeca faza".ToError();
 
                 Zadatak? roditeljZadatak = await s.QueryOver<Zadatak>().Where(x=>x.Id == f.RoditeljId).SingleOrDefaultAsync();
-                if (roditeljZadatak == null)
-                    return "Nepostojeci roditelj zadatak".ToError();
+                //if (roditeljZadatak == null)
+                //    return "Nepostojeci roditelj zadatak".ToError();
 
                 Zadatak zadatak = new Zadatak
                 {
@@ -153,8 +153,8 @@ namespace Gradjevinska_firmaLibrary.DataProvider
                     return "Faza ne postoji.".ToError(404);
 
                 Zadatak? roditeljZadatak = await s.QueryOver<Zadatak>().Where(x => x.Id == f.RoditeljId).SingleOrDefaultAsync();
-                if (roditeljZadatak == null)
-                    return "Nepostojeci roditelj zadatak".ToError();
+                //if (roditeljZadatak == null)
+                //    return "Nepostojeci roditelj zadatak".ToError();
 
                 zadatak.Naziv = f.Naziv;
                 zadatak.Opis = f.Opis;
