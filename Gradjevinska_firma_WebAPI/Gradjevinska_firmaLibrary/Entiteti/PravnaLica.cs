@@ -16,6 +16,7 @@ namespace Gradjevinska_firmaLibrary.Entiteti
         public virtual bool FlagN { get; set; }
         public virtual IList<Faktura> IzdateFakture { get; set; }
         public virtual IList<Faktura> PrimljeneFakture { get; set; }
+        public virtual IList<Nabavke> Nabavke { get; set; }
 
         public PravnaLica()
         {

@@ -35,6 +35,12 @@ namespace Gradjevinska_firmaLibrary.Mapiranja
                 .Cascade.AllDeleteOrphan()
                 .Inverse()
                 .LazyLoad();
+
+            HasMany(x => x.Nabavke)
+                .KeyColumn("IDOSOBA")
+                .Cascade.AllDeleteOrphan()
+                .Inverse()
+                .LazyLoad();
         }
     }
 }
