@@ -109,6 +109,99 @@ namespace Gradjevinska_firmaLibrary.DataProvider
             }
         }
 
+        public async static Task<Result<bool, ErrorMessage>> DodajMaterijalAsync(MaterijalView materijal, string tip)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                {
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+                }
+
+
+                Materijal? m = tip switch
+                {
+                    "Masinski" => new Masinski(),
+                    "Gradjevinski" => new Gradjevinski(),
+                    "Elektro" => new Elektro(),
+                    "Zastitni" => new Zastitni(),
+                    "Zavrsni" => new Zavrsni(),
+                    _ => null,
+                };
+
+                if (m != null)
+                {
+                    m.Naziv = materijal.Naziv;
+                    m.Cena = materijal.Cena;
+                    m.Proizvodjac = materijal.Proizvodjac;
+                    m.JedinicaMere = materijal.JedinicaMere;
+                    m.Sertifikat = materijal.Sertifikat;
+                    m.Tip = materijal.Tip;
+
+                    await s.SaveAsync(m);
+                    await s.FlushAsync();
+                }
+                else
+                {
+                    return "Pogresan tip materijala.".ToError(400);
+                }
+            }
+            catch (Exception)
+            {
+                return "Nemoguce dodati materijal".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+
+            return true;
+        }
+
+
+        public static async Task<Result<MaterijalView, ErrorMessage>> izmeniMaterijalAsync(MaterijalView f)
+        {
+            ISession? s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                if (!(s?.IsConnected ?? false))
+                    return "Nemoguce otvoriti sesiju.".ToError(403);
+
+                Materijal? zas = await s.QueryOver<Materijal>().Where(x => x.ID == f.ID).SingleOrDefaultAsync();
+                if (zas == null)
+                    return "Nepostojeci materijal".ToError();
+
+
+                zas.Naziv = f.Naziv;
+                zas.Cena = f.Cena;
+                zas.Proizvodjac = f.Proizvodjac;
+                zas.JedinicaMere = f.JedinicaMere;
+                zas.Sertifikat = f.Sertifikat;
+                zas.Tip = f.Tip;
+
+                await s.UpdateAsync(zas);
+                await s.FlushAsync();
+
+                return new MaterijalView(zas);
+            }
+            catch (Exception)
+            {
+                return "Doslo je do greske prilikom izmene materijala.".ToError(400);
+            }
+            finally
+            {
+                s?.Close();
+                s?.Dispose();
+            }
+        }
 
         #region Zastitni
 
