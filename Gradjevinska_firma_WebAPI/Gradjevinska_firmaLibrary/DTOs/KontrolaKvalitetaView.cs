@@ -11,10 +11,10 @@ namespace Gradjevinska_firmaLibrary.DTOs
     {
         public int Id { get; set; }
         public DateTime DatumInspekcije { get; set; }
-        public string PrimedbeNadzora { get; set; }
-        public string Zapisnik { get; set; }
+        public string? PrimedbeNadzora { get; set; }
+        public string? Zapisnik { get; set; }
         public bool ZabranaNastavkaRadova { get; set; }
-        public string RazlogZabrane { get; set; }
+        public string? RazlogZabrane { get; set; }
         public DateTime? DatumOtklanjanjaZabrane { get; set; }
         public int ZadatakId { get; set; }
 

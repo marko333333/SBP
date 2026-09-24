@@ -13,8 +13,8 @@ namespace Gradjevinska_firmaLibrary.DTOs
         public string Opis { get; set; }
         public  DateTime Datum { get; set; }
         public  string Lokacija { get; set; }
-        public  string Preduzete_mere { get; set; }
-        public  string Posledice { get; set; }
+        public  string? Preduzete_mere { get; set; }
+        public  string? Posledice { get; set; }
         public string Tip_incidenta { get; set; }
         public int ProjekatID { get; set; }
         public int OsobaID { get; set; }

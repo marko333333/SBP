@@ -12,10 +12,10 @@ namespace Gradjevinska_firmaLibrary.DTOs
         public int Id { get; set; }
         public int KontrolaId { get; set; }
         public int RedniBrojStavke { get; set; }
-        public string Uzorci { get; set; }
-        public string LabNalazi { get; set; }
-        public string RezultatiIspitivanja { get; set; }
-        public string KorektivneMere { get; set; }
+        public string? Uzorci { get; set; }
+        public string? LabNalazi { get; set; }
+        public string? RezultatiIspitivanja { get; set; }
+        public string? KorektivneMere { get; set; }
         public DateTime? RokZaOtklanjanje { get; set; }
 
         public StavkaKontroleView()

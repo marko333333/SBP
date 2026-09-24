@@ -14,7 +14,7 @@ namespace Gradjevinska_firmaLibrary.DTOs
         public int Cena { get; set; }
         public string Proizvodjac { get; set; }
         public string JedinicaMere { get; set; }
-        public string Sertifikat { get; set; }
+        public string? Sertifikat { get; set; }
         public string Tip { get; set; }
 
         public MaterijalView() { }

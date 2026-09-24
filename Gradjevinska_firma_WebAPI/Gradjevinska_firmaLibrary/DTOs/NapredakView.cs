@@ -12,10 +12,10 @@ namespace Gradjevinska_firmaLibrary.DTOs
         public int Id { get; set; }
         public DateTime Datum { get; set; }
         public int ZadatakId { get; set; }
-        public string DnevniIzvestaj { get; set; }
+        public string? DnevniIzvestaj { get; set; }
         public int ProcenatRealizacije { get; set; }
-        public string PrimedbaNadzora { get; set; }
-        public string KorektivnaMera { get; set; }
+        public string? PrimedbaNadzora { get; set; }
+        public string? KorektivnaMera { get; set; }
 
         public NapredakView()
         {
